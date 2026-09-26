@@ -1,5 +1,16 @@
 {
-  "url_sources": [],
+  "url_sources": [
+    {
+      "name": "iptv_org_ru",
+      "url": "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/ru.m3u",
+      "enabled": true
+    },
+    {
+      "name": "ufotv",
+      "url": "https://raw.githubusercontent.com/UFOTVM/TV/refs/heads/main/ufo.m3u",
+      "enabled": true
+    }
+  ],
   "local_sources": [
     {
       "name": "my_list",
