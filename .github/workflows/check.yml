@@ -1,0 +1,51 @@
+name: Check IPTV playlists
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run checker
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          PAGES_URL: ${{ vars.PAGES_URL }}
+        run: |
+          python m3u_checker.py \
+            --sources sources.json \
+            --docs-dir docs \
+            --multi-ua \
+            --tg-send-merged
+
+      - name: Commit & push results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "Нет изменений"
+          else
+            git commit -m "Auto-update $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
