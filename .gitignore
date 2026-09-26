@@ -1,0 +1,11 @@
+checked_playlists/
+_cache_sources/
+m3u_cache.sqlite
+m3u_checker.log
+*.log
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+!docs/
