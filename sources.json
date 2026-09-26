@@ -1,0 +1,12 @@
+{
+  "url_sources": [],
+  "local_sources": [
+    {
+      "name": "my_list",
+      "path": "local/my_list.m3u",
+      "enabled": true,
+      "check": false
+    }
+  ],
+  "logo_sources": []
+}
