@@ -13,20 +13,22 @@
     "Rutube": "📹",
     "Кино": "🎬",
     "Kinowalk": "🎞️",
-    "Kinowalk TV": "🎥",
     "СМОТРИМ +": "👁️",
     "Fresh": "🌿",
     "Спорт": "⚽",
     "Новости": "📰",
     "Музыка": "🎵",
+    "Радио": "📻",
     "Развлекательные": "🎭",
     "Познавательные": "🧠",
     "Разное": "📦"
   },
   "url_patterns": [
+    { "pattern": "kinowalk\\.hopto\\.org", "group": "Kinowalk", "force": true },
     { "pattern": "bl\\.rutube|rutube\\.ru", "group": "Rutube", "force": true }
   ],
   "name_patterns": [
+    { "pattern": "(?i)(радио|radio|\\bradio\\b|\\d+[\\.\\,]?\\d*\\s*(fm|am|мгц))", "group": "Радио" },
     { "pattern": "(?i)\\b(спорт|sport|футбол|football|хоккей|hockey|nba|nhl|ufc|mma|бокс|boxing|матч|match|гол\\b)", "group": "Спорт" },
     { "pattern": "(?i)\\b(музык|music|mtv|vh1|ru.?tv|муз.?тв|muz)", "group": "Музыка" },
     { "pattern": "(?i)\\b(кино|cinema|movie|film|боевик|триллер|детектив|ужас|вестерн|мелодрам|фантастик)", "group": "Кино" },
@@ -37,16 +39,17 @@
   ],
   "priority_groups": [
     "📺 Основные", "🇷🇺 Россия", "🛸 UFO TV", "⭐ Мой список",
-    "📹 Rutube", "🎬 Кино", "🎞️ Kinowalk", "🎥 Kinowalk TV",
+    "📹 Rutube", "🎬 Кино", "🎞️ Kinowalk",
     "👁️ СМОТРИМ +", "🌿 Fresh", "⚽ Спорт", "📰 Новости",
-    "🎵 Музыка", "🎭 Развлекательные", "🧠 Познавательные"
+    "🎵 Музыка", "📻 Радио", "🎭 Развлекательные", "🧠 Познавательные"
   ],
   "split_playlists": {
     "sport.m3u8": ["Спорт"],
     "music.m3u8": ["Музыка"],
     "news.m3u8": ["Новости"],
-    "kinowalk.m3u8": ["Kinowalk", "Kinowalk TV"],
-    "rutube.m3u8": ["Rutube"]
+    "kinowalk.m3u8": ["Kinowalk"],
+    "rutube.m3u8": ["Rutube"],
+    "radio.m3u8": ["Радио"]
   },
   "sort_channels_in_group": true
 }
