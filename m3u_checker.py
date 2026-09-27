@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v7 — фильтры + категоризация + эмодзи + сплит-плейлисты.
+M3U Checker v8 — фильтры, категоризация, эмодзи, сплиты, логотипы из iptv-org.
 """
 import os
 import re
@@ -44,6 +44,15 @@ HEADER_LINE = (
     'http://iptv-content.rv77.pw/guide-lite.xml"'
 )
 
+IPTV_ORG_URLS = [
+    'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/channels.json',
+    'https://cdn.jsdelivr.net/gh/iptv-org/api@master/channels.json',
+    'https://raw.githubusercontent.com/iptv-org/api/gh-pages/channels.json',
+    'https://raw.githubusercontent.com/iptv-org/api/master/channels.json',
+]
+IPTV_ORG_CACHE = '_cache_sources/iptv_org_channels.json'
+IPTV_ORG_TTL_DAYS = 7
+
 HTML_PREFIXES = (
     b'<!DOCTYPE', b'<html', b'<HTML',
     b'<head', b'<HEAD', b'<?xml', b'<error',
@@ -55,9 +64,9 @@ log = logging.getLogger('m3u')
 CFG = None
 CATEGORIES = {}
 FILTERS = {}
+IPTV_LOGOS = {'by_id': {}, 'by_name': {}}
 
 
-# ---------- ЛОГИ ----------
 def setup_logging(path, quiet):
     log.setLevel(logging.DEBUG)
     log.handlers.clear()
@@ -82,7 +91,6 @@ def emit(text, pbar=None):
         print(text)
 
 
-# ---------- КЭШ ----------
 class UrlCache:
     def __init__(self, path, ttl):
         self.ttl = ttl
@@ -129,7 +137,6 @@ class UrlCache:
                 self.conn.close()
 
 
-# ---------- КОНФИГИ ----------
 def load_json(path):
     if not os.path.isfile(path):
         return {}
@@ -153,7 +160,96 @@ def load_sources_config(path):
     return data
 
 
-# ---------- СКАЧИВАНИЕ ----------
+def normalize_name(name):
+    """Нормализует имя канала для матчинга логотипов."""
+    if not name:
+        return ''
+    n = name.lower()
+    n = re.sub(r'\b(hd|fhd|uhd|4k|8k|sd|hevc|h265|h\.265|h264|h\.264|mp4|hq|lq)\b', '', n)
+    n = re.sub(r'[^a-zа-яё0-9]+', ' ', n)
+    n = re.sub(r'\s+', ' ', n).strip()
+    return n
+
+
+def load_iptv_org_logos():
+    """Скачивает базу iptv-org (или берёт из кэша) и строит словари."""
+    global IPTV_LOGOS
+    if CFG.no_iptv_logos:
+        emit("Логотипы iptv-org: отключено флагом")
+        return
+
+    os.makedirs(os.path.dirname(IPTV_ORG_CACHE) or '.', exist_ok=True)
+
+    fresh = False
+    if os.path.isfile(IPTV_ORG_CACHE):
+        age_days = (time.time() - os.path.getmtime(IPTV_ORG_CACHE)) / 86400
+        if age_days < IPTV_ORG_TTL_DAYS:
+            fresh = True
+
+    if not fresh:
+        got = False
+        for url in IPTV_ORG_URLS:
+            try:
+                r = requests.get(url, timeout=30, verify=CFG.verify_ssl,
+                                 headers={'User-Agent': DEFAULT_UA})
+                if r.status_code != 200:
+                    continue
+                data = r.json()
+                if not isinstance(data, list) or not data:
+                    continue
+                with open(IPTV_ORG_CACHE, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, ensure_ascii=False)
+                emit(f"  База iptv-org скачана ({len(data)} каналов)")
+                got = True
+                break
+            except Exception as e:
+                log.debug("iptv-org url failed %s: %s", url, e)
+                continue
+        if not got and not os.path.isfile(IPTV_ORG_CACHE):
+            emit("  База iptv-org недоступна")
+            return
+
+    try:
+        with open(IPTV_ORG_CACHE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception as e:
+        log.warning("Не удалось прочитать кэш iptv-org: %s", e)
+        return
+
+    by_id = {}
+    by_name = {}
+    for ch in data:
+        if not isinstance(ch, dict):
+            continue
+        logo = ch.get('logo')
+        if not logo and isinstance(ch.get('logos'), list) and ch['logos']:
+            l0 = ch['logos'][0]
+            logo = l0.get('url') if isinstance(l0, dict) else l0
+        if not logo:
+            continue
+        cid = ch.get('id')
+        if cid:
+            by_id[cid] = logo
+        for name_field in ('name', 'alt_names'):
+            val = ch.get(name_field)
+            if isinstance(val, str):
+                vals = [val]
+            elif isinstance(val, list):
+                vals = val
+            else:
+                continue
+            for v in vals:
+                if not isinstance(v, str):
+                    continue
+                k = normalize_name(v)
+                if k and k not in by_name:
+                    by_name[k] = logo
+
+    IPTV_LOGOS['by_id'] = by_id
+    IPTV_LOGOS['by_name'] = by_name
+    emit(f"  Логотипов в базе: {len(by_id)} по id, {len(by_name)} по имени")
+
+
 def download_url_sources(url_sources, cache_dir):
     os.makedirs(cache_dir, exist_ok=True)
     for src in url_sources:
@@ -175,7 +271,6 @@ def download_url_sources(url_sources, cache_dir):
             emit(f"  FAIL не скачан: {name} ({e})")
 
 
-# ---------- ПАРСИНГ ----------
 def split_extinf(line):
     in_q = False
     for i, ch in enumerate(line):
@@ -214,14 +309,26 @@ def clean_extinf(line):
 
 
 def set_group_in_extinf(extinf, new_group):
-    """Заменяет group-title на new_group, или добавляет его если не было."""
     new_group = new_group.replace('"', "'")
     if re.search(r'group-title="[^"]*"', extinf):
         return re.sub(r'group-title="[^"]*"', f'group-title="{new_group}"', extinf)
     return re.sub(r'^(#EXTINF:-?\d+)', rf'\1 group-title="{new_group}"', extinf, count=1)
 
 
-# ---------- ФИЛЬТРЫ ----------
+def set_logo_in_extinf(extinf, logo):
+    extinf = re.sub(r'\s?tvg-logo="[^"]*"', '', extinf)
+    if not logo:
+        return extinf
+    logo = logo.replace('"', "'")
+    if 'tvg-id="' in extinf:
+        return re.sub(r'(tvg-id="[^"]*")',
+                      lambda m: f'{m.group(1)} tvg-logo="{logo}"',
+                      extinf, count=1)
+    return re.sub(r'^(#EXTINF:-?\d+)',
+                  lambda m: f'{m.group(1)} tvg-logo="{logo}"',
+                  extinf, count=1)
+
+
 def compile_patterns(patterns):
     out = []
     for p in patterns or []:
@@ -233,66 +340,50 @@ def compile_patterns(patterns):
 
 
 def is_filtered(name, group, url):
-    """True — канал надо выкинуть."""
-    # name_blocklist
     for p in FILTERS['_name_block']:
         if p.search(name or ''):
             return True, 'name_blocklist'
-    # name_exclude
     for p in FILTERS['_name_exclude']:
         if p.search(name or ''):
             return True, 'name_exclude'
-    # group_exclude
     for p in FILTERS['_group_exclude']:
         if p.search(group or ''):
             return True, 'group_exclude'
-    # url_blocklist
     for p in FILTERS['_url_block']:
         if p.search(url):
             return True, 'url_blocklist'
-    # url_extension_blocklist
     url_low = url.lower().split('?')[0]
     for ext in FILTERS.get('url_extension_blocklist', []):
         if url_low.endswith(ext):
             return True, 'url_extension'
-    # shorteners
     for s in FILTERS.get('shortener_blocklist', []):
         if s in url:
             return True, 'shortener'
-    # ports
     for port in FILTERS.get('port_blocklist', []):
         if port in url:
             return True, 'port'
-    # suspicious
     for p in FILTERS['_suspicious']:
         if p.search(url):
             return True, 'suspicious'
-    # domain_blocklist
     for d in FILTERS.get('domain_blocklist', []):
         if d in url:
             return True, 'domain'
-    # malformed
     for p in FILTERS['_malformed']:
         if p.search(url):
             return True, 'malformed'
-    # block_all_ip_urls
     if FILTERS.get('block_all_ip_urls'):
         if re.match(r'^https?://\d+\.\d+\.\d+\.\d+', url):
             return True, 'ip_url'
-    # block_ipv6
     if FILTERS.get('block_ipv6_urls'):
         if re.match(r'^https?://\[', url):
             return True, 'ipv6'
     return False, None
 
 
-# ---------- КАТЕГОРИЗАЦИЯ ----------
 def categorize(extinf, url, source_name):
-    """Возвращает финальную группу (с эмодзи) для канала."""
     current = get_group(extinf)
     name = get_name(extinf)
 
-    # 1. url_patterns с force=true — перезапись
     for up in CATEGORIES.get('url_patterns', []):
         try:
             if re.search(up['pattern'], url) and up.get('force'):
@@ -300,14 +391,12 @@ def categorize(extinf, url, source_name):
         except re.error:
             pass
 
-    # 2. group_aliases — переименование существующей группы
     if current:
         aliases = CATEGORIES.get('group_aliases', {})
         if current in aliases:
             return aliases[current]
         return current
 
-    # 3. url_patterns без force
     for up in CATEGORIES.get('url_patterns', []):
         try:
             if re.search(up['pattern'], url):
@@ -315,7 +404,6 @@ def categorize(extinf, url, source_name):
         except re.error:
             pass
 
-    # 4. name_patterns — только если группы нет
     if name:
         for np in CATEGORIES.get('name_patterns', []):
             try:
@@ -324,12 +412,10 @@ def categorize(extinf, url, source_name):
             except re.error:
                 pass
 
-    # 5. source_defaults
     defaults = CATEGORIES.get('source_defaults', {})
     if source_name in defaults:
         return defaults[source_name]
 
-    # 6. fallback
     return 'Разное'
 
 
@@ -345,7 +431,6 @@ def add_emoji(group):
     return group
 
 
-# ---------- ЛОГОТИПЫ ----------
 def load_txt_logos(dirs):
     logos = {}
     files = []
@@ -376,7 +461,6 @@ def load_txt_logos(dirs):
     return logos
 
 
-# ---------- ПРОВЕРКИ ----------
 def _try_stream(url, ua):
     try:
         with requests.get(url, headers={'User-Agent': ua}, stream=True,
@@ -441,52 +525,61 @@ def check_logo(url, cache):
     return ok
 
 
-# ---------- КАНАЛ ----------
+def resolve_logo(extinf, url, txt_logos, cache):
+    """Каскадный поиск рабочего логотипа. Возвращает URL или None."""
+    # 1. Логотип из плейлиста
+    m = re.search(r'tvg-logo="([^"]*)"', extinf)
+    if m and m.group(1):
+        if check_logo(m.group(1), cache):
+            return m.group(1)
+
+    # 2. По tvg-id в базе
+    tid = re.search(r'tvg-id="([^"]*)"', extinf)
+    if tid and tid.group(1):
+        l = IPTV_LOGOS['by_id'].get(tid.group(1))
+        if l and check_logo(l, cache):
+            return l
+
+    # 3. По имени в базе (с нормализацией)
+    name = get_name(extinf)
+    if name:
+        key = normalize_name(name)
+        l = IPTV_LOGOS['by_name'].get(key)
+        if l and check_logo(l, cache):
+            return l
+
+    # 4. Из .txt
+    if name:
+        l = txt_logos.get(name.lower())
+        if l and check_logo(l, cache):
+            return l
+
+    return None
+
+
 def process_channel(index, extinf, url, txt_logos, cache, source_name):
     name = get_name(extinf)
     group = get_group(extinf)
 
-    # Фильтр до проверки
     filtered, reason = is_filtered(name, group, url)
     if filtered:
         return index, 'filtered', None, None, reason, None, None
 
-    # Проверка потока
     ok, ua = check_stream(url, cache)
     if not ok:
         return index, 'dead', None, None, None, None, None
 
     extinf = clean_extinf(extinf)
+    new_logo = resolve_logo(extinf, url, txt_logos, cache)
+    extinf = set_logo_in_extinf(extinf, new_logo)
 
-    # Логотип
-    lg = re.search(r'tvg-logo="([^"]*)"', extinf)
-    extras = []
-    if lg and lg.group(1):
-        if not check_logo(lg.group(1), cache):
-            extinf = re.sub(r'\s?tvg-logo="[^"]*"', '', extinf)
-            lg = None
-    if not lg or not lg.group(1):
-        n = get_name(extinf)
-        fl = txt_logos.get(n.lower()) if n else None
-        if fl:
-            if 'tvg-id="' in extinf:
-                extinf = re.sub(r'(tvg-id="[^"]*")',
-                                lambda m: f'{m.group(1)} tvg-logo="{fl}"',
-                                extinf, count=1)
-            else:
-                extinf = re.sub(r'^(#EXTINF:-?\d+)',
-                                lambda m: f'{m.group(1)} tvg-logo="{fl}"',
-                                extinf, count=1)
-
-    # Категоризация
     new_group = categorize(extinf, url, source_name)
     new_group_emoji = add_emoji(new_group)
     extinf = set_group_in_extinf(extinf, new_group_emoji)
 
-    return index, 'ok', extinf, url, '; '.join(extras) or None, ua, new_group_emoji
+    return index, 'ok', extinf, url, None, ua, new_group_emoji
 
 
-# ---------- ПЛЕЙЛИСТ ----------
 def parse_playlist(filename):
     try:
         with open(filename, 'r', encoding='utf-8-sig', errors='ignore') as f:
@@ -531,6 +624,8 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             if filtered:
                 continue
             extinf = clean_extinf(extinf)
+            new_logo = resolve_logo(extinf, url, txt_logos, cache)
+            extinf = set_logo_in_extinf(extinf, new_logo)
             ng = add_emoji(categorize(extinf, url, label))
             extinf = set_group_in_extinf(extinf, ng)
             out.append((i, extinf, url))
@@ -572,8 +667,6 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             elif status == 'filtered':
                 filt_cnt += 1
                 filt_by_reason[msg] = filt_by_reason.get(msg, 0) + 1
-            else:
-                pass
 
             if pbar:
                 pbar.update(1)
@@ -597,8 +690,6 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
 
 
 def group_channels(channels):
-    """Группирует по group-title в порядке priority_groups, потом по алфавиту.
-       Внутри группы — каналы по алфавиту (если включено)."""
     priority = CATEGORIES.get('priority_groups', [])
     prio_map = {p: i for i, p in enumerate(priority)}
     sort_in = CATEGORIES.get('sort_channels_in_group', True)
@@ -631,7 +722,6 @@ def write_playlist(path, channels):
 
 
 def write_splits(channels, docs_dir):
-    """Создаёт отдельные файлы для групп из split_playlists."""
     splits = CATEGORIES.get('split_playlists', {})
     if not splits:
         return []
@@ -651,10 +741,9 @@ def write_splits(channels, docs_dir):
     return created
 
 
-# ---------- HTML ----------
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
-<title>M3U Check v7 - {date}</title>
+<title>M3U Check v8 - {date}</title>
 <style>
 *{{box-sizing:border-box}}
 body{{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0f1115;
@@ -677,7 +766,7 @@ th{{color:#8a8f98;font-weight:500;font-size:11px;text-transform:uppercase}}
 .tag{{display:inline-block;padding:2px 8px;border-radius:6px;background:#23272e;
 font-size:12px;color:#a1a1aa;margin:2px}}
 </style></head><body>
-<h1>M3U Check v7</h1>
+<h1>M3U Check v8</h1>
 <div class="sub">{date} · источников: {n_playlists}</div>
 <div class="cards">
 <div class="card"><div class="k">Проверено</div><div class="v">{total}</div></div>
@@ -691,7 +780,7 @@ font-size:12px;color:#a1a1aa;margin:2px}}
 <div class="section"><h2>По источникам</h2>
 <table><thead><tr><th>Источник</th><th>Всего</th><th>Рабочих</th><th>Фильтр</th><th>%</th></tr></thead>
 <tbody>{playlists_rows}</tbody></table></div>
-<div class="section"><h2>Фильтры (что отсеклось)</h2>
+<div class="section"><h2>Фильтры</h2>
 <table><thead><tr><th>Причина</th><th>Каналов</th></tr></thead>
 <tbody>{filter_rows}</tbody></table></div>
 <div class="section"><h2>Группы (итог)</h2>
@@ -783,7 +872,6 @@ def render_index(path, url, merged, ok, total, splits):
         f.write(out)
 
 
-# ---------- TELEGRAM ----------
 def tg_send(token, chat, text):
     if not token or not chat:
         return False
@@ -813,7 +901,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, merged, dur, index_url):
     lines = [
-        "<b>M3U Check v7</b>",
+        "<b>M3U Check v8</b>",
         f"Проверено: <b>{total}</b>",
         f"Рабочих: <b>{ok}</b>",
         f"Отфильтровано: <b>{filt}</b>",
@@ -830,7 +918,6 @@ def tg_report(stats, total, ok, filt, merged, dur, index_url):
     tg_send(CFG.tg_token, CFG.tg_chat, "\n".join(lines))
 
 
-# ---------- MAIN ----------
 def parse_args():
     p = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     p.add_argument('--sources', default='sources.json')
@@ -846,6 +933,8 @@ def parse_args():
     p.add_argument('--logo-timeout', type=float, default=3.0)
     p.add_argument('--no-ssl-verify', action='store_true')
     p.add_argument('--multi-ua', action='store_true')
+    p.add_argument('--no-iptv-logos', action='store_true',
+                   help='Не подтягивать логотипы из базы iptv-org')
     p.add_argument('--cache', default='m3u_cache.sqlite')
     p.add_argument('--cache-ttl', type=int, default=3600)
     p.add_argument('--log', default='m3u_checker.log')
@@ -870,7 +959,6 @@ def main():
     CATEGORIES = load_json(CFG.categories)
     FILTERS = load_json(CFG.filters)
 
-    # Компилируем регулярки фильтров
     FILTERS['_name_block'] = compile_patterns(FILTERS.get('name_blocklist', []))
     FILTERS['_name_exclude'] = compile_patterns(FILTERS.get('name_exclude', []))
     FILTERS['_group_exclude'] = compile_patterns(FILTERS.get('group_exclude', []))
@@ -878,12 +966,15 @@ def main():
     FILTERS['_suspicious'] = compile_patterns(FILTERS.get('suspicious_patterns', []))
     FILTERS['_malformed'] = compile_patterns(FILTERS.get('malformed_patterns', []))
 
+    emit("Загружаю базу логотипов iptv-org...")
+    load_iptv_org_logos()
+
     cfg = load_sources_config(CFG.sources)
     url_sources = cfg.get('url_sources', [])
     local_sources = cfg.get('local_sources', [])
 
     cache_dir = '_cache_sources'
-    emit(f"Скачиваю {len(url_sources)} URL-источников...")
+    emit(f"\nСкачиваю {len(url_sources)} URL-источников...")
     download_url_sources(url_sources, cache_dir)
 
     all_sources = []
@@ -932,7 +1023,6 @@ def main():
             stats_list.append(st)
             pl += 1
 
-        # Глобальная сортировка
         ordered_merged = [(e, u) for _, e, u in group_channels(
             [(i, e, u) for i, (_, e, u) in enumerate(merged_all)])]
 
