@@ -14,18 +14,6 @@ http://5.188.158.65:4040/IPTVPLAY10KOROLEVSTVO.tv/video.m3u8?token=lqRGka5-YwwqF
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/Rh516HVw/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY МультСказки HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYMultSkazki.tv/video.m3u8?token=lqRGka5-YwwqF0
-#EXTINF:-1 tvg-id="kinokomedia" tvg-logo="https://can-live.com/pictures/city_eden_kinokomediya_1780314811.png" group-title="👁️ СМОТРИМ +",КиноКомедия
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://cityeden.catcast.tv/content/41331/index.m3u8
-#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/cityedem-kinomist.png" group-title="👁️ СМОТРИМ +",Киномистика
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://autopilot.catcast.tv/content/40783/index.m3u8?password=promolive
-#EXTINF:-1 tvg-logo="https://www.cityeden.info/_bl/23/76607580.png" group-title="👁️ СМОТРИМ +",КиноФантастика
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://cityeden.catcast.tv/content/45268/index.m3u8
-#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/cityedem-kinoact.png" group-title="👁️ СМОТРИМ +",КиноЭкшен
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://autopilot.catcast.tv/content/41333/index.m3u8?password=promolive
 #EXTINF:-1 tvg-id="smotrim-100-detskoe" tvg-logo="https://epg.iptvx.one/picons/smotrim-100-detskoe.png" group-title="👁️ СМОТРИМ +",Смотрим 100% Детское HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls3/fasttv05/playlist_3.m3u8

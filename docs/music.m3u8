@@ -32,9 +32,6 @@ http://stream.mcquack.net/303/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzyka-pervogo" tvg-logo="https://i.imgur.com/U0vKj3P.png",Muzyka Pervogo (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/153/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzyka-pervogo" tvg-logo="https://i.imgur.com/U0vKj3P.png",Muzyka Pervogo (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://88.212.15.19/live/test_muzyka_pervogo/playlist.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="nashe-muzhskoe" tvg-logo="https://i.imgur.com/QRWKpmb.png",Nashe muzhskoe HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/362/index.m3u8
@@ -47,9 +44,3 @@ http://stream.mcquack.net/109/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="russian-musicbox" tvg-logo="https://i.imgur.com/ZkJ3Rh9.png",Russian MusicBox (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/319/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="smotrim-100-muzhskoe" tvg-logo="https://i.imgur.com/UY3fjYU.png",Smotrim 100% Muzhskoe (720p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream.smotrim.ru/hls/fasttv02/playlist_3.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="astrahan-live" tvg-logo="https://i.imgur.com/w4ys6zm.png",Астрахань.Ru TV (480p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://streaming.astrakhan.ru/astrakhanrulivehd/playlist.m3u8
