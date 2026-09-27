@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v8 — фильтры, категоризация, эмодзи, сплиты, логотипы из iptv-org.
+M3U Checker v9 — + QR, + история с графиком, + поиск по каналам.
 """
 import os
 import re
@@ -23,6 +23,12 @@ try:
     HAS_TQDM = True
 except ImportError:
     HAS_TQDM = False
+
+try:
+    import qrcode
+    HAS_QR = True
+except ImportError:
+    HAS_QR = False
 
 
 USER_AGENTS = [
@@ -65,6 +71,7 @@ CFG = None
 CATEGORIES = {}
 FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}}
+HISTORY_MAX = 30
 
 
 def setup_logging(path, quiet):
@@ -100,21 +107,18 @@ class UrlCache:
             self.conn = None
             return
         self.conn = sqlite3.connect(path, check_same_thread=False)
-        self.conn.execute("""
-            CREATE TABLE IF NOT EXISTS cache (
-                url TEXT NOT NULL, kind TEXT NOT NULL,
-                ok INTEGER NOT NULL, ts REAL NOT NULL,
-                PRIMARY KEY (url, kind))
-        """)
+        self.conn.execute("""CREATE TABLE IF NOT EXISTS cache (
+            url TEXT NOT NULL, kind TEXT NOT NULL,
+            ok INTEGER NOT NULL, ts REAL NOT NULL,
+            PRIMARY KEY (url, kind))""")
         self.conn.commit()
 
     def get(self, url, kind):
         if not self.enabled:
             return None
         with self.lock:
-            row = self.conn.execute(
-                "SELECT ok, ts FROM cache WHERE url=? AND kind=?",
-                (url, kind)).fetchone()
+            row = self.conn.execute("SELECT ok, ts FROM cache WHERE url=? AND kind=?",
+                                    (url, kind)).fetchone()
         if not row:
             return None
         ok, ts = row
@@ -161,31 +165,24 @@ def load_sources_config(path):
 
 
 def normalize_name(name):
-    """Нормализует имя канала для матчинга логотипов."""
     if not name:
         return ''
     n = name.lower()
     n = re.sub(r'\b(hd|fhd|uhd|4k|8k|sd|hevc|h265|h\.265|h264|h\.264|mp4|hq|lq)\b', '', n)
     n = re.sub(r'[^a-zа-яё0-9]+', ' ', n)
-    n = re.sub(r'\s+', ' ', n).strip()
-    return n
+    return re.sub(r'\s+', ' ', n).strip()
 
 
 def load_iptv_org_logos():
-    """Скачивает базу iptv-org (или берёт из кэша) и строит словари."""
     global IPTV_LOGOS
     if CFG.no_iptv_logos:
-        emit("Логотипы iptv-org: отключено флагом")
+        emit("Логотипы iptv-org: отключено")
         return
-
     os.makedirs(os.path.dirname(IPTV_ORG_CACHE) or '.', exist_ok=True)
-
     fresh = False
     if os.path.isfile(IPTV_ORG_CACHE):
-        age_days = (time.time() - os.path.getmtime(IPTV_ORG_CACHE)) / 86400
-        if age_days < IPTV_ORG_TTL_DAYS:
-            fresh = True
-
+        age = (time.time() - os.path.getmtime(IPTV_ORG_CACHE)) / 86400
+        fresh = age < IPTV_ORG_TTL_DAYS
     if not fresh:
         got = False
         for url in IPTV_ORG_URLS:
@@ -203,21 +200,17 @@ def load_iptv_org_logos():
                 got = True
                 break
             except Exception as e:
-                log.debug("iptv-org url failed %s: %s", url, e)
-                continue
+                log.debug("iptv-org %s: %s", url, e)
         if not got and not os.path.isfile(IPTV_ORG_CACHE):
             emit("  База iptv-org недоступна")
             return
-
     try:
         with open(IPTV_ORG_CACHE, 'r', encoding='utf-8') as f:
             data = json.load(f)
     except Exception as e:
-        log.warning("Не удалось прочитать кэш iptv-org: %s", e)
+        log.warning("Кэш iptv-org: %s", e)
         return
-
-    by_id = {}
-    by_name = {}
+    by_id, by_name = {}, {}
     for ch in data:
         if not isinstance(ch, dict):
             continue
@@ -230,24 +223,34 @@ def load_iptv_org_logos():
         cid = ch.get('id')
         if cid:
             by_id[cid] = logo
-        for name_field in ('name', 'alt_names'):
-            val = ch.get(name_field)
-            if isinstance(val, str):
-                vals = [val]
-            elif isinstance(val, list):
-                vals = val
-            else:
-                continue
+        for nf in ('name', 'alt_names'):
+            val = ch.get(nf)
+            vals = val if isinstance(val, list) else ([val] if isinstance(val, str) else [])
             for v in vals:
                 if not isinstance(v, str):
                     continue
                 k = normalize_name(v)
                 if k and k not in by_name:
                     by_name[k] = logo
-
     IPTV_LOGOS['by_id'] = by_id
     IPTV_LOGOS['by_name'] = by_name
     emit(f"  Логотипов в базе: {len(by_id)} по id, {len(by_name)} по имени")
+
+
+def load_history(path):
+    if not os.path.isfile(path):
+        return []
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            d = json.load(f)
+            return d[-HISTORY_MAX:] if isinstance(d, list) else []
+    except Exception:
+        return []
+
+
+def save_history(path, history):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(history[-HISTORY_MAX:], f, ensure_ascii=False, indent=2)
 
 
 def download_url_sources(url_sources, cache_dir):
@@ -259,16 +262,16 @@ def download_url_sources(url_sources, cache_dir):
         url = src.get('url')
         if not url:
             continue
-        out_path = os.path.join(cache_dir, f'{name}.m3u')
+        out = os.path.join(cache_dir, f'{name}.m3u')
         try:
             r = requests.get(url, timeout=CFG.timeout, verify=CFG.verify_ssl,
                              headers={'User-Agent': DEFAULT_UA})
             r.raise_for_status()
-            with open(out_path, 'w', encoding='utf-8') as f:
+            with open(out, 'w', encoding='utf-8') as f:
                 f.write(r.text)
-            emit(f"  OK скачан: {name} ({len(r.text)} байт)")
+            emit(f"  OK {name} ({len(r.text)} байт)")
         except requests.RequestException as e:
-            emit(f"  FAIL не скачан: {name} ({e})")
+            emit(f"  FAIL {name} ({e})")
 
 
 def split_extinf(line):
@@ -322,11 +325,9 @@ def set_logo_in_extinf(extinf, logo):
     logo = logo.replace('"', "'")
     if 'tvg-id="' in extinf:
         return re.sub(r'(tvg-id="[^"]*")',
-                      lambda m: f'{m.group(1)} tvg-logo="{logo}"',
-                      extinf, count=1)
+                      lambda m: f'{m.group(1)} tvg-logo="{logo}"', extinf, count=1)
     return re.sub(r'^(#EXTINF:-?\d+)',
-                  lambda m: f'{m.group(1)} tvg-logo="{logo}"',
-                  extinf, count=1)
+                  lambda m: f'{m.group(1)} tvg-logo="{logo}"', extinf, count=1)
 
 
 def compile_patterns(patterns):
@@ -335,7 +336,7 @@ def compile_patterns(patterns):
         try:
             out.append(re.compile(p))
         except re.error as e:
-            log.warning("Плохой regex %s: %s", p, e)
+            log.warning("regex %s: %s", p, e)
     return out
 
 
@@ -352,9 +353,9 @@ def is_filtered(name, group, url):
     for p in FILTERS['_url_block']:
         if p.search(url):
             return True, 'url_blocklist'
-    url_low = url.lower().split('?')[0]
+    low = url.lower().split('?')[0]
     for ext in FILTERS.get('url_extension_blocklist', []):
-        if url_low.endswith(ext):
+        if low.endswith(ext):
             return True, 'url_extension'
     for s in FILTERS.get('shortener_blocklist', []):
         if s in url:
@@ -371,39 +372,31 @@ def is_filtered(name, group, url):
     for p in FILTERS['_malformed']:
         if p.search(url):
             return True, 'malformed'
-    if FILTERS.get('block_all_ip_urls'):
-        if re.match(r'^https?://\d+\.\d+\.\d+\.\d+', url):
-            return True, 'ip_url'
-    if FILTERS.get('block_ipv6_urls'):
-        if re.match(r'^https?://\[', url):
-            return True, 'ipv6'
+    if FILTERS.get('block_all_ip_urls') and re.match(r'^https?://\d+\.\d+\.\d+\.\d+', url):
+        return True, 'ip_url'
+    if FILTERS.get('block_ipv6_urls') and re.match(r'^https?://\[', url):
+        return True, 'ipv6'
     return False, None
 
 
 def categorize(extinf, url, source_name):
     current = get_group(extinf)
     name = get_name(extinf)
-
     for up in CATEGORIES.get('url_patterns', []):
         try:
             if re.search(up['pattern'], url) and up.get('force'):
                 return up['group']
         except re.error:
             pass
-
     if current:
         aliases = CATEGORIES.get('group_aliases', {})
-        if current in aliases:
-            return aliases[current]
-        return current
-
+        return aliases.get(current, current)
     for up in CATEGORIES.get('url_patterns', []):
         try:
             if re.search(up['pattern'], url):
                 return up['group']
         except re.error:
             pass
-
     if name:
         for np in CATEGORIES.get('name_patterns', []):
             try:
@@ -411,12 +404,7 @@ def categorize(extinf, url, source_name):
                     return np['group']
             except re.error:
                 pass
-
-    defaults = CATEGORIES.get('source_defaults', {})
-    if source_name in defaults:
-        return defaults[source_name]
-
-    return 'Разное'
+    return CATEGORIES.get('source_defaults', {}).get(source_name, 'Разное')
 
 
 def add_emoji(group):
@@ -426,9 +414,7 @@ def add_emoji(group):
         if group == k or group.endswith(' ' + k):
             base = k
             break
-    if base in emoji:
-        return f"{emoji[base]} {base}"
-    return group
+    return f"{emoji[base]} {base}" if base in emoji else group
 
 
 def load_txt_logos(dirs):
@@ -507,9 +493,9 @@ def _check_logo(url):
                           timeout=CFG.logo_timeout, allow_redirects=True,
                           verify=CFG.verify_ssl)
         if r.status_code in (400, 403, 405):
-            with requests.get(url, headers={'User-Agent': DEFAULT_UA},
-                              stream=True, timeout=CFG.logo_timeout,
-                              allow_redirects=True, verify=CFG.verify_ssl) as g:
+            with requests.get(url, headers={'User-Agent': DEFAULT_UA}, stream=True,
+                              timeout=CFG.logo_timeout, allow_redirects=True,
+                              verify=CFG.verify_ssl) as g:
                 return g.status_code == 200
         return r.status_code == 200
     except requests.RequestException:
@@ -526,58 +512,40 @@ def check_logo(url, cache):
 
 
 def resolve_logo(extinf, url, txt_logos, cache):
-    """Каскадный поиск рабочего логотипа. Возвращает URL или None."""
-    # 1. Логотип из плейлиста
     m = re.search(r'tvg-logo="([^"]*)"', extinf)
-    if m and m.group(1):
-        if check_logo(m.group(1), cache):
-            return m.group(1)
-
-    # 2. По tvg-id в базе
+    if m and m.group(1) and check_logo(m.group(1), cache):
+        return m.group(1)
     tid = re.search(r'tvg-id="([^"]*)"', extinf)
     if tid and tid.group(1):
         l = IPTV_LOGOS['by_id'].get(tid.group(1))
         if l and check_logo(l, cache):
             return l
-
-    # 3. По имени в базе (с нормализацией)
     name = get_name(extinf)
     if name:
-        key = normalize_name(name)
-        l = IPTV_LOGOS['by_name'].get(key)
+        l = IPTV_LOGOS['by_name'].get(normalize_name(name))
         if l and check_logo(l, cache):
             return l
-
-    # 4. Из .txt
-    if name:
         l = txt_logos.get(name.lower())
         if l and check_logo(l, cache):
             return l
-
     return None
 
 
 def process_channel(index, extinf, url, txt_logos, cache, source_name):
     name = get_name(extinf)
     group = get_group(extinf)
-
     filtered, reason = is_filtered(name, group, url)
     if filtered:
         return index, 'filtered', None, None, reason, None, None
-
     ok, ua = check_stream(url, cache)
     if not ok:
         return index, 'dead', None, None, None, None, None
-
     extinf = clean_extinf(extinf)
     new_logo = resolve_logo(extinf, url, txt_logos, cache)
     extinf = set_logo_in_extinf(extinf, new_logo)
-
     new_group = categorize(extinf, url, source_name)
-    new_group_emoji = add_emoji(new_group)
-    extinf = set_group_in_extinf(extinf, new_group_emoji)
-
-    return index, 'ok', extinf, url, None, ua, new_group_emoji
+    extinf = set_group_in_extinf(extinf, add_emoji(new_group))
+    return index, 'ok', extinf, url, None, ua, new_group
 
 
 def parse_playlist(filename):
@@ -585,13 +553,11 @@ def parse_playlist(filename):
         with open(filename, 'r', encoding='utf-8-sig', errors='ignore') as f:
             lines = f.readlines()
     except Exception as e:
-        log.error("Ошибка чтения %s: %s", filename, e)
+        log.error("Чтение %s: %s", filename, e)
         return None
     if not lines or not lines[0].lstrip().startswith("#EXTM3U"):
-        log.warning("Пропуск %s: нет #EXTM3U", filename)
         return None
-    channels = []
-    cur = None
+    channels, cur = [], None
     for line in lines[1:]:
         line = line.strip()
         if not line:
@@ -612,7 +578,6 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
     if not channels:
         return {'label': label, 'channels': [], 'total': 0, 'ok': 0,
                 'filtered': 0, 'groups': {}, 'ua_stats': {}}
-
     emit(f"    Каналов: {len(channels)}")
 
     if not check:
@@ -624,10 +589,8 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             if filtered:
                 continue
             extinf = clean_extinf(extinf)
-            new_logo = resolve_logo(extinf, url, txt_logos, cache)
-            extinf = set_logo_in_extinf(extinf, new_logo)
-            ng = add_emoji(categorize(extinf, url, label))
-            extinf = set_group_in_extinf(extinf, ng)
+            extinf = set_logo_in_extinf(extinf, resolve_logo(extinf, url, txt_logos, cache))
+            extinf = set_group_in_extinf(extinf, add_emoji(categorize(extinf, url, label)))
             out.append((i, extinf, url))
         ordered = group_channels(out)
         gs = {}
@@ -644,9 +607,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
         pbar = tqdm(total=len(channels), desc=label, unit='ch', ncols=90, leave=True)
 
     valid, ok_cnt, err_cnt, filt_cnt = [], 0, 0, 0
-    ua_stats = {}
-    filt_by_reason = {}
-
+    ua_stats, filt_by_reason = {}, {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=CFG.workers) as ex:
         futs = [ex.submit(process_channel, i, e, u, txt_logos, cache, label)
                 for i, (e, u) in enumerate(channels)]
@@ -659,7 +620,6 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 if pbar:
                     pbar.update(1)
                 continue
-
             if status == 'ok':
                 valid.append((idx, extinf, url))
                 ok_cnt += 1
@@ -667,23 +627,19 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             elif status == 'filtered':
                 filt_cnt += 1
                 filt_by_reason[msg] = filt_by_reason.get(msg, 0) + 1
-
             if pbar:
                 pbar.update(1)
                 pbar.set_postfix(ok=ok_cnt, filt=filt_cnt, err=err_cnt)
-
     if pbar:
         pbar.close()
 
     valid.sort(key=lambda x: x[0])
     ordered = group_channels(valid)
-
     gs = {}
     for _, e, _ in ordered:
         g = get_group(e) or '(без группы)'
         gs[g] = gs.get(g, 0) + 1
-
-    emit(f"    Рабочих: {ok_cnt}, отфильтровано: {filt_cnt}, ошибок: {err_cnt}")
+    emit(f"    Рабочих: {ok_cnt}, фильтр: {filt_cnt}, ошибок: {err_cnt}")
     return {'label': label, 'channels': [(e, u) for _, e, u in ordered],
             'total': len(channels), 'ok': ok_cnt, 'filtered': filt_cnt,
             'groups': gs, 'ua_stats': ua_stats, 'filter_reasons': filt_by_reason}
@@ -693,7 +649,6 @@ def group_channels(channels):
     priority = CATEGORIES.get('priority_groups', [])
     prio_map = {p: i for i, p in enumerate(priority)}
     sort_in = CATEGORIES.get('sort_channels_in_group', True)
-
     grouped = {}
     for idx, extinf, url in channels:
         g = get_group(extinf) or '(без группы)'
@@ -735,15 +690,63 @@ def write_splits(channels, docs_dir):
             if g in wanted or base in wanted:
                 sel.append((extinf, url))
         if sel:
-            p = os.path.join(docs_dir, fname)
-            write_playlist(p, sel)
+            write_playlist(os.path.join(docs_dir, fname), sel)
             created.append((fname, len(sel)))
     return created
 
 
+def generate_qr(url, path):
+    if not HAS_QR:
+        return False
+    try:
+        img = qrcode.make(url)
+        img.save(path)
+        return True
+    except Exception as e:
+        log.warning("QR: %s", e)
+        return False
+
+
+def render_history_svg(history):
+    if not history:
+        return '<div class="section"><h2>История</h2><p style="color:#8a8f98">Данных пока нет</p></div>'
+    W, H = 900, 200
+    P = 30
+    ok_vals = [h.get('ok', 0) for h in history]
+    mx = max(ok_vals) if ok_vals else 1
+    mx = max(mx, 1)
+    n = len(history)
+    step = (W - 2 * P) / max(n - 1, 1)
+    pts = []
+    for i, v in enumerate(ok_vals):
+        x = P + i * step
+        y = H - P - (v / mx) * (H - 2 * P)
+        pts.append((x, y))
+    poly = " ".join(f"{x:.1f},{y:.1f}" for x, y in pts)
+    area = f"M{P},{H-P} L" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts) + f" L{W-P},{H-P} Z"
+    labels = ""
+    for i in range(0, n, max(1, n // 6)):
+        x = P + i * step
+        d = history[i].get('date', '')[:10]
+        labels += f'<text x="{x:.0f}" y="{H-8}" fill="#8a8f98" font-size="10" text-anchor="middle">{d}</text>'
+    grid = ""
+    for i in range(5):
+        y = P + i * (H - 2 * P) / 4
+        val = int(mx * (1 - i / 4))
+        grid += f'<line x1="{P}" y1="{y:.0f}" x2="{W-P}" y2="{y:.0f}" stroke="#23272e" stroke-width="1"/>'
+        grid += f'<text x="4" y="{y+3:.0f}" fill="#8a8f98" font-size="10">{val}</text>'
+    return f'''<div class="section"><h2>История (последние {n})</h2>
+<svg viewBox="0 0 {W} {H}" style="width:100%;height:auto">
+{grid}
+<path d="{area}" fill="#4ade80" fill-opacity="0.15"/>
+<polyline points="{poly}" fill="none" stroke="#4ade80" stroke-width="2"/>
+{labels}
+</svg></div>'''
+
+
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
-<title>M3U Check v8 - {date}</title>
+<title>M3U Check v9 - {date}</title>
 <style>
 *{{box-sizing:border-box}}
 body{{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0f1115;
@@ -765,8 +768,10 @@ th,td{{text-align:left;padding:8px 10px;border-bottom:1px solid #23272e}}
 th{{color:#8a8f98;font-weight:500;font-size:11px;text-transform:uppercase}}
 .tag{{display:inline-block;padding:2px 8px;border-radius:6px;background:#23272e;
 font-size:12px;color:#a1a1aa;margin:2px}}
+.back{{display:inline-block;margin-bottom:16px;color:#60a5fa;text-decoration:none}}
 </style></head><body>
-<h1>M3U Check v8</h1>
+<a class="back" href="index.html">← на главную</a>
+<h1>M3U Check v9</h1>
 <div class="sub">{date} · источников: {n_playlists}</div>
 <div class="cards">
 <div class="card"><div class="k">Проверено</div><div class="v">{total}</div></div>
@@ -776,6 +781,7 @@ font-size:12px;color:#a1a1aa;margin:2px}}
 <div class="card"><div class="k">В merged</div><div class="v">{merged}</div></div>
 <div class="card"><div class="k">Время</div><div class="v">{duration}</div></div>
 </div>
+{history_block}
 {ua_block}
 <div class="section"><h2>По источникам</h2>
 <table><thead><tr><th>Источник</th><th>Всего</th><th>Рабочих</th><th>Фильтр</th><th>%</th></tr></thead>
@@ -792,6 +798,7 @@ font-size:12px;color:#a1a1aa;margin:2px}}
 INDEX_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <title>IPTV</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 body{{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0f1115;
 color:#e6e6e6;margin:0;padding:40px 24px;max-width:800px;margin:0 auto}}
@@ -802,14 +809,26 @@ padding:18px;margin-bottom:12px}}
 code{{background:#0f1115;padding:3px 8px;border-radius:6px;font-size:13px;
 word-break:break-all;color:#facc15}}
 a{{color:#60a5fa}} .stat{{color:#8a8f98;font-size:13px}}
+.qr-wrap{{display:flex;gap:20px;align-items:center;flex-wrap:wrap}}
+.qr-wrap img{{background:#fff;padding:10px;border-radius:10px;width:200px;height:200px}}
+.qr-info{{flex:1;min-width:200px}}
 </style></head><body>
 <h1>IPTV - авто-обновляемый плейлист</h1>
 <div class="sub">Обновлено: {date}</div>
+
 <h2>Ссылка для плеера (M3U)</h2>
-<div class="box"><code>{playlist_url}</code></div>
-<div class="stat">Скопируй в TiviMate / VLC / OTT Navigator как Playlist URL</div>
-<h2>Отчёты</h2>
-<div class="box"><a href="report.html">Открыть отчёт проверки</a></div>
+<div class="box qr-wrap">
+{qr_block}
+<div class="qr-info">
+<code>{playlist_url}</code>
+<div class="stat" style="margin-top:8px">Скопируй в TiviMate / VLC / OTT Navigator как Playlist URL</div>
+</div>
+</div>
+
+<h2>Разделы</h2>
+<div class="box"><a href="report.html">📊 Отчёт проверки</a></div>
+<div class="box"><a href="channels.html">🔍 Поиск по каналам</a></div>
+
 <h2>Статистика</h2>
 <div class="box">
 Каналов в merged: <b>{merged_count}</b><br>
@@ -820,7 +839,7 @@ a{{color:#60a5fa}} .stat{{color:#8a8f98;font-size:13px}}
 """
 
 
-def render_report(path, stats, merged, total, ok, filt, dead, dur, ua):
+def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history):
     rows_pl = []
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
@@ -847,27 +866,138 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua):
         tags = " ".join(f"<span class='tag'>{html.escape(k)}: {v}</span>"
                         for k, v in sorted(ua.items(), key=lambda x: -x[1]))
         ua_block = f"<div class='section'><h2>По User-Agent</h2><div>{tags}</div></div>"
+    hist_block = render_history_svg(history)
     d = int(dur)
     out = REPORT_T.format(
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         n_playlists=len(stats), total=total, ok=ok, filtered=filt, dead=dead,
-        merged=merged, duration=f"{d // 60}м {d % 60}с", ua_block=ua_block,
+        merged=merged, duration=f"{d // 60}м {d % 60}с",
+        history_block=hist_block, ua_block=ua_block,
         playlists_rows="\n".join(rows_pl), filter_rows=f_rows, groups_rows=g_rows)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
 
 
-def render_index(path, url, merged, ok, total, splits):
+def render_index(path, url, merged, ok, total, splits, qr_path):
     split_html = ''
     if splits:
         items = "\n".join(
             f"<div class='box'><a href='{fname}'>{fname}</a> — {cnt} каналов</div>"
             for fname, cnt in splits)
         split_html = f"<h2>Отдельные плейлисты</h2>{items}"
+    if os.path.isfile(qr_path):
+        qr_block = f'<img src="{os.path.basename(qr_path)}" alt="QR">'
+    else:
+        qr_block = ''
     out = INDEX_T.format(
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         playlist_url=url, merged_count=merged, ok=ok, total=total,
-        splits_block=split_html)
+        qr_block=qr_block, splits_block=split_html)
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(out)
+
+
+CHANNELS_T = """<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Каналы</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+body{{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0f1115;
+color:#e6e6e6;margin:0;padding:24px;max-width:1100px;margin:0 auto}}
+h1{{font-size:22px;margin:0 0 4px}} .sub{{color:#8a8f98;font-size:13px;margin-bottom:16px}}
+a{{color:#60a5fa}}
+input,select{{background:#181b20;border:1px solid #23272e;color:#e6e6e6;
+padding:10px 12px;border-radius:8px;font-size:14px;width:100%;
+margin-bottom:10px;font-family:inherit}}
+.controls{{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}}
+@media(max-width:600px){{.controls{{grid-template-columns:1fr}}}}
+table{{width:100%;border-collapse:collapse;font-size:13px}}
+th,td{{text-align:left;padding:8px 10px;border-bottom:1px solid #23272e}}
+th{{color:#8a8f98;font-weight:500;font-size:11px;text-transform:uppercase;
+position:sticky;top:0;background:#0f1115}}
+tr:hover{{background:#181b20}}
+.logo{{width:32px;height:32px;object-fit:contain;vertical-align:middle;
+background:#23272e;border-radius:4px;padding:2px}}
+.name{{font-weight:500}}
+.group{{color:#8a8f98;font-size:12px}}
+.copy{{background:#23272e;border:none;color:#a1a1aa;padding:4px 8px;
+border-radius:4px;font-size:11px;cursor:pointer}}
+.copy:hover{{background:#2d323a;color:#fff}}
+.stats{{color:#8a8f98;font-size:13px;margin-bottom:12px}}
+</style></head><body>
+<a href="index.html">← на главную</a>
+<h1>Каналы</h1>
+<div class="sub">Всего: <span id="cnt">{total}</span> · показано: <span id="shown">{total}</span></div>
+<div class="controls">
+<input id="q" type="search" placeholder="Поиск по названию...">
+<select id="g"><option value="">Все группы</option>{group_options}</select>
+</div>
+<table>
+<thead><tr><th></th><th>Название</th><th>Группа</th><th></th></tr></thead>
+<tbody id="tb"></tbody>
+</table>
+<script>
+const CH = {channels_json};
+const tb = document.getElementById('tb');
+const q = document.getElementById('q');
+const g = document.getElementById('g');
+const shown = document.getElementById('shown');
+
+function esc(s) {{ return (s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c])); }}
+
+function render() {{
+  const term = q.value.trim().toLowerCase();
+  const grp = g.value;
+  let out = [];
+  for (const c of CH) {{
+    if (grp && c.group !== grp) continue;
+    if (term && !c.name.toLowerCase().includes(term)) continue;
+    out.push(c);
+  }}
+  if (out.length > 500) out = out.slice(0, 500);
+  const html = out.map(c => {{
+    const logo = c.logo ? `<img class="logo" src="${{esc(c.logo)}}" loading="lazy" onerror="this.style.display='none'">` : '';
+    return `<tr><td>${{logo}}</td>
+      <td class="name">${{esc(c.name)}}</td>
+      <td class="group">${{esc(c.group)}}</td>
+      <td><button class="copy" data-u="${{esc(c.url)}}">URL</button></td></tr>`;
+  }}).join('');
+  tb.innerHTML = html || '<tr><td colspan="4" style="text-align:center;color:#8a8f98;padding:24px">Ничего не найдено</td></tr>';
+  shown.textContent = out.length;
+  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', e => {{
+    navigator.clipboard.writeText(b.dataset.u).then(() => {{
+      const t = b.textContent; b.textContent = '✓'; setTimeout(() => b.textContent = t, 1000);
+    }});
+  }}));
+}}
+
+q.addEventListener('input', render);
+g.addEventListener('change', render);
+render();
+</script>
+</body></html>
+"""
+
+
+def render_channels(path, channels, base_url):
+    groups = {}
+    ch_list = []
+    for extinf, url in channels:
+        name = get_name(extinf)
+        group = get_group(extinf)
+        m = re.search(r'tvg-logo="([^"]*)"', extinf)
+        logo = m.group(1) if m else ''
+        if group not in groups:
+            groups[group] = 0
+        groups[group] += 1
+        ch_list.append({'name': name, 'group': group, 'logo': logo, 'url': url})
+    group_opts = "\n".join(
+        f'<option value="{html.escape(g)}">{html.escape(g)} ({c})</option>'
+        for g, c in sorted(groups.items()))
+    out = CHANNELS_T.format(
+        total=len(ch_list),
+        group_options=group_opts,
+        channels_json=json.dumps(ch_list, ensure_ascii=False))
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
 
@@ -877,8 +1007,7 @@ def tg_send(token, chat, text):
         return False
     try:
         r = requests.post(f'https://api.telegram.org/bot{token}/sendMessage',
-                          data={'chat_id': chat, 'text': text,
-                                'parse_mode': 'HTML',
+                          data={'chat_id': chat, 'text': text, 'parse_mode': 'HTML',
                                 'disable_web_page_preview': 'true'}, timeout=15)
         return r.status_code == 200
     except requests.RequestException:
@@ -900,15 +1029,12 @@ def tg_file(token, chat, path, caption=''):
 
 
 def tg_report(stats, total, ok, filt, merged, dur, index_url):
-    lines = [
-        "<b>M3U Check v8</b>",
-        f"Проверено: <b>{total}</b>",
-        f"Рабочих: <b>{ok}</b>",
-        f"Отфильтровано: <b>{filt}</b>",
-        f"В merged: <b>{merged}</b>",
-        f"Время: {int(dur)}с",
-        "",
-    ]
+    lines = ["<b>M3U Check v9</b>",
+             f"Проверено: <b>{total}</b>",
+             f"Рабочих: <b>{ok}</b>",
+             f"Отфильтровано: <b>{filt}</b>",
+             f"В merged: <b>{merged}</b>",
+             f"Время: {int(dur)}с", ""]
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
         lines.append(f"• {html.escape(st['label'])}: {st['ok']}/{st['total']} ({pct:.0f}%)")
@@ -933,8 +1059,7 @@ def parse_args():
     p.add_argument('--logo-timeout', type=float, default=3.0)
     p.add_argument('--no-ssl-verify', action='store_true')
     p.add_argument('--multi-ua', action='store_true')
-    p.add_argument('--no-iptv-logos', action='store_true',
-                   help='Не подтягивать логотипы из базы iptv-org')
+    p.add_argument('--no-iptv-logos', action='store_true')
     p.add_argument('--cache', default='m3u_cache.sqlite')
     p.add_argument('--cache-ttl', type=int, default=3600)
     p.add_argument('--log', default='m3u_checker.log')
@@ -953,12 +1078,10 @@ def main():
     CFG.verify_ssl = not CFG.no_ssl_verify
     if CFG.no_ssl_verify:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
     setup_logging(CFG.log, CFG.quiet)
 
     CATEGORIES = load_json(CFG.categories)
     FILTERS = load_json(CFG.filters)
-
     FILTERS['_name_block'] = compile_patterns(FILTERS.get('name_blocklist', []))
     FILTERS['_name_exclude'] = compile_patterns(FILTERS.get('name_exclude', []))
     FILTERS['_group_exclude'] = compile_patterns(FILTERS.get('group_exclude', []))
@@ -990,8 +1113,7 @@ def main():
             continue
         p = src.get('path')
         if p and os.path.isfile(p):
-            all_sources.append((p, src.get('name') or 'local',
-                                src.get('check', True)))
+            all_sources.append((p, src.get('name') or 'local', src.get('check', True)))
 
     if not all_sources:
         emit("Нет источников.")
@@ -1003,10 +1125,7 @@ def main():
     os.makedirs(CFG.docs_dir, exist_ok=True)
 
     started = time.time()
-    stats_list = []
-    merged_all = []
-    seen = set()
-    pl = 0
+    stats_list, merged_all, seen, pl = [], [], set(), 0
 
     try:
         for path, label, check in all_sources:
@@ -1048,15 +1167,31 @@ def main():
                     continue
                 ua_totals[k] = ua_totals.get(k, 0) + c
 
+        history_path = os.path.join(CFG.docs_dir, 'history.json')
+        history = load_history(history_path)
+        history.append({
+            'date': datetime.datetime.now().strftime('%Y-%m-%d %H:%M'),
+            'total': total, 'ok': ok, 'filtered': filt,
+            'dead': dead, 'merged': len(ordered_merged),
+        })
+        save_history(history_path, history)
+
         render_report(os.path.join(CFG.docs_dir, 'report.html'),
                       stats_list, len(ordered_merged), total, ok, filt, dead,
-                      time.time() - started, ua_totals)
+                      time.time() - started, ua_totals, history)
 
         pages = CFG.pages_url.rstrip('/')
         purl = f'{pages}/{CFG.merged_name}' if pages else CFG.merged_name
         iurl = f'{pages}/index.html' if pages else ''
+        qr_path = os.path.join(CFG.docs_dir, 'qr.png')
+        if pages and HAS_QR:
+            generate_qr(purl, qr_path)
         render_index(os.path.join(CFG.docs_dir, 'index.html'),
-                     purl, len(ordered_merged), ok, total, splits)
+                     purl, len(ordered_merged), ok, total, splits, qr_path)
+
+        if ordered_merged:
+            render_channels(os.path.join(CFG.docs_dir, 'channels.html'),
+                            ordered_merged, pages)
 
         emit(f"\nГотово за {int(time.time() - started)}с. "
              f"OK={ok}, фильтр={filt}, merged={len(ordered_merged)}")
@@ -1065,9 +1200,7 @@ def main():
             tg_report(stats_list, total, ok, filt, len(ordered_merged),
                       time.time() - started, iurl)
             if CFG.tg_send_merged and merged_path:
-                tg_file(CFG.tg_token, CFG.tg_chat, merged_path,
-                        caption="Merged плейлист")
-
+                tg_file(CFG.tg_token, CFG.tg_chat, merged_path, caption="Merged плейлист")
     finally:
         cache.close()
     return 0
