@@ -8,8 +8,10 @@ m3u_cleaner.py — отдельный чистильщик M3U-листов и U
   • СОХРАНЯЕТ #EXTVLCOPT (http-user-agent и др.) у каждого канала
   • СОХРАНЯЕТ шапку #EXTM3U url-tvg="..." (для EPG в плеере)
   • Дедуп по URL глобальный (между всеми источниками)
+  • Понимает regex И простые подстроки в filters.json (auto-detect)
   • Фильтры: пустые URL, схемы, приватные IP, multicast,
-    сокращатели, заблокированные домены, мусорные имена
+    сокращатели, заблокированные домены, мусорные имена,
+    магазины/мода, детские
 
 Запуск:
     python m3u_cleaner.py
@@ -162,19 +164,61 @@ def strip_tracking(url: str) -> str:
         return url
 
 
-def name_has_banned(name: str, banned) -> bool:
-    """
-    Длинные паттерны (>5 симв) — подстрока.
-    Короткие (ani, mult, shop…) — только как отдельное слово,
-    чтобы 'Ani' не ловил 'Animal Planet', а 'Shop' — 'Shopalot'.
-    """
+# ---------- Regex-aware проверки ----------
+_REGEX_MARKERS = ("(?i)", "(?m)", "(?s)", "^", "$", "\\", "|", "[", "(")
+
+
+def _looks_like_regex(p: str) -> bool:
+    """Эвристика: если паттерн похож на regex — обрабатываем как regex."""
+    if any(p.startswith(m) for m in ("(?i)", "(?m)", "(?s)", "^", "$")):
+        return True
+    if "\\" in p or "|" in p:
+        return True
+    return False
+
+
+def _compiled_patterns(items):
+    """Возвращает список (compiled_regex_or_str, is_regex) для каждого паттерна."""
+    out = []
+    for p in items:
+        if not p:
+            continue
+        if _looks_like_regex(p):
+            try:
+                out.append((re.compile(p), True))
+            except re.error:
+                out.append((p.lower(), False))
+        else:
+            out.append((p.lower(), False))
+    return out
+
+
+def _match_any_name(name: str, compiled) -> bool:
+    """Проверка имени — по regex или по подстроке."""
     low = name.lower()
-    for b in banned:
-        if len(b) <= SHORT_PATTERN_LEN:
-            if re.search(rf"(?<![a-zа-я0-9]){re.escape(b)}(?![a-zа-я0-9])", low):
+    for pat, is_re in compiled:
+        if is_re:
+            if pat.search(name) or pat.search(low):
                 return True
         else:
-            if b in low:
+            if len(pat) <= SHORT_PATTERN_LEN:
+                if re.search(rf"(?<![a-zа-я0-9]){re.escape(pat)}(?![a-zа-я0-9])", low):
+                    return True
+            else:
+                if pat in low:
+                    return True
+    return False
+
+
+def _match_any_url(url: str, compiled) -> bool:
+    """Проверка URL — regex по полному URL или подстрока."""
+    low = url.lower()
+    for pat, is_re in compiled:
+        if is_re:
+            if pat.search(url) or pat.search(low):
+                return True
+        else:
+            if pat in low:
                 return True
     return False
 
@@ -188,12 +232,21 @@ def reject_reason(url: str, name: str, flt) -> str | None:
         return "multicast"
     if is_private_ip(url):
         return "private_ip"
-    if host_match(url, flt["shortener_blocklist"]):
+
+    # URL-фильтры (regex или подстрока)
+    if _match_any_url(url, flt["_url_compiled"]):
+        return "blocked_url"
+    if _match_any_url(url, flt["_shortener_compiled"]):
         return "shortener"
     if host_match(url, flt["domain_blocklist"]):
         return "blocked_domain"
-    if name and name_has_banned(name, flt["name_exclude"]):
-        return "banned_name"
+    if _match_any_url(url, flt["_extension_compiled"]):
+        return "bad_extension"
+
+    # Имя — regex или подстрока (name_exclude + name_blocklist)
+    if name:
+        if _match_any_name(name, flt["_name_compiled"]):
+            return "banned_name"
     return None
 
 
@@ -227,31 +280,45 @@ def local_lines(path: str):
 
 
 # ---------- Конфиги ----------
-def _as_lower_list(v):
-    if isinstance(v, str):
-        return [s.strip().lower() for s in v.split(",") if s.strip()]
-    if isinstance(v, list):
-        return [str(s).strip().lower() for s in v if str(s).strip()]
-    return []
-
-
 def load_filters(path: str):
     flt = {
         "name_exclude": list(DEFAULT_NAME_EXCLUDE),
-        "domain_blocklist": list(DEFAULT_DOMAIN_BLOCK),
+        "name_blocklist": [],
+        "url_blocklist": [],
+        "url_extension_blocklist": [],
         "shortener_blocklist": list(SHORTENERS),
+        "domain_blocklist": list(DEFAULT_DOMAIN_BLOCK),
     }
     p = Path(path)
-    if not p.exists():
-        return flt
-    try:
-        fj = json.loads(p.read_text(encoding="utf-8-sig"))
-        for key in ("name_exclude", "domain_blocklist", "shortener_blocklist"):
-            v = _as_lower_list(fj.get(key))
-            if v:
-                flt[key] = v
-    except Exception as e:
-        log(f"⚠️  filters.json: {e} — беру дефолты")
+    if p.exists():
+        try:
+            fj = json.loads(p.read_text(encoding="utf-8-sig"))
+
+            def _get_list(key):
+                v = fj.get(key)
+                if isinstance(v, str):
+                    return [s.strip() for s in v.split(",") if s.strip()]
+                if isinstance(v, list):
+                    return [str(s).strip() for s in v if str(s).strip()]
+                return []
+
+            for key in ("name_exclude", "name_blocklist", "url_blocklist",
+                        "url_extension_blocklist", "shortener_blocklist",
+                        "domain_blocklist"):
+                v = _get_list(key)
+                if v:
+                    flt[key] = v
+        except Exception as e:
+            log(f"⚠️  filters.json: {e} — беру дефолты")
+
+    # Прекомпилим regex/подстроки
+    flt["_name_compiled"] = _compiled_patterns(
+        flt["name_exclude"] + flt["name_blocklist"])
+    flt["_url_compiled"] = _compiled_patterns(flt["url_blocklist"])
+    flt["_shortener_compiled"] = _compiled_patterns(
+        [s.lower() for s in flt["shortener_blocklist"]])
+    flt["_extension_compiled"] = _compiled_patterns(
+        [s.lower() for s in flt["url_extension_blocklist"]])
     return flt
 
 
@@ -288,8 +355,9 @@ def main() -> int:
     body_path = out_dir / "_cleaned_body.tmp"
 
     log(f"📥 Источников: {len(url_srcs)} URL + {len(local_srcs)} local")
-    log(f"🧹 Фильтры: name={len(flt['name_exclude'])} "
-        f"domain={len(flt['domain_blocklist'])} "
+    log(f"🧹 Фильтры: name_exclude={len(flt['name_exclude'])} "
+        f"name_blocklist={len(flt['name_blocklist'])} "
+        f"url_blocklist={len(flt['url_blocklist'])} "
         f"shortener={len(flt['shortener_blocklist'])}")
 
     session = make_session()
