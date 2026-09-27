@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v13.1 — аптайм каналов, автоотсев мигающих,
-weekly backup только по воскресеньям.
+M3U Checker v14 — логотипы из базы iptv-org без проверки (они всегда валидны).
 """
 import os
 import re
@@ -84,7 +83,7 @@ log = logging.getLogger('m3u')
 CFG = None
 CATEGORIES = {}
 FILTERS = {}
-IPTV_LOGOS = {'by_id': {}, 'by_name': {}}
+IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}}
 IPTV_IDS = {'by_name': {}, 'by_name_translit': {}}
 LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
               'from_translit': 0, 'from_txt': 0, 'none': 0}
@@ -136,13 +135,7 @@ _TRANSLIT_MAP = {
 def translit_ru(s):
     if not s:
         return ''
-    out = []
-    for ch in s.lower():
-        if ch in _TRANSLIT_MAP:
-            out.append(_TRANSLIT_MAP[ch])
-        else:
-            out.append(ch)
-    return ''.join(out)
+    return ''.join(_TRANSLIT_MAP.get(ch, ch) for ch in s.lower())
 
 
 def normalize_name(name):
@@ -167,12 +160,9 @@ def load_uptime(path):
     try:
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-        if isinstance(data, dict):
-            UPTIME = {k: v for k, v in data.items() if isinstance(v, list)}
-        else:
-            UPTIME = {}
+        UPTIME = {k: v for k, v in data.items() if isinstance(v, list)} if isinstance(data, dict) else {}
     except Exception as e:
-        log.warning("Не удалось прочитать uptime.json: %s", e)
+        log.warning("uptime.json: %s", e)
         UPTIME = {}
 
 
@@ -198,8 +188,7 @@ def get_uptime_pct(url):
     total = len(hist)
     if total == 0:
         return None, 0
-    ok = sum(hist)
-    return round(ok / total * 100), total
+    return round(sum(hist) / total * 100), total
 
 
 def is_migayushchiy(url):
@@ -230,9 +219,8 @@ class UrlCache:
         if not self.enabled:
             return None
         with self.lock:
-            row = self.conn.execute(
-                "SELECT ok, ts FROM cache WHERE url=? AND kind=?",
-                (url, kind)).fetchone()
+            row = self.conn.execute("SELECT ok, ts FROM cache WHERE url=? AND kind=?",
+                                    (url, kind)).fetchone()
         if not row:
             return None
         ok, ts = row
@@ -652,6 +640,7 @@ def check_stream(url, cache):
 
 
 def _check_logo(url):
+    """Проверяет логотип. Только для лого из источника (мусорных)."""
     try:
         r = requests.head(url, headers={'User-Agent': DEFAULT_UA},
                           timeout=CFG.logo_timeout, allow_redirects=True,
@@ -676,30 +665,43 @@ def check_logo(url, cache):
 
 
 def resolve_logo(extinf, url, txt_logos, cache):
+    """Возвращает (logo_url, source).
+    
+    ВАЖНО: Логотипы из базы iptv-org НЕ проверяются — они всегда валидны.
+    Проверяется только логотип из исходного плейлиста (может быть мусор).
+    """
+    # 1. Логотип из исходного плейлиста — ПРОВЕРЯЕМ
     m = re.search(r'tvg-logo="([^"]*)"', extinf)
     if m and m.group(1):
-        if check_logo(m.group(1), cache):
+        if not CFG.check_all_logos or check_logo(m.group(1), cache):
             return m.group(1), 'from_src'
+
+    # 2. По tvg-id из базы — НЕ проверяем (доверяем базе)
     tid = get_tvg_id(extinf)
     if tid:
         l = IPTV_LOGOS['by_id'].get(tid)
-        if l and check_logo(l, cache):
+        if l:
             return l, 'from_id'
+
     name = get_name(extinf)
     if name:
+        # 3. По имени — НЕ проверяем
         k = normalize_name(name)
         if k:
             l = IPTV_LOGOS['by_name'].get(k)
-            if l and check_logo(l, cache):
+            if l:
                 return l, 'from_name'
+        # 4. По транслиту — НЕ проверяем
         kt = normalize_name_translit(name)
         if kt:
             l = IPTV_LOGOS.get('by_name_translit', {}).get(kt)
-            if l and check_logo(l, cache):
+            if l:
                 return l, 'from_translit'
+        # 5. Из .txt — проверяем
         l = txt_logos.get(name.lower())
         if l and check_logo(l, cache):
             return l, 'from_txt'
+
     return None, 'none'
 
 
@@ -740,7 +742,7 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
 
     if is_migayushchiy(url):
         pct, total = get_uptime_pct(url)
-        return index, 'unstable', None, None, f"uptime {pct}% ({total} проверок)", None, None, None, None
+        return index, 'unstable', None, None, f"uptime {pct}% ({total})", None, None, None, None
 
     extinf = clean_extinf(extinf)
     new_tvg_id = resolve_tvg_id(extinf)
@@ -789,8 +791,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
     emit(f"    Каналов: {len(channels)}")
 
     if not check:
-        out = []
-        all_urls = []
+        out, all_urls = [], []
         for i, (extinf, url) in enumerate(channels):
             all_urls.append(url)
             name = get_name(extinf)
@@ -890,8 +891,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
 
 
 def dedup_by_name_fn(channels):
-    seen = set()
-    out = []
+    seen, out = set(), []
     for extinf, url in channels:
         key = normalize_name(get_name(extinf))
         if not key:
@@ -936,8 +936,7 @@ def write_playlist(path, channels):
 
 
 def slugify_group(g):
-    s = re.sub(r'^\S+\s+', '', g)
-    s = s.lower()
+    s = re.sub(r'^\S+\s+', '', g).lower()
     out = []
     for ch in s:
         if ch in _TRANSLIT_MAP:
@@ -1217,13 +1216,11 @@ THEME_JS = """
 (function(){
   const saved = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
-
   function animateCounters(){
     document.querySelectorAll('[data-count]').forEach(el => {
       const target = parseInt(el.dataset.count, 10);
       if (isNaN(target)) return;
-      const dur = 900;
-      const t0 = performance.now();
+      const dur = 900; const t0 = performance.now();
       function step(t){
         const p = Math.min((t - t0) / dur, 1);
         const eased = 1 - Math.pow(1 - p, 3);
@@ -1234,7 +1231,6 @@ THEME_JS = """
       requestAnimationFrame(step);
     });
   }
-
   document.addEventListener('DOMContentLoaded', function(){
     const btn = document.querySelector('.theme-btn');
     if(btn){
@@ -1259,7 +1255,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v13.1 - {date}</title>
+<title>M3U Check v14 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1313,7 +1309,6 @@ INDEX_T = """<!DOCTYPE html>
 <h1>IPTV — авто-обновляемый плейлист</h1>
 <div class="sub">Обновлено: {date}</div>
 <div id="wf-status" class="wf-status">Проверяю статус последнего запуска...</div>
-
 <h2>Ссылка для плеера (M3U)</h2>
 <div class="box qr-wrap">
 {qr_block}
@@ -1325,12 +1320,10 @@ INDEX_T = """<!DOCTYPE html>
 <div class="sub" style="margin:0">Вставь в TiviMate / Televizo / OTT Navigator как Playlist URL</div>
 </div>
 </div>
-
 <h2>Разделы</h2>
 <div class="box"><a href="report.html">📊 Отчёт проверки</a></div>
 <div class="box"><a href="channels.html">🔍 Поиск по каналам</a></div>
 <div class="box"><a href="channels.csv">📥 Скачать CSV (все каналы)</a></div>
-
 <h2>Статистика</h2>
 <div class="box">
 Каналов в merged: <b>{merged_count}</b><br>
@@ -1345,8 +1338,7 @@ INDEX_T = """<!DOCTYPE html>
       const id = btn.dataset.target;
       const el = document.getElementById(id);
       if(!el) return;
-      const text = el.textContent;
-      navigator.clipboard.writeText(text).then(() => {
+      navigator.clipboard.writeText(el.textContent).then(() => {
         btn.classList.add('copied');
         const old = btn.textContent;
         btn.textContent = '✓ Скопировано';
@@ -1354,7 +1346,6 @@ INDEX_T = """<!DOCTYPE html>
       });
     });
   });
-
   const gh = "{github_repo}";
   if(gh){
     fetch('https://api.github.com/repos/' + gh + '/actions/workflows/check.yml/runs?per_page=1')
@@ -1365,21 +1356,15 @@ INDEX_T = """<!DOCTYPE html>
         const el = document.getElementById('wf-status');
         const when = new Date(run.updated_at || run.created_at);
         const ago = Math.round((Date.now() - when.getTime())/60000);
-        const agoStr = ago < 1 ? 'только что' : ago < 60 ? ago + ' мин назад'
-                       : Math.round(ago/60) + ' ч назад';
+        const agoStr = ago < 1 ? 'только что' : ago < 60 ? ago + ' мин назад' : Math.round(ago/60) + ' ч назад';
         let html = '';
-        if(run.status === 'in_progress')
-          html = '<span style="color:#facc15">🔄 Идёт проверка…</span>';
-        else if(run.conclusion === 'success')
-          html = '<span style="color:#4ade80">✅ Последняя проверка успешна</span>';
-        else if(run.conclusion === 'failure')
-          html = '<span style="color:#f87171">❌ Последняя проверка упала</span>';
-        else
-          html = '<span style="color:var(--muted)">⏸ Статус: ' + (run.status||'?') + '</span>';
+        if(run.status === 'in_progress') html = '<span style="color:#facc15">🔄 Идёт проверка…</span>';
+        else if(run.conclusion === 'success') html = '<span style="color:#4ade80">✅ Последняя проверка успешна</span>';
+        else if(run.conclusion === 'failure') html = '<span style="color:#f87171">❌ Последняя проверка упала</span>';
+        else html = '<span style="color:var(--muted)">⏸ Статус: ' + (run.status||'?') + '</span>';
         html += ' <span style="color:var(--muted);font-size:12px">· ' + agoStr + '</span>';
         el.innerHTML = html;
-      })
-      .catch(() => {});
+      }).catch(() => {});
   }
 })();
 </script>
@@ -1432,16 +1417,12 @@ const tb = document.getElementById('tb');
 const q = document.getElementById('q');
 const g = document.getElementById('g');
 const shown = document.getElementById('shown');
-
 const params = new URLSearchParams(location.search);
 const initGroup = params.get('group');
 if(initGroup) g.value = initGroup;
-
 function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function uptimeHtml(pct, samples) {
-  if (pct === null || pct === undefined || samples < 2) {
-    return '<span class="uptime-none">—</span>';
-  }
+  if (pct === null || pct === undefined || samples < 2) return '<span class="uptime-none">—</span>';
   let cls = 'uptime-good';
   if (pct < 50) cls = 'uptime-low';
   else if (pct < 80) cls = 'uptime-mid';
@@ -1537,8 +1518,7 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
             f"<tr><td>{html.escape(st['label'])}</td><td>{st['total']}</td>"
             f"<td>{st['ok']}</td><td>{st.get('unstable', 0)}</td>"
             f"<td>{st.get('filtered', 0)}</td>"
-            f"<td>{pct:.1f}%</td><td>{avg_s}</td></tr>"
-        )
+            f"<td>{pct:.1f}%</td><td>{avg_s}</td></tr>")
     all_f = {}
     for st in stats:
         for r, c in st.get('filter_reasons', {}).items():
@@ -1562,8 +1542,7 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
         unstable_block = (
             f"<div class='section'><h2>Нестабильные каналы (аптайм < {CFG.min_uptime}%)</h2>"
             f"<table><thead><tr><th>Канал</th><th>Аптайм</th><th>Проверок</th></tr></thead>"
-            f"<tbody>{rows}</tbody></table>"
-            f"<div class='sub' style='margin-top:8px'>Эти каналы отсеяны из merged</div></div>")
+            f"<tbody>{rows}</tbody></table></div>")
 
     logo_block = ''
     if logo_stats:
@@ -1579,8 +1558,7 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
         rows = "\n".join(
             f"<tr><td>{labels.get(k, k)}</td><td>{v}</td>"
             f"<td>{v/total_logo*100:.1f}%</td></tr>"
-            for k, v in sorted(logo_stats.items(), key=lambda x: -x[1])
-        )
+            for k, v in sorted(logo_stats.items(), key=lambda x: -x[1]))
         logo_block = (
             f"<div class='section'><h2>Откуда логотипы</h2>"
             f"<table><thead><tr><th>Источник</th><th>Каналов</th><th>%</th></tr></thead>"
@@ -1594,9 +1572,8 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
     all_slow = all_slow[:20]
     slow_block = ''
     if all_slow:
-        rows = "\n".join(
-            f"<tr><td>{html.escape(nm)}</td><td>{el}s</td></tr>"
-            for nm, u, el in all_slow)
+        rows = "\n".join(f"<tr><td>{html.escape(nm)}</td><td>{el}s</td></tr>"
+                         for nm, u, el in all_slow)
         slow_block = (
             f"<div class='section'><h2>Медленные каналы (>{SLOW_THRESHOLD}s)</h2>"
             f"<table><thead><tr><th>Канал</th><th>Отклик</th></tr></thead>"
@@ -1604,15 +1581,12 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
 
     hist_block = render_history_svg(history)
     donut_block = render_donut_svg(groups_all)
-
     denom = (ok + dead + unstable) or 1
     hpct = (ok / denom) * 100
     hb = health_bar(hpct)
-
     sp_total = _sparkline_for_history(history, 'total')
     sp_ok = _sparkline_for_history(history, 'ok')
     sp_merged = _sparkline_for_history(history, 'merged')
-
     d = int(dur)
     out = fmt(
         REPORT_T,
@@ -1620,8 +1594,7 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         n_playlists=len(stats), total=total, ok=ok, filtered=filt, dead=dead,
         unstable=unstable, merged=merged, duration=f"{d // 60}м {d % 60}с",
-        health_block=hb,
-        history_block=hist_block, donut_block=donut_block,
+        health_block=hb, history_block=hist_block, donut_block=donut_block,
         unstable_block=unstable_block, logo_block=logo_block,
         ua_block=ua_block, slow_block=slow_block,
         sp_total=sp_total, sp_ok=sp_ok, sp_merged=sp_merged,
@@ -1646,18 +1619,14 @@ def render_index(path, url, merged, ok, total, unstable, splits, qr_path, pages_
             f"<div class='box'><a href='{fname}'>{fname}</a> — {cnt} каналов</div>"
             for fname, cnt in splits)
         split_html = f"<h2>Отдельные плейлисты</h2>{items}"
-    if os.path.isfile(qr_path):
-        qr_block = f'<img src="{os.path.basename(qr_path)}" alt="QR">'
-    else:
-        qr_block = ''
+    qr_block = f'<img src="{os.path.basename(qr_path)}" alt="QR">' if os.path.isfile(qr_path) else ''
     gh_repo = _github_repo_from_pages(pages_url)
     out = fmt(
         INDEX_T,
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         playlist_url=url, merged_count=merged, ok=ok, total=total,
-        unstable=unstable,
-        qr_block=qr_block, splits_block=split_html,
+        unstable=unstable, qr_block=qr_block, splits_block=split_html,
         github_repo=gh_repo)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
@@ -1740,7 +1709,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats):
-    lines = ["<b>M3U Check v13.1</b>"]
+    lines = ["<b>M3U Check v14</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -1755,14 +1724,12 @@ def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
         lines.append(f"• {html.escape(st['label'])}: {st['ok']}/{st['total']} ({pct:.0f}%)")
-
     if logo_stats:
         total_with_logo = sum(v for k, v in logo_stats.items() if k != 'none')
         total_all = sum(logo_stats.values()) or 1
         lines.append("")
         lines.append(f"<b>Логотипы:</b> {total_with_logo}/{total_all} "
                      f"({total_with_logo/total_all*100:.0f}%)")
-
     bad_sources = [(n, err) for n, ok_, err in source_results if not ok_]
     if bad_sources:
         lines.append("")
@@ -1791,12 +1758,12 @@ def parse_args():
     p.add_argument('--no-ssl-verify', action='store_true')
     p.add_argument('--multi-ua', action='store_true')
     p.add_argument('--no-iptv-logos', action='store_true')
+    p.add_argument('--check-all-logos', action='store_true',
+                   help='Проверять все логотипы (включая из базы iptv-org)')
     p.add_argument('--split-all', action='store_true')
     p.add_argument('--weekly-backup', action='store_true')
-    p.add_argument('--min-uptime', type=int, default=50,
-                   help='Минимальный аптайм для попадания в merged (%). 0 = выкл')
-    p.add_argument('--min-uptime-samples', type=int, default=3,
-                   help='Мин. число проверок для расчёта аптайма')
+    p.add_argument('--min-uptime', type=int, default=50)
+    p.add_argument('--min-uptime-samples', type=int, default=3)
     p.add_argument('--cache', default='m3u_cache.sqlite')
     p.add_argument('--cache-ttl', type=int, default=3600)
     p.add_argument('--log', default='m3u_checker.log')
