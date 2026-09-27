@@ -3,12 +3,20 @@
     "(?i)\\btest\\b", "(?i)\\bтест\\b", "(?i)\\bdemo\\b",
     "(?i)\\bпромо\\b", "(?i)\\bpromo\\b", "(?i)\\bbackup\\b",
     "(?i)\\bрезерв\\b", "(?i)\\bдубл", "(?i)\\bxxx\\b",
-    "(?i)\\badult\\b", "(?i)\\bэрот", "(?i)\\bпорно"
+    "(?i)\\badult\\b", "(?i)\\bэрот", "(?i)\\bпорно",
+    "(?i)\\bshop\\b", "(?i)\\bshopping\\b", "(?i)\\bteleshop\\b",
+    "(?i)\\bleomax\\b", "(?i)\\bqvc\\b", "(?i)\\bhsn\\b"
   ],
   "name_exclude": [
     "(?i)\\b(детск|детский|kids|child|children|cartoon|мульт|мультик|малыш|baby)\\b",
-    "(?i)\\b(disney|nickelodeon|nick\\s*jr|карусель)\\b",
-    "(?i)\\b(discovery\\s*kids|baby\\s*tv|радость\\s*моя)\\b"
+    "(?i)\\b(disney|nickelodeon|nick\\s*jr|карусель|carousel|gulli|tiji|jimjam|boomerang|cartoonito|babytv)\\b",
+    "(?i)\\b(discovery\\s*kids|baby\\s*tv|радость\\s*моя)\\b",
+    "(?i)\\b(da\\s*vinci|v\\s*gostyakh\\s*u\\s*skazki|supergeroi|multilandia|mult)\\b",
+    "(?i)\\b(ani)\\b",
+    "(?i)\\b(магазин|шопинг|телегазета|телемагазин|распродаж|ювелирочка|ювелир)\\b",
+    "(?i)\\b(fashion|fashion\\s*tv|fashiontv|lifestyle|beauty|glamour|home\\s*shopping|vitrina|bestseller|best\\s*sell)\\b",
+    "(?i)\\bfashion&",
+    "(?i)\\bstyle\\b"
   ],
   "group_exclude": [
     "(?i)^детск", "(?i)kids", "(?i)^мульт"
@@ -23,7 +31,8 @@
     "^https?://\\[fc00:", "^https?://\\[fd[0-9a-f]{2}:",
     "^https?://224\\.", "^https?://22[5-9]\\.",
     "^https?://23[0-9]\\.", "^https?://24[0-9]\\.",
-    "^https?://25[0-5]\\."
+    "^https?://25[0-5]\\.",
+    "/udp/", "/rtp/", "/multicast/"
   ],
   "url_extension_blocklist": [
     ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp", ".svg", ".ico",
