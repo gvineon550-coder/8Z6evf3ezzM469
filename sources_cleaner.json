@@ -6,5 +6,6 @@
   "local_sources": [
     { "name": "my_list", "path": "local/my_list.m3u", "enabled": true }
   ],
+  "header_url_tvg": "http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH",
   "logo_sources": []
 }
