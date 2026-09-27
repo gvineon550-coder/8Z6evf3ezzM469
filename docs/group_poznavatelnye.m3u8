@@ -1,0 +1,70 @@
+#EXTM3U url-tvg="http://epg.one/epg.xml; http://uztv.su/uploads/channelsarch/channels.xml; https://iptvx.one/EPG_NOARCH; http://gabbarit.drm-play.com/epg_lite.xml.gz; http://epg.cdntv.online/lite.xml; http://epg.it999.ru/epg.xml; http://iptv-content.rv77.pw/guide-lite.xml"
+#EXTINF:-1 tvg-id="epic" tvg-logo="https://epg.iptvx.one/picons/epic.png" group-title="🧠 Познавательные",Epic HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://tinyurl.com/4tfv9tup/2054/index.m3u8
+#EXTINF:-1 tvg-id="hgtv" tvg-logo="https://epg.iptvx.one/picons/hgtv.png" group-title="🧠 Познавательные",HGTV HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://ott.ip-tv.workers.dev/stream/L0FBMzI5MVcvaW5kZXgubTN1OA==?key=halva
+#EXTINF:-1 tvg-id="history" tvg-logo="https://epg.iptvx.one/picons/history.png" group-title="🧠 Познавательные",History HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://46.32.176.50/HistoryHD/index.m3u8
+#EXTINF:-1 tvg-id="love-nature-4k" tvg-logo="https://epg.iptvx.one/picons/love-nature-4k.png" group-title="🧠 Познавательные",Love Nature 4K
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://jmp2.uk/stvp-USBA3400003IP
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="NationalGeographic.ru@SD",National Geographic (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/116/index.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="NationalGeographic.ru@SD",National Geographic (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/nat_geo/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="NationalGeographicWild.ru@SD",National Geographic Wild (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/nat_geo_wild/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-id="ocean-tv" tvg-logo="https://epg.iptvx.one/picons/ocean-tv.png" group-title="🧠 Познавательные",Ocean TV
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream-tv-prostar.hf.space/ch/AA2126W?key=AB001829BB
+#EXTINF:-1 tvg-id="rtg-hd" tvg-logo="https://epg.iptvx.one/picons/rtg-hd.png" group-title="🧠 Познавательные",RTG HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://46.53.200.153:7777/play/a00u/index.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные",Terra HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://195.64.140.147:10150/150
+#EXTINF:-1 tvg-id="travel-xp-4k" tvg-logo="https://epg.iptvx.one/picons/travel-xp-4k.png" group-title="🧠 Познавательные",TravelXP 4K
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://91.247.68.229:8000/play/Travelxp/index.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные",Viasat Nature
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://flussonic.mkpnet.ru/tv-7a85ea25208f5bf7/video.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные",Viasat Nature HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://cdn.itvuz.workers.dev/stream/136?key=zunotv
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="vijuHistory.ru@SD",viju History (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://178.124.179.122:8080/HistoryHD/index.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="vijuHistory.ru@SD",viju History (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/101/index.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="vijuHistory.ru@SD",viju History (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/viju_history/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="vijuNature.ru@SD",viju Nature
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://stream8.cinerama.uz/1228/tracks-v1a1/mono.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="vijuNature.ru@SD",viju Nature (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/viju_nature/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🧠 Познавательные",Глазами Туриста HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://cdn.itvuz.workers.dev/stream/162?key=zunotv
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Nauka.ru@SD",Наука
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://vod.tuva.ru/nauka2/index.m3u8
+#EXTINF:-1 tvg-id="neizvestnaya-planeta" tvg-logo="https://epg.iptvx.one/picons/neizvestnaya-planeta.png" group-title="🧠 Познавательные",Неизвестная Планета
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stitch.teletarget.ru/api/v1/hls/vintera/neplaneta/index.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные",Планета HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://185.46.16.239:8000/Planeta_HD
+#EXTINF:-1 tvg-id="prikluchenia-hd" tvg-logo="https://epg.iptvx.one/picons/prikluchenia-hd.png" group-title="🧠 Познавательные",Приключения HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://tinyurl.com/teh55yef/920/index.m3u8

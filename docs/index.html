@@ -1,32 +1,121 @@
 <!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <title>IPTV</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<meta name="theme-color" content="#0f1115">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="IPTV">
+<link rel="apple-touch-icon" href="icon.svg">
 <style>
-body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0f1115;
-color:#e6e6e6;margin:0;padding:40px 24px;max-width:800px;margin:0 auto}
-h1{font-size:24px;margin:0 0 8px} h2{font-size:15px;margin:32px 0 8px}
-.sub{color:#8a8f98;font-size:13px;margin-bottom:24px}
-.box{background:#181b20;border:1px solid #23272e;border-radius:10px;
+*{box-sizing:border-box}
+:root{
+  --bg:#0f1115; --panel:#181b20; --border:#23272e;
+  --text:#e6e6e6; --muted:#8a8f98; --accent:#60a5fa;
+}
+[data-theme="light"]{
+  --bg:#f6f7f9; --panel:#ffffff; --border:#e4e6ea;
+  --text:#1a1d21; --muted:#6b7280; --accent:#2563eb;
+}
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);
+color:var(--text);margin:0;padding:24px;max-width:1100px;margin:0 auto;
+transition:background .2s,color .2s}
+h1{margin:0 0 4px;font-size:22px} h2{font-size:15px;margin:0 0 12px}
+.sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+a{color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;margin-bottom:24px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
+.card .k{font-size:11px;color:var(--muted);text-transform:uppercase}
+.card .v{font-size:22px;font-weight:600;margin-top:6px}
+.card .v.good{color:#4ade80} .card .v.bad{color:#f87171}
+.card .v.warn{color:#facc15}
+.section{background:var(--panel);border:1px solid var(--border);border-radius:10px;
+padding:16px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--border);
+font-size:12px;color:var(--muted);margin:2px}
+.back{display:inline-block;margin-bottom:16px;color:var(--accent);text-decoration:none}
+.box{background:var(--panel);border:1px solid var(--border);border-radius:10px;
 padding:18px;margin-bottom:12px}
-code{background:#0f1115;padding:3px 8px;border-radius:6px;font-size:13px;
+code{background:var(--bg);padding:3px 8px;border-radius:6px;font-size:13px;
 word-break:break-all;color:#facc15}
-a{color:#60a5fa} .stat{color:#8a8f98;font-size:13px}
+.theme-btn{position:fixed;top:16px;right:16px;background:var(--panel);
+border:1px solid var(--border);color:var(--text);width:40px;height:40px;
+border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1}
+.theme-btn:hover{background:var(--border)}
+
+.qr-wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.qr-wrap img{background:#fff;padding:10px;border-radius:10px;width:200px;height:200px}
+.qr-info{flex:1;min-width:200px}
 </style></head><body>
+<button class="theme-btn" aria-label="Theme">☀</button>
 <h1>IPTV - авто-обновляемый плейлист</h1>
-<div class="sub">Обновлено: 2026-09-27 01:19:55</div>
+<div class="sub">Обновлено: 2026-09-27 02:05:34</div>
+
 <h2>Ссылка для плеера (M3U)</h2>
-<div class="box"><code>https://gvineon550-coder.github.io/8Z6evf3ezzM469/all_checked.m3u8</code></div>
-<div class="stat">Скопируй в TiviMate / VLC / OTT Navigator как Playlist URL</div>
-<h2>Отчёты</h2>
-<div class="box"><a href="report.html">Открыть отчёт проверки</a></div>
+<div class="box qr-wrap">
+<img src="qr.png" alt="QR">
+<div class="qr-info">
+<code>https://gvineon550-coder.github.io/8Z6evf3ezzM469/all_checked.m3u8</code>
+<div class="sub" style="margin-top:8px">Скопируй в TiviMate / VLC / OTT Navigator</div>
+</div>
+</div>
+
+<h2>Разделы</h2>
+<div class="box"><a href="report.html">📊 Отчёт проверки</a></div>
+<div class="box"><a href="channels.html">🔍 Поиск по каналам</a></div>
+<div class="box"><a href="channels.csv">📥 Скачать CSV (все каналы)</a></div>
+
 <h2>Статистика</h2>
 <div class="box">
-Каналов в merged: <b>1116</b><br>
-Рабочих: <b>1233</b> из <b>1550</b>
+Каналов в merged: <b>1117</b><br>
+Рабочих: <b>1234</b> из <b>1550</b>
 </div>
 <h2>Отдельные плейлисты</h2><div class='box'><a href='sport.m3u8'>sport.m3u8</a> — 34 каналов</div>
 <div class='box'><a href='music.m3u8'>music.m3u8</a> — 24 каналов</div>
 <div class='box'><a href='news.m3u8'>news.m3u8</a> — 9 каналов</div>
-<div class='box'><a href='kinowalk.m3u8'>kinowalk.m3u8</a> — 149 каналов</div>
+<div class='box'><a href='kinowalk.m3u8'>kinowalk.m3u8</a> — 156 каналов</div>
 <div class='box'><a href='rutube.m3u8'>rutube.m3u8</a> — 73 каналов</div>
+<div class='box'><a href='radio.m3u8'>radio.m3u8</a> — 4 каналов</div>
+<div class='box'><a href='group_kino.m3u8'>group_kino.m3u8</a> — 73 каналов</div>
+<div class='box'><a href='group_muzyka.m3u8'>group_muzyka.m3u8</a> — 24 каналов</div>
+<div class='box'><a href='group_smotrim.m3u8'>group_smotrim.m3u8</a> — 17 каналов</div>
+<div class='box'><a href='group_poznavatelnye.m3u8'>group_poznavatelnye.m3u8</a> — 23 каналов</div>
+<div class='box'><a href='group_novosti.m3u8'>group_novosti.m3u8</a> — 9 каналов</div>
+<div class='box'><a href='group_razvlekatelnye.m3u8'>group_razvlekatelnye.m3u8</a> — 17 каналов</div>
+<div class='box'><a href='group_muzykalnye.m3u8'>group_muzykalnye.m3u8</a> — 15 каналов</div>
+<div class='box'><a href='group_rutube.m3u8'>group_rutube.m3u8</a> — 73 каналов</div>
+<div class='box'><a href='group_detskie.m3u8'>group_detskie.m3u8</a> — 18 каналов</div>
+<div class='box'><a href='group_ufo_tv.m3u8'>group_ufo_tv.m3u8</a> — 117 каналов</div>
+<div class='box'><a href='group_rossiya.m3u8'>group_rossiya.m3u8</a> — 492 каналов</div>
+<div class='box'><a href='group_sport.m3u8'>group_sport.m3u8</a> — 34 каналов</div>
+<div class='box'><a href='group_radio.m3u8'>group_radio.m3u8</a> — 4 каналов</div>
+<div class='box'><a href='group_osnovnye.m3u8'>group_osnovnye.m3u8</a> — 31 каналов</div>
+<div class='box'><a href='group_kinowalk.m3u8'>group_kinowalk.m3u8</a> — 156 каналов</div>
+<div class='box'><a href='group_fresh.m3u8'>group_fresh.m3u8</a> — 14 каналов</div>
+
+<script>
+(function(){
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.addEventListener('DOMContentLoaded', function(){
+    const btn = document.querySelector('.theme-btn');
+    if(!btn) return;
+    btn.textContent = saved === 'dark' ? '☀' : '☾';
+    btn.addEventListener('click', function(){
+      const cur = document.documentElement.getAttribute('data-theme');
+      const nxt = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nxt);
+      localStorage.setItem('theme', nxt);
+      btn.textContent = nxt === 'dark' ? '☀' : '☾';
+    });
+  });
+})();
+</script>
+
 </body></html>

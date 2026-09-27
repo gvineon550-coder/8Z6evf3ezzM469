@@ -1,63 +1,128 @@
 <!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
-<title>M3U Check v7 - 2026-09-27 01:19:55</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M3U Check v10 - 2026-09-27 02:05:34</title>
 <style>
 *{box-sizing:border-box}
-body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0f1115;
-color:#e6e6e6;margin:0;padding:24px;max-width:1100px;margin:0 auto}
+:root{
+  --bg:#0f1115; --panel:#181b20; --border:#23272e;
+  --text:#e6e6e6; --muted:#8a8f98; --accent:#60a5fa;
+}
+[data-theme="light"]{
+  --bg:#f6f7f9; --panel:#ffffff; --border:#e4e6ea;
+  --text:#1a1d21; --muted:#6b7280; --accent:#2563eb;
+}
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);
+color:var(--text);margin:0;padding:24px;max-width:1100px;margin:0 auto;
+transition:background .2s,color .2s}
 h1{margin:0 0 4px;font-size:22px} h2{font-size:15px;margin:0 0 12px}
-.sub{color:#8a8f98;font-size:13px;margin-bottom:24px}
-a{color:#60a5fa}
+.sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+a{color:var(--accent)}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
 gap:12px;margin-bottom:24px}
-.card{background:#181b20;border:1px solid #23272e;border-radius:10px;padding:14px}
-.card .k{font-size:11px;color:#8a8f98;text-transform:uppercase}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
+.card .k{font-size:11px;color:var(--muted);text-transform:uppercase}
 .card .v{font-size:22px;font-weight:600;margin-top:6px}
 .card .v.good{color:#4ade80} .card .v.bad{color:#f87171}
 .card .v.warn{color:#facc15}
-.section{background:#181b20;border:1px solid #23272e;border-radius:10px;
+.section{background:var(--panel);border:1px solid var(--border);border-radius:10px;
 padding:16px;margin-bottom:16px}
 table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{text-align:left;padding:8px 10px;border-bottom:1px solid #23272e}
-th{color:#8a8f98;font-weight:500;font-size:11px;text-transform:uppercase}
-.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:#23272e;
-font-size:12px;color:#a1a1aa;margin:2px}
-</style></head><body>
-<h1>M3U Check v7</h1>
-<div class="sub">2026-09-27 01:19:55 · источников: 3</div>
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--border);
+font-size:12px;color:var(--muted);margin:2px}
+.back{display:inline-block;margin-bottom:16px;color:var(--accent);text-decoration:none}
+.box{background:var(--panel);border:1px solid var(--border);border-radius:10px;
+padding:18px;margin-bottom:12px}
+code{background:var(--bg);padding:3px 8px;border-radius:6px;font-size:13px;
+word-break:break-all;color:#facc15}
+.theme-btn{position:fixed;top:16px;right:16px;background:var(--panel);
+border:1px solid var(--border);color:var(--text);width:40px;height:40px;
+border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1}
+.theme-btn:hover{background:var(--border)}
+</style>
+</head><body>
+<button class="theme-btn" aria-label="Theme">☀</button>
+<a class="back" href="index.html">← на главную</a>
+<h1>M3U Check v10</h1>
+<div class="sub">2026-09-27 02:05:34 · источников: 3</div>
 <div class="cards">
 <div class="card"><div class="k">Проверено</div><div class="v">1550</div></div>
-<div class="card"><div class="k">Рабочих</div><div class="v good">1233</div></div>
+<div class="card"><div class="k">Рабочих</div><div class="v good">1234</div></div>
 <div class="card"><div class="k">Отфильтровано</div><div class="v warn">0</div></div>
-<div class="card"><div class="k">Мёртвых</div><div class="v bad">317</div></div>
-<div class="card"><div class="k">В merged</div><div class="v">1116</div></div>
-<div class="card"><div class="k">Время</div><div class="v">3м 30с</div></div>
+<div class="card"><div class="k">Мёртвых</div><div class="v bad">316</div></div>
+<div class="card"><div class="k">В merged</div><div class="v">1117</div></div>
+<div class="card"><div class="k">Время</div><div class="v">4м 3с</div></div>
 </div>
-<div class='section'><h2>По User-Agent</h2><div><span class='tag'>wink: 1001</span> <span class='tag'>cached: 54</span> <span class='tag'>tivimate: 1</span> <span class='tag'>vlc: 1</span></div></div>
+<div class="section"><h2>История (последние 1)</h2>
+<svg viewBox="0 0 900 200" style="width:100%;height:auto">
+<line x1="30" y1="30" x2="870" y2="30" stroke="var(--border)" stroke-width="1"/><text x="4" y="33" fill="var(--muted)" font-size="10">1234</text><line x1="30" y1="65" x2="870" y2="65" stroke="var(--border)" stroke-width="1"/><text x="4" y="68" fill="var(--muted)" font-size="10">925</text><line x1="30" y1="100" x2="870" y2="100" stroke="var(--border)" stroke-width="1"/><text x="4" y="103" fill="var(--muted)" font-size="10">617</text><line x1="30" y1="135" x2="870" y2="135" stroke="var(--border)" stroke-width="1"/><text x="4" y="138" fill="var(--muted)" font-size="10">308</text><line x1="30" y1="170" x2="870" y2="170" stroke="var(--border)" stroke-width="1"/><text x="4" y="173" fill="var(--muted)" font-size="10">0</text>
+<path d="M30,170 L30.0,30.0 L870,170 Z" fill="#4ade80" fill-opacity="0.15"/>
+<polyline points="30.0,30.0" fill="none" stroke="#4ade80" stroke-width="2"/>
+<text x="30" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text>
+</svg></div>
+<div class='section'><h2>По User-Agent</h2><div><span class='tag'>wink: 1000</span> <span class='tag'>cached: 54</span> <span class='tag'>vlc: 4</span></div></div>
+<div class='section'><h2>Медленные каналы (>2.0s)</h2><table><thead><tr><th>Канал</th><th>Отклик</th></tr></thead><tbody><tr><td>Bridge TV FRESH</td><td>4.43s</td></tr>
+<tr><td>Setanta Sports 1 HD</td><td>3.62s</td></tr>
+<tr><td>Setanta Sports 2 HD</td><td>3.58s</td></tr>
+<tr><td>Viasat Nature HD</td><td>3.4s</td></tr>
+<tr><td>10&#x27;s Dance</td><td>3.14s</td></tr>
+<tr><td>A State of Trance</td><td>3.04s</td></tr>
+<tr><td>Afro House</td><td>3.03s</td></tr>
+<tr><td>360° (1080p)</td><td>2.88s</td></tr>
+<tr><td>Beach Party</td><td>2.73s</td></tr>
+<tr><td>Chill House</td><td>2.72s</td></tr>
+<tr><td>Big Hits</td><td>2.69s</td></tr>
+<tr><td>Радио Шансон (720p) [Not 24/7]</td><td>2.5s</td></tr>
+<tr><td>RU.TV (1080p)</td><td>2.24s</td></tr>
+<tr><td>RT Balkan (1080p)</td><td>2.23s</td></tr>
+<tr><td>RT Balkan (1080p)</td><td>2.22s</td></tr>
+<tr><td>БСТ 24 (Братск)</td><td>2.14s</td></tr></tbody></table></div>
 <div class="section"><h2>По источникам</h2>
-<table><thead><tr><th>Источник</th><th>Всего</th><th>Рабочих</th><th>Фильтр</th><th>%</th></tr></thead>
-<tbody><tr><td>iptv_org_ru</td><td>851</td><td>572</td><td>0</td><td>67.2%</td></tr>
-<tr><td>ufotv</td><td>523</td><td>485</td><td>0</td><td>92.7%</td></tr>
-<tr><td>my_list</td><td>176</td><td>176</td><td>0</td><td>100.0%</td></tr></tbody></table></div>
-<div class="section"><h2>Фильтры (что отсеклось)</h2>
+<table><thead><tr><th>Источник</th><th>Всего</th><th>Рабочих</th><th>Фильтр</th><th>%</th><th>Ср. отклик</th></tr></thead>
+<tbody><tr><td>iptv_org_ru</td><td>851</td><td>574</td><td>0</td><td>67.5%</td><td>0.75s</td></tr>
+<tr><td>ufotv</td><td>523</td><td>484</td><td>0</td><td>92.5%</td><td>1.04s</td></tr>
+<tr><td>my_list</td><td>176</td><td>176</td><td>0</td><td>100.0%</td><td>—</td></tr></tbody></table></div>
+<div class="section"><h2>Фильтры</h2>
 <table><thead><tr><th>Причина</th><th>Каналов</th></tr></thead>
 <tbody><tr><td colspan='2'>нет</td></tr></tbody></table></div>
 <div class="section"><h2>Группы (итог)</h2>
 <table><thead><tr><th>Группа</th><th>Каналов</th></tr></thead>
-<tbody><tr><td>🇷🇺 Россия</td><td>494</td></tr>
-<tr><td>🎞️ Kinowalk</td><td>154</td></tr>
+<tbody><tr><td>🇷🇺 Россия</td><td>492</td></tr>
+<tr><td>🎞️ Kinowalk</td><td>217</td></tr>
 <tr><td>🛸 UFO TV</td><td>117</td></tr>
 <tr><td>🎬 Кино</td><td>90</td></tr>
 <tr><td>📹 Rutube</td><td>76</td></tr>
-<tr><td>🎥 Kinowalk TV</td><td>56</td></tr>
 <tr><td>⚽ Спорт</td><td>36</td></tr>
 <tr><td>📺 Основные</td><td>35</td></tr>
-<tr><td>🧠 Познавательные</td><td>30</td></tr>
+<tr><td>🧠 Познавательные</td><td>31</td></tr>
 <tr><td>🎭 Развлекательные</td><td>28</td></tr>
-<tr><td>Детские</td><td>27</td></tr>
-<tr><td>Музыкальные</td><td>26</td></tr>
 <tr><td>🎵 Музыка</td><td>24</td></tr>
+<tr><td>Детские</td><td>24</td></tr>
+<tr><td>Музыкальные</td><td>20</td></tr>
 <tr><td>👁️ СМОТРИМ +</td><td>17</td></tr>
 <tr><td>🌿 Fresh</td><td>14</td></tr>
-<tr><td>📰 Новости</td><td>9</td></tr></tbody></table></div>
+<tr><td>📰 Новости</td><td>9</td></tr>
+<tr><td>📻 Радио</td><td>4</td></tr></tbody></table></div>
+
+<script>
+(function(){
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.addEventListener('DOMContentLoaded', function(){
+    const btn = document.querySelector('.theme-btn');
+    if(!btn) return;
+    btn.textContent = saved === 'dark' ? '☀' : '☾';
+    btn.addEventListener('click', function(){
+      const cur = document.documentElement.getAttribute('data-theme');
+      const nxt = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', nxt);
+      localStorage.setItem('theme', nxt);
+      btn.textContent = nxt === 'dark' ? '☀' : '☾';
+    });
+  });
+})();
+</script>
+
 </body></html>
