@@ -2,9 +2,6 @@
 #EXTINF:-1 tvg-id="8kanal-by" tvg-logo="https://i.imgur.com/ADQkn9l.png" group-title="📺 Основные",8 канал
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-a308d006109b1c1f/video.m3u8
-#EXTINF:-1 tvg-id="rtd-ru" tvg-logo="https://epg.iptvx.one/picons/rt-doc.png" group-title="📺 Основные",RT Doc HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://flussonic.mkpnet.ru/tv-501eac834b24c3cf/video.m3u8
 #EXTINF:-1 tvg-id="zvezda" tvg-logo="https://epg.iptvx.one/picons/zvezda.png" group-title="📺 Основные",Звезда
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/2070/index.m3u8
@@ -17,15 +14,15 @@ http://hls-igi.cdnvideo.ru/igi/igi_hq/playlist.m3u8
 #EXTINF:-1 tvg-id="ntv" tvg-logo="http://epg.propg.net/img/channel_icons/3.png" group-title="📺 Основные",НТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/1040/index.m3u8
-#EXTINF:-1 tvg-id="ont-by" tvg-logo="https://epg.iptvx.one/picons/ont-by.png" group-title="📺 Основные",ОНТ HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://194.158.222.36:6102
 #EXTINF:-1 tvg-id="pervy" tvg-logo="http://epg.propg.net/img/channel_icons/1.png" group-title="📺 Основные",Первый
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/1010/index.m3u8
 #EXTINF:-1 tvg-id="piatnica" tvg-logo="http://epg.propg.net/img/channel_icons/53.png" group-title="📺 Основные",Пятница
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/2060/index.m3u8
+#EXTINF:-1 group-title="📺 Основные" tvg-id="piatnica" tvg-logo="https://i.imgur.com/UfmlXxe.png",Пятница! (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://vod.tuva.ru/friday/index.m3u8
 #EXTINF:-1 tvg-id="5kanal-ru" tvg-logo="https://epg.iptvx.one/picons/piaty-int.png" group-title="📺 Основные",Пятый канал
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/1050/index.m3u8
