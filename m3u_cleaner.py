@@ -6,16 +6,17 @@ m3u_cleaner.py — отдельный чистильщик M3U-листов и U
 Особенности:
   • Стриминг: читает/пишет построчно, не держит лист в памяти
   • СОХРАНЯЕТ #EXTVLCOPT (http-user-agent и др.) у каждого канала
-  • СОХРАНЯЕТ шапку #EXTM3U url-tvg="..." (для EPG в плеере)
+  • СОХРАНЯЕТ самую богатую шапку #EXTM3U url-tvg="..." (для EPG)
   • Дедуп по URL глобальный (между всеми источниками)
   • Понимает regex И простые подстроки в filters.json (auto-detect)
+  • Shortener и blocked_domain — только по домену (не подстрокой)
   • Фильтры: пустые URL, схемы, приватные IP, multicast,
     сокращатели, заблокированные домены, мусорные имена,
     магазины/мода, детские
 
 Запуск:
-    python m3u_cleaner.py
-    python m3u_cleaner.py --strip-trackers
+    python m3u_cleaner.py --sources sources_cleaner.json
+    python m3u_cleaner.py --sources sources_cleaner.json --strip-trackers
 """
 from __future__ import annotations
 
@@ -66,7 +67,7 @@ TRACKER_PARAMS = {"utm_source", "utm_medium", "utm_campaign", "utm_term",
                   "utm_content", "fbclid", "gclid", "yclid", "ref", "referrer"}
 ATTR_RE = re.compile(r'([A-Za-z0-9\-_]+)\s*=\s*"([^"]*)"')
 IPV4_172_RE = re.compile(r"^172\.(\d+)\.")
-VALID_SCHEMES = ("http://", "https://")
+VALID_SCHEMES_EXTENDED = ("http://", "https://", "rtmp://", "rtsp://")
 MULTICAST_SCHEMES = ("udp://", "rtp://", "rtsp://", "igmp://")
 
 
@@ -123,6 +124,22 @@ def iter_m3u(lines):
     return
 
 
+def _is_better_header(new: str, old: str | None) -> bool:
+    """
+    Выбираем самую информативную шапку.
+    Шапка с url-tvg="..." приоритетнее простого #EXTM3U.
+    """
+    if not new:
+        return False
+    if not old:
+        return True
+    if "url-tvg" in new and "url-tvg" not in old:
+        return True
+    if "url-tvg" in old:
+        return False
+    return len(new) > len(old)
+
+
 # ---------- Проверки ----------
 def is_private_ip(url: str) -> bool:
     host = urlparse(url).hostname or ""
@@ -140,6 +157,14 @@ def is_private_ip(url: str) -> bool:
 
 def host_match(url: str, domains) -> bool:
     h = (urlparse(url).hostname or "").lower()
+    return any(h == d or h.endswith("." + d) for d in domains)
+
+
+def _match_domain(url: str, domains) -> bool:
+    """Домен — точное совпадение hostname или поддомен."""
+    h = (urlparse(url).hostname or "").lower()
+    if not h:
+        return False
     return any(h == d or h.endswith("." + d) for d in domains)
 
 
@@ -165,9 +190,6 @@ def strip_tracking(url: str) -> str:
 
 
 # ---------- Regex-aware проверки ----------
-_REGEX_MARKERS = ("(?i)", "(?m)", "(?s)", "^", "$", "\\", "|", "[", "(")
-
-
 def _looks_like_regex(p: str) -> bool:
     """Эвристика: если паттерн похож на regex — обрабатываем как regex."""
     if any(p.startswith(m) for m in ("(?i)", "(?m)", "(?s)", "^", "$")):
@@ -211,7 +233,7 @@ def _match_any_name(name: str, compiled) -> bool:
 
 
 def _match_any_url(url: str, compiled) -> bool:
-    """Проверка URL — regex по полному URL или подстрока."""
+    """Проверка URL — regex по полному URL или подстрока (для расширений)."""
     low = url.lower()
     for pat, is_re in compiled:
         if is_re:
@@ -226,24 +248,30 @@ def _match_any_url(url: str, compiled) -> bool:
 def reject_reason(url: str, name: str, flt) -> str | None:
     if not url:
         return "empty_url"
-    if not url.lower().startswith(VALID_SCHEMES):
+    if not url.lower().startswith(VALID_SCHEMES_EXTENDED):
         return "bad_scheme"
     if is_multicast_url(url):
         return "multicast"
     if is_private_ip(url):
         return "private_ip"
 
-    # URL-фильтры (regex или подстрока)
+    # URL regex (blocked_url) — только для regex-паттернов
     if _match_any_url(url, flt["_url_compiled"]):
         return "blocked_url"
-    if _match_any_url(url, flt["_shortener_compiled"]):
+
+    # Shortener — ТОЛЬКО по домену, не подстрокой
+    if _match_domain(url, flt["_shortener_domains"]):
         return "shortener"
-    if host_match(url, flt["domain_blocklist"]):
+
+    # Блок-домены — по домену
+    if _match_domain(url, flt["domain_blocklist"]):
         return "blocked_domain"
+
+    # Расширения — только явные не-стриминговые
     if _match_any_url(url, flt["_extension_compiled"]):
         return "bad_extension"
 
-    # Имя — regex или подстрока (name_exclude + name_blocklist)
+    # Имя
     if name:
         if _match_any_name(name, flt["_name_compiled"]):
             return "banned_name"
@@ -315,10 +343,10 @@ def load_filters(path: str):
     flt["_name_compiled"] = _compiled_patterns(
         flt["name_exclude"] + flt["name_blocklist"])
     flt["_url_compiled"] = _compiled_patterns(flt["url_blocklist"])
-    flt["_shortener_compiled"] = _compiled_patterns(
-        [s.lower() for s in flt["shortener_blocklist"]])
     flt["_extension_compiled"] = _compiled_patterns(
         [s.lower() for s in flt["url_extension_blocklist"]])
+    # shortener — отдельно, только по домену
+    flt["_shortener_domains"] = [s.lower() for s in flt["shortener_blocklist"]]
     return flt
 
 
@@ -336,7 +364,7 @@ def load_sources(path: str):
 # ---------- Main ----------
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--sources", default="sources.json")
+    ap.add_argument("--sources", default="sources_cleaner.json")
     ap.add_argument("--filters", default="filters.json")
     ap.add_argument("--out", default="docs")
     ap.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT)
@@ -429,7 +457,7 @@ def main() -> int:
                     buffered.append(line)
                     if len(buffered) > 5:
                         break
-                if header_line and header_saved is None:
+                if header_line and _is_better_header(header_line, header_saved):
                     header_saved = header_line
 
                 def chained():
@@ -460,7 +488,7 @@ def main() -> int:
                         if line.strip().startswith("#EXTM3U"):
                             header_line = line.strip()
                         break
-                if header_line and header_saved is None:
+                if header_line and _is_better_header(header_line, header_saved):
                     header_saved = header_line
                 process(local_lines(path), name, "local")
             except Exception as e:
