@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-M3U Checker v10 — PWA, темы, CSV, скорость, split-all, дедуп по имени,
-алерт источников, weekly backup.
+M3U Checker v10.1 — PWA, темы, CSV, скорость, split-all, дедуп по имени,
+алерт источников, weekly backup, фикс загрузки логотипов (channels + logos).
 """
 import os
 import re
@@ -52,13 +52,20 @@ HEADER_LINE = (
     'http://iptv-content.rv77.pw/guide-lite.xml"'
 )
 
-IPTV_ORG_URLS = [
+IPTV_ORG_URLS_CHANNELS = [
     'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/channels.json',
     'https://cdn.jsdelivr.net/gh/iptv-org/api@master/channels.json',
     'https://raw.githubusercontent.com/iptv-org/api/gh-pages/channels.json',
     'https://raw.githubusercontent.com/iptv-org/api/master/channels.json',
 ]
-IPTV_ORG_CACHE = '_cache_sources/iptv_org_channels.json'
+IPTV_ORG_URLS_LOGOS = [
+    'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/logos.json',
+    'https://cdn.jsdelivr.net/gh/iptv-org/api@master/logos.json',
+    'https://raw.githubusercontent.com/iptv-org/api/gh-pages/logos.json',
+    'https://raw.githubusercontent.com/iptv-org/api/master/logos.json',
+]
+IPTV_ORG_CHANNELS_CACHE = '_cache_sources/iptv_org_channels.json'
+IPTV_ORG_LOGOS_CACHE = '_cache_sources/iptv_org_logos.json'
 IPTV_ORG_TTL_DAYS = 7
 
 HTML_PREFIXES = (
@@ -103,7 +110,7 @@ def emit(text, pbar=None):
         print(text)
 
 
-# ---------- КЭШ ----------
+# ---------- КЭШ URL ----------
 class UrlCache:
     def __init__(self, path, ttl):
         self.ttl = ttl
@@ -181,65 +188,100 @@ def normalize_name(name):
 
 
 # ---------- IPTV-ORG ----------
-def load_iptv_org_logos():
-    global IPTV_LOGOS
-    if CFG.no_iptv_logos:
-        emit("Логотипы iptv-org: отключено")
-        return
-    os.makedirs(os.path.dirname(IPTV_ORG_CACHE) or '.', exist_ok=True)
+def _download_json(urls, cache_path):
+    """Скачивает JSON по списку URL, кэширует. Возвращает list или None."""
+    os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
-    if os.path.isfile(IPTV_ORG_CACHE):
-        age = (time.time() - os.path.getmtime(IPTV_ORG_CACHE)) / 86400
+    if os.path.isfile(cache_path):
+        age = (time.time() - os.path.getmtime(cache_path)) / 86400
         fresh = age < IPTV_ORG_TTL_DAYS
     if not fresh:
-        got = False
-        for url in IPTV_ORG_URLS:
+        for url in urls:
             try:
-                r = requests.get(url, timeout=30, verify=CFG.verify_ssl,
+                r = requests.get(url, timeout=60, verify=CFG.verify_ssl,
                                  headers={'User-Agent': DEFAULT_UA})
                 if r.status_code != 200:
                     continue
                 data = r.json()
                 if not isinstance(data, list) or not data:
                     continue
-                with open(IPTV_ORG_CACHE, 'w', encoding='utf-8') as f:
+                with open(cache_path, 'w', encoding='utf-8') as f:
                     json.dump(data, f, ensure_ascii=False)
-                emit(f"  База iptv-org: {len(data)} каналов")
-                got = True
-                break
+                emit(f"  Скачано: {url.split('/')[-1]} ({len(data)} записей)")
+                return data
             except Exception as e:
-                log.debug("iptv-org %s: %s", url, e)
-        if not got and not os.path.isfile(IPTV_ORG_CACHE):
-            emit("  База iptv-org недоступна")
-            return
-    try:
-        with open(IPTV_ORG_CACHE, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-    except Exception as e:
-        log.warning("Кэш iptv-org: %s", e)
+                log.debug("%s: %s", url, e)
+        if os.path.isfile(cache_path):
+            try:
+                with open(cache_path, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except Exception:
+                return None
+        return None
+    with open(cache_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def load_iptv_org_logos():
+    global IPTV_LOGOS
+    if CFG.no_iptv_logos:
+        emit("Логотипы iptv-org: отключено")
         return
-    by_id, by_name = {}, {}
-    for ch in data:
+
+    emit("  Скачиваю каналы...")
+    channels = _download_json(IPTV_ORG_URLS_CHANNELS, IPTV_ORG_CHANNELS_CACHE)
+    if not channels:
+        emit("  Каналы iptv-org недоступны")
+        return
+
+    emit("  Скачиваю логотипы...")
+    logos = _download_json(IPTV_ORG_URLS_LOGOS, IPTV_ORG_LOGOS_CACHE)
+    if not logos:
+        emit("  Логотипы iptv-org недоступны")
+        return
+
+    # id -> [names]
+    id_to_names = {}
+    for ch in channels:
         if not isinstance(ch, dict):
             continue
-        logo = ch.get('logo')
-        if not logo and isinstance(ch.get('logos'), list) and ch['logos']:
-            l0 = ch['logos'][0]
-            logo = l0.get('url') if isinstance(l0, dict) else l0
-        if not logo:
-            continue
         cid = ch.get('id')
-        if cid:
-            by_id[cid] = logo
-        for nf in ('name', 'alt_names'):
-            val = ch.get(nf)
-            vals = val if isinstance(val, list) else ([val] if isinstance(val, str) else [])
-            for v in vals:
-                if not isinstance(v, str):
-                    continue
-                k = normalize_name(v)
-                if k and k not in by_name:
-                    by_name[k] = logo
+        if not cid:
+            continue
+        names = []
+        n = ch.get('name')
+        if isinstance(n, str):
+            names.append(n)
+        an = ch.get('alt_names')
+        if isinstance(an, list):
+            names.extend([x for x in an if isinstance(x, str)])
+        elif isinstance(an, str):
+            names.append(an)
+        id_to_names[cid] = names
+
+    # channel_id -> logo_url (выбираем самое крупное изображение)
+    by_id_raw = {}
+    for logo in logos:
+        if not isinstance(logo, dict):
+            continue
+        cid = logo.get('channel')
+        url = logo.get('url') or logo.get('logo')
+        if not cid or not url:
+            continue
+        w = logo.get('width') or 0
+        cur = by_id_raw.get(cid)
+        if cur is None or (w and cur[1] < w):
+            by_id_raw[cid] = (url, w)
+    by_id = {k: v[0] for k, v in by_id_raw.items()}
+
+    # name -> logo_url
+    by_name = {}
+    for cid, url in by_id.items():
+        for name in id_to_names.get(cid, []):
+            k = normalize_name(name)
+            if k and k not in by_name:
+                by_name[k] = url
+
     IPTV_LOGOS['by_id'] = by_id
     IPTV_LOGOS['by_name'] = by_name
     emit(f"  Логотипов: {len(by_id)} по id, {len(by_name)} по имени")
@@ -587,7 +629,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
     emit(f"    Каналов: {len(channels)}")
 
     if not check:
-        out, elapsed_list = [], []
+        out = []
         for i, (extinf, url) in enumerate(channels):
             name = get_name(extinf)
             group = get_group(extinf)
@@ -665,7 +707,6 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
 
 
 def dedup_by_name_fn(channels):
-    """Убирает дубли по нормализованному имени, оставляет первый."""
     seen = set()
     out = []
     for extinf, url in channels:
@@ -712,7 +753,6 @@ def write_playlist(path, channels):
 
 
 def slugify_group(g):
-    """Превращает группу в безопасное имя файла."""
     s = re.sub(r'^\S+\s+', '', g)
     s = s.lower()
     translit = {
@@ -734,10 +774,8 @@ def slugify_group(g):
 
 
 def write_splits(channels, docs_dir, split_all=False):
-    """Создаёт отдельные плейлисты. Если split_all — для каждой группы."""
     created = []
     splits = dict(CATEGORIES.get('split_playlists', {}))
-
     if split_all:
         all_groups = set()
         for extinf, _ in channels:
@@ -831,7 +869,7 @@ def render_history_svg(history):
 </svg></div>'''
 
 
-# ---------- CSS/HTML ОБЩЕЕ ----------
+# ---------- CSS/HTML ----------
 COMMON_CSS = """
 *{box-sizing:border-box}
 :root{
@@ -897,16 +935,15 @@ THEME_JS = """
 THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 
 
-# ---------- HTML ----------
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v10 - {date}</title>
+<title>M3U Check v10.1 - {date}</title>
 <style>{common_css}</style>
 </head><body>
 {theme_btn}
 <a class="back" href="index.html">← на главную</a>
-<h1>M3U Check v10</h1>
+<h1>M3U Check v10.1</h1>
 <div class="sub">{date} · источников: {n_playlists}</div>
 <div class="cards">
 <div class="card"><div class="k">Проверено</div><div class="v">{total}</div></div>
@@ -997,7 +1034,6 @@ background:var(--border);border-radius:4px;padding:2px}}
 .copy{{background:var(--border);border:none;color:var(--muted);padding:4px 8px;
 border-radius:4px;font-size:11px;cursor:pointer}}
 .copy:hover{{background:var(--accent);color:#fff}}
-.stats{{color:var(--muted);font-size:13px;margin-bottom:12px}}
 </style></head><body>
 {theme_btn}
 <a href="index.html">← на главную</a>
@@ -1223,7 +1259,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, merged, dur, index_url,
               source_results, is_weekly):
-    lines = ["<b>M3U Check v10</b>"]
+    lines = ["<b>M3U Check v10.1</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -1268,10 +1304,8 @@ def parse_args():
     p.add_argument('--no-ssl-verify', action='store_true')
     p.add_argument('--multi-ua', action='store_true')
     p.add_argument('--no-iptv-logos', action='store_true')
-    p.add_argument('--split-all', action='store_true',
-                   help='Отдельный плейлист для каждой группы')
-    p.add_argument('--weekly-backup', action='store_true',
-                   help='Отправить файлы в Telegram (для воскресного запуска)')
+    p.add_argument('--split-all', action='store_true')
+    p.add_argument('--weekly-backup', action='store_true')
     p.add_argument('--cache', default='m3u_cache.sqlite')
     p.add_argument('--cache-ttl', type=int, default=3600)
     p.add_argument('--log', default='m3u_checker.log')
@@ -1354,7 +1388,6 @@ def main():
             stats_list.append(st)
             pl += 1
 
-        # Дедуп по имени
         merged_pairs = [(e, u) for _, e, u in merged_all]
         if FILTERS.get('dedup_by_name'):
             before = len(merged_pairs)
@@ -1386,7 +1419,6 @@ def main():
                     continue
                 ua_totals[k] = ua_totals.get(k, 0) + c
 
-        # История
         history_path = os.path.join(CFG.docs_dir, 'history.json')
         history = load_history(history_path)
         history.append({
@@ -1396,10 +1428,8 @@ def main():
         })
         save_history(history_path, history)
 
-        # CSV
         write_csv(ordered_merged, os.path.join(CFG.docs_dir, 'channels.csv'))
 
-        # HTML
         render_report(os.path.join(CFG.docs_dir, 'report.html'),
                       stats_list, len(ordered_merged), total, ok, filt, dead,
                       time.time() - started, ua_totals, history)
@@ -1418,7 +1448,6 @@ def main():
         emit(f"\nГотово за {int(time.time() - started)}с. "
              f"OK={ok}, фильтр={filt}, merged={len(ordered_merged)}")
 
-        # Telegram
         if CFG.tg_token and CFG.tg_chat:
             tg_report(stats_list, total, ok, filt, len(ordered_merged),
                       time.time() - started, iurl, source_results,
