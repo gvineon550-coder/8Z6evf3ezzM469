@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v20 — максимальная красота: погода, часы МСК, 3 темы, карточки.
+M3U Checker v20.1 — фикс погоды (wttr.in + Open-Meteo с резервом).
 """
 import os
 import re
@@ -1833,18 +1833,42 @@ THEME_JS = """
     if (code <= 86) return '❄️';
     return '⛈️';
   }
+
+  // Погода: сначала wttr.in, потом Open-Meteo, иначе просто "Нальчик"
   async function updateWeather(){
     const el = document.getElementById('weather');
     if (!el) return;
+
+    // Источник 1: wttr.in (обычно работает в РФ)
     try {
-      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=43.4981&longitude=43.6189&current=temperature_2m,weather_code&timezone=Europe%2FMoscow');
-      const d = await r.json();
-      const t = Math.round(d.current.temperature_2m);
-      const code = d.current.weather_code;
-      el.innerHTML = weatherEmoji(code) + ' <strong>' + t + '°C</strong> <span class="hide-mobile">· Нальчик</span>';
-    } catch(e) {
-      el.innerHTML = '🌡️ <span class="hide-mobile">Нальчик</span>';
-    }
+      const r = await fetch('https://wttr.in/Nalchik?format=j1', {signal: AbortSignal.timeout(5000)});
+      if (r.ok) {
+        const d = await r.json();
+        const cc = d.current_condition && d.current_condition[0];
+        if (cc && cc.temp_C !== undefined) {
+          const t = cc.temp_C;
+          const code = parseInt(cc.weatherCode || '0', 10);
+          el.innerHTML = weatherEmoji(code) + ' <strong>' + t + '°C</strong> <span class="hide-mobile">· Нальчик</span>';
+          return;
+        }
+      }
+    } catch(e) {}
+
+    // Источник 2: Open-Meteo
+    try {
+      const r2 = await fetch('https://api.open-meteo.com/v1/forecast?latitude=43.4981&longitude=43.6189&current=temperature_2m,weather_code&timezone=Europe%2FMoscow', {signal: AbortSignal.timeout(5000)});
+      if (r2.ok) {
+        const d2 = await r2.json();
+        if (d2 && d2.current && d2.current.temperature_2m !== undefined) {
+          const t2 = Math.round(d2.current.temperature_2m);
+          const code2 = d2.current.weather_code || 0;
+          el.innerHTML = weatherEmoji(code2) + ' <strong>' + t2 + '°C</strong> <span class="hide-mobile">· Нальчик</span>';
+          return;
+        }
+      }
+    } catch(e) {}
+
+    el.innerHTML = '🌡️ <span class="hide-mobile">Нальчик</span>';
   }
   updateWeather();
   setInterval(updateWeather, 15*60*1000);
@@ -1948,7 +1972,7 @@ TOP_RIGHT_WIDGET = '''<div class="top-right">
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v20 - {date}</title>
+<title>M3U Check v20.1 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1997,10 +2021,10 @@ INDEX_T = """<!DOCTYPE html>
 <meta name="apple-mobile-web-app-title" content="IPTV">
 <link rel="apple-touch-icon" href="icon.svg">
 <style>{common_css}
-.qr-wrap{{display:flex;gap:20px;align-items:center;flex-wrap:wrap}}
-.qr-wrap img{{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}}
-.qr-info{{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}}
-.link-line{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}
+.qr-wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.qr-wrap img{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}
+.qr-info{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}
+.link-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 </style></head><body>
 {top_right}
 <h1>IPTV — авто-обновляемый плейлист</h1>
@@ -2078,23 +2102,23 @@ CHANNELS_T = """<!DOCTYPE html>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}
-input[type=search],select{{background:var(--panel);border:1px solid var(--border);
+input[type=search],select{background:var(--panel);border:1px solid var(--border);
 color:var(--text);padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
 margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px)}}
-.controls{{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}}
-@media(max-width:600px){{.controls{{grid-template-columns:1fr}}}}
-th{{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);z-index:2}}
-.logo{{width:32px;height:32px;object-fit:contain;vertical-align:middle;
-background:var(--border);border-radius:6px;padding:3px}}
-.name{{font-weight:500}}
-.group{{color:var(--muted);font-size:12px}}
-.copy{{background:var(--border);border:none;color:var(--muted);padding:5px 10px;
-border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}}
-.copy:hover{{background:var(--accent);color:#fff}}
-.copy.ok{{background:#4ade80;color:#0f1115}}
-.view-bar{{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}}
+-webkit-backdrop-filter:blur(10px)}
+.controls{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}
+@media(max-width:600px){.controls{grid-template-columns:1fr}}
+th{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);z-index:2}
+.logo{width:32px;height:32px;object-fit:contain;vertical-align:middle;
+background:var(--border);border-radius:6px;padding:3px}
+.name{font-weight:500}
+.group{color:var(--muted);font-size:12px}
+.copy{background:var(--border);border:none;color:var(--muted);padding:5px 10px;
+border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
+.copy:hover{background:var(--accent);color:#fff}
+.copy.ok{background:#4ade80;color:#0f1115}
+.view-bar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 </style></head><body>
 {top_right}
 <a href="index.html">← на главную</a>
@@ -2146,28 +2170,28 @@ const params = new URLSearchParams(location.search);
 const initGroup = params.get('group');
 if(initGroup) g.value = initGroup;
 
-function esc(s){{ return (s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c])); }}
-function uptimeHtml(pct, samples) {{
+function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function uptimeHtml(pct, samples) {
   if (pct === null || pct === undefined || samples < 2) return '<span class="uptime-none">—</span>';
   let cls = 'uptime-good';
   if (pct < 50) cls = 'uptime-low';
   else if (pct < 80) cls = 'uptime-mid';
   return '<span class="' + cls + '">' + pct + '%</span>';
-}}
-function qualityHtml(q) {{
+}
+function qualityHtml(q) {
   if (q === '4K') return '<span class="quality-4k">4K</span>';
   if (q === 'HD') return '<span class="quality-hd">HD</span>';
   if (q === 'SD') return '<span class="quality-sd">SD</span>';
   return '<span style="color:var(--muted);font-size:11px">—</span>';
-}}
-function statusEmoji(pct, samples) {{
+}
+function statusEmoji(pct, samples) {
   if (pct === null || pct === undefined || samples < 2) return '⚪';
   if (pct >= 90) return '🟢';
   if (pct >= 50) return '🟡';
   return '🔴';
-}}
+}
 
-function filtered() {{
+function filtered() {
   const term = q.value.trim().toLowerCase();
   const grp = g.value;
   const onlyEpg = fEpg.checked;
@@ -2176,25 +2200,25 @@ function filtered() {{
   const only4k = f4k.checked;
   const onlyHd = fHd.checked;
   let out = [];
-  for (const c of CH) {{
+  for (const c of CH) {
     if (grp && c.group !== grp) continue;
     if (term && !c.name.toLowerCase().includes(term)) continue;
     if (onlyEpg && !c.tvg_id) continue;
     if (onlyLogo && !c.logo) continue;
-    if (onlyStable) {{
+    if (onlyStable) {
       if (c.uptime_pct === null || c.uptime_pct === undefined) continue;
       if (c.uptime_pct < 80) continue;
-    }}
+    }
     if (only4k && c.quality !== '4K') continue;
     if (onlyHd && c.quality !== 'HD') continue;
     out.push(c);
-  }}
+  }
   if (out.length > 800) out = out.slice(0, 800);
   return out;
-}}
+}
 
-function renderTable(out) {{
-  const html = out.map(c => {{
+function renderTable(out) {
+  const html = out.map(c => {
     const logo = c.logo ? '<img class="logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '';
     const epg = c.tvg_id ? '<span style="color:#4ade80;font-size:11px;margin-left:4px" title="' + esc(c.tvg_id) + '">EPG</span>' : '';
     const up = uptimeHtml(c.uptime_pct, c.uptime_samples);
@@ -2204,19 +2228,19 @@ function renderTable(out) {{
       + '<td>' + up + '</td>'
       + '<td class="group">' + esc(c.group) + '</td>'
       + '<td><button class="copy" data-u="' + esc(c.url) + '">URL</button></td></tr>';
-  }}).join('');
+  }).join('');
   tb.innerHTML = html || '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
-  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {{
-    navigator.clipboard.writeText(b.dataset.u).then(() => {{
+  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
+    navigator.clipboard.writeText(b.dataset.u).then(() => {
       b.classList.add('ok');
       const t = b.textContent; b.textContent = '✓';
-      setTimeout(() => {{ b.classList.remove('ok'); b.textContent = t; }}, 1000);
-    }});
-  }}));
-}}
+      setTimeout(() => { b.classList.remove('ok'); b.textContent = t; }, 1000);
+    });
+  }));
+}
 
-function renderGrid(out) {{
-  const html = out.map((c, i) => {{
+function renderGrid(out) {
+  const html = out.map((c, i) => {
     const logo = c.logo ? '<img class="cc-logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '<div class="cc-logo" style="display:inline-block"></div>';
     const st = statusEmoji(c.uptime_pct, c.uptime_samples);
     const q = c.quality && c.quality !== 'Unknown' ? ' · ' + c.quality : '';
@@ -2228,42 +2252,42 @@ function renderGrid(out) {{
       + '<div class="cc-actions">'
       + '<button class="cc-btn copy" data-u="' + esc(c.url) + '">URL</button>'
       + '</div></div>';
-  }}).join('');
+  }).join('');
   grid.innerHTML = html || '<div style="text-align:center;color:var(--muted);padding:24px;grid-column:1/-1">Ничего не найдено</div>';
-  grid.querySelectorAll('.copy').forEach(b => b.addEventListener('click', (e) => {{
+  grid.querySelectorAll('.copy').forEach(b => b.addEventListener('click', (e) => {
     e.stopPropagation();
-    navigator.clipboard.writeText(b.dataset.u).then(() => {{
+    navigator.clipboard.writeText(b.dataset.u).then(() => {
       b.classList.add('ok');
       const t = b.textContent; b.textContent = '✓';
-      setTimeout(() => {{ b.classList.remove('ok'); b.textContent = t; }}, 1000);
-    }});
-  }}));
-}}
+      setTimeout(() => { b.classList.remove('ok'); b.textContent = t; }, 1000);
+    });
+  }));
+}
 
-function render() {{
+function render() {
   const out = filtered();
-  if (viewMode === 'grid') {{
+  if (viewMode === 'grid') {
     tableWrap.style.display = 'none';
     gridWrap.style.display = 'block';
     renderGrid(out);
-  }} else {{
+  } else {
     tableWrap.style.display = 'block';
     gridWrap.style.display = 'none';
     renderTable(out);
-  }}
+  }
   shown.textContent = out.length;
-}}
+}
 
-btnTable.addEventListener('click', () => {{
+btnTable.addEventListener('click', () => {
   viewMode = 'table';
   localStorage.setItem('ch-view', 'table');
   render();
-}});
-btnGrid.addEventListener('click', () => {{
+});
+btnGrid.addEventListener('click', () => {
   viewMode = 'grid';
   localStorage.setItem('ch-view', 'grid');
   render();
-}});
+});
 
 q.addEventListener('input', render);
 g.addEventListener('change', render);
@@ -2284,18 +2308,18 @@ REJECTED_T = """<!DOCTYPE html>
 <title>Отсеянные каналы</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}
-input,select{{background:var(--panel);border:1px solid var(--border);color:var(--text);
+input,select{background:var(--panel);border:1px solid var(--border);color:var(--text);
 padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
 margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px)}}
-.controls{{display:grid;grid-template-columns:1fr 260px;gap:10px;margin-bottom:16px}}
-@media(max-width:600px){{.controls{{grid-template-columns:1fr}}}}
-th{{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);z-index:2}}
-.name{{font-weight:500}}
-.group{{color:var(--muted);font-size:12px}}
-.url-cell{{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);
-max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+-webkit-backdrop-filter:blur(10px)}
+.controls{display:grid;grid-template-columns:1fr 260px;gap:10px;margin-bottom:16px}
+@media(max-width:600px){.controls{grid-template-columns:1fr}}
+th{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);z-index:2}
+.name{font-weight:500}
+.group{color:var(--muted);font-size:12px}
+.url-cell{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);
+max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 </style></head><body>
 {top_right}
 <a href="index.html">← на главную</a>
@@ -2315,34 +2339,34 @@ const tb = document.getElementById('tb');
 const q = document.getElementById('q');
 const r = document.getElementById('r');
 const shown = document.getElementById('shown');
-function esc(s){{ return (s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c])); }}
-function reasonClass(rs) {{
+function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function reasonClass(rs) {
   if (!rs) return 'reason-badge';
   if (rs.startsWith('dead')) return 'reason-badge dead';
   if (rs.startsWith('unstable')) return 'reason-badge unstable';
   return 'reason-badge filter';
-}}
-function render(){{
+}
+function render(){
   const term = q.value.trim().toLowerCase();
   const rs = r.value;
   let out = [];
-  for (const c of REJ) {{
+  for (const c of REJ) {
     if (rs && !c.reason.startsWith(rs)) continue;
     if (term && !(c.name.toLowerCase().includes(term) || c.url.toLowerCase().includes(term))) continue;
     out.push(c);
-  }}
+  }
   if (out.length > 800) out = out.slice(0, 800);
-  const html = out.map(c => {{
+  const html = out.map(c => {
     return '<tr>'
       + '<td class="name">' + esc(c.name) + '</td>'
       + '<td class="group">' + esc(c.group) + '</td>'
       + '<td class="url-cell" title="' + esc(c.url) + '">' + esc(c.url) + '</td>'
       + '<td><span class="' + reasonClass(c.reason) + '">' + esc(c.reason) + '</span></td>'
       + '</tr>';
-  }}).join('');
+  }).join('');
   tb.innerHTML = html || '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
   shown.textContent = out.length;
-}}
+}
 q.addEventListener('input', render);
 r.addEventListener('change', render);
 render();
@@ -2422,7 +2446,6 @@ def render_trend_svg(history):
             return ''
         return f"M{pts[0][0]:.1f},{H-P} L" + " L".join(f"{x:.1f},{y:.1f}" for x, y, _ in pts) + f" L{pts[-1][0]:.1f},{H-P} Z"
 
-    # Метки с датами и tooltip
     dots = ""
     hover_targets = ""
     for i, (x, y, v) in enumerate(pts_ok):
@@ -2435,10 +2458,8 @@ def render_trend_svg(history):
             f'onmouseout="hideChartTip()"/>'
         )
     for i, (x, y, v) in enumerate(pts_merged):
-        date_str = history[i].get('date', '')
         dots += f'<circle cx="{x:.1f}" cy="{y:.1f}" r="2" fill="#60a5fa"/>'
     for i, (x, y, v) in enumerate(pts_epg):
-        date_str = history[i].get('date', '')
         dots += f'<circle cx="{x:.1f}" cy="{y:.1f}" r="2" fill="#facc15"/>'
 
     labels = ""
@@ -2736,7 +2757,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v20</b>"]
+    lines = ["<b>M3U Check v20.1</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
