@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: checker
+  cancel-in-progress: false
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -67,6 +71,7 @@ jobs:
             --ffprobe-workers 4 \
             --ffprobe-timeout 8 \
             --ffprobe-cache-days 3 \
+            --cache-ttl 25200 \
             --tg-send-merged
 
       - name: Notify on failure
@@ -92,7 +97,10 @@ jobs:
           git add docs/
           if git diff --staged --quiet; then
             echo "Нет изменений"
-          else
-            git commit -m "Auto-update $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            exit 0
           fi
+          git commit -m "Auto-update $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash && git push && break
+            echo "Попытка $i не удалась, ждём 5 сек..."; sleep 5
+          done
