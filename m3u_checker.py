@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-M3U Checker v21 — ffprobe с wink UA + погода через серверы GitHub.
-+ Whitelist: URL/имя из filters.json пропускают все проверки (VIP).
-+ Зашифрованные ссылки на главной (AES-256-GCM + Telegram-пароль).
+M3U Checker v22 — ffprobe + whitelist + AES-256 шифрование + красивая главная.
+Сплиты с случайными именами. Всё под пароль из Telegram.
+Fallbacks для курсов/новостей/CDN.
 """
 import os
 import re
@@ -13,6 +13,7 @@ import time
 import html
 import json
 import base64
+import random
 import shutil
 import sqlite3
 import logging
@@ -56,14 +57,13 @@ DEFAULT_UA = USER_AGENTS[0][1]
 UA_LINE = f'#EXTVLCOPT:http-user-agent={DEFAULT_UA}'
 UA_ICONS = {'wink': '📺', 'vlc': '🎬', 'tivimate': '📱', 'smarttv': '📡', 'cached': '⚡'}
 
-# ===== WHITELIST — каналы, которые пропускают ВСЕ проверки =====
+# ===== WHITELIST =====
 WHITELIST_URLS = []
 WHITELIST_NAMES = []
 WHITELIST_STATS = {'skipped': 0, 'kept': 0}
 
 
 def compile_whitelist():
-    """Компилируем whitelist из filters.json."""
     global WHITELIST_URLS, WHITELIST_NAMES
     WHITELIST_URLS = []
     WHITELIST_NAMES = []
@@ -72,21 +72,18 @@ def compile_whitelist():
             continue
         try:
             WHITELIST_URLS.append(re.compile(p, re.IGNORECASE))
-        except re.error as e:
-            log.warning("whitelist url regex %s: %s", p, e)
+        except re.error:
             WHITELIST_URLS.append(re.compile(re.escape(p), re.IGNORECASE))
     for p in FILTERS.get('whitelist_name_patterns', []) or []:
         if not p:
             continue
         try:
             WHITELIST_NAMES.append(re.compile(p))
-        except re.error as e:
-            log.warning("whitelist name regex %s: %s", p, e)
+        except re.error:
             WHITELIST_NAMES.append(re.compile(re.escape(p), re.IGNORECASE))
 
 
 def is_whitelisted(url, name):
-    """True если URL или имя в белом списке."""
     if url:
         for p in WHITELIST_URLS:
             if p.search(url):
@@ -155,13 +152,7 @@ DONUT_COLORS = [
     '#fb923c', '#34d399', '#f472b6', '#22d3ee', '#fbbf24',
     '#818cf8', '#fca5a5',
 ]
-
-QUALITY_COLORS = {
-    '4K': '#a78bfa',
-    'HD': '#4ade80',
-    'SD': '#facc15',
-    'Unknown': '#8a8f98',
-}
+QUALITY_COLORS = {'4K': '#a78bfa', 'HD': '#4ade80', 'SD': '#facc15', 'Unknown': '#8a8f98'}
 
 log = logging.getLogger('m3u')
 CFG = None
@@ -187,6 +178,105 @@ FFPROBE_LOCK = threading.Lock()
 FFPROBE_SEM = threading.Semaphore(4)
 FFPROBE_STATS = {'ok': 0, 'fail': 0, 'cached_ok': 0, 'cached_fail': 0, 'skipped': 0}
 WEATHER_HTML = '🌡️ <span class="hide-mobile">Нальчик</span>'
+
+# ===== Обфускация сплитов =====
+SPLIT_MAP_FILE = 'docs/split_names.json'
+SPLIT_FILENAME_PREFIX = 'g_'
+
+
+def generate_split_filename():
+    alphabet = 'abcdefghijkmnpqrstuvwxyz23456789'
+    name = ''.join(secrets.choice(alphabet) for _ in range(10))
+    return f'{SPLIT_FILENAME_PREFIX}{name}.m3u8'
+
+
+def load_split_map():
+    if not os.path.isfile(SPLIT_MAP_FILE):
+        return {}
+    try:
+        with open(SPLIT_MAP_FILE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def save_split_map(m):
+    os.makedirs(os.path.dirname(SPLIT_MAP_FILE) or '.', exist_ok=True)
+    with open(SPLIT_MAP_FILE, 'w', encoding='utf-8') as f:
+        json.dump(m, f, ensure_ascii=False, indent=2)
+
+
+def cleanup_old_splits(docs_dir):
+    removed = 0
+    try:
+        for f in os.listdir(docs_dir):
+            path = os.path.join(docs_dir, f)
+            if not os.path.isfile(path):
+                continue
+            if f.endswith('.m3u8') and (
+                f.startswith('group_') or
+                f.startswith(SPLIT_FILENAME_PREFIX) or
+                f in ('4k.m3u8', 'hd.m3u8', 'sd.m3u8')
+            ):
+                try:
+                    os.remove(path)
+                    removed += 1
+                except Exception:
+                    pass
+    except Exception as e:
+        log.warning("cleanup_old_splits: %s", e)
+    return removed
+
+
+def humanize_split_name(key):
+    n = key
+    for suf in ('.m3u8', '.m3u'):
+        if n.endswith(suf):
+            n = n[:-len(suf)]
+    n = n.replace('group_', '')
+    n = n.replace('_', ' ').strip()
+    if not n:
+        return key
+    if n.lower() in ('4k', 'hd', 'sd'):
+        return n.upper()
+    return n[:1].upper() + n[1:]
+# ===== /Обфускация сплитов =====
+
+# ===== ШИФРОВАНИЕ =====
+def generate_password(length=16):
+    alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789'
+    return ''.join(secrets.choice(alphabet) for _ in range(length))
+
+
+def encrypt_payload(payload_dict, password, iterations=150000):
+    if not HAS_CRYPTO:
+        raise RuntimeError("cryptography не установлен")
+    salt = secrets.token_bytes(16)
+    iv = secrets.token_bytes(12)
+    kdf = PBKDF2HMAC(algorithm=hashes.SHA256(), length=32, salt=salt,
+                     iterations=iterations)
+    key = kdf.derive(password.encode('utf-8'))
+    payload = json.dumps(payload_dict, ensure_ascii=False).encode('utf-8')
+    aesgcm = AESGCM(key)
+    ciphertext = aesgcm.encrypt(iv, payload, None)
+    return base64.b64encode(salt + iv + ciphertext).decode('ascii')
+
+
+def send_password_to_telegram(password, playlist_url):
+    if not CFG.tg_token or not CFG.tg_chat:
+        log.warning("⚠️  Telegram не настроен — пароль не отправлен")
+        return False
+    pages = CFG.pages_url.rstrip('/') if CFG.pages_url else ''
+    text = (
+        f"🔐 <b>Новый пароль для страницы</b>\n\n"
+        f"<code>{password}</code>\n\n"
+        f"📍 Открывай: <a href='{pages}/index.html'>index.html</a>\n"
+        f"⏱ Действует до следующего запуска (6 часов)\n"
+        f"📺 Внутри — ссылки на плейлисты и QR"
+    )
+    return tg_send(CFG.tg_token, CFG.tg_chat, text)
+# ===== /ШИФРОВАНИЕ =====
 
 
 def setup_logging(path, quiet):
@@ -237,7 +327,6 @@ def _weather_emoji(code):
 
 
 def fetch_weather():
-    """Погода для Нальчика. Работает с серверов GitHub — без блокировок РФ."""
     try:
         r = requests.get('https://wttr.in/Nalchik?format=j1',
                          timeout=10, verify=CFG.verify_ssl)
@@ -247,34 +336,366 @@ def fetch_weather():
             t = cc.get('temp_C')
             code = cc.get('weatherCode') or 0
             if t is not None:
-                log.info("Погода: wttr.in %s°C (код %s)", t, code)
                 return f'{_weather_emoji(code)} <strong>{t}°C</strong> <span class="hide-mobile">· Нальчик</span>'
     except Exception as e:
         log.debug("wttr.in: %s", e)
-
     try:
         r = requests.get(
             'https://api.open-meteo.com/v1/forecast'
             '?latitude=43.4981&longitude=43.6189'
-            '&current=temperature_2m,weather_code'
-            '&timezone=Europe%2FMoscow',
+            '&current=temperature_2m,weather_code&timezone=Europe%2FMoscow',
             timeout=10, verify=CFG.verify_ssl)
         if r.status_code == 200:
-            d = r.json()
-            c = d.get('current') or {}
+            c = r.json().get('current') or {}
             t = c.get('temperature_2m')
             code = c.get('weather_code') or 0
             if t is not None:
-                t = round(t)
-                log.info("Погода: open-meteo %s°C (код %s)", t, code)
-                return f'{_weather_emoji(code)} <strong>{t}°C</strong> <span class="hide-mobile">· Нальчик</span>'
+                return f'{_weather_emoji(code)} <strong>{round(t)}°C</strong> <span class="hide-mobile">· Нальчик</span>'
     except Exception as e:
         log.debug("open-meteo: %s", e)
-
-    log.warning("Погода: не удалось загрузить")
     return '🌡️ <span class="hide-mobile">Нальчик</span>'
 
 
+def fetch_weather_v2():
+    try:
+        r = requests.get('https://wttr.in/Nalchik?format=j1',
+                         timeout=10, verify=CFG.verify_ssl)
+        if r.status_code == 200:
+            d = r.json()
+            cur = d['current_condition'][0]
+            today = d['weather'][0]
+            astro = today['astronomy'][0]
+            return {
+                'now_temp': cur['temp_C'],
+                'now_feels': cur['FeelsLikeC'],
+                'now_code': int(cur.get('weatherCode', 0)),
+                'now_humidity': cur.get('humidity', '—'),
+                'now_wind': cur.get('windspeedKmph', '—'),
+                'now_pressure': cur.get('pressure', '—'),
+                'sunrise': astro.get('sunrise', ''),
+                'sunset': astro.get('sunset', ''),
+                'forecast': [
+                    {'date': day['date'], 'max': day['maxtempC'],
+                     'min': day['mintempC'],
+                     'code': int(day['hourly'][4].get('weatherCode', 0))}
+                    for day in d['weather'][:3]
+                ],
+            }
+    except Exception as e:
+        log.debug("weather_v2: %s", e)
+    return None
+
+
+def weather_kind_v2(code):
+    if code == 0: return 'sun'
+    if code <= 3: return 'cloud'
+    if code <= 48: return 'fog'
+    if code <= 67: return 'rain'
+    if code <= 77: return 'snow'
+    if code <= 82: return 'rain'
+    if code <= 86: return 'snow'
+    return 'storm'
+
+
+def fetch_currency():
+    """Курсы ЦБ. Fallback: cbr-xml-daily.ru → cbr.ru → exchangerate.host"""
+    # 1. cbr-xml-daily.ru
+    try:
+        r = requests.get('https://www.cbr-xml-daily.ru/daily_json.js',
+                         timeout=10, verify=CFG.verify_ssl)
+        if r.status_code == 200:
+            v = r.json()['Valute']
+            return {'usd': round(v['USD']['Value'], 2),
+                    'eur': round(v['EUR']['Value'], 2),
+                    'cny': round(v['CNY']['Value'], 2),
+                    'src': 'cbr-xml'}
+    except Exception as e:
+        log.debug("cbr-xml-daily: %s", e)
+
+    # 2. Официальный cbr.ru (XML)
+    try:
+        r = requests.get('https://www.cbr.ru/scripts/XML_daily.asp',
+                         timeout=15, verify=CFG.verify_ssl,
+                         headers={'User-Agent': DEFAULT_UA})
+        if r.status_code == 200:
+            import xml.etree.ElementTree as ET
+            r.encoding = 'windows-1251'
+            root = ET.fromstring(r.text)
+            out = {}
+            for val in root.findall('Valute'):
+                code = val.findtext('CharCode')
+                value = val.findtext('Value')
+                nominal = val.findtext('Nominal') or '1'
+                if code in ('USD', 'EUR', 'CNY') and value:
+                    try:
+                        v = float(value.replace(',', '.')) / int(nominal)
+                        out[code.lower()] = round(v, 2)
+                    except Exception:
+                        pass
+            if out.get('usd') and out.get('eur') and out.get('cny'):
+                out['src'] = 'cbr.ru'
+                return out
+    except Exception as e:
+        log.debug("cbr.ru: %s", e)
+
+    # 3. exchangerate.host
+    try:
+        r = requests.get('https://api.exchangerate.host/latest?base=RUB&symbols=USD,EUR,CNY',
+                         timeout=10, verify=CFG.verify_ssl)
+        if r.status_code == 200:
+            rates = r.json().get('rates', {})
+            if rates.get('USD') and rates.get('EUR') and rates.get('CNY'):
+                return {
+                    'usd': round(1 / rates['USD'], 2),
+                    'eur': round(1 / rates['EUR'], 2),
+                    'cny': round(1 / rates['CNY'], 2),
+                    'src': 'exchangerate.host',
+                }
+    except Exception as e:
+        log.debug("exchangerate.host: %s", e)
+    return None
+
+
+def fetch_news_v2(limit=4):
+    """Новости. Fallback: lenta.ru → rbc.ru → tass.ru"""
+    sources = [
+        ('https://lenta.ru/rss/news', 'rss'),
+        ('https://rssexport.rbc.ru/rbcnews/news/30/full.rss', 'rss'),
+        ('https://tass.ru/rss/v2.xml', 'rss'),
+    ]
+    import xml.etree.ElementTree as ET
+    for url, kind in sources:
+        try:
+            r = requests.get(url, timeout=15, verify=CFG.verify_ssl,
+                             headers={'User-Agent': DEFAULT_UA})
+            if r.status_code != 200:
+                continue
+            r.encoding = 'utf-8'
+            root = ET.fromstring(r.content)
+            items = []
+            for item in root.iter('item'):
+                title_el = item.find('title')
+                link_el = item.find('link')
+                desc_el = item.find('description')
+                if title_el is None or not title_el.text:
+                    continue
+                desc = ''
+                if desc_el is not None and desc_el.text:
+                    desc = re.sub(r'<[^>]+>', '', desc_el.text)
+                    desc = html.unescape(desc).strip()
+                    if len(desc) > 110:
+                        desc = desc[:107] + '...'
+                items.append({
+                    'title': title_el.text.strip(),
+                    'link': (link_el.text or '').strip() if link_el is not None else '',
+                    'desc': desc,
+                })
+                if len(items) >= limit:
+                    break
+            if items:
+                log.debug("news: источник %s", url)
+                return items
+        except Exception as e:
+            log.debug("news %s: %s", url, e)
+    return []
+
+
+def moon_phase_v2():
+    today = datetime.date.today()
+    known = datetime.date(2000, 1, 6)
+    days = (today - known).days
+    phase = (days % 29.530588853) / 29.530588853
+    if phase < 0.03 or phase > 0.97: return '🌑', 'Новолуние'
+    if phase < 0.22: return '🌒', 'Молодая луна'
+    if phase < 0.28: return '🌓', 'Первая четверть'
+    if phase < 0.47: return '🌔', 'Растущая луна'
+    if phase < 0.53: return '🌕', 'Полнолуние'
+    if phase < 0.72: return '🌖', 'Убывающая луна'
+    if phase < 0.78: return '🌗', 'Последняя четверть'
+    return '🌘', 'Старая луна'
+
+
+QUOTES_RU = [
+    ("Жизнь — это то, что происходит, пока ты строишь планы.", "Джон Леннон"),
+    ("Единственный способ делать великую работу — любить то, что делаешь.", "Стив Джобс"),
+    ("Не бойся медленно идти, бойся стоять на месте.", "Китайская пословица"),
+    ("Дорогу осилит идущий.", "Латинская пословица"),
+    ("Всё гениальное — просто.", "Исаак Ньютон"),
+    ("Кто хочет — ищет возможности, кто не хочет — ищет причины.", "Сократ"),
+    ("Самый тёмный час — перед рассветом.", "Пауло Коэльо"),
+    ("Меняй свою жизнь, а не мир вокруг.", "Лев Толстой"),
+    ("Будь тем изменением, которое ты хочешь видеть в мире.", "Махатма Ганди"),
+    ("Цель без плана — просто желание.", "Антуан де Сент-Экзюпери"),
+    ("Мы то, что мы делаем постоянно. Совершенство — не действие, а привычка.", "Аристотель"),
+    ("Победа над собой — величайшая из побед.", "Платон"),
+]
+
+HOLIDAYS_RU = {
+    (1, 1): "🎄 Новый год", (1, 7): "🌟 Рождество Христово",
+    (1, 14): "🎊 Старый Новый год",
+    (2, 23): "🎖 День защитника Отечества",
+    (3, 8): "💐 Международный женский день",
+    (4, 12): "🚀 День космонавтики",
+    (5, 1): "🌷 Праздник Весны и Труда",
+    (5, 9): "🎗 День Победы",
+    (6, 1): "👶 День защиты детей",
+    (6, 12): "🇷🇺 День России",
+    (9, 1): "📚 День знаний",
+    (11, 4): "🕊 День народного единства",
+}
+
+WEEKDAYS_SHORT_RU = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+MONTHS_RU_NOM = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+
+
+def quote_of_day():
+    today = datetime.date.today()
+    idx = (today.year * 366 + today.timetuple().tm_yday) % len(QUOTES_RU)
+    return QUOTES_RU[idx]
+
+
+def days_to_new_year():
+    today = datetime.date.today()
+    return (datetime.date(today.year + 1, 1, 1) - today).days
+
+
+def calendar_html(today):
+    year, month = today.year, today.month
+    first = datetime.date(year, month, 1)
+    start_wd = first.weekday()
+    nm = datetime.date(year + 1, 1, 1) if month == 12 else datetime.date(year, month + 1, 1)
+    days_in = (nm - first).days
+    cells = []
+    for _ in range(start_wd):
+        cells.append('<div class="cal-cell cal-empty"></div>')
+    for d in range(1, days_in + 1):
+        date = datetime.date(year, month, d)
+        cls = 'cal-cell'
+        if d == today.day:
+            cls += ' cal-today'
+        elif date.weekday() >= 5:
+            cls += ' cal-weekend'
+        hol = HOLIDAYS_RU.get((month, d))
+        hol_attr = f' title="{hol}"' if hol else ''
+        hol_dot = '<span class="cal-hol">•</span>' if hol else ''
+        cells.append(f'<div class="{cls}"{hol_attr}>{d}{hol_dot}</div>')
+    headers = ''.join(f'<div class="cal-head">{w}</div>' for w in WEEKDAYS_SHORT_RU)
+    return (f'<div class="cal-month">{MONTHS_RU_NOM[month-1]} {year}</div>'
+            f'<div class="cal-grid">{headers}{"".join(cells)}</div>')
+
+
+def generate_svg_art():
+    seed = random.randint(0, 999999)
+    random.seed(seed)
+    palettes = [
+        ('#667eea', '#764ba2', '#f093fb'),
+        ('#4facfe', '#00f2fe', '#43e97b'),
+        ('#fa709a', '#fee140', '#ff6b6b'),
+        ('#30cfd0', '#330867', '#a8edea'),
+        ('#a1c4fd', '#c2e9fb', '#fbc2eb'),
+        ('#43e97b', '#38f9d7', '#fa709a'),
+        ('#5ee7df', '#b490ca', '#7b68ee'),
+    ]
+    c1, c2, c3 = random.choice(palettes)
+    blobs = ''.join(
+        f'<circle cx="{random.randint(0,300)}" cy="{random.randint(0,200)}" '
+        f'r="{random.randint(50,130)}" '
+        f'fill="{random.choice([c1,c2,c3])}" '
+        f'opacity="{random.uniform(0.3,0.7):.2f}"/>'
+        for _ in range(6)
+    )
+    lines = ''.join(
+        f'<line x1="{random.randint(0,300)}" y1="{random.randint(0,200)}" '
+        f'x2="{random.randint(0,300)}" y2="{random.randint(0,200)}" '
+        f'stroke="white" stroke-width="{random.uniform(0.3,0.8):.1f}" '
+        f'opacity="{random.uniform(0.1,0.3):.2f}"/>'
+        for _ in range(8)
+    )
+    particles = ''.join(
+        f'<circle cx="{random.randint(0,300)}" cy="{random.randint(0,200)}" '
+        f'r="{random.uniform(0.5,2):.1f}" fill="white" '
+        f'opacity="{random.uniform(0.2,0.7):.2f}"/>'
+        for _ in range(40)
+    )
+    return (
+        f'<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" '
+        f'preserveAspectRatio="xMidYMid slice">'
+        f'<defs>'
+        f'<filter id="b{seed}" x="-50%" y="-50%" width="200%" height="200%">'
+        f'<feGaussianBlur stdDeviation="22"/></filter>'
+        f'<radialGradient id="v{seed}" cx="50%" cy="50%" r="70%">'
+        f'<stop offset="60%" stop-color="rgba(0,0,0,0)"/>'
+        f'<stop offset="100%" stop-color="rgba(0,0,0,0.5)"/></radialGradient>'
+        f'</defs>'
+        f'<rect width="300" height="200" fill="#0a0e1a"/>'
+        f'<g filter="url(#b{seed})">{blobs}</g>'
+        f'{lines}{particles}'
+        f'<rect width="300" height="200" fill="url(#v{seed})"/>'
+        f'</svg>'
+    )
+
+
+def render_weather_card():
+    w = fetch_weather_v2()
+    if not w:
+        return '<div class="wx-empty">Погода недоступна</div>', 'cloud'
+    kind = weather_kind_v2(w['now_code'])
+    fc = ''.join(
+        f'<div class="fc-day">'
+        f'<div class="fc-date">{d["date"][5:].replace("-", ".")}</div>'
+        f'<div class="fc-icon">{_weather_emoji(d["code"])}</div>'
+        f'<div class="fc-temps"><span class="fc-max">↑{d["max"]}°</span>'
+        f'<span class="fc-min">↓{d["min"]}°</span></div></div>'
+        for d in w['forecast']
+    )
+    out = (
+        f'<div class="wx-hero">'
+        f'<div class="wx-icon">{_weather_emoji(w["now_code"])}</div>'
+        f'<div><div class="wx-temp">{w["now_temp"]}°</div>'
+        f'<div class="wx-feels">ощущается {w["now_feels"]}°</div></div></div>'
+        f'<div class="wx-meta">'
+        f'<div class="wx-meta-item"><span>💧</span><b>{w["now_humidity"]}%</b><small>влажн.</small></div>'
+        f'<div class="wx-meta-item"><span>💨</span><b>{w["now_wind"]}</b><small>км/ч</small></div>'
+        f'<div class="wx-meta-item"><span>🔽</span><b>{w["now_pressure"]}</b><small>мм</small></div>'
+        f'</div>'
+        f'<div class="wx-sun">'
+        f'<div class="wx-sun-item"><span>🌅</span> Восход <b>{w["sunrise"]}</b></div>'
+        f'<div class="wx-sun-item"><span>🌇</span> Закат <b>{w["sunset"]}</b></div>'
+        f'</div>'
+        f'<div class="wx-forecast">{fc}</div>'
+    )
+    return out, kind
+
+
+def render_currency_card():
+    c = fetch_currency()
+    if not c:
+        return '<div class="cur-row">—</div>'
+    return (
+        f'<div class="cur-row"><span class="cur-flag">🇺🇸</span>'
+        f'<span class="cur-name">USD</span><span class="cur-val">{c["usd"]} ₽</span></div>'
+        f'<div class="cur-row"><span class="cur-flag">🇪🇺</span>'
+        f'<span class="cur-name">EUR</span><span class="cur-val">{c["eur"]} ₽</span></div>'
+        f'<div class="cur-row"><span class="cur-flag">🇨🇳</span>'
+        f'<span class="cur-name">CNY</span><span class="cur-val">{c["cny"]} ₽</span></div>'
+    )
+
+
+def render_news_card():
+    news = fetch_news_v2(limit=4)
+    if not news:
+        return '<div class="news-item">Новости недоступны</div>'
+    return ''.join(
+        f'<a class="news-item" href="{html.escape(n["link"])}" target="_blank" rel="noopener">'
+        f'<div class="news-title">{html.escape(n["title"])}</div>'
+        f'{f"""<div class="news-desc">{html.escape(n["desc"])}</div>""" if n["desc"] else ""}'
+        f'</a>'
+        for n in news
+    )
+
+
+# ---------- Основные утилиты ----------
 _TRANSLIT_MAP = {
     'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh',
     'з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o',
@@ -282,27 +703,20 @@ _TRANSLIT_MAP = {
     'ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e',
     'ю':'yu','я':'ya','і':'i','ї':'i','є':'e','ґ':'g',
 }
-
 NOISE_WORDS = re.compile(
     r'\b(тв|tv|телеканал|channel|канал|hd|fhd|uhd|4k|8k|sd|hevc|h265|h264|mp4|hq|lq|'
-    r'ру|ru|россия|russia|online|live)\b',
-    re.IGNORECASE,
-)
-
+    r'ру|ru|россия|russia|online|live)\b', re.IGNORECASE)
 ROMAN_TAIL = re.compile(r'\b(i{1,3}|iv|v|vi{1,3}|ix|x)\s*$', re.IGNORECASE)
 
 
 def translit_ru(s):
-    if not s:
-        return ''
+    if not s: return ''
     return ''.join(_TRANSLIT_MAP.get(ch, ch) for ch in s.lower())
 
 
 def normalize_name_v2(name):
-    if not name:
-        return ''
-    n = name.lower().strip()
-    n = n.replace('ё', 'е').replace('й', 'и')
+    if not name: return ''
+    n = name.lower().strip().replace('ё', 'е').replace('й', 'и')
     n = re.sub(r'\([^)]*\)', ' ', n)
     n = re.sub(r'\[[^\]]*\]', ' ', n)
     n = re.sub(r'<[^>]*>', ' ', n)
@@ -312,8 +726,7 @@ def normalize_name_v2(name):
     return re.sub(r'\s+', ' ', n).strip()
 
 
-def normalize_name(name):
-    return normalize_name_v2(name)
+def normalize_name(name): return normalize_name_v2(name)
 
 
 def normalize_name_translit(name):
@@ -322,21 +735,16 @@ def normalize_name_translit(name):
 
 
 def make_prefix(normalized):
-    if not normalized:
-        return ''
+    if not normalized: return ''
     s = normalized.replace(' ', '')
     return s[:5] if len(s) >= 5 else ''
 
 
 def detect_quality_by_name(name):
-    if not name:
-        return 'Unknown'
-    if QUALITY_4K_NAME.search(name):
-        return '4K'
-    if QUALITY_HD_NAME.search(name):
-        return 'HD'
-    if QUALITY_SD_NAME.search(name):
-        return 'SD'
+    if not name: return 'Unknown'
+    if QUALITY_4K_NAME.search(name): return '4K'
+    if QUALITY_HD_NAME.search(name): return 'HD'
+    if QUALITY_SD_NAME.search(name): return 'SD'
     return 'Unknown'
 
 
@@ -345,12 +753,9 @@ def classify_height(h):
         h = int(h)
     except Exception:
         return None
-    if h >= 2000:
-        return '4K'
-    if h >= 700:
-        return 'HD'
-    if h > 0:
-        return 'SD'
+    if h >= 2000: return '4K'
+    if h >= 700: return 'HD'
+    if h > 0: return 'SD'
     return None
 
 
@@ -374,15 +779,11 @@ def parse_hls_quality(chunk):
                 bw = max(int(x) for x in bw_matches)
             except Exception:
                 return None
-            if bw >= 8_000_000:
-                return '4K'
-            if bw >= 1_500_000:
-                return 'HD'
-            if bw > 0:
-                return 'SD'
+            if bw >= 8_000_000: return '4K'
+            if bw >= 1_500_000: return 'HD'
+            if bw > 0: return 'SD'
         return None
-    except Exception as e:
-        log.debug("parse_hls_quality error: %s", e)
+    except Exception:
         return None
 
 
@@ -395,8 +796,7 @@ def load_uptime(path):
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         UPTIME = {k: v for k, v in data.items() if isinstance(v, list)} if isinstance(data, dict) else {}
-    except Exception as e:
-        log.warning("uptime.json: %s", e)
+    except Exception:
         UPTIME = {}
 
 
@@ -424,8 +824,7 @@ def load_quality_cache(path):
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         QUALITY_MAP = data if isinstance(data, dict) else {}
-    except Exception as e:
-        log.warning("quality.json: %s", e)
+    except Exception:
         QUALITY_MAP = {}
 
 
@@ -446,8 +845,8 @@ def save_quality_cache(path, current_urls):
     try:
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(QUALITY_MAP, f, ensure_ascii=False, separators=(',', ':'))
-    except Exception as e:
-        log.warning("save quality.json: %s", e)
+    except Exception:
+        pass
 
 
 def get_quality_for_url(url, name):
@@ -467,8 +866,7 @@ def load_ffprobe_cache(path):
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         FFPROBE_MAP = data if isinstance(data, dict) else {}
-    except Exception as e:
-        log.warning("ffprobe.json: %s", e)
+    except Exception:
         FFPROBE_MAP = {}
 
 
@@ -488,12 +886,11 @@ def save_ffprobe_cache(path, current_urls):
     try:
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(FFPROBE_MAP, f, ensure_ascii=False, separators=(',', ':'))
-    except Exception as e:
-        log.warning("save ffprobe.json: %s", e)
+    except Exception:
+        pass
 
 
 def ffprobe_check(url):
-    """Проверка потока через ffprobe с WINK User-Agent."""
     if not HAS_FFPROBE:
         FFPROBE_STATS['skipped'] += 1
         return None, None
@@ -513,10 +910,8 @@ def ffprobe_check(url):
             result = subprocess.run(
                 ['ffprobe', '-v', 'quiet', '-print_format', 'json',
                  '-show_streams', '-show_format',
-                 '-analyzeduration', '3000000',
-                 '-probesize', '1000000',
-                 '-user_agent', DEFAULT_UA,
-                 '-i', url],
+                 '-analyzeduration', '3000000', '-probesize', '1000000',
+                 '-user_agent', DEFAULT_UA, '-i', url],
                 capture_output=True, timeout=CFG.ffprobe_timeout
             )
             if result.returncode != 0:
@@ -538,13 +933,9 @@ def ffprobe_check(url):
                 with FFPROBE_LOCK:
                     FFPROBE_MAP_NEW[url] = {'ok': False, 'ts': time.time()}
                 return False, None
-            info = {
-                'ok': True,
-                'codec': video.get('codec_name'),
-                'height': video.get('height'),
-                'width': video.get('width'),
-                'ts': time.time(),
-            }
+            info = {'ok': True, 'codec': video.get('codec_name'),
+                    'height': video.get('height'), 'width': video.get('width'),
+                    'ts': time.time()}
             FFPROBE_STATS['ok'] += 1
             with FFPROBE_LOCK:
                 FFPROBE_MAP_NEW[url] = info
@@ -695,10 +1086,7 @@ def load_iptv_org():
         emit("  Каналы iptv-org недоступны")
         return
     emit("  Скачиваю логотипы...")
-    logos = _download_json(IPTV_ORG_URLS_LOGOS, IPTV_ORG_LOGOS_CACHE)
-    if not logos:
-        emit("  Логотипы iptv-org недоступны")
-        logos = []
+    logos = _download_json(IPTV_ORG_URLS_LOGOS, IPTV_ORG_LOGOS_CACHE) or []
 
     id_to_names = {}
     for ch in channels:
@@ -743,8 +1131,7 @@ def load_iptv_org():
             kt = normalize_name_translit(name)
             if kt and kt not in by_name_logo_translit:
                 by_name_logo_translit[kt] = url
-            p = make_prefix(k)
-            _add_to_prefix_map(by_prefix_logo, p, (k, url))
+            _add_to_prefix_map(by_prefix_logo, make_prefix(k), (k, url))
 
     IPTV_LOGOS['by_id'] = by_id
     IPTV_LOGOS['by_name'] = by_name_logo
@@ -762,16 +1149,14 @@ def load_iptv_org():
             kt = normalize_name_translit(name)
             if kt and kt not in by_name_id_translit:
                 by_name_id_translit[kt] = cid
-            p = make_prefix(k)
-            _add_to_prefix_map(by_prefix_id, p, (k, cid))
+            _add_to_prefix_map(by_prefix_id, make_prefix(k), (k, cid))
 
     IPTV_IDS['by_name'] = by_name_id
     IPTV_IDS['by_name_translit'] = by_name_id_translit
     IPTV_IDS['by_prefix'] = by_prefix_id
 
-    emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени, "
-         f"{len(by_prefix_logo)} префиксов")
-    emit(f"  iptv-org id: {len(by_name_id)} по имени, {len(by_prefix_id)} префиксов")
+    emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени")
+    emit(f"  iptv-org id: {len(by_name_id)} по имени")
 
 
 def download_epg_map():
@@ -787,13 +1172,10 @@ def download_epg_map():
                 EPG_MAP['by_translit'] = cached.get('by_translit', {})
                 EPG_MAP['by_prefix'] = cached.get('by_prefix', {})
                 EPG_MAP['icons'] = cached.get('icons', {})
-                emit(f"  EPG: из кэша v{cached_ver} {len(EPG_MAP['by_name'])} имён, "
-                     f"{len(EPG_MAP['icons'])} icon")
+                emit(f"  EPG: из кэша v{cached_ver} {len(EPG_MAP['by_name'])} имён")
                 return
-            else:
-                emit(f"  EPG: кэш устарел (v{cached_ver}), пересобираю...")
-        except Exception as e:
-            log.warning("EPG cache: %s", e)
+        except Exception:
+            pass
 
     for url in EPG_URLS:
         try:
@@ -807,16 +1189,13 @@ def download_epg_map():
                 xml_data = gzip.decompress(raw)
             except Exception:
                 xml_data = raw
-            emit(f"  EPG: распакован {len(xml_data)//1024} KB, парсим...")
-
             head = xml_data[:200].decode('ascii', errors='ignore')
             if 'windows-1251' in head or 'cp1251' in head:
                 xml_str = xml_data.decode('windows-1251', errors='replace')
             else:
                 xml_str = xml_data.decode('utf-8', errors='replace')
 
-            ch_re = re.compile(r'<channel\s+id="([^"]+)"[^>]*>(.*?)</channel>',
-                               re.DOTALL)
+            ch_re = re.compile(r'<channel\s+id="([^"]+)"[^>]*>(.*?)</channel>', re.DOTALL)
             dn_re = re.compile(r'<display-name[^>]*>([^<]+)</display-name>')
             icon_re = re.compile(r'<icon\s+src="([^"]+)"')
 
@@ -840,15 +1219,13 @@ def download_epg_map():
                     kt = normalize_name_translit(name)
                     if kt and kt not in by_translit:
                         by_translit[kt] = cid
-                    p = make_prefix(k)
-                    _add_to_prefix_map(by_prefix, p, (k, cid))
+                    _add_to_prefix_map(by_prefix, make_prefix(k), (k, cid))
 
             EPG_MAP['by_name'] = by_name
             EPG_MAP['by_translit'] = by_translit
             EPG_MAP['by_prefix'] = by_prefix
             EPG_MAP['icons'] = icons
-            emit(f"  EPG: {len(by_name)} имён, {len(by_translit)} с транслитом, "
-                 f"{len(icons)} icon, {len(by_prefix)} префиксов")
+            emit(f"  EPG: {len(by_name)} имён, {len(icons)} icon")
 
             os.makedirs(os.path.dirname(EPG_CACHE) or '.', exist_ok=True)
             with open(EPG_CACHE, 'w', encoding='utf-8') as f:
@@ -860,7 +1237,7 @@ def download_epg_map():
             return
         except Exception as e:
             log.warning("EPG %s: %s", url, e)
-    emit("  EPG: не удалось скачать, tvg-id не трогаем")
+    emit("  EPG: не удалось скачать")
 
 
 def download_url_sources(url_sources, cache_dir):
@@ -1095,9 +1472,7 @@ def _try_stream(url, ua):
             if h.startswith(BOM):
                 h = h[len(BOM):].lstrip(WHITESPACE)
             if h.startswith(b'#EXTM3U'):
-                quality = None
-                if not CFG.no_hls_quality:
-                    quality = parse_hls_quality(chunk)
+                quality = None if CFG.no_hls_quality else parse_hls_quality(chunk)
                 return True, elapsed, None, quality
             for p in HTML_PREFIXES:
                 if h.startswith(p):
@@ -1170,8 +1545,7 @@ def _pick_prefix_match(prefix_map, prefix):
         return None
     if len(items) > 3:
         return None
-    items_sorted = sorted(items, key=lambda x: x[0])
-    return items_sorted[0][1]
+    return sorted(items, key=lambda x: x[0])[0][1]
 
 
 def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
@@ -1196,8 +1570,7 @@ def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
             if l:
                 return l, 'from_translit'
         if k:
-            p = make_prefix(k)
-            l = _pick_prefix_match(IPTV_LOGOS.get('by_prefix', {}), p)
+            l = _pick_prefix_match(IPTV_LOGOS.get('by_prefix', {}), make_prefix(k))
             if l:
                 return l, 'from_prefix'
     if epg_id and EPG_MAP.get('icons'):
@@ -1228,8 +1601,7 @@ def resolve_iptv_org_id(extinf, original_tvg_id):
         if cid:
             return cid
     if k:
-        p = make_prefix(k)
-        cid = _pick_prefix_match(IPTV_IDS.get('by_prefix', {}), p)
+        cid = _pick_prefix_match(IPTV_IDS.get('by_prefix', {}), make_prefix(k))
         if cid:
             return cid
     return None
@@ -1252,8 +1624,7 @@ def resolve_epg_id(extinf):
         if cid:
             return cid
     if k:
-        p = make_prefix(k)
-        cid = _pick_prefix_match(EPG_MAP.get('by_prefix', {}), p)
+        cid = _pick_prefix_match(EPG_MAP.get('by_prefix', {}), make_prefix(k))
         if cid:
             return cid
     return None
@@ -1538,7 +1909,7 @@ def write_splits(channels, docs_dir, split_all=False):
             fname = f"group_{slug}.m3u8"
             if fname not in splits:
                 splits[fname] = [g]
-    for fname, groups in splits.items():
+    for key, groups in splits.items():
         wanted = set(groups)
         sel = []
         for extinf, url in channels:
@@ -1547,24 +1918,36 @@ def write_splits(channels, docs_dir, split_all=False):
             if g in wanted or base in wanted:
                 sel.append((extinf, url))
         if sel:
-            write_playlist(os.path.join(docs_dir, fname), sel)
-            created.append((fname, len(sel)))
+            random_name = generate_split_filename()
+            write_playlist(os.path.join(docs_dir, random_name), sel)
+            created.append({
+                'key': key,
+                'name': humanize_split_name(key),
+                'count': len(sel),
+                'file': random_name,
+                'type': 'group',
+            })
     return created
 
 
 def write_quality_splits(channels, docs_dir):
     by_q = {'4K': [], 'HD': [], 'SD': []}
     for extinf, url in channels:
-        name = get_name(extinf)
-        q = get_quality_for_url(url, name)
+        q = get_quality_for_url(url, get_name(extinf))
         if q in by_q:
             by_q[q].append((extinf, url))
     created = []
-    fname_map = {'4K': '4k.m3u8', 'HD': 'hd.m3u8', 'SD': 'sd.m3u8'}
     for q, chans in by_q.items():
         if chans:
-            write_playlist(os.path.join(docs_dir, fname_map[q]), chans)
-            created.append((fname_map[q], len(chans)))
+            random_name = generate_split_filename()
+            write_playlist(os.path.join(docs_dir, random_name), chans)
+            created.append({
+                'key': f'{q.lower()}.m3u8',
+                'name': q,
+                'count': len(chans),
+                'file': random_name,
+                'type': 'quality',
+            })
     return created
 
 
@@ -1702,16 +2085,14 @@ def render_donut_svg(groups_dict, colors_list=None, title='Распределе�
             f'stroke="{color}" stroke-width="{SW}" '
             f'stroke-dasharray="{dash:.2f} {C - dash:.2f}" '
             f'stroke-dashoffset="{-offset:.2f}" '
-            f'transform="rotate(-90 {cx} {cy})"/>'
-        )
+            f'transform="rotate(-90 {cx} {cy})"/>')
         offset += dash
         legend.append(
             f'<div class="legend-row">'
             f'<span class="legend-dot" style="background:{color}"></span>'
             f'<span class="legend-name">{html.escape(name)}</span>'
             f'<span class="legend-count">{count}</span>'
-            f'<span class="legend-pct">{frac*100:.1f}%</span></div>'
-        )
+            f'<span class="legend-pct">{frac*100:.1f}%</span></div>')
     total_label = f'<text x="{cx}" y="{cy-4}" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="600">{total}</text>'
     total_sub = f'<text x="{cx}" y="{cy+14}" text-anchor="middle" fill="var(--muted)" font-size="10">{unit}</text>'
     svg = (f'<svg viewBox="0 0 {cx*2} {cy*2}" style="max-width:220px;width:100%">'
@@ -1731,62 +2112,15 @@ def health_bar(pct):
 </div>'''
 
 
-# ===== ШИФРОВАНИЕ ССЫЛОК (AES-256-GCM) =====
-def generate_password(length=16):
-    """Криптостойкий пароль для шифрования."""
-    alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789'
-    return ''.join(secrets.choice(alphabet) for _ in range(length))
-
-
-def encrypt_links(url_playlist, url_qr, password, iterations=150000):
-    """
-    Шифрует JSON со ссылками.
-    Возвращает base64(salt + iv + ciphertext + tag).
-    """
-    if not HAS_CRYPTO:
-        raise RuntimeError("cryptography не установлен")
-    salt = secrets.token_bytes(16)
-    iv = secrets.token_bytes(12)
-
-    kdf = PBKDF2HMAC(
-        algorithm=hashes.SHA256(),
-        length=32,
-        salt=salt,
-        iterations=iterations,
-    )
-    key = kdf.derive(password.encode('utf-8'))
-
-    payload = json.dumps(
-        {'playlist': url_playlist, 'qr': url_qr},
-        ensure_ascii=False,
-    ).encode('utf-8')
-
-    aesgcm = AESGCM(key)
-    ciphertext = aesgcm.encrypt(iv, payload, None)
-
-    blob = salt + iv + ciphertext
-    return base64.b64encode(blob).decode('ascii')
-
-
-def send_password_to_telegram(password, playlist_url):
-    """Отправляет пароль в Telegram + пояснение."""
-    if not CFG.tg_token or not CFG.tg_chat:
-        log.warning("⚠️  Telegram не настроен — пароль не отправлен")
-        return False
-    pages = CFG.pages_url.rstrip('/') if CFG.pages_url else ''
-    text = (
-        f"🔐 <b>Новый пароль для страницы</b>\n\n"
-        f"<code>{password}</code>\n\n"
-        f"📍 Открывай: <a href='{pages}/index.html'>index.html</a>\n"
-        f"⏱ Действует до следующего запуска (6 часов)\n"
-        f"📺 Внутри — ссылка на плейлист и QR"
-    )
-    return tg_send(CFG.tg_token, CFG.tg_chat, text)
-# ===== /ШИФРОВАНИЕ =====
+def _sparkline_for_history(history, key):
+    vals = [h.get(key, 0) for h in history][-20:]
+    if len(vals) < 2:
+        return ''
+    return sparkline_svg(vals)
 
 
 COMMON_CSS = """
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0f1115; --panel:rgba(24,27,32,0.72); --border:#23272e;
   --text:#e6e6e6; --muted:#8a8f98; --accent:#60a5fa;
@@ -1801,92 +2135,60 @@ COMMON_CSS = """
   --text:#e0e7ff; --muted:#94a3b8; --accent:#60a5fa;
 }
 html{min-height:100%}
-body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
-color:var(--text);margin:0;padding:24px;max-width:1100px;margin:0 auto;
+body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
+color:var(--text);margin:0 auto;padding:24px;max-width:1100px;
 min-height:100vh;
 background:var(--bg);
 background-image:
   radial-gradient(circle at 15% -10%, rgba(96,165,250,0.12) 0%, transparent 40%),
-  radial-gradient(circle at 85% 0%, rgba(74,222,128,0.10) 0%, transparent 40%),
-  radial-gradient(circle at 50% 100%, rgba(167,139,250,0.06) 0%, transparent 50%);
-background-attachment:fixed;
-transition:background-color .3s,color .3s}
+  radial-gradient(circle at 85% 0%, rgba(74,222,128,0.10) 0%, transparent 40%);
+background-attachment:fixed;transition:background-color .3s,color .3s}
 h1{margin:0 0 4px;font-size:22px;letter-spacing:-.3px}
-h2{font-size:15px;margin:0 0 12px;letter-spacing:-.1px}
+h2{font-size:15px;margin:0 0 12px}
 .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
+.section,.card,.box{background:var(--panel);border:1px solid var(--border);
+border-radius:14px;padding:18px;margin-bottom:16px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
+.card{padding:16px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:12px;margin-bottom:24px}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;
-padding:16px;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-transition:transform .15s,border-color .15s,box-shadow .15s;
-animation:fadeInUp .5s ease-out both}
-.card:nth-child(1){animation-delay:.05s}
-.card:nth-child(2){animation-delay:.10s}
-.card:nth-child(3){animation-delay:.15s}
-.card:nth-child(4){animation-delay:.20s}
-.card:nth-child(5){animation-delay:.25s}
-.card:nth-child(6){animation-delay:.30s}
-.card:hover{transform:translateY(-2px);border-color:var(--accent);
-box-shadow:0 8px 24px rgba(0,0,0,0.15)}
 .card .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.card .v{font-size:26px;font-weight:700;margin-top:6px;letter-spacing:-.5px;
-font-variant-numeric:tabular-nums}
-.card .v.good{color:#4ade80;text-shadow:0 0 24px rgba(74,222,128,0.25)}
+.card .v{font-size:26px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
+.card .v.good{color:#4ade80}
 .card .v.bad{color:#f87171}
 .card .v.warn{color:#facc15}
-@keyframes fadeInUp{
-  from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.section{background:var(--panel);border:1px solid var(--border);border-radius:14px;
-padding:18px;margin-bottom:16px;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
-tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(96,165,250,0.05)}
 .tag{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--border);
 font-size:12px;color:var(--muted);margin:2px}
 .back{display:inline-block;margin-bottom:16px;color:var(--accent);text-decoration:none}
-.box{background:var(--panel);border:1px solid var(--border);border-radius:14px;
-padding:18px;margin-bottom:12px;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
 code{background:var(--bg);padding:3px 8px;border-radius:6px;font-size:13px;
 word-break:break-all;color:#facc15;font-family:ui-monospace,Menlo,monospace}
-.top-right{position:fixed;top:16px;right:16px;z-index:100;
-display:flex;gap:8px;align-items:center}
-.theme-btn{background:var(--panel);border:1px solid var(--border);
-color:var(--text);width:42px;height:42px;border-radius:50%;cursor:pointer;
-font-size:18px;line-height:1;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
+.top-right{position:fixed;top:16px;right:16px;z-index:100;display:flex;gap:8px;align-items:center}
+.theme-btn{background:var(--panel);border:1px solid var(--border);color:var(--text);
+width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:18px;
+backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
 transition:transform .15s}
 .theme-btn:hover{transform:scale(1.08)}
 .live-widget{background:var(--panel);border:1px solid var(--border);
 border-radius:20px;padding:8px 14px;font-size:13px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
+backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
 display:flex;gap:14px;align-items:center;white-space:nowrap}
 .live-widget .live-item{display:flex;align-items:center;gap:4px;color:var(--muted)}
 .live-widget .live-item strong{color:var(--text);font-weight:500}
-@media(max-width:600px){
-  .live-widget{padding:6px 10px;font-size:12px;gap:10px}
-}
-@media(max-width:420px){
-  .live-widget .hide-mobile{display:none}
-}
+@media(max-width:600px){.live-widget{padding:6px 10px;font-size:12px;gap:10px}}
+@media(max-width:420px){.live-widget .hide-mobile{display:none}}
 .health-wrap{margin-bottom:24px;padding:14px 18px;background:var(--panel);
-border:1px solid var(--border);border-radius:14px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
+border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(var(--glass-blur))}
 .health-bar{height:8px;background:var(--border);border-radius:8px;overflow:hidden}
-.health-bar > div{height:100%;border-radius:8px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.health-bar > div{height:100%;border-radius:8px;transition:width 1.2s}
 .health-label{margin-top:8px;font-size:13px;color:var(--muted)}
 .donut-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
 .donut-chart{flex:0 0 220px}
@@ -1896,14 +2198,11 @@ border-bottom:1px solid var(--border)}
 .legend-row:last-child{border-bottom:none}
 .legend-dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
 .legend-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.legend-count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
-.legend-pct{font-variant-numeric:tabular-nums;color:var(--text);font-size:12px;
-font-weight:500;min-width:44px;text-align:right}
+.legend-count{color:var(--muted);font-size:12px}
+.legend-pct{color:var(--text);font-size:12px;font-weight:500;min-width:44px;text-align:right}
 .wf-status{font-size:13px;margin-bottom:16px;padding:10px 14px;
 background:var(--panel);border:1px solid var(--border);border-radius:12px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
+backdrop-filter:blur(var(--glass-blur))}
 .copy-btn{background:var(--border);border:none;color:var(--text);padding:6px 12px;
 border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .copy-btn:hover{background:var(--accent);color:#fff}
@@ -1912,8 +2211,8 @@ border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .uptime-mid{color:#facc15;font-weight:500}
 .uptime-low{color:#f87171;font-weight:500}
 .uptime-none{color:var(--muted)}
-.reason-badge{display:inline-block;padding:2px 8px;border-radius:6px;
-font-size:11px;font-weight:500;background:var(--border);color:var(--muted)}
+.reason-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;
+font-weight:500;background:var(--border);color:var(--muted)}
 .reason-badge.dead{background:rgba(248,113,113,0.15);color:#f87171}
 .reason-badge.filter{background:rgba(250,204,21,0.15);color:#facc15}
 .reason-badge.unstable{background:rgba(250,204,21,0.15);color:#facc15}
@@ -1922,24 +2221,18 @@ font-size:11px;font-weight:500;background:var(--border);color:var(--muted)}
 .quality-sd{color:#facc15;font-weight:600;font-size:11px}
 .chk{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
 background:var(--panel);border:1px solid var(--border);border-radius:10px;
-cursor:pointer;font-size:13px;user-select:none;transition:border-color .15s,transform .15s}
-.chk:hover{border-color:var(--accent);transform:translateY(-1px)}
+cursor:pointer;font-size:13px;user-select:none}
+.chk:hover{border-color:var(--accent)}
 .chk input{accent-color:var(--accent);cursor:pointer}
 .chk-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.view-toggle{background:var(--panel);border:1px solid var(--border);
-color:var(--text);padding:8px 16px;border-radius:10px;cursor:pointer;
-font-size:13px;transition:border-color .15s;user-select:none}
+.view-toggle{background:var(--panel);border:1px solid var(--border);color:var(--text);
+padding:8px 16px;border-radius:10px;cursor:pointer;font-size:13px;user-select:none}
 .view-toggle:hover{border-color:var(--accent)}
-.channels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-gap:12px;margin-bottom:16px}
+.channels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .channel-card{background:var(--panel);border:1px solid var(--border);
-border-radius:14px;padding:14px;text-align:center;cursor:pointer;
-transition:transform .15s,border-color .15s,box-shadow .15s;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-position:relative;animation:fadeInUp .4s ease-out both}
-.channel-card:hover{transform:translateY(-3px);border-color:var(--accent);
-box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+border-radius:14px;padding:14px;text-align:center;position:relative;
+backdrop-filter:blur(var(--glass-blur));animation:fadeInUp .4s ease-out both}
+.channel-card:hover{border-color:var(--accent)}
 .channel-card .cc-logo{width:56px;height:56px;object-fit:contain;
 background:var(--border);border-radius:10px;padding:6px;margin-bottom:8px}
 .channel-card .cc-name{font-size:13px;font-weight:500;margin-bottom:4px;
@@ -1947,18 +2240,14 @@ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .channel-card .cc-meta{font-size:11px;color:var(--muted);
 overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .channel-card .cc-status{position:absolute;top:8px;right:8px;font-size:14px}
-.channel-card .cc-actions{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.channel-card .cc-actions{margin-top:8px}
 .channel-card .cc-btn{background:var(--border);border:none;color:var(--muted);
-padding:3px 8px;border-radius:6px;font-size:10px;cursor:pointer;
-transition:background .15s}
-.channel-card .cc-btn:hover{background:var(--accent);color:#fff}
+padding:3px 8px;border-radius:6px;font-size:10px;cursor:pointer}
 .channel-card .cc-btn.ok{background:#4ade80;color:#0f1115}
 .charts-tip{position:fixed;background:var(--panel);border:1px solid var(--border);
 border-radius:10px;padding:8px 12px;font-size:12px;pointer-events:none;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-box-shadow:0 4px 16px rgba(0,0,0,0.3);z-index:200;
-opacity:0;transition:opacity .15s;color:var(--text);white-space:nowrap}
+backdrop-filter:blur(var(--glass-blur));box-shadow:0 4px 16px rgba(0,0,0,0.3);
+z-index:200;opacity:0;transition:opacity .15s;color:var(--text);white-space:nowrap}
 .charts-tip.show{opacity:1}
 .charts-tip .tt-val{font-weight:600;color:var(--accent)}
 .charts-tip .tt-date{color:var(--muted);font-size:11px;margin-top:2px}
@@ -1973,44 +2262,161 @@ background:radial-gradient(circle,rgba(74,222,128,0.06),transparent 60%);
 animation:float2 30s ease-in-out infinite}
 @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
 @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,-50px)}}
-
-/* ===== Secure block (шифрование ссылок) ===== */
+.hero{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
+.clock-card{background:var(--panel);border:1px solid var(--border);
+border-radius:24px;padding:32px 24px;text-align:center;
+backdrop-filter:blur(var(--glass-blur));position:relative;overflow:hidden;
+animation:fadeInUp .9s ease-out}
+.clock-card::before{content:'';position:absolute;top:-50%;left:-50%;
+width:200%;height:200%;
+background:conic-gradient(from 0deg,transparent,rgba(96,165,250,0.06),transparent 25%);
+animation:rotate 24s linear infinite;pointer-events:none}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.clock{font-size:clamp(60px,17vw,100px);font-weight:200;letter-spacing:-0.04em;
+line-height:1;font-variant-numeric:tabular-nums;
+background:linear-gradient(135deg, var(--accent), #a78bfa);
+-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+position:relative;z-index:1}
+.clock .colon{animation:blink 1s steps(1) infinite;opacity:0.7}
+@keyframes blink{50%{opacity:0.2}}
+.clock .sec{font-size:0.38em;color:var(--accent);-webkit-text-fill-color:var(--accent);
+margin-left:10px;opacity:0.7;font-variant-numeric:tabular-nums}
+.tz{font-size:13px;color:var(--muted);margin-top:10px;position:relative;z-index:1}
+.date-line{margin-top:16px;font-size:16px;position:relative;z-index:1;
+display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap}
+.date-line .wd{color:var(--accent);font-weight:500}
+.date-line .yr{color:#a78bfa;font-weight:500;font-size:20px;font-variant-numeric:tabular-nums}
+.date-line .mo{color:var(--muted);font-size:14px}
+.art-card{border-radius:24px;overflow:hidden;aspect-ratio:3/2;
+background:var(--panel);border:1px solid var(--border);position:relative;
+animation:fadeInUp .9s ease-out .1s both}
+.art-card svg{width:100%;height:100%;display:block}
+.art-label{position:absolute;bottom:12px;right:14px;font-size:11px;
+color:rgba(255,255,255,0.65);background:rgba(0,0,0,0.35);
+padding:5px 12px;border-radius:14px;backdrop-filter:blur(8px)}
+.holiday-plaque{text-align:center;padding:10px 20px;
+background:linear-gradient(135deg,rgba(255,193,7,0.15),rgba(255,87,34,0.15));
+border:1px solid rgba(255,193,7,0.3);border-radius:14px;margin-bottom:16px;
+font-size:15px;font-weight:500;animation:holidayPulse 3s ease-in-out infinite}
+@keyframes holidayPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,193,7,0.3)}
+50%{box-shadow:0 0 30px 4px rgba(255,193,7,0.2)}}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:520px){.info-grid{grid-template-columns:1fr}}
+.wx-hero{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:14px}
+.wx-icon{font-size:64px;line-height:1;filter:drop-shadow(0 4px 16px rgba(96,165,250,0.3))}
+.wx-temp{font-size:46px;font-weight:200;letter-spacing:-0.02em;line-height:1}
+.wx-feels{font-size:12px;color:var(--muted);margin-top:4px}
+.wx-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+padding-top:12px;border-top:1px solid var(--border)}
+.wx-meta-item{text-align:center;font-size:11px}
+.wx-meta-item span{display:block;font-size:18px;margin-bottom:2px}
+.wx-meta-item b{font-size:13px;font-weight:500}
+.wx-meta-item small{color:var(--muted);display:block;font-size:10px;margin-top:2px}
+.wx-sun{display:flex;justify-content:space-around;padding:12px 0;margin-top:12px;
+border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+.wx-sun-item{display:flex;align-items:center;gap:6px}
+.wx-sun-item b{color:var(--text);font-weight:500}
+.wx-forecast{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.fc-day{text-align:center}
+.fc-date{font-size:10px;color:var(--muted);margin-bottom:6px}
+.fc-icon{font-size:26px;margin-bottom:6px;line-height:1}
+.fc-temps{font-size:11px;display:flex;flex-direction:column;gap:2px}
+.fc-max{color:var(--text);font-weight:500}
+.fc-min{color:var(--muted);font-size:10px}
+.cur-row{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px}
+.cur-row + .cur-row{border-top:1px solid var(--border)}
+.cur-flag{font-size:20px}
+.cur-name{font-size:12px;color:var(--muted);min-width:38px;letter-spacing:0.5px}
+.cur-val{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:500;font-size:16px}
+.moon-wrap{text-align:center;padding:8px 0}
+.moon-icon{font-size:72px;line-height:1;margin-bottom:10px;display:block;
+filter:drop-shadow(0 0 24px rgba(167,139,250,0.5));
+animation:moonGlow 4s ease-in-out infinite}
+@keyframes moonGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(167,139,250,0.4))}
+50%{filter:drop-shadow(0 0 32px rgba(167,139,250,0.6))}}
+.moon-name{font-size:13px;color:var(--muted)}
+.cal-month{font-size:15px;font-weight:500;text-align:center;margin-bottom:12px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-head{font-size:10px;color:var(--muted);text-align:center;font-weight:600;
+padding:4px 0;letter-spacing:0.5px}
+.cal-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+font-size:12px;border-radius:8px;position:relative;font-variant-numeric:tabular-nums;
+transition:background .2s}
+.cal-cell:hover{background:rgba(96,165,250,0.1)}
+.cal-empty{opacity:0.2}
+.cal-weekend{color:var(--muted)}
+.cal-today{background:linear-gradient(135deg,var(--accent),#a78bfa);color:white;
+font-weight:600;box-shadow:0 0 16px rgba(96,165,250,0.4)}
+.cal-hol{position:absolute;top:2px;right:3px;font-size:8px;color:#f87171;line-height:1}
+.quote-text{font-size:16px;font-style:italic;line-height:1.55;margin-bottom:12px}
+.quote-author{font-size:12px;color:var(--muted);text-align:right}
+.quote-author::before{content:'— '}
+.news-item{display:block;padding:10px 0;color:var(--text);text-decoration:none;
+font-size:13px;line-height:1.4;border-bottom:1px solid var(--border);
+transition:transform .15s}
+.news-item:last-child{border-bottom:none}
+.news-item:hover{transform:translateX(4px)}
+.news-title{font-weight:500;margin-bottom:4px;transition:color .15s}
+.news-item:hover .news-title{color:var(--accent)}
+.news-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.counter{text-align:center;padding:6px 0}
+.counter-num{font-size:60px;font-weight:200;letter-spacing:-0.03em;
+background:linear-gradient(135deg, #f87171, #facc15);
+-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+line-height:1}
+.counter-label{font-size:12px;color:var(--muted);margin-top:8px}
 .secure-block{background:var(--panel);border:1px solid var(--border);
 border-radius:16px;padding:24px;margin-bottom:24px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
+backdrop-filter:blur(var(--glass-blur));animation:fadeInUp .5s ease-out both}
 .secure-locked{text-align:center}
 .secure-icon{font-size:48px;line-height:1;margin-bottom:12px}
 .secure-title{font-size:16px;font-weight:500;margin-bottom:6px}
 .secure-hint{font-size:13px;color:var(--muted);margin-bottom:20px}
 .secure-input-wrap{display:flex;gap:8px;max-width:400px;margin:0 auto}
 .secure-input-wrap input{flex:1;background:var(--bg);border:1px solid var(--border);
-color:var(--text);padding:12px 16px;border-radius:10px;font-size:14px;
-font-family:inherit}
+color:var(--text);padding:12px 16px;border-radius:10px;font-size:14px;font-family:inherit}
 .secure-input-wrap input:focus{outline:none;border-color:var(--accent)}
 .secure-btn{background:var(--accent);border:none;color:#fff;padding:12px 24px;
 border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;
-transition:transform .15s,background .15s;white-space:nowrap}
-.secure-btn:hover{transform:translateY(-1px);background:#3b82f6}
+transition:transform .15s;white-space:nowrap}
+.secure-btn:hover{transform:translateY(-1px)}
 .secure-btn:disabled{opacity:0.5;cursor:wait}
 .secure-error{color:#f87171;font-size:13px;margin-top:12px;min-height:18px}
 .secure-unlocked{text-align:center}
-.secure-timer{font-size:13px;color:var(--muted);margin-bottom:16px;
-padding:8px 16px;background:var(--bg);border-radius:20px;display:inline-block}
+.secure-timer{font-size:13px;color:var(--muted);margin-bottom:16px;padding:8px 16px;
+background:var(--bg);border-radius:20px;display:inline-block}
 .secure-timer b{color:var(--accent);font-variant-numeric:tabular-nums}
-.secure-result{display:flex;gap:20px;align-items:center;flex-wrap:wrap;
-justify-content:center}
+.secure-main{display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:center}
 .secure-qr{background:#fff;padding:10px;border-radius:12px}
 .secure-qr canvas,.secure-qr img{display:block;width:180px;height:180px}
 .secure-links{flex:1;min-width:240px;text-align:left;
 display:flex;flex-direction:column;gap:10px}
-.secure-label{font-size:12px;color:var(--muted);text-transform:uppercase;
-letter-spacing:0.5px}
+.secure-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.link-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.splits-list{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);
+text-align:left}
+.splits-list h4{font-size:11px;color:var(--muted);text-transform:uppercase;
+letter-spacing:1px;margin-bottom:12px;font-weight:600}
+.split-item{display:flex;align-items:center;gap:10px;padding:8px 10px;
+background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:13px}
+.split-name{flex:1;font-weight:500}
+.split-count{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.split-copy{background:var(--border);border:none;color:var(--muted);
+padding:5px 10px;border-radius:6px;font-size:11px;cursor:pointer}
+.split-copy:hover{background:var(--accent);color:#fff}
+.split-copy.ok{background:#4ade80;color:#0f1115}
 .secure-btn-close{background:transparent;border:1px solid var(--border);
 color:var(--muted);padding:8px 16px;border-radius:10px;font-size:13px;
-cursor:pointer;transition:border-color .15s;align-self:flex-start}
+cursor:pointer;align-self:flex-start;margin-top:12px}
 .secure-btn-close:hover{border-color:var(--accent);color:var(--accent)}
+.splash{position:fixed;inset:0;background:var(--bg);z-index:1000;
+display:flex;align-items:center;justify-content:center;font-size:60px;
+animation:splashOut 0.9s ease-out 1.2s forwards;pointer-events:none}
+@keyframes splashOut{to{opacity:0;visibility:hidden}}
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;
+pointer-events:none;opacity:0.65}
+.wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
 """
 
 THEME_JS = """
@@ -2047,7 +2453,7 @@ THEME_JS = """
         timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit'
       });
       el.innerHTML = '🕐 <strong>' + t + '</strong> <span class="hide-mobile">МСК</span>';
-    } catch(e) { el.innerHTML = ''; }
+    } catch(e) {}
   }
   updateClock();
   setInterval(updateClock, 1000);
@@ -2137,7 +2543,7 @@ TOP_RIGHT_WIDGET = '''<div class="top-right">
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v21 - {date}</title>
+<title>M3U Check - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -2147,12 +2553,12 @@ REPORT_T = """<!DOCTYPE html>
 <div class="sub">{date} · источников: {n_playlists}</div>
 {health_block}
 <div class="cards">
-<div class="card"><div class="k">Проверено</div><div class="v" data-count="{total}">0</div>{sp_total}</div>
-<div class="card"><div class="k">Рабочих</div><div class="v good" data-count="{ok}">0</div>{sp_ok}</div>
+<div class="card"><div class="k">Проверено</div><div class="v" data-count="{total}">0</div></div>
+<div class="card"><div class="k">Рабочих</div><div class="v good" data-count="{ok}">0</div></div>
 <div class="card"><div class="k">Нестабильных</div><div class="v warn" data-count="{unstable}">0</div></div>
 <div class="card"><div class="k">Отфильтровано</div><div class="v warn" data-count="{filtered}">0</div></div>
 <div class="card"><div class="k">Мёртвых</div><div class="v bad" data-count="{dead}">0</div></div>
-<div class="card"><div class="k">В merged</div><div class="v" data-count="{merged}">0</div>{sp_merged}</div>
+<div class="card"><div class="k">В merged</div><div class="v" data-count="{merged}">0</div></div>
 </div>
 {quality_block}
 {donut_block}
@@ -2168,11 +2574,12 @@ REPORT_T = """<!DOCTYPE html>
 <div class="section"><h2>Фильтры</h2>
 <table><thead><tr><th>Причина</th><th>Каналов</th></tr></thead>
 <tbody>{filter_rows}</tbody></table></div>
-<div class="box"><a href="rejected.html">🚫 Посмотреть отсеянные каналы</a> ·
-<a href="rejected.csv">📥 Скачать CSV отсеянных</a></div>
+<div class="box"><a href="rejected.html">🚫 Отсеянные каналы</a> ·
+<a href="rejected.csv">📥 CSV</a></div>
 {theme_js}
 </body></html>
 """
+
 
 INDEX_T_SECURE = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
@@ -2185,29 +2592,90 @@ INDEX_T_SECURE = """<!DOCTYPE html>
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="IPTV">
 <link rel="apple-touch-icon" href="icon.svg">
+<meta name="robots" content="noindex,nofollow">
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>window.QRCode||document.write('<script src="https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js"><\\/script>')</script>
 <style>{common_css}</style></head><body>
+<div class="splash">✨</div>
+<canvas id="bgCanvas"></canvas>
 {top_right}
-<h1>IPTV — авто-обновляемый плейлист</h1>
-<div class="sub">Обновлено: {date}</div>
-<div id="wf-status" class="wf-status">Проверяю статус последнего запуска...</div>
+<div class="wrap">
+
+{holiday_plaque}
+
+<div class="hero">
+  <div class="clock-card">
+    <div class="clock">
+      <span id="h1">-</span><span id="h2">-</span><span class="colon">:</span><span id="m1">-</span><span id="m2">-</span><span class="sec" id="ss">--</span>
+    </div>
+    <div class="tz">Московское время · UTC+3</div>
+    <div class="date-line">
+      <span class="wd">{weekday}</span>
+      <span class="yr">{year_num}</span>
+      <span class="mo">{date_short} · {month_name}</span>
+    </div>
+  </div>
+  <div class="art-card">
+    {svg_art}
+    <div class="art-label">🎨 сгенерировано</div>
+  </div>
+</div>
 
 <h2>Ссылка для плеера</h2>
 {secure_block}
+
+<div class="info-grid">
+  <div class="card" style="grid-column:1/-1">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">🌤 Погода · Нальчик</h3>
+    {weather_block}
+  </div>
+  <div class="card">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">📅 {month_name} {year_num}</h3>
+    {calendar_block}
+  </div>
+  <div class="card">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">🌕 Фаза луны</h3>
+    <div class="moon-wrap">
+      <span class="moon-icon">{moon_icon}</span>
+      <div class="moon-name">{moon_name}</div>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">💱 Курсы ЦБ РФ</h3>
+    {currency_block}
+  </div>
+  <div class="card">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">🎄 До Нового года</h3>
+    <div class="counter">
+      <div class="counter-num">{days_ny}</div>
+      <div class="counter-label">дней осталось</div>
+    </div>
+  </div>
+  <div class="card" style="grid-column:1/-1">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">💭 Цитата дня</h3>
+    <div class="quote-text">«{quote}»</div>
+    <div class="quote-author">{quote_author}</div>
+  </div>
+  <div class="card" style="grid-column:1/-1">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">📰 Новости</h3>
+    {news_block}
+  </div>
+</div>
 
 {trend_block}
 <h2>Разделы</h2>
 <div class="box"><a href="report.html">📊 Отчёт проверки</a></div>
 <div class="box"><a href="channels.html">🔍 Поиск по каналам</a></div>
 <div class="box"><a href="rejected.html">🚫 Отсеянные каналы</a></div>
-<div class="box"><a href="channels.csv">📥 Скачать CSV (все каналы)</a></div>
+<div class="box"><a href="channels.csv">📥 CSV (все каналы)</a></div>
 <h2>Статистика</h2>
 <div class="box">
 Каналов в merged: <b>{merged_count}</b><br>
 Рабочих: <b>{ok}</b> из <b>{total}</b><br>
 Нестабильных отсеяно: <b>{unstable}</b>
 </div>
-{splits_block}
+
+</div>
 <script>
 (function(){
   const gh = "{github_repo}";
@@ -2218,20 +2686,109 @@ INDEX_T_SECURE = """<!DOCTYPE html>
         if(!d || !d.workflow_runs || !d.workflow_runs.length) return;
         const run = d.workflow_runs[0];
         const el = document.getElementById('wf-status');
+        if(!el) return;
         const when = new Date(run.updated_at || run.created_at);
         const ago = Math.round((Date.now() - when.getTime())/60000);
         const agoStr = ago < 1 ? 'только что' : ago < 60 ? ago + ' мин назад' : Math.round(ago/60) + ' ч назад';
         let html = '';
         if(run.status === 'in_progress') html = '<span style="color:#facc15">🔄 Идёт проверка…</span>';
-        else if(run.conclusion === 'success') html = '<span style="color:#4ade80">✅ Последняя проверка успешна</span>';
-        else if(run.conclusion === 'failure') html = '<span style="color:#f87171">❌ Последняя проверка упала</span>';
-        else html = '<span style="color:var(--muted)">⏸ Статус: ' + (run.status||'?') + '</span>';
+        else if(run.conclusion === 'success') html = '<span style="color:#4ade80">✅ Успешно</span>';
+        else if(run.conclusion === 'failure') html = '<span style="color:#f87171">❌ Упало</span>';
+        else html = '<span style="color:var(--muted)">⏸</span>';
         html += ' <span style="color:var(--muted);font-size:12px">· ' + agoStr + '</span>';
         el.innerHTML = html;
       }).catch(() => {});
   }
 
-  // ===== Расшифровка =====
+  function tick(){
+    const now = new Date();
+    const msk = new Date(now.toLocaleString('en-US', {timeZone:'Europe/Moscow'}));
+    const hh = String(msk.getHours()).padStart(2, '0');
+    const mm = String(msk.getMinutes()).padStart(2, '0');
+    const ss = String(msk.getSeconds()).padStart(2, '0');
+    const h1 = document.getElementById('h1');
+    const h2 = document.getElementById('h2');
+    const m1 = document.getElementById('m1');
+    const m2 = document.getElementById('m2');
+    const sEl = document.getElementById('ss');
+    if(h1) h1.textContent = hh[0];
+    if(h2) h2.textContent = hh[1];
+    if(m1) m1.textContent = mm[0];
+    if(m2) m2.textContent = mm[1];
+    if(sEl) sEl.textContent = ss;
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  const kind = "{weather_kind}";
+  const canvas = document.getElementById('bgCanvas');
+  if(canvas){
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    function resize(){
+      W = canvas.width = window.innerWidth * devicePixelRatio;
+      H = canvas.height = window.innerHeight * devicePixelRatio;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    let count = 0;
+    if(kind === 'rain' || kind === 'storm') count = 100;
+    else if(kind === 'snow') count = 70;
+    else if(kind === 'sun') count = 40;
+    else count = 25;
+    for(let i = 0; i < count; i++){
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: kind === 'rain' ? 0.5 : (Math.random() - 0.5) * 0.6,
+        vy: kind === 'rain' ? 4 + Math.random() * 6
+           : kind === 'snow' ? 0.4 + Math.random() * 1
+           : (Math.random() - 0.5) * 0.5,
+        r: kind === 'rain' ? 1 + Math.random() * 1.5
+          : kind === 'snow' ? 2 + Math.random() * 3
+          : 1 + Math.random() * 2.5,
+        a: 0.15 + Math.random() * 0.5,
+      });
+    }
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      for(const p of particles){
+        if(kind === 'rain' || kind === 'storm'){
+          ctx.strokeStyle = 'rgba(150,200,255,' + p.a + ')';
+          ctx.lineWidth = p.r;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x + p.vx * 3, p.y + 20 + p.vy * 2);
+          ctx.stroke();
+        } else if(kind === 'snow'){
+          ctx.fillStyle = 'rgba(255,255,255,' + p.a + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        } else if(kind === 'sun'){
+          ctx.fillStyle = 'rgba(255,220,120,' + (p.a * 0.8) + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = 'rgba(200,220,255,' + (p.a * 0.6) + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        p.x += p.vx;
+        p.y += p.vy;
+        if(p.y > H + 20){ p.y = -20; p.x = Math.random() * W; }
+        if(p.x > W + 20) p.x = -20;
+        if(p.x < -20) p.x = W + 20;
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
   const secureBlock = document.getElementById('secureBlock');
   const encBlob = secureBlock ? secureBlock.dataset.enc : '';
   const input = document.getElementById('pwdInput');
@@ -2240,11 +2797,12 @@ INDEX_T_SECURE = """<!DOCTYPE html>
   const locked = document.getElementById('secureLocked');
   const unlocked = document.getElementById('secureUnlocked');
   const timerEl = document.getElementById('timerVal');
-  let hideTimer = null;
   let countdownTimer = null;
 
   if(!encBlob){
-    if(locked) locked.innerHTML = '<div class="secure-icon">⚠️</div><div class="secure-title">Раздел временно недоступен</div><div class="secure-hint">Попробуй позже</div>';
+    if(locked){
+      locked.innerHTML = '<div class="secure-icon">⚠️</div><div class="secure-title">Раздел временно недоступен</div>';
+    }
     return;
   }
 
@@ -2258,15 +2816,10 @@ INDEX_T_SECURE = """<!DOCTYPE html>
   async function deriveKey(password, salt){
     const enc = new TextEncoder();
     const baseKey = await crypto.subtle.importKey(
-      'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']
-    );
+      'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
     return crypto.subtle.deriveKey(
       {name:'PBKDF2', salt: salt, iterations: 150000, hash: 'SHA-256'},
-      baseKey,
-      {name:'AES-GCM', length:256},
-      false,
-      ['decrypt']
-    );
+      baseKey, {name:'AES-GCM', length:256}, false, ['decrypt']);
   }
 
   async function decrypt(blob, password){
@@ -2281,31 +2834,31 @@ INDEX_T_SECURE = """<!DOCTYPE html>
 
   function startHideTimer(seconds){
     let left = seconds;
-    function tick(){
+    function t(){
       const m = Math.floor(left/60), s = left % 60;
-      timerEl.textContent = m + ':' + String(s).padStart(2, '0');
-      if(left <= 0){
-        hideNow();
-        return;
-      }
+      if(timerEl) timerEl.textContent = m + ':' + String(s).padStart(2, '0');
+      if(left <= 0){ hideNow(); return; }
       left -= 1;
     }
-    tick();
-    countdownTimer = setInterval(tick, 1000);
+    t();
+    countdownTimer = setInterval(t, 1000);
   }
 
   function hideNow(){
     if(countdownTimer) clearInterval(countdownTimer);
-    if(hideTimer) clearTimeout(hideTimer);
-    unlocked.style.display = 'none';
-    locked.style.display = 'block';
-    input.value = '';
-    errEl.textContent = '';
+    if(unlocked) unlocked.style.display = 'none';
+    if(locked) locked.style.display = 'block';
+    if(input) input.value = '';
+    if(errEl) errEl.textContent = '';
     const qrWrap = document.getElementById('qrWrap');
     if(qrWrap) qrWrap.innerHTML = '';
   }
 
-  document.getElementById('closeBtn')?.addEventListener('click', hideNow);
+  const closeBtn = document.getElementById('closeBtn');
+  if(closeBtn) closeBtn.addEventListener('click', hideNow);
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function escapeAttr(s){ return String(s).replace(/"/g, '&quot;'); }
 
   if(btn) btn.addEventListener('click', async () => {
     const pwd = input.value.trim();
@@ -2314,17 +2867,43 @@ INDEX_T_SECURE = """<!DOCTYPE html>
     errEl.textContent = 'Расшифровка...';
     try {
       const data = await decrypt(encBlob, pwd);
-      document.getElementById('playerUrlLocked').textContent = data.playlist;
+      const pl = document.getElementById('playerUrlLocked');
+      if(pl) pl.textContent = data.playlist;
+
       const qrWrap = document.getElementById('qrWrap');
       qrWrap.innerHTML = '';
-      new QRCode(qrWrap, {
-        text: data.playlist,
-        width: 180,
-        height: 180,
-        colorDark: '#000',
-        colorLight: '#fff',
-        correctLevel: QRCode.CorrectLevel.M,
-      });
+      if(window.QRCode){
+        new QRCode(qrWrap, {
+          text: data.playlist, width: 180, height: 180,
+          colorDark: '#000', colorLight: '#fff',
+          correctLevel: QRCode.CorrectLevel.M,
+        });
+      }
+
+      const splitsWrap = document.getElementById('splitsWrap');
+      if(splitsWrap && data.splits && data.splits.length){
+        const base = data.base_url || '';
+        splitsWrap.innerHTML = '<h4>📂 Разделы</h4>' + data.splits.map(s => {
+          const url = base + s.file;
+          return '<div class="split-item">' +
+            '<span class="split-name">' + escapeHtml(s.name) + '</span>' +
+            '<span class="split-count">' + s.count + '</span>' +
+            '<button class="split-copy" data-u="' + escapeAttr(url) + '">📋</button>' +
+            '</div>';
+        }).join('');
+        splitsWrap.querySelectorAll('.split-copy').forEach(b => {
+          b.addEventListener('click', () => {
+            navigator.clipboard.writeText(b.dataset.u).then(() => {
+              b.classList.add('ok');
+              const t = b.textContent; b.textContent = '✓';
+              setTimeout(() => { b.classList.remove('ok'); b.textContent = t; }, 1200);
+            });
+          });
+        });
+      } else if(splitsWrap){
+        splitsWrap.innerHTML = '';
+      }
+
       locked.style.display = 'none';
       unlocked.style.display = 'block';
       errEl.textContent = '';
@@ -2340,13 +2919,14 @@ INDEX_T_SECURE = """<!DOCTYPE html>
     if(e.key === 'Enter') btn.click();
   });
 
-  document.querySelectorAll('.copy-btn').forEach(b => {
+  document.querySelectorAll('.copy-btn[data-target]').forEach(b => {
     b.addEventListener('click', () => {
       const el = document.getElementById(b.dataset.target);
       if(!el || el.textContent === '—') return;
       navigator.clipboard.writeText(el.textContent).then(() => {
+        b.classList.add('copied');
         const t = b.textContent; b.textContent = '✓';
-        setTimeout(() => b.textContent = t, 1200);
+        setTimeout(() => { b.classList.remove('copied'); b.textContent = t; }, 1200);
       });
     });
   });
@@ -2355,6 +2935,7 @@ INDEX_T_SECURE = """<!DOCTYPE html>
 {theme_js}
 </body></html>
 """
+
 
 CHANNELS_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
@@ -2365,18 +2946,16 @@ CHANNELS_T = """<!DOCTYPE html>
 <style>{common_css}
 input[type=search],select{background:var(--panel);border:1px solid var(--border);
 color:var(--text);padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
-margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px)}
+margin-bottom:10px;font-family:inherit}
 .controls{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}
 @media(max-width:600px){.controls{grid-template-columns:1fr}}
-th{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);z-index:2}
+th{position:sticky;top:0;background:var(--bg);z-index:2}
 .logo{width:32px;height:32px;object-fit:contain;vertical-align:middle;
 background:var(--border);border-radius:6px;padding:3px}
 .name{font-weight:500}
 .group{color:var(--muted);font-size:12px}
 .copy{background:var(--border);border:none;color:var(--muted);padding:5px 10px;
-border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
+border-radius:6px;font-size:11px;cursor:pointer}
 .copy:hover{background:var(--accent);color:#fff}
 .copy.ok{background:#4ade80;color:#0f1115}
 .view-bar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
@@ -2387,8 +2966,8 @@ border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
 <div class="sub">Всего: <b>{total}</b> · с EPG: <b>{epg}</b> · показано: <span id="shown">{total}</span></div>
 <div class="chk-bar">
 <label class="chk"><input type="checkbox" id="f-epg"> Только с EPG</label>
-<label class="chk"><input type="checkbox" id="f-logo"> Только с логотипом</label>
-<label class="chk"><input type="checkbox" id="f-stable"> Только стабильные (&gt;80%)</label>
+<label class="chk"><input type="checkbox" id="f-logo"> С логотипом</label>
+<label class="chk"><input type="checkbox" id="f-stable"> Стабильные &gt;80%</label>
 <label class="chk"><input type="checkbox" id="f-4k"> Только 4K</label>
 <label class="chk"><input type="checkbox" id="f-hd"> Только HD</label>
 </div>
@@ -2401,10 +2980,8 @@ border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
 <select id="g"><option value="">Все группы</option>{group_options}</select>
 </div>
 <div id="table-view">
-<table>
-<thead><tr><th></th><th>Название</th><th>Кач.</th><th>Аптайм</th><th>Группа</th><th></th></tr></thead>
-<tbody id="tb"></tbody>
-</table>
+<table><thead><tr><th></th><th>Название</th><th>Кач.</th><th>Аптайм</th><th>Группа</th><th></th></tr></thead>
+<tbody id="tb"></tbody></table>
 </div>
 <div id="grid-view" style="display:none">
 <div class="channels-grid" id="grid"></div>
@@ -2423,27 +3000,19 @@ const fStable = document.getElementById('f-stable');
 const f4k = document.getElementById('f-4k');
 const fHd = document.getElementById('f-hd');
 const shown = document.getElementById('shown');
-const btnTable = document.getElementById('view-table');
-const btnGrid = document.getElementById('view-grid');
 let viewMode = localStorage.getItem('ch-view') || 'table';
-
-const params = new URLSearchParams(location.search);
-const initGroup = params.get('group');
-if(initGroup) g.value = initGroup;
 
 function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function uptimeHtml(pct, samples) {
   if (pct === null || pct === undefined || samples < 2) return '<span class="uptime-none">—</span>';
-  let cls = 'uptime-good';
-  if (pct < 50) cls = 'uptime-low';
-  else if (pct < 80) cls = 'uptime-mid';
+  let cls = pct < 50 ? 'uptime-low' : pct < 80 ? 'uptime-mid' : 'uptime-good';
   return '<span class="' + cls + '">' + pct + '%</span>';
 }
 function qualityHtml(q) {
   if (q === '4K') return '<span class="quality-4k">4K</span>';
   if (q === 'HD') return '<span class="quality-hd">HD</span>';
   if (q === 'SD') return '<span class="quality-sd">SD</span>';
-  return '<span style="color:var(--muted);font-size:11px">—</span>';
+  return '—';
 }
 function statusEmoji(pct, samples) {
   if (pct === null || pct === undefined || samples < 2) return '⚪';
@@ -2451,105 +3020,78 @@ function statusEmoji(pct, samples) {
   if (pct >= 50) return '🟡';
   return '🔴';
 }
-
 function filtered() {
   const term = q.value.trim().toLowerCase();
   const grp = g.value;
-  const onlyEpg = fEpg.checked;
-  const onlyLogo = fLogo.checked;
-  const onlyStable = fStable.checked;
-  const only4k = f4k.checked;
-  const onlyHd = fHd.checked;
   let out = [];
   for (const c of CH) {
     if (grp && c.group !== grp) continue;
     if (term && !c.name.toLowerCase().includes(term)) continue;
-    if (onlyEpg && !c.tvg_id) continue;
-    if (onlyLogo && !c.logo) continue;
-    if (onlyStable) {
-      if (c.uptime_pct === null || c.uptime_pct === undefined) continue;
-      if (c.uptime_pct < 80) continue;
+    if (fEpg.checked && !c.tvg_id) continue;
+    if (fLogo.checked && !c.logo) continue;
+    if (fStable.checked) {
+      if (c.uptime_pct === null || c.uptime_pct === undefined || c.uptime_pct < 80) continue;
     }
-    if (only4k && c.quality !== '4K') continue;
-    if (onlyHd && c.quality !== 'HD') continue;
+    if (f4k.checked && c.quality !== '4K') continue;
+    if (fHd.checked && c.quality !== 'HD') continue;
     out.push(c);
   }
-  if (out.length > 800) out = out.slice(0, 800);
-  return out;
+  return out.slice(0, 800);
 }
-
 function renderTable(out) {
-  const html = out.map(c => {
+  tb.innerHTML = out.map(c => {
     const logo = c.logo ? '<img class="logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '';
-    const epg = c.tvg_id ? '<span style="color:#4ade80;font-size:11px;margin-left:4px" title="' + esc(c.tvg_id) + '">EPG</span>' : '';
-    const up = uptimeHtml(c.uptime_pct, c.uptime_samples);
-    return '<tr><td>' + logo + '</td>'
-      + '<td class="name">' + esc(c.name) + epg + '</td>'
-      + '<td>' + qualityHtml(c.quality) + '</td>'
-      + '<td>' + up + '</td>'
-      + '<td class="group">' + esc(c.group) + '</td>'
-      + '<td><button class="copy" data-u="' + esc(c.url) + '">URL</button></td></tr>';
-  }).join('');
-  tb.innerHTML = html || '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
+    const epg = c.tvg_id ? '<span style="color:#4ade80;font-size:11px;margin-left:4px">EPG</span>' : '';
+    return '<tr><td>' + logo + '</td>' +
+      '<td class="name">' + esc(c.name) + epg + '</td>' +
+      '<td>' + qualityHtml(c.quality) + '</td>' +
+      '<td>' + uptimeHtml(c.uptime_pct, c.uptime_samples) + '</td>' +
+      '<td class="group">' + esc(c.group) + '</td>' +
+      '<td><button class="copy" data-u="' + esc(c.url) + '">URL</button></td></tr>';
+  }).join('') || '<tr><td colspan="6" style="text-align:center;padding:24px">Ничего не найдено</td></tr>';
   tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
     navigator.clipboard.writeText(b.dataset.u).then(() => {
-      b.classList.add('ok');
-      const t = b.textContent; b.textContent = '✓';
+      b.classList.add('ok'); const t = b.textContent; b.textContent = '✓';
       setTimeout(() => { b.classList.remove('ok'); b.textContent = t; }, 1000);
     });
   }));
 }
-
 function renderGrid(out) {
-  const html = out.map((c, i) => {
-    const logo = c.logo ? '<img class="cc-logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '<div class="cc-logo" style="display:inline-block"></div>';
+  grid.innerHTML = out.map((c, i) => {
+    const logo = c.logo ? '<img class="cc-logo" src="' + esc(c.logo) + '" loading="lazy">' : '';
     const st = statusEmoji(c.uptime_pct, c.uptime_samples);
     const q = c.quality && c.quality !== 'Unknown' ? ' · ' + c.quality : '';
-    return '<div class="channel-card" style="animation-delay:' + (i * 0.01) + 's">'
-      + '<span class="cc-status">' + st + '</span>'
-      + logo
-      + '<div class="cc-name">' + esc(c.name) + '</div>'
-      + '<div class="cc-meta">' + esc(c.group) + q + '</div>'
-      + '<div class="cc-actions">'
-      + '<button class="cc-btn copy" data-u="' + esc(c.url) + '">URL</button>'
-      + '</div></div>';
-  }).join('');
-  grid.innerHTML = html || '<div style="text-align:center;color:var(--muted);padding:24px;grid-column:1/-1">Ничего не найдено</div>';
+    return '<div class="channel-card" style="animation-delay:' + (i * 0.01) + 's">' +
+      '<span class="cc-status">' + st + '</span>' + logo +
+      '<div class="cc-name">' + esc(c.name) + '</div>' +
+      '<div class="cc-meta">' + esc(c.group) + q + '</div>' +
+      '<div class="cc-actions"><button class="cc-btn copy" data-u="' + esc(c.url) + '">URL</button></div></div>';
+  }).join('') || '<div style="text-align:center;padding:24px;grid-column:1/-1">Ничего не найдено</div>';
   grid.querySelectorAll('.copy').forEach(b => b.addEventListener('click', (e) => {
     e.stopPropagation();
     navigator.clipboard.writeText(b.dataset.u).then(() => {
-      b.classList.add('ok');
-      const t = b.textContent; b.textContent = '✓';
+      b.classList.add('ok'); const t = b.textContent; b.textContent = '✓';
       setTimeout(() => { b.classList.remove('ok'); b.textContent = t; }, 1000);
     });
   }));
 }
-
 function render() {
   const out = filtered();
   if (viewMode === 'grid') {
-    tableWrap.style.display = 'none';
-    gridWrap.style.display = 'block';
+    tableWrap.style.display = 'none'; gridWrap.style.display = 'block';
     renderGrid(out);
   } else {
-    tableWrap.style.display = 'block';
-    gridWrap.style.display = 'none';
+    tableWrap.style.display = 'block'; gridWrap.style.display = 'none';
     renderTable(out);
   }
   shown.textContent = out.length;
 }
-
-btnTable.addEventListener('click', () => {
-  viewMode = 'table';
-  localStorage.setItem('ch-view', 'table');
-  render();
+document.getElementById('view-table').addEventListener('click', () => {
+  viewMode = 'table'; localStorage.setItem('ch-view', 'table'); render();
 });
-btnGrid.addEventListener('click', () => {
-  viewMode = 'grid';
-  localStorage.setItem('ch-view', 'grid');
-  render();
+document.getElementById('view-grid').addEventListener('click', () => {
+  viewMode = 'grid'; localStorage.setItem('ch-view', 'grid'); render();
 });
-
 q.addEventListener('input', render);
 g.addEventListener('change', render);
 fEpg.addEventListener('change', render);
@@ -2563,6 +3105,7 @@ render();
 </body></html>
 """
 
+
 REJECTED_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -2570,13 +3113,10 @@ REJECTED_T = """<!DOCTYPE html>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}
 input,select{background:var(--panel);border:1px solid var(--border);color:var(--text);
-padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
-margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px)}
+padding:10px 12px;border-radius:10px;font-size:14px;width:100%;margin-bottom:10px;font-family:inherit}
 .controls{display:grid;grid-template-columns:1fr 260px;gap:10px;margin-bottom:16px}
 @media(max-width:600px){.controls{grid-template-columns:1fr}}
-th{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);z-index:2}
+th{position:sticky;top:0;background:var(--bg);z-index:2}
 .name{font-weight:500}
 .group{color:var(--muted);font-size:12px}
 .url-cell{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);
@@ -2590,10 +3130,8 @@ max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 <input id="q" type="search" placeholder="Поиск по названию или URL...">
 <select id="r"><option value="">Все причины</option>{reason_options}</select>
 </div>
-<table>
-<thead><tr><th>Название</th><th>Группа</th><th>URL</th><th>Причина</th></tr></thead>
-<tbody id="tb"></tbody>
-</table>
+<table><thead><tr><th>Название</th><th>Группа</th><th>URL</th><th>Причина</th></tr></thead>
+<tbody id="tb"></tbody></table>
 <script>
 const REJ = {rejected_json};
 const tb = document.getElementById('tb');
@@ -2616,16 +3154,13 @@ function render(){
     if (term && !(c.name.toLowerCase().includes(term) || c.url.toLowerCase().includes(term))) continue;
     out.push(c);
   }
-  if (out.length > 800) out = out.slice(0, 800);
-  const html = out.map(c => {
-    return '<tr>'
-      + '<td class="name">' + esc(c.name) + '</td>'
-      + '<td class="group">' + esc(c.group) + '</td>'
-      + '<td class="url-cell" title="' + esc(c.url) + '">' + esc(c.url) + '</td>'
-      + '<td><span class="' + reasonClass(c.reason) + '">' + esc(c.reason) + '</span></td>'
-      + '</tr>';
-  }).join('');
-  tb.innerHTML = html || '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
+  out = out.slice(0, 800);
+  tb.innerHTML = out.map(c => '<tr>' +
+    '<td class="name">' + esc(c.name) + '</td>' +
+    '<td class="group">' + esc(c.group) + '</td>' +
+    '<td class="url-cell" title="' + esc(c.url) + '">' + esc(c.url) + '</td>' +
+    '<td><span class="' + reasonClass(c.reason) + '">' + esc(c.reason) + '</span></td></tr>'
+  ).join('') || '<tr><td colspan="4" style="text-align:center;padding:24px">Ничего не найдено</td></tr>';
   shown.textContent = out.length;
 }
 q.addEventListener('input', render);
@@ -2636,15 +3171,14 @@ render();
 </body></html>
 """
 
+
 ICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
 <defs>
 <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="#4ade80"/>
-<stop offset="1" stop-color="#22d3ee"/>
+<stop offset="0" stop-color="#4ade80"/><stop offset="1" stop-color="#22d3ee"/>
 </linearGradient>
 <radialGradient id="bg" cx="0.3" cy="0.1" r="1">
-<stop offset="0" stop-color="#1a2332"/>
-<stop offset="1" stop-color="#0f1115"/>
+<stop offset="0" stop-color="#1a2332"/><stop offset="1" stop-color="#0f1115"/>
 </radialGradient>
 </defs>
 <rect width="192" height="192" rx="44" fill="url(#bg)"/>
@@ -2656,12 +3190,9 @@ ICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
 </svg>"""
 
 MANIFEST_T = """{
-  "name": "IPTV Auto",
-  "short_name": "IPTV",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#0f1115",
-  "theme_color": "#0f1115",
+  "name": "IPTV Auto", "short_name": "IPTV",
+  "start_url": "index.html", "display": "standalone",
+  "background_color": "#0f1115", "theme_color": "#0f1115",
   "icons": [
     {"src": "icon.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any"},
     {"src": "icon.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any"}
@@ -2670,16 +3201,9 @@ MANIFEST_T = """{
 """
 
 
-def _sparkline_for_history(history, key):
-    vals = [h.get(key, 0) for h in history][-20:]
-    if len(vals) < 2:
-        return ''
-    return sparkline_svg(vals)
-
-
 def render_trend_svg(history):
     if not history or len(history) < 2:
-        return '<div class="section"><h2>Тренд</h2><p style="color:var(--muted)">Данных пока нет. Появится через 2-3 запуска.</p></div>'
+        return '<div class="section"><h2>Тренд</h2><p style="color:var(--muted)">Данных пока нет.</p></div>'
     W, H, P = 900, 240, 40
     n = len(history)
     step = (W - 2 * P) / max(n - 1, 1)
@@ -2699,12 +3223,9 @@ def render_trend_svg(history):
     pts_merged = line_points('merged')
     pts_epg = line_points('epg')
 
-    def poly(pts):
-        return " ".join(f"{x:.1f},{y:.1f}" for x, y, _ in pts)
-
+    def poly(pts): return " ".join(f"{x:.1f},{y:.1f}" for x, y, _ in pts)
     def area(pts):
-        if not pts:
-            return ''
+        if not pts: return ''
         return f"M{pts[0][0]:.1f},{H-P} L" + " L".join(f"{x:.1f},{y:.1f}" for x, y, _ in pts) + f" L{pts[-1][0]:.1f},{H-P} Z"
 
     dots = ""
@@ -2715,9 +3236,8 @@ def render_trend_svg(history):
         hover_targets += (
             f'<circle cx="{x:.1f}" cy="{y:.1f}" r="10" fill="transparent" '
             f'style="cursor:pointer" '
-            f'onmouseover="showChartTip(event, \'{v} каналов (OK)\', \'{date_str}\')" '
-            f'onmouseout="hideChartTip()"/>'
-        )
+            f'onmouseover="showChartTip(event, \'{v} (OK)\', \'{date_str}\')" '
+            f'onmouseout="hideChartTip()"/>')
     for i, (x, y, v) in enumerate(pts_merged):
         dots += f'<circle cx="{x:.1f}" cy="{y:.1f}" r="2" fill="#60a5fa"/>'
     for i, (x, y, v) in enumerate(pts_epg):
@@ -2737,7 +3257,7 @@ def render_trend_svg(history):
         grid += f'<line x1="{P}" y1="{y:.0f}" x2="{W-P}" y2="{y:.0f}" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,4"/>'
         grid += f'<text x="6" y="{y+3:.0f}" fill="var(--muted)" font-size="10">{val}</text>'
 
-    return f'''<div class="section"><h2>Тренд (последние {n} запусков)</h2>
+    return f'''<div class="section"><h2>Тренд (последние {n})</h2>
 <svg viewBox="0 0 {W} {H}" style="width:100%;height:auto">
 {grid}
 <path d="{area(pts_ok)}" fill="#4ade80" fill-opacity="0.10"/>
@@ -2746,16 +3266,13 @@ def render_trend_svg(history):
 <polyline points="{poly(pts_merged)}" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
 <path d="{area(pts_epg)}" fill="#facc15" fill-opacity="0.08"/>
 <polyline points="{poly(pts_epg)}" fill="none" stroke="#facc15" stroke-width="1.5"/>
-{dots}
-{hover_targets}
-{labels}
+{dots}{hover_targets}{labels}
 </svg>
 <div style="margin-top:12px;font-size:12px;color:var(--muted)">
 <span style="color:#4ade80">■</span> Рабочих &nbsp;
 <span style="color:#60a5fa">■</span> В merged &nbsp;
 <span style="color:#facc15">■</span> С EPG
-</div>
-</div>'''
+</div></div>'''
 
 
 def render_report(path, stats, merged, total, ok, filt, dead, unstable,
@@ -2787,13 +3304,10 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
 
     ffprobe_block = ''
     if ffprobe_stats and any(ffprobe_stats.values()):
-        rows = "\n".join(
-            f"<tr><td>{k}</td><td>{v}</td></tr>"
-            for k, v in ffprobe_stats.items())
-        ffprobe_block = (
-            f"<div class='section'><h2>ffprobe</h2>"
-            f"<table><thead><tr><th>Статус</th><th>Каналов</th></tr></thead>"
-            f"<tbody>{rows}</tbody></table></div>")
+        rows = "\n".join(f"<tr><td>{k}</td><td>{v}</td></tr>" for k, v in ffprobe_stats.items())
+        ffprobe_block = (f"<div class='section'><h2>ffprobe</h2>"
+                         f"<table><thead><tr><th>Статус</th><th>Каналов</th></tr></thead>"
+                         f"<tbody>{rows}</tbody></table></div>")
 
     unstable_block = ''
     if unstable_channels:
@@ -2801,32 +3315,24 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
         rows = "\n".join(
             f"<tr><td>{html.escape(nm)}</td><td>{pct}%</td><td>{tot}</td></tr>"
             for nm, u, pct, tot in unstable_channels[:30])
-        unstable_block = (
-            f"<div class='section'><h2>Нестабильные каналы (аптайм < {CFG.min_uptime}%)</h2>"
-            f"<table><thead><tr><th>Канал</th><th>Аптайм</th><th>Проверок</th></tr></thead>"
-            f"<tbody>{rows}</tbody></table></div>")
+        unstable_block = (f"<div class='section'><h2>Нестабильные</h2>"
+                          f"<table><thead><tr><th>Канал</th><th>Аптайм</th><th>Проверок</th></tr></thead>"
+                          f"<tbody>{rows}</tbody></table></div>")
 
     logo_block = ''
     if logo_stats:
         total_logo = sum(logo_stats.values()) or 1
-        labels = {
-            'from_src': 'Из источника',
-            'from_id': 'По iptv-org id',
-            'from_name': 'По имени из базы',
-            'from_translit': 'По транслиту',
-            'from_epg_icon': 'Из EPG iptvx (icon)',
-            'from_prefix': 'По префиксу имени',
-            'from_txt': 'Из .txt',
-            'none': 'Не найдено',
-        }
+        labels = {'from_src': 'Из источника', 'from_id': 'По iptv-org id',
+                  'from_name': 'По имени', 'from_translit': 'По транслиту',
+                  'from_epg_icon': 'Из EPG icon', 'from_prefix': 'По префиксу',
+                  'from_txt': 'Из .txt', 'none': 'Не найдено'}
         rows = "\n".join(
             f"<tr><td>{labels.get(k, k)}</td><td>{v}</td>"
             f"<td>{v/total_logo*100:.1f}%</td></tr>"
             for k, v in sorted(logo_stats.items(), key=lambda x: -x[1]))
-        logo_block = (
-            f"<div class='section'><h2>Откуда логотипы</h2>"
-            f"<table><thead><tr><th>Источник</th><th>Каналов</th><th>%</th></tr></thead>"
-            f"<tbody>{rows}</tbody></table></div>")
+        logo_block = (f"<div class='section'><h2>Откуда логотипы</h2>"
+                      f"<table><thead><tr><th>Источник</th><th>Каналов</th><th>%</th></tr></thead>"
+                      f"<tbody>{rows}</tbody></table></div>")
 
     all_slow = []
     for st in stats:
@@ -2838,10 +3344,9 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
     if all_slow:
         rows = "\n".join(f"<tr><td>{html.escape(nm)}</td><td>{el}s</td></tr>"
                          for nm, u, el in all_slow)
-        slow_block = (
-            f"<div class='section'><h2>Медленные каналы (>{SLOW_THRESHOLD}s)</h2>"
-            f"<table><thead><tr><th>Канал</th><th>Отклик</th></tr></thead>"
-            f"<tbody>{rows}</tbody></table></div>")
+        slow_block = (f"<div class='section'><h2>Медленные</h2>"
+                      f"<table><thead><tr><th>Канал</th><th>Отклик</th></tr></thead>"
+                      f"<tbody>{rows}</tbody></table></div>")
 
     hist_block = render_history_svg(history)
     donut_block = render_donut_svg(groups_all)
@@ -2854,10 +3359,6 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
     denom = (ok + dead + unstable) or 1
     hpct = (ok / denom) * 100
     hb = health_bar(hpct)
-    sp_total = _sparkline_for_history(history, 'total')
-    sp_ok = _sparkline_for_history(history, 'ok')
-    sp_merged = _sparkline_for_history(history, 'merged')
-    d = int(dur)
     top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo,
                                         weather_html=WEATHER_HTML)
     out = fmt(
@@ -2865,12 +3366,11 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
         common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         n_playlists=len(stats), total=total, ok=ok, filtered=filt, dead=dead,
-        unstable=unstable, merged=merged, duration=f"{d // 60}м {d % 60}с",
+        unstable=unstable, merged=merged,
         health_block=hb, history_block=hist_block, donut_block=donut_block,
         quality_block=quality_block,
         unstable_block=unstable_block, logo_block=logo_block,
         ua_block=ua_block, slow_block=slow_block, ffprobe_block=ffprobe_block,
-        sp_total=sp_total, sp_ok=sp_ok, sp_merged=sp_merged,
         playlists_rows="\n".join(rows_pl), filter_rows=f_rows)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
@@ -2885,47 +3385,63 @@ def _github_repo_from_pages(pages_url):
     return ''
 
 
-def render_index(path, url, merged, ok, total, unstable, splits, qr_path,
-                 pages_url, history):
-    """Главная страница. Ссылки зашифрованы AES-256."""
-    split_html = ''
-    if splits:
-        items = "\n".join(
-            f"<div class='box'><a href='{fname}'>{fname}</a> — {cnt} каналов</div>"
-            for fname, cnt in splits)
-        split_html = f"<h2>Отдельные плейлисты</h2>{items}"
-
+def render_index(path, url, merged, ok, total, unstable,
+                 all_splits, pages_url, history):
     gh_repo = _github_repo_from_pages(pages_url)
     trend_block = render_trend_svg(history)
 
-    # Генерируем пароль и шифруем ссылки
+    weather_block, weather_kind = render_weather_card()
+    currency_block = render_currency_card()
+    news_block = render_news_card()
+    moon_icon, moon_name = moon_phase_v2()
+    quote, quote_author = quote_of_day()
+    days_ny = days_to_new_year()
+    svg_art = generate_svg_art()
+
+    now = datetime.datetime.now()
+    today = now.date()
+    weekday_map = ['Понедельник', 'Вторник', 'Среда', 'Четверг',
+                   'Пятница', 'Суббота', 'Воскресенье']
+    weekday = weekday_map[now.weekday()]
+    month_name = MONTHS_RU_NOM[now.month - 1]
+    year_num = now.year
+    months_gen = ['января','февраля','марта','апреля','мая','июня','июля',
+                  'августа','сентября','октября','ноября','декабря']
+    date_short = f"{now.day} {months_gen[now.month-1]}"
+    calendar_block = calendar_html(today)
+    holiday = HOLIDAYS_RU.get((today.month, today.day))
+    holiday_plaque = f'<div class="holiday-plaque">{holiday}</div>' if holiday else ''
+
     encrypted_blob = ''
-    password_plain = ''
     if HAS_CRYPTO:
-        password_plain = generate_password(16)
-        qr_url = f"{pages_url.rstrip('/')}/qr.png" if pages_url else 'qr.png'
+        password = generate_password(16)
+        base_url = f"{pages_url.rstrip('/')}/" if pages_url else ''
+        payload = {
+            'playlist': url,
+            'base_url': base_url,
+            'splits': [
+                {'name': s['name'], 'count': s['count'], 'file': s['file']}
+                for s in all_splits
+            ],
+        }
         try:
-            encrypted_blob = encrypt_links(url, qr_url, password_plain)
-            log.info("🔐 Ссылки зашифрованы (пароль %d символов)", len(password_plain))
+            encrypted_blob = encrypt_payload(payload, password)
+            log.info("🔐 Зашифровано: ссылка + %d сплитов", len(all_splits))
         except Exception as e:
             log.error("Шифрование: %s", e)
-            encrypted_blob = ''
+        if password and CFG.tg_token and CFG.tg_chat:
+            send_password_to_telegram(password, url)
     else:
-        log.warning("⚠️  cryptography не установлен — страница без шифрования")
-
-    # Отправляем пароль в Telegram
-    if password_plain and CFG.tg_token and CFG.tg_chat:
-        send_password_to_telegram(password_plain, url)
+        log.warning("⚠️  cryptography не установлен")
 
     top_right = TOP_RIGHT_WIDGET.format(github_repo=gh_repo,
                                         weather_html=WEATHER_HTML)
 
-    # Шифрованный блок = только эта строка утекает в HTML
     secure_block = f'''
     <div class="secure-block" id="secureBlock" data-enc="{encrypted_blob}">
       <div class="secure-locked" id="secureLocked">
         <div class="secure-icon">🔒</div>
-        <div class="secure-title">Ссылка на плейлист зашифрована</div>
+        <div class="secure-title">Ссылки на плейлисты зашифрованы</div>
         <div class="secure-hint">Пароль приходит в Telegram от бота</div>
         <div class="secure-input-wrap">
           <input type="password" id="pwdInput" placeholder="Введите пароль" autocomplete="off" spellcheck="false">
@@ -2934,18 +3450,19 @@ def render_index(path, url, merged, ok, total, unstable, splits, qr_path,
         <div class="secure-error" id="pwdError"></div>
       </div>
       <div class="secure-unlocked" id="secureUnlocked" style="display:none">
-        <div class="secure-timer">⏱ Ссылка видна ещё <b id="timerVal">5:00</b></div>
-        <div class="secure-result">
+        <div class="secure-timer">⏱ Видно ещё <b id="timerVal">5:00</b></div>
+        <div class="secure-main">
           <div class="secure-qr" id="qrWrap"></div>
           <div class="secure-links">
-            <div class="secure-label">Ссылка для плеера:</div>
+            <div class="secure-label">Основная ссылка:</div>
             <div class="link-line">
               <code id="playerUrlLocked">—</code>
               <button class="copy-btn" data-target="playerUrlLocked">📋</button>
             </div>
-            <button class="secure-btn-close" id="closeBtn">🔒 Скрыть</button>
           </div>
         </div>
+        <div class="splits-list" id="splitsWrap"></div>
+        <button class="secure-btn-close" id="closeBtn">🔒 Скрыть</button>
       </div>
     </div>
     '''
@@ -2953,11 +3470,22 @@ def render_index(path, url, merged, ok, total, unstable, splits, qr_path,
     out = fmt(
         INDEX_T_SECURE,
         common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
-        date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-        merged_count=merged, ok=ok, total=total,
-        unstable=unstable, splits_block=split_html,
-        github_repo=gh_repo, trend_block=trend_block,
-        secure_block=secure_block)
+        holiday_plaque=holiday_plaque,
+        svg_art=svg_art,
+        weekday=weekday, year_num=year_num,
+        date_short=date_short, month_name=month_name,
+        weather_block=weather_block,
+        weather_kind=weather_kind,
+        calendar_block=calendar_block,
+        moon_icon=moon_icon, moon_name=moon_name,
+        currency_block=currency_block,
+        days_ny=days_ny,
+        quote=quote, quote_author=quote_author,
+        news_block=news_block,
+        trend_block=trend_block,
+        secure_block=secure_block,
+        merged_count=merged, ok=ok, total=total, unstable=unstable,
+        github_repo=gh_repo)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
 
@@ -3005,7 +3533,6 @@ def render_rejected(path, github_repo):
         seen.add(key)
         rows.append({'name': name, 'group': group, 'url': url, 'reason': reason})
     rows.sort(key=lambda x: (x['reason'], x['group'].lower(), x['name'].lower()))
-
     reason_counts = {}
     for r in rows:
         base = r['reason'].split(':')[0]
@@ -3013,7 +3540,6 @@ def render_rejected(path, github_repo):
     reason_opts = "\n".join(
         f'<option value="{html.escape(k)}">{html.escape(k)} ({v})</option>'
         for k, v in sorted(reason_counts.items(), key=lambda x: -x[1]))
-
     top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo,
                                         weather_html=WEATHER_HTML)
     out = fmt(
@@ -3075,50 +3601,23 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v21</b>"]
+    lines = ["<b>M3U Check v22</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
-        f"Проверено: <b>{total}</b>",
-        f"Рабочих: <b>{ok}</b>",
-        f"Нестабильных отсеяно: <b>{unstable}</b>",
-        f"Отфильтровано: <b>{filt}</b>",
-        f"В merged: <b>{merged}</b>",
-        f"С EPG iptvx: <b>{epg_count}</b>",
-        f"Время: {int(dur)}с",
-        "",
-    ])
+        f"Проверено: <b>{total}</b>", f"Рабочих: <b>{ok}</b>",
+        f"Нестабильных: <b>{unstable}</b>", f"Отфильтровано: <b>{filt}</b>",
+        f"В merged: <b>{merged}</b>", f"С EPG: <b>{epg_count}</b>",
+        f"Время: {int(dur)}с", ""])
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
         lines.append(f"• {html.escape(st['label'])}: {st['ok']}/{st['total']} ({pct:.0f}%)")
-    if ffprobe_stats and any(ffprobe_stats.values()):
-        lines.append("")
-        lines.append("<b>ffprobe:</b> " + ", ".join(
-            f"{k}={v}" for k, v in ffprobe_stats.items() if v))
-    if quality_stats:
-        qs = ", ".join(f"{k}={v}" for k, v in quality_stats.items() if v > 0)
-        lines.append("")
-        lines.append(f"<b>Качество:</b> {qs}")
-    if logo_stats:
-        total_with_logo = sum(v for k, v in logo_stats.items() if k != 'none')
-        total_all = sum(logo_stats.values()) or 1
-        lines.append("")
-        lines.append(f"<b>Логотипы:</b> {total_with_logo}/{total_all} "
-                     f"({total_with_logo/total_all*100:.0f}%)")
     if WHITELIST_STATS['kept'] or WHITELIST_STATS['skipped']:
         lines.append("")
-        lines.append(f"<b>⭐ Whitelist:</b> пропущено проверок "
-                     f"{WHITELIST_STATS['skipped']}, оставлено "
-                     f"{WHITELIST_STATS['kept']}")
-    bad_sources = [(n, err) for n, ok_, err in source_results if not ok_]
-    if bad_sources:
-        lines.append("")
-        lines.append("<b>⚠️ Проблемные источники:</b>")
-        for n, err in bad_sources:
-            lines.append(f"• {html.escape(n)}: {html.escape(str(err))[:80]}")
+        lines.append(f"<b>⭐ Whitelist:</b> {WHITELIST_STATS['kept']} каналов")
     if index_url:
         lines.append("")
-        lines.append(f'<a href="{index_url}">Открыть страницу</a>')
+        lines.append(f'<a href="{index_url}">Открыть</a>')
     tg_send(CFG.tg_token, CFG.tg_chat, "\n".join(lines))
 
 
@@ -3176,12 +3675,12 @@ def main():
 
     if CFG.ffprobe:
         if HAS_FFPROBE:
-            emit("ffprobe: включён (все каналы через реальную проверку, UA=wink)")
+            emit("ffprobe: включён (UA=wink)")
         else:
-            emit("ffprobe: НЕ НАЙДЕН в системе, пропускаем проверку")
+            emit("ffprobe: НЕ НАЙДЕН")
             CFG.ffprobe = False
 
-    emit("Загружаю погоду для Нальчика...")
+    emit("Загружаю погоду...")
     WEATHER_HTML = fetch_weather()
     emit(f"  → {WEATHER_HTML}")
 
@@ -3197,29 +3696,28 @@ def main():
     if WHITELIST_URLS or WHITELIST_NAMES:
         emit(f"⭐ Whitelist: url={len(WHITELIST_URLS)} name={len(WHITELIST_NAMES)}")
     if HAS_CRYPTO:
-        emit("🔐 Шифрование ссылок: включено (AES-256-GCM)")
+        emit("🔐 Шифрование: включено (AES-256-GCM)")
     else:
-        emit("⚠️  cryptography не установлен — ссылки не будут зашифрованы")
+        emit("⚠️  cryptography не установлен")
 
     uptime_path = os.path.join(CFG.docs_dir, 'uptime.json')
     load_uptime(uptime_path)
     if UPTIME:
-        emit(f"Аптайм: загружено {len(UPTIME)} URL из истории")
+        emit(f"Аптайм: {len(UPTIME)} URL")
 
     quality_path = os.path.join(CFG.docs_dir, 'quality.json')
     load_quality_cache(quality_path)
     if QUALITY_MAP:
-        emit(f"Качество: загружено {len(QUALITY_MAP)} URL из кэша")
+        emit(f"Качество: {len(QUALITY_MAP)} URL")
 
     ffprobe_path = os.path.join(CFG.docs_dir, 'ffprobe.json')
     load_ffprobe_cache(ffprobe_path)
     if FFPROBE_MAP:
-        emit(f"ffprobe: загружено {len(FFPROBE_MAP)} URL из кэша")
+        emit(f"ffprobe: {len(FFPROBE_MAP)} URL")
 
-    emit("Загружаю базу iptv-org (логотипы + iptv-org id)...")
+    emit("Загружаю базу iptv-org...")
     load_iptv_org()
-
-    emit("Загружаю EPG iptvx.one (tvg-id + icon)...")
+    emit("Загружаю EPG iptvx.one...")
     download_epg_map()
 
     cfg = load_sources_config(CFG.sources)
@@ -3253,6 +3751,10 @@ def main():
     cache = UrlCache(CFG.cache, CFG.cache_ttl)
     os.makedirs(CFG.output, exist_ok=True)
     os.makedirs(CFG.docs_dir, exist_ok=True)
+
+    removed = cleanup_old_splits(CFG.docs_dir)
+    if removed:
+        emit(f"🧹 Удалено старых сплитов: {removed}")
 
     pages = CFG.pages_url.rstrip('/')
     gh_repo = _github_repo_from_pages(pages)
@@ -3294,10 +3796,14 @@ def main():
 
         splits = write_splits(ordered_merged, CFG.docs_dir, split_all=CFG.split_all)
         quality_splits = write_quality_splits(ordered_merged, CFG.docs_dir)
-        for fname, cnt in splits:
-            emit(f"    split: {fname} ({cnt})")
-        for fname, cnt in quality_splits:
-            emit(f"    quality: {fname} ({cnt})")
+        all_splits = splits + quality_splits
+
+        save_split_map({s['key']: s['file'] for s in all_splits})
+
+        for s in splits:
+            emit(f"    split: {s['name']} ({s['count']}) → {s['file']}")
+        for s in quality_splits:
+            emit(f"    quality: {s['name']} ({s['count']}) → {s['file']}")
 
         total = sum(s['total'] for s in stats_list)
         ok = sum(s['ok'] for s in stats_list)
@@ -3345,11 +3851,9 @@ def main():
             groups_all[g] = groups_all.get(g, 0) + 1
 
         write_csv(ordered_merged, os.path.join(CFG.docs_dir, 'channels.csv'))
-
         rejected_count = write_rejected_csv(os.path.join(CFG.docs_dir, 'rejected.csv'))
-        rejected_html_count = render_rejected(os.path.join(CFG.docs_dir, 'rejected.html'), gh_repo)
-        emit(f"\nrejected.csv: {rejected_count} записей (уникальных)")
-        emit(f"rejected.html: {rejected_html_count} записей")
+        render_rejected(os.path.join(CFG.docs_dir, 'rejected.html'), gh_repo)
+        emit(f"\nrejected.csv: {rejected_count} записей")
 
         render_report(os.path.join(CFG.docs_dir, 'report.html'),
                       stats_list, len(ordered_merged), total, ok, filt, dead, unstable,
@@ -3362,39 +3866,34 @@ def main():
         qr_path = os.path.join(CFG.docs_dir, 'qr.png')
         if pages and HAS_QR:
             generate_qr(purl, qr_path)
+
         render_index(os.path.join(CFG.docs_dir, 'index.html'),
                      purl, len(ordered_merged), ok, total, unstable,
-                     splits, qr_path, pages, history)
+                     all_splits, pages, history)
         render_channels(os.path.join(CFG.docs_dir, 'channels.html'), ordered_merged, gh_repo)
         write_pwa_assets(CFG.docs_dir)
 
         save_uptime(uptime_path, all_current_urls)
         save_quality_cache(quality_path, all_current_urls)
         save_ffprobe_cache(ffprobe_path, all_current_urls)
-        emit(f"\nАптайм: сохранено {len(UPTIME)} URL")
-        emit(f"Качество: сохранено {len(QUALITY_MAP)} URL")
+        emit(f"\nАптайм: {len(UPTIME)} URL")
+        emit(f"Качество: {len(QUALITY_MAP)} URL")
         if CFG.ffprobe:
-            emit(f"ffprobe: сохранено {len(FFPROBE_MAP)} URL")
-        if WHITELIST_STATS['kept'] or WHITELIST_STATS['skipped']:
-            emit(f"⭐ Whitelist: пропущено проверок {WHITELIST_STATS['skipped']}, "
-                 f"оставлено каналов {WHITELIST_STATS['kept']}")
+            emit(f"ffprobe: {len(FFPROBE_MAP)} URL")
+        if WHITELIST_STATS['kept']:
+            emit(f"⭐ Whitelist: {WHITELIST_STATS['kept']} каналов через VIP")
 
         logo_total = sum(v for k, v in LOGO_STATS.items() if k != 'none')
         logo_all = sum(LOGO_STATS.values()) or 1
         emit(f"\nГотово за {int(time.time() - started)}с. "
              f"OK={ok}, фильтр={filt}, нестабильных={unstable}, "
-             f"merged={len(ordered_merged)}, "
-             f"с EPG iptvx={epg_count}, с лого={logo_total}/{logo_all} ({logo_total/logo_all*100:.0f}%)")
+             f"merged={len(ordered_merged)}, с EPG={epg_count}, "
+             f"лого={logo_total}/{logo_all} ({logo_total/logo_all*100:.0f}%)")
         emit(f"    Качество: 4K={quality_stats['4K']}, HD={quality_stats['HD']}, "
              f"SD={quality_stats['SD']}, Unknown={quality_stats['Unknown']}")
         if CFG.ffprobe:
             emit(f"    ffprobe: ok={FFPROBE_STATS['ok']}, fail={FFPROBE_STATS['fail']}, "
                  f"cached_ok={FFPROBE_STATS['cached_ok']}, cached_fail={FFPROBE_STATS['cached_fail']}")
-        if LOGO_STATS:
-            for k in ['from_src', 'from_id', 'from_name', 'from_translit',
-                      'from_epg_icon', 'from_prefix', 'from_txt', 'none']:
-                if LOGO_STATS.get(k):
-                    emit(f"    лого {k}: {LOGO_STATS[k]}")
 
         if CFG.tg_token and CFG.tg_chat:
             is_sunday = datetime.datetime.now().weekday() == 6
@@ -3404,14 +3903,12 @@ def main():
                       logo_stats=LOGO_STATS, epg_count=epg_count,
                       quality_stats=quality_stats, ffprobe_stats=FFPROBE_STATS)
             if CFG.tg_send_merged and merged_path:
-                tg_file(CFG.tg_token, CFG.tg_chat, merged_path,
-                        caption="Merged плейлист")
+                tg_file(CFG.tg_token, CFG.tg_chat, merged_path, caption="Merged")
             if CFG.weekly_backup and is_sunday:
                 for fn in ('report.html', 'channels.csv', 'channels.html', 'rejected.csv'):
                     fp = os.path.join(CFG.docs_dir, fn)
                     if os.path.isfile(fp):
-                        tg_file(CFG.tg_token, CFG.tg_chat, fp,
-                                caption=f"Weekly backup: {fn}")
+                        tg_file(CFG.tg_token, CFG.tg_chat, fp, caption=f"Weekly: {fn}")
 
     finally:
         cache.close()
