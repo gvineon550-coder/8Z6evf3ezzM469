@@ -32,7 +32,7 @@ https://radiorecord.hostingradio.ru/beach96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/bighits_image600_colored_fill.png",Big Hits
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/bighits96.aacp
-#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://radiorecord.ru/upload/stations_images/yo_image600_gray_outline.png",Black Rap
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="sony-turbo" tvg-logo="https://radiorecord.ru/upload/stations_images/yo_image600_gray_outline.png",Black Rap
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/yo96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://radiorecord.ru/upload/stations_images/brks_image600_gray_outline.png",Breaks
@@ -77,10 +77,10 @@ https://radiorecord.hostingradio.ru/djgvozd96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/tsvetkov_image600_colored_fill.png",DJ Цветкоff
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/tsvetkov96.aacp
-#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://radiorecord.ru/upload/stations_images/dream_image600_gray_outline.png",Dream Dance
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="dream-turk-tr" tvg-logo="https://radiorecord.ru/upload/stations_images/dream_image600_gray_outline.png",Dream Dance
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/dream96.aacp
-#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/dream-pop_image600_colored_fill.png",Dream Pop
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="dream-turk-tr" tvg-logo="https://www.radiorecord.ru/upload/stations_images/dream-pop_image600_colored_fill.png",Dream Pop
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/dreampop96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://radiorecord.ru/upload/stations_images/dub_image600_gray_outline.png",Dubstep
@@ -95,13 +95,13 @@ https://radiorecord.hostingradio.ru/edmhits96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://radiorecord.ru/upload/stations_images/elect_image600_gray_outline.png",Electro
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/elect96.aacp
-#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/eurodance_image600_colored_fill.png",Eurodance
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="euro-drama-ua" tvg-logo="https://www.radiorecord.ru/upload/stations_images/eurodance_image600_colored_fill.png",Eurodance
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/eurodance96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/feel_image600_colored_fill.png",Feel
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/feel96.aacp
-#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/live-dj-sets_image600_colored_fill.png",Festivals
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="festival-4k" tvg-logo="https://www.radiorecord.ru/upload/stations_images/live-dj-sets_image600_colored_fill.png",Festivals
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/livedjsets96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://radiorecord.ru/upload/stations_images/fbass_image600_gray_outline.png",Future Bass
@@ -164,13 +164,13 @@ https://radiorecord.hostingradio.ru/mashup96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://radiorecord.ru/upload/stations_images/mix_image600_gray_outline.png",Megamix
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/mix96.aacp
-#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/melodic_image600_colored_fill.png",Melodic Techno
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="melody-fr" tvg-logo="https://www.radiorecord.ru/upload/stations_images/melodic_image600_colored_fill.png",Melodic Techno
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/melodic96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mt_image600_colored_fill.png",Midtempo
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/mt96.aacp
-#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mini_image600_colored_fill.png",Minimal/Tech
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="minimini-pl" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mini_image600_colored_fill.png",Minimal/Tech
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/mini96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mmbt_image600_colored_fill.png",Moombahton
@@ -344,7 +344,7 @@ https://radiorecord.hostingradio.ru/ruszima96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/symph_image600_colored_fill.png",Симфония FM
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/symph96.aacp
-#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://www.radiorecord.ru/upload/stations_images/skazki_image600_colored_fill.png",Сказки MC V
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="skazki-zayki" tvg-logo="https://www.radiorecord.ru/upload/stations_images/skazki_image600_colored_fill.png",Сказки MC V
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radiorecord.hostingradio.ru/skazki96.aacp
 #EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-logo="https://radiorecord.ru/upload/stations_images/sd90_image600_gray_outline.png",Супердискотека 90-х

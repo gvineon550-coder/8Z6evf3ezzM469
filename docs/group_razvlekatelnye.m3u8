@@ -2,7 +2,7 @@
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/sts-love.png" group-title="🎭 Развлекательные",CTC Love
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-b9f0884f9a81b8c6/video.m3u8
-#EXTINF:-1 group-title="🎭 Развлекательные",viju+ Comedy HD (1080p)
+#EXTINF:-1 group-title="🎭 Развлекательные" tvg-id="vip-comedy" tvg-logo="https://i.imgur.com/YoNOFu7.png",viju+ Comedy HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/201/index.m3u8
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/world-fashion-channel.png" group-title="🎭 Развлекательные",WF мода HD
@@ -20,6 +20,9 @@ https://lbgo.bozztv.com/07/ushba60/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-id="muzhskoy" tvg-logo="https://i.imgur.com/xyztpBf.png" group-title="🎭 Развлекательные",Мужской
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-55c94e838b306657/video.m3u8
-#EXTINF:-1 tvg-id="tnt-pl4" tvg-logo="https://epg.iptvx.one/picons/tnt4.png" group-title="🎭 Развлекательные",ТНТ 4
+#EXTINF:-1 tvg-id="nasha-tema" tvg-logo="https://i.imgur.com/67ZVDKW.png" group-title="🎭 Развлекательные",Наша Тема
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://live-3.otcnet.ru/nashatema/index.m3u8
+#EXTINF:-1 tvg-id="tnt4" tvg-logo="https://epg.iptvx.one/picons/tnt4.png" group-title="🎭 Развлекательные",ТНТ 4
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-5f6d3cfda1af8989/video.m3u8

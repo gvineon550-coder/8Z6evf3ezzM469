@@ -1,11 +1,11 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/perkanal.png" group-title="📹 Rutube",1 канал
+#EXTINF:-1 tvg-id="rossia1" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/perkanal.png" group-title="📹 Rutube",1 канал
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/c58f502c7bb34a8fcdd976b221fca292/index.m3u8?s=JyNB_SyDDtTUTsOhEtTYyQ&e=2090410689&scheme=https
-#EXTINF:-1 group-title="📹 Rutube",2x2 (576i)
+#EXTINF:-1 group-title="📹 Rutube" tvg-id="2na2" tvg-logo="https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png",2x2 (576i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/392b4686b770bae2da6bf5ac4574add5/index.m3u8?e=2068731801&s=tenr-yHXUv1wibfka78s2A&scheme=https
-#EXTINF:-1 tvg-id="360-podmoskovie" tvg-logo="https://iptvx.one/picons/360-podmoskovie.png" group-title="📹 Rutube",360° HD
+#EXTINF:-1 tvg-id="360-lv" tvg-logo="https://iptvx.one/picons/360-podmoskovie.png" group-title="📹 Rutube",360° HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/07beff61e617797db550cc3a5f6ad92b/index.m3u8?s=8uNH_vgO7peCdRd0GvteNg&e=2077359351&scheme=https
 #EXTINF:-1 tvg-logo="https://pic.rtbcdn.ru/video/2026-08-21/cb/00/cb00bf0b844dadef144f7b9fb208e18b.jpg?width=500" group-title="📹 Rutube",Amazon Prime Video mans' club
@@ -23,7 +23,7 @@ https://bl.rutube.ru/livestream/74bb437ef478a52f42198c50d4241dc7/index.m3u8?s=wa
 #EXTINF:-1 tvg-logo="https://pic.rtbcdn.ru/video/2026-08-28/ff/e0/ffe0813d42945ce49830c8631a8eeb72.jpg?size=l" group-title="📹 Rutube",Apple TV+Woman's Story
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/680dfe110840cf882437082b948578d6/index.m3u8?s=MyL89IE96vyCNFX0quwgMA&e=2088331938&scheme=https
-#EXTINF:-1 group-title="📹 Rutube",Channel 10 (576i)
+#EXTINF:-1 group-title="📹 Rutube" tvg-id="10kanal-novokuzneck" tvg-logo="https://static.wikia.nocookie.net/logopedia/images/0/06/Network_10_2018.svg/revision/latest/scale-to-width-down/512",Channel 10 (576i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/c9e26bf5c003fd8d477200065ca1a05f/index.m3u8?e=2072611029&s=eqlTXebDP9wSWTZgre6BwQ&scheme=https
 #EXTINF:-1 tvg-id="discovery-channel" tvg-logo="https://epg.iptvx.one/picons/discovery-channel.png" group-title="📹 Rutube",Discovery Channel HD
@@ -50,16 +50,16 @@ https://bl.rutube.ru/livestream/c11af26c0ab831ce6c37a4888056479b/index.m3u8?s=-r
 #EXTINF:-1 tvg-id="national-geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" group-title="📹 Rutube",National Geographic HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/2619fc295c16585ef018041d88f14db0/index.m3u8?s=XIlYETIzEf8C7a-PCDWWwA&e=2088331934&scheme=https
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/nationgeografic.jpg" group-title="📹 Rutube",National Geographic RU
+#EXTINF:-1 tvg-id="national-geographic" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/nationgeografic.jpg" group-title="📹 Rutube",National Geographic RU
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/2619fc295c16585ef018041d88f14db0/index.m3u8?s=oKHai8bZHsJDY-Gt6vRkeA&e=2090412162&scheme=https
 #EXTINF:-1 tvg-id="nba-tv" tvg-logo="https://epg.iptvx.one/picons/nba-tv.png" group-title="📹 Rutube",NBA TV
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/d01241e9fd2bc2d65dbf6d74cca02f89/index.m3u8?s=PQW3hpuI4ixSmkvZ8DFYSA&e=2081160974&scheme=https
-#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/nhl-network-us.png" group-title="📹 Rutube",NHL Network
+#EXTINF:-1 tvg-id="nhl-network-us" tvg-logo="https://epg.iptvx.one/picons/nhl-network-us.png" group-title="📹 Rutube",NHL Network
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/7a485ef5da9fe50ba939f36ca3e6ed96/index.m3u8?s=kzFd14_NM5e7oc008gaZnQ&e=2073777469&scheme=https
-#EXTINF:-1 group-title="📹 Rutube",NTV HD (1080p)
+#EXTINF:-1 group-title="📹 Rutube" tvg-id="ntv" tvg-logo="https://www.mongolsat.mn/assets/img/channel/38.png",NTV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?e=2077050299&s=HSWg81JrQ3OqmwuWkEIDAQ&scheme=https
 #EXTINF:-1 tvg-logo="https://sun9-77.userapi.com/impf/nNai67zCi4neIS8l4QLfgnnWVuhl_fotKh-Nxw/64vA7mNVAHA.jpg?size=443x398&quality=96&sign=12ca16e7ca675d44f59977116dc59f6d&c_uniq_tag=wDKxRd8s_gFvBGjnDUmOEBkJF6kO59JXXGpEoTgAMEw&type=album" group-title="📹 Rutube",Record Megamix
@@ -74,7 +74,7 @@ https://bl.rutube.ru/livestream/9ae8e8a6dc58bdad66190475f9872ecd/index.m3u8?s=0n
 #EXTINF:-1 tvg-id="sky-sports-apl" tvg-logo="https://epg.iptvx.one/picons/sky-sports-apl.png" group-title="📹 Rutube",Sky Sports Premier League
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/e5bacac3b8e730791d4cab20ae81cd8f/index.m3u8?s=f6Lrx1cPYx2SfJ9mbaHnbw&e=2068506972&scheme=https
-#EXTINF:-1 group-title="📹 Rutube",Subbota! (1080p)
+#EXTINF:-1 group-title="📹 Rutube" tvg-id="super" tvg-logo="https://i.imgur.com/nsk8PpB.png",Subbota! (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?e=2066519758&s=dmUf6BUQzDBTwtQOseAfog&scheme=https
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/tnt.png" group-title="📹 Rutube",THT HD
@@ -92,10 +92,10 @@ https://bl.rutube.ru/livestream/3aa782bace452e7c4b9f81d767512147/index.m3u8?s=hr
 #EXTINF:-1 tvg-id="travel-channel" tvg-logo="https://epg.iptvx.one/picons/travel-channel.png" group-title="📹 Rutube",Travel Channel HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/4196566bc9c3b7b854074ad1a9a2db36/index.m3u8?s=Bs5xw7zm21S2vqZdsaXnxw&e=2090404629&scheme=https
-#EXTINF:-1 group-title="📹 Rutube",Tsargrad TV (1080p) [Geo-blocked]
+#EXTINF:-1 group-title="📹 Rutube" tvg-logo="https://i.imgur.com/34RINpb.png",Tsargrad TV (1080p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/91815da4edb167b5bd617bae490e57da/index.m3u8?e=2070278263&s=is_mLq_kjPYLsOJ4qj85tw&scheme=https
-#EXTINF:-1 group-title="📹 Rutube",U (720p)
+#EXTINF:-1 group-title="📹 Rutube" tvg-logo="https://i.ibb.co/23ktDgvx/IMG-2461.png",U (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/5c9327074e25ca86f3111d4085cbbb65/index.m3u8?e=2066519758&s=9cPc1rCGu6M932eqrifRhQ&scheme=https
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/viva-rus.png" group-title="📹 Rutube",VIVA Russia rut
@@ -116,13 +116,13 @@ https://bl.rutube.ru/livestream/f6a3656e5ef574982994ddf2e5003341/index.m3u8?s=w3
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/discovery_rus.jpeg" group-title="📹 Rutube",Дискавери на русском
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/6422d62f7e1f87bc3aec45b462cd89ea/index.m3u8?s=TTfdBN9kOfOaVh4nhbSyfQ&e=2090412072&scheme=https
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/doramy.jpg" group-title="📹 Rutube",Дорамы
+#EXTINF:-1 tvg-id="dorama" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/doramy.jpg" group-title="📹 Rutube",Дорамы
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/5e3edd063411550ed6b67a8c0d7c96ea/index.m3u8?s=GPFL9jYqJqOMKFaj1TXKBg&e=2090411056&scheme=https
 #EXTINF:-1 tvg-logo="https://pic.rtbcdn.ru/user/2024-10-24/52/3d/523daa9a87b0cd43303c5a11a6d09f9a.jpg" group-title="📹 Rutube",Звездные войны
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/dcd36c7833f9431e6e6c902515c6c3ac/index.m3u8?s=V6xxaC-8NJNujIneTTwOQQ&e=2088894152&scheme=https
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/indiakinoserial.jpeg" group-title="📹 Rutube",Индийское Кино и сериалы
+#EXTINF:-1 tvg-id="indiyskoe-kino" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/indiakinoserial.jpeg" group-title="📹 Rutube",Индийское Кино и сериалы
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/8b077d20877c0cd70b5bc4a090b9f37e/index.m3u8?s=5Q53sRXuMdN6MGk42gWB5A&e=2090412835&scheme=https
 #EXTINF:-1 tvg-id="kino-i-zhizn" tvg-logo="https://iptvx.one/picons/kino-i-zhizn.png" group-title="📹 Rutube",Кино и Жизнь HD
@@ -176,7 +176,7 @@ https://bl.rutube.ru/livestream/9f87a9a0cecbe773be6fddcbd93585ac/index.m3u8?s=Xh
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/rick_morti.jpg" group-title="📹 Rutube",Рик и Морти
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/478a825bfd784e1e9de08ceceb3d2121/index.m3u8?s=3tB6xTDGpRaXGITEPckG_g&e=2090412772&scheme=https
-#EXTINF:-1 tvg-id="rossia-24" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Rossiya-24_Logo.svg/960px-Rossiya-24_Logo.svg.png" group-title="📹 Rutube",Россия 24
+#EXTINF:-1 tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png" group-title="📹 Rutube",Россия 24
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/ad6ba2e9e587406b29978b861b7b7dd1/index.m3u8?s=2xI0szFZPbr-yIu5m8Ee2Q&e=2090410051&scheme=https
 #EXTINF:-1 tvg-id="spas" tvg-logo="https://epg.iptvx.one/picons/spas.png" group-title="📹 Rutube",Спас
@@ -197,7 +197,7 @@ https://bl.rutube.ru/livestream/7c3d1a4cc0b4dff1176aa2dbb0b90000/index.m3u8?s=PE
 #EXTINF:-1 tvg-id="tnt" tvg-logo="https://i.imgur.com/T4A6rEI.png" group-title="📹 Rutube",Тнт
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/546602986e6a424d74d594876ddb3f04/index.m3u8?s=2wFiZzRdBsgLEi-A59erSg&e=2090410357&scheme=https
-#EXTINF:-1 tvg-id="tnt-pl4" group-title="📹 Rutube",Тнт 4
+#EXTINF:-1 tvg-id="tnt4" tvg-logo="https://iptvx.one/picons/tnt4.png" group-title="📹 Rutube",Тнт 4
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/c801a7087e29a097192d74c270fbc6c1/index.m3u8?s=MchU3jytJK5_XoSzeP_PJA&e=2090410583&scheme=https
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/turk.jpeg" group-title="📹 Rutube",Турецкое Кино и сериалы

@@ -8,6 +8,9 @@ http://5.188.158.65:4040/IPTVPLAYVEDMAK.tv/video.m3u8?token=lqRGka5-YwwqF0
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/v8KFj826/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY Великая Отечественная HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYVOV.tv/video.m3u8?token=lqRGka5-YwwqF0
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/D06WvJWn/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY ДЕСЯТОЕ КОРОЛЕВСТВО
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://5.188.158.65:4040/IPTVPLAY10KOROLEVSTVO.tv/video.m3u8?token=lqRGka5-YwwqF0
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/Rh516HVw/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY МультСказки HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYMultSkazki.tv/video.m3u8?token=lqRGka5-YwwqF0

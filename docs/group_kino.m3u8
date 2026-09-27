@@ -1,8 +1,8 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 tvg-id="sony-tv" tvg-logo="https://i.imgur.com/GET9Qut.png" group-title="🎬 Кино",.Red
+#EXTINF:-1 tvg-id="sony-tv" tvg-logo="https://i.imgur.com/heZeqPQ.png" group-title="🎬 Кино",.Red
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.100.46.245:90/red/index.m3u8
-#EXTINF:-1 tvg-id="sony-scifi" tvg-logo="https://i.imgur.com/0La6W4x.png" group-title="🎬 Кино",.Sci-Fi
+#EXTINF:-1 tvg-id="scifi-pl" tvg-logo="https://i.imgur.com/0La6W4x.png" group-title="🎬 Кино",.Sci-Fi
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-e80cc885d4ae14d1/video.m3u8
 #EXTINF:-1 tvg-id="amedia1" tvg-logo="https://epg.iptvx.one/picons/amedia1.png" group-title="🎬 Кино",Amedia 1 HD
@@ -20,10 +20,10 @@ http://stream.mcquack.net/73/index.m3u8
 #EXTINF:-1 tvg-id="cinema-ru" tvg-logo="https://i.imgur.com/B5UN7C8.png" group-title="🎬 Кино",Cinema
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.46.16.239:8000/Cinema
-#EXTINF:-1 group-title="🎬 Кино",Cinema (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="cinema-ru" tvg-logo="https://i.imgur.com/B5UN7C8.png",Cinema (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/cinema/index.m3u8
-#EXTINF:0 group-title="🎬 Кино" tvg-id="cineman-relax",Cineman Relax 4K
+#EXTINF:0 group-title="🎬 Кино" tvg-id="cineman-relax" tvg-logo="https://iptvx.one/picons/cineman-relax.png",Cineman Relax 4K
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/459/index.m3u8
 #EXTINF:-1 tvg-id="hollywood" tvg-logo="https://i.imgur.com/1j7cT2I.png" group-title="🎬 Кино",Hollywood
@@ -77,7 +77,7 @@ https://flussonic.mkpnet.ru/tv-e055808223a74709/video.m3u8
 #EXTINF:-1 tvg-id="kinosemiya" tvg-logo="https://epg.iptvx.one/picons/kinosemia.png" group-title="🎬 Кино",Киносемья
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinosemya/tracks-v1a1/mono.ts.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kino-tv",КИНОТВ
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kino-tv" tvg-logo="https://iptvx.one/picons/kino-tv.png",КИНОТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/kinotv/index.m3u8
 #EXTINF:-1 tvg-id="kino-tv" tvg-logo="https://epg.iptvx.one/picons/kino-tv-pl4.png" group-title="🎬 Кино",КиноТВ
