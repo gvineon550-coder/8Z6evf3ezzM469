@@ -106,7 +106,6 @@ Smotrim 100% Lyubov (720p),,https://stream.smotrim.ru/hls/fasttv01/playlist_2.m3
 Smotrim 100% Muzhskoe (720p),,https://stream.smotrim.ru/hls/fasttv02/playlist_3.m3u8,dead:ffprobe
 Smotrim 100% Prazdnik (720p),,https://stream.smotrim.ru/hls/fasttv04/playlist_3.m3u8,dead:ffprobe
 Solnce (576p),,https://tv.mediacdn.ru/live/solntse/playlist.m3u8,dead:ffprobe
-SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,dead:ffprobe
 Spas (576p),,https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8,dead:ffprobe
 Sportivnyy (1080p),,https://live-3.otcnet.ru/sportivny/index.m3u8,dead:ffprobe
 Summer Dance,,https://radiorecord.hostingradio.ru/summerparty96.aacp,dead:ffprobe
@@ -279,6 +278,7 @@ REN TV HD (1080p),,http://str2.iptvhd.ru:8080/REN_TV/index.m3u8,dead:http_403
 Retro (576p),,http://str2.iptvhd.ru:8080/Retro/index.m3u8,dead:http_403
 Rodnoe Kino (576p),,http://str2.iptvhd.ru:8080/Nashe_kino/index.m3u8,dead:http_403
 Romantichnoe HD (1080p),,http://str2.iptvhd.ru:8080/Semeynoe_HD/index.m3u8,dead:http_403
+RT (720p),,http://212.5.144.156:8080/rt/index.m3u8,dead:http_403
 RTG TV HD (1080p),,http://str2.iptvhd.ru:8080/RTG_TV/index.m3u8,dead:http_403
 RTVi (450p) [Geo-blocked],,https://s70378.cdn.ngenix.net/rtvi/index.m3u8,dead:http_403
 RTVi (576p),,http://str2.iptvhd.ru:8080/RTVi/index.m3u8,dead:http_403
@@ -341,7 +341,6 @@ Zvezda HD (1080p),,http://str2.iptvhd.ru:8080/Zvezda/index.m3u8,dead:http_403
 Патриот (576i),,http://catchup.videoline.ru/asvtv/index.m3u8,dead:http_403
 РЖД ТВ (1080p) [Geo-blocked],,http://hls.tva.cdnvideo.ru/tva/tvahd.sdp/playlist.m3u8,dead:http_403
 РЖД ТВ (360p) [Geo-blocked],,http://hls.tva.cdnvideo.ru/tva/tva.sdp/playlist.m3u8,dead:http_403
-Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,dead:http_403
 .Black,Кино,http://89.33.29.115:8080/Sony_Turbo/tracks-v1a1/mono.m3u8,dead:http_403
 TV1000 action HD,Кино,http://89.33.29.115:8080/TV1000_Action/tracks-v1a1/mono.m3u8,dead:http_403
 TV1000 HD,Кино,http://89.33.29.115:8080/TV1000/tracks-v1a1/mono.m3u8,dead:http_403
@@ -362,7 +361,7 @@ TV1000 Russian Kino Global,,http://213.91.179.28:8000/play/a0bx,dead:http_404
 Vkus (576p),,http://178.134.1.158:8081/vkus/index.m3u8,dead:http_404
 Феникс+Кино,Кино,http://tv.teamm.workers.dev/ch147/tv.m3u8?tv=tv,dead:http_404
 EDM Mainstage,Музыкальные,https://mbit1.worldcast.tv/dancetelevisionseven/stream_0.m3u8,dead:http_404
-Наша Тема,Развлекательные,http://live-3.otcnet.ru/nashatema/index.m3u8,dead:http_503
+SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,dead:http_503
 Afontovo,,https://stream.afontovo.ru/hd.m3u8,dead:timeout
 Bolt (576p),,http://hls127.freeott.top:8080/Bolt/video.m3u8,dead:timeout
 Channel 8 (576p),,http://hls127.freeott.top:8080/8_KANAL/video.m3u8,dead:timeout
@@ -450,6 +449,7 @@ Amedia 2 HD,Кино,http://tv.ttk.mx:9156,dead:timeout
 Мосфильм. Золотая коллекция,Кино,http://tv.ttk.mx:9169,dead:timeout
 НТВ Хит,Кино,http://tv.ttk.mx:9173,dead:timeout
 Победа,Кино,http://tv.ttk.mx:9149,dead:timeout
+Bridge,Музыкальные,http://5.188.159.128:8070/bridgetv/index.m3u8,dead:timeout
 Deluxe Dance,Музыкальные,http://92.114.85.52:1453/play/a02f/index.m3u8,dead:timeout
 RETROHITS,Музыкальные,rtmp://vkvsd285.okcdn.ru/playback/7765205854979?stkn=3YIqbICN3HQXqSqHe0t6L_U4aObzKpZdQDqaZigiXarsKvoVAU1g9ABrdjLIO7hYZdJPsBcdTGk&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
 TechnoDanceMusic,Музыкальные,rtmp://vkvsd260.okcdn.ru/playback/4541149555686?stkn=_GLaJIlrWpbJgXi_b5gtNKlx404aCHbd48x9zKalkpUqDF0ccnViROdGa7iV8JjrPLmm0qJTU0w&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
@@ -470,4 +470,5 @@ NikNik-TV,Детские,https://hostrec.ru/live/wic2AtEFCLwsZcUkAgtZcjlYgjc.m3u
 Том и Джерри,Детские,https://rpn3.bozztv.com/dvrfl07/giatv-208314/playlist.m3u8,group_exclude
 Чип и Дейл,Детские,http://194.26.229.213/chip-n-dale-rescue-rangers/index.m3u8,group_exclude
 RT HD (1080p),,https://wisewatchoott.wiseplayout.com/RT/master.m3u8,shortener
-Рен ТВ HD,Основные,https://edge06d.mediavitrina.ru/hls-livef6/ren-tv/index.m3u8?token=v2.PsDEIEIPzwadDScYvKAEyDwHS0WLeQ6gJUQ-e3BaZzg.M1GAoaPeoR6a7zsCuGBJAoJnYaQ8Wcqf9WdyPDuHQ5s.1790928815.e8a1027430e9ae18ce1612f277ded1de,unstable:42%
+Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,unstable:38%
+Рен ТВ HD,Основные,https://edge06d.mediavitrina.ru/hls-livef6/ren-tv/index.m3u8?token=v2.PsDEIEIPzwadDScYvKAEyDwHS0WLeQ6gJUQ-e3BaZzg.M1GAoaPeoR6a7zsCuGBJAoJnYaQ8Wcqf9WdyPDuHQ5s.1790928815.e8a1027430e9ae18ce1612f277ded1de,unstable:46%
