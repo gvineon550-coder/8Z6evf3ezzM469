@@ -15,7 +15,6 @@ Beach Party,,https://radiorecord.hostingradio.ru/beach96.aacp,dead:ffprobe
 Big Hits,,https://radiorecord.hostingradio.ru/bighits96.aacp,dead:ffprobe
 Black Rap,,https://radiorecord.hostingradio.ru/yo96.aacp,dead:ffprobe
 Breaks,,https://radiorecord.hostingradio.ru/brks96.aacp,dead:ffprobe
-Carousel (576p),,https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8,dead:ffprobe
 Channel 10 (576i),,https://bl.rutube.ru/livestream/c9e26bf5c003fd8d477200065ca1a05f/index.m3u8?e=2072611029&s=eqlTXebDP9wSWTZgre6BwQ&scheme=https,dead:ffprobe
 Channel 5 International (576i),,https://cdn4.skygo.mn/live/disk1/Channel_5/HLSv3-FTA/Channel_5.m3u8,dead:ffprobe
 Chill House,,https://radiorecord.hostingradio.ru/chillhouse96.aacp,dead:ffprobe
@@ -38,7 +37,6 @@ EDM,,https://radiorecord.hostingradio.ru/club96.aacp,dead:ffprobe
 EDM Classics,,https://radiorecord.hostingradio.ru/edmhits96.aacp,dead:ffprobe
 Electro,,https://radiorecord.hostingradio.ru/elect96.aacp,dead:ffprobe
 Eurodance,,https://radiorecord.hostingradio.ru/eurodance96.aacp,dead:ffprobe
-FashionTV (1080p),,http://fashionlive.mediacdn.ru/cdn/fashiontv/playlist.m3u8,dead:ffprobe
 Feel,,https://radiorecord.hostingradio.ru/feel96.aacp,dead:ffprobe
 Festivals,,https://radiorecord.hostingradio.ru/livedjsets96.aacp,dead:ffprobe
 Future Bass,,https://radiorecord.hostingradio.ru/fbass96.aacp,dead:ffprobe
@@ -74,7 +72,6 @@ Nejtrino & Baur,,https://radiorecord.hostingradio.ru/nejtrinobaur96.aacp,dead:ff
 Neurofunk,,https://radiorecord.hostingradio.ru/neurofunk96.aacp,dead:ffprobe
 NTV HD (1080p),,https://cdn-dvr.ntv.ru/ntv0_hd/index.m3u8,dead:ffprobe
 NTV HD (1080p),,https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?e=2077050299&s=HSWg81JrQ3OqmwuWkEIDAQ&scheme=https,dead:ffprobe
-NTV Vitrina (720p),,https://cdn.ntv.ru/vitrina/index.m3u8,dead:ffprobe
 Nu Dance,,https://radiorecord.hostingradio.ru/nudance96.aacp,dead:ffprobe
 Old School,,https://hls-01-radiorecord.hostingradio.ru/record-rap/96/playlist.m3u8,dead:ffprobe
 Oliver Heldens,,https://radiorecord.hostingradio.ru/oliverheldens96.aacp,dead:ffprobe
@@ -95,8 +92,8 @@ Reggae,,https://radiorecord.hostingradio.ru/reggae96.aacp,dead:ffprobe
 Remix,,https://radiorecord.hostingradio.ru/rmx96.aacp,dead:ffprobe
 Rock,,https://radiorecord.hostingradio.ru/rock96.aacp,dead:ffprobe
 Rossiya 1 Vainah (576i),,https://live.chechensoft.ru/vainahtv/ngrp:vaynahtv_all/playlist.m3u8,dead:ffprobe
-RT Balkan (1080p),,https://rt-srb.rttv.com/dvr/rtbalkan/playlist.m3u8,dead:ffprobe
 RT Balkan (1080p),,https://rt-srb.rttv.com/live/rtbalkan/playlist.m3u8,dead:ffprobe
+RT Balkan (1080p),,https://rt-srb.rttv.com/dvr/rtbalkan/playlist.m3u8,dead:ffprobe
 RT en Espanol (576p),,https://streaming.thestream.cyou/live/46.m3u8,dead:ffprobe
 RU.TV (1080p),,https://bl.rutube.ru/livestream/b1eb8e90d7e636677b3eb73b4fcbb717/index.m3u8?e=2069285076&s=d-E-bxKy2v3EEJ94RQX9CA&scheme=https,dead:ffprobe
 Russia-K HD (1080p),,https://live.smotrim.ru/vgtrk/0/kultura-hd/index.m3u8,dead:ffprobe
@@ -113,8 +110,6 @@ Smotrim 100% Lyubov (720p),,https://stream.smotrim.ru/hls/fasttv01/playlist_2.m3
 Smotrim 100% Muzhskoe (720p),,https://stream.smotrim.ru/hls/fasttv02/playlist_3.m3u8,dead:ffprobe
 Smotrim 100% Prazdnik (720p),,https://stream.smotrim.ru/hls/fasttv04/playlist_3.m3u8,dead:ffprobe
 Solnce (576p),,https://tv.mediacdn.ru/live/solntse/playlist.m3u8,dead:ffprobe
-SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,dead:ffprobe
-Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,dead:ffprobe
 Spas (576p),,https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8,dead:ffprobe
 Sportivnyy (1080p),,https://live-3.otcnet.ru/sportivny/index.m3u8,dead:ffprobe
 Subbota! (1080p),,https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?e=2066519758&s=dmUf6BUQzDBTwtQOseAfog&scheme=https,dead:ffprobe
@@ -136,8 +131,6 @@ Tsargrad TV (1080p) [Geo-blocked],,https://bl.rutube.ru/livestream/91815da4edb16
 U (720p),,https://bl.rutube.ru/livestream/5c9327074e25ca86f3111d4085cbbb65/index.m3u8?e=2066519758&s=9cPc1rCGu6M932eqrifRhQ&scheme=https,dead:ffprobe
 UK Garage,,https://radiorecord.hostingradio.ru/ukgarage96.aacp,dead:ffprobe
 Ultra Music Festival,,https://radiorecord.hostingradio.ru/ultra96.aacp,dead:ffprobe
-Univer TV (1080p),,https://cdn.universmotri.ru/live/smil:univer.smil/playlist.m3u8,dead:ffprobe
-Univer TV (1080p) [Not 24/7],,https://cdn.universmotri.ru/live/smil:mbr.smil/playlist.m3u8,dead:ffprobe
 Uplifting,,https://radiorecord.hostingradio.ru/uplift96.aacp,dead:ffprobe
 VIP House,,https://radiorecord.hostingradio.ru/vip96.aacp,dead:ffprobe
 Vmeste-RF (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7006.m3u8,dead:ffprobe
@@ -171,6 +164,92 @@ Zvezda HD (1080p) [Not 24/7],,https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/
 Три Ангела (720p),,https://hls.tv.3angels.ru/stream.m3u8,dead:ffprobe
 Хиты всех времен,,https://radiorecord.hostingradio.ru/alltimers96.aacp,dead:ffprobe
 Щёлковское ТВ (576p) [Not 24/7],,http://stream0.tv41.ru/live.m3u8,dead:ffprobe
+1st_witch,Kinowalk,http://kinowalk.hopto.org/witch_live,dead:ffprobe
+3JIou TaTapuH,Kinowalk,http://kinowalk.hopto.org/3jiou_tatapuh_live,dead:ffprobe
+_Kurt_TV_,Kinowalk,http://kinowalk.hopto.org/_kurt_tv__live,dead:ffprobe
+Aleksej 54 rus,Kinowalk,http://kinowalk.hopto.org/aleksej26_live,dead:ffprobe
+BOH,Kinowalk,http://kinowalk.hopto.org/boh_music_live,dead:ffprobe
+BOSSFILM,Kinowalk,http://kinowalk.hopto.org/bossfilm_live,dead:ffprobe
+Cinema Time,Kinowalk,http://kinowalk.hopto.org/cinematime_live,dead:ffprobe
+CZM Music,Kinowalk,http://kinowalk.hopto.org/czmmusic_live,dead:ffprobe
+DVD online,Kinowalk,http://kinowalk.hopto.org/kinostream_rezerv_live,dead:ffprobe
+film4khdLIVE,Kinowalk,http://kinowalk.hopto.org/film4khdclub_live,dead:ffprobe
+FilmsSerialsEveryDay,Kinowalk,http://kinowalk.hopto.org/filmsserialseveryday_live,dead:ffprobe
+FRXNKL1N,Kinowalk,http://kinowalk.hopto.org/frxnkl1n_live,dead:ffprobe
+grislytoe,Kinowalk,http://kinowalk.hopto.org/grislytoe_live,dead:ffprobe
+hurumburumum,Kinowalk,http://kinowalk.hopto.org/hurumburumum_live,dead:ffprobe
+IGROComp,Kinowalk,http://kinowalk.hopto.org/igrocomp_live,dead:ffprobe
+Johan Grohan Live,Kinowalk,http://kinowalk.hopto.org/johan_grohan_live,dead:ffprobe
+Just enjoy serial4u,Kinowalk,http://kinowalk.hopto.org/serial4u_live,dead:ffprobe
+KatastroFF,Kinowalk,http://kinowalk.hopto.org/katastroff_live,dead:ffprobe
+KinoFans,Kinowalk,http://kinowalk.hopto.org/kinofans_live,dead:ffprobe
+KinoMix Юрич 2,Kinowalk,http://kinowalk.hopto.org/dak3767_live,dead:ffprobe
+Kinoshnik_8,Kinowalk,http://kinowalk.hopto.org/kinoshnik_8_live,dead:ffprobe
+Kinowalk prime,Kinowalk,http://kinowalk.hopto.org/kinowalk_prime_live,dead:ffprobe
+KinoБайт-Лучшие фильмы,Kinowalk,http://kinowalk.hopto.org/moviebytes_live,dead:ffprobe
+Kira_freak1993,Kinowalk,http://kinowalk.hopto.org/kirafreak_live,dead:ffprobe
+Kycman,Kinowalk,http://kinowalk.hopto.org/kycman_live,dead:ffprobe
+LEGION TV,Kinowalk,http://kinowalk.hopto.org/legion-tv_live,dead:ffprobe
+LifeZ,Kinowalk,http://kinowalk.hopto.org/zhekos_live,dead:ffprobe
+MAKARSTRIM,Kinowalk,http://kinowalk.hopto.org/makarstrim_live,dead:ffprobe
+MAX LIVЕ,Kinowalk,http://kinowalk.hopto.org/maximum_live,dead:ffprobe
+Mayhеm,Kinowalk,http://kinowalk.hopto.org/mayhem_live,dead:ffprobe
+MetalAlex,Kinowalk,http://kinowalk.hopto.org/metalalex_live,dead:ffprobe
+meteor,Kinowalk,http://kinowalk.hopto.org/meteor_live,dead:ffprobe
+mp4_collection,Kinowalk,http://kinowalk.hopto.org/mp4_collection_live,dead:ffprobe
+Mr DRAGON live,Kinowalk,http://kinowalk.hopto.org/mrdragonlive_live,dead:ffprobe
+MилаШ,Kinowalk,http://kinowalk.hopto.org/milah_live,dead:ffprobe
+NEZABUDKA,Kinowalk,http://kinowalk.hopto.org/nezabudka_live,dead:ffprobe
+NZTV,Kinowalk,http://kinowalk.hopto.org/nztv_live,dead:ffprobe
+OldClip TV,Kinowalk,http://kinowalk.hopto.org/oldclip_live,dead:ffprobe
+priest_kod,Kinowalk,http://kinowalk.hopto.org/priest_kod_live,dead:ffprobe
+Real State Films,Kinowalk,http://kinowalk.hopto.org/rsf_live,dead:ffprobe
+RetroMusic,Kinowalk,http://kinowalk.hopto.org/retromus_live,dead:ffprobe
+SaN4еZ09,Kinowalk,http://kinowalk.hopto.org/san4ez09_live,dead:ffprobe
+SANSEY_RU,Kinowalk,http://kinowalk.hopto.org/sansey_ru_live,dead:ffprobe
+sever_tv,Kinowalk,http://kinowalk.hopto.org/severtv_live,dead:ffprobe
+TechnoDanceMusic,Kinowalk,http://kinowalk.hopto.org/technodancemusic_live,dead:ffprobe
+TopMoment TV,Kinowalk,http://kinowalk.hopto.org/topmoment_live,dead:ffprobe
+Tоny,Kinowalk,http://kinowalk.hopto.org/ordinary_people_live,dead:ffprobe
+Um! Music,Kinowalk,http://kinowalk.hopto.org/umelyiretro_live,dead:ffprobe
+VHS Power,Kinowalk,http://kinowalk.hopto.org/noir_live,dead:ffprobe
+VHS store,Kinowalk,http://kinowalk.hopto.org/channel36774366_live,dead:ffprobe
+VHS кино,Kinowalk,http://kinowalk.hopto.org/and7610_live,dead:ffprobe
+VideoSerial,Kinowalk,http://kinowalk.hopto.org/video_serial_live,dead:ffprobe
+VideoVk,Kinowalk,http://kinowalk.hopto.org/videovk_live,dead:ffprobe
+Vitun1988,Kinowalk,http://kinowalk.hopto.org/vitun_88_live,dead:ffprobe
+VKTV HD CINEMA,Kinowalk,http://kinowalk.hopto.org/vktv_hd_cinema_live,dead:ffprobe
+ZumiBox,Kinowalk,http://kinowalk.hopto.org/zumibox_live,dead:ffprobe
+БУДУ СМОТЕТЬ,Kinowalk,http://kinowalk.hopto.org/channel35772578_live,dead:ffprobe
+ВАСЬКИНЫ ЗАБАВЫ,Kinowalk,http://kinowalk.hopto.org/poe2proxodim_live,dead:ffprobe
+ВИДЕОКАССЕТА,Kinowalk,http://kinowalk.hopto.org/vhs90e_live,dead:ffprobe
+Дикарка,Kinowalk,http://kinowalk.hopto.org/dikarka_live,dead:ffprobe
+Евгений / Эра VHS,Kinowalk,http://kinowalk.hopto.org/vhs90s_live,dead:ffprobe
+Егор Егорыч )),Kinowalk,http://kinowalk.hopto.org/yegor_yegorych_live,dead:ffprobe
+КИНОЛЕНТА LIVE,Kinowalk,http://kinowalk.hopto.org/kinolenta_live,dead:ffprobe
+КиноНонСтоп,Kinowalk,http://kinowalk.hopto.org/nonestopmovie_live,dead:ffprobe
+КиноСериалы,Kinowalk,http://kinowalk.hopto.org/zagar_live,dead:ffprobe
+КиноСтрим#7184980,Kinowalk,http://kinowalk.hopto.org/channel30001568_live,dead:ffprobe
+КИНОШКИНО,Kinowalk,http://kinowalk.hopto.org/kinoshkino_live,dead:ffprobe
+Кладовая Фильмов,Kinowalk,http://kinowalk.hopto.org/skladfilm_live,dead:ffprobe
+Коновал ТВ,Kinowalk,http://kinowalk.hopto.org/tvkonoval_live,dead:ffprobe
+Люська Ведьма,Kinowalk,http://kinowalk.hopto.org/lucyvedminaaaa_live,dead:ffprobe
+Мир Ехо,Kinowalk,http://kinowalk.hopto.org/mirdobro_live,dead:ffprobe
+МирКино,Kinowalk,http://kinowalk.hopto.org/ncd_live,dead:ffprobe
+МузCOVERрадио,Kinowalk,http://kinowalk.hopto.org/muzcoverradio_live,dead:ffprobe
+Мультфильмы VHS,Kinowalk,http://kinowalk.hopto.org/myvhs_live,dead:ffprobe
+НОСТАЛЬГИЯ LIVE,Kinowalk,http://kinowalk.hopto.org/nostal77_live,dead:ffprobe
+ОсторожноМодерн2,Kinowalk,http://kinowalk.hopto.org/ostorozhnomodern2_live,dead:ffprobe
+ПАРАНОРМАЛЬНЫЙ АРХИВ,Kinowalk,http://kinowalk.hopto.org/paranormal404_live,dead:ffprobe
+СВЯТОЙ LIVE,Kinowalk,http://kinowalk.hopto.org/misha-sdyt_live,dead:ffprobe
+СЕМЕЙНЫЙ ПРОСМОТР LIVE,Kinowalk,http://kinowalk.hopto.org/liveprointerny_live,dead:ffprobe
+УЖАС ТВ,Kinowalk,http://kinowalk.hopto.org/horrortv_live,dead:ffprobe
+Фильмоскоп,Kinowalk,http://kinowalk.hopto.org/filmscope_live,dead:ffprobe
+Фильмы сериалы трансляции,Kinowalk,http://kinowalk.hopto.org/id582512126_live,dead:ffprobe
+ФИЛЬМЫ_СЕРИАЛЫ_24_7_LIVE,Kinowalk,http://kinowalk.hopto.org/films_serials_24_7_live_live,dead:ffprobe
+Х-TV,Kinowalk,http://kinowalk.hopto.org/durkalive_live,dead:ffprobe
+ХИТМАН ТВ,Kinowalk,http://kinowalk.hopto.org/xutmahtv_live,dead:ffprobe
+Шурентий Live,Kinowalk,http://kinowalk.hopto.org/shurentiy_live_live,dead:ffprobe
 Aisman,Kinowalk TV,http://kinowalk.hopto.org/aisman_live,dead:ffprobe
 AkudjiTV,Kinowalk TV,http://kinowalk.hopto.org/akudjitv_live,dead:ffprobe
 Alex.Films,Kinowalk TV,http://kinowalk.hopto.org/alex.films_live,dead:ffprobe
@@ -228,6 +307,25 @@ Wfliq,Kinowalk TV,http://kinowalk.hopto.org/wfliq_live,dead:ffprobe
 Фильмач,Kinowalk TV,https://bl.rutube.ru/livestream/300560a65014ec501a25b1f79df9ad90/index.m3u8?s=ts6K4yoGVWl3-MeiAHjvnw&e=2088807301&scheme=https,dead:ffprobe
 Эквилибриум,Kinowalk TV,http://kinowalk.hopto.org/equilibrium_live,dead:ffprobe
 𝕂𝔸ℂℂ𝔼𝕋𝔸,Kinowalk TV,http://kinowalk.hopto.org/kasseta_live,dead:ffprobe
+1 канал,Rutube,https://bl.rutube.ru/livestream/c58f502c7bb34a8fcdd976b221fca292/index.m3u8?s=JyNB_SyDDtTUTsOhEtTYyQ&e=2090410689&scheme=https,dead:ffprobe
+National Geographic RU,Rutube,https://bl.rutube.ru/livestream/2619fc295c16585ef018041d88f14db0/index.m3u8?s=oKHai8bZHsJDY-Gt6vRkeA&e=2090412162&scheme=https,dead:ffprobe
+Айди Иксра,Rutube,https://bl.rutube.ru/livestream/a91d58870b9a0d23b2309d020ac4b354/index.m3u8?s=SWt-lFqXrgPTHcgEKeY9Sw&e=2090412421&scheme=https,dead:ffprobe
+анимал планет,Rutube,https://bl.rutube.ru/livestream/4004c8f6817b9ae1bd0d418905ae2b02/index.m3u8?s=lTFEM-ng6U9uCMBA0ySKSA&e=2090412305&scheme=https,dead:ffprobe
+Анимач,Rutube,https://bl.rutube.ru/livestream/b3019a8983105f5e33f038246f860c32/index.m3u8?s=6dkVBoo-i3EU22zeb39XRw&e=2090410980&scheme=https,dead:ffprobe
+Дискавери на русском,Rutube,https://bl.rutube.ru/livestream/6422d62f7e1f87bc3aec45b462cd89ea/index.m3u8?s=TTfdBN9kOfOaVh4nhbSyfQ&e=2090412072&scheme=https,dead:ffprobe
+Дорамы,Rutube,https://bl.rutube.ru/livestream/5e3edd063411550ed6b67a8c0d7c96ea/index.m3u8?s=GPFL9jYqJqOMKFaj1TXKBg&e=2090411056&scheme=https,dead:ffprobe
+Индийское Кино и сериалы,Rutube,https://bl.rutube.ru/livestream/8b077d20877c0cd70b5bc4a090b9f37e/index.m3u8?s=5Q53sRXuMdN6MGk42gWB5A&e=2090412835&scheme=https,dead:ffprobe
+Латиноамериканские кино и сериалы,Rutube,https://bl.rutube.ru/livestream/4d06d4d152d087f3792a5b15dc729562/index.m3u8?s=XNy8zs-nADoWvtgFatx0PA&e=2090413023&scheme=https,dead:ffprobe
+Музач,Rutube,https://bl.rutube.ru/livestream/e7e04192431a24a750fd8704fa221461/index.m3u8?s=R88SVFiISgCZ5mcWNgkIAw&e=2090413125&scheme=https,dead:ffprobe
+Невский Проспект,Rutube,https://bl.rutube.ru/livestream/1217bd14907ff59c5c64bcc4cbe1af41/index.m3u8?s=bUoO6Ss_ysH7lmN3kWTmUQ&e=2090412526&scheme=https,dead:ffprobe
+Образовач,Rutube,https://bl.rutube.ru/livestream/eddcc86d1dee0b5def546ea388eb38ea/index.m3u8?s=yB2QyHQvyETyjlpmZSn0yw&e=2090413246&scheme=https,dead:ffprobe
+Рик и Морти,Rutube,https://bl.rutube.ru/livestream/478a825bfd784e1e9de08ceceb3d2121/index.m3u8?s=3tB6xTDGpRaXGITEPckG_g&e=2090412772&scheme=https,dead:ffprobe
+Россия 24,Rutube,https://bl.rutube.ru/livestream/ad6ba2e9e587406b29978b861b7b7dd1/index.m3u8?s=2xI0szFZPbr-yIu5m8Ee2Q&e=2090410051&scheme=https,dead:ffprobe
+Тлс,Rutube,https://bl.rutube.ru/livestream/7c3d1a4cc0b4dff1176aa2dbb0b90000/index.m3u8?s=PEMYhKL8n2SQrGBSPIxxqA&e=2090412016&scheme=https,dead:ffprobe
+Тнт,Rutube,https://bl.rutube.ru/livestream/546602986e6a424d74d594876ddb3f04/index.m3u8?s=2wFiZzRdBsgLEi-A59erSg&e=2090410357&scheme=https,dead:ffprobe
+Тнт 4,Rutube,https://bl.rutube.ru/livestream/c801a7087e29a097192d74c270fbc6c1/index.m3u8?s=MchU3jytJK5_XoSzeP_PJA&e=2090410583&scheme=https,dead:ffprobe
+Турецкое Кино и сериалы,Rutube,https://bl.rutube.ru/livestream/2814e12b4ef6c528967736441c2e2803/index.m3u8?s=g94bBK7hUENU83K4Autfuw&e=2090412964&scheme=https,dead:ffprobe
+Уайлд,Rutube,https://bl.rutube.ru/livestream/c11af26c0ab831ce6c37a4888056479b/index.m3u8?s=JWJzne3-IPKrqZ_CyE2rZQ&e=2090412236&scheme=https,dead:ffprobe
 Amazon Prime Video mans' club,Кино,https://bl.rutube.ru/livestream/99f8f1d827641b766de62fe9023642fa/index.m3u8?s=VuhfAnwVN0QaMpV2AjMFNQ&e=2088894153&scheme=https,dead:ffprobe
 Amazon Prime Video Romance,Кино,https://bl.rutube.ru/livestream/7758ac4d77fac95e187144ee2c8b368d/index.m3u8?s=vDrzYErdC_oimMeApzw5Ig&e=2088894154&scheme=https,dead:ffprobe
 Apple TV+Action Time,Кино,https://bl.rutube.ru/livestream/74bb437ef478a52f42198c50d4241dc7/index.m3u8?s=waj95cuyyi8uqhMviY5J5Q&e=2088331937&scheme=https,dead:ffprobe
@@ -299,7 +397,6 @@ Channel One HD (720p),,https://edge1.1internet.tv/dash-live2/streams/1tv-dvr/1tv
 365 days TV (576p),,http://str2.iptvhd.ru:8080/365_dney/index.m3u8,dead:http_403
 A2 (576p),,http://str2.iptvhd.ru:8080/Amedia_2/index.m3u8,dead:http_403
 Amedia Hit (1080p),,http://str2.iptvhd.ru:8080/Amedia_Hit_HD/index.m3u8,dead:http_403
-Ani (576p),,http://str2.iptvhd.ru:8080/ani/index.m3u8,dead:http_403
 Auto Plus (576p),,http://str2.iptvhd.ru:8080/Avto_Plyus/index.m3u8,dead:http_403
 Avto24 (1080i),,http://str2.iptvhd.ru:8080/Avto_24/index.m3u8,dead:http_403
 Boks TV (576p),,http://str2.iptvhd.ru:8080/Boks_TV/index.m3u8,dead:http_403
@@ -307,7 +404,6 @@ Bollywood (576p),,http://str2.iptvhd.ru:8080/bollywood/index.m3u8,dead:http_403
 Bollywood HD (1080p),,http://str2.iptvhd.ru:8080/Bollywood_HD/index.m3u8,dead:http_403
 BRIDGE Classic (576p),,http://str2.iptvhd.ru:8080/Bridge_TV_Classic/index.m3u8,dead:http_403
 BRIDGE Fresh (1080p),,http://str2.iptvhd.ru:8080/Bridge_TV_HD/index.m3u8,dead:http_403
-Carousel (576p),,http://str2.iptvhd.ru:8080/Karusel/index.m3u8,dead:http_403
 Channel 5 (576p),,http://str2.iptvhd.ru:8080/5_kanal/index.m3u8,dead:http_403
 Channel One (576p),,http://str2.iptvhd.ru:8080/Pervikanal/index.m3u8,dead:http_403
 Che! (576p),,http://str2.iptvhd.ru:8080/Che/index.m3u8,dead:http_403
@@ -331,7 +427,6 @@ Friday! (576p),,http://str2.iptvhd.ru:8080/Pyatnitsa/index.m3u8,dead:http_403
 FX (1080p),,http://str2.iptvhd.ru:8080/FOX_HD/index.m3u8,dead:http_403
 FX Life (576p),,http://str2.iptvhd.ru:8080/Fox_Life_HD/index.m3u8,dead:http_403
 Glazami Turista (1080p),,http://str2.iptvhd.ru:8080/Glazami_turista_HD/index.m3u8,dead:http_403
-Gulli Girl (576p),,http://str2.iptvhd.ru:8080/Gulli/index.m3u8,dead:http_403
 History 2 (1080p),,http://str2.iptvhd.ru:8080/H2_HD/index.m3u8,dead:http_403
 Illusion+ (576p),,http://str2.iptvhd.ru:8080/Illyuzion/index.m3u8,dead:http_403
 India (576p),,http://str2.iptvhd.ru:8080/ZeeTV/index.m3u8,dead:http_403
@@ -361,8 +456,6 @@ Match! Ultra (1080p),,http://str2.iptvhd.ru:8080/Match_TV_HD/index.m3u8,dead:htt
 MCM Top (576p),,http://str2.iptvhd.ru:8080/MCM/index.m3u8,dead:http_403
 Mir 24 (576p),,http://str2.iptvhd.ru:8080/mir_24/index.m3u8,dead:http_403
 Moya Planeta (1080p),,http://str2.iptvhd.ru:8080/IQ_HD/index.m3u8,dead:http_403
-Mult (576p),,http://str2.iptvhd.ru:8080/Mult/index.m3u8,dead:http_403
-Multilandia (576p),,http://str2.iptvhd.ru:8080/Multimaniya/index.m3u8,dead:http_403
 MusicBox Gold (576p),,http://str2.iptvhd.ru:8080/360TuneBox/index.m3u8,dead:http_403
 Muzhskoe kino (576p),,http://str2.iptvhd.ru:8080/Muzhskoe_kino/index.m3u8,dead:http_403
 Muzhskoy (1080p),,http://str2.iptvhd.ru:8080/Muzhskoy/index.m3u8,dead:http_403
@@ -381,7 +474,6 @@ NTV HD (1080p),,http://str2.iptvhd.ru:8080/NTV_HD/index.m3u8,dead:http_403
 NTV Law (576p),,http://str2.iptvhd.ru:8080/ntvpravo/index.m3u8,dead:http_403
 NTV Mir (576p),,http://str2.iptvhd.ru:8080/NTV_Mir/index.m3u8,dead:http_403
 NTV Series (576p),,http://str2.iptvhd.ru:8080/ntvserial/index.m3u8,dead:http_403
-NTV Style (576p),,http://str2.iptvhd.ru:8080/ntvstyle/index.m3u8,dead:http_403
 NTV-Hit (576p),,http://str2.iptvhd.ru:8080/ntv_hit/index.m3u8,dead:http_403
 O! (576p),,http://str2.iptvhd.ru:8080/O!/index.m3u8,dead:http_403
 Ohotnik i rybolov HD (1080p),,http://str2.iptvhd.ru:8080/Ohotnik_i_Ryibolov_HD/index.m3u8,dead:http_403
@@ -407,7 +499,6 @@ Russia-1 HD (1080p),,http://str2.iptvhd.ru:8080/Rossiya_HD/index.m3u8,dead:http_
 Russia-24 (576p),,http://str2.iptvhd.ru:8080/Rossiya_24/index.m3u8,dead:http_403
 Russia-K (576p),,http://str2.iptvhd.ru:8080/Rossiya_K/index.m3u8,dead:http_403
 Russian Extreme (576p),,http://str2.iptvhd.ru:8080/Russkiy_ekstrim/index.m3u8,dead:http_403
-Russkiy Bestseller (576p),,http://str2.iptvhd.ru:8080/Russkiy_bestseller/index.m3u8,dead:http_403
 Russkiy Detektiv (576p),,http://str2.iptvhd.ru:8080/Russkiy_detektiv/index.m3u8,dead:http_403
 Russkiy Illusion (576p),,http://str2.iptvhd.ru:8080/Russkiy_illyuzion/index.m3u8,dead:http_403
 Russkiy roman (576p),,http://str2.iptvhd.ru:8080/Russkiy_roman/index.m3u8,dead:http_403
@@ -428,7 +519,6 @@ T24 (576p),,http://str2.iptvhd.ru:8080/Tehno_24/index.m3u8,dead:http_403
 Telecafe (576p),,http://str2.iptvhd.ru:8080/Telekafe/index.m3u8,dead:http_403
 Teleputeshestviya (576p),,http://str2.iptvhd.ru:8080/Teleputeshestviya/index.m3u8,dead:http_403
 TERRA (1080p),,http://str2.iptvhd.ru:8080/TERRA_HD/index.m3u8,dead:http_403
-TiJi (576p),,http://str2.iptvhd.ru:8080/TiJi/index.m3u8,dead:http_403
 TNT (576p),,http://str2.iptvhd.ru:8080/TNT/index.m3u8,dead:http_403
 TNT HD (1080p),,http://str2.iptvhd.ru:8080/TNTHD/index.m3u8,dead:http_403
 TNT4 HD (1080p),,http://str2.iptvhd.ru:8080/TNT_4/index.m3u8,dead:http_403
@@ -441,7 +531,6 @@ TV-3 HD (1080p),,http://str2.iptvhd.ru:8080/TV_3/index.m3u8,dead:http_403
 U (576p),,http://str2.iptvhd.ru:8080/UTV/index.m3u8,dead:http_403
 UDAR (1080p),,http://str2.iptvhd.ru:8080/UFC_HD/index.m3u8,dead:http_403
 Usadba (576p),,http://str2.iptvhd.ru:8080/Usadba/index.m3u8,dead:http_403
-V gostyakh u skazki (576p),,http://str2.iptvhd.ru:8080/v_gostyax_u_skaski/index.m3u8,dead:http_403
 V mire zhivotnykh HD (1080p),,http://str2.iptvhd.ru:8080/Animal_Family_HD/index.m3u8,dead:http_403
 viju Explore (576p),,http://str2.iptvhd.ru:8080/Viasat_Explorer/index.m3u8,dead:http_403
 viju Nature HD (1080p),,http://str2.iptvhd.ru:8080/Viasat_Nature_HD/index.m3u8,dead:http_403
@@ -470,25 +559,23 @@ TV1000 action HD,Кино,http://89.33.29.115:8080/TV1000_Action/tracks-v1a1/mon
 TV1000 HD,Кино,http://89.33.29.115:8080/TV1000/tracks-v1a1/mono.m3u8,dead:http_403
 Киноужас,Кино,https://s70378.cdn.ngenix.net/kinouzhas/2/index.m3u8,dead:http_403
 Viju+ sport HD,Спорт,http://89.33.29.115:8080/Viasat_Sport/tracks-v1a1/mono.m3u8,dead:http_403
-Футбол1,Спорт,http://89.33.29.115:8080/Match_Futbol_1_HD/tracks-v1a1/mono.m3u8,dead:http_403
-Футбол2,Спорт,http://89.33.29.115:8080/Match_Futbol_2_HD/tracks-v1a1/mono.m3u8,dead:http_403
-Футбол3,Спорт,http://89.33.29.115:8080/Match_Futbol_3_HD/tracks-v1a1/mono.m3u8,dead:http_403
-Ani (576p),,http://flussonic.linkintel.ru/Ani/index.m3u8,dead:http_404
 Channel 12 (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7004.m3u8,dead:http_404
 Channel 8 (576p),,http://v4.proofix.ru/okino-tv/index.m3u8,dead:http_404
 Fast&FunBox HD (1080p),,http://str2.iptvhd.ru:8080/FastFunBoxHD/index.m3u8,dead:http_404
-Gulli Girl (576p),,https://live-3.otcnet.ru/GulliGirl/index.m3u8,dead:http_404
 Match! Strana (576p),,http://ukr.ukrainske.tv/134/keytvainua/video.m3u8,dead:http_404
 National Geographic (1080p),,http://dtv.vol.net.ua/National_Geographic-HD/index.m3u8,dead:http_404
 NTV SD (576p),,http://45.153.24.78/NTV/index.m3u8,dead:http_404
 RT en Espanol (1080p),,http://15.204.246.24:8080/RTHD/index.m3u8,dead:http_404
 RTG int.,,http://213.91.179.28:8000/play/a0bw,dead:http_404
 STS SD (576p),,http://45.153.24.78/STS/index.m3u8,dead:http_404
-TiJi (576p),,https://live-3.otcnet.ru/Tiji/index.m3u8,dead:http_404
 TNT HD (1080p),,http://45.153.24.78/TNT/index.m3u8,dead:http_404
 TNT4 (576p),,http://176.118.197.101/TNT4/index.m3u8,dead:http_404
 TV1000 Russian Kino Global,,http://213.91.179.28:8000/play/a0bx,dead:http_404
 Vkus (576p),,http://178.134.1.158:8081/vkus/index.m3u8,dead:http_404
+Maslorub live,Kinowalk,http://kinowalk.hopto.org/zaumka_live,dead:http_404
+Tyty35Rus,Kinowalk,http://kinowalk.hopto.org/tyty35rus_live,dead:http_404
+ДиТи,Kinowalk,http://kinowalk.hopto.org/mychennal12345_live,dead:http_404
+Киномульт_HD,Kinowalk,http://kinowalk.hopto.org/kinomult_hd_live,dead:http_404
 ROMEO Video,Kinowalk TV,http://kinowalk.hopto.org/romantic_live,dead:http_404
 Snoochies Boochies,Kinowalk TV,http://kinowalk.hopto.org/sinema_live,dead:http_404
 ZubrilomFilm,Kinowalk TV,http://kinowalk.hopto.org/zubrilomfilm_live,dead:http_404
@@ -496,19 +583,18 @@ ZubrilomFilm,Kinowalk TV,http://kinowalk.hopto.org/zubrilomfilm_live,dead:http_4
 Коновал ТВ,Kinowalk TV,http://kinowalk.hopto.org/www.konoval_tv_live,dead:http_404
 Феникс+Кино,Кино,http://tv.teamm.workers.dev/ch147/tv.m3u8?tv=tv,dead:http_404
 EDM Mainstage,Музыкальные,https://mbit1.worldcast.tv/dancetelevisionseven/stream_0.m3u8,dead:http_404
-TravelXP 4K,Познавательные,http://91.247.68.229:8000/play/Travelxp/index.m3u8,dead:http_404
-Рен ТВ HD,Основные,https://edge06d.mediavitrina.ru/hls-livef6/ren-tv/index.m3u8?token=v2.PsDEIEIPzwadDScYvKAEyDwHS0WLeQ6gJUQ-e3BaZzg.M1GAoaPeoR6a7zsCuGBJAoJnYaQ8Wcqf9WdyPDuHQ5s.1790928815.e8a1027430e9ae18ce1612f277ded1de,dead:http_409
+Channel One (576p),,http://45.153.24.78/1TV/index.m3u8,dead:http_503
+SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,dead:http_503
+VIVA Russia,Музыкальные,https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8,dead:http_503
 Afontovo,,https://stream.afontovo.ru/hd.m3u8,dead:timeout
 Bolt (576p),,http://hls127.freeott.top:8080/Bolt/video.m3u8,dead:timeout
 Channel 8 (576p),,http://hls127.freeott.top:8080/8_KANAL/video.m3u8,dead:timeout
 Channel One (576p),,http://45.145.32.13:20440/pervyj_kanal/index.m3u8?token=test,dead:timeout
-Da Vinci (576p),,http://hls127.freeott.top:8080/Da_Vinci_Learning/video.m3u8,dead:timeout
 Detskiy (576p),,http://45.145.32.13:20440/unikum/index.m3u8?token=test,dead:timeout
 Detvora+ (1080p),,https://cdn.rostelekom-tv.xyz/live/WAYU4PTJ_VVz4wAQ.m3u8,dead:timeout
 Dikij (576p),,http://hls127.freeott.top:8080/Dikiy/video.m3u8,dead:timeout
 Fon Music (1080p),,http://hls127.freeott.top:8080/TNT_MUSIC_HD/video.m3u8,dead:timeout
 Football (576p),,http://hls127.freeott.top:8080/Football/video.m3u8,dead:timeout
-Gulli Girl (576p),,http://flussonic.linkintel.ru/gulli_girl/index.m3u8,dead:timeout
 Hit HD (1080p),,http://hls127.freeott.top:8080/XitHD/video.m3u8,dead:timeout
 Istoriya (576p),,http://hls127.freeott.top:8080/Istoriya/video.m3u8,dead:timeout
 Kino 24 (720p),,http://sirius.greenhosting.ru/Kino24Ru/video.m3u8,dead:timeout
@@ -523,7 +609,6 @@ MMA-TV.com (576p),,http://45.145.32.13:20440/mmatv/index.m3u8?token=test,dead:ti
 Mosfilm Gold Collection (576p),,http://31.222.235.15/mosfilm/index.m3u8,dead:timeout
 Mosfilm Gold Collection (576p),,http://hls127.freeott.top:8080/Mosfilm/video.m3u8,dead:timeout
 Moskva 24 (576p),,http://45.145.32.13:20440/moskva24/index.m3u8?token=test,dead:timeout
-Mult i muzyka (576p),,http://hls127.freeott.top:8080/Mult_Muzika/video.m3u8,dead:timeout
 Muz-TV (576p),,http://185.71.81.6:8080/20/index.m3u8,dead:timeout
 Muz-TV (576p),,http://hls127.freeott.top:8080/MUZ_TV/video.m3u8,dead:timeout
 Nashe Lubimoe Kino (576p),,http://hls127.freeott.top:8080/Lubimoe_Kino/video.m3u8,dead:timeout
@@ -533,7 +618,6 @@ Nauka (576p),,http://45.145.32.13:20440/nauka/index.m3u8?token=test,dead:timeout
 Nostalgia (576p),,http://hls127.freeott.top:8080/Nostalgiya/video.m3u8,dead:timeout
 NST (576p),,http://hls127.freeott.top:8080/HCTV/video.m3u8,dead:timeout
 NTV Law (576p),,http://hls127.freeott.top:8080/NTV_PRAVO_TV/video.m3u8,dead:timeout
-NTV Style (576p),,http://hls127.freeott.top:8080/NTV_STIL_TV/video.m3u8,dead:timeout
 Ocean-TV (576p),,http://hls127.freeott.top:8080/Ocean_TV/video.m3u8,dead:timeout
 Pro Lyubov (1080p),,http://hls127.freeott.top:8080/ProLubovHD/video.m3u8,dead:timeout
 Pro100TV (576p),,https://sirius.greenhosting.ru/Pro100tvRu/video.m3u8,dead:timeout
@@ -543,19 +627,22 @@ REN TV (576p),,http://31.148.48.15/REN-TV/index.m3u8,dead:timeout
 REN TV (576p),,http://45.145.32.13:20440/ren_tv/index.m3u8?token=test,dead:timeout
 RT HD (1080p),,http://31.148.48.15/RT_HD/index.m3u8,dead:timeout
 Russia-24 HD (1080p),,https://vgtrkregion-reg.cdnvideo.ru/vgtrk/0/russia24-hd/index.m3u8,dead:timeout
+Setanta Sports 1,,http://158.101.222.193:88/georgia_play.php?id=setanta_georgia,dead:timeout
+Setanta Sports 2,,http://158.101.222.193:88/georgia_play.php?id=setanta_sports_plus_georgia,dead:timeout
 Shanson TV (576p),,http://hls127.freeott.top:8080/Shanson_Tv/video.m3u8,dead:timeout
 Shot TV (576p),,http://hls127.freeott.top:8080/SHOT_TV/video.m3u8,dead:timeout
 Solnce (576p),,http://31.148.48.15/Solnce/index.m3u8,dead:timeout
+Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,dead:timeout
 Spas (576p),,http://hls127.freeott.top:8080/Spas/video.m3u8,dead:timeout
 STS Love (576p),,http://hls127.freeott.top:8080/CTC-LOVE/video.m3u8,dead:timeout
-SuperGeroi (1080p),,http://31.148.48.15/Malish_TV/index.m3u8,dead:timeout
 Teatr (576p),,http://hls127.freeott.top:8080/Teatr/video.m3u8,dead:timeout
-TiJi (576p),,http://flussonic.linkintel.ru/tiji/index.m3u8,dead:timeout
 Tochka RF (1080p),,http://45.145.32.13:20440/hdl/index.m3u8?token=test,dead:timeout
 Top Secret (576p),,http://hls127.freeott.top:8080/Sovershenno_Sekretno/video.m3u8,dead:timeout
 Travel+Adventure (576p),,http://45.145.32.13:20440/travel_adventure/index.m3u8?token=test,dead:timeout
 TV Centr (576p),,http://hls127.freeott.top:8080/Tv_Center/video.m3u8,dead:timeout
 TV Centr SD (576p),,http://185.71.81.6:8080/10/index.m3u8,dead:timeout
+Univer TV (1080p),,https://cdn.universmotri.ru/live/smil:univer.smil/playlist.m3u8,dead:timeout
+Univer TV (1080p) [Not 24/7],,https://cdn.universmotri.ru/live/smil:mbr.smil/playlist.m3u8,dead:timeout
 Velvet. European Movies (1080p),,https://cdn.rostelekom-tv.xyz/live/LQ3j0n7j0Kq4OQm8.m3u8,dead:timeout
 Velvet. Golden Collection (1080p),,https://cdn.rostelekom-tv.xyz/live/v804qFZr0QVQ1s9Z.m3u8,dead:timeout
 Velvet. Mentovskiye Serialy (1080p),,https://cdn.rostelekom-tv.xyz/live/tWQ0ge9rspBQhRst.m3u8,dead:timeout
@@ -576,193 +663,42 @@ Zvezda Plus (576p),,http://45.145.32.13:20440/zvezdaplus/index.m3u8?token=test,d
 Первый Крымский (720p),,https://live1.1tvcrimea.ru/1tvcrimea.m3u8,dead:timeout
 Симферополь 24,,https://simf.1tvcrimea.ru/simferopol24.m3u8,dead:timeout
 Смайл ТВ,,https://5f05e059699ae.streamlock.net/WEB_Smilik/ngrp:Smilik.stream-adaptive/playlist.m3u8,dead:timeout
+Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,dead:timeout
 ТВК 24 (576p),,https://air.tvk6.ru/tvk24/playlist.m3u8,dead:timeout
-FantasticMistyc,Kinowalk TV,"rtmp://vkvsd199.okcdn.ru/playback/3780958366657?stkn=c3qCEto7Z19Gl6AT2PFZujdHvggU3zjJ1Wd4nvkEESOm9yVb5Ua8iL_YwVUg7G8dNsZOAkV5dUs&uid=0&sp=uid,sp&sig=vlibqm4nyu&fromCache=1",dead:timeout
-TDM KINO,Kinowalk TV,"rtmp://vkvsd79.okcdn.ru/playback/11865043512184?stkn=iP9X2jyo6Zr-w_LUZKkXvBaBp3-lOX9JjFgyOpcPnbsjorW-MN9cBeUsyuGVMWt0uqYPqhnhKxwK&uid=0&sp=uid,sp&sig=vlibqm4nyu&fromCache=1",dead:timeout
-TV Series,Kinowalk TV,"rtmp://vkvsd258.okcdn.ru/playback/4212830514154?stkn=3-5AxYkRTClGxxwNYsB-PosDfNMu_Z8wVCxKPRiA5P1eG-dXv3IyUKjRPAmaGd92HY3VjEPNPE4&uid=0&sp=uid,sp&sig=vlibqm4nyu&fromCache=1",dead:timeout
-Amedia 2 HD,Кино,http://tv.ttk.mx:9156,dead:timeout
-Дом кино Premium HD,Кино,http://tv.ttk.mx:9084,dead:timeout
-КиноТВ HD,Кино,http://tv.ttk.mx:9113,dead:timeout
-Мосфильм. Золотая коллекция,Кино,http://tv.ttk.mx:9169,dead:timeout
-НТВ Хит,Кино,http://tv.ttk.mx:9173,dead:timeout
-Победа,Кино,http://tv.ttk.mx:9149,dead:timeout
+FantasticMistyc,Kinowalk TV,rtmp://vkvsd199.okcdn.ru/playback/3780958366657?stkn=c3qCEto7Z19Gl6AT2PFZujdHvggU3zjJ1Wd4nvkEESOm9yVb5Ua8iL_YwVUg7G8dNsZOAkV5dUs&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
+TDM KINO,Kinowalk TV,rtmp://vkvsd79.okcdn.ru/playback/11865043512184?stkn=iP9X2jyo6Zr-w_LUZKkXvBaBp3-lOX9JjFgyOpcPnbsjorW-MN9cBeUsyuGVMWt0uqYPqhnhKxwK&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
+TV Series,Kinowalk TV,rtmp://vkvsd258.okcdn.ru/playback/4212830514154?stkn=3-5AxYkRTClGxxwNYsB-PosDfNMu_Z8wVCxKPRiA5P1eG-dXv3IyUKjRPAmaGd92HY3VjEPNPE4&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
+Кинопремьера,Кино,http://158.101.222.193:88/georgia_play.php?id=kinopremyerahd,dead:timeout
 Deluxe Dance,Музыкальные,http://92.114.85.52:1453/play/a02f/index.m3u8,dead:timeout
-RETROHITS,Музыкальные,"rtmp://vkvsd285.okcdn.ru/playback/7765205854979?stkn=3YIqbICN3HQXqSqHe0t6L_U4aObzKpZdQDqaZigiXarsKvoVAU1g9ABrdjLIO7hYZdJPsBcdTGk&uid=0&sp=uid,sp&sig=vlibqm4nyu&fromCache=1",dead:timeout
-TechnoDanceMusic,Музыкальные,"rtmp://vkvsd260.okcdn.ru/playback/4541149555686?stkn=_GLaJIlrWpbJgXi_b5gtNKlx404aCHbd48x9zKalkpUqDF0ccnViROdGa7iV8JjrPLmm0qJTU0w&uid=0&sp=uid,sp&sig=vlibqm4nyu&fromCache=1",dead:timeout
-Зоопарк,Познавательные,http://tv.ttk.mx:9029,dead:timeout
-Тайны галактики HD,Познавательные,http://tv.ttk.mx:9071,dead:timeout
-Поехали!,Развлекательные,http://tv.ttk.mx:9082,dead:timeout
-Русский экстрим,Развлекательные,http://tv.ttk.mx:9095,dead:timeout
-Матч!,Спорт,http://46.151.151.250:9002,dead:timeout
+RETROHITS,Музыкальные,rtmp://vkvsd285.okcdn.ru/playback/7765205854979?stkn=3YIqbICN3HQXqSqHe0t6L_U4aObzKpZdQDqaZigiXarsKvoVAU1g9ABrdjLIO7hYZdJPsBcdTGk&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
+TechnoDanceMusic,Музыкальные,rtmp://vkvsd260.okcdn.ru/playback/4541149555686?stkn=_GLaJIlrWpbJgXi_b5gtNKlx404aCHbd48x9zKalkpUqDF0ccnViROdGa7iV8JjrPLmm0qJTU0w&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
 Мир Баскетбола,Спорт,http://45.145.32.13:20440/mir_basketbola/index.m3u8?token=test,dead:timeout
-Киносвидание,Кино,http://5.188.159.128:8070/kinosvidanie/index.m3u8,dead:unknown
-1HD Music Television (1080p),,https://stream8.cinerama.uz/1267/tracks-v1a1/mono.m3u8,domain
-365 days TV (576p),,https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8,domain
-Arsenal (576p),,https://stream8.cinerama.uz/1414/tracks-v1a1/mono.m3u8,domain
-Auto Plus,,https://stream8.cinerama.uz/1036/tracks-v1a1/mono.m3u8,domain
-Channel One HD (720p),,https://stream8.cinerama.uz/1214/tracks-v1a1/mono.m3u8,domain
-Cinema,,https://stream8.cinerama.uz/1227/tracks-v1a1/mono.m3u8,domain
-Da Vinci,,https://stream8.cinerama.uz/1231/tracks-v1a1/mono.m3u8,domain
-Detskiy (576p),,https://stream8.cinerama.uz/1033/tracks-v1a1/mono.m3u8,domain
-Dikij (576p),,https://stream3.cinerama.uz/1230/tracks-v1a1/mono.m3u8,domain
-Doctor (576i),,https://stream8.cinerama.uz/1409/tracks-v1a1/mono.m3u8,domain
-Dom kino,,https://stream8.cinerama.uz/1054/tracks-v1a1/mono.m3u8,domain
-Domashnie Zhivotnye (576p),,https://stream8.cinerama.uz/1426/tracks-v1a1/mono.m3u8,domain
-Dorama,,https://stream8.cinerama.uz/1273/tracks-v1a1/mono.m3u8,domain
-Drive (576i),,https://stream8.cinerama.uz/1421/tracks-v1a1/mono.m3u8,domain
-FON Music (576p),,https://stream8.cinerama.uz/1272/tracks-v1a1/mono.m3u8,domain
-Glazami Turista (576i),,https://stream8.cinerama.uz/1423/tracks-v1a1/mono.m3u8,domain
-Gulli Girl (720p),,https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8,domain
-Indiyskoye Kino,,https://stream8.cinerama.uz/1060/tracks-v1a1/mono.m3u8,domain
-Insayt TV (2160p),,https://stream8.cinerama.uz/1416/tracks-v1a1/mono.m3u8,domain
-Kapitan Fantastika (576p),,https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8,domain
-KinoHit,,https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8,domain
-Kinopokaz,,https://stream8.cinerama.uz/1057/tracks-v1a1/mono.m3u8,domain
-Kinopremyera,,https://stream8.cinerama.uz/1207/tracks-v1a1/mono.m3u8,domain
-Kinosvidanie,,https://stream8.cinerama.uz/1203/tracks-v1a1/mono.m3u8,domain
-Kuhnya (576p),,https://stream8.cinerama.uz/1236/tracks-v1a1/mono.m3u8,domain
-Mama (576p),,https://stream8.cinerama.uz/1244/tracks-v1a1/mono.m3u8,domain
-Mir,,https://stream8.cinerama.uz/1218/tracks-v1a1/mono.m3u8,domain
-Mir 24,,https://stream8.cinerama.uz/1219/tracks-v1a1/mono.m3u8,domain
-MMA-TV.com,,https://stream8.cinerama.uz/1226/tracks-v1a1/mono.m3u8,domain
-Mult (576p),,https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8,domain
-Multilandia,,https://stream8.cinerama.uz/1440/tracks-v1a1/mono.m3u8,domain
-Muz-TV,,https://stream8.cinerama.uz/1200/tracks-v1a1/mono.m3u8,domain
-Muzyka Pervogo,,https://stream8.cinerama.uz/1201/tracks-v1a1/mono.m3u8,domain
-Nashe Novoe Kino,,https://stream8.cinerama.uz/1051/tracks-v1a1/mono.m3u8,domain
-Nicktoons CIS (1080p),,https://stream8.cinerama.uz/1502/playlist.m3u8,domain
-NTV,,https://stream8.cinerama.uz/1023/tracks-v1a1/mono.m3u8,domain
-Ohotnik i rybolov (576i),,https://stream8.cinerama.uz/1413/tracks-v1a1/mono.m3u8,domain
-Okhota i rybalka,,https://stream8.cinerama.uz/1038/tracks-v1a1/mono.m3u8,domain
-Priklyucheniya (576p),,https://stream8.cinerama.uz/1420/tracks-v1a1/mono.m3u8,domain
-Retro,,https://stream8.cinerama.uz/1047/tracks-v1a1/mono.m3u8,domain
-Rodnoe Kino,,https://stream8.cinerama.uz/1052/tracks-v1a1/mono.m3u8,domain
-RU.TV,,https://stream8.cinerama.uz/1202/tracks-v1a1/mono.m3u8,domain
-Russia-1,,https://stream8.cinerama.uz/1020/tracks-v1a1/mono.m3u8,domain
-Russia-24,,https://stream8.cinerama.uz/1021/tracks-v1a1/mono.m3u8,domain
-Russia-K (576p),,https://stream8.cinerama.uz/1048/tracks-v1a1/mono.m3u8,domain
-Ryzhiy (576i),,https://stream8.cinerama.uz/1407/tracks-v1a1/mono.m3u8,domain
-Smile TV (720p),,https://stream8.cinerama.uz/1425/tracks-v1a1/mono.m3u8,domain
-T24,,https://stream8.cinerama.uz/1037/tracks-v1a1/mono.m3u8,domain
-Telecafe,,https://stream8.cinerama.uz/1035/tracks-v1a1/mono.m3u8,domain
-TiJi (576p),,https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8,domain
-TNV-Planet,,https://stream8.cinerama.uz/1062/tracks-v1a1/mono.m3u8,domain
-Tochka otryva (576p),,https://stream8.cinerama.uz/1031/tracks-v1a1/mono.m3u8,domain
-TV Centr (576p),,https://stream8.cinerama.uz/1025/tracks-v1a1/mono.m3u8,domain
-TV Centr International (576p),,https://stream8.cinerama.uz/1281/tracks-v1a1/mono.m3u8,domain
-Usadba (576p),,https://stream8.cinerama.uz/1427/tracks-v1a1/mono.m3u8,domain
-V gostyakh u skazki (1080p),,https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8,domain
-viju Nature,,https://stream8.cinerama.uz/1228/tracks-v1a1/mono.m3u8,domain
-viju TV1000 action,,https://stream8.cinerama.uz/1225/tracks-v1a1/mono.m3u8,domain
-viju TV1000 russkoe,,https://stream8.cinerama.uz/1058/tracks-v1a1/mono.m3u8,domain
-viju TV1000 russkoe,,https://stream8.cinerama.uz/1059/tracks-v1a1/mono.m3u8,domain
-viju+ Sport,,https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8,domain
-Zagorodnaya Zhizn,,https://stream8.cinerama.uz/1044/tracks-v1a1/mono.m3u8,domain
-Zdorovoe TV (576p),,https://stream8.cinerama.uz/1428/tracks-v1a1/mono.m3u8,domain
-Zhivaya Planeta (576p),,https://stream8.cinerama.uz/1250/tracks-v1a1/mono.m3u8,domain
-Zoopark (576i),,https://stream8.cinerama.uz/1417/tracks-v1a1/mono.m3u8,domain
-Zvezda,,https://stream8.cinerama.uz/1050/tracks-v1a1/mono.m3u8,domain
-Вопросы и ответы,Развлекательные,https://stream8.cinerama.uz/1429/tracks-v1a1/mono.m3u8,domain
-Драйв,Развлекательные,http://stream8.cinerama.uz/1421/mono.m3u8,domain
-Trace Sport Stars HD,Спорт,https://stream8.cinerama.uz/1274/tracks-v1a1/mono.m3u8,domain
 2x2,Детские,http://194.152.35.17/2x2/index.m3u8,group_exclude
 2x2 HD,Детские,https://bl.rutube.ru/livestream/392b4686b770bae2da6bf5ac4574add5/index.m3u8?s=csWYUddw7ZPKX2UHThswTg&e=2073777408&scheme=https,group_exclude
-Cartoonito,Детские,https://tinyurl.com/upwnsw7p/723/index.m3u8,group_exclude
-Da Vinci,Детские,https://fs.uplink.kz/da_vinci/mono.m3u8?token=onlinetv,group_exclude
-English Club TV,Детские,https://stream8.cinerama.uz/1442/tracks-v1a1/mono.m3u8,group_exclude
 FoxKids Remastered,Детские,http://kinowalk.hopto.org/foxkids_remastered_live,group_exclude
 JTX Online,Детские,http://kinowalk.hopto.org/jtxonline_live,group_exclude
-Nicktoons,Детские,https://stream8.cinerama.uz/1502/tracks-v1a1/mono.m3u8,group_exclude
 NikNik-TV,Детские,https://hostrec.ru/live/wic2AtEFCLwsZcUkAgtZcjlYgjc.m3u8,group_exclude
-TiJi,Детские,https://flussonic.mkpnet.ru/tv-3848dd8604a262e0/video.m3u8,group_exclude
-В гостях у сказки,Детские,https://stream1.cinerama.uz/1270/tracks-v1a1/mono.m3u8,group_exclude
-Лапки LIVE,Детские,https://fs.uplink.kz/lapki_live/mono.m3u8?token=onlinetv,group_exclude
-Лёва,Детские,https://tinyurl.com/teh55yef/15098/index.m3u8,group_exclude
 Мультиландия,Детские,https://flussonic.mkpnet.ru/tv-89530153f25733fe/video.m3u8,group_exclude
 "Ну, Погоди!",Детские,http://194.26.229.213/souzmultfilm/index.m3u8,group_exclude
 О!,Детские,http://tv.ttk.mx:9092,group_exclude
-Советские Мультфильмы,Детские,http://peers.tv-live-669.workers.dev/?ID=http://api.peers.tv/timeshift/sovetskiemult/16/playlist.m3u8,group_exclude
+Советские Мультфильмы,Детские,http://peers.tv-live-669.workers.dev/?ID=http%3A%2F%2Fapi.peers.tv%2Ftimeshift%2Fsovetskiemult%2F16%2Fplaylist.m3u8,group_exclude
 Солнце,Детские,https://flussonic.mkpnet.ru/tv-ac43800065b9b1b7/video.m3u8,group_exclude
 СуперГерои,Детские,http://109.94.1.3:8080/132/index.m3u8,group_exclude
 Том и Джерри,Детские,https://rpn3.bozztv.com/dvrfl07/giatv-208314/playlist.m3u8,group_exclude
 Чип и Дейл,Детские,http://194.26.229.213/chip-n-dale-rescue-rangers/index.m3u8,group_exclude
-IPTVPLAY PROMO,СМОТРИМ +,http://5.188.158.65:4040/IPTVPLAYPromo.tv/video.m3u8?token=lqRGka5-YwwqF0,name_blocklist
-Baby Time (576p),,http://178.134.1.158:8081/babytime/index.m3u8,name_exclude
-Baby Time (576p),,https://fs.uplink.kz/baby_time/mono.m3u8?token=onlinetv,name_exclude
-Baby Time (576p),,http://str2.iptvhd.ru:8080/Baby_TV/index.m3u8,name_exclude
-Nick Jr. (576p),,http://stream.mcquack.net/220/index.m3u8,name_exclude
-Nick Jr. (576p),,https://stream8.cinerama.uz/1501/playlist.m3u8,name_exclude
-Nickelodeon (576p),,http://stream.mcquack.net/443/index.m3u8,name_exclude
-Nickelodeon (576p),,http://str2.iptvhd.ru:8080/Nickelodeon/index.m3u8,name_exclude
-RU.TV Kids (720p),,https://rutvkids.ru/live/efir/index.m3u8,name_exclude
-STS kids (576p),,http://hls127.freeott.top:8080/STS_Kids/video.m3u8,name_exclude
-STS kids (576p),,http://stream.mcquack.net/197/index.m3u8,name_exclude
-STS kids HD (1080p),,http://45.145.32.13:20440/ctc_kids_hd/index.m3u8?token=test,name_exclude
-STS kids HD (1080p),,http://str2.iptvhd.ru:8080/sts_kids_hd/index.m3u8,name_exclude
-STS kids International (576p),,https://fs.uplink.kz/sts_kids/mono.m3u8?token=onlinetv,name_exclude
-Fresh Kids,Fresh,http://stream.mcquack.net/425/index.m3u8,name_exclude
-Disney XD,Kinowalk,http://kinowalk.hopto.org/disneyxd_live,name_exclude
-Kycman мульт,Kinowalk TV,http://kinowalk.hopto.org/kycman_live,name_exclude
-Cartoon Classics,Детские,http://5.188.159.128:8070/Cartoon_Network/index.m3u8,name_exclude
-Cartoon Network,Детские,http://45.132.87.69:8080/cartoon_network/index.m3u8,name_exclude
-Nick Jr,Детские,https://stream8.cinerama.uz/1501/tracks-v1a1/mono.m3u8,name_exclude
-Nickelodeon,Детские,https://bl.rutube.ru/livestream/e902c1a059034a1537430b2aa5aedece/index.m3u8?s=Ac5CNFCTPyjvI502W6xgrw&e=2090404676&scheme=https,name_exclude
-Детский,Детские,http://185.46.16.239:8000/Detskiy,name_exclude
-Детский мир,Детские,http://tv.ttk.mx:9063,name_exclude
-Канал Disney Онлайн,Детские,http://kinowalk.hopto.org/kanaldisneyonline_live,name_exclude
-Карусель,Детские,https://fs.uplink.kz/karusel/mono.m3u8?token=onlinetv,name_exclude
-Мульт,Детские,https://flussonic.mkpnet.ru/tv-c8b065a591077c26/video.m3u8,name_exclude
-CineMan,,https://tinyurl.com/4tfv9tup/11004/index.m3u8,shortener
-CineMan Action,,https://tinyurl.com/4tfv9tup/11006/index.m3u8,shortener
-CineMan Cartoons 90,,https://tinyurl.com/upwnsw7p/11001/index.m3u8,shortener
-CineMan Cartoons Big,,https://tinyurl.com/upwnsw7p/11003/index.m3u8,shortener
-CineMan Cartoons Short,,https://tinyurl.com/upwnsw7p/11002/index.m3u8,shortener
-CineMan Marvel,,https://tinyurl.com/4tfv9tup/11009/index.m3u8,shortener
-CineMan MiniSeries,,https://tinyurl.com/4tfv9tup/19437/index.m3u8,shortener
-CineMan Premium,,https://tinyurl.com/4tfv9tup/20112/index.m3u8,shortener
-CineMan Thriller,,https://tinyurl.com/4tfv9tup/11007/index.m3u8,shortener
-CineMan Top,,https://tinyurl.com/4tfv9tup/11005/index.m3u8,shortener
-CineMan VHS,,https://tinyurl.com/4tfv9tup/11012/index.m3u8,shortener
-CineMan Катастрофы,,https://tinyurl.com/upwnsw7p/15106/index.m3u8,shortener
-CineMan Комедийные Сериалы,,https://tinyurl.com/upwnsw7p/31628/index.m3u8,shortener
-CineMan Комедия,,https://tinyurl.com/4tfv9tup/11011/index.m3u8,shortener
-CineMan Криминальные Сериалы,,https://tinyurl.com/upwnsw7p/31626/index.m3u8,shortener
-CineMan Лесник,,https://tinyurl.com/upwnsw7p/16065/index.m3u8,shortener
-CineMan Мелодрама,,https://tinyurl.com/4tfv9tup/11008/index.m3u8,shortener
-CineMan Ментовские войны,,https://tinyurl.com/upwnsw7p/16063/index.m3u8,shortener
-CineMan ПёС + Лихач,,https://tinyurl.com/upwnsw7p/16064/index.m3u8,shortener
-CineMan РуКино,,https://tinyurl.com/4tfv9tup/11013/index.m3u8,shortener
-CineMan Сваты,,https://tinyurl.com/upwnsw7p/11014/index.m3u8,shortener
-CineMan Симпсоны,,https://tinyurl.com/upwnsw7p/15101/index.m3u8,shortener
-CineMan Скорая Помощь,,https://tinyurl.com/upwnsw7p/15100/index.m3u8,shortener
-CineMan Ужасы,,https://tinyurl.com/4tfv9tup/11010/index.m3u8,shortener
-CineMan Фитнес,,https://tinyurl.com/upwnsw7p/31629/index.m3u8,shortener
 RT HD (1080p),,https://wisewatchoott.wiseplayout.com/RT/master.m3u8,shortener
-FlixSnip HD,Кино,https://tinyurl.com/teh55yef/10060/index.m3u8,shortener
-Kion Хит HD,Кино,https://tinyurl.com/teh55yef/20211/index.m3u8,shortener
-Start Air HD,Кино,https://tinyurl.com/4tfv9tup/18036/index.m3u8,shortener
-Sumiko,Кино,https://tinyurl.com/4tfv9tup/2163/index.m3u8,shortener
-VHS-ка,Кино,https://tinyurl.com/teh55yef/5006/index.m3u8,shortener
-VHS-ка Сериал HD,Кино,https://tinyurl.com/teh55yef/31931/index.m3u8,shortener
-Блокбастер HD,Кино,https://tinyurl.com/2x47stw5/1031.m3u8,shortener
-Комедийное HD,Кино,https://tinyurl.com/2x47stw5/906.m3u8,shortener
-Наш Кинопоказ HD,Кино,https://tinyurl.com/4tfv9tup/2434/index.m3u8,shortener
-Остросюжетное HD,Кино,https://tinyurl.com/2x47stw5/902.m3u8,shortener
-Премиальное HD,Кино,https://tinyurl.com/2x47stw5/901.m3u8,shortener
-Шокирующее HD,Кино,https://tinyurl.com/2x47stw5/905.m3u8,shortener
-Epic HD,Познавательные,https://tinyurl.com/4tfv9tup/2054/index.m3u8,shortener
-Приключения HD,Познавательные,https://tinyurl.com/teh55yef/920/index.m3u8,shortener
-Gagsnetwork,Развлекательные,https://tinyurl.com/upwnsw7p/14024/index.m3u8,shortener
-Аппетитный,Развлекательные,https://tinyurl.com/upwnsw7p/9067/index.m3u8,shortener
-Диалоги о Рыбалке,Развлекательные,https://tinyurl.com/upwnsw7p/2394/index.m3u8,shortener
-Зал суда,Развлекательные,https://tinyurl.com/teh55yef/7141/index.m3u8,shortener
-Кто Куда,Развлекательные,https://tinyurl.com/4tfv9tup/2112/index.m3u8,shortener
-Оружие,Развлекательные,https://tinyurl.com/teh55yef/2087/index.m3u8,shortener
-Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,unstable:33%
-Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,unstable:33%
-СТС HD,Основные,https://edge07r.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.IPTZi0OX6BWY8aN9h7epxJo3NULi6eKcNeuT4kA5BQs.Ta3LeSNdOf8djhQqPTK0C8cqzNWjISAvclKmHYSIfH0.1790928908.bb2a7539447508cbd5ad4b3928c2604a,unstable:33%
-Setanta Sports 1,,http://158.101.222.193:88/georgia_play.php?id=setanta_georgia,url_extension
-Setanta Sports 2,,http://158.101.222.193:88/georgia_play.php?id=setanta_sports_plus_georgia,url_extension
-TV1000 русское HD,Кино,http://line.tivi-one.net:80/play/live.php?mac=A0:BB:3E:75:52:64&stream=1031904&extension=ts&play_token=TngILrSNZd,url_extension
-Кинопремьера,Кино,http://158.101.222.193:88/georgia_play.php?id=kinopremyerahd,url_extension
-Наше новое кино HD,Кино,http://line.tivi-one.net:80/play/live.php?mac=A0:BB:3E:75:52:64&stream=1031893&extension=ts&play_token=FVTY1Deq2j,url_extension
+Amedia 2 HD,Кино,http://tv.ttk.mx:9156,unstable:0%
+Дом кино Premium HD,Кино,http://tv.ttk.mx:9084,unstable:0%
+КиноТВ HD,Кино,http://tv.ttk.mx:9113,unstable:0%
+Мосфильм. Золотая коллекция,Кино,http://tv.ttk.mx:9169,unstable:0%
+НТВ Хит,Кино,http://tv.ttk.mx:9173,unstable:0%
+Победа,Кино,http://tv.ttk.mx:9149,unstable:0%
+Зоопарк,Познавательные,http://tv.ttk.mx:9029,unstable:0%
+Тайны галактики HD,Познавательные,http://tv.ttk.mx:9071,unstable:0%
+Поехали!,Развлекательные,http://tv.ttk.mx:9082,unstable:0%
+Русский экстрим,Развлекательные,http://tv.ttk.mx:9095,unstable:0%
+Матч!,Спорт,http://46.151.151.250:9002,unstable:0%
+Рен ТВ HD,Основные,https://edge06d.mediavitrina.ru/hls-livef6/ren-tv/index.m3u8?token=v2.PsDEIEIPzwadDScYvKAEyDwHS0WLeQ6gJUQ-e3BaZzg.M1GAoaPeoR6a7zsCuGBJAoJnYaQ8Wcqf9WdyPDuHQ5s.1790928815.e8a1027430e9ae18ce1612f277ded1de,unstable:30%
+Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,unstable:40%
+СТС HD,Основные,https://edge07r.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.IPTZi0OX6BWY8aN9h7epxJo3NULi6eKcNeuT4kA5BQs.Ta3LeSNdOf8djhQqPTK0C8cqzNWjISAvclKmHYSIfH0.1790928908.bb2a7539447508cbd5ad4b3928c2604a,unstable:40%
+TravelXP 4K,Познавательные,http://91.247.68.229:8000/play/Travelxp/index.m3u8,unstable:40%

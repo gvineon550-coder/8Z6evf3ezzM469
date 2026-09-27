@@ -80,3 +80,12 @@ https://flussonic.mkpnet.ru/tv-ee3651e1e7ce5cbf/video.m3u8
 #EXTINF:-1 tvg-logo="http://msx.nnmtv.pw/msx/img/iptv.png" group-title="⚽ Спорт",Овертайм ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.overtime26.ru/app/potok/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/match-football1.png" group-title="⚽ Спорт",Футбол1
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://31.148.5.241/Match_Football_1_HD/index.m3u8
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/match-football2.png" group-title="⚽ Спорт",Футбол2
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://185.195.184.30:8000/play/a00n/index.m3u8
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/match-football3.png" group-title="⚽ Спорт",Футбол3
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://176.100.46.245:90/matchfootball3/index.m3u8
