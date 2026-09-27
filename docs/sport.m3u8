@@ -1,0 +1,106 @@
+#EXTM3U url-tvg="http://epg.one/epg.xml; http://uztv.su/uploads/channelsarch/channels.xml; https://iptvx.one/EPG_NOARCH; http://gabbarit.drm-play.com/epg_lite.xml.gz; http://epg.cdntv.online/lite.xml; http://epg.it999.ru/epg.xml; http://iptv-content.rv77.pw/guide-lite.xml"
+#EXTINF:-1 tvg-id="eurosport1" tvg-logo="https://epg.iptvx.one/picons/eurosport1.png" group-title="⚽ Спорт",Eurosport1 HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/176/index.m3u8
+#EXTINF:-1 tvg-id="eurosport2" tvg-logo="https://epg.iptvx.one/picons/eurosport2.png" group-title="⚽ Спорт",Eurosport2 HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/192/index.m3u8
+#EXTINF:-1 tvg-id="extreme-sports" tvg-logo="https://epg.iptvx.one/picons/extreme-sports.png" group-title="⚽ Спорт",Extreme Sports
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://flussonic.mkpnet.ru/tv-1a9441fd32d63873/video.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="ExtremeSportsChannel.ru@SD",Extreme Sports Channel (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://46.32.176.50/extremesport/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="ExtremeSportsChannel.ru@SD",Extreme Sports Channel (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/extreme_sports/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-id="kxl-hd" tvg-logo="https://epg.iptvx.one/picons/kxl-hd.png" group-title="⚽ Спорт",KHL HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/khl_prime/tracks-v1a1/mono.ts.m3u8?token=onlinetv
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchArena.ru@SD",Match! Arena (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/163/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchBoets.ru@SD",Match! Boets (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/112/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchIgra.ru@SD",Match! Igra (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/188/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchPlaneta.ru@SD",Match! Planeta (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/match_planeta/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchStrana.ru@SD",Match! Strana (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/143/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchUltra.ru@4K",Match! Ultra (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://flussonic.linkintel.ru/match/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchUltra.ru@4K",Match! Ultra (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/match/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchUltra.ru@4K",Match! Ultra (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://45.132.87.69:8080/match/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchUltra.ru@4K",Match! Ultra (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://tv.tuva.ru/machtv/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchUltra.ru@4K",Match! Ultra (720p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/169/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD",MMA-TV.com
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://stream8.cinerama.uz/1226/tracks-v1a1/mono.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD",MMA-TV.com (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="OkkoPrajmSport.ru@SD",Okko Prajm Sport (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/493/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="OkkoSport.ru@SD",Okko Sport (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/492/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="SetantaSports1.ru@HD",Setanta Sports 1 HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/setanta_sports_1_hd/mono.m3u8?token=onlinetv
+#EXTINF:-1 tvg-id="setanta1-lt" tvg-logo="http://epg.propg.net/img/channel_icons/45141.png" group-title="⚽ Спорт",Setanta Sports 1 HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://cdn.itvuz.workers.dev/stream/171?key=zunotv
+#EXTINF:-1 tvg-id="setanta1-2t" tvg-logo="https://epg.iptvx.one/picons/setanta2-lt.png" group-title="⚽ Спорт",Setanta Sports 2 HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://cdn.itvuz.workers.dev/stream/172?key=zunotv
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="Sportivnyy.ru@SD",Sportivnyy (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://live-3.otcnet.ru/sportivny/index.m3u8
+#EXTINF:-1 tvg-id="trace-sport-stars-ru" tvg-logo="https://epg.iptvx.one/picons/trace-sport-stars-ru.png" group-title="⚽ Спорт",Trace Sport Stars HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://stream8.cinerama.uz/1274/tracks-v1a1/mono.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="vijuPlusSport.ru@SD",viju+ Sport
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="vijuPlusSport.ru@SD",viju+ Sport (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/333/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="vijuPlusSport.ru@SD",viju+ Sport (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/viju_sport/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="AstrahanRuSport.ru@SD",Астрахань.Ru Sport (720p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://streaming.astrakhan.ru/astrakhanrusporthd/playlist.m3u8
+#EXTINF:-1 tvg-id="boks-tv" tvg-logo="http://epg.propg.net/img/channel_icons/11092.png" group-title="⚽ Спорт",Бокс ТВ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://185.46.16.239:8000/Eurosport_1
+#EXTINF:-1 tvg-id="kxl" tvg-logo="https://epg.iptvx.one/picons/kxl.png" group-title="⚽ Спорт",КХЛ ТВ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://flussonic.mkpnet.ru/tv-e3d23fc7511b5fcd/video.m3u8
+#EXTINF:-1 tvg-id="match-tv" tvg-logo="https://epg.iptvx.one/picons/match-tv.png" group-title="⚽ Спорт",Матч!
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://46.151.151.250:9002
+#EXTINF:-1 tvg-id="match-arena" tvg-logo="https://epg.iptvx.one/picons/match-arena.png" group-title="⚽ Спорт",Матч! Арена
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://flussonic.mkpnet.ru/tv-9dda1dd9d740a9a4/video.m3u8
+#EXTINF:-1 tvg-id="match-premier" tvg-logo="https://epg.iptvx.one/picons/match-premiere.png" group-title="⚽ Спорт",МАТЧ! Премьер
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://flussonic.mkpnet.ru/tv-ee3651e1e7ce5cbf/video.m3u8
+#EXTINF:-1 tvg-id="no_epg_sport" tvg-logo="http://msx.nnmtv.pw/msx/img/iptv.png" group-title="⚽ Спорт",Овертайм ТВ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://live.overtime26.ru/app/potok/playlist.m3u8
