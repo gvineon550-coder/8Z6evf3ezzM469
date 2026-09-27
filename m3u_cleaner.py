@@ -5,18 +5,12 @@ m3u_cleaner.py — отдельный чистильщик M3U-листов и U
 
 Особенности:
   • Стриминг: читает/пишет построчно, не держит лист в памяти
-  • СОХРАНЯЕТ #EXTVLCOPT (http-user-agent и др.) у каждого канала
-  • СОХРАНЯЕТ самую богатую шапку #EXTM3U url-tvg="..." (для EPG)
-  • Дедуп по URL глобальный (между всеми источниками)
-  • Понимает regex И простые подстроки в filters.json (auto-detect)
-  • Shortener и blocked_domain — только по домену (не подстрокой)
-  • Фильтры: пустые URL, схемы, приватные IP, multicast,
-    сокращатели, заблокированные домены, мусорные имена,
-    магазины/мода, детские
-
-Запуск:
-    python m3u_cleaner.py --sources sources_cleaner.json
-    python m3u_cleaner.py --sources sources_cleaner.json --strip-trackers
+  • СОХРАНЯЕТ #EXTVLCOPT (http-user-agent и др.)
+  • СОХРАНЯЕТ или ПОДСТАВЛЯЕТ шапку #EXTM3U url-tvg="..." (для EPG)
+  • Дедуп по URL глобальный
+  • Понимает regex И подстроки в filters.json (auto-detect)
+  • Shortener/домен — только по hostname
+  • В лог пишет примеры URL по каждой причине отсева
 """
 from __future__ import annotations
 
@@ -26,7 +20,7 @@ import json
 import re
 import sys
 import time
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
@@ -43,19 +37,24 @@ except ImportError:
 DEFAULT_UA = "WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36"
 DEFAULT_TIMEOUT = 30
 CHUNK = 8192
-SHORT_PATTERN_LEN = 5  # слова такой длины и короче матчим по границе слова
+SHORT_PATTERN_LEN = 5
+HEADER_SCAN_LINES = 20  # сколько строк искать #EXTM3U
+
+# Дефолтная шапка с EPG iptvx — если ни один источник не дал url-tvg
+DEFAULT_HEADER = (
+    '#EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; '
+    'https://iptvx.one/EPG_NOARCH"'
+)
 
 PRIVATE_PREFIXES = ("127.", "10.", "192.168.", "169.254.", "0.")
 SHORTENERS = ("bit.ly", "tinyurl.com", "clck.ru", "adf.ly", "bitly.com",
               "tiny.cc", "rb.gy", "surl.li", "goo.gl", "is.gd", "ow.ly")
 DEFAULT_DOMAIN_BLOCK = ("cinerama.uz",)
 DEFAULT_NAME_EXCLUDE = (
-    # детские
     "детск", "дети", "мульт", "мультик", "карусель", "малыш", "малютк", "сказк",
     "kids", "baby", "cartoon", "disney", "nickelodeon", "boomerang", "cartoonito",
     "gulli", "tiji", "jimjam", "babytv", "da vinci", "carousel",
     "mult", "ani", "multilandia", "supergeroi", "v gostyakh u skazki",
-    # магазины / мода
     "магазин", "шопинг", "телегазета", "телемагазин", "распродаж",
     "ювелирочка", "ювелир",
     "shop", "shopping", "shop24", "teleshop", "teleshopping",
@@ -77,7 +76,6 @@ def log(m: str) -> None:
 
 # ---------- Парсинг ----------
 def split_extinf(line: str):
-    """EXTINF с корректной обработкой запятых внутри кавычек."""
     in_q = False
     for i, ch in enumerate(line):
         if ch == '"':
@@ -88,11 +86,6 @@ def split_extinf(line: str):
 
 
 def iter_m3u(lines):
-    """
-    Ленивый парсер.
-    Yield: (attrs_dict, name, directives_list, url)
-    directives — все #EXT... строки между #EXTINF и URL (#EXTVLCOPT и т.п.)
-    """
     attrs: dict = {}
     name = ""
     directives: list = []
@@ -117,7 +110,6 @@ def iter_m3u(lines):
             if in_entry:
                 directives.append(stripped)
             continue
-        # URL строка
         if in_entry:
             yield attrs, name, directives, stripped
             attrs, name, directives, in_entry = {}, "", [], False
@@ -125,10 +117,6 @@ def iter_m3u(lines):
 
 
 def _is_better_header(new: str, old: str | None) -> bool:
-    """
-    Выбираем самую информативную шапку.
-    Шапка с url-tvg="..." приоритетнее простого #EXTM3U.
-    """
     if not new:
         return False
     if not old:
@@ -151,25 +139,11 @@ def is_private_ip(url: str) -> bool:
     if m and 16 <= int(m.group(1)) <= 31:
         return True
     if host.count(":") >= 2:
-        return True  # IPv6
+        return True
     return False
 
 
-def host_match(url: str, domains) -> bool:
-    h = (urlparse(url).hostname or "").lower()
-    return any(h == d or h.endswith("." + d) for d in domains)
-
-
-def _match_domain(url: str, domains) -> bool:
-    """Домен — точное совпадение hostname или поддомен."""
-    h = (urlparse(url).hostname or "").lower()
-    if not h:
-        return False
-    return any(h == d or h.endswith("." + d) for d in domains)
-
-
 def is_multicast_url(url: str) -> bool:
-    """UDP/RTP multicast или его HTTP-обёртка."""
     u = url.lower()
     if u.startswith(MULTICAST_SCHEMES):
         return True
@@ -189,9 +163,14 @@ def strip_tracking(url: str) -> str:
         return url
 
 
-# ---------- Regex-aware проверки ----------
+def _match_domain(url: str, domains) -> bool:
+    h = (urlparse(url).hostname or "").lower()
+    if not h:
+        return False
+    return any(h == d or h.endswith("." + d) for d in domains)
+
+
 def _looks_like_regex(p: str) -> bool:
-    """Эвристика: если паттерн похож на regex — обрабатываем как regex."""
     if any(p.startswith(m) for m in ("(?i)", "(?m)", "(?s)", "^", "$")):
         return True
     if "\\" in p or "|" in p:
@@ -200,7 +179,6 @@ def _looks_like_regex(p: str) -> bool:
 
 
 def _compiled_patterns(items):
-    """Возвращает список (compiled_regex_or_str, is_regex) для каждого паттерна."""
     out = []
     for p in items:
         if not p:
@@ -216,7 +194,6 @@ def _compiled_patterns(items):
 
 
 def _match_any_name(name: str, compiled) -> bool:
-    """Проверка имени — по regex или по подстроке."""
     low = name.lower()
     for pat, is_re in compiled:
         if is_re:
@@ -233,7 +210,6 @@ def _match_any_name(name: str, compiled) -> bool:
 
 
 def _match_any_url(url: str, compiled) -> bool:
-    """Проверка URL — regex по полному URL или подстрока (для расширений)."""
     low = url.lower()
     for pat, is_re in compiled:
         if is_re:
@@ -254,27 +230,16 @@ def reject_reason(url: str, name: str, flt) -> str | None:
         return "multicast"
     if is_private_ip(url):
         return "private_ip"
-
-    # URL regex (blocked_url) — только для regex-паттернов
     if _match_any_url(url, flt["_url_compiled"]):
         return "blocked_url"
-
-    # Shortener — ТОЛЬКО по домену, не подстрокой
     if _match_domain(url, flt["_shortener_domains"]):
         return "shortener"
-
-    # Блок-домены — по домену
     if _match_domain(url, flt["domain_blocklist"]):
         return "blocked_domain"
-
-    # Расширения — только явные не-стриминговые
     if _match_any_url(url, flt["_extension_compiled"]):
         return "bad_extension"
-
-    # Имя
-    if name:
-        if _match_any_name(name, flt["_name_compiled"]):
-            return "banned_name"
+    if name and _match_any_name(name, flt["_name_compiled"]):
+        return "banned_name"
     return None
 
 
@@ -339,13 +304,11 @@ def load_filters(path: str):
         except Exception as e:
             log(f"⚠️  filters.json: {e} — беру дефолты")
 
-    # Прекомпилим regex/подстроки
     flt["_name_compiled"] = _compiled_patterns(
         flt["name_exclude"] + flt["name_blocklist"])
     flt["_url_compiled"] = _compiled_patterns(flt["url_blocklist"])
     flt["_extension_compiled"] = _compiled_patterns(
         [s.lower() for s in flt["url_extension_blocklist"]])
-    # shortener — отдельно, только по домену
     flt["_shortener_domains"] = [s.lower() for s in flt["shortener_blocklist"]]
     return flt
 
@@ -392,6 +355,7 @@ def main() -> int:
     seen = set()
     per_source = []
     reasons = Counter()
+    examples: dict = defaultdict(list)  # reason -> [примеры]
     total_raw = total_kept = total_rej = 0
     header_saved: str | None = None
     directives_kept = 0
@@ -422,6 +386,8 @@ def main() -> int:
             if reason:
                 w.writerow([src_name, name, url, reason])
                 reasons[reason] += 1
+                if len(examples[reason]) < 3:
+                    examples[reason].append(f"[{src_name}] {name} | {url}")
                 rej += 1
                 continue
             seen.add(url)
@@ -435,8 +401,8 @@ def main() -> int:
         log(f"  ✅ [{src_name}] {raw} → {kept} (отсеяно {rej})")
 
     with body_path.open("w", encoding="utf-8") as fout, \
-         rej_csv.open("w", encoding="utf-8-sig", newline="") as fcsv:
-        w = csv.writer(fcsv)
+         rej_csv.open("w", encoding="utf-8-sig", newline="") as wcsv:
+        w = csv.writer(wcsv)
         w.writerow(["source", "name", "url", "reason"])
 
         # --- URL-источники ---
@@ -448,17 +414,17 @@ def main() -> int:
                 gen = stream_lines(session, url, args.timeout)
                 header_line = None
                 buffered = []
-                for line in gen:
-                    if not line.strip():
-                        continue
-                    if line.strip().startswith("#EXTM3U"):
-                        header_line = line.strip()
-                        break
+                # читаем до HEADER_SCAN_LINES строк, ищем шапку
+                for i, line in enumerate(gen):
                     buffered.append(line)
-                    if len(buffered) > 5:
+                    s = line.strip()
+                    if s.startswith("#EXTM3U") and header_line is None:
+                        header_line = s
+                    if i >= HEADER_SCAN_LINES - 1:
                         break
                 if header_line and _is_better_header(header_line, header_saved):
                     header_saved = header_line
+                    log(f"  📌 [{name}] шапка: {header_line[:80]}...")
 
                 def chained():
                     for l in buffered:
@@ -473,7 +439,7 @@ def main() -> int:
                                    "raw": 0, "kept": 0, "rejected": 0,
                                    "error": str(e)})
 
-        # --- Локальные источники ---
+        # --- Локальные ---
         for src in local_srcs:
             name, path = src.get("name", "?"), src.get("path", "")
             if not path or not Path(path).exists():
@@ -482,19 +448,25 @@ def main() -> int:
             try:
                 with open(path, "r", encoding="utf-8-sig", errors="replace") as lf:
                     header_line = None
-                    for line in lf:
-                        if not line.strip():
-                            continue
-                        if line.strip().startswith("#EXTM3U"):
-                            header_line = line.strip()
-                        break
+                    for i, line in enumerate(lf):
+                        s = line.strip()
+                        if s.startswith("#EXTM3U"):
+                            header_line = s
+                            break
+                        if i >= HEADER_SCAN_LINES - 1:
+                            break
                 if header_line and _is_better_header(header_line, header_saved):
                     header_saved = header_line
+                    log(f"  📌 [{name}] шапка: {header_line[:80]}...")
                 process(local_lines(path), name, "local")
             except Exception as e:
                 log(f"  ❌ [{name}] {e}")
 
-    # Собираем итоговый файл: шапка + тело
+    # Если никто не дал url-tvg — подставляем дефолт (iptvx EPG)
+    if not header_saved or "url-tvg" not in header_saved:
+        header_saved = DEFAULT_HEADER
+        log(f"  📌 Шапка не содержала url-tvg → подставил дефолт")
+
     with out_m3u.open("w", encoding="utf-8") as fo, \
          body_path.open("r", encoding="utf-8") as fi:
         fo.write((header_saved or "#EXTM3U") + "\n")
@@ -520,8 +492,16 @@ def main() -> int:
     for r, n in reasons.most_common():
         log(f"   ❌ {r}: {n}")
     log("")
-    log(f"📌 Сохранено #EXTVLCOPT-директив: {directives_kept}")
-    log(f"📌 Шапка: {header_saved or '(нет)'}")
+    log("📋 Примеры (до 3 URL на причину):")
+    for r in sorted(examples):
+        if r == "duplicate_url":
+            continue  # дубли не интересны
+        log(f"   🔍 {r}:")
+        for ex in examples[r]:
+            log(f"      • {ex[:140]}")
+    log("")
+    log(f"📌 Сохранено #EXTVLCOPT: {directives_kept}")
+    log(f"📌 Шапка: {header_saved}")
     log(f"✅ {total_raw} → {total_kept} (отсеяно {total_rej})")
     log(f"📄 {out_m3u}")
     log(f"⏱  {round(time.time() - t0, 1)}с")
