@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 M3U Checker v21 — ffprobe с wink UA + погода через серверы GitHub.
++ Whitelist: URL/имя из filters.json пропускают все проверки (VIP).
 """
 import os
 import re
@@ -44,6 +45,48 @@ USER_AGENTS = [
 DEFAULT_UA = USER_AGENTS[0][1]
 UA_LINE = f'#EXTVLCOPT:http-user-agent={DEFAULT_UA}'
 UA_ICONS = {'wink': '📺', 'vlc': '🎬', 'tivimate': '📱', 'smarttv': '📡', 'cached': '⚡'}
+
+# ===== WHITELIST — каналы, которые пропускают ВСЕ проверки =====
+WHITELIST_URLS = []
+WHITELIST_NAMES = []
+WHITELIST_STATS = {'skipped': 0, 'kept': 0}
+
+
+def compile_whitelist():
+    """Компилируем whitelist из filters.json."""
+    global WHITELIST_URLS, WHITELIST_NAMES
+    WHITELIST_URLS = []
+    WHITELIST_NAMES = []
+    for p in FILTERS.get('whitelist_url_patterns', []) or []:
+        if not p:
+            continue
+        try:
+            WHITELIST_URLS.append(re.compile(p, re.IGNORECASE))
+        except re.error as e:
+            log.warning("whitelist url regex %s: %s", p, e)
+            WHITELIST_URLS.append(re.compile(re.escape(p), re.IGNORECASE))
+    for p in FILTERS.get('whitelist_name_patterns', []) or []:
+        if not p:
+            continue
+        try:
+            WHITELIST_NAMES.append(re.compile(p))
+        except re.error as e:
+            log.warning("whitelist name regex %s: %s", p, e)
+            WHITELIST_NAMES.append(re.compile(re.escape(p), re.IGNORECASE))
+
+
+def is_whitelisted(url, name):
+    """True если URL или имя в белом списке."""
+    if url:
+        for p in WHITELIST_URLS:
+            if p.search(url):
+                return True
+    if name:
+        for p in WHITELIST_NAMES:
+            if p.search(name):
+                return True
+    return False
+# ===== /WHITELIST =====
 
 HEADER_LINE = (
     '#EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; '
@@ -1209,41 +1252,50 @@ def resolve_epg_id(extinf):
 def process_channel(index, extinf, url, txt_logos, cache, source_name):
     name = get_name(extinf)
     group = get_group(extinf)
-    filtered, reason = is_filtered(name, group, url)
-    if filtered:
-        with REJECTED_LOCK:
-            if len(REJECTED) < REJECTED_LIMIT:
-                REJECTED.append((name, group, url, reason))
-        return index, 'filtered', None, None, reason, None, None, None, None, None
-    ok, ua, elapsed, fail_reason, hls_quality = check_stream(url, cache)
-    if not ok:
-        with UPTIME_LOCK:
-            UPTIME_NEW[url] = 0
-        with REJECTED_LOCK:
-            if len(REJECTED) < REJECTED_LIMIT:
-                REJECTED.append((name, group, url, f'dead:{fail_reason or "unknown"}'))
-        return index, 'dead', None, None, None, None, None, None, None, None
-    with UPTIME_LOCK:
-        UPTIME_NEW[url] = 1
-    if is_migayushchiy(url):
-        pct, total = get_uptime_pct(url)
-        with REJECTED_LOCK:
-            if len(REJECTED) < REJECTED_LIMIT:
-                REJECTED.append((name, group, url, f'unstable:{pct}%'))
-        return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None, None
-    if CFG.ffprobe:
-        ff_ok, ff_info = ffprobe_check(url)
-        if ff_ok is False:
+    is_wl = is_whitelisted(url, name)
+
+    if is_wl:
+        WHITELIST_STATS['skipped'] += 1
+        ua = 'wink'
+        elapsed = None
+        hls_quality = None
+    else:
+        filtered, reason = is_filtered(name, group, url)
+        if filtered:
             with REJECTED_LOCK:
                 if len(REJECTED) < REJECTED_LIMIT:
-                    REJECTED.append((name, group, url, 'dead:ffprobe'))
+                    REJECTED.append((name, group, url, reason))
+            return index, 'filtered', None, None, reason, None, None, None, None, None
+        ok, ua, elapsed, fail_reason, hls_quality = check_stream(url, cache)
+        if not ok:
+            with UPTIME_LOCK:
+                UPTIME_NEW[url] = 0
+            with REJECTED_LOCK:
+                if len(REJECTED) < REJECTED_LIMIT:
+                    REJECTED.append((name, group, url, f'dead:{fail_reason or "unknown"}'))
             return index, 'dead', None, None, None, None, None, None, None, None
-        if ff_ok is True and ff_info:
-            h = ff_info.get('height')
-            if h:
-                fq = classify_height(h)
-                if fq:
-                    hls_quality = fq
+        with UPTIME_LOCK:
+            UPTIME_NEW[url] = 1
+        if is_migayushchiy(url):
+            pct, total = get_uptime_pct(url)
+            with REJECTED_LOCK:
+                if len(REJECTED) < REJECTED_LIMIT:
+                    REJECTED.append((name, group, url, f'unstable:{pct}%'))
+            return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None, None
+        if CFG.ffprobe:
+            ff_ok, ff_info = ffprobe_check(url)
+            if ff_ok is False:
+                with REJECTED_LOCK:
+                    if len(REJECTED) < REJECTED_LIMIT:
+                        REJECTED.append((name, group, url, 'dead:ffprobe'))
+                return index, 'dead', None, None, None, None, None, None, None, None
+            if ff_ok is True and ff_info:
+                h = ff_info.get('height')
+                if h:
+                    fq = classify_height(h)
+                    if fq:
+                        hls_quality = fq
+
     extinf = clean_extinf(extinf)
     original_tvg_id = get_tvg_id(extinf)
     iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
@@ -1258,6 +1310,8 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
     final_quality = hls_quality or detect_quality_by_name(name)
+    if is_wl:
+        WHITELIST_STATS['kept'] += 1
     return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src, final_quality
 
 
@@ -1300,12 +1354,14 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             all_urls.append(url)
             name = get_name(extinf)
             group = get_group(extinf)
-            filtered, reason = is_filtered(name, group, url)
-            if filtered:
-                with REJECTED_LOCK:
-                    if len(REJECTED) < REJECTED_LIMIT:
-                        REJECTED.append((name, group, url, reason))
-                continue
+            is_wl = is_whitelisted(url, name)
+            if not is_wl:
+                filtered, reason = is_filtered(name, group, url)
+                if filtered:
+                    with REJECTED_LOCK:
+                        if len(REJECTED) < REJECTED_LIMIT:
+                            REJECTED.append((name, group, url, reason))
+                    continue
             extinf = clean_extinf(extinf)
             original_tvg_id = get_tvg_id(extinf)
             iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
@@ -2798,6 +2854,11 @@ def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
         lines.append("")
         lines.append(f"<b>Логотипы:</b> {total_with_logo}/{total_all} "
                      f"({total_with_logo/total_all*100:.0f}%)")
+    if WHITELIST_STATS['kept'] or WHITELIST_STATS['skipped']:
+        lines.append("")
+        lines.append(f"<b>⭐ Whitelist:</b> пропущено проверок "
+                     f"{WHITELIST_STATS['skipped']}, оставлено "
+                     f"{WHITELIST_STATS['kept']}")
     bad_sources = [(n, err) for n, ok_, err in source_results if not ok_]
     if bad_sources:
         lines.append("")
@@ -2881,6 +2942,9 @@ def main():
     FILTERS['_url_block'] = compile_patterns(FILTERS.get('url_blocklist', []))
     FILTERS['_suspicious'] = compile_patterns(FILTERS.get('suspicious_patterns', []))
     FILTERS['_malformed'] = compile_patterns(FILTERS.get('malformed_patterns', []))
+    compile_whitelist()
+    if WHITELIST_URLS or WHITELIST_NAMES:
+        emit(f"⭐ Whitelist: url={len(WHITELIST_URLS)} name={len(WHITELIST_NAMES)}")
 
     uptime_path = os.path.join(CFG.docs_dir, 'uptime.json')
     load_uptime(uptime_path)
@@ -3056,6 +3120,9 @@ def main():
         emit(f"Качество: сохранено {len(QUALITY_MAP)} URL")
         if CFG.ffprobe:
             emit(f"ffprobe: сохранено {len(FFPROBE_MAP)} URL")
+        if WHITELIST_STATS['kept'] or WHITELIST_STATS['skipped']:
+            emit(f"⭐ Whitelist: пропущено проверок {WHITELIST_STATS['skipped']}, "
+                 f"оставлено каналов {WHITELIST_STATS['kept']}")
 
         logo_total = sum(v for k, v in LOGO_STATS.items() if k != 'none')
         logo_all = sum(LOGO_STATS.values()) or 1
