@@ -124,9 +124,6 @@ http://stream.mcquack.net/187/index.m3u8
 http://stream.mcquack.net/70/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="365daysTV.ru@SD",365 days TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="365daysTV.ru@SD",365 days TV (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/365_dney/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="5minuttishiny.ru@SD",5 minut tishiny (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
@@ -149,30 +146,18 @@ http://46.32.176.50/anitv/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Ani.ru@SD",Ani (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/306/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Arsenal.ru@SD",Arsenal (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1414/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ART.ru@SD",ART (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://89.104.114.24:8080/art/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ART.ru@SD",ART (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/ART/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="AutoPlus.ru@SD" tvg-logo="https://i.imgur.com/sVc8cFt.png",Auto Plus
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1036/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Avto24.ru@SD",Avto24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/78/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Avto24.ru@SD",Avto24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/avto24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BabyTime.ru@SD",Baby Time (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://178.134.1.158:8081/babytime/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BabyTime.ru@SD",Baby Time (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://fs.uplink.kz/baby_time/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Balabol.ru@SD",Balabol (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Balabol/index.m3u8
@@ -271,6 +256,9 @@ https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
 https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@SD",Channel One (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://45.153.24.78/1TV/index.m3u8
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@SD",Channel One (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.217.49.7/1/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOneCIS.ru@SD",Channel One CIS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
@@ -278,18 +266,12 @@ https://fs.uplink.kz/perviy_kanal_sng/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@Europa",Channel One Europa (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.thestream.cyou/live/210-req_offset_28000000-req_window_0-1k_v5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@HD",Channel One HD (720p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1214/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Che.ru@SD",Che! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/che/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Che.ru@SD",Che! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Che/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DaVinci.ru@SD" tvg-logo="https://i.imgur.com/iBx7K1M.png",Da Vinci
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1231/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DaVinci.ru@SD",Da Vinci (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/238/index.m3u8
@@ -299,30 +281,18 @@ https://fs.uplink.kz/da_vinci/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DanceHits80.ru@SD" tvg-logo="https://i.imgur.com/uMw3kks.png",DanceHits80
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://dancehits80.denvs.ru:8080/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Detskiy.ru@SD",Detskiy (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1033/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dikayaokhota.ru@HD",Dikaya okhota HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/274/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dikayarybalka.ru@HD",Dikaya rybalka HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/275/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dikij.ru@SD",Dikij (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream3.cinerama.uz/1230/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Doctor.ru@SD",Doctor (576i)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1409/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Doctor.ru@SD",Doctor (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/doktor/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Doctor.ru@SD",Doctor (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/80/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domkino.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png",Dom kino
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1054/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domkino.ru@SD",Dom kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/236/index.m3u8
@@ -343,9 +313,6 @@ http://stream.mcquack.net/108/index.m3u8
 https://fs.uplink.kz/dom_kino_premium/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DomashnieZhivotnye.ru@SD",Domashnie Zhivotnye (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1426/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DomashnieZhivotnye.ru@SD",Domashnie Zhivotnye (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/domashnie_zhivotnie/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domashniy.ru@SD",Domashniy (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
@@ -353,18 +320,12 @@ https://fs.uplink.kz/domashniy/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domashniy.ru@SD",Domashniy SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/227/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dorama.ru@SD" tvg-logo="https://i.imgur.com/ZH5LuXU.png",Dorama
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1273/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dorama.ru@SD",Dorama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dorama/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dorama.ru@HD",Dorama HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/412/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Drive.ru@SD",Drive (576i)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1421/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DumaTV.ru@SD",Duma TV (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/DumaTV/index.m3u8
@@ -416,18 +377,12 @@ http://flussonic.linkintel.ru/Pyatnica/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="FridayInternational.ru@Kazakhstan",Friday! International Kazakhstan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bolshaya_pyatnica/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="GlazamiTurista.ru@SD",Glazami Turista (576i)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1423/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Groznyj.ru@SD" tvg-logo="https://i.imgur.com/yrN0Vl6.png",Groznyj
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://balancer.facecast.io/evacoder_hls_hi/UUMLQVAYVlZyH14GRENQVV0G/2/720-3.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="GulliGirl.ru@SD",Gulli Girl (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/305/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="GulliGirl.ru@SD",Gulli Girl (720p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Hit.ru@HD",Hit HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/363/index.m3u8
@@ -440,9 +395,6 @@ http://176.118.197.101/Illuzion+/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="India.ru@SD",India (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/india/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="IndiyskoyeKino.ru@SD" tvg-logo="https://i.imgur.com/LL8GyCh.png",Indiyskoye Kino
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1060/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="IndiyskoyeKino.ru@SD",Indiyskoye Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://188.113.190.12/329/index.m3u8
@@ -455,9 +407,6 @@ https://fs.uplink.kz/indiyskoe_kino/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="InsaytTV.ru@4K",Insayt TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/361/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="InsaytTV.ru@4K",Insayt TV (2160p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1416/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Istoki.ru@SD",Istoki (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://istoki.tv/live/stream1/playlist.m3u8
@@ -467,9 +416,6 @@ https://fs.uplink.kz/istoriya/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KapitanFantastika.ru@SD",Kapitan Fantastika (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/144/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KapitanFantastika.ru@SD",Kapitan Fantastika (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KHL.ru@SD",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/166/index.m3u8
@@ -494,9 +440,6 @@ http://176.118.197.101/KinoTvHD/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KinoTV.ru@SD",Kino TV SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/221/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KinoHit.ru@SD" tvg-logo="https://i.imgur.com/Ge8vkQM.png",KinoHit
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KinoHit.ru@SD",KinoHit (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/126/index.m3u8
@@ -518,15 +461,12 @@ http://stream.mcquack.net/133/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinomix.ru@SD",Kinomix (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinomix/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopokaz.ru@SD" tvg-logo="https://i.imgur.com/nNjMyAq.png",Kinopokaz
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1057/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopokaz.ru@SD",Kinopokaz (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/64/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopremyera.ru@SD" tvg-logo="https://i.imgur.com/s0UYT8T.png",Kinopremyera
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopremyera.ru@SD",Kinopremyera (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1207/tracks-v1a1/mono.m3u8
+http://5.188.159.128:8070/KINOPREMIERA/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopremyera.ru@HD",Kinopremyera HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinopremiera_hd/mono.m3u8?token=onlinetv
@@ -539,9 +479,6 @@ https://fs.uplink.kz/kinosemya/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinoseriya.ru@SD",Kinoseriya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinoseria/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinosvidanie.ru@SD" tvg-logo="https://i.imgur.com/ZRaWqxj.png",Kinosvidanie
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1203/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinosvidanie.ru@SD",Kinosvidanie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/kinosvidanie/index.m3u8
@@ -575,9 +512,6 @@ https://stitch.teletarget.ru/api/v1/hls/504/158/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kuhnya.ru@SD",Kuhnya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/179/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kuhnya.ru@SD",Kuhnya (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1236/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KulinarTV.ru@SD",Kulinar TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://api.alpaca.t62a.com/hls/9110/stream0.m3u8
@@ -590,6 +524,9 @@ https://fs.uplink.kz/kvn_tv/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LapkiLive.ru@SD",Lapki Live (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/lapki_live/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LawTV.ru@SD",Law TV (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/406/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Maidan.ru@SD",Maidan (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-maidantv.cdnvideo.ru/maidantv/maidantv.smil/playlist.m3u8
@@ -599,15 +536,9 @@ http://stream.mcquack.net/79/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mama.ru@SD",Mama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/mama/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mama.ru@SD",Mama (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1244/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MCMTop.ru@SD",MCM Top (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/mcmtop/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir.ru@SD" tvg-logo="https://i.imgur.com/AqWaJT8.png",Mir
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1218/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir.ru@SD",Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://45.153.24.78/MIR/index.m3u8
@@ -617,9 +548,6 @@ https://tvcdn01.oktv.kz/tv/mir/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir.ru@SD",Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mir/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir24.ru@SD" tvg-logo="https://i.imgur.com/dj9c8Yd.png",Mir 24
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1219/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir24.ru@SD",Mir 24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/mir_24/index.m3u8
@@ -674,15 +602,9 @@ http://stream.mcquack.net/232/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mult.ru@SD",Mult (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/Mult/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mult.ru@SD",Mult (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mult.ru@International",Mult International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mult/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Multilandia.ru@SD" tvg-logo="https://i.imgur.com/ccwijY0.png",Multilandia
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1440/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Multilandia.ru@SD",Multilandia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/multilandia/mono.m3u8?token=onlinetv
@@ -695,9 +617,6 @@ http://185.23.80.23:8080/NANO_HD/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nashe.ru@HD",Nashe HD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/217/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NasheNovoeKino.ru@SD" tvg-logo="https://i.imgur.com/IOxIsPj.png",Nashe Novoe Kino
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1051/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NasheNovoeKino.ru@SD",Nashe Novoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nashe_novoe_kino/mono.m3u8?token=onlinetv
@@ -707,18 +626,6 @@ http://stream.mcquack.net/125/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nevskiy.ru@SD",Nevskiy (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Nevskiy/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NickJr.ru@SD",Nick Jr. (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/220/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NickJr.ru@SD",Nick Jr. (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1501/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nickelodeon.ru@SD",Nickelodeon (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/443/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NicktoonsCIS.ru@SD",Nicktoons CIS (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1502/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nostalgia.ru@SD",Nostalgia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nostalgia/mono.m3u8?token=onlinetv
@@ -734,9 +641,6 @@ http://stream.mcquack.net/207/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NST.ru@SD",NST (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/nst/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTV.ru@SD" tvg-logo="https://www.mongolsat.mn/assets/img/channel/38.png",NTV
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1023/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTV.ru@SD",NTV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/NTV/index.m3u8
@@ -770,15 +674,9 @@ http://stream.mcquack.net/60/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="O.ru@International",O! International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/o/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Ohotnikirybolov.ru@SD",Ohotnik i rybolov (576i)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1413/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Ohotnikirybolov.ru@HD",Ohotnik i rybolov HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/194/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Okhotairybalka.ru@SD" tvg-logo="https://i.imgur.com/nZwBaeW.png",Okhota i rybalka
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1038/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Okhotairybalka.ru@SD",Okhota i rybalka (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/155/index.m3u8
@@ -827,9 +725,6 @@ http://88.212.15.19/live/test_poehali/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Premialnoe.ru@HD",Premialnoe HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/421/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Priklyucheniya.ru@SD",Priklyucheniya (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1420/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Priklyucheniya.ru@HD",Priklyucheniya HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/198/index.m3u8
@@ -863,18 +758,12 @@ http://178.134.1.158:8081/RENTV/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RENTVInternational.ru@SD",REN TV International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/ren/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Retro.ru@SD" tvg-logo="https://i.imgur.com/p21co1w.png",Retro
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1047/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Retro.ru@SD",Retro (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/191/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Retro.ru@SD",Retro (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Retro/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RodnoeKino.ru@SD" tvg-logo="https://i.imgur.com/H70LxoZ.png",Rodnoe Kino
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1052/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RodnoeKino.ru@SD",Rodnoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/242/index.m3u8
@@ -902,9 +791,6 @@ https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTenEspanol.ru@SD",RT en Espanol (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-evg10.tv360.bitel.com.pe/bitel/rt/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RT.ru@HD",RT HD (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://wisewatchoott.wiseplayout.com/RT/master.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTGTV.ru@HD",RTG TV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/164/index.m3u8
@@ -914,9 +800,6 @@ https://fs.uplink.kz/rtr_planeta/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTVi.ru@SD",RTVi (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://shift03.isp.bg/RTVi/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia1.ru@SD" tvg-logo="https://uut-telecom.ru/wp-content/uploads/2021/12/rossiya-1-hd.png",Russia-1
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1020/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia1.ru@HD",Russia-1 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/russia_hd/playlist_6.m3u8
@@ -929,9 +812,6 @@ http://176.118.197.101/RossiyaHD/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia1.ru@SD",Russia-1 SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://109.207.243.18/2/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Rossiya-24_Logo.svg/960px-Rossiya-24_Logo.svg.png",Russia-24
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1021/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Rossiya-24_Logo.svg/960px-Rossiya-24_Logo.svg.png",Russia-24
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://dmi3y-tv.online/hls/smotrim/T2/CH_RUSSIA24_INT.m3u8
@@ -953,9 +833,6 @@ https://live.smotrim.ru/vgtrk/0/russia24-hd/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RussiaK.ru@SD",Russia-K (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/229/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RussiaK.ru@SD",Russia-K (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1048/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RussiaK.ru@SD",Russia-K (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rossia_k/mono.m3u8?token=onlinetv
@@ -986,9 +863,6 @@ https://fs.uplink.kz/ohota_i_ribalka/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Rybolov.ru@SD",Rybolov (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/264/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Ryzhiy.ru@SD",Ryzhiy (576i)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1407/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SanktPeterburg.ru@HD",Sankt-Peterburg HD (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/ext_spbtv/playlist_5.m3u8
@@ -1028,9 +902,6 @@ https://cdn-dvr.ntv.ru/Skoraja_pomosh/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SmileTV.ru@SD",Smile TV (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://5d23269b3ec0c.streamlock.net/WEB_Smilik/ngrp:Smilik.stream-adaptive/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SmileTV.ru@SD",Smile TV (720p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1425/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Smotrim100Detskoe.ru@SD",Smotrim 100% Detskoe (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls/fasttv05/playlist_3.m3u8
@@ -1064,15 +935,9 @@ https://tv.mediacdn.ru/live/solntse/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SolovyovLive.ru@SD",Solovyov Live (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/solovievlive/playlist_6.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SONGTVRussia.ru@SD" tvg-logo="https://i.imgur.com/nM7LbmV.png",SONGTV Russia
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Soyuzny.ru@SD",Soyuzny (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/TRO/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Soyuzny.ru@SD",Soyuzny (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Spas.ru@SD",Spas (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8
@@ -1109,12 +974,6 @@ http://stream.mcquack.net/138/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STSInternational.ru@SD",STS International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/CTC/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STSkids.ru@SD",STS kids (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/197/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STSkids.ru@International",STS kids International (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://fs.uplink.kz/sts_kids/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STSLove.ru@SD",STS Love (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/183/index.m3u8
@@ -1136,9 +995,6 @@ http://109.94.1.3:8080/132/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Svoboda.ru@SD" tvg-logo="https://web02.antik.sk/assets/img/channels/db23090472360f39401398f924a47461.svg",Svoboda
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/svoboda/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="T24.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png",T24
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1037/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="T24.ru@SD",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/t24/index.m3u8
@@ -1148,9 +1004,6 @@ http://stream.mcquack.net/209/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="T24.ru@SD",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tehno_24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Telecafe.ru@SD" tvg-logo="https://i.imgur.com/28XmS1J.png",Telecafe
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1035/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Telecafe.ru@SD",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/314/index.m3u8
@@ -1166,9 +1019,6 @@ https://iam-profi.ru/hls-live/livepkgr/_definst_/liveevent/td720.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TiJi.ru@SD",TiJi (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/111/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TiJi.ru@SD",TiJi (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNT.ru@SD",TNT (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tnt/index.m3u8
@@ -1190,18 +1040,12 @@ http://stream.mcquack.net/106/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNT4International.ru@SD",TNT4 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tnt4/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNVPlanet.ru@SD" tvg-logo="https://i.imgur.com/ijA1zDw.png",TNV-Planet
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1062/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNVPlanet.ru@SD",TNV-Planet (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tnv/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNVTatarstan.ru@SD",TNV-Tatarstan (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://user91229.clients-cdnnow.ru/hls/user91229_1.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Tochkaotryva.ru@SD",Tochka otryva (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1031/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Tochkaotryva.ru@SD",Tochka otryva (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tochka_otriva/mono.m3u8?token=onlinetv
@@ -1237,13 +1081,7 @@ http://185.23.80.23:8080/TVBRICS/index.m3u8
 http://flussonic.linkintel.ru/tvc/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TVCentr.ru@SD",TV Centr (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1025/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TVCentr.ru@SD",TV Centr (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tvc/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TVCentrInternational.ru@SD",TV Centr International (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1281/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TVPRO.ru@SD" tvg-logo="https://i.imgur.com/sbuSefI.png",TV PRO
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://rtmp.tvpro-online.ru/hls/ch1.m3u8
@@ -1286,12 +1124,6 @@ http://185.23.80.23:8080/NeizvestnayaRossia/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Usadba.ru@SD",Usadba (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/211/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Usadba.ru@SD",Usadba (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1427/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vgostyakhuskazki.ru@SD",V gostyakh u skazki (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vgostyakhuskazki.ru@SD",V gostyakh u skazki (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/93/index.m3u8
@@ -1316,21 +1148,12 @@ http://stream.mcquack.net/110/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000.ru@SD",viju TV1000 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000action.ru@SD" tvg-logo="https://i.imgur.com/TMmyuzh.png",viju TV1000 action
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1225/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000action.ru@SD",viju TV1000 action (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/100/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000action.ru@SD",viju TV1000 action (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000_action/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000russkoe.ru@SD" tvg-logo="https://i.imgur.com/Meak2y4.png",viju TV1000 russkoe
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1058/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000russkoe.ru@SD" tvg-logo="https://i.imgur.com/Meak2y4.png",viju TV1000 russkoe
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1059/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000russkoe.ru@SD",viju TV1000 russkoe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000_russkoe/mono.m3u8?token=onlinetv
@@ -1367,24 +1190,15 @@ http://88.212.15.19/live/test_vremya/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="YaltaTV.ru@SD",Yalta TV (480p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://195.26.83.96:7029/play/a006
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ZagorodnayaZhizn.ru@SD" tvg-logo="https://i.imgur.com/RoYd5pz.png",Zagorodnaya Zhizn
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1044/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ZagorodnayaZhizn.ru@SD",Zagorodnaya Zhizn (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.57.68.33/40/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ZdorovoeTV.ru@SD",Zdorovoe TV (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1428/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhara.ru@SD",Zhara (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/386/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhara.ru@SD",Zhara (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zhara/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ZhivayaPlaneta.ru@SD",Zhivaya Planeta (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1250/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhivayapriroda.ru@SD",Zhivaya priroda (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/83/index.m3u8
@@ -1394,15 +1208,9 @@ http://stream.mcquack.net/225/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhivi.ru@SD",Zhivi! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zhivi/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zoopark.ru@SD",Zoopark (576i)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1417/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zoopark.ru@SD",Zoopark (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zoopark/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zvezda.ru@SD" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1050/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zvezda.ru@SD",Zvezda (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://51.158.144.33:2021/zvezda/index.m3u8
@@ -1538,9 +1346,6 @@ https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz/soyuz/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="StranaFM.ru@SD",Страна FM (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.stranafm.cdnvideo.ru/stranafm/stranafm_hd.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Tamyr.ru@SD",Тамыр (Уфа)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TvoeTV.ru@SD",Твое TV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tvoetv.space:8080/tvoetv/index.m3u8
@@ -1574,9 +1379,6 @@ https://bl.rutube.ru/livestream/c58f502c7bb34a8fcdd976b221fca292/index.m3u8?s=Jy
 #EXTINF:-1 group-title="📹 Rutube" tvg-id="2x2.ru@SD",2x2 (576i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/392b4686b770bae2da6bf5ac4574add5/index.m3u8?e=2068731801&s=tenr-yHXUv1wibfka78s2A&scheme=https
-#EXTINF:-1 tvg-id="2na2" tvg-logo="https://epg.iptvx.one/picons/2na2.png" group-title="📹 Rutube",2x2 HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://bl.rutube.ru/livestream/392b4686b770bae2da6bf5ac4574add5/index.m3u8?s=csWYUddw7ZPKX2UHThswTg&e=2073777408&scheme=https
 #EXTINF:-1 tvg-id="360-podmoskovie" tvg-logo="https://iptvx.one/picons/360-podmoskovie.png" group-title="📹 Rutube",360° HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/07beff61e617797db550cc3a5f6ad92b/index.m3u8?s=8uNH_vgO7peCdRd0GvteNg&e=2077359351&scheme=https
@@ -1631,9 +1433,6 @@ https://bl.rutube.ru/livestream/d01241e9fd2bc2d65dbf6d74cca02f89/index.m3u8?s=PQ
 #EXTINF:-1 tvg-id="nhl-network-us" tvg-logo="https://epg.iptvx.one/picons/nhl-network-us.png" group-title="📹 Rutube",NHL Network
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/7a485ef5da9fe50ba939f36ca3e6ed96/index.m3u8?s=kzFd14_NM5e7oc008gaZnQ&e=2073777469&scheme=https
-#EXTINF:-1 tvg-id="NickComedyCentralPlus1.de" tvg-logo="https://i.imgur.com/lf34V3Y.png" group-title="📹 Rutube",Nickelodeon
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://bl.rutube.ru/livestream/e902c1a059034a1537430b2aa5aedece/index.m3u8?s=Ac5CNFCTPyjvI502W6xgrw&e=2090404676&scheme=https
 #EXTINF:-1 group-title="📹 Rutube" tvg-id="NTV.ru@HD",NTV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?e=2077050299&s=HSWg81JrQ3OqmwuWkEIDAQ&scheme=https
@@ -1805,114 +1604,24 @@ https://fs.uplink.kz/amedia_premium_hd/mono.m3u8?token=onlinetv
 #EXTINF:-1 tvg-id="bolt" tvg-logo="https://epg.iptvx.one/picons/bolt.png" group-title="🎬 Кино",Bolt HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/73/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="Cinema.ru@SD" tvg-logo="https://i.imgur.com/B5UN7C8.png",Cinema
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1227/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-id="AzCinema.mx" tvg-logo="https://i.imgur.com/B5UN7C8.png" group-title="🎬 Кино",Cinema
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.46.16.239:8000/Cinema
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="Cinema.ru@SD",Cinema (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/cinema/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11004/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Action
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11006/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Cartoons 90
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/11001/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Cartoons Big
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/11003/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Cartoons Short
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/11002/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Marvel
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11009/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan MiniSeries
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/19437/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Premium
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/20112/index.m3u8
 #EXTINF:0 group-title="🎬 Кино",Cineman Relax 4K
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/459/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Thriller
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11007/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Top
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11005/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan VHS
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11012/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Катастрофы
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/15106/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Комедийные Сериалы
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/31628/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Комедия
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11011/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Криминальные Сериалы
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/31626/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Лесник
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/16065/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Мелодрама
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11008/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Ментовские войны
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/16063/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan ПёС + Лихач
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/16064/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan РуКино
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11013/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Сваты
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/11014/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Симпсоны
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/15101/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Скорая Помощь
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/15100/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Ужасы
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/11010/index.m3u8
-#EXTINF:0 group-title="🎬 Кино",CineMan Фитнес
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/31629/index.m3u8
-#EXTINF:-1 tvg-id="flixsnip" tvg-logo="https://epg.iptvx.one/picons/flixsnip.png" group-title="🎬 Кино",FlixSnip HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/teh55yef/10060/index.m3u8
 #EXTINF:-1 tvg-id="Hollywood.ru" tvg-logo="https://i.imgur.com/1j7cT2I.png" group-title="🎬 Кино",Hollywood
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/HollywoodHD/index.m3u8
-#EXTINF:-1 tvg-id="kion-xit" tvg-logo="https://epg.iptvx.one/picons/kion-xit.png" group-title="🎬 Кино",Kion Хит HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/teh55yef/20211/index.m3u8
 #EXTINF:-1 tvg-id="PlanB.ru" tvg-logo="https://i.imgur.com/V1kDv8H.png" group-title="🎬 Кино",Plan B
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/196/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="StarCinema.ru@SD" tvg-logo="https://i.imgur.com/5sis895.png",Star Cinema
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://dash2.antik.sk/live/test_star_cinema_atktv/playlist.m3u8
-#EXTINF:-1 tvg-id="STARTAir.ru" tvg-logo="https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png" group-title="🎬 Кино",Start Air HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/18036/index.m3u8
-#EXTINF:-1 tvg-id="sumiko" tvg-logo="https://epg.iptvx.one/picons/sumiko.png" group-title="🎬 Кино",Sumiko
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/2163/index.m3u8
 #EXTINF:-1 tvg-id="tv1000" tvg-logo="https://epg.iptvx.one/picons/tv1000.png" group-title="🎬 Кино",TV1000
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-aab84159a39fbe84/video.m3u8
@@ -1925,15 +1634,6 @@ http://46.53.200.153:7777/play/VIJU_TV_1000_novella/index.m3u8
 #EXTINF:-1 tvg-id="tv1000-russkoe-kino" tvg-logo="https://epg.iptvx.one/picons/tv1000-russkoe-kino.png" group-title="🎬 Кино",TV1000 русское
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-7510472b0133abb2/video.m3u8
-#EXTINF:-1 tvg-id="tv1000-russkoe-kino" tvg-logo="https://epg.iptvx.one/picons/tv1000-russkoe-kino.png" group-title="🎬 Кино",TV1000 русское HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://line.tivi-one.net:80/play/live.php?mac=A0:BB:3E:75:52:64&stream=1031904&extension=ts&play_token=TngILrSNZd
-#EXTINF:-1 tvg-id="vhs-ka" tvg-logo="https://epg.iptvx.one/picons/vhs-ka.png" group-title="🎬 Кино",VHS-ка
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/teh55yef/5006/index.m3u8
-#EXTINF:-1 tvg-id="vhska-serial" tvg-logo="https://static.kion.ru/tv/channels/images/formats/BLACK_AND_WHITE_d6dfac5490b4dfe7efb5690da846bf3c.png" group-title="🎬 Кино",VHS-ка Сериал HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/teh55yef/31931/index.m3u8
 #EXTINF:-1 tvg-id="vijuPlusComedy.ru" tvg-logo="https://i.imgur.com/YoNOFu7.png" group-title="🎬 Кино",Vip Comedy HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-c385ec3bab3a3605/video.m3u8
@@ -1943,9 +1643,6 @@ https://flussonic.mkpnet.ru/tv-3d1cedf99303d057/video.m3u8
 #EXTINF:-1 tvg-id="vijuPlusPremiere.ru" tvg-logo="https://i.imgur.com/klRvhR5.png" group-title="🎬 Кино",Vip Premiere HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-e107d21a90cb808f/video.m3u8
-#EXTINF:-1 tvg-id="blokbaster-hd" tvg-logo="https://epg.iptvx.one/picons/blokbaster.png" group-title="🎬 Кино",Блокбастер HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/2x47stw5/1031.m3u8
 #EXTINF:-1 tvg-id="Evrokino.ru" tvg-logo="https://i.imgur.com/8LPtPf6.png" group-title="🎬 Кино",Еврокино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/eurokino/tracks-v1a1/mono.ts.m3u8?token=onlinetv
@@ -1979,33 +1676,15 @@ https://fs.uplink.kz/kinohit/tracks-v1a1/mono.ts.m3u8?token=onlinetv
 #EXTINF:-1 tvg-id="kinoxit" tvg-logo="https://epg.iptvx.one/picons/kinoxit.png" group-title="🎬 Кино",Кинохит HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://195.26.83.96:7005/play/a00m/index.m3u8
-#EXTINF:-1 tvg-id="komedijnoe-hd" tvg-logo="https://epg.iptvx.one/picons/komedijnoe-hd.png" group-title="🎬 Кино",Комедийное HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/2x47stw5/906.m3u8
 #EXTINF:-1 tvg-id="lubimoe-kino" tvg-logo="https://epg.iptvx.one/picons/lubimoe-kino.png" group-title="🎬 Кино",Любимое кино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/LubimoeKino/index.m3u8
-#EXTINF:-1 tvg-id="nash-kinopokaz" tvg-logo="https://epg.iptvx.one/picons/nash-kinopokaz.png" group-title="🎬 Кино",Наш Кинопоказ HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/2434/index.m3u8
-#EXTINF:-1 tvg-id="nashe-novoe-kino" tvg-logo="https://epg.iptvx.one/picons/nashe-novoe-kino.png" group-title="🎬 Кино",Наше новое кино HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://line.tivi-one.net:80/play/live.php?mac=A0:BB:3E:75:52:64&stream=1031893&extension=ts&play_token=FVTY1Deq2j
-#EXTINF:-1 tvg-id="ostrosiuzhetnoe-hd" tvg-logo="https://epg.iptvx.one/picons/ostrosiuzhetnoe-hd.png" group-title="🎬 Кино",Остросюжетное HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/2x47stw5/902.m3u8
-#EXTINF:-1 tvg-id="premialnoe-hd" tvg-logo="https://epg.iptvx.one/picons/premialnoe-hd.png" group-title="🎬 Кино",Премиальное HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/2x47stw5/901.m3u8
 #EXTINF:-1 tvg-id="RusskiyIllusion.ru" tvg-logo="https://i.imgur.com/RlsqFN8.png" group-title="🎬 Кино",Русский Иллюзион
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.46.16.239:8000/Russkiy_Illyuzion
 #EXTINF:-1 tvg-id="khit-hd" tvg-logo="https://epg.iptvx.one/picons/khit.png" group-title="🎬 Кино",Хит HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://ott.ip-tv.workers.dev/stream/L0FBMTU2NVcvaW5kZXgubTN1OA==?key=halva
-#EXTINF:-1 tvg-id="shokiruyushchee-hd" tvg-logo="https://epg.iptvx.one/picons/shokiruyushchee-hd.png" group-title="🎬 Кино",Шокирующее HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/2x47stw5/905.m3u8
 #EXTINF:-1 tvg-id="witch" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/witch.jpg" group-title="🎞️ Kinowalk",1st_witch
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/witch_live
@@ -2057,9 +1736,6 @@ http://kinowalk.hopto.org/czmmusic_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://goodgame.ru/files/avatars/av_1643154_P8Jo.jpg" group-title="🎞️ Kinowalk",Dimpon TV
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/dimpon_live
-#EXTINF:-1 tvg-id="disneyxd" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/disneyxd.jpg" group-title="🎞️ Kinowalk",Disney XD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://kinowalk.hopto.org/disneyxd_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://images.live.vkvideo.ru/user/18716382/avatar?change_time=1737140673&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",dj Zour
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/zsmedia_live
@@ -2072,7 +1748,7 @@ http://kinowalk.hopto.org/film4khdclub_live
 #EXTINF:-1 tvg-id="filmsserialseveryday" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/filmsserialseveryday.jpg" group-title="🎞️ Kinowalk",FilmsSerialsEveryDay
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/filmsserialseveryday_live
-#EXTINF:-1 tvg-id="no_epg_mult" tvg-logo="https://images.live.vkvideo.ru/user/19154193/avatar?change_time=1769970711&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",FoxKids Remastered
+#EXTINF:-1 tvg-id="foxkids_remastered" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/foxkids_remastered.jpg" group-title="🎞️ Kinowalk",FoxKids-Remastered
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/foxkids_remastered_live
 #EXTINF:-1 tvg-id="frxnkl1n" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/frxnkl1n.jpg" group-title="🎞️ Kinowalk",FRXNKL1N
@@ -2093,7 +1769,7 @@ http://kinowalk.hopto.org/inmuna_live
 #EXTINF:-1 tvg-id="johan_grohan_live" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/johan_grohan_live.jpg" group-title="🎞️ Kinowalk",Johan Grohan Live
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/johan_grohan_live
-#EXTINF:-1 tvg-id="no_epg_mult" tvg-logo="https://images.live.vkvideo.ru/user/19124468/avatar?change_time=1718878513&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",JTX Online
+#EXTINF:-1 tvg-id="jtxonline" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/jtxonline.png" group-title="🎞️ Kinowalk",JTX Online
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/jtxonline_live
 #EXTINF:-1 tvg-id="serial4u" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/serial4u.png" group-title="🎞️ Kinowalk",Just enjoy serial4u
@@ -2138,7 +1814,7 @@ http://kinowalk.hopto.org/moviebytes_live
 #EXTINF:-1 tvg-id="kirafreak" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kirafreak_live.png" group-title="🎞️ Kinowalk",Kira_freak1993
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/kirafreak_live
-#EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://images.live.vkvideo.ru/user/12719933/avatar?change_time=1699038708&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",Kycman мульт
+#EXTINF:-1 tvg-id="kycman" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kycman.jpg" group-title="🎞️ Kinowalk",Kycman
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/kycman_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://images.live.vkvideo.ru/user/18907130/avatar?change_time=1734455298&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",lampoTV
@@ -2351,9 +2027,6 @@ http://kinowalk.hopto.org/yegor_yegorych_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://images.live.vkvideo.ru/user/19529013/avatar?change_time=1727359016&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",Игрун 1997
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/igrun1997_live
-#EXTINF:-1 tvg-id="no_epg_mult" tvg-logo="https://images.live.vkvideo.ru/user/23442796/avatar?change_time=1749539489&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",Канал Disney Онлайн
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://kinowalk.hopto.org/kanaldisneyonline_live
 #EXTINF:-1 tvg-id="kinolenta" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinolenta_live.png" group-title="🎞️ Kinowalk",КИНОЛЕНТА LIVE
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/kinolenta_live
@@ -2477,9 +2150,6 @@ http://kinowalk.hopto.org/kasseta_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="http://1lot.tv/ch/9415.png" group-title="👁️ СМОТРИМ +",IPTVPLAY MORTAL KOMBAT
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYTEST.tv/video.m3u8?token=lqRGka5-YwwqF0
-#EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://i.postimg.cc/v8KFj826/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY PROMO
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.158.65:4040/IPTVPLAYPromo.tv/video.m3u8?token=lqRGka5-YwwqF0
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://i.postimg.cc/mDMCsgNL/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY ВЕДЬМАК
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYVEDMAK.tv/video.m3u8?token=lqRGka5-YwwqF0
@@ -2546,9 +2216,6 @@ http://stream.mcquack.net/429/index.m3u8
 #EXTINF:-1 group-title="🌿 Fresh",Fresh Horror
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/431/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Kids
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/425/index.m3u8
 #EXTINF:-1 group-title="🌿 Fresh",Fresh Premiere
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/424/index.m3u8
@@ -2615,9 +2282,6 @@ http://tv.tuva.ru/machtv/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchUltra.ru@4K",Match! Ultra (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/169/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD" tvg-logo="https://i.imgur.com/QhdxNsB.png",MMA-TV.com
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1226/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD",MMA-TV.com (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv
@@ -2639,12 +2303,6 @@ https://cdn.itvuz.workers.dev/stream/172?key=zunotv
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="Sportivnyy.ru@SD",Sportivnyy (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-3.otcnet.ru/sportivny/index.m3u8
-#EXTINF:-1 tvg-id="trace-sport-stars-ru" tvg-logo="https://epg.iptvx.one/picons/trace-sport-stars-ru.png" group-title="⚽ Спорт",Trace Sport Stars HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1274/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="vijuPlusSport.ru@SD" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="vijuPlusSport.ru@SD",viju+ Sport (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/333/index.m3u8
@@ -2696,9 +2354,6 @@ http://online-video.rbc.ru/online2/rbctv.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="Telplus.ru@SD",Телплюс ТВ (Астрахань) (360p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.astrakhan.ru/telplushd/playlist.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="1HDMusicTelevision.ru@SD",1HD Music Television (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1267/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="1HDMusicTelevision.ru@HD",1HD Music Television (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/1HD/index.m3u8
@@ -2708,15 +2363,9 @@ http://stream.mcquack.net/312/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка",Fon Music (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/317/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="FONMusic.ru@SD",FON Music (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1272/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="Multimuzyka.ru@SD",Mult i muzyka (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/82/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzTV.ru@SD" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1200/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzTV.ru@SD",Muz-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/muztv/index.m3u8
@@ -2735,9 +2384,6 @@ https://fs.uplink.kz/muzhskoe_kino/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzykaLive.ru@SD",Muzyka Live (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/303/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzykaPervogo.ru@SD" tvg-logo="https://i.imgur.com/U0vKj3P.png",Muzyka Pervogo
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1201/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzykaPervogo.ru@SD",Muzyka Pervogo (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/153/index.m3u8
@@ -2747,9 +2393,6 @@ http://88.212.15.19/live/test_muzyka_pervogo/playlist.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="Nashemuzhskoe.ru@HD",Nashe muzhskoe HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/362/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD" tvg-logo="https://i.imgur.com/Z7HUU7V.png",RU.TV
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1202/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD",RU.TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/RuTV/mono.m3u8?token=onlinetv
@@ -2762,78 +2405,399 @@ http://stream.mcquack.net/319/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="Smotrim100Muzhskoe.ru@SD",Smotrim 100% Muzhskoe (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls/fasttv02/playlist_3.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/ultra_image600_colored_fill.png",Ultra Music Festival
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/ultra96.aacp
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="AstrahanRuTV.ru@SD",Астрахань.Ru TV (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.astrakhan.ru/astrakhanrulivehd/playlist.m3u8
 #EXTINF:-1 group-title="📻 Радио" tvg-id="Radio1.ru@SD",Radio 1 (720p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.radio1.ru/memfs/49dee7fe-77ba-4e6b-8cdc-fa840535b242.m3u8
-#EXTINF:-1 group-title="📻 Радио" tvg-id="RadioRossii.ru@HD",Radio Rossii (720p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream.smotrim.ru/hls2/radio_rus/playlist_4.m3u8
 #EXTINF:-1 group-title="📻 Радио" tvg-id="RadioShanson.ru@SD",Радио Шансон (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://chanson-video.hostingradio.ru:8080/hls/chansonabr/live.m3u8
 #EXTINF:-1 group-title="📻 Радио" tvg-id="555.ru@SD",Телерадиокомпания 555 (Алушта) (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://trk555.tv:8888/live
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/2010_image600_colored_fill.png",10's Dance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/201096.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/2step_image600_colored_fill.png",2-step
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/2step96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/cadillac_image600_colored_fill.png",60's Dance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/cadillac96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/1970_image600_colored_fill.png",70's Dance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/197096.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/a-state-of-trance_image600_colored_fill.png",A State of Trance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/asot96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/afro_image600_colored_fill.png",Afro House
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/afro96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/ambient_image600_colored_fill.png",Ambient
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/ambient96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/armin_image600_colored_fill.png",Armin van Buuren
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/armin96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/jackin_image600_gray_outline.png",Bass House
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/jackin96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/beach_image600_colored_fill.png",Beach Party
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/beach96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/bighits_image600_colored_fill.png",Big Hits
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/bighits96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/yo_image600_gray_outline.png",Black Rap
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/yo96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/brks_image600_gray_outline.png",Breaks
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/brks96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/chillhouse_image600_colored_fill.png",Chill House
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/chillhouse96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/chil_image600_colored_fill.png",Chill-Out
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/chil96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/christmas-radio_image600_colored_fill.png",Christmas
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/christmas96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/christmas-chill_image600_colored_fill.png",Christmas Chill
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/christmaschill96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/complextro_image600_gray_outline.png",Complextro
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/complextro96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/drumhits_image600_gray_outline.png",D'n'B Classics
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/drumhits96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/dc_image600_colored_fill.png",Dancecore
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/dc96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/darkside_image600_colored_fill.png",Darkside
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/darkside96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/guetta_image600_colored_fill.png",David Guetta
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/guetta96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/deep_image600_gray_outline.png",Deep
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/deep96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/discofunk_image600_gray_outline.png",Disco/Funk
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/discofunk96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/dj-gvozd_image600_colored_fill.png",DJ Gvozd
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/djgvozd96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/tsvetkov_image600_colored_fill.png",DJ Цветкоff
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/tsvetkov96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/dream_image600_gray_outline.png",Dream Dance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/dream96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/dream-pop_image600_colored_fill.png",Dream Pop
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/dreampop96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/dub_image600_gray_outline.png",Dubstep
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/dub96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/club_image600_gray_outline.png",EDM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/club96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/edmhits_image600_colored_fill.png",EDM Classics
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/edmhits96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/elect_image600_gray_outline.png",Electro
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/elect96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/eurodance_image600_colored_fill.png",Eurodance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/eurodance96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/feel_image600_colored_fill.png",Feel
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/feel96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/live-dj-sets_image600_colored_fill.png",Festivals
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/livedjsets96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/fbass_image600_gray_outline.png",Future Bass
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/fbass96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/fut_image600_gray_outline.png",Future House
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/fut96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/futurerave_image600_colored_fill.png",Future Rave
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/futurerave96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/goa_image600_colored_fill.png",GOA/PSY
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/goa96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/groovetribal_image600_gray_outline.png",Groove/Tribal
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/groovetribal96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/hbass_image600_gray_outline.png",Hard Bass
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/hbass96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/teo_image600_gray_outline.png",Hardstyle
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/teo96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/houseclss_image600_gray_outline.png",House Classics
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/houseclss96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/househits_image600_colored_fill.png",House Hits
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/househits96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/hypno_image600_gray_outline.png",Hypnotic
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/hypno96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/ibiza_image600_gray_outline.png",Innocence
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/ibiza96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/jungle_image600_colored_fill.png",Jungle
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/jungle96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/lady-waks_image600_colored_fill.png",Lady Waks
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/ladywaks96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/latina_image600_colored_fill.png",Latina Dance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/latina96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/liquidfunk_image600_colored_fill.png",Liquid Funk
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/liquidfunk96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/lofi_image600_gray_outline.png",Lo-Fi
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/lofi96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/lo-fi-house_image600_colored_fill.png",Lo-Fi House
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/lofihouse96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/martingarrix_image600_colored_fill.png",Martin Garrix
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/martingarrix96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mashup_image600_colored_fill.png",Mashup
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/mashup96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/mix_image600_gray_outline.png",Megamix
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/mix96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/melodic_image600_colored_fill.png",Melodic Techno
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/melodic96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mt_image600_colored_fill.png",Midtempo
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/mt96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mini_image600_colored_fill.png",Minimal/Tech
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/mini96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mmbt_image600_colored_fill.png",Moombahton
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/mmbt96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/nejtrinobaur_image600_colored_fill.png",Nejtrino & Baur
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/nejtrinobaur96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/neurofunk_image600_colored_fill.png",Neurofunk
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/neurofunk96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/nu-dance_image600_colored_fill.png",Nu Dance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/nudance96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/tecktonik_image600_gray_outline.png",Old School
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://hls-01-radiorecord.hostingradio.ru/record-rap/96/playlist.m3u8
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/oliverheldens_image600_colored_fill.png",Oliver Heldens
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/oliverheldens96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/organic_image600_colored_fill.png",Organic
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/organic96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/party-24-7_image600_colored_fill.png",Party 24/7
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/party96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/phonk_image600_colored_fill.png",Phonk
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/phonk96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/ps_image600_gray_outline.png",Pirate Station
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/ps96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/progr_image600_colored_fill.png",Progressive
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/progr96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/rapclassics_image600_colored_fill.png",Rap Classics
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/rapclassics96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/rap_image600_colored_fill.png",Rap Hits
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/rap96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/rave_image600_colored_fill.png",Rave FM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/rave96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/record_image600_colored_fill.png",Record
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/rr_main96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/1980_image600_colored_fill.png",Record 80-х
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/198096.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/recordclassix_image600_colored_fill.png",Record Classix
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/classix96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/recordclubshow_image600_colored_fill.png",Record Club Show
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/clubshow96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/gold_image600_colored_fill.png",Record Gold
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/gold96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/reggae_image600_colored_fill.png",Reggae
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/reggae96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/rmx_image600_gray_outline.png",Remix
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/rmx96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/rock_image600_gray_outline.png",Rock
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/rock96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/russiangold_image600_gray_outline.png",Russian Gold
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/russiangold96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/russianhits_image600_colored_fill.png",Russian Hits
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/russianhits96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/rus_image600_gray_outline.png",Russian Mix
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/rus96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/summer-dance_image600_colored_fill.png",Summer Dance
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/summerparty96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/summerlounge_image600_colored_fill.png",Summer Lounge
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/summerlounge96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/synth_image600_gray_outline.png",Synthwave
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/synth96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/techouse_image600_colored_fill.png",Tech House
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/techouse96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/techno_image600_colored_fill.png",Techno
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/techno96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/technopop_image600_colored_fill.png",Technopop
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/technopop96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/tecktonik_image600_colored_fill.png",Tecktonik
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/tecktonik96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/tiesto_image600_colored_fill.png",Tiesto
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/tiesto96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/top-100-edm_image600_colored_fill.png",TOP 100 EDM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/top100edm96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/trancehits_image600_gray_outline.png",Trance Classics
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/trancehits96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/trancehouse_image600_gray_outline.png",Trancehouse
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/trancehouse96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/tm_image600_gray_outline.png",Trancemission
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/tm96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/trap_image600_gray_outline.png",Trap
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/trap96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/trop_image600_gray_outline.png",Tropical
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/trop96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/uk-garage_image600_colored_fill.png",UK Garage
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/ukgarage96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/ultra_image600_colored_fill.png",Ultra Music Festival
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/ultra96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/uplift_image600_colored_fill.png",Uplifting
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/uplift96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/vip_image600_colored_fill.png",VIP House
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/vip96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/workout_image600_colored_fill.png",Workout
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/workout96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/deti_image600_colored_fill.png",Веснушка FM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/deti96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/gast_image600_gray_outline.png",Гастарбайтер FM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/gast96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/gop_image600_gray_outline.png",Гоп FM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/gop96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/pump_image600_colored_fill.png",Колбасный Цех
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/pump96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/mf_image600_gray_outline.png",Маятник Фуко
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/mf96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mdl_image600_colored_fill.png",Медляк FM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/mdl96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/hype_image600_colored_fill.png",На Хайпе
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/hype96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/nashashlyki_image600_colored_fill.png",На шашлыки!
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/nashashlyki96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/naft_image600_colored_fill.png",Нафталин FM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/naft96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/record00_image600_colored_fill.png",Рекорд 00-х
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/200096.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/rv19_image600_colored_fill.png",Руки Вверх!
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/rv96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/ruszima_image600_colored_fill.png",Русская Зима
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/ruszima96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/symph_image600_colored_fill.png",Симфония FM
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/symph96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/skazki_image600_colored_fill.png",Сказки MC V
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/skazki96.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/sd90_image600_gray_outline.png",Супердискотека 90-х
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/sd9096.aacp
+#EXTINF:-1 group-title="🎧 Радио Рекорд" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/khity-vsekh-vremen_image600_colored_fill.png",Хиты всех времен
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://radiorecord.hostingradio.ru/alltimers96.aacp
 #EXTINF:-1 tvg-id="sts-love" tvg-logo="https://epg.iptvx.one/picons/sts-love.png" group-title="🎭 Развлекательные",CTC Love
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-b9f0884f9a81b8c6/video.m3u8
-#EXTINF:-1 tvg-id="gags-network" tvg-logo="https://epg.iptvx.one/picons/gags-network.png" group-title="🎭 Развлекательные",Gagsnetwork
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/14024/index.m3u8
 #EXTINF:-1 group-title="🎭 Развлекательные" tvg-id="vijuPlusComedy.ru@HD",viju+ Comedy HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/201/index.m3u8
 #EXTINF:-1 tvg-id="world-fashion-channel" tvg-logo="https://epg.iptvx.one/picons/world-fashion-channel.png" group-title="🎭 Развлекательные",WF мода HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-3.otcnet.ru/wfcrus/index.m3u8
-#EXTINF:-1 tvg-id="Appetitniy.ru" tvg-logo="https://ntvplus.tv/files/image/91/78/10/aap.png" group-title="🎭 Развлекательные",Аппетитный
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/9067/index.m3u8
 #EXTINF:-1 tvg-id="Bober.ru" tvg-logo="https://i.imgur.com/clWWhB8.png" group-title="🎭 Развлекательные",Бобер
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-319cadb3fff5fb3e/video.m3u8
-#EXTINF:-1 tvg-id="VoprosyiOtvety.ru" tvg-logo="https://i.imgur.com/yjETxk1.png" group-title="🎭 Развлекательные",Вопросы и ответы
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1429/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="Dialogiorybalke.ru" tvg-logo="https://i.imgur.com/OuBtnGU.png" group-title="🎭 Развлекательные",Диалоги о Рыбалке
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/2394/index.m3u8
-#EXTINF:-1 tvg-id="drive" tvg-logo="https://epg.iptvx.one/picons/drive.png" group-title="🎭 Развлекательные",Драйв
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream8.cinerama.uz/1421/mono.m3u8
 #EXTINF:-1 tvg-id="ZagorodnayaZhizn.ru" tvg-logo="https://i.imgur.com/RoYd5pz.png" group-title="🎭 Развлекательные",Загородная жизнь HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.57.68.33/40/mpegts
-#EXTINF:-1 tvg-id="Zalsuda.ru" tvg-logo="https://i.imgur.com/KON0z08.png" group-title="🎭 Развлекательные",Зал суда
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/teh55yef/7141/index.m3u8
 #EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://avatars.mds.yandex.net/i?id=a5cfa43179f7b313920bf743b1cf92191a0302c1-5333794-images-thumbs&n=13" group-title="🎭 Развлекательные",Залипательные ролики
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://lbgo.bozztv.com/07/ushba60/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="mir-uvlecheniy" tvg-logo="https://epg.iptvx.one/picons/mir-uvlecheniy.png" group-title="🎭 Развлекательные",Кто Куда
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/2112/index.m3u8
 #EXTINF:-1 tvg-id="Muzhskoy.ru" tvg-logo="https://i.imgur.com/xyztpBf.png" group-title="🎭 Развлекательные",Мужской
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-55c94e838b306657/video.m3u8
 #EXTINF:-1 tvg-id="NashaTema.ru" tvg-logo="https://i.imgur.com/67ZVDKW.png" group-title="🎭 Развлекательные",Наша Тема
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-3.otcnet.ru/nashatema/index.m3u8
-#EXTINF:-1 tvg-id="Oruzhie.ru" tvg-logo="https://i.imgur.com/lfJQJqa.png" group-title="🎭 Развлекательные",Оружие
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/teh55yef/2087/index.m3u8
 #EXTINF:-1 tvg-id="tnt4" tvg-logo="https://epg.iptvx.one/picons/tnt4.png" group-title="🎭 Развлекательные",ТНТ 4
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-5f6d3cfda1af8989/video.m3u8
-#EXTINF:-1 tvg-id="epic" tvg-logo="https://epg.iptvx.one/picons/epic.png" group-title="🧠 Познавательные",Epic HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/4tfv9tup/2054/index.m3u8
 #EXTINF:-1 tvg-id="hgtv" tvg-logo="https://epg.iptvx.one/picons/hgtv.png" group-title="🧠 Познавательные",HGTV HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://ott.ip-tv.workers.dev/stream/L0FBMzI5MVcvaW5kZXgubTN1OA==?key=halva
@@ -2879,9 +2843,6 @@ http://stream.mcquack.net/101/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="vijuHistory.ru@SD",viju History (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_history/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="vijuNature.ru@SD" tvg-logo="https://i.imgur.com/8BPZ18l.png",viju Nature
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1228/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="vijuNature.ru@SD",viju Nature (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_nature/mono.m3u8?token=onlinetv
@@ -2897,63 +2858,6 @@ http://stitch.teletarget.ru/api/v1/hls/vintera/neplaneta/index.m3u8
 #EXTINF:-1 tvg-id="PlanetaHD.ru" tvg-logo="https://i.imgur.com/MeYWJu8.png" group-title="🧠 Познавательные",Планета HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.46.16.239:8000/Planeta_HD
-#EXTINF:-1 tvg-id="prikluchenia-hd" tvg-logo="https://epg.iptvx.one/picons/prikluchenia-hd.png" group-title="🧠 Познавательные",Приключения HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/teh55yef/920/index.m3u8
-#EXTINF:-1 tvg-id="2x2" tvg-logo="https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png" group-title="Детские",2x2
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://194.152.35.17/2x2/index.m3u8
-#EXTINF:-1 tvg-id="CartoonClassics.pl" tvg-logo="https://images-3.rakuten.tv/storage/global-live-channel/translation/artwork/3227c06e-333b-4b1b-b657-3e3ab99ebd06-width200-quality90.jpeg" group-title="Детские",Cartoon Classics
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.159.128:8070/Cartoon_Network/index.m3u8
-#EXTINF:-1 tvg-id="CartoonNetwork.au" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Cartoon_Network_2010_logo.svg/960px-Cartoon_Network_2010_logo.svg.png" group-title="Детские",Cartoon Network
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://45.132.87.69:8080/cartoon_network/index.m3u8
-#EXTINF:-1 tvg-id="boomerang" tvg-logo="https://epg.iptvx.one/picons/boomerang.png" group-title="Детские",Cartoonito
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/upwnsw7p/723/index.m3u8
-#EXTINF:-1 tvg-id="EnglishClass.ru" tvg-logo="https://i.imgur.com/gst7wW7.png" group-title="Детские",English Club TV
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1442/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="NickJr.au" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nick_Jr._logo_2023_(outline).svg/960px-Nick_Jr._logo_2023_(outline).svg.png" group-title="Детские",Nick Jr
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1501/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="NickToons.au" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/d8/Nicktoons_UK_Logo_2014.png" group-title="Детские",Nicktoons
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream8.cinerama.uz/1502/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="no_epg_mult" tvg-logo="https://niknik.tv/images/logo.png" group-title="Детские",NikNik-TV
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://hostrec.ru/live/wic2AtEFCLwsZcUkAgtZcjlYgjc.m3u8
-#EXTINF:-1 tvg-id="TiJi.fr" tvg-logo="https://i.imgur.com/ZjsfAGb.png" group-title="Детские",TiJi
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://flussonic.mkpnet.ru/tv-3848dd8604a262e0/video.m3u8
-#EXTINF:-1 tvg-id="v-gostiax-u-skazki" tvg-logo="https://epg.iptvx.one/picons/v-gostiax-u-skazki.png" group-title="Детские",В гостях у сказки
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://stream1.cinerama.uz/1270/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="Detskiy.ru" tvg-logo="https://mt.media/upload/iblock/c22/pndw8yi2jwgppdrjikm3eusqp8087kr3.png" group-title="Детские",Детский
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://185.46.16.239:8000/Detskiy
-#EXTINF:-1 tvg-id="Leva.ru" tvg-logo="https://i.imgur.com/lQzgmpz.png" group-title="Детские",Лёва
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tinyurl.com/teh55yef/15098/index.m3u8
-#EXTINF:-1 tvg-id="Mult.ru" tvg-logo="https://i.imgur.com/xi351Fx.png" group-title="Детские",Мульт
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://flussonic.mkpnet.ru/tv-c8b065a591077c26/video.m3u8
-#EXTINF:-1 tvg-id="Multilandia.ru" tvg-logo="https://i.imgur.com/ccwijY0.png" group-title="Детские",Мультиландия
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://flussonic.mkpnet.ru/tv-89530153f25733fe/video.m3u8
-#EXTINF:-1 tvg-id="no_epg_mult" tvg-logo="https://images-s.kinorium.com/movie/poster/190430/600_2733464.jpg" group-title="Детские",Ну, Погоди!
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://194.26.229.213/souzmultfilm/index.m3u8
-#EXTINF:-1 tvg-id="solnce" tvg-logo="https://epg.iptvx.one/picons/solnce.png" group-title="Детские",Солнце
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://flussonic.mkpnet.ru/tv-ac43800065b9b1b7/video.m3u8
-#EXTINF:-1 tvg-id="no_epg_mult" tvg-logo="https://i.pinimg.com/474x/24/8b/c8/248bc8ea6a9e8206a5a667b8a4f8161a.jpg" group-title="Детские",Том и Джерри
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://rpn3.bozztv.com/dvrfl07/giatv-208314/playlist.m3u8
-#EXTINF:-1 tvg-id="no_epg_mult" tvg-logo="https://i.pinimg.com/736x/01/dc/e2/01dce2acb29c7ce2edebd5337187a99b.jpg" group-title="Детские",Чип и Дейл
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://194.26.229.213/chip-n-dale-rescue-rangers/index.m3u8
 #EXTINF:-1 tvg-id="bridge-tv" tvg-logo="https://epg.iptvx.one/picons/bridge-tv.png" group-title="Музыкальные",Bridge
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/bridgetv/index.m3u8
@@ -2999,360 +2903,6 @@ https://edge1-eu-west.picarto.tv/stream/hls/golive+TMFRUS/1_0/index.m3u8
 #EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://telik.live/images/v2beat.png" group-title="Музыкальные",V2BEAT HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://de1se01.v2beat.live/playlist.m3u8
-#EXTINF:-1 tvg-id="viva-rus" tvg-logo="https://epg.iptvx.one/picons/viva-rus.png" group-title="Музыкальные",VIVA Russia
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8
 #EXTINF:-1 tvg-id="ShansonTV.ru" tvg-logo="https://i.imgur.com/Fk4sd8t.png" group-title="Музыкальные",Шансон ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-181e3f7698288892/video.m3u8
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/2010_image600_colored_fill.png",10's Dance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/201096.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/2step_image600_colored_fill.png",2-step
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/2step96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/cadillac_image600_colored_fill.png",60's Dance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/cadillac96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/1970_image600_colored_fill.png",70's Dance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/197096.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/a-state-of-trance_image600_colored_fill.png",A State of Trance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/asot96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/afro_image600_colored_fill.png",Afro House
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/afro96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/ambient_image600_colored_fill.png",Ambient
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/ambient96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/armin_image600_colored_fill.png",Armin van Buuren
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/armin96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/jackin_image600_gray_outline.png",Bass House
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/jackin96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/beach_image600_colored_fill.png",Beach Party
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/beach96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/bighits_image600_colored_fill.png",Big Hits
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/bighits96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/yo_image600_gray_outline.png",Black Rap
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/yo96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/brks_image600_gray_outline.png",Breaks
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/brks96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/chillhouse_image600_colored_fill.png",Chill House
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/chillhouse96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/chil_image600_colored_fill.png",Chill-Out
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/chil96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/christmas-radio_image600_colored_fill.png",Christmas
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/christmas96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/christmas-chill_image600_colored_fill.png",Christmas Chill
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/christmaschill96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/complextro_image600_gray_outline.png",Complextro
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/complextro96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/drumhits_image600_gray_outline.png",D'n'B Classics
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/drumhits96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/dc_image600_colored_fill.png",Dancecore
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/dc96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/darkside_image600_colored_fill.png",Darkside
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/darkside96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/guetta_image600_colored_fill.png",David Guetta
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/guetta96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/deep_image600_gray_outline.png",Deep
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/deep96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/discofunk_image600_gray_outline.png",Disco/Funk
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/discofunk96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/dj-gvozd_image600_colored_fill.png",DJ Gvozd
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/djgvozd96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/tsvetkov_image600_colored_fill.png",DJ Цветкоff
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/tsvetkov96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/dream_image600_gray_outline.png",Dream Dance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/dream96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/dream-pop_image600_colored_fill.png",Dream Pop
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/dreampop96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/dub_image600_gray_outline.png",Dubstep
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/dub96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/club_image600_gray_outline.png",EDM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/club96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/edmhits_image600_colored_fill.png",EDM Classics
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/edmhits96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/elect_image600_gray_outline.png",Electro
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/elect96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/eurodance_image600_colored_fill.png",Eurodance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/eurodance96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/feel_image600_colored_fill.png",Feel
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/feel96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/live-dj-sets_image600_colored_fill.png",Festivals
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/livedjsets96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/fbass_image600_gray_outline.png",Future Bass
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/fbass96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/fut_image600_gray_outline.png",Future House
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/fut96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/futurerave_image600_colored_fill.png",Future Rave
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/futurerave96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/goa_image600_colored_fill.png",GOA/PSY
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/goa96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/groovetribal_image600_gray_outline.png",Groove/Tribal
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/groovetribal96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/hbass_image600_gray_outline.png",Hard Bass
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/hbass96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/teo_image600_gray_outline.png",Hardstyle
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/teo96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/houseclss_image600_gray_outline.png",House Classics
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/houseclss96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/househits_image600_colored_fill.png",House Hits
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/househits96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/hypno_image600_gray_outline.png",Hypnotic
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/hypno96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/ibiza_image600_gray_outline.png",Innocence
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/ibiza96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/jungle_image600_colored_fill.png",Jungle
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/jungle96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/lady-waks_image600_colored_fill.png",Lady Waks
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/ladywaks96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/latina_image600_colored_fill.png",Latina Dance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/latina96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/liquidfunk_image600_colored_fill.png",Liquid Funk
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/liquidfunk96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/lofi_image600_gray_outline.png",Lo-Fi
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/lofi96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/lo-fi-house_image600_colored_fill.png",Lo-Fi House
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/lofihouse96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/martingarrix_image600_colored_fill.png",Martin Garrix
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/martingarrix96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mashup_image600_colored_fill.png",Mashup
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/mashup96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/mix_image600_gray_outline.png",Megamix
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/mix96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/melodic_image600_colored_fill.png",Melodic Techno
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/melodic96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mt_image600_colored_fill.png",Midtempo
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/mt96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mini_image600_colored_fill.png",Minimal/Tech
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/mini96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mmbt_image600_colored_fill.png",Moombahton
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/mmbt96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/nejtrinobaur_image600_colored_fill.png",Nejtrino & Baur
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/nejtrinobaur96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/neurofunk_image600_colored_fill.png",Neurofunk
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/neurofunk96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/nu-dance_image600_colored_fill.png",Nu Dance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/nudance96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/tecktonik_image600_gray_outline.png",Old School
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://hls-01-radiorecord.hostingradio.ru/record-rap/96/playlist.m3u8
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/oliverheldens_image600_colored_fill.png",Oliver Heldens
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/oliverheldens96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/organic_image600_colored_fill.png",Organic
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/organic96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/party-24-7_image600_colored_fill.png",Party 24/7
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/party96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/phonk_image600_colored_fill.png",Phonk
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/phonk96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/ps_image600_gray_outline.png",Pirate Station
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/ps96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/progr_image600_colored_fill.png",Progressive
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/progr96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/rapclassics_image600_colored_fill.png",Rap Classics
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/rapclassics96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/rap_image600_colored_fill.png",Rap Hits
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/rap96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/rave_image600_colored_fill.png",Rave FM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/rave96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/record_image600_colored_fill.png",Record
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/rr_main96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/1980_image600_colored_fill.png",Record 80-х
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/198096.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/recordclassix_image600_colored_fill.png",Record Classix
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/classix96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/recordclubshow_image600_colored_fill.png",Record Club Show
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/clubshow96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/gold_image600_colored_fill.png",Record Gold
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/gold96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/reggae_image600_colored_fill.png",Reggae
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/reggae96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/rmx_image600_gray_outline.png",Remix
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/rmx96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/rock_image600_gray_outline.png",Rock
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/rock96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/russiangold_image600_gray_outline.png",Russian Gold
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/russiangold96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/russianhits_image600_colored_fill.png",Russian Hits
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/russianhits96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/rus_image600_gray_outline.png",Russian Mix
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/rus96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/summer-dance_image600_colored_fill.png",Summer Dance
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/summerparty96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/summerlounge_image600_colored_fill.png",Summer Lounge
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/summerlounge96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/synth_image600_gray_outline.png",Synthwave
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/synth96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/techouse_image600_colored_fill.png",Tech House
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/techouse96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/techno_image600_colored_fill.png",Techno
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/techno96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/technopop_image600_colored_fill.png",Technopop
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/technopop96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/tecktonik_image600_colored_fill.png",Tecktonik
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/tecktonik96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/tiesto_image600_colored_fill.png",Tiesto
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/tiesto96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/top-100-edm_image600_colored_fill.png",TOP 100 EDM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/top100edm96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/trancehits_image600_gray_outline.png",Trance Classics
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/trancehits96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/trancehouse_image600_gray_outline.png",Trancehouse
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/trancehouse96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/tm_image600_gray_outline.png",Trancemission
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/tm96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/trap_image600_gray_outline.png",Trap
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/trap96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/trop_image600_gray_outline.png",Tropical
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/trop96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/uk-garage_image600_colored_fill.png",UK Garage
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/ukgarage96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/uplift_image600_colored_fill.png",Uplifting
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/uplift96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/vip_image600_colored_fill.png",VIP House
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/vip96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/workout_image600_colored_fill.png",Workout
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/workout96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/deti_image600_colored_fill.png",Веснушка FM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/deti96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/gast_image600_gray_outline.png",Гастарбайтер FM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/gast96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/gop_image600_gray_outline.png",Гоп FM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/gop96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/pump_image600_colored_fill.png",Колбасный Цех
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/pump96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/mf_image600_gray_outline.png",Маятник Фуко
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/mf96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/mdl_image600_colored_fill.png",Медляк FM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/mdl96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/hype_image600_colored_fill.png",На Хайпе
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/hype96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/nashashlyki_image600_colored_fill.png",На шашлыки!
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/nashashlyki96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/naft_image600_colored_fill.png",Нафталин FM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/naft96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/record00_image600_colored_fill.png",Рекорд 00-х
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/200096.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/rv19_image600_colored_fill.png",Руки Вверх!
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/rv96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/ruszima_image600_colored_fill.png",Русская Зима
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/ruszima96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/symph_image600_colored_fill.png",Симфония FM
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/symph96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/skazki_image600_colored_fill.png",Сказки MC V
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/skazki96.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://radiorecord.ru/upload/stations_images/sd90_image600_gray_outline.png",Супердискотека 90-х
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/sd9096.aacp
-#EXTINF:-1 group-title="📦 Разное" tvg-id="no_epg_music" tvg-logo="https://www.radiorecord.ru/upload/stations_images/khity-vsekh-vremen_image600_colored_fill.png",Хиты всех времен
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://radiorecord.hostingradio.ru/alltimers96.aacp

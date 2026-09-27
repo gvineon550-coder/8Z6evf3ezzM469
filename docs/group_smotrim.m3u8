@@ -2,9 +2,6 @@
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="http://1lot.tv/ch/9415.png" group-title="👁️ СМОТРИМ +",IPTVPLAY MORTAL KOMBAT
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYTEST.tv/video.m3u8?token=lqRGka5-YwwqF0
-#EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://i.postimg.cc/v8KFj826/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY PROMO
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.158.65:4040/IPTVPLAYPromo.tv/video.m3u8?token=lqRGka5-YwwqF0
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://i.postimg.cc/mDMCsgNL/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY ВЕДЬМАК
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYVEDMAK.tv/video.m3u8?token=lqRGka5-YwwqF0

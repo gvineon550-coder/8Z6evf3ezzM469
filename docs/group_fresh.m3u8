@@ -20,9 +20,6 @@ http://stream.mcquack.net/429/index.m3u8
 #EXTINF:-1 group-title="🌿 Fresh",Fresh Horror
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/431/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Kids
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/425/index.m3u8
 #EXTINF:-1 group-title="🌿 Fresh",Fresh Premiere
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/424/index.m3u8
