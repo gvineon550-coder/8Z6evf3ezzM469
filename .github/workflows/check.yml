@@ -11,7 +11,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -27,6 +27,9 @@ jobs:
 
       - name: Install deps
         run: pip install -r requirements.txt
+
+      - name: Verify ffprobe
+        run: ffprobe -version | head -1
 
       - name: Get week number
         id: week
@@ -57,6 +60,10 @@ jobs:
             --weekly-backup \
             --min-uptime 50 \
             --min-uptime-samples 3 \
+            --ffprobe \
+            --ffprobe-workers 4 \
+            --ffprobe-timeout 8 \
+            --ffprobe-cache-days 3 \
             --tg-send-merged
 
       - name: Notify on failure
