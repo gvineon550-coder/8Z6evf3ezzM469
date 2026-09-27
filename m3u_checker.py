@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v20.2 — фикс User-Agent для ffprobe (ufotv-каналы вернутся).
+M3U Checker v21 — ffprobe с wink UA + погода через серверы GitHub.
 """
 import os
 import re
@@ -133,6 +133,7 @@ FFPROBE_MAP_NEW = {}
 FFPROBE_LOCK = threading.Lock()
 FFPROBE_SEM = threading.Semaphore(4)
 FFPROBE_STATS = {'ok': 0, 'fail': 0, 'cached_ok': 0, 'cached_fail': 0, 'skipped': 0}
+WEATHER_HTML = '🌡️ <span class="hide-mobile">Нальчик</span>'
 
 
 def setup_logging(path, quiet):
@@ -164,6 +165,61 @@ def fmt(template, **kwargs):
     for k, v in kwargs.items():
         out = out.replace('{' + k + '}', str(v))
     return out.replace('\x00', '{').replace('\x01', '}')
+
+
+def _weather_emoji(code):
+    try:
+        code = int(code)
+    except Exception:
+        return '🌡️'
+    if code == 0: return '☀️'
+    if code <= 3: return '⛅'
+    if code <= 48: return '🌫️'
+    if code <= 57: return '🌦️'
+    if code <= 67: return '🌧️'
+    if code <= 77: return '❄️'
+    if code <= 82: return '🌧️'
+    if code <= 86: return '❄️'
+    return '⛈️'
+
+
+def fetch_weather():
+    """Погода для Нальчика. Работает с серверов GitHub — без блокировок РФ."""
+    try:
+        r = requests.get('https://wttr.in/Nalchik?format=j1',
+                         timeout=10, verify=CFG.verify_ssl)
+        if r.status_code == 200:
+            d = r.json()
+            cc = (d.get('current_condition') or [{}])[0]
+            t = cc.get('temp_C')
+            code = cc.get('weatherCode') or 0
+            if t is not None:
+                log.info("Погода: wttr.in %s°C (код %s)", t, code)
+                return f'{_weather_emoji(code)} <strong>{t}°C</strong> <span class="hide-mobile">· Нальчик</span>'
+    except Exception as e:
+        log.debug("wttr.in: %s", e)
+
+    try:
+        r = requests.get(
+            'https://api.open-meteo.com/v1/forecast'
+            '?latitude=43.4981&longitude=43.6189'
+            '&current=temperature_2m,weather_code'
+            '&timezone=Europe%2FMoscow',
+            timeout=10, verify=CFG.verify_ssl)
+        if r.status_code == 200:
+            d = r.json()
+            c = d.get('current') or {}
+            t = c.get('temperature_2m')
+            code = c.get('weather_code') or 0
+            if t is not None:
+                t = round(t)
+                log.info("Погода: open-meteo %s°C (код %s)", t, code)
+                return f'{_weather_emoji(code)} <strong>{t}°C</strong> <span class="hide-mobile">· Нальчик</span>'
+    except Exception as e:
+        log.debug("open-meteo: %s", e)
+
+    log.warning("Погода: не удалось загрузить")
+    return '🌡️ <span class="hide-mobile">Нальчик</span>'
 
 
 _TRANSLIT_MAP = {
@@ -384,6 +440,7 @@ def save_ffprobe_cache(path, current_urls):
 
 
 def ffprobe_check(url):
+    """Проверка потока через ffprobe с WINK User-Agent."""
     if not HAS_FFPROBE:
         FFPROBE_STATS['skipped'] += 1
         return None, None
@@ -1823,56 +1880,6 @@ THEME_JS = """
     });
   }
 
-  function weatherEmoji(code){
-    if (code === 0) return '☀️';
-    if (code <= 3) return '⛅';
-    if (code <= 48) return '🌫️';
-    if (code <= 57) return '🌦️';
-    if (code <= 67) return '🌧️';
-    if (code <= 77) return '❄️';
-    if (code <= 82) return '🌧️';
-    if (code <= 86) return '❄️';
-    return '⛈️';
-  }
-
-  async function updateWeather(){
-    const el = document.getElementById('weather');
-    if (!el) return;
-
-    // Источник 1: wttr.in (обычно работает в РФ)
-    try {
-      const r = await fetch('https://wttr.in/Nalchik?format=j1', {signal: AbortSignal.timeout(5000)});
-      if (r.ok) {
-        const d = await r.json();
-        const cc = d.current_condition && d.current_condition[0];
-        if (cc && cc.temp_C !== undefined) {
-          const t = cc.temp_C;
-          const code = parseInt(cc.weatherCode || '0', 10);
-          el.innerHTML = weatherEmoji(code) + ' <strong>' + t + '°C</strong> <span class="hide-mobile">· Нальчик</span>';
-          return;
-        }
-      }
-    } catch(e) {}
-
-    // Источник 2: Open-Meteo
-    try {
-      const r2 = await fetch('https://api.open-meteo.com/v1/forecast?latitude=43.4981&longitude=43.6189&current=temperature_2m,weather_code&timezone=Europe%2FMoscow', {signal: AbortSignal.timeout(5000)});
-      if (r2.ok) {
-        const d2 = await r2.json();
-        if (d2 && d2.current && d2.current.temperature_2m !== undefined) {
-          const t2 = Math.round(d2.current.temperature_2m);
-          const code2 = d2.current.weather_code || 0;
-          el.innerHTML = weatherEmoji(code2) + ' <strong>' + t2 + '°C</strong> <span class="hide-mobile">· Нальчик</span>';
-          return;
-        }
-      }
-    } catch(e) {}
-
-    el.innerHTML = '🌡️ <span class="hide-mobile">Нальчик</span>';
-  }
-  updateWeather();
-  setInterval(updateWeather, 15*60*1000);
-
   function updateClock(){
     const el = document.getElementById('clock');
     if (!el) return;
@@ -1960,7 +1967,7 @@ THEME_JS = """
 
 TOP_RIGHT_WIDGET = '''<div class="top-right">
 <div class="live-widget">
-  <span class="live-item" id="weather">🌡️ <span class="hide-mobile">Нальчик</span></span>
+  <span class="live-item">{weather_html}</span>
   <span class="live-item" id="clock">🕐 <span class="hide-mobile">МСК</span></span>
   <span class="live-item" id="ticker" data-repo="{github_repo}">⏳</span>
 </div>
@@ -1972,7 +1979,7 @@ TOP_RIGHT_WIDGET = '''<div class="top-right">
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v20.2 - {date}</title>
+<title>M3U Check v21 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -2597,7 +2604,8 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
     sp_ok = _sparkline_for_history(history, 'ok')
     sp_merged = _sparkline_for_history(history, 'merged')
     d = int(dur)
-    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo)
+    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo,
+                                        weather_html=WEATHER_HTML)
     out = fmt(
         REPORT_T,
         common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
@@ -2634,7 +2642,8 @@ def render_index(path, url, merged, ok, total, unstable, splits, qr_path,
     qr_block = f'<img src="{os.path.basename(qr_path)}" alt="QR">' if os.path.isfile(qr_path) else ''
     gh_repo = _github_repo_from_pages(pages_url)
     trend_block = render_trend_svg(history)
-    top_right = TOP_RIGHT_WIDGET.format(github_repo=gh_repo)
+    top_right = TOP_RIGHT_WIDGET.format(github_repo=gh_repo,
+                                        weather_html=WEATHER_HTML)
     out = fmt(
         INDEX_T,
         common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
@@ -2668,7 +2677,8 @@ def render_channels(path, channels, github_repo):
     group_opts = "\n".join(
         f'<option value="{html.escape(g)}">{html.escape(g)} ({c})</option>'
         for g, c in sorted(groups.items()))
-    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo)
+    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo,
+                                        weather_html=WEATHER_HTML)
     out = fmt(
         CHANNELS_T,
         common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
@@ -2697,7 +2707,8 @@ def render_rejected(path, github_repo):
         f'<option value="{html.escape(k)}">{html.escape(k)} ({v})</option>'
         for k, v in sorted(reason_counts.items(), key=lambda x: -x[1]))
 
-    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo)
+    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo,
+                                        weather_html=WEATHER_HTML)
     out = fmt(
         REJECTED_T,
         common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
@@ -2757,7 +2768,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v20.2</b>"]
+    lines = ["<b>M3U Check v21</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -2839,7 +2850,7 @@ def parse_args():
 
 def main():
     global CFG, CATEGORIES, FILTERS, UPTIME_NEW, REJECTED, QUALITY_MAP_NEW
-    global FFPROBE_MAP_NEW, FFPROBE_SEM
+    global FFPROBE_MAP_NEW, FFPROBE_SEM, WEATHER_HTML
     CFG = parse_args()
     CFG.verify_ssl = not CFG.no_ssl_verify
     if CFG.no_ssl_verify:
@@ -2857,6 +2868,10 @@ def main():
         else:
             emit("ffprobe: НЕ НАЙДЕН в системе, пропускаем проверку")
             CFG.ffprobe = False
+
+    emit("Загружаю погоду для Нальчика...")
+    WEATHER_HTML = fetch_weather()
+    emit(f"  → {WEATHER_HTML}")
 
     CATEGORIES = load_json(CFG.categories)
     FILTERS = load_json(CFG.filters)
