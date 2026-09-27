@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v17 — улучшенная нормализация имён, частичный матч для EPG/логотипов.
+M3U Checker v19 — ffprobe с кэшем 3 дня, финальная версия.
 """
 import os
 import re
@@ -11,11 +11,13 @@ import time
 import html
 import json
 import base64
+import shutil
 import sqlite3
 import logging
 import argparse
 import threading
 import datetime
+import subprocess
 import requests
 import urllib3
 import concurrent.futures
@@ -72,6 +74,14 @@ EPG_CACHE = 'docs/epg_map.json'
 EPG_CACHE_VERSION = 17
 EPG_TTL_DAYS = 7
 
+QUALITY_CACHE = 'docs/quality.json'
+QUALITY_CACHE_MAX = 3000
+
+FFPROBE_CACHE = 'docs/ffprobe.json'
+FFPROBE_MAP_MAX = 3000
+
+HAS_FFPROBE = shutil.which('ffprobe') is not None
+
 HTML_PREFIXES = (
     b'<!DOCTYPE', b'<html', b'<HTML',
     b'<head', b'<HEAD', b'<?xml', b'<error',
@@ -79,15 +89,27 @@ HTML_PREFIXES = (
 BOM = b'\xef\xbb\xbf'
 WHITESPACE = b' \t\r\n'
 SLOW_THRESHOLD = 2.0
-HISTORY_MAX = 30
+HISTORY_MAX = 180
 UPTIME_MAX = 30
 REJECTED_LIMIT = 3000
+HLS_CHUNK_SIZE = 4096
+
+QUALITY_4K_NAME = re.compile(r'\b(4k|uhd|uhk|2160p?)\b', re.IGNORECASE)
+QUALITY_HD_NAME = re.compile(r'\b(hd|fhd|1080p?|720p?|h\.?264|h265|hevc)\b', re.IGNORECASE)
+QUALITY_SD_NAME = re.compile(r'\b(sd|576p?|480p?|360p?|240p?)\b', re.IGNORECASE)
 
 DONUT_COLORS = [
     '#4ade80', '#60a5fa', '#facc15', '#f87171', '#a78bfa',
     '#fb923c', '#34d399', '#f472b6', '#22d3ee', '#fbbf24',
     '#818cf8', '#fca5a5',
 ]
+
+QUALITY_COLORS = {
+    '4K': '#a78bfa',
+    'HD': '#4ade80',
+    'SD': '#facc15',
+    'Unknown': '#8a8f98',
+}
 
 log = logging.getLogger('m3u')
 CFG = None
@@ -104,6 +126,14 @@ UPTIME_NEW = {}
 UPTIME_LOCK = threading.Lock()
 REJECTED = []
 REJECTED_LOCK = threading.Lock()
+QUALITY_MAP = {}
+QUALITY_MAP_NEW = {}
+QUALITY_LOCK = threading.Lock()
+FFPROBE_MAP = {}
+FFPROBE_MAP_NEW = {}
+FFPROBE_LOCK = threading.Lock()
+FFPROBE_SEM = threading.Semaphore(4)
+FFPROBE_STATS = {'ok': 0, 'fail': 0, 'cached_ok': 0, 'cached_fail': 0, 'skipped': 0}
 
 
 def setup_logging(path, quiet):
@@ -145,7 +175,6 @@ _TRANSLIT_MAP = {
     'ю':'yu','я':'ya','і':'i','ї':'i','є':'e','ґ':'g',
 }
 
-# Слова-шум: убираются из имён
 NOISE_WORDS = re.compile(
     r'\b(тв|tv|телеканал|channel|канал|hd|fhd|uhd|4k|8k|sd|hevc|h265|h264|mp4|hq|lq|'
     r'ру|ru|россия|russia|online|live)\b',
@@ -155,38 +184,27 @@ NOISE_WORDS = re.compile(
 ROMAN_TAIL = re.compile(r'\b(i{1,3}|iv|v|vi{1,3}|ix|x)\s*$', re.IGNORECASE)
 
 
+def translit_ru(s):
+    if not s:
+        return ''
+    return ''.join(_TRANSLIT_MAP.get(ch, ch) for ch in s.lower())
+
+
 def normalize_name_v2(name):
-    """Улучшенная нормализация для матчинга логотипов/EPG.
-    
-    - Lowercase
-    - Замена ё→е, й→и (для унификации)
-    - Убираем содержимое скобок (...), [...], <...>
-    - Заменяем все спецсимволы на пробел
-    - Убираем слова-шум (ТВ, TV, канал, HD...)
-    - Убираем римские цифры в конце
-    - Схлопываем пробелы
-    """
     if not name:
         return ''
     n = name.lower().strip()
-    # Замена ё→е, й→и
     n = n.replace('ё', 'е').replace('й', 'и')
-    # Убираем содержимое скобок
     n = re.sub(r'\([^)]*\)', ' ', n)
     n = re.sub(r'\[[^\]]*\]', ' ', n)
     n = re.sub(r'<[^>]*>', ' ', n)
-    # Спецсимволы -> пробел
     n = re.sub(r'[^a-zа-я0-9]+', ' ', n)
-    # Убираем слова-шум
     n = NOISE_WORDS.sub(' ', n)
-    # Убираем римские цифры в конце
     n = ROMAN_TAIL.sub('', n)
-    # Схлопываем пробелы
     return re.sub(r'\s+', ' ', n).strip()
 
 
 def normalize_name(name):
-    """Совместимость со старым вызовом."""
     return normalize_name_v2(name)
 
 
@@ -196,20 +214,71 @@ def normalize_name_translit(name):
 
 
 def make_prefix(normalized):
-    """Первые 5 символов нормализованного имени (без пробелов)."""
     if not normalized:
         return ''
     s = normalized.replace(' ', '')
     return s[:5] if len(s) >= 5 else ''
 
 
-def translit_ru(s):
-    if not s:
-        return ''
-    return ''.join(_TRANSLIT_MAP.get(ch, ch) for ch in s.lower())
+def detect_quality_by_name(name):
+    if not name:
+        return 'Unknown'
+    if QUALITY_4K_NAME.search(name):
+        return '4K'
+    if QUALITY_HD_NAME.search(name):
+        return 'HD'
+    if QUALITY_SD_NAME.search(name):
+        return 'SD'
+    return 'Unknown'
 
 
-# ---------- UPTIME ----------
+def classify_height(h):
+    try:
+        h = int(h)
+    except Exception:
+        return None
+    if h >= 2000:
+        return '4K'
+    if h >= 700:
+        return 'HD'
+    if h > 0:
+        return 'SD'
+    return None
+
+
+def parse_hls_quality(chunk):
+    try:
+        if not chunk or b'#EXTM3U' not in chunk[:32]:
+            return None
+        matches = re.findall(rb'RESOLUTION=(\d+)x(\d+)', chunk)
+        if matches:
+            heights = []
+            for w, h in matches:
+                try:
+                    heights.append(int(h))
+                except Exception:
+                    continue
+            if heights:
+                return classify_height(max(heights))
+        bw_matches = re.findall(rb'BANDWIDTH=(\d+)', chunk)
+        if bw_matches:
+            try:
+                bw = max(int(x) for x in bw_matches)
+            except Exception:
+                return None
+            if bw >= 8_000_000:
+                return '4K'
+            if bw >= 1_500_000:
+                return 'HD'
+            if bw > 0:
+                return 'SD'
+        return None
+    except Exception as e:
+        log.debug("parse_hls_quality error: %s", e)
+        return None
+
+
+# ---------- UPTIME / QUALITY / FFPROBE ----------
 def load_uptime(path):
     global UPTIME
     if not os.path.isfile(path):
@@ -237,6 +306,154 @@ def save_uptime(path, current_urls):
                 del UPTIME[url]
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(UPTIME, f, ensure_ascii=False, separators=(',', ':'))
+
+
+def load_quality_cache(path):
+    global QUALITY_MAP
+    if not os.path.isfile(path):
+        QUALITY_MAP = {}
+        return
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        QUALITY_MAP = data if isinstance(data, dict) else {}
+    except Exception as e:
+        log.warning("quality.json: %s", e)
+        QUALITY_MAP = {}
+
+
+def save_quality_cache(path, current_urls):
+    os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+    with QUALITY_LOCK:
+        for url, q in QUALITY_MAP_NEW.items():
+            if q:
+                QUALITY_MAP[url] = q
+        alive = set(current_urls)
+        for url in list(QUALITY_MAP.keys()):
+            if url not in alive:
+                del QUALITY_MAP[url]
+        if len(QUALITY_MAP) > QUALITY_CACHE_MAX:
+            items = list(QUALITY_MAP.items())[-QUALITY_CACHE_MAX:]
+            QUALITY_MAP.clear()
+            QUALITY_MAP.update(dict(items))
+    try:
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(QUALITY_MAP, f, ensure_ascii=False, separators=(',', ':'))
+    except Exception as e:
+        log.warning("save quality.json: %s", e)
+
+
+def get_quality_for_url(url, name):
+    with QUALITY_LOCK:
+        q = QUALITY_MAP.get(url)
+    if q and q != 'Unknown':
+        return q
+    return detect_quality_by_name(name)
+
+
+def load_ffprobe_cache(path):
+    global FFPROBE_MAP
+    if not os.path.isfile(path):
+        FFPROBE_MAP = {}
+        return
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        FFPROBE_MAP = data if isinstance(data, dict) else {}
+    except Exception as e:
+        log.warning("ffprobe.json: %s", e)
+        FFPROBE_MAP = {}
+
+
+def save_ffprobe_cache(path, current_urls):
+    os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+    with FFPROBE_LOCK:
+        for url, entry in FFPROBE_MAP_NEW.items():
+            FFPROBE_MAP[url] = entry
+        alive = set(current_urls)
+        for url in list(FFPROBE_MAP.keys()):
+            if url not in alive:
+                del FFPROBE_MAP[url]
+        if len(FFPROBE_MAP) > FFPROBE_MAP_MAX:
+            items = list(FFPROBE_MAP.items())[-FFPROBE_MAP_MAX:]
+            FFPROBE_MAP.clear()
+            FFPROBE_MAP.update(dict(items))
+    try:
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(FFPROBE_MAP, f, ensure_ascii=False, separators=(',', ':'))
+    except Exception as e:
+        log.warning("save ffprobe.json: %s", e)
+
+
+def ffprobe_check(url):
+    """Возвращает (ok_or_none, info).
+    ok_or_none: True — работает, False — не работает, None — ffprobe недоступен.
+    """
+    if not HAS_FFPROBE:
+        FFPROBE_STATS['skipped'] += 1
+        return None, None
+
+    with FFPROBE_LOCK:
+        cached = FFPROBE_MAP.get(url)
+    if cached:
+        age_days = (time.time() - cached.get('ts', 0)) / 86400
+        if age_days < CFG.ffprobe_cache_days:
+            if cached.get('ok'):
+                FFPROBE_STATS['cached_ok'] += 1
+                return True, cached
+            else:
+                FFPROBE_STATS['cached_fail'] += 1
+                return False, None
+
+    with FFPROBE_SEM:
+        try:
+            result = subprocess.run(
+                ['ffprobe', '-v', 'quiet', '-print_format', 'json',
+                 '-show_streams', '-show_format',
+                 '-analyzeduration', '3000000',
+                 '-probesize', '1000000',
+                 '-i', url],
+                capture_output=True, timeout=CFG.ffprobe_timeout
+            )
+            if result.returncode != 0:
+                FFPROBE_STATS['fail'] += 1
+                with FFPROBE_LOCK:
+                    FFPROBE_MAP_NEW[url] = {'ok': False, 'ts': time.time()}
+                return False, None
+            try:
+                data = json.loads(result.stdout)
+            except Exception:
+                FFPROBE_STATS['fail'] += 1
+                with FFPROBE_LOCK:
+                    FFPROBE_MAP_NEW[url] = {'ok': False, 'ts': time.time()}
+                return False, None
+            streams = data.get('streams', [])
+            video = next((s for s in streams if s.get('codec_type') == 'video'), None)
+            if not video:
+                FFPROBE_STATS['fail'] += 1
+                with FFPROBE_LOCK:
+                    FFPROBE_MAP_NEW[url] = {'ok': False, 'ts': time.time()}
+                return False, None
+            info = {
+                'ok': True,
+                'codec': video.get('codec_name'),
+                'height': video.get('height'),
+                'width': video.get('width'),
+                'ts': time.time(),
+            }
+            FFPROBE_STATS['ok'] += 1
+            with FFPROBE_LOCK:
+                FFPROBE_MAP_NEW[url] = info
+            return True, info
+        except subprocess.TimeoutExpired:
+            FFPROBE_STATS['fail'] += 1
+            with FFPROBE_LOCK:
+                FFPROBE_MAP_NEW[url] = {'ok': False, 'ts': time.time()}
+            return False, None
+        except Exception as e:
+            log.debug("ffprobe error %s: %s", url, e)
+            FFPROBE_STATS['fail'] += 1
+            return False, None
 
 
 def get_uptime_pct(url):
@@ -299,8 +516,7 @@ class UrlCache:
         if self.enabled and self.conn:
             with self.lock:
                 self.conn.close()
-
-
+                
 def load_json(path):
     if not os.path.isfile(path):
         return {}
@@ -359,7 +575,6 @@ def _download_json(urls, cache_path):
 
 
 def _add_to_prefix_map(prefix_map, prefix, value):
-    """Добавляет значение в список по префиксу."""
     if not prefix:
         return
     prefix_map.setdefault(prefix, []).append(value)
@@ -764,7 +979,6 @@ def load_txt_logos(dirs):
 
 # ---------- ПОТОКИ ----------
 def _try_stream(url, ua):
-    """Возвращает (ok, elapsed, reason)."""
     try:
         t0 = time.time()
         with requests.get(url, headers={'User-Agent': ua}, stream=True,
@@ -772,26 +986,26 @@ def _try_stream(url, ua):
                           verify=CFG.verify_ssl) as r:
             elapsed = time.time() - t0
             if r.status_code != 200:
-                return False, elapsed, f'http_{r.status_code}'
-            ct = (r.headers.get('Content-Type') or '').lower()
-            chunk = next(r.iter_content(chunk_size=1024), b'')
+                return False, elapsed, f'http_{r.status_code}', None
+            chunk = next(r.iter_content(chunk_size=HLS_CHUNK_SIZE), b'')
             if not chunk:
-                return False, elapsed, 'empty'
+                return False, elapsed, 'empty', None
             h = chunk.lstrip(WHITESPACE)
             if h.startswith(BOM):
                 h = h[len(BOM):].lstrip(WHITESPACE)
             if h.startswith(b'#EXTM3U'):
-                return True, elapsed, None
+                quality = None
+                if not CFG.no_hls_quality:
+                    quality = parse_hls_quality(chunk)
+                return True, elapsed, None, quality
             for p in HTML_PREFIXES:
                 if h.startswith(p):
-                    return False, elapsed, 'html'
+                    return False, elapsed, 'html', None
             if len(chunk) < 32:
-                return False, elapsed, 'too_small'
-            # Ослаблено: если Content-Type text/html, но НЕ начинается с HTML,
-            # значит это скорее всего видео с криво настроенным сервером
-            return True, elapsed, None
+                return False, elapsed, 'too_small', None
+            return True, elapsed, None, None
     except requests.RequestException:
-        return False, None, 'timeout'
+        return False, None, 'timeout', None
 
 
 def _check_stream(url):
@@ -799,23 +1013,28 @@ def _check_stream(url):
     best_elapsed = None
     last_reason = 'unknown'
     for name, ua in uas:
-        ok, el, reason = _try_stream(url, ua)
+        ok, el, reason, quality = _try_stream(url, ua)
         if ok:
-            return True, name, el, None
+            return True, name, el, None, quality
         if reason:
             last_reason = reason
         if el is not None and (best_elapsed is None or el < best_elapsed):
             best_elapsed = el
-    return False, None, best_elapsed, last_reason
+    return False, None, best_elapsed, last_reason, None
 
 
 def check_stream(url, cache):
     c = cache.get(url, 'stream')
     if c is not None:
-        return c, 'cached', None, None
-    ok, n, el, reason = _check_stream(url)
+        with QUALITY_LOCK:
+            q = QUALITY_MAP.get(url)
+        return c, 'cached', None, None, q
+    ok, n, el, reason, quality = _check_stream(url)
     cache.put(url, 'stream', ok)
-    return ok, (n or DEFAULT_UA), el, reason
+    if ok and quality:
+        with QUALITY_LOCK:
+            QUALITY_MAP_NEW[url] = quality
+    return ok, (n or DEFAULT_UA), el, reason, quality
 
 
 def _check_logo(url):
@@ -843,16 +1062,13 @@ def check_logo(url, cache):
 
 
 def _pick_prefix_match(prefix_map, prefix):
-    """Возвращает значение, если в prefix_map[prefix] уникальное имя (не более 3)."""
     if not prefix:
         return None
     items = prefix_map.get(prefix)
     if not items:
         return None
-    # Ограничиваемся списком до 3, чтобы не путать разные каналы
     if len(items) > 3:
         return None
-    # Берём первый по алфавиту имени (детерминированно)
     items_sorted = sorted(items, key=lambda x: x[0])
     return items_sorted[0][1]
 
@@ -880,7 +1096,6 @@ def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
             l = IPTV_LOGOS.get('by_name_translit', {}).get(kt)
             if l:
                 return l, 'from_translit'
-        # Частичный матч по префиксу (5 символов)
         if k:
             p = make_prefix(k)
             l = _pick_prefix_match(IPTV_LOGOS.get('by_prefix', {}), p)
@@ -956,16 +1171,16 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
         with REJECTED_LOCK:
             if len(REJECTED) < REJECTED_LIMIT:
                 REJECTED.append((name, group, url, reason))
-        return index, 'filtered', None, None, reason, None, None, None, None
+        return index, 'filtered', None, None, reason, None, None, None, None, None
 
-    ok, ua, elapsed, fail_reason = check_stream(url, cache)
+    ok, ua, elapsed, fail_reason, hls_quality = check_stream(url, cache)
     if not ok:
         with UPTIME_LOCK:
             UPTIME_NEW[url] = 0
         with REJECTED_LOCK:
             if len(REJECTED) < REJECTED_LIMIT:
                 REJECTED.append((name, group, url, f'dead:{fail_reason or "unknown"}'))
-        return index, 'dead', None, None, None, None, None, None, None
+        return index, 'dead', None, None, None, None, None, None, None, None
 
     with UPTIME_LOCK:
         UPTIME_NEW[url] = 1
@@ -975,7 +1190,22 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
         with REJECTED_LOCK:
             if len(REJECTED) < REJECTED_LIMIT:
                 REJECTED.append((name, group, url, f'unstable:{pct}%'))
-        return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None
+        return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None, None
+
+    # ffprobe (если включён)
+    if CFG.ffprobe:
+        ff_ok, ff_info = ffprobe_check(url)
+        if ff_ok is False:
+            with REJECTED_LOCK:
+                if len(REJECTED) < REJECTED_LIMIT:
+                    REJECTED.append((name, group, url, 'dead:ffprobe'))
+            return index, 'dead', None, None, None, None, None, None, None, None
+        if ff_ok is True and ff_info:
+            h = ff_info.get('height')
+            if h:
+                fq = classify_height(h)
+                if fq:
+                    hls_quality = fq
 
     extinf = clean_extinf(extinf)
 
@@ -995,7 +1225,9 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
 
-    return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src
+    final_quality = hls_quality or detect_quality_by_name(name)
+
+    return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src, final_quality
 
 
 def parse_playlist(filename):
@@ -1029,7 +1261,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
         return {'label': label, 'channels': [], 'total': 0, 'ok': 0,
                 'filtered': 0, 'unstable': 0, 'groups': {}, 'ua_stats': {},
                 'slow': [], 'fastest': None, 'avg_elapsed': None,
-                'logo_stats': {}, 'all_urls': []}
+                'logo_stats': {}, 'all_urls': [], 'quality_stats': {}}
 
     emit(f"    Каналов: {len(channels)}")
 
@@ -1067,7 +1299,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 'filtered': len(channels) - len(ordered), 'unstable': 0,
                 'groups': gs, 'ua_stats': {'skipped': len(ordered)},
                 'slow': [], 'fastest': None, 'avg_elapsed': None,
-                'logo_stats': {}, 'all_urls': all_urls}
+                'logo_stats': {}, 'all_urls': all_urls, 'quality_stats': {}}
 
     pbar = None
     if HAS_TQDM and not CFG.quiet and not CFG.no_progress:
@@ -1078,13 +1310,14 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
     slow_list, elapsed_list = [], []
     logo_counts = {}
     all_urls = []
+    quality_stats = {'4K': 0, 'HD': 0, 'SD': 0, 'Unknown': 0}
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=CFG.workers) as ex:
         futs = [ex.submit(process_channel, i, e, u, txt_logos, cache, label)
                 for i, (e, u) in enumerate(channels)]
         for fu in concurrent.futures.as_completed(futs):
             try:
-                idx, status, extinf, url, msg, ua, grp, el, logo_src = fu.result()
+                idx, status, extinf, url, msg, ua, grp, el, logo_src, quality = fu.result()
             except Exception as e:
                 err_cnt += 1
                 log.exception("Ошибка: %s", e)
@@ -1098,6 +1331,8 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 ua_stats[ua] = ua_stats.get(ua, 0) + 1
                 if logo_src:
                     logo_counts[logo_src] = logo_counts.get(logo_src, 0) + 1
+                if quality:
+                    quality_stats[quality] = quality_stats.get(quality, 0) + 1
                 if el is not None:
                     elapsed_list.append(el)
                     if el >= SLOW_THRESHOLD:
@@ -1137,7 +1372,8 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             'unstable': unstable_cnt,
             'groups': gs, 'ua_stats': ua_stats, 'filter_reasons': filt_by_reason,
             'slow': slow_list, 'fastest': fastest, 'avg_elapsed': avg_el,
-            'logo_stats': logo_counts, 'all_urls': all_urls}
+            'logo_stats': logo_counts, 'all_urls': all_urls,
+            'quality_stats': quality_stats}
 
 
 def dedup_by_name_fn(channels):
@@ -1228,10 +1464,27 @@ def write_splits(channels, docs_dir, split_all=False):
     return created
 
 
+def write_quality_splits(channels, docs_dir):
+    by_q = {'4K': [], 'HD': [], 'SD': []}
+    for extinf, url in channels:
+        name = get_name(extinf)
+        q = get_quality_for_url(url, name)
+        if q in by_q:
+            by_q[q].append((extinf, url))
+    created = []
+    fname_map = {'4K': '4k.m3u8', 'HD': 'hd.m3u8', 'SD': 'sd.m3u8'}
+    for q, chans in by_q.items():
+        if chans:
+            write_playlist(os.path.join(docs_dir, fname_map[q]), chans)
+            created.append((fname_map[q], len(chans)))
+    return created
+
+
 def write_csv(channels, path):
     with open(path, 'w', encoding='utf-8', newline='') as f:
         w = csv.writer(f)
-        w.writerow(['name', 'group', 'tvg_id', 'uptime_pct', 'uptime_samples', 'logo', 'url'])
+        w.writerow(['name', 'group', 'quality', 'tvg_id', 'uptime_pct',
+                    'uptime_samples', 'logo', 'url'])
         for extinf, url in channels:
             name = get_name(extinf)
             group = get_group(extinf)
@@ -1240,7 +1493,8 @@ def write_csv(channels, path):
             pct_v = pct if pct is not None else ''
             m = re.search(r'tvg-logo="([^"]*)"', extinf)
             logo = m.group(1) if m else ''
-            w.writerow([name, group, tid, pct_v, total, logo, url])
+            q = get_quality_for_url(url, name)
+            w.writerow([name, group, q, tid, pct_v, total, logo, url])
 
 
 def write_rejected_csv(path):
@@ -1332,7 +1586,8 @@ def render_history_svg(history):
 </svg></div>'''
 
 
-def render_donut_svg(groups_dict):
+def render_donut_svg(groups_dict, colors_list=None, title='Распределение по группам',
+                     unit='КАНАЛОВ'):
     if not groups_dict:
         return ''
     items = sorted(groups_dict.items(), key=lambda x: -x[1])
@@ -1350,7 +1605,10 @@ def render_donut_svg(groups_dict):
     for i, (name, count) in enumerate(top):
         frac = count / total
         dash = frac * C
-        color = DONUT_COLORS[i % len(DONUT_COLORS)]
+        if isinstance(colors_list, dict):
+            color = colors_list.get(name, DONUT_COLORS[i % len(DONUT_COLORS)])
+        else:
+            color = DONUT_COLORS[i % len(DONUT_COLORS)]
         svg_parts.append(
             f'<circle cx="{cx}" cy="{cy}" r="{R}" fill="none" '
             f'stroke="{color}" stroke-width="{SW}" '
@@ -1367,10 +1625,10 @@ def render_donut_svg(groups_dict):
             f'<span class="legend-pct">{frac*100:.1f}%</span></div>'
         )
     total_label = f'<text x="{cx}" y="{cy-4}" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="600">{total}</text>'
-    total_sub = f'<text x="{cx}" y="{cy+14}" text-anchor="middle" fill="var(--muted)" font-size="10">КАНАЛОВ</text>'
+    total_sub = f'<text x="{cx}" y="{cy+14}" text-anchor="middle" fill="var(--muted)" font-size="10">{unit}</text>'
     svg = (f'<svg viewBox="0 0 {cx*2} {cy*2}" style="max-width:220px;width:100%">'
            + "".join(svg_parts) + total_label + total_sub + '</svg>')
-    return f'''<div class="section"><h2>Распределение по группам</h2>
+    return f'''<div class="section"><h2>{title}</h2>
 <div class="donut-wrap">
 <div class="donut-chart">{svg}</div>
 <div class="donut-legend">{"".join(legend)}</div>
@@ -1482,6 +1740,15 @@ font-size:11px;font-weight:500;background:var(--border);color:var(--muted)}
 .reason-badge.dead{background:rgba(248,113,113,0.15);color:#f87171}
 .reason-badge.filter{background:rgba(250,204,21,0.15);color:#facc15}
 .reason-badge.unstable{background:rgba(250,204,21,0.15);color:#facc15}
+.quality-4k{color:#a78bfa;font-weight:600;font-size:11px}
+.quality-hd{color:#4ade80;font-weight:600;font-size:11px}
+.quality-sd{color:#facc15;font-weight:600;font-size:11px}
+.chk{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
+background:var(--panel);border:1px solid var(--border);border-radius:10px;
+cursor:pointer;font-size:13px;user-select:none;transition:border-color .15s}
+.chk:hover{border-color:var(--accent)}
+.chk input{accent-color:var(--accent);cursor:pointer}
+.chk-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
 """
 
 THEME_JS = """
@@ -1528,7 +1795,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v17 - {date}</title>
+<title>M3U Check v19 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1545,6 +1812,7 @@ REPORT_T = """<!DOCTYPE html>
 <div class="card"><div class="k">Мёртвых</div><div class="v bad" data-count="{dead}">0</div></div>
 <div class="card"><div class="k">В merged</div><div class="v" data-count="{merged}">0</div>{sp_merged}</div>
 </div>
+{quality_block}
 {donut_block}
 {history_block}
 {unstable_block}
@@ -1595,6 +1863,7 @@ INDEX_T = """<!DOCTYPE html>
 <div class="sub" style="margin:0">Вставь в TiviMate / Televizo / OTT Navigator как Playlist URL</div>
 </div>
 </div>
+{trend_block}
 <h2>Разделы</h2>
 <div class="box"><a href="report.html">📊 Отчёт проверки</a></div>
 <div class="box"><a href="channels.html">🔍 Поиск по каналам</a></div>
@@ -1655,8 +1924,8 @@ CHANNELS_T = """<!DOCTYPE html>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}
-input,select{background:var(--panel);border:1px solid var(--border);color:var(--text);
-padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
+input[type=search],select{background:var(--panel);border:1px solid var(--border);
+color:var(--text);padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
 margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
 -webkit-backdrop-filter:blur(10px)}
 .controls{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}
@@ -1672,19 +1941,24 @@ background:var(--border);border-radius:6px;padding:3px}
 border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
 .copy:hover{background:var(--accent);color:#fff}
 .copy.ok{background:#4ade80;color:#0f1115}
-.epg-yes{color:#4ade80;font-size:11px;margin-left:4px}
-.epg-no{color:var(--muted);font-size:11px;margin-left:4px}
 </style></head><body>
 {theme_btn}
 <a href="index.html">← на главную</a>
 <h1>Каналы</h1>
-<div class="sub">Всего: <span id="cnt">{total}</span> · с EPG: <span id="epg">{epg}</span> · показано: <span id="shown">{total}</span></div>
+<div class="sub">Всего: <b>{total}</b> · с EPG: <b>{epg}</b> · показано: <span id="shown">{total}</span></div>
+<div class="chk-bar">
+<label class="chk"><input type="checkbox" id="f-epg"> Только с EPG</label>
+<label class="chk"><input type="checkbox" id="f-logo"> Только с логотипом</label>
+<label class="chk"><input type="checkbox" id="f-stable"> Только стабильные (&gt;80%)</label>
+<label class="chk"><input type="checkbox" id="f-4k"> Только 4K</label>
+<label class="chk"><input type="checkbox" id="f-hd"> Только HD</label>
+</div>
 <div class="controls">
 <input id="q" type="search" placeholder="Поиск по названию...">
 <select id="g"><option value="">Все группы</option>{group_options}</select>
 </div>
 <table>
-<thead><tr><th></th><th>Название</th><th>Аптайм</th><th>Группа</th><th></th></tr></thead>
+<thead><tr><th></th><th>Название</th><th>Кач.</th><th>Аптайм</th><th>Группа</th><th></th></tr></thead>
 <tbody id="tb"></tbody>
 </table>
 <script>
@@ -1692,6 +1966,11 @@ const CH = {channels_json};
 const tb = document.getElementById('tb');
 const q = document.getElementById('q');
 const g = document.getElementById('g');
+const fEpg = document.getElementById('f-epg');
+const fLogo = document.getElementById('f-logo');
+const fStable = document.getElementById('f-stable');
+const f4k = document.getElementById('f-4k');
+const fHd = document.getElementById('f-hd');
 const shown = document.getElementById('shown');
 const params = new URLSearchParams(location.search);
 const initGroup = params.get('group');
@@ -1704,27 +1983,47 @@ function uptimeHtml(pct, samples) {
   else if (pct < 80) cls = 'uptime-mid';
   return '<span class="' + cls + '">' + pct + '%</span>';
 }
+function qualityHtml(q) {
+  if (q === '4K') return '<span class="quality-4k">4K</span>';
+  if (q === 'HD') return '<span class="quality-hd">HD</span>';
+  if (q === 'SD') return '<span class="quality-sd">SD</span>';
+  return '<span style="color:var(--muted);font-size:11px">—</span>';
+}
 function render(){
   const term = q.value.trim().toLowerCase();
   const grp = g.value;
+  const onlyEpg = fEpg.checked;
+  const onlyLogo = fLogo.checked;
+  const onlyStable = fStable.checked;
+  const only4k = f4k.checked;
+  const onlyHd = fHd.checked;
   let out = [];
   for (const c of CH) {
     if (grp && c.group !== grp) continue;
     if (term && !c.name.toLowerCase().includes(term)) continue;
+    if (onlyEpg && !c.tvg_id) continue;
+    if (onlyLogo && !c.logo) continue;
+    if (onlyStable) {
+      if (c.uptime_pct === null || c.uptime_pct === undefined) continue;
+      if (c.uptime_pct < 80) continue;
+    }
+    if (only4k && c.quality !== '4K') continue;
+    if (onlyHd && c.quality !== 'HD') continue;
     out.push(c);
   }
-  if (out.length > 500) out = out.slice(0, 500);
+  if (out.length > 800) out = out.slice(0, 800);
   const html = out.map(c => {
     const logo = c.logo ? '<img class="logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '';
-    const epg = c.tvg_id ? '<span class="epg-yes" title="' + esc(c.tvg_id) + '">EPG</span>' : '<span class="epg-no">no-EPG</span>';
+    const epg = c.tvg_id ? '<span style="color:#4ade80;font-size:11px;margin-left:4px" title="' + esc(c.tvg_id) + '">EPG</span>' : '';
     const up = uptimeHtml(c.uptime_pct, c.uptime_samples);
     return '<tr><td>' + logo + '</td>'
       + '<td class="name">' + esc(c.name) + epg + '</td>'
+      + '<td>' + qualityHtml(c.quality) + '</td>'
       + '<td>' + up + '</td>'
       + '<td class="group">' + esc(c.group) + '</td>'
       + '<td><button class="copy" data-u="' + esc(c.url) + '">URL</button></td></tr>';
   }).join('');
-  tb.innerHTML = html || '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
+  tb.innerHTML = html || '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
   shown.textContent = out.length;
   tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
     navigator.clipboard.writeText(b.dataset.u).then(() => {
@@ -1736,6 +2035,11 @@ function render(){
 }
 q.addEventListener('input', render);
 g.addEventListener('change', render);
+fEpg.addEventListener('change', render);
+fLogo.addEventListener('change', render);
+fStable.addEventListener('change', render);
+f4k.addEventListener('change', render);
+fHd.addEventListener('change', render);
 render();
 </script>
 {theme_js}
@@ -1857,8 +2161,72 @@ def _sparkline_for_history(history, key):
     return sparkline_svg(vals)
 
 
+def render_trend_svg(history):
+    if not history or len(history) < 2:
+        return '<div class="section"><h2>Тренд</h2><p style="color:var(--muted)">Данных пока нет. Появится через 2-3 запуска.</p></div>'
+    W, H, P = 900, 240, 40
+    n = len(history)
+    step = (W - 2 * P) / max(n - 1, 1)
+
+    def line_points(key):
+        vals = [h.get(key, 0) for h in history]
+        mx = max(vals) if vals else 1
+        mx = max(mx, 1)
+        pts = []
+        for i, v in enumerate(vals):
+            x = P + i * step
+            y = H - P - (v / mx) * (H - 2 * P)
+            pts.append((x, y))
+        return pts
+
+    pts_ok = line_points('ok')
+    pts_merged = line_points('merged')
+    pts_epg = line_points('epg')
+
+    def poly(pts):
+        return " ".join(f"{x:.1f},{y:.1f}" for x, y in pts)
+
+    def area(pts):
+        if not pts:
+            return ''
+        return f"M{pts[0][0]:.1f},{H-P} L" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts) + f" L{pts[-1][0]:.1f},{H-P} Z"
+
+    labels = ""
+    for i in range(0, n, max(1, n // 6)):
+        x = P + i * step
+        d = history[i].get('date', '')[:10]
+        labels += f'<text x="{x:.0f}" y="{H-14}" fill="var(--muted)" font-size="10" text-anchor="middle">{d}</text>'
+
+    mx_all = max([h.get('ok', 0) for h in history] + [1])
+    grid = ""
+    for i in range(5):
+        y = P + i * (H - 2 * P) / 4
+        val = int(mx_all * (1 - i / 4))
+        grid += f'<line x1="{P}" y1="{y:.0f}" x2="{W-P}" y2="{y:.0f}" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,4"/>'
+        grid += f'<text x="6" y="{y+3:.0f}" fill="var(--muted)" font-size="10">{val}</text>'
+
+    return f'''<div class="section"><h2>Тренд (последние {n} запусков)</h2>
+<svg viewBox="0 0 {W} {H}" style="width:100%;height:auto">
+{grid}
+<path d="{area(pts_ok)}" fill="#4ade80" fill-opacity="0.10"/>
+<polyline points="{poly(pts_ok)}" fill="none" stroke="#4ade80" stroke-width="2"/>
+<path d="{area(pts_merged)}" fill="#60a5fa" fill-opacity="0.08"/>
+<polyline points="{poly(pts_merged)}" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+<path d="{area(pts_epg)}" fill="#facc15" fill-opacity="0.08"/>
+<polyline points="{poly(pts_epg)}" fill="none" stroke="#facc15" stroke-width="1.5"/>
+{labels}
+</svg>
+<div style="margin-top:12px;font-size:12px;color:var(--muted)">
+<span style="color:#4ade80">■</span> Рабочих &nbsp;
+<span style="color:#60a5fa">■</span> В merged &nbsp;
+<span style="color:#facc15">■</span> С EPG
+</div>
+</div>'''
+
+
 def render_report(path, stats, merged, total, ok, filt, dead, unstable,
-                  dur, ua, history, groups_all, logo_stats, unstable_channels):
+                  dur, ua, history, groups_all, logo_stats, unstable_channels,
+                  quality_stats, ffprobe_stats):
     rows_pl = []
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
@@ -1882,6 +2250,16 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
         tags = " ".join(f"<span class='tag'>{UA_ICONS.get(k,'•')} {html.escape(k)}: {v}</span>"
                         for k, v in sorted(ua.items(), key=lambda x: -x[1]))
         ua_block = f"<div class='section'><h2>По User-Agent</h2><div>{tags}</div></div>"
+
+    ffprobe_block = ''
+    if ffprobe_stats and any(ffprobe_stats.values()):
+        rows = "\n".join(
+            f"<tr><td>{k}</td><td>{v}</td></tr>"
+            for k, v in ffprobe_stats.items())
+        ffprobe_block = (
+            f"<div class='section'><h2>ffprobe</h2>"
+            f"<table><thead><tr><th>Статус</th><th>Каналов</th></tr></thead>"
+            f"<tbody>{rows}</tbody></table></div>")
 
     unstable_block = ''
     if unstable_channels:
@@ -1933,6 +2311,12 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
 
     hist_block = render_history_svg(history)
     donut_block = render_donut_svg(groups_all)
+    quality_block = render_donut_svg(
+        {k: v for k, v in quality_stats.items() if v > 0},
+        colors_list=QUALITY_COLORS,
+        title='Распределение по качеству',
+        unit='КАНАЛОВ')
+
     denom = (ok + dead + unstable) or 1
     hpct = (ok / denom) * 100
     hb = health_bar(hpct)
@@ -1947,8 +2331,9 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
         n_playlists=len(stats), total=total, ok=ok, filtered=filt, dead=dead,
         unstable=unstable, merged=merged, duration=f"{d // 60}м {d % 60}с",
         health_block=hb, history_block=hist_block, donut_block=donut_block,
+        quality_block=quality_block,
         unstable_block=unstable_block, logo_block=logo_block,
-        ua_block=ua_block, slow_block=slow_block,
+        ua_block=ua_block, slow_block=slow_block, ffprobe_block=ffprobe_block,
         sp_total=sp_total, sp_ok=sp_ok, sp_merged=sp_merged,
         playlists_rows="\n".join(rows_pl), filter_rows=f_rows)
     with open(path, 'w', encoding='utf-8') as f:
@@ -1964,7 +2349,8 @@ def _github_repo_from_pages(pages_url):
     return ''
 
 
-def render_index(path, url, merged, ok, total, unstable, splits, qr_path, pages_url):
+def render_index(path, url, merged, ok, total, unstable, splits, qr_path,
+                 pages_url, history):
     split_html = ''
     if splits:
         items = "\n".join(
@@ -1973,13 +2359,14 @@ def render_index(path, url, merged, ok, total, unstable, splits, qr_path, pages_
         split_html = f"<h2>Отдельные плейлисты</h2>{items}"
     qr_block = f'<img src="{os.path.basename(qr_path)}" alt="QR">' if os.path.isfile(qr_path) else ''
     gh_repo = _github_repo_from_pages(pages_url)
+    trend_block = render_trend_svg(history)
     out = fmt(
         INDEX_T,
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         playlist_url=url, merged_count=merged, ok=ok, total=total,
         unstable=unstable, qr_block=qr_block, splits_block=split_html,
-        github_repo=gh_repo)
+        github_repo=gh_repo, trend_block=trend_block)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
 
@@ -1997,10 +2384,12 @@ def render_channels(path, channels):
         pct, total = get_uptime_pct(url)
         m = re.search(r'tvg-logo="([^"]*)"', extinf)
         logo = m.group(1) if m else ''
+        q = get_quality_for_url(url, name)
         groups[group] = groups.get(group, 0) + 1
         ch_list.append({'name': name, 'group': group, 'logo': logo,
                         'url': url, 'tvg_id': tid,
-                        'uptime_pct': pct, 'uptime_samples': total})
+                        'uptime_pct': pct, 'uptime_samples': total,
+                        'quality': q})
     group_opts = "\n".join(
         f'<option value="{html.escape(g)}">{html.escape(g)} ({c})</option>'
         for g, c in sorted(groups.items()))
@@ -2089,8 +2478,9 @@ def tg_file(token, chat, path, caption=''):
 
 
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
-              source_results, is_weekly, logo_stats, epg_count):
-    lines = ["<b>M3U Check v17</b>"]
+              source_results, is_weekly, logo_stats, epg_count, quality_stats,
+              ffprobe_stats):
+    lines = ["<b>M3U Check v19</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -2106,6 +2496,14 @@ def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
         lines.append(f"• {html.escape(st['label'])}: {st['ok']}/{st['total']} ({pct:.0f}%)")
+    if ffprobe_stats and any(ffprobe_stats.values()):
+        lines.append("")
+        lines.append("<b>ffprobe:</b> " + ", ".join(
+            f"{k}={v}" for k, v in ffprobe_stats.items() if v))
+    if quality_stats:
+        qs = ", ".join(f"{k}={v}" for k, v in quality_stats.items() if v > 0)
+        lines.append("")
+        lines.append(f"<b>Качество:</b> {qs}")
     if logo_stats:
         total_with_logo = sum(v for k, v in logo_stats.items() if k != 'none')
         total_all = sum(logo_stats.values()) or 1
@@ -2141,6 +2539,15 @@ def parse_args():
     p.add_argument('--multi-ua', action='store_true')
     p.add_argument('--no-iptv-logos', action='store_true')
     p.add_argument('--check-all-logos', action='store_true')
+    p.add_argument('--no-hls-quality', action='store_true')
+    p.add_argument('--ffprobe', action='store_true',
+                   help='Включить глубокую проверку через ffprobe')
+    p.add_argument('--ffprobe-workers', type=int, default=4,
+                   help='Число параллельных ffprobe процессов')
+    p.add_argument('--ffprobe-timeout', type=int, default=8,
+                   help='Таймаут ffprobe на один канал (сек)')
+    p.add_argument('--ffprobe-cache-days', type=int, default=3,
+                   help='Кэш ffprobe на N дней')
     p.add_argument('--split-all', action='store_true')
     p.add_argument('--weekly-backup', action='store_true')
     p.add_argument('--min-uptime', type=int, default=50)
@@ -2158,7 +2565,8 @@ def parse_args():
 
 
 def main():
-    global CFG, CATEGORIES, FILTERS, UPTIME_NEW, REJECTED
+    global CFG, CATEGORIES, FILTERS, UPTIME_NEW, REJECTED, QUALITY_MAP_NEW
+    global FFPROBE_MAP_NEW, FFPROBE_SEM
     CFG = parse_args()
     CFG.verify_ssl = not CFG.no_ssl_verify
     if CFG.no_ssl_verify:
@@ -2166,6 +2574,16 @@ def main():
     setup_logging(CFG.log, CFG.quiet)
 
     REJECTED = []
+    QUALITY_MAP_NEW = {}
+    FFPROBE_MAP_NEW = {}
+    FFPROBE_SEM = threading.Semaphore(max(1, CFG.ffprobe_workers))
+
+    if CFG.ffprobe:
+        if HAS_FFPROBE:
+            emit("ffprobe: включён (все каналы через реальную проверку)")
+        else:
+            emit("ffprobe: НЕ НАЙДЕН в системе, пропускаем проверку")
+            CFG.ffprobe = False
 
     CATEGORIES = load_json(CFG.categories)
     FILTERS = load_json(CFG.filters)
@@ -2180,6 +2598,16 @@ def main():
     load_uptime(uptime_path)
     if UPTIME:
         emit(f"Аптайм: загружено {len(UPTIME)} URL из истории")
+
+    quality_path = os.path.join(CFG.docs_dir, 'quality.json')
+    load_quality_cache(quality_path)
+    if QUALITY_MAP:
+        emit(f"Качество: загружено {len(QUALITY_MAP)} URL из кэша")
+
+    ffprobe_path = os.path.join(CFG.docs_dir, 'ffprobe.json')
+    load_ffprobe_cache(ffprobe_path)
+    if FFPROBE_MAP:
+        emit(f"ffprobe: загружено {len(FFPROBE_MAP)} URL из кэша")
 
     emit("Загружаю базу iptv-org (логотипы + iptv-org id)...")
     load_iptv_org()
@@ -2255,8 +2683,11 @@ def main():
             write_playlist(os.path.join(CFG.output, CFG.merged_name), ordered_merged)
 
         splits = write_splits(ordered_merged, CFG.docs_dir, split_all=CFG.split_all)
+        quality_splits = write_quality_splits(ordered_merged, CFG.docs_dir)
         for fname, cnt in splits:
             emit(f"    split: {fname} ({cnt})")
+        for fname, cnt in quality_splits:
+            emit(f"    quality: {fname} ({cnt})")
 
         total = sum(s['total'] for s in stats_list)
         ok = sum(s['ok'] for s in stats_list)
@@ -2264,6 +2695,11 @@ def main():
         unstable = sum(s.get('unstable', 0) for s in stats_list)
         dead = total - ok - filt - unstable
         epg_count = sum(1 for e, _ in ordered_merged if get_tvg_id(e))
+
+        quality_stats = {'4K': 0, 'HD': 0, 'SD': 0, 'Unknown': 0}
+        for e, u in ordered_merged:
+            q = get_quality_for_url(u, get_name(e))
+            quality_stats[q] = quality_stats.get(q, 0) + 1
 
         ua_totals = {}
         for s in stats_list:
@@ -2308,7 +2744,7 @@ def main():
         render_report(os.path.join(CFG.docs_dir, 'report.html'),
                       stats_list, len(ordered_merged), total, ok, filt, dead, unstable,
                       time.time() - started, ua_totals, history, groups_all,
-                      LOGO_STATS, unstable_list)
+                      LOGO_STATS, unstable_list, quality_stats, FFPROBE_STATS)
 
         pages = CFG.pages_url.rstrip('/')
         purl = f'{pages}/{CFG.merged_name}' if pages else CFG.merged_name
@@ -2318,12 +2754,17 @@ def main():
             generate_qr(purl, qr_path)
         render_index(os.path.join(CFG.docs_dir, 'index.html'),
                      purl, len(ordered_merged), ok, total, unstable,
-                     splits, qr_path, pages)
+                     splits, qr_path, pages, history)
         render_channels(os.path.join(CFG.docs_dir, 'channels.html'), ordered_merged)
         write_pwa_assets(CFG.docs_dir)
 
         save_uptime(uptime_path, all_current_urls)
-        emit(f"\nАптайм: сохранено {len(UPTIME)} URL в истории")
+        save_quality_cache(quality_path, all_current_urls)
+        save_ffprobe_cache(ffprobe_path, all_current_urls)
+        emit(f"\nАптайм: сохранено {len(UPTIME)} URL")
+        emit(f"Качество: сохранено {len(QUALITY_MAP)} URL")
+        if CFG.ffprobe:
+            emit(f"ffprobe: сохранено {len(FFPROBE_MAP)} URL")
 
         logo_total = sum(v for k, v in LOGO_STATS.items() if k != 'none')
         logo_all = sum(LOGO_STATS.values()) or 1
@@ -2331,6 +2772,11 @@ def main():
              f"OK={ok}, фильтр={filt}, нестабильных={unstable}, "
              f"merged={len(ordered_merged)}, "
              f"с EPG iptvx={epg_count}, с лого={logo_total}/{logo_all} ({logo_total/logo_all*100:.0f}%)")
+        emit(f"    Качество: 4K={quality_stats['4K']}, HD={quality_stats['HD']}, "
+             f"SD={quality_stats['SD']}, Unknown={quality_stats['Unknown']}")
+        if CFG.ffprobe:
+            emit(f"    ffprobe: ok={FFPROBE_STATS['ok']}, fail={FFPROBE_STATS['fail']}, "
+                 f"cached_ok={FFPROBE_STATS['cached_ok']}, cached_fail={FFPROBE_STATS['cached_fail']}")
         if LOGO_STATS:
             for k in ['from_src', 'from_id', 'from_name', 'from_translit',
                       'from_epg_icon', 'from_prefix', 'from_txt', 'none']:
@@ -2342,7 +2788,8 @@ def main():
             tg_report(stats_list, total, ok, filt, unstable, len(ordered_merged),
                       time.time() - started, iurl, source_results,
                       is_weekly=(CFG.weekly_backup and is_sunday),
-                      logo_stats=LOGO_STATS, epg_count=epg_count)
+                      logo_stats=LOGO_STATS, epg_count=epg_count,
+                      quality_stats=quality_stats, ffprobe_stats=FFPROBE_STATS)
             if CFG.tg_send_merged and merged_path:
                 tg_file(CFG.tg_token, CFG.tg_chat, merged_path,
                         caption="Merged плейлист")
