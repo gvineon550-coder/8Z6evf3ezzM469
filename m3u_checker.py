@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-M3U Checker v13 — аптайм каналов, автоотсев мигающих.
+M3U Checker v13.1 — аптайм каналов, автоотсев мигающих,
+weekly backup только по воскресеньям.
 """
 import os
 import re
@@ -87,8 +88,8 @@ IPTV_LOGOS = {'by_id': {}, 'by_name': {}}
 IPTV_IDS = {'by_name': {}, 'by_name_translit': {}}
 LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
               'from_translit': 0, 'from_txt': 0, 'none': 0}
-UPTIME = {}  # url -> [0/1, ...]
-UPTIME_NEW = {}  # url -> [0/1] для этого запуска
+UPTIME = {}
+UPTIME_NEW = {}
 UPTIME_LOCK = threading.Lock()
 
 
@@ -158,7 +159,6 @@ def normalize_name_translit(name):
     return translit_ru(n) if n else ''
 
 
-# ---------- UPTIME ----------
 def load_uptime(path):
     global UPTIME
     if not os.path.isfile(path):
@@ -177,21 +177,16 @@ def load_uptime(path):
 
 
 def save_uptime(path, current_urls):
-    """Сохраняет uptime.json с учётом новых результатов и очисткой старых."""
     os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
-
     with UPTIME_LOCK:
-        # Обновляем историю по новым результатам
         for url, val in UPTIME_NEW.items():
             hist = UPTIME.get(url, [])
             hist.append(val)
             UPTIME[url] = hist[-UPTIME_MAX:]
-        # Чистим URL, которых больше нет ни в одном источнике
         alive = set(current_urls)
         for url in list(UPTIME.keys()):
             if url not in alive:
                 del UPTIME[url]
-
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(UPTIME, f, ensure_ascii=False, separators=(',', ':'))
 
@@ -208,7 +203,6 @@ def get_uptime_pct(url):
 
 
 def is_migayushchiy(url):
-    """True если канал надо отсеять из-за низкого аптайма."""
     if CFG.min_uptime <= 0:
         return False
     pct, total = get_uptime_pct(url)
@@ -737,16 +731,13 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
         return index, 'filtered', None, None, reason, None, None, None, None
     ok, ua, elapsed = check_stream(url, cache)
     if not ok:
-        # Записываем как мёртвого в историю
         with UPTIME_LOCK:
             UPTIME_NEW[url] = 0
         return index, 'dead', None, None, None, None, None, None, None
 
-    # Живой — записываем как успех
     with UPTIME_LOCK:
         UPTIME_NEW[url] = 1
 
-    # Проверяем аптайм — мигающий?
     if is_migayushchiy(url):
         pct, total = get_uptime_pct(url)
         return index, 'unstable', None, None, f"uptime {pct}% ({total} проверок)", None, None, None, None
@@ -807,7 +798,6 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             filtered, _ = is_filtered(name, group, url)
             if filtered:
                 continue
-            # Локальный лист — не проверяем аптайм, всегда добавляем
             extinf = clean_extinf(extinf)
             new_tvg_id = resolve_tvg_id(extinf)
             if new_tvg_id:
@@ -850,7 +840,6 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 if pbar:
                     pbar.update(1)
                 continue
-            # Собираем все URL для сохранения в uptime
             all_urls.append(channels[idx][1] if idx < len(channels) else '')
             if status == 'ok':
                 valid.append((idx, extinf, url))
@@ -1270,7 +1259,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v13 - {date}</title>
+<title>M3U Check v13.1 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1751,7 +1740,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats):
-    lines = ["<b>M3U Check v13</b>"]
+    lines = ["<b>M3U Check v13.1</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -1837,7 +1826,6 @@ def main():
     FILTERS['_suspicious'] = compile_patterns(FILTERS.get('suspicious_patterns', []))
     FILTERS['_malformed'] = compile_patterns(FILTERS.get('malformed_patterns', []))
 
-    # Загружаем историю аптайма ДО начала проверки
     uptime_path = os.path.join(CFG.docs_dir, 'uptime.json')
     load_uptime(uptime_path)
     if UPTIME:
@@ -1930,29 +1918,17 @@ def main():
                     continue
                 ua_totals[k] = ua_totals.get(k, 0) + c
 
-        # Собираем нестабильные каналы для отчёта
-        unstable_channels = []
-        for st in stats_list:
-            for nm, u, el in st.get('slow', []):
-                pass  # not used here
-        for st in stats_list:
-            pass
-        # Соберём из filt_by_reason
         unstable_list = []
-        # Проходим по всем URL, у которых аптайм низкий
         for u, hist in UPTIME.items():
             if len(hist) < CFG.min_uptime_samples:
                 continue
             pct = round(sum(hist) / len(hist) * 100)
             if pct < CFG.min_uptime:
-                # найдём имя канала
                 for st in stats_list:
                     for e, uu in st['channels']:
                         if uu == u:
                             unstable_list.append((get_name(e), u, pct, len(hist)))
                             break
-        # Дополнительно — те, что сейчас отсеяны как unstable
-        # (уже есть в unstable_list, если URL тот же)
 
         history_path = os.path.join(CFG.docs_dir, 'history.json')
         history = load_history(history_path)
@@ -1987,7 +1963,6 @@ def main():
         render_channels(os.path.join(CFG.docs_dir, 'channels.html'), ordered_merged)
         write_pwa_assets(CFG.docs_dir)
 
-        # Сохраняем аптайм
         save_uptime(uptime_path, all_current_urls)
         emit(f"\nАптайм: сохранено {len(UPTIME)} URL в истории")
 
@@ -2004,13 +1979,15 @@ def main():
                     emit(f"    лого {k}: {LOGO_STATS[k]}")
 
         if CFG.tg_token and CFG.tg_chat:
+            is_sunday = datetime.datetime.now().weekday() == 6
             tg_report(stats_list, total, ok, filt, unstable, len(ordered_merged),
                       time.time() - started, iurl, source_results,
-                      is_weekly=CFG.weekly_backup, logo_stats=LOGO_STATS)
+                      is_weekly=(CFG.weekly_backup and is_sunday),
+                      logo_stats=LOGO_STATS)
             if CFG.tg_send_merged and merged_path:
                 tg_file(CFG.tg_token, CFG.tg_chat, merged_path,
                         caption="Merged плейлист")
-            if CFG.weekly_backup:
+            if CFG.weekly_backup and is_sunday:
                 for fn in ('report.html', 'channels.csv', 'channels.html'):
                     fp = os.path.join(CFG.docs_dir, fn)
                     if os.path.isfile(fp):
