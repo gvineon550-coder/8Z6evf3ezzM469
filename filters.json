@@ -1,4 +1,11 @@
 {
+  "whitelist_url_patterns": [
+    "kinowalk.hopto.org",
+    "rutube.ru"
+  ],
+  "whitelist_name_patterns": [
+    "(?i)\\brutube\\b"
+  ],
   "name_blocklist": [
     "(?i)\\btest\\b", "(?i)\\bтест\\b", "(?i)\\bdemo\\b",
     "(?i)\\bпромо\\b", "(?i)\\bpromo\\b", "(?i)\\bbackup\\b",
