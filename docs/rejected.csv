@@ -106,7 +106,6 @@ Smotrim 100% Lyubov (720p),,https://stream.smotrim.ru/hls/fasttv01/playlist_2.m3
 Smotrim 100% Muzhskoe (720p),,https://stream.smotrim.ru/hls/fasttv02/playlist_3.m3u8,dead:ffprobe
 Smotrim 100% Prazdnik (720p),,https://stream.smotrim.ru/hls/fasttv04/playlist_3.m3u8,dead:ffprobe
 Solnce (576p),,https://tv.mediacdn.ru/live/solntse/playlist.m3u8,dead:ffprobe
-SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,dead:ffprobe
 Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,dead:ffprobe
 Spas (576p),,https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8,dead:ffprobe
 Sportivnyy (1080p),,https://live-3.otcnet.ru/sportivny/index.m3u8,dead:ffprobe
@@ -365,7 +364,7 @@ Vkus (576p),,http://178.134.1.158:8081/vkus/index.m3u8,dead:http_404
 Феникс+Кино,Кино,http://tv.teamm.workers.dev/ch147/tv.m3u8?tv=tv,dead:http_404
 EDM Mainstage,Музыкальные,https://mbit1.worldcast.tv/dancetelevisionseven/stream_0.m3u8,dead:http_404
 TravelXP 4K,Познавательные,http://91.247.68.229:8000/play/Travelxp/index.m3u8,dead:http_404
-Наша Тема,Развлекательные,http://live-3.otcnet.ru/nashatema/index.m3u8,dead:http_503
+SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,dead:http_503
 Afontovo,,https://stream.afontovo.ru/hd.m3u8,dead:timeout
 Bolt (576p),,http://hls127.freeott.top:8080/Bolt/video.m3u8,dead:timeout
 Channel 8 (576p),,http://hls127.freeott.top:8080/8_KANAL/video.m3u8,dead:timeout
@@ -379,7 +378,6 @@ Hit HD (1080p),,http://hls127.freeott.top:8080/XitHD/video.m3u8,dead:timeout
 Istoriya (576p),,http://hls127.freeott.top:8080/Istoriya/video.m3u8,dead:timeout
 Kino 24 (720p),,http://sirius.greenhosting.ru/Kino24Ru/video.m3u8,dead:timeout
 Kinopokaz HD (1080p),,http://hls127.freeott.top:8080/Kinopokaz_HD/video.m3u8,dead:timeout
-Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,dead:timeout
 Kinoseriya (1080p),,http://hls127.freeott.top:8080/Kinoseriya_HD/video.m3u8,dead:timeout
 Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,dead:timeout
 Kluch (576p),,http://hls127.freeott.top:8080/Kluch/video.m3u8,dead:timeout
@@ -440,6 +438,7 @@ Zvezda Plus (576p),,http://45.145.32.13:20440/zvezdaplus/index.m3u8?token=test,d
 Первый Крымский (720p),,https://live1.1tvcrimea.ru/1tvcrimea.m3u8,dead:timeout
 Симферополь 24,,https://simf.1tvcrimea.ru/simferopol24.m3u8,dead:timeout
 Смайл ТВ,,https://5f05e059699ae.streamlock.net/WEB_Smilik/ngrp:Smilik.stream-adaptive/playlist.m3u8,dead:timeout
+Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,dead:timeout
 ТВК 24 (576p),,https://air.tvk6.ru/tvk24/playlist.m3u8,dead:timeout
 FantasticMistyc,Kinowalk TV,rtmp://vkvsd199.okcdn.ru/playback/3780958366657?stkn=c3qCEto7Z19Gl6AT2PFZujdHvggU3zjJ1Wd4nvkEESOm9yVb5Ua8iL_YwVUg7G8dNsZOAkV5dUs&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
 TDM KINO,Kinowalk TV,rtmp://vkvsd79.okcdn.ru/playback/11865043512184?stkn=iP9X2jyo6Zr-w_LUZKkXvBaBp3-lOX9JjFgyOpcPnbsjorW-MN9cBeUsyuGVMWt0uqYPqhnhKxwK&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,dead:timeout
@@ -472,4 +471,4 @@ NikNik-TV,Детские,https://hostrec.ru/live/wic2AtEFCLwsZcUkAgtZcjlYgjc.m3u
 Том и Джерри,Детские,https://rpn3.bozztv.com/dvrfl07/giatv-208314/playlist.m3u8,group_exclude
 Чип и Дейл,Детские,http://194.26.229.213/chip-n-dale-rescue-rangers/index.m3u8,group_exclude
 RT HD (1080p),,https://wisewatchoott.wiseplayout.com/RT/master.m3u8,shortener
-Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,unstable:36%
+Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,unstable:7%

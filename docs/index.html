@@ -9,9 +9,11 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="IPTV">
 <link rel="apple-touch-icon" href="icon.svg">
+<meta name="robots" content="noindex,nofollow">
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script>window.QRCode||document.write('<script src="https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js"><\/script>')</script>
 <style>
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0f1115; --panel:rgba(24,27,32,0.72); --border:#23272e;
   --text:#e6e6e6; --muted:#8a8f98; --accent:#60a5fa;
@@ -26,92 +28,60 @@
   --text:#e0e7ff; --muted:#94a3b8; --accent:#60a5fa;
 }
 html{min-height:100%}
-body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
-color:var(--text);margin:0;padding:24px;max-width:1100px;margin:0 auto;
+body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
+color:var(--text);margin:0 auto;padding:24px;max-width:1100px;
 min-height:100vh;
 background:var(--bg);
 background-image:
   radial-gradient(circle at 15% -10%, rgba(96,165,250,0.12) 0%, transparent 40%),
-  radial-gradient(circle at 85% 0%, rgba(74,222,128,0.10) 0%, transparent 40%),
-  radial-gradient(circle at 50% 100%, rgba(167,139,250,0.06) 0%, transparent 50%);
-background-attachment:fixed;
-transition:background-color .3s,color .3s}
+  radial-gradient(circle at 85% 0%, rgba(74,222,128,0.10) 0%, transparent 40%);
+background-attachment:fixed;transition:background-color .3s,color .3s}
 h1{margin:0 0 4px;font-size:22px;letter-spacing:-.3px}
-h2{font-size:15px;margin:0 0 12px;letter-spacing:-.1px}
+h2{font-size:15px;margin:0 0 12px}
 .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
+.section,.card,.box{background:var(--panel);border:1px solid var(--border);
+border-radius:14px;padding:18px;margin-bottom:16px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
+.card{padding:16px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:12px;margin-bottom:24px}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;
-padding:16px;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-transition:transform .15s,border-color .15s,box-shadow .15s;
-animation:fadeInUp .5s ease-out both}
-.card:nth-child(1){animation-delay:.05s}
-.card:nth-child(2){animation-delay:.10s}
-.card:nth-child(3){animation-delay:.15s}
-.card:nth-child(4){animation-delay:.20s}
-.card:nth-child(5){animation-delay:.25s}
-.card:nth-child(6){animation-delay:.30s}
-.card:hover{transform:translateY(-2px);border-color:var(--accent);
-box-shadow:0 8px 24px rgba(0,0,0,0.15)}
 .card .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.card .v{font-size:26px;font-weight:700;margin-top:6px;letter-spacing:-.5px;
-font-variant-numeric:tabular-nums}
-.card .v.good{color:#4ade80;text-shadow:0 0 24px rgba(74,222,128,0.25)}
+.card .v{font-size:26px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
+.card .v.good{color:#4ade80}
 .card .v.bad{color:#f87171}
 .card .v.warn{color:#facc15}
-@keyframes fadeInUp{
-  from{opacity:0;transform:translateY(12px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.section{background:var(--panel);border:1px solid var(--border);border-radius:14px;
-padding:18px;margin-bottom:16px;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
-tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(96,165,250,0.05)}
 .tag{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--border);
 font-size:12px;color:var(--muted);margin:2px}
 .back{display:inline-block;margin-bottom:16px;color:var(--accent);text-decoration:none}
-.box{background:var(--panel);border:1px solid var(--border);border-radius:14px;
-padding:18px;margin-bottom:12px;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
 code{background:var(--bg);padding:3px 8px;border-radius:6px;font-size:13px;
 word-break:break-all;color:#facc15;font-family:ui-monospace,Menlo,monospace}
-.top-right{position:fixed;top:16px;right:16px;z-index:100;
-display:flex;gap:8px;align-items:center}
-.theme-btn{background:var(--panel);border:1px solid var(--border);
-color:var(--text);width:42px;height:42px;border-radius:50%;cursor:pointer;
-font-size:18px;line-height:1;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
+.top-right{position:fixed;top:16px;right:16px;z-index:100;display:flex;gap:8px;align-items:center}
+.theme-btn{background:var(--panel);border:1px solid var(--border);color:var(--text);
+width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:18px;
+backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
 transition:transform .15s}
 .theme-btn:hover{transform:scale(1.08)}
 .live-widget{background:var(--panel);border:1px solid var(--border);
 border-radius:20px;padding:8px 14px;font-size:13px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
+backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
 display:flex;gap:14px;align-items:center;white-space:nowrap}
 .live-widget .live-item{display:flex;align-items:center;gap:4px;color:var(--muted)}
 .live-widget .live-item strong{color:var(--text);font-weight:500}
-@media(max-width:600px){
-  .live-widget{padding:6px 10px;font-size:12px;gap:10px}
-}
-@media(max-width:420px){
-  .live-widget .hide-mobile{display:none}
-}
+@media(max-width:600px){.live-widget{padding:6px 10px;font-size:12px;gap:10px}}
+@media(max-width:420px){.live-widget .hide-mobile{display:none}}
 .health-wrap{margin-bottom:24px;padding:14px 18px;background:var(--panel);
-border:1px solid var(--border);border-radius:14px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
+border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(var(--glass-blur))}
 .health-bar{height:8px;background:var(--border);border-radius:8px;overflow:hidden}
-.health-bar > div{height:100%;border-radius:8px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.health-bar > div{height:100%;border-radius:8px;transition:width 1.2s}
 .health-label{margin-top:8px;font-size:13px;color:var(--muted)}
 .donut-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
 .donut-chart{flex:0 0 220px}
@@ -121,14 +91,11 @@ border-bottom:1px solid var(--border)}
 .legend-row:last-child{border-bottom:none}
 .legend-dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
 .legend-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.legend-count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
-.legend-pct{font-variant-numeric:tabular-nums;color:var(--text);font-size:12px;
-font-weight:500;min-width:44px;text-align:right}
+.legend-count{color:var(--muted);font-size:12px}
+.legend-pct{color:var(--text);font-size:12px;font-weight:500;min-width:44px;text-align:right}
 .wf-status{font-size:13px;margin-bottom:16px;padding:10px 14px;
 background:var(--panel);border:1px solid var(--border);border-radius:12px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
+backdrop-filter:blur(var(--glass-blur))}
 .copy-btn{background:var(--border);border:none;color:var(--text);padding:6px 12px;
 border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .copy-btn:hover{background:var(--accent);color:#fff}
@@ -137,8 +104,8 @@ border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .uptime-mid{color:#facc15;font-weight:500}
 .uptime-low{color:#f87171;font-weight:500}
 .uptime-none{color:var(--muted)}
-.reason-badge{display:inline-block;padding:2px 8px;border-radius:6px;
-font-size:11px;font-weight:500;background:var(--border);color:var(--muted)}
+.reason-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;
+font-weight:500;background:var(--border);color:var(--muted)}
 .reason-badge.dead{background:rgba(248,113,113,0.15);color:#f87171}
 .reason-badge.filter{background:rgba(250,204,21,0.15);color:#facc15}
 .reason-badge.unstable{background:rgba(250,204,21,0.15);color:#facc15}
@@ -147,24 +114,18 @@ font-size:11px;font-weight:500;background:var(--border);color:var(--muted)}
 .quality-sd{color:#facc15;font-weight:600;font-size:11px}
 .chk{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
 background:var(--panel);border:1px solid var(--border);border-radius:10px;
-cursor:pointer;font-size:13px;user-select:none;transition:border-color .15s,transform .15s}
-.chk:hover{border-color:var(--accent);transform:translateY(-1px)}
+cursor:pointer;font-size:13px;user-select:none}
+.chk:hover{border-color:var(--accent)}
 .chk input{accent-color:var(--accent);cursor:pointer}
 .chk-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.view-toggle{background:var(--panel);border:1px solid var(--border);
-color:var(--text);padding:8px 16px;border-radius:10px;cursor:pointer;
-font-size:13px;transition:border-color .15s;user-select:none}
+.view-toggle{background:var(--panel);border:1px solid var(--border);color:var(--text);
+padding:8px 16px;border-radius:10px;cursor:pointer;font-size:13px;user-select:none}
 .view-toggle:hover{border-color:var(--accent)}
-.channels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-gap:12px;margin-bottom:16px}
+.channels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .channel-card{background:var(--panel);border:1px solid var(--border);
-border-radius:14px;padding:14px;text-align:center;cursor:pointer;
-transition:transform .15s,border-color .15s,box-shadow .15s;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-position:relative;animation:fadeInUp .4s ease-out both}
-.channel-card:hover{transform:translateY(-3px);border-color:var(--accent);
-box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+border-radius:14px;padding:14px;text-align:center;position:relative;
+backdrop-filter:blur(var(--glass-blur));animation:fadeInUp .4s ease-out both}
+.channel-card:hover{border-color:var(--accent)}
 .channel-card .cc-logo{width:56px;height:56px;object-fit:contain;
 background:var(--border);border-radius:10px;padding:6px;margin-bottom:8px}
 .channel-card .cc-name{font-size:13px;font-weight:500;margin-bottom:4px;
@@ -172,18 +133,14 @@ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .channel-card .cc-meta{font-size:11px;color:var(--muted);
 overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .channel-card .cc-status{position:absolute;top:8px;right:8px;font-size:14px}
-.channel-card .cc-actions{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.channel-card .cc-actions{margin-top:8px}
 .channel-card .cc-btn{background:var(--border);border:none;color:var(--muted);
-padding:3px 8px;border-radius:6px;font-size:10px;cursor:pointer;
-transition:background .15s}
-.channel-card .cc-btn:hover{background:var(--accent);color:#fff}
+padding:3px 8px;border-radius:6px;font-size:10px;cursor:pointer}
 .channel-card .cc-btn.ok{background:#4ade80;color:#0f1115}
 .charts-tip{position:fixed;background:var(--panel);border:1px solid var(--border);
 border-radius:10px;padding:8px 12px;font-size:12px;pointer-events:none;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-box-shadow:0 4px 16px rgba(0,0,0,0.3);z-index:200;
-opacity:0;transition:opacity .15s;color:var(--text);white-space:nowrap}
+backdrop-filter:blur(var(--glass-blur));box-shadow:0 4px 16px rgba(0,0,0,0.3);
+z-index:200;opacity:0;transition:opacity .15s;color:var(--text);white-space:nowrap}
 .charts-tip.show{opacity:1}
 .charts-tip .tt-val{font-weight:600;color:var(--accent)}
 .charts-tip .tt-date{color:var(--muted);font-size:11px;margin-top:2px}
@@ -198,45 +155,164 @@ background:radial-gradient(circle,rgba(74,222,128,0.06),transparent 60%);
 animation:float2 30s ease-in-out infinite}
 @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
 @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,-50px)}}
-
-/* ===== Secure block (шифрование ссылок) ===== */
+.hero{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
+.clock-card{background:var(--panel);border:1px solid var(--border);
+border-radius:24px;padding:32px 24px;text-align:center;
+backdrop-filter:blur(var(--glass-blur));position:relative;overflow:hidden;
+animation:fadeInUp .9s ease-out}
+.clock-card::before{content:'';position:absolute;top:-50%;left:-50%;
+width:200%;height:200%;
+background:conic-gradient(from 0deg,transparent,rgba(96,165,250,0.06),transparent 25%);
+animation:rotate 24s linear infinite;pointer-events:none}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.clock{font-size:clamp(60px,17vw,100px);font-weight:200;letter-spacing:-0.04em;
+line-height:1;font-variant-numeric:tabular-nums;
+background:linear-gradient(135deg, var(--accent), #a78bfa);
+-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+position:relative;z-index:1}
+.clock .colon{animation:blink 1s steps(1) infinite;opacity:0.7}
+@keyframes blink{50%{opacity:0.2}}
+.clock .sec{font-size:0.38em;color:var(--accent);-webkit-text-fill-color:var(--accent);
+margin-left:10px;opacity:0.7;font-variant-numeric:tabular-nums}
+.tz{font-size:13px;color:var(--muted);margin-top:10px;position:relative;z-index:1}
+.date-line{margin-top:16px;font-size:16px;position:relative;z-index:1;
+display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap}
+.date-line .wd{color:var(--accent);font-weight:500}
+.date-line .yr{color:#a78bfa;font-weight:500;font-size:20px;font-variant-numeric:tabular-nums}
+.date-line .mo{color:var(--muted);font-size:14px}
+.art-card{border-radius:24px;overflow:hidden;aspect-ratio:3/2;
+background:var(--panel);border:1px solid var(--border);position:relative;
+animation:fadeInUp .9s ease-out .1s both}
+.art-card svg{width:100%;height:100%;display:block}
+.art-label{position:absolute;bottom:12px;right:14px;font-size:11px;
+color:rgba(255,255,255,0.65);background:rgba(0,0,0,0.35);
+padding:5px 12px;border-radius:14px;backdrop-filter:blur(8px)}
+.holiday-plaque{text-align:center;padding:10px 20px;
+background:linear-gradient(135deg,rgba(255,193,7,0.15),rgba(255,87,34,0.15));
+border:1px solid rgba(255,193,7,0.3);border-radius:14px;margin-bottom:16px;
+font-size:15px;font-weight:500;animation:holidayPulse 3s ease-in-out infinite}
+@keyframes holidayPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,193,7,0.3)}
+50%{box-shadow:0 0 30px 4px rgba(255,193,7,0.2)}}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+@media(max-width:520px){.info-grid{grid-template-columns:1fr}}
+.wx-hero{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:14px}
+.wx-icon{font-size:64px;line-height:1;filter:drop-shadow(0 4px 16px rgba(96,165,250,0.3))}
+.wx-temp{font-size:46px;font-weight:200;letter-spacing:-0.02em;line-height:1}
+.wx-feels{font-size:12px;color:var(--muted);margin-top:4px}
+.wx-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+padding-top:12px;border-top:1px solid var(--border)}
+.wx-meta-item{text-align:center;font-size:11px}
+.wx-meta-item span{display:block;font-size:18px;margin-bottom:2px}
+.wx-meta-item b{font-size:13px;font-weight:500}
+.wx-meta-item small{color:var(--muted);display:block;font-size:10px;margin-top:2px}
+.wx-sun{display:flex;justify-content:space-around;padding:12px 0;margin-top:12px;
+border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+.wx-sun-item{display:flex;align-items:center;gap:6px}
+.wx-sun-item b{color:var(--text);font-weight:500}
+.wx-forecast{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.fc-day{text-align:center}
+.fc-date{font-size:10px;color:var(--muted);margin-bottom:6px}
+.fc-icon{font-size:26px;margin-bottom:6px;line-height:1}
+.fc-temps{font-size:11px;display:flex;flex-direction:column;gap:2px}
+.fc-max{color:var(--text);font-weight:500}
+.fc-min{color:var(--muted);font-size:10px}
+.cur-row{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px}
+.cur-row + .cur-row{border-top:1px solid var(--border)}
+.cur-flag{font-size:20px}
+.cur-name{font-size:12px;color:var(--muted);min-width:38px;letter-spacing:0.5px}
+.cur-val{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:500;font-size:16px}
+.moon-wrap{text-align:center;padding:8px 0}
+.moon-icon{font-size:72px;line-height:1;margin-bottom:10px;display:block;
+filter:drop-shadow(0 0 24px rgba(167,139,250,0.5));
+animation:moonGlow 4s ease-in-out infinite}
+@keyframes moonGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(167,139,250,0.4))}
+50%{filter:drop-shadow(0 0 32px rgba(167,139,250,0.6))}}
+.moon-name{font-size:13px;color:var(--muted)}
+.cal-month{font-size:15px;font-weight:500;text-align:center;margin-bottom:12px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-head{font-size:10px;color:var(--muted);text-align:center;font-weight:600;
+padding:4px 0;letter-spacing:0.5px}
+.cal-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+font-size:12px;border-radius:8px;position:relative;font-variant-numeric:tabular-nums;
+transition:background .2s}
+.cal-cell:hover{background:rgba(96,165,250,0.1)}
+.cal-empty{opacity:0.2}
+.cal-weekend{color:var(--muted)}
+.cal-today{background:linear-gradient(135deg,var(--accent),#a78bfa);color:white;
+font-weight:600;box-shadow:0 0 16px rgba(96,165,250,0.4)}
+.cal-hol{position:absolute;top:2px;right:3px;font-size:8px;color:#f87171;line-height:1}
+.quote-text{font-size:16px;font-style:italic;line-height:1.55;margin-bottom:12px}
+.quote-author{font-size:12px;color:var(--muted);text-align:right}
+.quote-author::before{content:'— '}
+.news-item{display:block;padding:10px 0;color:var(--text);text-decoration:none;
+font-size:13px;line-height:1.4;border-bottom:1px solid var(--border);
+transition:transform .15s}
+.news-item:last-child{border-bottom:none}
+.news-item:hover{transform:translateX(4px)}
+.news-title{font-weight:500;margin-bottom:4px;transition:color .15s}
+.news-item:hover .news-title{color:var(--accent)}
+.news-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.counter{text-align:center;padding:6px 0}
+.counter-num{font-size:60px;font-weight:200;letter-spacing:-0.03em;
+background:linear-gradient(135deg, #f87171, #facc15);
+-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+line-height:1}
+.counter-label{font-size:12px;color:var(--muted);margin-top:8px}
 .secure-block{background:var(--panel);border:1px solid var(--border);
 border-radius:16px;padding:24px;margin-bottom:24px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
+backdrop-filter:blur(var(--glass-blur));animation:fadeInUp .5s ease-out both}
 .secure-locked{text-align:center}
 .secure-icon{font-size:48px;line-height:1;margin-bottom:12px}
 .secure-title{font-size:16px;font-weight:500;margin-bottom:6px}
 .secure-hint{font-size:13px;color:var(--muted);margin-bottom:20px}
 .secure-input-wrap{display:flex;gap:8px;max-width:400px;margin:0 auto}
 .secure-input-wrap input{flex:1;background:var(--bg);border:1px solid var(--border);
-color:var(--text);padding:12px 16px;border-radius:10px;font-size:14px;
-font-family:inherit}
+color:var(--text);padding:12px 16px;border-radius:10px;font-size:14px;font-family:inherit}
 .secure-input-wrap input:focus{outline:none;border-color:var(--accent)}
 .secure-btn{background:var(--accent);border:none;color:#fff;padding:12px 24px;
 border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;
-transition:transform .15s,background .15s;white-space:nowrap}
-.secure-btn:hover{transform:translateY(-1px);background:#3b82f6}
+transition:transform .15s;white-space:nowrap}
+.secure-btn:hover{transform:translateY(-1px)}
 .secure-btn:disabled{opacity:0.5;cursor:wait}
 .secure-error{color:#f87171;font-size:13px;margin-top:12px;min-height:18px}
 .secure-unlocked{text-align:center}
-.secure-timer{font-size:13px;color:var(--muted);margin-bottom:16px;
-padding:8px 16px;background:var(--bg);border-radius:20px;display:inline-block}
+.secure-timer{font-size:13px;color:var(--muted);margin-bottom:16px;padding:8px 16px;
+background:var(--bg);border-radius:20px;display:inline-block}
 .secure-timer b{color:var(--accent);font-variant-numeric:tabular-nums}
-.secure-result{display:flex;gap:20px;align-items:center;flex-wrap:wrap;
-justify-content:center}
+.secure-main{display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:center}
 .secure-qr{background:#fff;padding:10px;border-radius:12px}
 .secure-qr canvas,.secure-qr img{display:block;width:180px;height:180px}
 .secure-links{flex:1;min-width:240px;text-align:left;
 display:flex;flex-direction:column;gap:10px}
-.secure-label{font-size:12px;color:var(--muted);text-transform:uppercase;
-letter-spacing:0.5px}
+.secure-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.link-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.splits-list{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);
+text-align:left}
+.splits-list h4{font-size:11px;color:var(--muted);text-transform:uppercase;
+letter-spacing:1px;margin-bottom:12px;font-weight:600}
+.split-item{display:flex;align-items:center;gap:10px;padding:8px 10px;
+background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:13px}
+.split-name{flex:1;font-weight:500}
+.split-count{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
+.split-copy{background:var(--border);border:none;color:var(--muted);
+padding:5px 10px;border-radius:6px;font-size:11px;cursor:pointer}
+.split-copy:hover{background:var(--accent);color:#fff}
+.split-copy.ok{background:#4ade80;color:#0f1115}
 .secure-btn-close{background:transparent;border:1px solid var(--border);
 color:var(--muted);padding:8px 16px;border-radius:10px;font-size:13px;
-cursor:pointer;transition:border-color .15s;align-self:flex-start}
+cursor:pointer;align-self:flex-start;margin-top:12px}
 .secure-btn-close:hover{border-color:var(--accent);color:var(--accent)}
+.splash{position:fixed;inset:0;background:var(--bg);z-index:1000;
+display:flex;align-items:center;justify-content:center;font-size:60px;
+animation:splashOut 0.9s ease-out 1.2s forwards;pointer-events:none}
+@keyframes splashOut{to{opacity:0;visibility:hidden}}
+#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;
+pointer-events:none;opacity:0.65}
+.wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
 </style></head><body>
+<div class="splash">✨</div>
+<canvas id="bgCanvas"></canvas>
 <div class="top-right">
 <div class="live-widget">
   <span class="live-item">⛈️ <strong>16°C</strong> <span class="hide-mobile">· Нальчик</span></span>
@@ -246,16 +322,34 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
 <button class="theme-btn" aria-label="Theme">☀</button>
 </div>
 <div class="bg-decor"></div>
-<h1>IPTV — авто-обновляемый плейлист</h1>
-<div class="sub">Обновлено: 2026-09-27 12:58:27</div>
-<div id="wf-status" class="wf-status">Проверяю статус последнего запуска...</div>
+<div class="wrap">
+
+
+
+<div class="hero">
+  <div class="clock-card">
+    <div class="clock">
+      <span id="h1">-</span><span id="h2">-</span><span class="colon">:</span><span id="m1">-</span><span id="m2">-</span><span class="sec" id="ss">--</span>
+    </div>
+    <div class="tz">Московское время · UTC+3</div>
+    <div class="date-line">
+      <span class="wd">Воскресенье</span>
+      <span class="yr">2026</span>
+      <span class="mo">27 сентября · Сентябрь</span>
+    </div>
+  </div>
+  <div class="art-card">
+    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><filter id="b205491" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter><radialGradient id="v205491" cx="50%" cy="50%" r="70%"><stop offset="60%" stop-color="rgba(0,0,0,0)"/><stop offset="100%" stop-color="rgba(0,0,0,0.5)"/></radialGradient></defs><rect width="300" height="200" fill="#0a0e1a"/><g filter="url(#b205491)"><circle cx="232" cy="103" r="103" fill="#38f9d7" opacity="0.32"/><circle cx="194" cy="52" r="50" fill="#43e97b" opacity="0.48"/><circle cx="134" cy="89" r="76" fill="#38f9d7" opacity="0.66"/><circle cx="22" cy="161" r="69" fill="#43e97b" opacity="0.67"/><circle cx="216" cy="82" r="74" fill="#38f9d7" opacity="0.33"/><circle cx="217" cy="182" r="93" fill="#38f9d7" opacity="0.31"/></g><line x1="170" y1="6" x2="99" y2="43" stroke="white" stroke-width="0.5" opacity="0.18"/><line x1="36" y1="171" x2="44" y2="158" stroke="white" stroke-width="0.4" opacity="0.18"/><line x1="284" y1="91" x2="149" y2="12" stroke="white" stroke-width="0.7" opacity="0.12"/><line x1="60" y1="47" x2="156" y2="0" stroke="white" stroke-width="0.6" opacity="0.26"/><line x1="148" y1="181" x2="255" y2="91" stroke="white" stroke-width="0.6" opacity="0.22"/><line x1="64" y1="116" x2="67" y2="137" stroke="white" stroke-width="0.7" opacity="0.17"/><line x1="194" y1="4" x2="148" y2="110" stroke="white" stroke-width="0.3" opacity="0.25"/><line x1="114" y1="146" x2="106" y2="67" stroke="white" stroke-width="0.6" opacity="0.14"/><circle cx="133" cy="191" r="1.6" fill="white" opacity="0.43"/><circle cx="174" cy="77" r="1.1" fill="white" opacity="0.25"/><circle cx="118" cy="86" r="1.4" fill="white" opacity="0.41"/><circle cx="274" cy="119" r="0.9" fill="white" opacity="0.24"/><circle cx="54" cy="192" r="1.7" fill="white" opacity="0.50"/><circle cx="116" cy="15" r="1.4" fill="white" opacity="0.32"/><circle cx="38" cy="32" r="1.0" fill="white" opacity="0.41"/><circle cx="298" cy="148" r="1.5" fill="white" opacity="0.30"/><circle cx="210" cy="127" r="2.0" fill="white" opacity="0.36"/><circle cx="247" cy="56" r="1.6" fill="white" opacity="0.55"/><circle cx="281" cy="193" r="0.7" fill="white" opacity="0.22"/><circle cx="277" cy="165" r="1.3" fill="white" opacity="0.63"/><circle cx="275" cy="171" r="1.4" fill="white" opacity="0.67"/><circle cx="235" cy="105" r="1.9" fill="white" opacity="0.56"/><circle cx="78" cy="173" r="1.1" fill="white" opacity="0.50"/><circle cx="49" cy="183" r="1.2" fill="white" opacity="0.45"/><circle cx="277" cy="30" r="1.1" fill="white" opacity="0.61"/><circle cx="49" cy="81" r="0.5" fill="white" opacity="0.26"/><circle cx="58" cy="53" r="1.4" fill="white" opacity="0.58"/><circle cx="114" cy="193" r="1.1" fill="white" opacity="0.64"/><circle cx="118" cy="0" r="1.6" fill="white" opacity="0.51"/><circle cx="252" cy="147" r="1.2" fill="white" opacity="0.44"/><circle cx="241" cy="115" r="0.9" fill="white" opacity="0.41"/><circle cx="102" cy="42" r="1.1" fill="white" opacity="0.55"/><circle cx="45" cy="30" r="1.6" fill="white" opacity="0.70"/><circle cx="63" cy="3" r="1.5" fill="white" opacity="0.31"/><circle cx="47" cy="42" r="0.8" fill="white" opacity="0.33"/><circle cx="298" cy="102" r="0.6" fill="white" opacity="0.39"/><circle cx="290" cy="110" r="1.1" fill="white" opacity="0.25"/><circle cx="39" cy="40" r="1.9" fill="white" opacity="0.43"/><circle cx="156" cy="2" r="0.7" fill="white" opacity="0.42"/><circle cx="293" cy="76" r="1.7" fill="white" opacity="0.60"/><circle cx="16" cy="63" r="1.7" fill="white" opacity="0.24"/><circle cx="246" cy="54" r="0.8" fill="white" opacity="0.32"/><circle cx="117" cy="56" r="1.1" fill="white" opacity="0.39"/><circle cx="38" cy="114" r="0.5" fill="white" opacity="0.45"/><circle cx="297" cy="36" r="1.9" fill="white" opacity="0.28"/><circle cx="65" cy="163" r="0.5" fill="white" opacity="0.44"/><circle cx="117" cy="5" r="1.3" fill="white" opacity="0.47"/><circle cx="279" cy="126" r="1.5" fill="white" opacity="0.21"/><rect width="300" height="200" fill="url(#v205491)"/></svg>
+    <div class="art-label">🎨 сгенерировано</div>
+  </div>
+</div>
 
 <h2>Ссылка для плеера</h2>
 
-    <div class="secure-block" id="secureBlock" data-enc="oeOskYgA4qLRaBdrxIqFgHnM5Rc1iqu0YiUesTU3jzgm6ndA0YeKXUdSml5hK9O+3EzaswoB4tXgceD/dDS3sDR8QpWWUce5Er95Gi5FKj363YtUvSqaOSpJcYR6F+qKUqdh6scOzZcFCS6CVs/v/lE0iMK7WG1ctE7PsdKR4xKMIEHnVQv9fsCZ/oeJ/zFeS1Ip58yFPYcSLC+q6pw3g8Aq5eyzi3Ce+jA109fRTS4IdFH2fKzzcwDNqQg2BI/y">
+    <div class="secure-block" id="secureBlock" data-enc="GHuQDsxv/tblLlT6xP9OZu2p+Flol1sHb7e6t24j8JjKBXUM6q4BmriXTxebhPHaujhc7DKmvNz9jIzei4kWVbvEU+pVvJ25DE5FJFxurgjqGTxDFGgwo11TSouw1+l/oreV/vc3iGxpP7VNHP9/cXxEwijAbhLciLrUjZYpzeSgsdkXT9+UMkTtgx7ZnPFV3rxNjDp6fbmSeWRvO6viGdH5u44n/WFHQc5Ue6SKZqfDkgAnq+7zS9VGuoPSCrXd5Y4R0FuI5TqkGej35GYWNAgJrmQKIuIZ14JJQMBXrEn8mjonL255BEXO8ExDNr1Y/gGV8nms5+z6MP1Ec/6nldpjQMFRfyiHFbLJTJW/2FSd7ri04UHGC4uqSsi4KDigl/Vfmzz/EqvTq/sKGqF4UFqfVwFgQKQ7r1JdBHfSAjLKBuqey36siYaeA/Ic1y2AFP+wW+sQr+oJABbBMvhLwV8wl5V35vhW7o4GvKO41dDtdd5XUw1WmbtklGpSqSjp5Kw7BgB64bNzAOVAEOD8RUhfiA+7y+uPO6bBp+BOnbdCTHJ0NixuQWe9+HaQlM4sZiH9LBW3l/Wz0c1a8gO1jATlci+2TXeZAhx37WN6qNT+ldXTaDN3gVLeZg5He3eK6q9VjO9jts1Z0q5TYcAnSbCSPLGpsPrRbh1oSovaega8Jii8wrYx+OTfbQJph1jvDFFz2wZ9Z9SkZorCmlaIzpbASMKYuWXHJZSTjrG+XIva5Smjar4RcwxcWuwBCjwsm5/qS4tVgvNnxwxBQn+bmKjsF9H2E9IxyoRON4LoAUCXz1elT8diHbP2hxiPxJ5KzpX677EIcEN+ohiiGjCcY9GIR1m+VD3heaaLa1fPl1GlGbMAI7jfwdPyweRN9nllnq6uuEHe6CyxK/LNm39V6QeMRZqcAJk85UTvpOmnG5FMFfTz66t7QVcgS/KcFcQbbl9EgXJFgF+thgKTAsWzxUdnYsbgStN5CeWCC8z5tIXkuhxyPtSvY/vdaY0gP27ETv176mOikuXPTRbE9lh1xwvHYc2xeQSy4kYdp3odEXUn6XaTAKdnGMJLXgDI1PQ913Bi904ZDHyEO9zeDHMAGSA1fKYa8f/PZAwxVIIK1Tuu88iTGZEMvEhvNx8+m5B44y2fp43fvkRhVd3GAK+PvUhGCGeFt5do3oTfGnXRwGa1CXyeJo75u7JMidAicmvZ8p0H1TJo6RmlWqGrlsNso52RcIo3Rzhje1JrqclDYLfC/nKjvdrIGE0uH5lMo1YuoeG4DevqyRiRyRnp0eeAucGlNobFLDHmXKZS0kospNzOUQXRYMRRrj/zJAsvN96ty0+4RVq9qRkRARevxb+rJeM271B+3iydsIzW0OwDl3IwgrdijG7dBLI7m9bDh/Pv85bxYHZfTFCIN3snuS/m8XtTR8PeMzF2LiLiMBBjaGNe78PjXU1+wGQguPRbU3AdX+IGde4HPOQCrB+k3GAb4b8m/VdUI7rHF5u5GUIXyxJTVvSHDzW6vuRzeS7FPMSjgjZ1JMVYO0engldYqNQvWRk4EsOL7d4Mz24huqCTHRuTpAezNJ7aLdJlO5ReY5YefIPtuGfsiZQxdov9+2vMzb8a9s68zv7e5wqBXNsbzupwSlLrG2Q20CqlFdwUGYlyJn83v6hz95EQvU05QK3U1VUnZVdeFkCj5Z7nm08mOkLTAvLeBvde16IcevnT7s1VJ1LsW/hh4BAw+UZhnz6lPwuijj1ABMvN9dbkxFN1FhYhuclZtMtr1WPNIXaQryrdc/L4rC9A3O6Tf+yioPNwFSAOsMxdTrA9El5v5lKtLG9m8Ondiu5hZvyv0rmecU8LF0ZHz2EG6nGoH8Xw3JxoV6bgUR28xtuXx20Lbj7pG+PFdmHzYDYhuN4GCaDjQsMK9tnW8cEBNfJ22imnpA1K2rfa1IDHzunOW9fLr7yuI9XAnaEnem2EeHJTXZT+DYHKjD5x2As6oocfwYyCoEo6jjx30hCjz/z1TAg1Jpzp4Az0O2a3+QVu16nlK8LpnSS169O301Z0q/8AaqhDmqmlQxN3k7PZ+jhxiXIpbQATuTlznENlgaWhAmePueSJiul6txM9n8gXQ+2V1KJ01JfOUIqcI2YFXTlZJiRWSbClGFcs4M4UAowG/XUHTLaomA6uZ0U=">
       <div class="secure-locked" id="secureLocked">
         <div class="secure-icon">🔒</div>
-        <div class="secure-title">Ссылка на плейлист зашифрована</div>
+        <div class="secure-title">Ссылки на плейлисты зашифрованы</div>
         <div class="secure-hint">Пароль приходит в Telegram от бота</div>
         <div class="secure-input-wrap">
           <input type="password" id="pwdInput" placeholder="Введите пароль" autocomplete="off" spellcheck="false">
@@ -264,72 +358,90 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
         <div class="secure-error" id="pwdError"></div>
       </div>
       <div class="secure-unlocked" id="secureUnlocked" style="display:none">
-        <div class="secure-timer">⏱ Ссылка видна ещё <b id="timerVal">5:00</b></div>
-        <div class="secure-result">
+        <div class="secure-timer">⏱ Видно ещё <b id="timerVal">5:00</b></div>
+        <div class="secure-main">
           <div class="secure-qr" id="qrWrap"></div>
           <div class="secure-links">
-            <div class="secure-label">Ссылка для плеера:</div>
+            <div class="secure-label">Основная ссылка:</div>
             <div class="link-line">
               <code id="playerUrlLocked">—</code>
               <button class="copy-btn" data-target="playerUrlLocked">📋</button>
             </div>
-            <button class="secure-btn-close" id="closeBtn">🔒 Скрыть</button>
           </div>
         </div>
+        <div class="splits-list" id="splitsWrap"></div>
+        <button class="secure-btn-close" id="closeBtn">🔒 Скрыть</button>
       </div>
     </div>
     
 
-<div class="section"><h2>Тренд (последние 20 запусков)</h2>
+<div class="info-grid">
+  <div class="card" style="grid-column:1/-1">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">🌤 Погода · Нальчик</h3>
+    <div class="wx-hero"><div class="wx-icon">⛈️</div><div><div class="wx-temp">16°</div><div class="wx-feels">ощущается 15°</div></div></div><div class="wx-meta"><div class="wx-meta-item"><span>💧</span><b>72%</b><small>влажн.</small></div><div class="wx-meta-item"><span>💨</span><b>4</b><small>км/ч</small></div><div class="wx-meta-item"><span>🔽</span><b>1018</b><small>мм</small></div></div><div class="wx-sun"><div class="wx-sun-item"><span>🌅</span> Восход <b>05:58 AM</b></div><div class="wx-sun-item"><span>🌇</span> Закат <b>05:54 PM</b></div></div><div class="wx-forecast"><div class="fc-day"><div class="fc-date">09.27</div><div class="fc-icon">⛈️</div><div class="fc-temps"><span class="fc-max">↑18°</span><span class="fc-min">↓11°</span></div></div><div class="fc-day"><div class="fc-date">09.28</div><div class="fc-icon">⛈️</div><div class="fc-temps"><span class="fc-max">↑17°</span><span class="fc-min">↓10°</span></div></div><div class="fc-day"><div class="fc-date">09.29</div><div class="fc-icon">⛈️</div><div class="fc-temps"><span class="fc-max">↑11°</span><span class="fc-min">↓8°</span></div></div></div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">📅 Сентябрь 2026</h3>
+    <div class="cal-month">Сентябрь 2026</div><div class="cal-grid"><div class="cal-head">Пн</div><div class="cal-head">Вт</div><div class="cal-head">Ср</div><div class="cal-head">Чт</div><div class="cal-head">Пт</div><div class="cal-head">Сб</div><div class="cal-head">Вс</div><div class="cal-cell cal-empty"></div><div class="cal-cell" title="📚 День знаний">1<span class="cal-hol">•</span></div><div class="cal-cell">2</div><div class="cal-cell">3</div><div class="cal-cell">4</div><div class="cal-cell cal-weekend">5</div><div class="cal-cell cal-weekend">6</div><div class="cal-cell">7</div><div class="cal-cell">8</div><div class="cal-cell">9</div><div class="cal-cell">10</div><div class="cal-cell">11</div><div class="cal-cell cal-weekend">12</div><div class="cal-cell cal-weekend">13</div><div class="cal-cell">14</div><div class="cal-cell">15</div><div class="cal-cell">16</div><div class="cal-cell">17</div><div class="cal-cell">18</div><div class="cal-cell cal-weekend">19</div><div class="cal-cell cal-weekend">20</div><div class="cal-cell">21</div><div class="cal-cell">22</div><div class="cal-cell">23</div><div class="cal-cell">24</div><div class="cal-cell">25</div><div class="cal-cell cal-weekend">26</div><div class="cal-cell cal-today">27</div><div class="cal-cell">28</div><div class="cal-cell">29</div><div class="cal-cell">30</div></div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">🌕 Фаза луны</h3>
+    <div class="moon-wrap">
+      <span class="moon-icon">🌖</span>
+      <div class="moon-name">Убывающая луна</div>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">💱 Курсы ЦБ РФ</h3>
+    <div class="cur-row"><span class="cur-flag">🇺🇸</span><span class="cur-name">USD</span><span class="cur-val">84.34 ₽</span></div><div class="cur-row"><span class="cur-flag">🇪🇺</span><span class="cur-name">EUR</span><span class="cur-val">95.87 ₽</span></div><div class="cur-row"><span class="cur-flag">🇨🇳</span><span class="cur-name">CNY</span><span class="cur-val">12.54 ₽</span></div>
+  </div>
+  <div class="card">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">🎄 До Нового года</h3>
+    <div class="counter">
+      <div class="counter-num">96</div>
+      <div class="counter-label">дней осталось</div>
+    </div>
+  </div>
+  <div class="card" style="grid-column:1/-1">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">💭 Цитата дня</h3>
+    <div class="quote-text">«Самый тёмный час — перед рассветом.»</div>
+    <div class="quote-author">Пауло Коэльо</div>
+  </div>
+  <div class="card" style="grid-column:1/-1">
+    <h3 style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px">📰 Новости</h3>
+    <a class="news-item" href="https://lenta.ru/news/2026/09/27/sotrudniki-politsii-spasli-muzhchinu-iz-goryaschey-mashiny-v-rossiyskom-regione/" target="_blank" rel="noopener"><div class="news-title">Сотрудники полиции спасли мужчину из горящей машины в российском регионе</div></a><a class="news-item" href="https://lenta.ru/news/2026/09/27/razbivshiy-devushke-litso-muzhchina-otpravilsya-v-sizo/" target="_blank" rel="noopener"><div class="news-title">Разбивший девушке лицо битой мужчина отправился в СИЗО</div></a><a class="news-item" href="https://lenta.ru/news/2026/09/27/strelba-proizoshla-v-restorane-vo-frantsii/" target="_blank" rel="noopener"><div class="news-title">Стрельба произошла в ресторане во Франции</div></a><a class="news-item" href="https://lenta.ru/news/2026/09/27/rosas-pobedil-barselosa-tehnicheskim-nokautom-na-ufc-fight-night-289/" target="_blank" rel="noopener"><div class="news-title">Росас победил Барселоса техническим нокаутом на UFC Fight Night 289</div></a>
+  </div>
+</div>
+
+<div class="section"><h2>Тренд (последние 21)</h2>
 <svg viewBox="0 0 900 240" style="width:100%;height:auto">
 <line x1="40" y1="40" x2="860" y2="40" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,4"/><text x="6" y="43" fill="var(--muted)" font-size="10">1236</text><line x1="40" y1="80" x2="860" y2="80" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,4"/><text x="6" y="83" fill="var(--muted)" font-size="10">927</text><line x1="40" y1="120" x2="860" y2="120" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,4"/><text x="6" y="123" fill="var(--muted)" font-size="10">618</text><line x1="40" y1="160" x2="860" y2="160" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,4"/><text x="6" y="163" fill="var(--muted)" font-size="10">309</text><line x1="40" y1="200" x2="860" y2="200" stroke="var(--border)" stroke-width="1" stroke-dasharray="2,4"/><text x="6" y="203" fill="var(--muted)" font-size="10">0</text>
-<path d="M40.0,200 L40.0,40.3 L83.2,40.0 L126.3,40.0 L169.5,61.4 L212.6,61.1 L255.8,61.7 L298.9,61.7 L342.1,61.9 L385.3,62.5 L428.4,62.4 L471.6,100.3 L514.7,100.2 L557.9,100.5 L601.1,99.0 L644.2,99.8 L687.4,130.5 L730.5,130.0 L773.7,91.5 L816.8,91.7 L860.0,91.8 L860.0,200 Z" fill="#4ade80" fill-opacity="0.10"/>
-<polyline points="40.0,40.3 83.2,40.0 126.3,40.0 169.5,61.4 212.6,61.1 255.8,61.7 298.9,61.7 342.1,61.9 385.3,62.5 428.4,62.4 471.6,100.3 514.7,100.2 557.9,100.5 601.1,99.0 644.2,99.8 687.4,130.5 730.5,130.0 773.7,91.5 816.8,91.7 860.0,91.8" fill="none" stroke="#4ade80" stroke-width="2"/>
-<path d="M40.0,200 L40.0,40.3 L83.2,40.0 L126.3,40.0 L169.5,61.4 L212.6,61.2 L255.8,61.7 L298.9,61.9 L342.1,62.0 L385.3,62.6 L428.4,62.4 L471.6,96.2 L514.7,96.1 L557.9,96.3 L601.1,94.6 L644.2,95.6 L687.4,123.2 L730.5,122.6 L773.7,89.8 L816.8,89.9 L860.0,90.0 L860.0,200 Z" fill="#60a5fa" fill-opacity="0.08"/>
-<polyline points="40.0,40.3 83.2,40.0 126.3,40.0 169.5,61.4 212.6,61.2 255.8,61.7 298.9,61.9 342.1,62.0 385.3,62.6 428.4,62.4 471.6,96.2 514.7,96.1 557.9,96.3 601.1,94.6 644.2,95.6 687.4,123.2 730.5,122.6 773.7,89.8 816.8,89.9 860.0,90.0" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
-<path d="M40.0,200 L40.0,200.0 L83.2,200.0 L126.3,200.0 L169.5,200.0 L212.6,200.0 L255.8,200.0 L298.9,156.7 L342.1,157.0 L385.3,40.0 L428.4,40.0 L471.6,65.3 L514.7,65.0 L557.9,65.6 L601.1,63.5 L644.2,64.4 L687.4,74.9 L730.5,73.7 L773.7,57.4 L816.8,57.7 L860.0,58.0 L860.0,200 Z" fill="#facc15" fill-opacity="0.08"/>
-<polyline points="40.0,200.0 83.2,200.0 126.3,200.0 169.5,200.0 212.6,200.0 255.8,200.0 298.9,156.7 342.1,157.0 385.3,40.0 428.4,40.0 471.6,65.3 514.7,65.0 557.9,65.6 601.1,63.5 644.2,64.4 687.4,74.9 730.5,73.7 773.7,57.4 816.8,57.7 860.0,58.0" fill="none" stroke="#facc15" stroke-width="1.5"/>
-<circle cx="40.0" cy="40.3" r="3" fill="#4ade80"/><circle cx="83.2" cy="40.0" r="3" fill="#4ade80"/><circle cx="126.3" cy="40.0" r="3" fill="#4ade80"/><circle cx="169.5" cy="61.4" r="3" fill="#4ade80"/><circle cx="212.6" cy="61.1" r="3" fill="#4ade80"/><circle cx="255.8" cy="61.7" r="3" fill="#4ade80"/><circle cx="298.9" cy="61.7" r="3" fill="#4ade80"/><circle cx="342.1" cy="61.9" r="3" fill="#4ade80"/><circle cx="385.3" cy="62.5" r="3" fill="#4ade80"/><circle cx="428.4" cy="62.4" r="3" fill="#4ade80"/><circle cx="471.6" cy="100.3" r="3" fill="#4ade80"/><circle cx="514.7" cy="100.2" r="3" fill="#4ade80"/><circle cx="557.9" cy="100.5" r="3" fill="#4ade80"/><circle cx="601.1" cy="99.0" r="3" fill="#4ade80"/><circle cx="644.2" cy="99.8" r="3" fill="#4ade80"/><circle cx="687.4" cy="130.5" r="3" fill="#4ade80"/><circle cx="730.5" cy="130.0" r="3" fill="#4ade80"/><circle cx="773.7" cy="91.5" r="3" fill="#4ade80"/><circle cx="816.8" cy="91.7" r="3" fill="#4ade80"/><circle cx="860.0" cy="91.8" r="3" fill="#4ade80"/><circle cx="40.0" cy="40.3" r="2" fill="#60a5fa"/><circle cx="83.2" cy="40.0" r="2" fill="#60a5fa"/><circle cx="126.3" cy="40.0" r="2" fill="#60a5fa"/><circle cx="169.5" cy="61.4" r="2" fill="#60a5fa"/><circle cx="212.6" cy="61.2" r="2" fill="#60a5fa"/><circle cx="255.8" cy="61.7" r="2" fill="#60a5fa"/><circle cx="298.9" cy="61.9" r="2" fill="#60a5fa"/><circle cx="342.1" cy="62.0" r="2" fill="#60a5fa"/><circle cx="385.3" cy="62.6" r="2" fill="#60a5fa"/><circle cx="428.4" cy="62.4" r="2" fill="#60a5fa"/><circle cx="471.6" cy="96.2" r="2" fill="#60a5fa"/><circle cx="514.7" cy="96.1" r="2" fill="#60a5fa"/><circle cx="557.9" cy="96.3" r="2" fill="#60a5fa"/><circle cx="601.1" cy="94.6" r="2" fill="#60a5fa"/><circle cx="644.2" cy="95.6" r="2" fill="#60a5fa"/><circle cx="687.4" cy="123.2" r="2" fill="#60a5fa"/><circle cx="730.5" cy="122.6" r="2" fill="#60a5fa"/><circle cx="773.7" cy="89.8" r="2" fill="#60a5fa"/><circle cx="816.8" cy="89.9" r="2" fill="#60a5fa"/><circle cx="860.0" cy="90.0" r="2" fill="#60a5fa"/><circle cx="40.0" cy="200.0" r="2" fill="#facc15"/><circle cx="83.2" cy="200.0" r="2" fill="#facc15"/><circle cx="126.3" cy="200.0" r="2" fill="#facc15"/><circle cx="169.5" cy="200.0" r="2" fill="#facc15"/><circle cx="212.6" cy="200.0" r="2" fill="#facc15"/><circle cx="255.8" cy="200.0" r="2" fill="#facc15"/><circle cx="298.9" cy="156.7" r="2" fill="#facc15"/><circle cx="342.1" cy="157.0" r="2" fill="#facc15"/><circle cx="385.3" cy="40.0" r="2" fill="#facc15"/><circle cx="428.4" cy="40.0" r="2" fill="#facc15"/><circle cx="471.6" cy="65.3" r="2" fill="#facc15"/><circle cx="514.7" cy="65.0" r="2" fill="#facc15"/><circle cx="557.9" cy="65.6" r="2" fill="#facc15"/><circle cx="601.1" cy="63.5" r="2" fill="#facc15"/><circle cx="644.2" cy="64.4" r="2" fill="#facc15"/><circle cx="687.4" cy="74.9" r="2" fill="#facc15"/><circle cx="730.5" cy="73.7" r="2" fill="#facc15"/><circle cx="773.7" cy="57.4" r="2" fill="#facc15"/><circle cx="816.8" cy="57.7" r="2" fill="#facc15"/><circle cx="860.0" cy="58.0" r="2" fill="#facc15"/>
-<circle cx="40.0" cy="40.3" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1234 каналов (OK)', '2026-09-27 02:05')" onmouseout="hideChartTip()"/><circle cx="83.2" cy="40.0" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1236 каналов (OK)', '2026-09-27 02:42')" onmouseout="hideChartTip()"/><circle cx="126.3" cy="40.0" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1236 каналов (OK)', '2026-09-27 03:04')" onmouseout="hideChartTip()"/><circle cx="169.5" cy="61.4" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1071 каналов (OK)', '2026-09-27 03:21')" onmouseout="hideChartTip()"/><circle cx="212.6" cy="61.1" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1073 каналов (OK)', '2026-09-27 03:47')" onmouseout="hideChartTip()"/><circle cx="255.8" cy="61.7" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1068 каналов (OK)', '2026-09-27 04:03')" onmouseout="hideChartTip()"/><circle cx="298.9" cy="61.7" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1068 каналов (OK)', '2026-09-27 04:24')" onmouseout="hideChartTip()"/><circle cx="342.1" cy="61.9" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1067 каналов (OK)', '2026-09-27 05:03')" onmouseout="hideChartTip()"/><circle cx="385.3" cy="62.5" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1062 каналов (OK)', '2026-09-27 05:23')" onmouseout="hideChartTip()"/><circle cx="428.4" cy="62.4" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1063 каналов (OK)', '2026-09-27 06:23')" onmouseout="hideChartTip()"/><circle cx="471.6" cy="100.3" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '770 каналов (OK)', '2026-09-27 06:40')" onmouseout="hideChartTip()"/><circle cx="514.7" cy="100.2" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '771 каналов (OK)', '2026-09-27 06:49')" onmouseout="hideChartTip()"/><circle cx="557.9" cy="100.5" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '769 каналов (OK)', '2026-09-27 07:07')" onmouseout="hideChartTip()"/><circle cx="601.1" cy="99.0" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '780 каналов (OK)', '2026-09-27 07:35')" onmouseout="hideChartTip()"/><circle cx="644.2" cy="99.8" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '774 каналов (OK)', '2026-09-27 08:09')" onmouseout="hideChartTip()"/><circle cx="687.4" cy="130.5" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '537 каналов (OK)', '2026-09-27 10:36')" onmouseout="hideChartTip()"/><circle cx="730.5" cy="130.0" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '541 каналов (OK)', '2026-09-27 10:55')" onmouseout="hideChartTip()"/><circle cx="773.7" cy="91.5" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '838 каналов (OK)', '2026-09-27 11:08')" onmouseout="hideChartTip()"/><circle cx="816.8" cy="91.7" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '837 каналов (OK)', '2026-09-27 12:21')" onmouseout="hideChartTip()"/><circle cx="860.0" cy="91.8" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '836 каналов (OK)', '2026-09-27 12:58')" onmouseout="hideChartTip()"/>
-<text x="40" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="169" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="299" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="428" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="558" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="687" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="817" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text>
+<path d="M40.0,200 L40.0,40.3 L81.0,40.0 L122.0,40.0 L163.0,61.4 L204.0,61.1 L245.0,61.7 L286.0,61.7 L327.0,61.9 L368.0,62.5 L409.0,62.4 L450.0,100.3 L491.0,100.2 L532.0,100.5 L573.0,99.0 L614.0,99.8 L655.0,130.5 L696.0,130.0 L737.0,91.5 L778.0,91.7 L819.0,91.8 L860.0,91.7 L860.0,200 Z" fill="#4ade80" fill-opacity="0.10"/>
+<polyline points="40.0,40.3 81.0,40.0 122.0,40.0 163.0,61.4 204.0,61.1 245.0,61.7 286.0,61.7 327.0,61.9 368.0,62.5 409.0,62.4 450.0,100.3 491.0,100.2 532.0,100.5 573.0,99.0 614.0,99.8 655.0,130.5 696.0,130.0 737.0,91.5 778.0,91.7 819.0,91.8 860.0,91.7" fill="none" stroke="#4ade80" stroke-width="2"/>
+<path d="M40.0,200 L40.0,40.3 L81.0,40.0 L122.0,40.0 L163.0,61.4 L204.0,61.2 L245.0,61.7 L286.0,61.9 L327.0,62.0 L368.0,62.6 L409.0,62.4 L450.0,96.2 L491.0,96.1 L532.0,96.3 L573.0,94.6 L614.0,95.6 L655.0,123.2 L696.0,122.6 L737.0,89.8 L778.0,89.9 L819.0,90.0 L860.0,89.9 L860.0,200 Z" fill="#60a5fa" fill-opacity="0.08"/>
+<polyline points="40.0,40.3 81.0,40.0 122.0,40.0 163.0,61.4 204.0,61.2 245.0,61.7 286.0,61.9 327.0,62.0 368.0,62.6 409.0,62.4 450.0,96.2 491.0,96.1 532.0,96.3 573.0,94.6 614.0,95.6 655.0,123.2 696.0,122.6 737.0,89.8 778.0,89.9 819.0,90.0 860.0,89.9" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+<path d="M40.0,200 L40.0,200.0 L81.0,200.0 L122.0,200.0 L163.0,200.0 L204.0,200.0 L245.0,200.0 L286.0,156.7 L327.0,157.0 L368.0,40.0 L409.0,40.0 L450.0,65.3 L491.0,65.0 L532.0,65.6 L573.0,63.5 L614.0,64.4 L655.0,74.9 L696.0,73.7 L737.0,57.4 L778.0,57.7 L819.0,58.0 L860.0,57.7 L860.0,200 Z" fill="#facc15" fill-opacity="0.08"/>
+<polyline points="40.0,200.0 81.0,200.0 122.0,200.0 163.0,200.0 204.0,200.0 245.0,200.0 286.0,156.7 327.0,157.0 368.0,40.0 409.0,40.0 450.0,65.3 491.0,65.0 532.0,65.6 573.0,63.5 614.0,64.4 655.0,74.9 696.0,73.7 737.0,57.4 778.0,57.7 819.0,58.0 860.0,57.7" fill="none" stroke="#facc15" stroke-width="1.5"/>
+<circle cx="40.0" cy="40.3" r="3" fill="#4ade80"/><circle cx="81.0" cy="40.0" r="3" fill="#4ade80"/><circle cx="122.0" cy="40.0" r="3" fill="#4ade80"/><circle cx="163.0" cy="61.4" r="3" fill="#4ade80"/><circle cx="204.0" cy="61.1" r="3" fill="#4ade80"/><circle cx="245.0" cy="61.7" r="3" fill="#4ade80"/><circle cx="286.0" cy="61.7" r="3" fill="#4ade80"/><circle cx="327.0" cy="61.9" r="3" fill="#4ade80"/><circle cx="368.0" cy="62.5" r="3" fill="#4ade80"/><circle cx="409.0" cy="62.4" r="3" fill="#4ade80"/><circle cx="450.0" cy="100.3" r="3" fill="#4ade80"/><circle cx="491.0" cy="100.2" r="3" fill="#4ade80"/><circle cx="532.0" cy="100.5" r="3" fill="#4ade80"/><circle cx="573.0" cy="99.0" r="3" fill="#4ade80"/><circle cx="614.0" cy="99.8" r="3" fill="#4ade80"/><circle cx="655.0" cy="130.5" r="3" fill="#4ade80"/><circle cx="696.0" cy="130.0" r="3" fill="#4ade80"/><circle cx="737.0" cy="91.5" r="3" fill="#4ade80"/><circle cx="778.0" cy="91.7" r="3" fill="#4ade80"/><circle cx="819.0" cy="91.8" r="3" fill="#4ade80"/><circle cx="860.0" cy="91.7" r="3" fill="#4ade80"/><circle cx="40.0" cy="40.3" r="2" fill="#60a5fa"/><circle cx="81.0" cy="40.0" r="2" fill="#60a5fa"/><circle cx="122.0" cy="40.0" r="2" fill="#60a5fa"/><circle cx="163.0" cy="61.4" r="2" fill="#60a5fa"/><circle cx="204.0" cy="61.2" r="2" fill="#60a5fa"/><circle cx="245.0" cy="61.7" r="2" fill="#60a5fa"/><circle cx="286.0" cy="61.9" r="2" fill="#60a5fa"/><circle cx="327.0" cy="62.0" r="2" fill="#60a5fa"/><circle cx="368.0" cy="62.6" r="2" fill="#60a5fa"/><circle cx="409.0" cy="62.4" r="2" fill="#60a5fa"/><circle cx="450.0" cy="96.2" r="2" fill="#60a5fa"/><circle cx="491.0" cy="96.1" r="2" fill="#60a5fa"/><circle cx="532.0" cy="96.3" r="2" fill="#60a5fa"/><circle cx="573.0" cy="94.6" r="2" fill="#60a5fa"/><circle cx="614.0" cy="95.6" r="2" fill="#60a5fa"/><circle cx="655.0" cy="123.2" r="2" fill="#60a5fa"/><circle cx="696.0" cy="122.6" r="2" fill="#60a5fa"/><circle cx="737.0" cy="89.8" r="2" fill="#60a5fa"/><circle cx="778.0" cy="89.9" r="2" fill="#60a5fa"/><circle cx="819.0" cy="90.0" r="2" fill="#60a5fa"/><circle cx="860.0" cy="89.9" r="2" fill="#60a5fa"/><circle cx="40.0" cy="200.0" r="2" fill="#facc15"/><circle cx="81.0" cy="200.0" r="2" fill="#facc15"/><circle cx="122.0" cy="200.0" r="2" fill="#facc15"/><circle cx="163.0" cy="200.0" r="2" fill="#facc15"/><circle cx="204.0" cy="200.0" r="2" fill="#facc15"/><circle cx="245.0" cy="200.0" r="2" fill="#facc15"/><circle cx="286.0" cy="156.7" r="2" fill="#facc15"/><circle cx="327.0" cy="157.0" r="2" fill="#facc15"/><circle cx="368.0" cy="40.0" r="2" fill="#facc15"/><circle cx="409.0" cy="40.0" r="2" fill="#facc15"/><circle cx="450.0" cy="65.3" r="2" fill="#facc15"/><circle cx="491.0" cy="65.0" r="2" fill="#facc15"/><circle cx="532.0" cy="65.6" r="2" fill="#facc15"/><circle cx="573.0" cy="63.5" r="2" fill="#facc15"/><circle cx="614.0" cy="64.4" r="2" fill="#facc15"/><circle cx="655.0" cy="74.9" r="2" fill="#facc15"/><circle cx="696.0" cy="73.7" r="2" fill="#facc15"/><circle cx="737.0" cy="57.4" r="2" fill="#facc15"/><circle cx="778.0" cy="57.7" r="2" fill="#facc15"/><circle cx="819.0" cy="58.0" r="2" fill="#facc15"/><circle cx="860.0" cy="57.7" r="2" fill="#facc15"/><circle cx="40.0" cy="40.3" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1234 (OK)', '2026-09-27 02:05')" onmouseout="hideChartTip()"/><circle cx="81.0" cy="40.0" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1236 (OK)', '2026-09-27 02:42')" onmouseout="hideChartTip()"/><circle cx="122.0" cy="40.0" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1236 (OK)', '2026-09-27 03:04')" onmouseout="hideChartTip()"/><circle cx="163.0" cy="61.4" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1071 (OK)', '2026-09-27 03:21')" onmouseout="hideChartTip()"/><circle cx="204.0" cy="61.1" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1073 (OK)', '2026-09-27 03:47')" onmouseout="hideChartTip()"/><circle cx="245.0" cy="61.7" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1068 (OK)', '2026-09-27 04:03')" onmouseout="hideChartTip()"/><circle cx="286.0" cy="61.7" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1068 (OK)', '2026-09-27 04:24')" onmouseout="hideChartTip()"/><circle cx="327.0" cy="61.9" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1067 (OK)', '2026-09-27 05:03')" onmouseout="hideChartTip()"/><circle cx="368.0" cy="62.5" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1062 (OK)', '2026-09-27 05:23')" onmouseout="hideChartTip()"/><circle cx="409.0" cy="62.4" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '1063 (OK)', '2026-09-27 06:23')" onmouseout="hideChartTip()"/><circle cx="450.0" cy="100.3" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '770 (OK)', '2026-09-27 06:40')" onmouseout="hideChartTip()"/><circle cx="491.0" cy="100.2" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '771 (OK)', '2026-09-27 06:49')" onmouseout="hideChartTip()"/><circle cx="532.0" cy="100.5" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '769 (OK)', '2026-09-27 07:07')" onmouseout="hideChartTip()"/><circle cx="573.0" cy="99.0" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '780 (OK)', '2026-09-27 07:35')" onmouseout="hideChartTip()"/><circle cx="614.0" cy="99.8" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '774 (OK)', '2026-09-27 08:09')" onmouseout="hideChartTip()"/><circle cx="655.0" cy="130.5" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '537 (OK)', '2026-09-27 10:36')" onmouseout="hideChartTip()"/><circle cx="696.0" cy="130.0" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '541 (OK)', '2026-09-27 10:55')" onmouseout="hideChartTip()"/><circle cx="737.0" cy="91.5" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '838 (OK)', '2026-09-27 11:08')" onmouseout="hideChartTip()"/><circle cx="778.0" cy="91.7" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '837 (OK)', '2026-09-27 12:21')" onmouseout="hideChartTip()"/><circle cx="819.0" cy="91.8" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '836 (OK)', '2026-09-27 12:58')" onmouseout="hideChartTip()"/><circle cx="860.0" cy="91.7" r="10" fill="transparent" style="cursor:pointer" onmouseover="showChartTip(event, '837 (OK)', '2026-09-27 13:29')" onmouseout="hideChartTip()"/><text x="40" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="163" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="286" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="409" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="532" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="655" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="778" y="226" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text>
 </svg>
 <div style="margin-top:12px;font-size:12px;color:var(--muted)">
 <span style="color:#4ade80">■</span> Рабочих &nbsp;
 <span style="color:#60a5fa">■</span> В merged &nbsp;
 <span style="color:#facc15">■</span> С EPG
-</div>
-</div>
+</div></div>
 <h2>Разделы</h2>
 <div class="box"><a href="report.html">📊 Отчёт проверки</a></div>
 <div class="box"><a href="channels.html">🔍 Поиск по каналам</a></div>
 <div class="box"><a href="rejected.html">🚫 Отсеянные каналы</a></div>
-<div class="box"><a href="channels.csv">📥 Скачать CSV (все каналы)</a></div>
+<div class="box"><a href="channels.csv">📥 CSV (все каналы)</a></div>
 <h2>Статистика</h2>
 <div class="box">
-Каналов в merged: <b>769</b><br>
-Рабочих: <b>836</b> из <b>1310</b><br>
+Каналов в merged: <b>770</b><br>
+Рабочих: <b>837</b> из <b>1310</b><br>
 Нестабильных отсеяно: <b>1</b>
 </div>
-<h2>Отдельные плейлисты</h2><div class='box'><a href='sport.m3u8'>sport.m3u8</a> — 30 каналов</div>
-<div class='box'><a href='music.m3u8'>music.m3u8</a> — 15 каналов</div>
-<div class='box'><a href='news.m3u8'>news.m3u8</a> — 4 каналов</div>
-<div class='box'><a href='kinowalk.m3u8'>kinowalk.m3u8</a> — 158 каналов</div>
-<div class='box'><a href='rutube.m3u8'>rutube.m3u8</a> — 73 каналов</div>
-<div class='box'><a href='radio.m3u8'>radio.m3u8</a> — 4 каналов</div>
-<div class='box'><a href='group_radio.m3u8'>group_radio.m3u8</a> — 4 каналов</div>
-<div class='box'><a href='group_kino.m3u8'>group_kino.m3u8</a> — 33 каналов</div>
-<div class='box'><a href='group_smotrim.m3u8'>group_smotrim.m3u8</a> — 13 каналов</div>
-<div class='box'><a href='group_muzyka.m3u8'>group_muzyka.m3u8</a> — 15 каналов</div>
-<div class='box'><a href='group_poznavatelnye.m3u8'>group_poznavatelnye.m3u8</a> — 17 каналов</div>
-<div class='box'><a href='group_rutube.m3u8'>group_rutube.m3u8</a> — 73 каналов</div>
-<div class='box'><a href='group_razvlekatelnye.m3u8'>group_razvlekatelnye.m3u8</a> — 8 каналов</div>
-<div class='box'><a href='group_sport.m3u8'>group_sport.m3u8</a> — 30 каналов</div>
-<div class='box'><a href='group_raznoe.m3u8'>group_raznoe.m3u8</a> — 365 каналов</div>
-<div class='box'><a href='group_novosti.m3u8'>group_novosti.m3u8</a> — 4 каналов</div>
-<div class='box'><a href='group_fresh.m3u8'>group_fresh.m3u8</a> — 13 каналов</div>
-<div class='box'><a href='group_osnovnye.m3u8'>group_osnovnye.m3u8</a> — 23 каналов</div>
-<div class='box'><a href='group_kinowalk.m3u8'>group_kinowalk.m3u8</a> — 158 каналов</div>
-<div class='box'><a href='group_muzykalnye.m3u8'>group_muzykalnye.m3u8</a> — 13 каналов</div>
+
+</div>
 <script>
 (function(){
   const gh = "gvineon550-coder/8Z6evf3ezzM469";
@@ -340,20 +452,109 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
         if(!d || !d.workflow_runs || !d.workflow_runs.length) return;
         const run = d.workflow_runs[0];
         const el = document.getElementById('wf-status');
+        if(!el) return;
         const when = new Date(run.updated_at || run.created_at);
         const ago = Math.round((Date.now() - when.getTime())/60000);
         const agoStr = ago < 1 ? 'только что' : ago < 60 ? ago + ' мин назад' : Math.round(ago/60) + ' ч назад';
         let html = '';
         if(run.status === 'in_progress') html = '<span style="color:#facc15">🔄 Идёт проверка…</span>';
-        else if(run.conclusion === 'success') html = '<span style="color:#4ade80">✅ Последняя проверка успешна</span>';
-        else if(run.conclusion === 'failure') html = '<span style="color:#f87171">❌ Последняя проверка упала</span>';
-        else html = '<span style="color:var(--muted)">⏸ Статус: ' + (run.status||'?') + '</span>';
+        else if(run.conclusion === 'success') html = '<span style="color:#4ade80">✅ Успешно</span>';
+        else if(run.conclusion === 'failure') html = '<span style="color:#f87171">❌ Упало</span>';
+        else html = '<span style="color:var(--muted)">⏸</span>';
         html += ' <span style="color:var(--muted);font-size:12px">· ' + agoStr + '</span>';
         el.innerHTML = html;
       }).catch(() => {});
   }
 
-  // ===== Расшифровка =====
+  function tick(){
+    const now = new Date();
+    const msk = new Date(now.toLocaleString('en-US', {timeZone:'Europe/Moscow'}));
+    const hh = String(msk.getHours()).padStart(2, '0');
+    const mm = String(msk.getMinutes()).padStart(2, '0');
+    const ss = String(msk.getSeconds()).padStart(2, '0');
+    const h1 = document.getElementById('h1');
+    const h2 = document.getElementById('h2');
+    const m1 = document.getElementById('m1');
+    const m2 = document.getElementById('m2');
+    const sEl = document.getElementById('ss');
+    if(h1) h1.textContent = hh[0];
+    if(h2) h2.textContent = hh[1];
+    if(m1) m1.textContent = mm[0];
+    if(m2) m2.textContent = mm[1];
+    if(sEl) sEl.textContent = ss;
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  const kind = "storm";
+  const canvas = document.getElementById('bgCanvas');
+  if(canvas){
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    function resize(){
+      W = canvas.width = window.innerWidth * devicePixelRatio;
+      H = canvas.height = window.innerHeight * devicePixelRatio;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    let count = 0;
+    if(kind === 'rain' || kind === 'storm') count = 100;
+    else if(kind === 'snow') count = 70;
+    else if(kind === 'sun') count = 40;
+    else count = 25;
+    for(let i = 0; i < count; i++){
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: kind === 'rain' ? 0.5 : (Math.random() - 0.5) * 0.6,
+        vy: kind === 'rain' ? 4 + Math.random() * 6
+           : kind === 'snow' ? 0.4 + Math.random() * 1
+           : (Math.random() - 0.5) * 0.5,
+        r: kind === 'rain' ? 1 + Math.random() * 1.5
+          : kind === 'snow' ? 2 + Math.random() * 3
+          : 1 + Math.random() * 2.5,
+        a: 0.15 + Math.random() * 0.5,
+      });
+    }
+    function draw(){
+      ctx.clearRect(0, 0, W, H);
+      for(const p of particles){
+        if(kind === 'rain' || kind === 'storm'){
+          ctx.strokeStyle = 'rgba(150,200,255,' + p.a + ')';
+          ctx.lineWidth = p.r;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p.x + p.vx * 3, p.y + 20 + p.vy * 2);
+          ctx.stroke();
+        } else if(kind === 'snow'){
+          ctx.fillStyle = 'rgba(255,255,255,' + p.a + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        } else if(kind === 'sun'){
+          ctx.fillStyle = 'rgba(255,220,120,' + (p.a * 0.8) + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = 'rgba(200,220,255,' + (p.a * 0.6) + ')';
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        p.x += p.vx;
+        p.y += p.vy;
+        if(p.y > H + 20){ p.y = -20; p.x = Math.random() * W; }
+        if(p.x > W + 20) p.x = -20;
+        if(p.x < -20) p.x = W + 20;
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+
   const secureBlock = document.getElementById('secureBlock');
   const encBlob = secureBlock ? secureBlock.dataset.enc : '';
   const input = document.getElementById('pwdInput');
@@ -362,11 +563,12 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
   const locked = document.getElementById('secureLocked');
   const unlocked = document.getElementById('secureUnlocked');
   const timerEl = document.getElementById('timerVal');
-  let hideTimer = null;
   let countdownTimer = null;
 
   if(!encBlob){
-    if(locked) locked.innerHTML = '<div class="secure-icon">⚠️</div><div class="secure-title">Раздел временно недоступен</div><div class="secure-hint">Попробуй позже</div>';
+    if(locked){
+      locked.innerHTML = '<div class="secure-icon">⚠️</div><div class="secure-title">Раздел временно недоступен</div>';
+    }
     return;
   }
 
@@ -380,15 +582,10 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
   async function deriveKey(password, salt){
     const enc = new TextEncoder();
     const baseKey = await crypto.subtle.importKey(
-      'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']
-    );
+      'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
     return crypto.subtle.deriveKey(
       {name:'PBKDF2', salt: salt, iterations: 150000, hash: 'SHA-256'},
-      baseKey,
-      {name:'AES-GCM', length:256},
-      false,
-      ['decrypt']
-    );
+      baseKey, {name:'AES-GCM', length:256}, false, ['decrypt']);
   }
 
   async function decrypt(blob, password){
@@ -403,31 +600,31 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
 
   function startHideTimer(seconds){
     let left = seconds;
-    function tick(){
+    function t(){
       const m = Math.floor(left/60), s = left % 60;
-      timerEl.textContent = m + ':' + String(s).padStart(2, '0');
-      if(left <= 0){
-        hideNow();
-        return;
-      }
+      if(timerEl) timerEl.textContent = m + ':' + String(s).padStart(2, '0');
+      if(left <= 0){ hideNow(); return; }
       left -= 1;
     }
-    tick();
-    countdownTimer = setInterval(tick, 1000);
+    t();
+    countdownTimer = setInterval(t, 1000);
   }
 
   function hideNow(){
     if(countdownTimer) clearInterval(countdownTimer);
-    if(hideTimer) clearTimeout(hideTimer);
-    unlocked.style.display = 'none';
-    locked.style.display = 'block';
-    input.value = '';
-    errEl.textContent = '';
+    if(unlocked) unlocked.style.display = 'none';
+    if(locked) locked.style.display = 'block';
+    if(input) input.value = '';
+    if(errEl) errEl.textContent = '';
     const qrWrap = document.getElementById('qrWrap');
     if(qrWrap) qrWrap.innerHTML = '';
   }
 
-  document.getElementById('closeBtn')?.addEventListener('click', hideNow);
+  const closeBtn = document.getElementById('closeBtn');
+  if(closeBtn) closeBtn.addEventListener('click', hideNow);
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function escapeAttr(s){ return String(s).replace(/"/g, '&quot;'); }
 
   if(btn) btn.addEventListener('click', async () => {
     const pwd = input.value.trim();
@@ -436,17 +633,43 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
     errEl.textContent = 'Расшифровка...';
     try {
       const data = await decrypt(encBlob, pwd);
-      document.getElementById('playerUrlLocked').textContent = data.playlist;
+      const pl = document.getElementById('playerUrlLocked');
+      if(pl) pl.textContent = data.playlist;
+
       const qrWrap = document.getElementById('qrWrap');
       qrWrap.innerHTML = '';
-      new QRCode(qrWrap, {
-        text: data.playlist,
-        width: 180,
-        height: 180,
-        colorDark: '#000',
-        colorLight: '#fff',
-        correctLevel: QRCode.CorrectLevel.M,
-      });
+      if(window.QRCode){
+        new QRCode(qrWrap, {
+          text: data.playlist, width: 180, height: 180,
+          colorDark: '#000', colorLight: '#fff',
+          correctLevel: QRCode.CorrectLevel.M,
+        });
+      }
+
+      const splitsWrap = document.getElementById('splitsWrap');
+      if(splitsWrap && data.splits && data.splits.length){
+        const base = data.base_url || '';
+        splitsWrap.innerHTML = '<h4>📂 Разделы</h4>' + data.splits.map(s => {
+          const url = base + s.file;
+          return '<div class="split-item">' +
+            '<span class="split-name">' + escapeHtml(s.name) + '</span>' +
+            '<span class="split-count">' + s.count + '</span>' +
+            '<button class="split-copy" data-u="' + escapeAttr(url) + '">📋</button>' +
+            '</div>';
+        }).join('');
+        splitsWrap.querySelectorAll('.split-copy').forEach(b => {
+          b.addEventListener('click', () => {
+            navigator.clipboard.writeText(b.dataset.u).then(() => {
+              b.classList.add('ok');
+              const t = b.textContent; b.textContent = '✓';
+              setTimeout(() => { b.classList.remove('ok'); b.textContent = t; }, 1200);
+            });
+          });
+        });
+      } else if(splitsWrap){
+        splitsWrap.innerHTML = '';
+      }
+
       locked.style.display = 'none';
       unlocked.style.display = 'block';
       errEl.textContent = '';
@@ -462,13 +685,14 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
     if(e.key === 'Enter') btn.click();
   });
 
-  document.querySelectorAll('.copy-btn').forEach(b => {
+  document.querySelectorAll('.copy-btn[data-target]').forEach(b => {
     b.addEventListener('click', () => {
       const el = document.getElementById(b.dataset.target);
       if(!el || el.textContent === '—') return;
       navigator.clipboard.writeText(el.textContent).then(() => {
+        b.classList.add('copied');
         const t = b.textContent; b.textContent = '✓';
-        setTimeout(() => b.textContent = t, 1200);
+        setTimeout(() => { b.classList.remove('copied'); b.textContent = t; }, 1200);
       });
     });
   });
@@ -508,7 +732,7 @@ cursor:pointer;transition:border-color .15s;align-self:flex-start}
         timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit'
       });
       el.innerHTML = '🕐 <strong>' + t + '</strong> <span class="hide-mobile">МСК</span>';
-    } catch(e) { el.innerHTML = ''; }
+    } catch(e) {}
   }
   updateClock();
   setInterval(updateClock, 1000);
