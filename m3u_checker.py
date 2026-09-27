@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-M3U Checker v12 — автоподстановка tvg-id для EPG.
-Плюс: glassmorphism, донат-чарт, спарклайны, live-статус, fmt().
+M3U Checker v12.1 — EPG только от iptvx.one, автоподстановка tvg-id,
+фильтры, категоризация, логотипы iptv-org, PWA, темы, CSV, статистика.
 """
 import os
 import re
@@ -44,13 +44,8 @@ UA_LINE = f'#EXTVLCOPT:http-user-agent={DEFAULT_UA}'
 UA_ICONS = {'wink': '📺', 'vlc': '🎬', 'tivimate': '📱', 'smarttv': '📡', 'cached': '⚡'}
 
 HEADER_LINE = (
-    '#EXTM3U url-tvg="http://epg.one/epg.xml; '
-    'http://uztv.su/uploads/channelsarch/channels.xml; '
-    'https://iptvx.one/EPG_NOARCH; '
-    'http://gabbarit.drm-play.com/epg_lite.xml.gz; '
-    'http://epg.cdntv.online/lite.xml; '
-    'http://epg.it999.ru/epg.xml; '
-    'http://iptv-content.rv77.pw/guide-lite.xml"'
+    '#EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; '
+    'https://iptvx.one/EPG_NOARCH"'
 )
 
 IPTV_ORG_URLS_CHANNELS = [
@@ -123,7 +118,6 @@ def fmt(template, **kwargs):
     return out.replace('\x00', '{').replace('\x01', '}')
 
 
-# ---------- ТРАНСЛИТ ----------
 _TRANSLIT_MAP = {
     'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh',
     'з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o',
@@ -260,7 +254,6 @@ def _download_json(urls, cache_path):
 
 
 def load_iptv_org():
-    """Скачивает каналы + логотипы, строит словари логотипов И tvg-id."""
     global IPTV_LOGOS, IPTV_IDS
     if CFG.no_iptv_logos:
         emit("База iptv-org: отключено")
@@ -276,7 +269,6 @@ def load_iptv_org():
         emit("  Логотипы iptv-org недоступны")
         logos = []
 
-    # id -> [names]
     id_to_names = {}
     for ch in channels:
         if not isinstance(ch, dict):
@@ -295,7 +287,6 @@ def load_iptv_org():
             names.append(an)
         id_to_names[cid] = names
 
-    # Логотипы: channel_id -> url (самый крупный)
     by_id_raw = {}
     for logo in logos:
         if not isinstance(logo, dict):
@@ -319,7 +310,6 @@ def load_iptv_org():
     IPTV_LOGOS['by_id'] = by_id
     IPTV_LOGOS['by_name'] = by_name_logo
 
-    # tvg-id: name -> channel_id
     by_name_id = {}
     by_name_id_translit = {}
     for cid, names in id_to_names.items():
@@ -425,7 +415,6 @@ def set_logo_in_extinf(extinf, logo):
 
 
 def set_tvg_id_in_extinf(extinf, tvg_id):
-    """Устанавливает tvg-id. Если уже был — заменяет. Если не было — добавляет."""
     if not tvg_id:
         return extinf
     tvg_id = tvg_id.replace('"', "'")
@@ -642,11 +631,6 @@ def resolve_logo(extinf, url, txt_logos, cache):
 
 
 def resolve_tvg_id(extinf):
-    """
-    Возвращает tvg-id: существующий или найденный по имени.
-    Если у канала уже есть tvg-id — оставляем его.
-    Если нет — ищем в базе по имени (точное + транслит).
-    """
     current = get_tvg_id(extinf)
     if current.strip():
         return current
@@ -676,13 +660,10 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     if not ok:
         return index, 'dead', None, None, None, None, None, None
     extinf = clean_extinf(extinf)
-    # 1. Логотип
     extinf = set_logo_in_extinf(extinf, resolve_logo(extinf, url, txt_logos, cache))
-    # 2. tvg-id (для EPG)
     new_tvg_id = resolve_tvg_id(extinf)
     if new_tvg_id:
         extinf = set_tvg_id_in_extinf(extinf, new_tvg_id)
-    # 3. Группа
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
     return index, 'ok', extinf, url, None, ua, new_group, elapsed
@@ -1167,7 +1148,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v12 - {date}</title>
+<title>M3U Check v12.1 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1228,7 +1209,7 @@ INDEX_T = """<!DOCTYPE html>
 <code id="player-url">{playlist_url}</code>
 <button class="copy-btn" data-target="player-url">📋 Копировать</button>
 </div>
-<div class="sub" style="margin:0">Вставь в TiviMate / VLC / OTT Navigator как Playlist URL</div>
+<div class="sub" style="margin:0">Вставь в TiviMate / Televizo / OTT Navigator как Playlist URL</div>
 </div>
 </div>
 
@@ -1595,7 +1576,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, merged, dur, index_url,
               source_results, is_weekly):
-    lines = ["<b>M3U Check v12</b>"]
+    lines = ["<b>M3U Check v12.1</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
