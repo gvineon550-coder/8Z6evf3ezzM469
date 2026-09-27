@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-M3U Checker v15 — tvg-id из EPG iptvx.one, аптайм, автоотсев мигающих.
+M3U Checker v16 — rejected.csv/html, улучшенный HTTP-чек,
+логотипы: iptv-org id + EPG icon, аптайм, автоотсев.
 """
 import os
 import re
@@ -80,6 +81,7 @@ WHITESPACE = b' \t\r\n'
 SLOW_THRESHOLD = 2.0
 HISTORY_MAX = 30
 UPTIME_MAX = 30
+REJECTED_LIMIT = 3000
 
 DONUT_COLORS = [
     '#4ade80', '#60a5fa', '#facc15', '#f87171', '#a78bfa',
@@ -92,12 +94,15 @@ CFG = None
 CATEGORIES = {}
 FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}}
-EPG_MAP = {'by_name': {}, 'by_translit': {}}
+IPTV_IDS = {'by_name': {}, 'by_name_translit': {}}
+EPG_MAP = {'by_name': {}, 'by_translit': {}, 'icons': {}}
 LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
-              'from_translit': 0, 'from_txt': 0, 'none': 0}
+              'from_translit': 0, 'from_epg_icon': 0, 'from_txt': 0, 'none': 0}
 UPTIME = {}
 UPTIME_NEW = {}
 UPTIME_LOCK = threading.Lock()
+REJECTED = []
+REJECTED_LOCK = threading.Lock()
 
 
 def setup_logging(path, quiet):
@@ -275,7 +280,7 @@ def load_sources_config(path):
     return data
 
 
-# ---------- IPTV-ORG (логотипы) ----------
+# ---------- IPTV-ORG ----------
 def _download_json(urls, cache_path):
     os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
@@ -310,7 +315,7 @@ def _download_json(urls, cache_path):
 
 
 def load_iptv_org():
-    global IPTV_LOGOS
+    global IPTV_LOGOS, IPTV_IDS
     if CFG.no_iptv_logos:
         emit("База iptv-org: отключено")
         return
@@ -372,16 +377,27 @@ def load_iptv_org():
     IPTV_LOGOS['by_name'] = by_name_logo
     IPTV_LOGOS['by_name_translit'] = by_name_logo_translit
 
-    emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени, "
-         f"{len(by_name_logo_translit)} по транслиту")
+    by_name_id = {}
+    by_name_id_translit = {}
+    for cid, names in id_to_names.items():
+        for name in names:
+            k = normalize_name(name)
+            if k and k not in by_name_id:
+                by_name_id[k] = cid
+            kt = normalize_name_translit(name)
+            if kt and kt not in by_name_id_translit:
+                by_name_id_translit[kt] = cid
+
+    IPTV_IDS['by_name'] = by_name_id
+    IPTV_IDS['by_name_translit'] = by_name_id_translit
+
+    emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени")
+    emit(f"  iptv-org id: {len(by_name_id)} по имени")
 
 
 # ---------- EPG iptvx ----------
 def download_epg_map():
-    """Скачивает EPG iptvx.one, парсит XMLTV, строит карту имя → tvg-id."""
     global EPG_MAP
-
-    # Кэш
     if os.path.isfile(EPG_CACHE):
         try:
             with open(EPG_CACHE, 'r', encoding='utf-8') as f:
@@ -390,12 +406,13 @@ def download_epg_map():
             if age_days < EPG_TTL_DAYS:
                 EPG_MAP['by_name'] = cached.get('by_name', {})
                 EPG_MAP['by_translit'] = cached.get('by_translit', {})
-                emit(f"  EPG: из кэша {len(EPG_MAP['by_name'])} имён")
+                EPG_MAP['icons'] = cached.get('icons', {})
+                emit(f"  EPG: из кэша {len(EPG_MAP['by_name'])} имён, "
+                     f"{len(EPG_MAP['icons'])} icon")
                 return
         except Exception as e:
             log.warning("EPG cache: %s", e)
 
-    # Скачиваем
     for url in EPG_URLS:
         try:
             emit(f"  EPG: скачиваю {url}")
@@ -410,23 +427,26 @@ def download_epg_map():
                 xml_data = raw
             emit(f"  EPG: распакован {len(xml_data)//1024} KB, парсим...")
 
-            # Определяем кодировку
             head = xml_data[:200].decode('ascii', errors='ignore')
             if 'windows-1251' in head or 'cp1251' in head:
                 xml_str = xml_data.decode('windows-1251', errors='replace')
             else:
                 xml_str = xml_data.decode('utf-8', errors='replace')
 
-            # Регулярки для быстрого парсинга
             ch_re = re.compile(r'<channel\s+id="([^"]+)"[^>]*>(.*?)</channel>',
                                re.DOTALL)
             dn_re = re.compile(r'<display-name[^>]*>([^<]+)</display-name>')
+            icon_re = re.compile(r'<icon\s+src="([^"]+)"')
 
             by_name = {}
             by_translit = {}
+            icons = {}
             for m in ch_re.finditer(xml_str):
                 cid = m.group(1)
                 body = m.group(2)
+                ic = icon_re.search(body)
+                if ic:
+                    icons[cid] = ic.group(1)
                 for dn in dn_re.finditer(body):
                     name = html.unescape(dn.group(1)).strip()
                     if not name:
@@ -440,13 +460,15 @@ def download_epg_map():
 
             EPG_MAP['by_name'] = by_name
             EPG_MAP['by_translit'] = by_translit
-            emit(f"  EPG: {len(by_name)} имён, {len(by_translit)} с транслитом")
+            EPG_MAP['icons'] = icons
+            emit(f"  EPG: {len(by_name)} имён, {len(by_translit)} с транслитом, "
+                 f"{len(icons)} icon")
 
             os.makedirs(os.path.dirname(EPG_CACHE) or '.', exist_ok=True)
             with open(EPG_CACHE, 'w', encoding='utf-8') as f:
                 json.dump({'by_name': by_name, 'by_translit': by_translit,
-                           'ts': time.time()}, f, ensure_ascii=False,
-                          separators=(',', ':'))
+                           'icons': icons, 'ts': time.time()},
+                          f, ensure_ascii=False, separators=(',', ':'))
             return
         except Exception as e:
             log.warning("EPG %s: %s", url, e)
@@ -670,7 +692,9 @@ def load_txt_logos(dirs):
     return logos
 
 
+# ---------- ПОТОКИ ----------
 def _try_stream(url, ua):
+    """Возвращает (ok, elapsed, reason). reason — код причины, если не ок."""
     try:
         t0 = time.time()
         with requests.get(url, headers={'User-Agent': ua}, stream=True,
@@ -678,42 +702,51 @@ def _try_stream(url, ua):
                           verify=CFG.verify_ssl) as r:
             elapsed = time.time() - t0
             if r.status_code != 200:
-                return False, elapsed
-            chunk = next(r.iter_content(chunk_size=512), b'')
+                return False, elapsed, f'http_{r.status_code}'
+            ct = (r.headers.get('Content-Type') or '').lower()
+            chunk = next(r.iter_content(chunk_size=1024), b'')
             if not chunk:
-                return False, elapsed
+                return False, elapsed, 'empty'
             h = chunk.lstrip(WHITESPACE)
             if h.startswith(BOM):
                 h = h[len(BOM):].lstrip(WHITESPACE)
             if h.startswith(b'#EXTM3U'):
-                return True, elapsed
+                return True, elapsed, None
             for p in HTML_PREFIXES:
                 if h.startswith(p):
-                    return False, elapsed
-            return True, elapsed
+                    return False, elapsed, 'html'
+            if 'text/html' in ct:
+                # Content-Type html, но не начинается с HTML-префикса — подозрительно
+                return False, elapsed, 'html_ct'
+            if len(chunk) < 32:
+                return False, elapsed, 'too_small'
+            return True, elapsed, None
     except requests.RequestException:
-        return False, None
+        return False, None, 'timeout'
 
 
 def _check_stream(url):
     uas = USER_AGENTS if CFG.multi_ua else USER_AGENTS[:1]
     best_elapsed = None
+    last_reason = 'unknown'
     for name, ua in uas:
-        ok, el = _try_stream(url, ua)
+        ok, el, reason = _try_stream(url, ua)
         if ok:
-            return True, name, el
+            return True, name, el, None
+        if reason:
+            last_reason = reason
         if el is not None and (best_elapsed is None or el < best_elapsed):
             best_elapsed = el
-    return False, None, best_elapsed
+    return False, None, best_elapsed, last_reason
 
 
 def check_stream(url, cache):
     c = cache.get(url, 'stream')
     if c is not None:
-        return c, 'cached', None
-    ok, n, el = _check_stream(url)
+        return c, 'cached', None, None
+    ok, n, el, reason = _check_stream(url)
     cache.put(url, 'stream', ok)
-    return ok, (n or DEFAULT_UA), el
+    return ok, (n or DEFAULT_UA), el, reason
 
 
 def _check_logo(url):
@@ -740,35 +773,37 @@ def check_logo(url, cache):
     return ok
 
 
-def resolve_logo(extinf, url, txt_logos, cache):
-    # 1. Из источника — ПРОВЕРЯЕМ
+def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
+    """Каскад: src → iptv-org id → name → translit → EPG icon → .txt."""
     m = re.search(r'tvg-logo="([^"]*)"', extinf)
     if m and m.group(1):
         if not CFG.check_all_logos or check_logo(m.group(1), cache):
             return m.group(1), 'from_src'
 
-    # 2. По tvg-id — НЕ проверяем
-    tid = get_tvg_id(extinf)
-    if tid:
-        l = IPTV_LOGOS['by_id'].get(tid)
+    if iptv_org_id:
+        l = IPTV_LOGOS['by_id'].get(iptv_org_id)
         if l:
             return l, 'from_id'
 
     name = get_name(extinf)
     if name:
-        # 3. По имени — НЕ проверяем
         k = normalize_name(name)
         if k:
             l = IPTV_LOGOS['by_name'].get(k)
             if l:
                 return l, 'from_name'
-        # 4. По транслиту — НЕ проверяем
         kt = normalize_name_translit(name)
         if kt:
             l = IPTV_LOGOS.get('by_name_translit', {}).get(kt)
             if l:
                 return l, 'from_translit'
-        # 5. Из .txt — проверяем
+
+    if epg_id and EPG_MAP.get('icons'):
+        l = EPG_MAP['icons'].get(epg_id)
+        if l:
+            return l, 'from_epg_icon'
+
+    if name:
         l = txt_logos.get(name.lower())
         if l and check_logo(l, cache):
             return l, 'from_txt'
@@ -776,17 +811,34 @@ def resolve_logo(extinf, url, txt_logos, cache):
     return None, 'none'
 
 
-def resolve_tvg_id(extinf):
-    """Возвращает правильный tvg-id из EPG iptvx.one.
-    Если EPG не загружен — не трогаем.
-    Если не нашли в EPG — возвращаем '' (уберём тег)."""
-    current = get_tvg_id(extinf)
-    if not EPG_MAP['by_name'] and not EPG_MAP['by_translit']:
-        # EPG не загружен, оставляем как есть
-        return current
+def resolve_iptv_org_id(extinf, original_tvg_id):
+    """Возвращает iptv-org id для поиска логотипа.
+    Сначала проверяем оригинальный tvg-id, потом ищем по имени."""
+    if original_tvg_id and original_tvg_id in IPTV_LOGOS['by_id']:
+        return original_tvg_id
     name = get_name(extinf)
     if not name:
-        return ''
+        return None
+    k = normalize_name(name)
+    if k:
+        cid = IPTV_IDS['by_name'].get(k)
+        if cid:
+            return cid
+    kt = normalize_name_translit(name)
+    if kt:
+        cid = IPTV_IDS['by_name_translit'].get(kt)
+        if cid:
+            return cid
+    return None
+
+
+def resolve_epg_id(extinf):
+    """Возвращает ID из EPG iptvx (для tvg-id в плейлисте)."""
+    if not EPG_MAP['by_name'] and not EPG_MAP['by_translit']:
+        return None
+    name = get_name(extinf)
+    if not name:
+        return None
     k = normalize_name(name)
     if k:
         cid = EPG_MAP['by_name'].get(k)
@@ -797,7 +849,7 @@ def resolve_tvg_id(extinf):
         cid = EPG_MAP['by_translit'].get(kt)
         if cid:
             return cid
-    return ''
+    return None
 
 
 def process_channel(index, extinf, url, txt_logos, cache, source_name):
@@ -805,11 +857,18 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     group = get_group(extinf)
     filtered, reason = is_filtered(name, group, url)
     if filtered:
+        with REJECTED_LOCK:
+            if len(REJECTED) < REJECTED_LIMIT:
+                REJECTED.append((name, group, url, reason))
         return index, 'filtered', None, None, reason, None, None, None, None
-    ok, ua, elapsed = check_stream(url, cache)
+
+    ok, ua, elapsed, fail_reason = check_stream(url, cache)
     if not ok:
         with UPTIME_LOCK:
             UPTIME_NEW[url] = 0
+        with REJECTED_LOCK:
+            if len(REJECTED) < REJECTED_LIMIT:
+                REJECTED.append((name, group, url, f'dead:{fail_reason or "unknown"}'))
         return index, 'dead', None, None, None, None, None, None, None
 
     with UPTIME_LOCK:
@@ -817,22 +876,26 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
 
     if is_migayushchiy(url):
         pct, total = get_uptime_pct(url)
-        return index, 'unstable', None, None, f"uptime {pct}% ({total})", None, None, None, None
+        with REJECTED_LOCK:
+            if len(REJECTED) < REJECTED_LIMIT:
+                REJECTED.append((name, group, url, f'unstable:{pct}%'))
+        return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None
 
     extinf = clean_extinf(extinf)
 
-    # tvg-id — сначала ставим правильный из EPG
-    new_tvg_id = resolve_tvg_id(extinf)
-    if new_tvg_id:
-        extinf = set_tvg_id_in_extinf(extinf, new_tvg_id)
+    original_tvg_id = get_tvg_id(extinf)
+    iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
+    epg_id = resolve_epg_id(extinf)
+
+    logo, logo_src = resolve_logo(extinf, url, txt_logos, cache,
+                                   iptv_org_id, epg_id)
+    extinf = set_logo_in_extinf(extinf, logo)
+
+    if epg_id:
+        extinf = set_tvg_id_in_extinf(extinf, epg_id)
     else:
         extinf = remove_tvg_id_from_extinf(extinf)
 
-    # Логотип
-    logo, logo_src = resolve_logo(extinf, url, txt_logos, cache)
-    extinf = set_logo_in_extinf(extinf, logo)
-
-    # Группа
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
 
@@ -880,17 +943,22 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             all_urls.append(url)
             name = get_name(extinf)
             group = get_group(extinf)
-            filtered, _ = is_filtered(name, group, url)
+            filtered, reason = is_filtered(name, group, url)
             if filtered:
+                with REJECTED_LOCK:
+                    if len(REJECTED) < REJECTED_LIMIT:
+                        REJECTED.append((name, group, url, reason))
                 continue
             extinf = clean_extinf(extinf)
-            new_tvg_id = resolve_tvg_id(extinf)
-            if new_tvg_id:
-                extinf = set_tvg_id_in_extinf(extinf, new_tvg_id)
+            original_tvg_id = get_tvg_id(extinf)
+            iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
+            epg_id = resolve_epg_id(extinf)
+            logo, _ = resolve_logo(extinf, url, txt_logos, cache, iptv_org_id, epg_id)
+            extinf = set_logo_in_extinf(extinf, logo)
+            if epg_id:
+                extinf = set_tvg_id_in_extinf(extinf, epg_id)
             else:
                 extinf = remove_tvg_id_from_extinf(extinf)
-            logo, _ = resolve_logo(extinf, url, txt_logos, cache)
-            extinf = set_logo_in_extinf(extinf, logo)
             extinf = set_group_in_extinf(extinf, add_emoji(categorize(extinf, url, label)))
             out.append((i, extinf, url))
         ordered = group_channels(out)
@@ -1077,6 +1145,25 @@ def write_csv(channels, path):
             m = re.search(r'tvg-logo="([^"]*)"', extinf)
             logo = m.group(1) if m else ''
             w.writerow([name, group, tid, pct_v, total, logo, url])
+
+
+def write_rejected_csv(path):
+    """Пишет все отсеянные каналы с причинами. Дедупликация по URL."""
+    seen = set()
+    rows = []
+    for name, group, url, reason in REJECTED:
+        key = (url, reason)
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append((name, group, url, reason))
+    rows.sort(key=lambda x: (x[3], x[1].lower(), x[0].lower()))
+    with open(path, 'w', encoding='utf-8', newline='') as f:
+        w = csv.writer(f)
+        w.writerow(['name', 'group', 'url', 'reason'])
+        for row in rows:
+            w.writerow(row)
+    return len(rows)
 
 
 def load_history(path):
@@ -1295,6 +1382,11 @@ border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .uptime-mid{color:#facc15;font-weight:500}
 .uptime-low{color:#f87171;font-weight:500}
 .uptime-none{color:var(--muted)}
+.reason-badge{display:inline-block;padding:2px 8px;border-radius:6px;
+font-size:11px;font-weight:500;background:var(--border);color:var(--muted)}
+.reason-badge.dead{background:rgba(248,113,113,0.15);color:#f87171}
+.reason-badge.filter{background:rgba(250,204,21,0.15);color:#facc15}
+.reason-badge.unstable{background:rgba(250,204,21,0.15);color:#facc15}
 """
 
 THEME_JS = """
@@ -1341,7 +1433,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v15 - {date}</title>
+<title>M3U Check v16 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1370,6 +1462,8 @@ REPORT_T = """<!DOCTYPE html>
 <div class="section"><h2>Фильтры</h2>
 <table><thead><tr><th>Причина</th><th>Каналов</th></tr></thead>
 <tbody>{filter_rows}</tbody></table></div>
+<div class="box"><a href="rejected.html">🚫 Посмотреть отсеянные каналы</a> ·
+<a href="rejected.csv">📥 Скачать CSV отсеянных</a></div>
 {theme_js}
 </body></html>
 """
@@ -1409,6 +1503,7 @@ INDEX_T = """<!DOCTYPE html>
 <h2>Разделы</h2>
 <div class="box"><a href="report.html">📊 Отчёт проверки</a></div>
 <div class="box"><a href="channels.html">🔍 Поиск по каналам</a></div>
+<div class="box"><a href="rejected.html">🚫 Отсеянные каналы</a></div>
 <div class="box"><a href="channels.csv">📥 Скачать CSV (все каналы)</a></div>
 <h2>Статистика</h2>
 <div class="box">
@@ -1552,6 +1647,80 @@ render();
 </body></html>
 """
 
+REJECTED_T = """<!DOCTYPE html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Отсеянные каналы</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<style>{common_css}
+input,select{background:var(--panel);border:1px solid var(--border);color:var(--text);
+padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
+margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px)}
+.controls{display:grid;grid-template-columns:1fr 260px;gap:10px;margin-bottom:16px}
+@media(max-width:600px){.controls{grid-template-columns:1fr}}
+th{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);z-index:2}
+tr:hover td{background:var(--panel)}
+.name{font-weight:500}
+.group{color:var(--muted);font-size:12px}
+.url-cell{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);
+max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+</style></head><body>
+{theme_btn}
+<a href="index.html">← на главную</a>
+<h1>Отсеянные каналы</h1>
+<div class="sub">Всего: <span id="cnt">{total}</span> · показано: <span id="shown">{total}</span></div>
+<div class="controls">
+<input id="q" type="search" placeholder="Поиск по названию или URL...">
+<select id="r"><option value="">Все причины</option>{reason_options}</select>
+</div>
+<table>
+<thead><tr><th>Название</th><th>Группа</th><th>URL</th><th>Причина</th></tr></thead>
+<tbody id="tb"></tbody>
+</table>
+<script>
+const REJ = {rejected_json};
+const tb = document.getElementById('tb');
+const q = document.getElementById('q');
+const r = document.getElementById('r');
+const shown = document.getElementById('shown');
+function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function reasonClass(rs) {
+  if (!rs) return 'reason-badge';
+  if (rs.startsWith('dead')) return 'reason-badge dead';
+  if (rs.startsWith('unstable')) return 'reason-badge unstable';
+  return 'reason-badge filter';
+}
+function render(){
+  const term = q.value.trim().toLowerCase();
+  const rs = r.value;
+  let out = [];
+  for (const c of REJ) {
+    if (rs && !c.reason.startsWith(rs)) continue;
+    if (term && !(c.name.toLowerCase().includes(term) || c.url.toLowerCase().includes(term))) continue;
+    out.push(c);
+  }
+  if (out.length > 800) out = out.slice(0, 800);
+  const html = out.map(c => {
+    return '<tr>'
+      + '<td class="name">' + esc(c.name) + '</td>'
+      + '<td class="group">' + esc(c.group) + '</td>'
+      + '<td class="url-cell" title="' + esc(c.url) + '">' + esc(c.url) + '</td>'
+      + '<td><span class="' + reasonClass(c.reason) + '">' + esc(c.reason) + '</span></td>'
+      + '</tr>';
+  }).join('');
+  tb.innerHTML = html || '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
+  shown.textContent = out.length;
+}
+q.addEventListener('input', render);
+r.addEventListener('change', render);
+render();
+</script>
+{theme_js}
+</body></html>
+"""
+
 ICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
 <defs>
 <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -1635,9 +1804,10 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
         total_logo = sum(logo_stats.values()) or 1
         labels = {
             'from_src': 'Из источника',
-            'from_id': 'По tvg-id из базы',
+            'from_id': 'По iptv-org id',
             'from_name': 'По имени из базы',
-            'from_translit': 'По транслиту из базы',
+            'from_translit': 'По транслиту',
+            'from_epg_icon': 'Из EPG iptvx (icon)',
             'from_txt': 'Из .txt',
             'none': 'Не найдено',
         }
@@ -1747,6 +1917,36 @@ def render_channels(path, channels):
         f.write(out)
 
 
+def render_rejected(path):
+    """Пишет rejected.html со списком отсеянных."""
+    seen = set()
+    rows = []
+    for name, group, url, reason in REJECTED:
+        key = (url, reason)
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append({'name': name, 'group': group, 'url': url, 'reason': reason})
+    rows.sort(key=lambda x: (x['reason'], x['group'].lower(), x['name'].lower()))
+
+    reason_counts = {}
+    for r in rows:
+        base = r['reason'].split(':')[0]
+        reason_counts[base] = reason_counts.get(base, 0) + 1
+    reason_opts = "\n".join(
+        f'<option value="{html.escape(k)}">{html.escape(k)} ({v})</option>'
+        for k, v in sorted(reason_counts.items(), key=lambda x: -x[1]))
+
+    out = fmt(
+        REJECTED_T,
+        common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
+        total=len(rows), reason_options=reason_opts,
+        rejected_json=json.dumps(rows, ensure_ascii=False))
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(out)
+    return len(rows)
+
+
 def write_pwa_assets(docs_dir):
     with open(os.path.join(docs_dir, 'icon.svg'), 'w', encoding='utf-8') as f:
         f.write(ICON_SVG)
@@ -1795,7 +1995,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count):
-    lines = ["<b>M3U Check v15</b>"]
+    lines = ["<b>M3U Check v16</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -1804,7 +2004,7 @@ def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
         f"Нестабильных отсеяно: <b>{unstable}</b>",
         f"Отфильтровано: <b>{filt}</b>",
         f"В merged: <b>{merged}</b>",
-        f"С EPG (iptvx): <b>{epg_count}</b>",
+        f"С EPG iptvx: <b>{epg_count}</b>",
         f"Время: {int(dur)}с",
         "",
     ])
@@ -1863,12 +2063,14 @@ def parse_args():
 
 
 def main():
-    global CFG, CATEGORIES, FILTERS, UPTIME_NEW
+    global CFG, CATEGORIES, FILTERS, UPTIME_NEW, REJECTED
     CFG = parse_args()
     CFG.verify_ssl = not CFG.no_ssl_verify
     if CFG.no_ssl_verify:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     setup_logging(CFG.log, CFG.quiet)
+
+    REJECTED = []
 
     CATEGORIES = load_json(CFG.categories)
     FILTERS = load_json(CFG.filters)
@@ -1884,10 +2086,10 @@ def main():
     if UPTIME:
         emit(f"Аптайм: загружено {len(UPTIME)} URL из истории")
 
-    emit("Загружаю базу iptv-org (логотипы)...")
+    emit("Загружаю базу iptv-org (логотипы + iptv-org id)...")
     load_iptv_org()
 
-    emit("Загружаю EPG iptvx.one (tvg-id)...")
+    emit("Загружаю EPG iptvx.one (tvg-id + icon)...")
     download_epg_map()
 
     cfg = load_sources_config(CFG.sources)
@@ -2003,6 +2205,11 @@ def main():
 
         write_csv(ordered_merged, os.path.join(CFG.docs_dir, 'channels.csv'))
 
+        rejected_count = write_rejected_csv(os.path.join(CFG.docs_dir, 'rejected.csv'))
+        rejected_html_count = render_rejected(os.path.join(CFG.docs_dir, 'rejected.html'))
+        emit(f"\nrejected.csv: {rejected_count} записей (уникальных)")
+        emit(f"rejected.html: {rejected_html_count} записей")
+
         render_report(os.path.join(CFG.docs_dir, 'report.html'),
                       stats_list, len(ordered_merged), total, ok, filt, dead, unstable,
                       time.time() - started, ua_totals, history, groups_all,
@@ -2030,7 +2237,7 @@ def main():
              f"merged={len(ordered_merged)}, "
              f"с EPG iptvx={epg_count}, с лого={logo_total}/{logo_all} ({logo_total/logo_all*100:.0f}%)")
         if LOGO_STATS:
-            for k in ['from_src', 'from_id', 'from_name', 'from_translit', 'from_txt', 'none']:
+            for k in ['from_src', 'from_id', 'from_name', 'from_translit', 'from_epg_icon', 'from_txt', 'none']:
                 if LOGO_STATS.get(k):
                     emit(f"    лого {k}: {LOGO_STATS[k]}")
 
@@ -2044,7 +2251,7 @@ def main():
                 tg_file(CFG.tg_token, CFG.tg_chat, merged_path,
                         caption="Merged плейлист")
             if CFG.weekly_backup and is_sunday:
-                for fn in ('report.html', 'channels.csv', 'channels.html'):
+                for fn in ('report.html', 'channels.csv', 'channels.html', 'rejected.csv'):
                     fp = os.path.join(CFG.docs_dir, fn)
                     if os.path.isfile(fp):
                         tg_file(CFG.tg_token, CFG.tg_chat, fp,
