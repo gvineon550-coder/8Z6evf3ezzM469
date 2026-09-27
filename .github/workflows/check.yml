@@ -11,7 +11,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
 
     steps:
       - name: Checkout
@@ -27,6 +27,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run checker
+        id: run
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
@@ -38,9 +39,27 @@ jobs:
             --filters filters.json \
             --docs-dir docs \
             --multi-ua \
+            --split-all \
+            --weekly-backup \
             --tg-send-merged
 
+      - name: Notify on failure
+        if: failure()
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          curl -s -X POST "https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage" \
+            -d "chat_id=${TG_CHAT_ID}" \
+            -d "parse_mode=HTML" \
+            -d "disable_web_page_preview=true" \
+            --data-urlencode "text=<b>⚠️ M3U Check упал</b>
+          Время: $(date -u +%Y-%m-%d\ %H:%M\ UTC)
+          Открой лог: ${RUN_URL}" || true
+
       - name: Commit & push results
+        if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
