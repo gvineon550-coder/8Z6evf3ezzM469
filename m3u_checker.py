@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v6.1 — проверка IPTV-плейлистов.
+M3U Checker v6.2 — проверка IPTV-плейлистов.
 URL-источники + локальные файлы + Telegram + GitHub Pages.
 """
 import os
@@ -721,13 +721,15 @@ def tg_report(playlist_stats, total, ok, merged_path, duration_sec,
 
 def parse_args():
     p = argparse.ArgumentParser(
-        description="M3U Checker v6.1",
+        description="M3U Checker v6.2",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     p.add_argument('--sources', default='sources.json')
     p.add_argument('-o', '--output', default='checked_playlists')
     p.add_argument('--docs-dir', default='docs',
                    help='Куда писать результат для GitHub Pages')
-    p.add_argument('-m', '--merged', default='all_checked.m3u8')
+    p.add_argument('-m', '--merged', dest='merged_name',
+                   default='all_checked.m3u8',
+                   help='Имя объединённого файла')
     p.add_argument('--no-merge', action='store_true')
     p.add_argument('--no-dedup', action='store_true')
     p.add_argument('-w', '--workers', type=int, default=15)
@@ -861,6 +863,8 @@ def main():
         ua_totals = {}
         for s in playlist_stats:
             for ua, c in s['ua_stats'].items():
+                if ua == 'skipped':
+                    continue
                 ua_totals[ua] = ua_totals.get(ua, 0) + c
         render_report(report_path, playlist_stats, len(merged_all),
                       total, ok, time.time() - started, ua_totals)
