@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-M3U Checker v11 — glassmorphism, донат-чарт, спарклайны, live-статус.
+M3U Checker v11.1 — glassmorphism, донат-чарт, спарклайны, live-статус.
+Фикс: fmt() вместо .format() — не конфликтует с JS/CSS.
 """
 import os
 import re
@@ -93,15 +94,15 @@ IPTV_LOGOS = {'by_id': {}, 'by_name': {}}
 def setup_logging(path, quiet):
     log.setLevel(logging.DEBUG)
     log.handlers.clear()
-    fmt = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', '%H:%M:%S')
+    fmt_ = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', '%H:%M:%S')
     fh = logging.FileHandler(path, encoding='utf-8')
     fh.setLevel(logging.DEBUG)
-    fh.setFormatter(fmt)
+    fh.setFormatter(fmt_)
     log.addHandler(fh)
     if not quiet:
         ch = logging.StreamHandler(sys.stderr)
         ch.setLevel(logging.WARNING)
-        ch.setFormatter(fmt)
+        ch.setFormatter(fmt_)
         log.addHandler(ch)
 
 
@@ -112,6 +113,18 @@ def emit(text, pbar=None):
         tqdm.write(text)
     else:
         print(text)
+
+
+def fmt(template, **kwargs):
+    """Замена .format() без конфликтов с {} в JS/CSS.
+    1. Двойные {{ }} временно сохраняем в спецсимволы.
+    2. Подставляем именованные {key} значения.
+    3. Восстанавливаем {{ }} -> { }.
+    """
+    out = template.replace('{{', '\x00').replace('}}', '\x01')
+    for k, v in kwargs.items():
+        out = out.replace('{' + k + '}', str(v))
+    return out.replace('\x00', '{').replace('\x01', '}')
 
 
 class UrlCache:
@@ -817,7 +830,6 @@ def save_history(path, history):
         json.dump(history[-HISTORY_MAX:], f, ensure_ascii=False, indent=2)
 
 
-# ---------- SVG-генераторы ----------
 def sparkline_svg(vals, color='#4ade80', w=100, h=24):
     if not vals or len(vals) < 2:
         return ''
@@ -1063,7 +1075,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v11 - {date}</title>
+<title>M3U Check v11.1 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1106,10 +1118,10 @@ INDEX_T = """<!DOCTYPE html>
 <meta name="apple-mobile-web-app-title" content="IPTV">
 <link rel="apple-touch-icon" href="icon.svg">
 <style>{common_css}
-.qr-wrap{{display:flex;gap:20px;align-items:center;flex-wrap:wrap}}
-.qr-wrap img{{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}}
-.qr-info{{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}}
-.link-line{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}
+.qr-wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.qr-wrap img{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}
+.qr-info{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}
+.link-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 </style></head><body>
 {theme_btn}
 <h1>IPTV — авто-обновляемый плейлист</h1>
@@ -1140,27 +1152,27 @@ INDEX_T = """<!DOCTYPE html>
 </div>
 {splits_block}
 <script>
-(function(){{
-  document.querySelectorAll('.copy-btn').forEach(btn => {{
-    btn.addEventListener('click', () => {{
+(function(){
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
       const id = btn.dataset.target;
       const el = document.getElementById(id);
       if(!el) return;
       const text = el.textContent;
-      navigator.clipboard.writeText(text).then(() => {{
+      navigator.clipboard.writeText(text).then(() => {
         btn.classList.add('copied');
         const old = btn.textContent;
         btn.textContent = '✓ Скопировано';
-        setTimeout(() => {{ btn.classList.remove('copied'); btn.textContent = old; }}, 1500);
-      }});
-    }});
-  }});
+        setTimeout(() => { btn.classList.remove('copied'); btn.textContent = old; }, 1500);
+      });
+    });
+  });
 
   const gh = "{github_repo}";
   if(gh){
     fetch('https://api.github.com/repos/' + gh + '/actions/workflows/check.yml/runs?per_page=1')
       .then(r => r.ok ? r.json() : null)
-      .then(d => {{
+      .then(d => {
         if(!d || !d.workflow_runs || !d.workflow_runs.length) return;
         const run = d.workflow_runs[0];
         const el = document.getElementById('wf-status');
@@ -1179,10 +1191,10 @@ INDEX_T = """<!DOCTYPE html>
           html = '<span style="color:var(--muted)">⏸ Статус: ' + (run.status||'?') + '</span>';
         html += ' <span style="color:var(--muted);font-size:12px">· ' + agoStr + '</span>';
         el.innerHTML = html;
-      }})
-      .catch(() => {{}});
-  }}
-}})();
+      })
+      .catch(() => {});
+  }
+})();
 </script>
 {theme_js}
 </body></html>
@@ -1195,23 +1207,23 @@ CHANNELS_T = """<!DOCTYPE html>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}
-input,select{{background:var(--panel);border:1px solid var(--border);color:var(--text);
+input,select{background:var(--panel);border:1px solid var(--border);color:var(--text);
 padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
 margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px)}}
-.controls{{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}}
-@media(max-width:600px){{.controls{{grid-template-columns:1fr}}}}
-th{{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);z-index:2}}
-tr:hover td{{background:var(--panel)}}
-.logo{{width:32px;height:32px;object-fit:contain;vertical-align:middle;
-background:var(--border);border-radius:6px;padding:3px}}
-.name{{font-weight:500}}
-.group{{color:var(--muted);font-size:12px}}
-.copy{{background:var(--border);border:none;color:var(--muted);padding:5px 10px;
-border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}}
-.copy:hover{{background:var(--accent);color:#fff}}
-.copy.ok{{background:#4ade80;color:#0f1115}}
+-webkit-backdrop-filter:blur(10px)}
+.controls{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}
+@media(max-width:600px){.controls{grid-template-columns:1fr}}
+th{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);z-index:2}
+tr:hover td{background:var(--panel)}
+.logo{width:32px;height:32px;object-fit:contain;vertical-align:middle;
+background:var(--border);border-radius:6px;padding:3px}
+.name{font-weight:500}
+.group{color:var(--muted);font-size:12px}
+.copy{background:var(--border);border:none;color:var(--muted);padding:5px 10px;
+border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
+.copy:hover{background:var(--accent);color:#fff}
+.copy.ok{background:#4ade80;color:#0f1115}
 </style></head><body>
 {theme_btn}
 <a href="index.html">← на главную</a>
@@ -1236,34 +1248,34 @@ const params = new URLSearchParams(location.search);
 const initGroup = params.get('group');
 if(initGroup) g.value = initGroup;
 
-function esc(s) {{ return (s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c])); }}
-function render() {{
+function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function render(){
   const term = q.value.trim().toLowerCase();
   const grp = g.value;
   let out = [];
-  for (const c of CH) {{
+  for (const c of CH) {
     if (grp && c.group !== grp) continue;
     if (term && !c.name.toLowerCase().includes(term)) continue;
     out.push(c);
-  }}
+  }
   if (out.length > 500) out = out.slice(0, 500);
-  const html = out.map(c => {{
-    const logo = c.logo ? `<img class="logo" src="${{esc(c.logo)}}" loading="lazy" onerror="this.style.display='none'">` : '';
-    return `<tr><td>${{logo}}</td>
-      <td class="name">${{esc(c.name)}}</td>
-      <td class="group">${{esc(c.group)}}</td>
-      <td><button class="copy" data-u="${{esc(c.url)}}">URL</button></td></tr>`;
-  }}).join('');
+  const html = out.map(c => {
+    const logo = c.logo ? '<img class="logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '';
+    return '<tr><td>' + logo + '</td>'
+      + '<td class="name">' + esc(c.name) + '</td>'
+      + '<td class="group">' + esc(c.group) + '</td>'
+      + '<td><button class="copy" data-u="' + esc(c.url) + '">URL</button></td></tr>';
+  }).join('');
   tb.innerHTML = html || '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
   shown.textContent = out.length;
-  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {{
-    navigator.clipboard.writeText(b.dataset.u).then(() => {{
+  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
+    navigator.clipboard.writeText(b.dataset.u).then(() => {
       b.classList.add('ok');
       const t = b.textContent; b.textContent = '✓';
-      setTimeout(() => {{ b.classList.remove('ok'); b.textContent = t; }}, 1000);
-    }});
-  }}));
-}}
+      setTimeout(() => { b.classList.remove('ok'); b.textContent = t; }, 1000);
+    });
+  }));
+}
 q.addEventListener('input', render);
 g.addEventListener('change', render);
 render();
@@ -1291,7 +1303,7 @@ ICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
 <circle cx="132" cy="164" r="4" fill="#8a8f98"/>
 </svg>"""
 
-MANIFEST_T = """{{
+MANIFEST_T = """{
   "name": "IPTV Auto",
   "short_name": "IPTV",
   "start_url": "index.html",
@@ -1299,10 +1311,10 @@ MANIFEST_T = """{{
   "background_color": "#0f1115",
   "theme_color": "#0f1115",
   "icons": [
-    {{"src": "icon.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any"}},
-    {{"src": "icon.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any"}}
+    {"src": "icon.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any"},
+    {"src": "icon.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any"}
   ]
-}}
+}
 """
 
 
@@ -1357,18 +1369,17 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history, 
     hist_block = render_history_svg(history)
     donut_block = render_donut_svg(groups_all)
 
-    # Здоровье = ok / (ok + dead) — без отфильтрованных
     denom = (ok + dead) or 1
     hpct = (ok / denom) * 100
     hb = health_bar(hpct)
 
-    # Спарклайны
     sp_total = _sparkline_for_history(history, 'total')
     sp_ok = _sparkline_for_history(history, 'ok')
     sp_merged = _sparkline_for_history(history, 'merged')
 
     d = int(dur)
-    out = REPORT_T.format(
+    out = fmt(
+        REPORT_T,
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         n_playlists=len(stats), total=total, ok=ok, filtered=filt, dead=dead,
@@ -1383,7 +1394,6 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history, 
 
 
 def _github_repo_from_pages(pages_url):
-    """Из https://USER.github.io/REPO делает USER/REPO."""
     if not pages_url:
         return ''
     m = re.match(r'https?://([^.]+)\.github\.io/([^/]+)', pages_url)
@@ -1404,7 +1414,8 @@ def render_index(path, url, merged, ok, total, splits, qr_path, pages_url):
     else:
         qr_block = ''
     gh_repo = _github_repo_from_pages(pages_url)
-    out = INDEX_T.format(
+    out = fmt(
+        INDEX_T,
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         playlist_url=url, merged_count=merged, ok=ok, total=total,
@@ -1427,7 +1438,8 @@ def render_channels(path, channels):
     group_opts = "\n".join(
         f'<option value="{html.escape(g)}">{html.escape(g)} ({c})</option>'
         for g, c in sorted(groups.items()))
-    out = CHANNELS_T.format(
+    out = fmt(
+        CHANNELS_T,
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         total=len(ch_list), group_options=group_opts,
         channels_json=json.dumps(ch_list, ensure_ascii=False))
@@ -1483,7 +1495,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, merged, dur, index_url,
               source_results, is_weekly):
-    lines = ["<b>M3U Check v11</b>"]
+    lines = ["<b>M3U Check v11.1</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
