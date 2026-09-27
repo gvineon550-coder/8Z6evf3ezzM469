@@ -36,7 +36,6 @@
   ],
   "url_extension_blocklist": [
     ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp", ".svg", ".ico",
-    ".html", ".htm", ".php", ".asp", ".aspx", ".jsp",
     ".zip", ".rar", ".7z", ".tar", ".gz",
     ".exe", ".dmg", ".apk", ".deb", ".rpm"
   ],
