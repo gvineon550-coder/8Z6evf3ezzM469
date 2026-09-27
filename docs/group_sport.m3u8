@@ -47,7 +47,7 @@ http://tv.tuva.ru/machtv/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="MatchUltra.ru@4K",Match! Ultra (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/169/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD",MMA-TV.com
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD" tvg-logo="https://i.imgur.com/QhdxNsB.png",MMA-TV.com
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream8.cinerama.uz/1226/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD",MMA-TV.com (576p)
@@ -59,7 +59,7 @@ http://stream.mcquack.net/493/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="OkkoSport.ru@SD",Okko Sport (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/492/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="SetantaSports1.ru@HD",Setanta Sports 1 HD
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="SetantaSports1.ru@HD" tvg-logo="https://i.imgur.com/8ANUZAu.png",Setanta Sports 1 HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/setanta_sports_1_hd/mono.m3u8?token=onlinetv
 #EXTINF:-1 tvg-id="setanta1-lt" tvg-logo="http://epg.propg.net/img/channel_icons/45141.png" group-title="⚽ Спорт",Setanta Sports 1 HD
@@ -74,7 +74,7 @@ https://live-3.otcnet.ru/sportivny/index.m3u8
 #EXTINF:-1 tvg-id="trace-sport-stars-ru" tvg-logo="https://epg.iptvx.one/picons/trace-sport-stars-ru.png" group-title="⚽ Спорт",Trace Sport Stars HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream8.cinerama.uz/1274/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="vijuPlusSport.ru@SD",viju+ Sport
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="vijuPlusSport.ru@SD" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="vijuPlusSport.ru@SD",viju+ Sport (576p)

@@ -12,57 +12,111 @@
 <style>
 *{box-sizing:border-box}
 :root{
-  --bg:#0f1115; --panel:#181b20; --border:#23272e;
+  --bg:#0f1115; --panel:rgba(24,27,32,0.72); --border:#23272e;
   --text:#e6e6e6; --muted:#8a8f98; --accent:#60a5fa;
+  --glass-blur:20px;
 }
 [data-theme="light"]{
-  --bg:#f6f7f9; --panel:#ffffff; --border:#e4e6ea;
+  --bg:#f6f7f9; --panel:rgba(255,255,255,0.75); --border:#e4e6ea;
   --text:#1a1d21; --muted:#6b7280; --accent:#2563eb;
 }
-body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);
+html{min-height:100%}
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
 color:var(--text);margin:0;padding:24px;max-width:1100px;margin:0 auto;
-transition:background .2s,color .2s}
-h1{margin:0 0 4px;font-size:22px} h2{font-size:15px;margin:0 0 12px}
+min-height:100vh;
+background:var(--bg);
+background-image:
+  radial-gradient(circle at 15% -10%, rgba(96,165,250,0.12) 0%, transparent 40%),
+  radial-gradient(circle at 85% 0%, rgba(74,222,128,0.10) 0%, transparent 40%),
+  radial-gradient(circle at 50% 100%, rgba(167,139,250,0.06) 0%, transparent 50%);
+background-attachment:fixed;
+transition:background-color .3s,color .3s}
+h1{margin:0 0 4px;font-size:22px;letter-spacing:-.3px}
+h2{font-size:15px;margin:0 0 12px;letter-spacing:-.1px}
 .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
-a{color:var(--accent)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:12px;margin-bottom:24px}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
-.card .k{font-size:11px;color:var(--muted);text-transform:uppercase}
-.card .v{font-size:22px;font-weight:600;margin-top:6px}
-.card .v.good{color:#4ade80} .card .v.bad{color:#f87171}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:16px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+transition:transform .15s,border-color .15s,box-shadow .15s}
+.card:hover{transform:translateY(-1px);border-color:var(--accent)}
+.card .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.card .v{font-size:26px;font-weight:700;margin-top:6px;letter-spacing:-.5px;
+font-variant-numeric:tabular-nums}
+.card .v.good{color:#4ade80;text-shadow:0 0 24px rgba(74,222,128,0.25)}
+.card .v.bad{color:#f87171}
 .card .v.warn{color:#facc15}
-.section{background:var(--panel);border:1px solid var(--border);border-radius:10px;
-padding:16px;margin-bottom:16px}
+.section{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:18px;margin-bottom:16px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur))}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
-th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase}
-.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--border);
+th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+tr:last-child td{border-bottom:none}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--border);
 font-size:12px;color:var(--muted);margin:2px}
 .back{display:inline-block;margin-bottom:16px;color:var(--accent);text-decoration:none}
-.box{background:var(--panel);border:1px solid var(--border);border-radius:10px;
-padding:18px;margin-bottom:12px}
+.box{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:18px;margin-bottom:12px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur))}
 code{background:var(--bg);padding:3px 8px;border-radius:6px;font-size:13px;
-word-break:break-all;color:#facc15}
+word-break:break-all;color:#facc15;font-family:ui-monospace,Menlo,monospace}
 .theme-btn{position:fixed;top:16px;right:16px;background:var(--panel);
-border:1px solid var(--border);color:var(--text);width:40px;height:40px;
-border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1}
-.theme-btn:hover{background:var(--border)}
+border:1px solid var(--border);color:var(--text);width:42px;height:42px;
+border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+transition:transform .15s}
+.theme-btn:hover{transform:scale(1.08)}
+.health-wrap{margin-bottom:24px;padding:14px 18px;background:var(--panel);
+border:1px solid var(--border);border-radius:14px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur))}
+.health-bar{height:8px;background:var(--border);border-radius:8px;overflow:hidden}
+.health-bar > div{height:100%;border-radius:8px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.health-label{margin-top:8px;font-size:13px;color:var(--muted)}
+.donut-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.donut-chart{flex:0 0 220px}
+.donut-legend{flex:1;min-width:240px}
+.legend-row{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:13px;
+border-bottom:1px solid var(--border)}
+.legend-row:last-child{border-bottom:none}
+.legend-dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+.legend-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.legend-count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
+.legend-pct{font-variant-numeric:tabular-nums;color:var(--text);font-size:12px;
+font-weight:500;min-width:44px;text-align:right}
+.wf-status{font-size:13px;margin-bottom:16px;padding:10px 14px;
+background:var(--panel);border:1px solid var(--border);border-radius:12px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur))}
+.copy-btn{background:var(--border);border:none;color:var(--text);padding:6px 12px;
+border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.copy-btn.copied{background:#4ade80;color:#0f1115}
 
 .qr-wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-.qr-wrap img{background:#fff;padding:10px;border-radius:10px;width:200px;height:200px}
-.qr-info{flex:1;min-width:200px}
+.qr-wrap img{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}
+.qr-info{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}
+.link-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 </style></head><body>
 <button class="theme-btn" aria-label="Theme">☀</button>
-<h1>IPTV - авто-обновляемый плейлист</h1>
-<div class="sub">Обновлено: 2026-09-27 02:05:34</div>
+<h1>IPTV — авто-обновляемый плейлист</h1>
+<div class="sub">Обновлено: 2026-09-27 02:42:33</div>
+<div id="wf-status" class="wf-status">Проверяю статус последнего запуска...</div>
 
 <h2>Ссылка для плеера (M3U)</h2>
 <div class="box qr-wrap">
 <img src="qr.png" alt="QR">
 <div class="qr-info">
-<code>https://gvineon550-coder.github.io/8Z6evf3ezzM469/all_checked.m3u8</code>
-<div class="sub" style="margin-top:8px">Скопируй в TiviMate / VLC / OTT Navigator</div>
+<div class="link-line">
+<code id="player-url">https://gvineon550-coder.github.io/8Z6evf3ezzM469/all_checked.m3u8</code>
+<button class="copy-btn" data-target="player-url">📋 Копировать</button>
+</div>
+<div class="sub" style="margin:0">Вставь в TiviMate / VLC / OTT Navigator как Playlist URL</div>
 </div>
 </div>
 
@@ -73,8 +127,8 @@ border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1}
 
 <h2>Статистика</h2>
 <div class="box">
-Каналов в merged: <b>1117</b><br>
-Рабочих: <b>1234</b> из <b>1550</b>
+Каналов в merged: <b>1119</b><br>
+Рабочих: <b>1236</b> из <b>1550</b>
 </div>
 <h2>Отдельные плейлисты</h2><div class='box'><a href='sport.m3u8'>sport.m3u8</a> — 34 каналов</div>
 <div class='box'><a href='music.m3u8'>music.m3u8</a> — 24 каналов</div>
@@ -82,38 +136,103 @@ border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1}
 <div class='box'><a href='kinowalk.m3u8'>kinowalk.m3u8</a> — 156 каналов</div>
 <div class='box'><a href='rutube.m3u8'>rutube.m3u8</a> — 73 каналов</div>
 <div class='box'><a href='radio.m3u8'>radio.m3u8</a> — 4 каналов</div>
+<div class='box'><a href='group_kinowalk.m3u8'>group_kinowalk.m3u8</a> — 156 каналов</div>
+<div class='box'><a href='group_radio.m3u8'>group_radio.m3u8</a> — 4 каналов</div>
+<div class='box'><a href='group_poznavatelnye.m3u8'>group_poznavatelnye.m3u8</a> — 23 каналов</div>
 <div class='box'><a href='group_kino.m3u8'>group_kino.m3u8</a> — 73 каналов</div>
+<div class='box'><a href='group_fresh.m3u8'>group_fresh.m3u8</a> — 14 каналов</div>
+<div class='box'><a href='group_detskie.m3u8'>group_detskie.m3u8</a> — 18 каналов</div>
+<div class='box'><a href='group_osnovnye.m3u8'>group_osnovnye.m3u8</a> — 31 каналов</div>
+<div class='box'><a href='group_muzykalnye.m3u8'>group_muzykalnye.m3u8</a> — 16 каналов</div>
+<div class='box'><a href='group_raznoe.m3u8'>group_raznoe.m3u8</a> — 117 каналов</div>
 <div class='box'><a href='group_muzyka.m3u8'>group_muzyka.m3u8</a> — 24 каналов</div>
 <div class='box'><a href='group_smotrim.m3u8'>group_smotrim.m3u8</a> — 17 каналов</div>
-<div class='box'><a href='group_poznavatelnye.m3u8'>group_poznavatelnye.m3u8</a> — 23 каналов</div>
-<div class='box'><a href='group_novosti.m3u8'>group_novosti.m3u8</a> — 9 каналов</div>
-<div class='box'><a href='group_razvlekatelnye.m3u8'>group_razvlekatelnye.m3u8</a> — 17 каналов</div>
-<div class='box'><a href='group_muzykalnye.m3u8'>group_muzykalnye.m3u8</a> — 15 каналов</div>
-<div class='box'><a href='group_rutube.m3u8'>group_rutube.m3u8</a> — 73 каналов</div>
-<div class='box'><a href='group_detskie.m3u8'>group_detskie.m3u8</a> — 18 каналов</div>
-<div class='box'><a href='group_ufo_tv.m3u8'>group_ufo_tv.m3u8</a> — 117 каналов</div>
-<div class='box'><a href='group_rossiya.m3u8'>group_rossiya.m3u8</a> — 492 каналов</div>
 <div class='box'><a href='group_sport.m3u8'>group_sport.m3u8</a> — 34 каналов</div>
-<div class='box'><a href='group_radio.m3u8'>group_radio.m3u8</a> — 4 каналов</div>
-<div class='box'><a href='group_osnovnye.m3u8'>group_osnovnye.m3u8</a> — 31 каналов</div>
-<div class='box'><a href='group_kinowalk.m3u8'>group_kinowalk.m3u8</a> — 156 каналов</div>
-<div class='box'><a href='group_fresh.m3u8'>group_fresh.m3u8</a> — 14 каналов</div>
+<div class='box'><a href='group_rutube.m3u8'>group_rutube.m3u8</a> — 73 каналов</div>
+<div class='box'><a href='group_razvlekatelnye.m3u8'>group_razvlekatelnye.m3u8</a> — 17 каналов</div>
+<div class='box'><a href='group_rossiya.m3u8'>group_rossiya.m3u8</a> — 493 каналов</div>
+<div class='box'><a href='group_novosti.m3u8'>group_novosti.m3u8</a> — 9 каналов</div>
+<script>
+(function(){
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      const el = document.getElementById(id);
+      if(!el) return;
+      const text = el.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('copied');
+        const old = btn.textContent;
+        btn.textContent = '✓ Скопировано';
+        setTimeout(() => { btn.classList.remove('copied'); btn.textContent = old; }, 1500);
+      });
+    });
+  });
+
+  const gh = "gvineon550-coder/8Z6evf3ezzM469";
+  if(gh){
+    fetch('https://api.github.com/repos/' + gh + '/actions/workflows/check.yml/runs?per_page=1')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if(!d || !d.workflow_runs || !d.workflow_runs.length) return;
+        const run = d.workflow_runs[0];
+        const el = document.getElementById('wf-status');
+        const when = new Date(run.updated_at || run.created_at);
+        const ago = Math.round((Date.now() - when.getTime())/60000);
+        const agoStr = ago < 1 ? 'только что' : ago < 60 ? ago + ' мин назад'
+                       : Math.round(ago/60) + ' ч назад';
+        let html = '';
+        if(run.status === 'in_progress')
+          html = '<span style="color:#facc15">🔄 Идёт проверка…</span>';
+        else if(run.conclusion === 'success')
+          html = '<span style="color:#4ade80">✅ Последняя проверка успешна</span>';
+        else if(run.conclusion === 'failure')
+          html = '<span style="color:#f87171">❌ Последняя проверка упала</span>';
+        else
+          html = '<span style="color:var(--muted)">⏸ Статус: ' + (run.status||'?') + '</span>';
+        html += ' <span style="color:var(--muted);font-size:12px">· ' + agoStr + '</span>';
+        el.innerHTML = html;
+      })
+      .catch(() => {});
+  }
+})();
+</script>
 
 <script>
 (function(){
   const saved = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
+
+  function animateCounters(){
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count, 10);
+      if (isNaN(target)) return;
+      const dur = 900;
+      const t0 = performance.now();
+      function step(t){
+        const p = Math.min((t - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(target * eased).toLocaleString('ru-RU');
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target.toLocaleString('ru-RU');
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function(){
     const btn = document.querySelector('.theme-btn');
-    if(!btn) return;
-    btn.textContent = saved === 'dark' ? '☀' : '☾';
-    btn.addEventListener('click', function(){
-      const cur = document.documentElement.getAttribute('data-theme');
-      const nxt = cur === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', nxt);
-      localStorage.setItem('theme', nxt);
-      btn.textContent = nxt === 'dark' ? '☀' : '☾';
-    });
+    if(btn){
+      btn.textContent = saved === 'dark' ? '☀' : '☾';
+      btn.addEventListener('click', function(){
+        const cur = document.documentElement.getAttribute('data-theme');
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        localStorage.setItem('theme', nxt);
+        btn.textContent = nxt === 'dark' ? '☀' : '☾';
+      });
+    }
+    animateCounters();
   });
 })();
 </script>

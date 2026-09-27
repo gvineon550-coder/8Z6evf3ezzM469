@@ -17,7 +17,7 @@ https://stream8.cinerama.uz/1272/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="Multimuzyka.ru@SD",Mult i muzyka (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/82/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzTV.ru@SD",Muz-TV
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzTV.ru@SD" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream8.cinerama.uz/1200/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzTV.ru@SD",Muz-TV (576p)
@@ -38,7 +38,7 @@ https://fs.uplink.kz/muzhskoe_kino/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzykaLive.ru@SD",Muzyka Live (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/303/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzykaPervogo.ru@SD",Muzyka Pervogo
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzykaPervogo.ru@SD" tvg-logo="https://i.imgur.com/U0vKj3P.png",Muzyka Pervogo
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream8.cinerama.uz/1201/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="MuzykaPervogo.ru@SD",Muzyka Pervogo (576p)
@@ -50,7 +50,7 @@ http://88.212.15.19/live/test_muzyka_pervogo/playlist.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="Nashemuzhskoe.ru@HD",Nashe muzhskoe HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/362/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD",RU.TV
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD" tvg-logo="https://i.imgur.com/Z7HUU7V.png",RU.TV
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream8.cinerama.uz/1202/tracks-v1a1/mono.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD",RU.TV (576p)
