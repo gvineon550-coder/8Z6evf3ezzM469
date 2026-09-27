@@ -133,6 +133,9 @@ https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
 https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://45.153.24.78/1TV/index.m3u8
+#EXTINF:-1 group-title="📦 Разное" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.217.49.7/1/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-logo="https://i.imgur.com/RUSX0rX.png",Channel One CIS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
@@ -590,6 +593,9 @@ http://stream.mcquack.net/242/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="rodnoe-kino" tvg-logo="https://i.imgur.com/H70LxoZ.png",Rodnoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="📦 Разное" tvg-id="rt-news" tvg-logo="https://i.imgur.com/55SK22l.png",RT (720p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://212.5.144.156:8080/rt/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
@@ -950,6 +956,9 @@ https://fs.uplink.kz/zhivi/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="📦 Разное" tvg-id="zoopark" tvg-logo="https://i.imgur.com/IO5jegK.png",Zoopark (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zoopark/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="📦 Разное" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://51.158.144.33:2021/zvezda/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/zvezda/index.m3u8

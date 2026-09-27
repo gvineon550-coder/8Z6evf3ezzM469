@@ -74,6 +74,9 @@ https://flussonic.mkpnet.ru/tv-9dda1dd9d740a9a4/video.m3u8
 #EXTINF:-1 tvg-id="match-premier" tvg-logo="https://epg.iptvx.one/picons/match-premiere.png" group-title="⚽ Спорт",МАТЧ! Премьер
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-ee3651e1e7ce5cbf/video.m3u8
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/match-football1.png" group-title="⚽ Спорт",Футбол1
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://31.148.5.241/Match_Football_1_HD/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="360-lv" tvg-logo="https://i.imgur.com/VTJqdoX.png",360°
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/0.m3u8

@@ -521,6 +521,9 @@ https://edge1-eu-west.picarto.tv/stream/hls/golive+TMFRUS/1_0/index.m3u8
 #EXTINF:-1 tvg-logo="https://telik.live/images/v2beat.png" group-title="Музыкальные",V2BEAT HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://de1se01.v2beat.live/playlist.m3u8
+#EXTINF:-1 tvg-id="viva-rus" tvg-logo="https://epg.iptvx.one/picons/viva-rus.png" group-title="Музыкальные",VIVA Russia
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8
 #EXTINF:-1 tvg-id="shanson-tv" tvg-logo="https://i.imgur.com/Fk4sd8t.png" group-title="Музыкальные",Шансон ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-181e3f7698288892/video.m3u8
@@ -656,6 +659,9 @@ https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-logo="https://i.imgur.com/eHGETvU.png",Channel 8 Novosibirsk (480i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
+#EXTINF:-1 group-title="📦 Разное" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://45.153.24.78/1TV/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.217.49.7/1/index.m3u8
@@ -1115,6 +1121,9 @@ http://stream.mcquack.net/242/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="rodnoe-kino" tvg-logo="https://i.imgur.com/H70LxoZ.png",Rodnoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="📦 Разное" tvg-id="rt-news" tvg-logo="https://i.imgur.com/55SK22l.png",RT (720p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://212.5.144.156:8080/rt/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
@@ -1475,6 +1484,9 @@ https://fs.uplink.kz/zhivi/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="📦 Разное" tvg-id="zoopark" tvg-logo="https://i.imgur.com/IO5jegK.png",Zoopark (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zoopark/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="📦 Разное" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://51.158.144.33:2021/zvezda/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/zvezda/index.m3u8

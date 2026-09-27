@@ -95,6 +95,9 @@ http://line.tivi-one.net:80/play/live.php?mac=A0%3ABB%3A3E%3A75%3A52%3A64&stream
 #EXTINF:-1 tvg-id="khit" tvg-logo="https://epg.iptvx.one/picons/khit.png" group-title="🎬 Кино",Хит HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://ott.ip-tv.workers.dev/stream/L0FBMTU2NVcvaW5kZXgubTN1OA==?key=halva
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/bstmsc.png" group-title="🎞️ Kinowalk",bstmsc
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://kinowalk.hopto.org/bstmsc_live
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/v8KFj826/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY Великая Отечественная HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYVOV.tv/video.m3u8?token=lqRGka5-YwwqF0
@@ -197,6 +200,12 @@ https://fs.uplink.kz/setanta_sports_1_hd/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/333/index.m3u8
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/match-football2.png" group-title="⚽ Спорт",Футбол2
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://185.195.184.30:8000/play/a00n/index.m3u8
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/match-football3.png" group-title="⚽ Спорт",Футбол3
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://176.100.46.245:90/matchfootball3/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="izvestia" tvg-logo="https://i.imgur.com/r5HzA6J.png",Известия (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://igi-hls.cdnvideo.ru/igi/igi_tcode/playlist.m3u8
@@ -284,6 +293,9 @@ http://flussonic.mkpnet.ru/tv-64b2c4ff13365817/video.m3u8
 #EXTINF:-1 tvg-logo="https://telik.live/images/v2beat.png" group-title="Музыкальные",V2BEAT HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://de1se01.v2beat.live/playlist.m3u8
+#EXTINF:-1 tvg-id="viva-rus" tvg-logo="https://epg.iptvx.one/picons/viva-rus.png" group-title="Музыкальные",VIVA Russia
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="sony-turbo" tvg-logo="https://i.imgur.com/Q4A6ci4.png",.black (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/263/index.m3u8
@@ -338,6 +350,9 @@ http://tshift-1.telecoma.tv/8channel/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-logo="https://i.imgur.com/q3JCAC3.png",Channel 8 Krasnoyarsk HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
+#EXTINF:-1 group-title="📦 Разное" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://45.153.24.78/1TV/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-logo="https://i.imgur.com/EOue13e.png",Dikaya okhota HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/274/index.m3u8
@@ -521,6 +536,9 @@ https://streaming.astrakhan.ru/proastrakhanhd/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="rbk" tvg-logo="https://i.imgur.com/CwhmJby.png",RBK-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/RBK/index.m3u8
+#EXTINF:-1 group-title="📦 Разное" tvg-id="rt-news" tvg-logo="https://i.imgur.com/55SK22l.png",RT (720p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://212.5.144.156:8080/rt/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-evg10.tv360.bitel.com.pe/bitel/rt/playlist.m3u8
@@ -662,6 +680,9 @@ http://stream.mcquack.net/386/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="zhivaya-priroda" tvg-logo="https://i.imgur.com/9lHQPdN.png",Zhivaya priroda HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/225/index.m3u8
+#EXTINF:-1 group-title="📦 Разное" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://51.158.144.33:2021/zvezda/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="aist" tvg-logo="https://i.imgur.com/bcw0s4V.png",Аист ТВ (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live2-aisttv.cdnvideo.ru/aisttv2/aisttv.sdp/playlist.m3u8
