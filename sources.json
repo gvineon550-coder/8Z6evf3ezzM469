@@ -1,7 +1,12 @@
 {
   "url_sources": [],
   "local_sources": [
-    { "name": "cleaned", "path": "docs/all_cleaned.m3u", "enabled": true, "check": true }
+    {
+      "name": "cleaned",
+      "path": "docs/all_cleaned.m3u",
+      "enabled": true,
+      "check": true
+    }
   ],
   "logo_sources": []
 }
