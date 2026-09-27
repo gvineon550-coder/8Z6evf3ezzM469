@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v16 — rejected.csv/html, улучшенный HTTP-чек,
-логотипы: iptv-org id + EPG icon, аптайм, автоотсев.
+M3U Checker v17 — улучшенная нормализация имён, частичный матч для EPG/логотипов.
 """
 import os
 import re
@@ -70,6 +69,7 @@ EPG_URLS = [
     'https://iptvx.one/epg/epg_lite.xml.gz',
 ]
 EPG_CACHE = 'docs/epg_map.json'
+EPG_CACHE_VERSION = 17
 EPG_TTL_DAYS = 7
 
 HTML_PREFIXES = (
@@ -93,11 +93,12 @@ log = logging.getLogger('m3u')
 CFG = None
 CATEGORIES = {}
 FILTERS = {}
-IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}}
-IPTV_IDS = {'by_name': {}, 'by_name_translit': {}}
-EPG_MAP = {'by_name': {}, 'by_translit': {}, 'icons': {}}
+IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}}
+IPTV_IDS = {'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}}
+EPG_MAP = {'by_name': {}, 'by_translit': {}, 'by_prefix': {}, 'icons': {}}
 LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
-              'from_translit': 0, 'from_epg_icon': 0, 'from_txt': 0, 'none': 0}
+              'from_translit': 0, 'from_epg_icon': 0, 'from_prefix': 0,
+              'from_txt': 0, 'none': 0}
 UPTIME = {}
 UPTIME_NEW = {}
 UPTIME_LOCK = threading.Lock()
@@ -144,25 +145,68 @@ _TRANSLIT_MAP = {
     'ю':'yu','я':'ya','і':'i','ї':'i','є':'e','ґ':'g',
 }
 
+# Слова-шум: убираются из имён
+NOISE_WORDS = re.compile(
+    r'\b(тв|tv|телеканал|channel|канал|hd|fhd|uhd|4k|8k|sd|hevc|h265|h264|mp4|hq|lq|'
+    r'ру|ru|россия|russia|online|live)\b',
+    re.IGNORECASE,
+)
+
+ROMAN_TAIL = re.compile(r'\b(i{1,3}|iv|v|vi{1,3}|ix|x)\s*$', re.IGNORECASE)
+
+
+def normalize_name_v2(name):
+    """Улучшенная нормализация для матчинга логотипов/EPG.
+    
+    - Lowercase
+    - Замена ё→е, й→и (для унификации)
+    - Убираем содержимое скобок (...), [...], <...>
+    - Заменяем все спецсимволы на пробел
+    - Убираем слова-шум (ТВ, TV, канал, HD...)
+    - Убираем римские цифры в конце
+    - Схлопываем пробелы
+    """
+    if not name:
+        return ''
+    n = name.lower().strip()
+    # Замена ё→е, й→и
+    n = n.replace('ё', 'е').replace('й', 'и')
+    # Убираем содержимое скобок
+    n = re.sub(r'\([^)]*\)', ' ', n)
+    n = re.sub(r'\[[^\]]*\]', ' ', n)
+    n = re.sub(r'<[^>]*>', ' ', n)
+    # Спецсимволы -> пробел
+    n = re.sub(r'[^a-zа-я0-9]+', ' ', n)
+    # Убираем слова-шум
+    n = NOISE_WORDS.sub(' ', n)
+    # Убираем римские цифры в конце
+    n = ROMAN_TAIL.sub('', n)
+    # Схлопываем пробелы
+    return re.sub(r'\s+', ' ', n).strip()
+
+
+def normalize_name(name):
+    """Совместимость со старым вызовом."""
+    return normalize_name_v2(name)
+
+
+def normalize_name_translit(name):
+    n = normalize_name_v2(name)
+    return translit_ru(n) if n else ''
+
+
+def make_prefix(normalized):
+    """Первые 5 символов нормализованного имени (без пробелов)."""
+    if not normalized:
+        return ''
+    s = normalized.replace(' ', '')
+    return s[:5] if len(s) >= 5 else ''
+
 
 def translit_ru(s):
     if not s:
         return ''
     return ''.join(_TRANSLIT_MAP.get(ch, ch) for ch in s.lower())
-
-
-def normalize_name(name):
-    if not name:
-        return ''
-    n = name.lower()
-    n = re.sub(r'\b(hd|fhd|uhd|4k|8k|sd|hevc|h265|h\.265|h264|h\.264|mp4|hq|lq)\b', '', n)
-    n = re.sub(r'[^a-zа-яёіїєґ0-9]+', ' ', n)
-    return re.sub(r'\s+', ' ', n).strip()
-
-
-def normalize_name_translit(name):
-    n = normalize_name(name)
-    return translit_ru(n) if n else ''
 
 
 # ---------- UPTIME ----------
@@ -314,6 +358,13 @@ def _download_json(urls, cache_path):
         return json.load(f)
 
 
+def _add_to_prefix_map(prefix_map, prefix, value):
+    """Добавляет значение в список по префиксу."""
+    if not prefix:
+        return
+    prefix_map.setdefault(prefix, []).append(value)
+
+
 def load_iptv_org():
     global IPTV_LOGOS, IPTV_IDS
     if CFG.no_iptv_logos:
@@ -364,35 +415,44 @@ def load_iptv_org():
 
     by_name_logo = {}
     by_name_logo_translit = {}
+    by_prefix_logo = {}
     for cid, url in by_id.items():
         for name in id_to_names.get(cid, []):
-            k = normalize_name(name)
+            k = normalize_name_v2(name)
             if k and k not in by_name_logo:
                 by_name_logo[k] = url
             kt = normalize_name_translit(name)
             if kt and kt not in by_name_logo_translit:
                 by_name_logo_translit[kt] = url
+            p = make_prefix(k)
+            _add_to_prefix_map(by_prefix_logo, p, (k, url))
 
     IPTV_LOGOS['by_id'] = by_id
     IPTV_LOGOS['by_name'] = by_name_logo
     IPTV_LOGOS['by_name_translit'] = by_name_logo_translit
+    IPTV_LOGOS['by_prefix'] = by_prefix_logo
 
     by_name_id = {}
     by_name_id_translit = {}
+    by_prefix_id = {}
     for cid, names in id_to_names.items():
         for name in names:
-            k = normalize_name(name)
+            k = normalize_name_v2(name)
             if k and k not in by_name_id:
                 by_name_id[k] = cid
             kt = normalize_name_translit(name)
             if kt and kt not in by_name_id_translit:
                 by_name_id_translit[kt] = cid
+            p = make_prefix(k)
+            _add_to_prefix_map(by_prefix_id, p, (k, cid))
 
     IPTV_IDS['by_name'] = by_name_id
     IPTV_IDS['by_name_translit'] = by_name_id_translit
+    IPTV_IDS['by_prefix'] = by_prefix_id
 
-    emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени")
-    emit(f"  iptv-org id: {len(by_name_id)} по имени")
+    emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени, "
+         f"{len(by_prefix_logo)} префиксов")
+    emit(f"  iptv-org id: {len(by_name_id)} по имени, {len(by_prefix_id)} префиксов")
 
 
 # ---------- EPG iptvx ----------
@@ -402,14 +462,18 @@ def download_epg_map():
         try:
             with open(EPG_CACHE, 'r', encoding='utf-8') as f:
                 cached = json.load(f)
+            cached_ver = cached.get('version', 0)
             age_days = (time.time() - cached.get('ts', 0)) / 86400
-            if age_days < EPG_TTL_DAYS:
+            if cached_ver == EPG_CACHE_VERSION and age_days < EPG_TTL_DAYS:
                 EPG_MAP['by_name'] = cached.get('by_name', {})
                 EPG_MAP['by_translit'] = cached.get('by_translit', {})
+                EPG_MAP['by_prefix'] = cached.get('by_prefix', {})
                 EPG_MAP['icons'] = cached.get('icons', {})
-                emit(f"  EPG: из кэша {len(EPG_MAP['by_name'])} имён, "
+                emit(f"  EPG: из кэша v{cached_ver} {len(EPG_MAP['by_name'])} имён, "
                      f"{len(EPG_MAP['icons'])} icon")
                 return
+            else:
+                emit(f"  EPG: кэш устарел (v{cached_ver}), пересобираю...")
         except Exception as e:
             log.warning("EPG cache: %s", e)
 
@@ -440,6 +504,7 @@ def download_epg_map():
 
             by_name = {}
             by_translit = {}
+            by_prefix = {}
             icons = {}
             for m in ch_re.finditer(xml_str):
                 cid = m.group(1)
@@ -451,23 +516,28 @@ def download_epg_map():
                     name = html.unescape(dn.group(1)).strip()
                     if not name:
                         continue
-                    k = normalize_name(name)
+                    k = normalize_name_v2(name)
                     if k and k not in by_name:
                         by_name[k] = cid
                     kt = normalize_name_translit(name)
                     if kt and kt not in by_translit:
                         by_translit[kt] = cid
+                    p = make_prefix(k)
+                    _add_to_prefix_map(by_prefix, p, (k, cid))
 
             EPG_MAP['by_name'] = by_name
             EPG_MAP['by_translit'] = by_translit
+            EPG_MAP['by_prefix'] = by_prefix
             EPG_MAP['icons'] = icons
             emit(f"  EPG: {len(by_name)} имён, {len(by_translit)} с транслитом, "
-                 f"{len(icons)} icon")
+                 f"{len(icons)} icon, {len(by_prefix)} префиксов")
 
             os.makedirs(os.path.dirname(EPG_CACHE) or '.', exist_ok=True)
             with open(EPG_CACHE, 'w', encoding='utf-8') as f:
-                json.dump({'by_name': by_name, 'by_translit': by_translit,
-                           'icons': icons, 'ts': time.time()},
+                json.dump({'version': EPG_CACHE_VERSION,
+                           'by_name': by_name, 'by_translit': by_translit,
+                           'by_prefix': by_prefix, 'icons': icons,
+                           'ts': time.time()},
                           f, ensure_ascii=False, separators=(',', ':'))
             return
         except Exception as e:
@@ -694,7 +764,7 @@ def load_txt_logos(dirs):
 
 # ---------- ПОТОКИ ----------
 def _try_stream(url, ua):
-    """Возвращает (ok, elapsed, reason). reason — код причины, если не ок."""
+    """Возвращает (ok, elapsed, reason)."""
     try:
         t0 = time.time()
         with requests.get(url, headers={'User-Agent': ua}, stream=True,
@@ -715,11 +785,10 @@ def _try_stream(url, ua):
             for p in HTML_PREFIXES:
                 if h.startswith(p):
                     return False, elapsed, 'html'
-            if 'text/html' in ct:
-                # Content-Type html, но не начинается с HTML-префикса — подозрительно
-                return False, elapsed, 'html_ct'
             if len(chunk) < 32:
                 return False, elapsed, 'too_small'
+            # Ослаблено: если Content-Type text/html, но НЕ начинается с HTML,
+            # значит это скорее всего видео с криво настроенным сервером
             return True, elapsed, None
     except requests.RequestException:
         return False, None, 'timeout'
@@ -773,8 +842,22 @@ def check_logo(url, cache):
     return ok
 
 
+def _pick_prefix_match(prefix_map, prefix):
+    """Возвращает значение, если в prefix_map[prefix] уникальное имя (не более 3)."""
+    if not prefix:
+        return None
+    items = prefix_map.get(prefix)
+    if not items:
+        return None
+    # Ограничиваемся списком до 3, чтобы не путать разные каналы
+    if len(items) > 3:
+        return None
+    # Берём первый по алфавиту имени (детерминированно)
+    items_sorted = sorted(items, key=lambda x: x[0])
+    return items_sorted[0][1]
+
+
 def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
-    """Каскад: src → iptv-org id → name → translit → EPG icon → .txt."""
     m = re.search(r'tvg-logo="([^"]*)"', extinf)
     if m and m.group(1):
         if not CFG.check_all_logos or check_logo(m.group(1), cache):
@@ -787,7 +870,7 @@ def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
 
     name = get_name(extinf)
     if name:
-        k = normalize_name(name)
+        k = normalize_name_v2(name)
         if k:
             l = IPTV_LOGOS['by_name'].get(k)
             if l:
@@ -797,6 +880,12 @@ def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
             l = IPTV_LOGOS.get('by_name_translit', {}).get(kt)
             if l:
                 return l, 'from_translit'
+        # Частичный матч по префиксу (5 символов)
+        if k:
+            p = make_prefix(k)
+            l = _pick_prefix_match(IPTV_LOGOS.get('by_prefix', {}), p)
+            if l:
+                return l, 'from_prefix'
 
     if epg_id and EPG_MAP.get('icons'):
         l = EPG_MAP['icons'].get(epg_id)
@@ -812,14 +901,12 @@ def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
 
 
 def resolve_iptv_org_id(extinf, original_tvg_id):
-    """Возвращает iptv-org id для поиска логотипа.
-    Сначала проверяем оригинальный tvg-id, потом ищем по имени."""
     if original_tvg_id and original_tvg_id in IPTV_LOGOS['by_id']:
         return original_tvg_id
     name = get_name(extinf)
     if not name:
         return None
-    k = normalize_name(name)
+    k = normalize_name_v2(name)
     if k:
         cid = IPTV_IDS['by_name'].get(k)
         if cid:
@@ -829,17 +916,21 @@ def resolve_iptv_org_id(extinf, original_tvg_id):
         cid = IPTV_IDS['by_name_translit'].get(kt)
         if cid:
             return cid
+    if k:
+        p = make_prefix(k)
+        cid = _pick_prefix_match(IPTV_IDS.get('by_prefix', {}), p)
+        if cid:
+            return cid
     return None
 
 
 def resolve_epg_id(extinf):
-    """Возвращает ID из EPG iptvx (для tvg-id в плейлисте)."""
     if not EPG_MAP['by_name'] and not EPG_MAP['by_translit']:
         return None
     name = get_name(extinf)
     if not name:
         return None
-    k = normalize_name(name)
+    k = normalize_name_v2(name)
     if k:
         cid = EPG_MAP['by_name'].get(k)
         if cid:
@@ -847,6 +938,11 @@ def resolve_epg_id(extinf):
     kt = normalize_name_translit(name)
     if kt:
         cid = EPG_MAP['by_translit'].get(kt)
+        if cid:
+            return cid
+    if k:
+        p = make_prefix(k)
+        cid = _pick_prefix_match(EPG_MAP.get('by_prefix', {}), p)
         if cid:
             return cid
     return None
@@ -1047,7 +1143,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
 def dedup_by_name_fn(channels):
     seen, out = set(), []
     for extinf, url in channels:
-        key = normalize_name(get_name(extinf))
+        key = normalize_name_v2(get_name(extinf))
         if not key:
             out.append((extinf, url))
             continue
@@ -1148,7 +1244,6 @@ def write_csv(channels, path):
 
 
 def write_rejected_csv(path):
-    """Пишет все отсеянные каналы с причинами. Дедупликация по URL."""
     seen = set()
     rows = []
     for name, group, url, reason in REJECTED:
@@ -1433,7 +1528,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v16 - {date}</title>
+<title>M3U Check v17 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1808,6 +1903,7 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
             'from_name': 'По имени из базы',
             'from_translit': 'По транслиту',
             'from_epg_icon': 'Из EPG iptvx (icon)',
+            'from_prefix': 'По префиксу имени',
             'from_txt': 'Из .txt',
             'none': 'Не найдено',
         }
@@ -1918,7 +2014,6 @@ def render_channels(path, channels):
 
 
 def render_rejected(path):
-    """Пишет rejected.html со списком отсеянных."""
     seen = set()
     rows = []
     for name, group, url, reason in REJECTED:
@@ -1995,7 +2090,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count):
-    lines = ["<b>M3U Check v16</b>"]
+    lines = ["<b>M3U Check v17</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -2237,7 +2332,8 @@ def main():
              f"merged={len(ordered_merged)}, "
              f"с EPG iptvx={epg_count}, с лого={logo_total}/{logo_all} ({logo_total/logo_all*100:.0f}%)")
         if LOGO_STATS:
-            for k in ['from_src', 'from_id', 'from_name', 'from_translit', 'from_epg_icon', 'from_txt', 'none']:
+            for k in ['from_src', 'from_id', 'from_name', 'from_translit',
+                      'from_epg_icon', 'from_prefix', 'from_txt', 'none']:
                 if LOGO_STATS.get(k):
                     emit(f"    лого {k}: {LOGO_STATS[k]}")
 
