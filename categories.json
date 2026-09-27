@@ -4,37 +4,49 @@
     "ufotv": "UFO TV",
     "my_list": "Мой список"
   },
-  "group_aliases": {
-    "Kinowalk": "Кино",
-    "Kinowalk TV": "Кино",
-    "Кино": "Кино",
-    "СМОТРИМ +": "Кино",
-    "Fresh": "Кино",
-    "Rutube": "Кино",
-    "Спорт": "Спорт",
-    "Музыкальные": "Музыка",
-    "Детские": "Детские",
-    "Развлекательные": "Развлекательные",
-    "Познавательные": "Познавательные",
-    "Основные": "Основные"
+  "group_aliases": {},
+  "group_emoji": {
+    "Основные": "📺",
+    "Россия": "🇷🇺",
+    "UFO TV": "🛸",
+    "Мой список": "⭐",
+    "Rutube": "📹",
+    "Кино": "🎬",
+    "Kinowalk": "🎞️",
+    "Kinowalk TV": "🎥",
+    "СМОТРИМ +": "👁️",
+    "Fresh": "🌿",
+    "Спорт": "⚽",
+    "Новости": "📰",
+    "Музыка": "🎵",
+    "Развлекательные": "🎭",
+    "Познавательные": "🧠",
+    "Разное": "📦"
   },
+  "url_patterns": [
+    { "pattern": "bl\\.rutube|rutube\\.ru", "group": "Rutube", "force": true }
+  ],
   "name_patterns": [
-    { "pattern": "(?i)\\b(спорт|sport|футбол|football|хоккей|nba|nhl|матч|ufc)\\b", "group": "Спорт" },
-    { "pattern": "(?i)\\b(детск|kids|child|cartoon|мульт)\\b", "group": "Детские" },
-    { "pattern": "(?i)\\b(музык|music|mtv)\\b", "group": "Музыка" },
-    { "pattern": "(?i)\\b(кино|cinema|movie|film)\\b", "group": "Кино" },
-    { "pattern": "(?i)\\b(новост|news)\\b", "group": "Новости" },
-    { "pattern": "(?i)\\b(discovery|nature|animal|наука)\\b", "group": "Познавательные" }
+    { "pattern": "(?i)\\b(спорт|sport|футбол|football|хоккей|hockey|nba|nhl|ufc|mma|бокс|boxing|матч|match|гол\\b)", "group": "Спорт" },
+    { "pattern": "(?i)\\b(музык|music|mtv|vh1|ru.?tv|муз.?тв|muz)", "group": "Музыка" },
+    { "pattern": "(?i)\\b(кино|cinema|movie|film|боевик|триллер|детектив|ужас|вестерн|мелодрам|фантастик)", "group": "Кино" },
+    { "pattern": "(?i)\\b(новост|news|рбк|360|извести|мир24|euronews|cnn|bbc|dw\\b)", "group": "Новости" },
+    { "pattern": "(?i)\\b(discovery|nat.?geo|national.?geo|history|наука|nature|animal|вокруг\\s*света|путешеств|планета)", "group": "Познавательные" },
+    { "pattern": "(?i)\\b(тнт|ctc|стс|тв.?3|тв3|рен\\s*тв|рен.?tv|нтв|первый|россия\\s*1|ртр|тв.?центр|пятниц|юмор|тнт4|че\\b|домашн)", "group": "Основные" },
+    { "pattern": "(?i)\\b(развлек|entertain|комеди|comedy|тнт\\s*comedy)", "group": "Развлекательные" }
   ],
   "priority_groups": [
-    "Основные", "Россия", "Новости", "Кино", "Спорт",
-    "Детские", "Музыка", "Развлекательные", "Познавательные"
+    "📺 Основные", "🇷🇺 Россия", "🛸 UFO TV", "⭐ Мой список",
+    "📹 Rutube", "🎬 Кино", "🎞️ Kinowalk", "🎥 Kinowalk TV",
+    "👁️ СМОТРИМ +", "🌿 Fresh", "⚽ Спорт", "📰 Новости",
+    "🎵 Музыка", "🎭 Развлекательные", "🧠 Познавательные"
   ],
   "split_playlists": {
     "sport.m3u8": ["Спорт"],
-    "cinema.m3u8": ["Кино"],
-    "kids.m3u8": ["Детские"],
     "music.m3u8": ["Музыка"],
-    "news.m3u8": ["Новости"]
-  }
+    "news.m3u8": ["Новости"],
+    "kinowalk.m3u8": ["Kinowalk", "Kinowalk TV"],
+    "rutube.m3u8": ["Rutube"]
+  },
+  "sort_channels_in_group": true
 }
