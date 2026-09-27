@@ -146,6 +146,9 @@ https://fs.uplink.kz/domashniy/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="dorama" tvg-logo="https://i.imgur.com/ZH5LuXU.png",Dorama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dorama/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="dushevnoe" tvg-logo="https://i.imgur.com/vTRHAvD.png",Dushevnoe HD (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/213/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://i.imgur.com/57deE7f.png",Enisey (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tshift-1.telecoma.tv/enisei/index.m3u8

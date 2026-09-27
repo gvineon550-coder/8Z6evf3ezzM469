@@ -107,9 +107,6 @@ http://tshift-1.telecoma.tv/8channel/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://i.imgur.com/q3JCAC3.png",Channel 8 Krasnoyarsk HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://45.153.24.78/1TV/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://i.imgur.com/EOue13e.png",Dikaya okhota HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/274/index.m3u8
@@ -134,9 +131,6 @@ http://stream.mcquack.net/412/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="dumatv" tvg-logo="https://i.imgur.com/JvlO3PU.png",Duma TV (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/DumaTV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="dushevnoe" tvg-logo="https://i.imgur.com/vTRHAvD.png",Dushevnoe HD (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/213/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="evrokino" tvg-logo="https://i.imgur.com/8LPtPf6.png",Evrokino HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/385/index.m3u8
@@ -611,6 +605,9 @@ http://176.118.197.101/LubimoeKino/index.m3u8
 #EXTINF:-1 tvg-id="khit" tvg-logo="https://epg.iptvx.one/picons/khit.png" group-title="🎬 Кино",Хит HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://ott.ip-tv.workers.dev/stream/L0FBMTU2NVcvaW5kZXgubTN1OA==?key=halva
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/alex.films.jpg" group-title="🎞️ Kinowalk",Alex.Films
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://kinowalk.hopto.org/alex.films_live
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/Baragozz_TV.png" group-title="🎞️ Kinowalk",Baragozz_TV
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/baragozz_tv_live
@@ -920,6 +917,3 @@ http://flussonic.mkpnet.ru/tv-64b2c4ff13365817/video.m3u8
 #EXTINF:-1 tvg-logo="https://telik.live/images/v2beat.png" group-title="Музыкальные",V2BEAT HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://de1se01.v2beat.live/playlist.m3u8
-#EXTINF:-1 tvg-id="viva-rus" tvg-logo="https://epg.iptvx.one/picons/viva-rus.png" group-title="Музыкальные",VIVA Russia
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8
