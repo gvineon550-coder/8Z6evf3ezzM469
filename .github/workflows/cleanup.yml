@@ -2,7 +2,7 @@ name: Monthly cleanup
 
 on:
   schedule:
-    - cron: '0 4 1 * *'
+    - cron: '0 4 1,15 * *'
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -25,25 +25,31 @@ jobs:
           SIZE=$(du -sm .git | cut -f1)
           echo "size_mb=${SIZE}" >> $GITHUB_OUTPUT
           echo "Размер .git: ${SIZE} MB"
+          if [ "$SIZE" -lt 200 ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Skip if not needed
-        if: steps.size.outputs.size_mb < 500
+        if: steps.size.outputs.skip == 'true'
         run: |
-          echo "Репо меньше 500 MB — очистка не нужна."
+          echo "Репо меньше 200 MB — очистка не нужна."
           exit 0
 
-      - name: Install git-filter-repo
-        if: steps.size.outputs.size_mb >= 500
-        run: pip install git-filter-repo
-
       - name: Backup current docs
-        if: steps.size.outputs.size_mb >= 500
+        if: steps.size.outputs.skip == 'false'
         run: |
           mkdir -p /tmp/docs-backup
           cp -r docs/* /tmp/docs-backup/ 2>/dev/null || true
+          echo "Backed up $(ls /tmp/docs-backup | wc -l) files"
+
+      - name: Install git-filter-repo
+        if: steps.size.outputs.skip == 'false'
+        run: pip install git-filter-repo
 
       - name: Purge docs history
-        if: steps.size.outputs.size_mb >= 500
+        if: steps.size.outputs.skip == 'false'
         run: |
           git filter-repo --path docs/ --invert-paths --force || true
           git remote add origin "https://github.com/${{ github.repository }}.git" || true
@@ -51,7 +57,7 @@ jobs:
           git reset --soft origin/main 2>/dev/null || true
 
       - name: Restore docs and commit
-        if: steps.size.outputs.size_mb >= 500
+        if: steps.size.outputs.skip == 'false'
         run: |
           mkdir -p docs
           cp -r /tmp/docs-backup/* docs/ 2>/dev/null || true
