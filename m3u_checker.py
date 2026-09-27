@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v19 — ffprobe с кэшем 3 дня, финальная версия.
+M3U Checker v20 — максимальная красота: погода, часы МСК, 3 темы, карточки.
 """
 import os
 import re
@@ -76,7 +76,6 @@ EPG_TTL_DAYS = 7
 
 QUALITY_CACHE = 'docs/quality.json'
 QUALITY_CACHE_MAX = 3000
-
 FFPROBE_CACHE = 'docs/ffprobe.json'
 FFPROBE_MAP_MAX = 3000
 
@@ -278,7 +277,6 @@ def parse_hls_quality(chunk):
         return None
 
 
-# ---------- UPTIME / QUALITY / FFPROBE ----------
 def load_uptime(path):
     global UPTIME
     if not os.path.isfile(path):
@@ -386,13 +384,9 @@ def save_ffprobe_cache(path, current_urls):
 
 
 def ffprobe_check(url):
-    """Возвращает (ok_or_none, info).
-    ok_or_none: True — работает, False — не работает, None — ffprobe недоступен.
-    """
     if not HAS_FFPROBE:
         FFPROBE_STATS['skipped'] += 1
         return None, None
-
     with FFPROBE_LOCK:
         cached = FFPROBE_MAP.get(url)
     if cached:
@@ -404,7 +398,6 @@ def ffprobe_check(url):
             else:
                 FFPROBE_STATS['cached_fail'] += 1
                 return False, None
-
     with FFPROBE_SEM:
         try:
             result = subprocess.run(
@@ -516,7 +509,8 @@ class UrlCache:
         if self.enabled and self.conn:
             with self.lock:
                 self.conn.close()
-                
+
+
 def load_json(path):
     if not os.path.isfile(path):
         return {}
@@ -540,7 +534,6 @@ def load_sources_config(path):
     return data
 
 
-# ---------- IPTV-ORG ----------
 def _download_json(urls, cache_path):
     os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
@@ -670,7 +663,6 @@ def load_iptv_org():
     emit(f"  iptv-org id: {len(by_name_id)} по имени, {len(by_prefix_id)} префиксов")
 
 
-# ---------- EPG iptvx ----------
 def download_epg_map():
     global EPG_MAP
     if os.path.isfile(EPG_CACHE):
@@ -760,7 +752,6 @@ def download_epg_map():
     emit("  EPG: не удалось скачать, tvg-id не трогаем")
 
 
-# ---------- ИСТОЧНИКИ ----------
 def download_url_sources(url_sources, cache_dir):
     os.makedirs(cache_dir, exist_ok=True)
     results = []
@@ -977,7 +968,6 @@ def load_txt_logos(dirs):
     return logos
 
 
-# ---------- ПОТОКИ ----------
 def _try_stream(url, ua):
     try:
         t0 = time.time()
@@ -1078,12 +1068,10 @@ def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
     if m and m.group(1):
         if not CFG.check_all_logos or check_logo(m.group(1), cache):
             return m.group(1), 'from_src'
-
     if iptv_org_id:
         l = IPTV_LOGOS['by_id'].get(iptv_org_id)
         if l:
             return l, 'from_id'
-
     name = get_name(extinf)
     if name:
         k = normalize_name_v2(name)
@@ -1101,17 +1089,14 @@ def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
             l = _pick_prefix_match(IPTV_LOGOS.get('by_prefix', {}), p)
             if l:
                 return l, 'from_prefix'
-
     if epg_id and EPG_MAP.get('icons'):
         l = EPG_MAP['icons'].get(epg_id)
         if l:
             return l, 'from_epg_icon'
-
     if name:
         l = txt_logos.get(name.lower())
         if l and check_logo(l, cache):
             return l, 'from_txt'
-
     return None, 'none'
 
 
@@ -1172,7 +1157,6 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
             if len(REJECTED) < REJECTED_LIMIT:
                 REJECTED.append((name, group, url, reason))
         return index, 'filtered', None, None, reason, None, None, None, None, None
-
     ok, ua, elapsed, fail_reason, hls_quality = check_stream(url, cache)
     if not ok:
         with UPTIME_LOCK:
@@ -1181,18 +1165,14 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
             if len(REJECTED) < REJECTED_LIMIT:
                 REJECTED.append((name, group, url, f'dead:{fail_reason or "unknown"}'))
         return index, 'dead', None, None, None, None, None, None, None, None
-
     with UPTIME_LOCK:
         UPTIME_NEW[url] = 1
-
     if is_migayushchiy(url):
         pct, total = get_uptime_pct(url)
         with REJECTED_LOCK:
             if len(REJECTED) < REJECTED_LIMIT:
                 REJECTED.append((name, group, url, f'unstable:{pct}%'))
         return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None, None
-
-    # ffprobe (если включён)
     if CFG.ffprobe:
         ff_ok, ff_info = ffprobe_check(url)
         if ff_ok is False:
@@ -1206,27 +1186,20 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
                 fq = classify_height(h)
                 if fq:
                     hls_quality = fq
-
     extinf = clean_extinf(extinf)
-
     original_tvg_id = get_tvg_id(extinf)
     iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
     epg_id = resolve_epg_id(extinf)
-
     logo, logo_src = resolve_logo(extinf, url, txt_logos, cache,
                                    iptv_org_id, epg_id)
     extinf = set_logo_in_extinf(extinf, logo)
-
     if epg_id:
         extinf = set_tvg_id_in_extinf(extinf, epg_id)
     else:
         extinf = remove_tvg_id_from_extinf(extinf)
-
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
-
     final_quality = hls_quality or detect_quality_by_name(name)
-
     return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src, final_quality
 
 
@@ -1262,9 +1235,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 'filtered': 0, 'unstable': 0, 'groups': {}, 'ua_stats': {},
                 'slow': [], 'fastest': None, 'avg_elapsed': None,
                 'logo_stats': {}, 'all_urls': [], 'quality_stats': {}}
-
     emit(f"    Каналов: {len(channels)}")
-
     if not check:
         out, all_urls = [], []
         for i, (extinf, url) in enumerate(channels):
@@ -1300,18 +1271,15 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 'groups': gs, 'ua_stats': {'skipped': len(ordered)},
                 'slow': [], 'fastest': None, 'avg_elapsed': None,
                 'logo_stats': {}, 'all_urls': all_urls, 'quality_stats': {}}
-
     pbar = None
     if HAS_TQDM and not CFG.quiet and not CFG.no_progress:
         pbar = tqdm(total=len(channels), desc=label, unit='ch', ncols=90, leave=True)
-
     valid, ok_cnt, err_cnt, filt_cnt, unstable_cnt = [], 0, 0, 0, 0
     ua_stats, filt_by_reason = {}, {}
     slow_list, elapsed_list = [], []
     logo_counts = {}
     all_urls = []
     quality_stats = {'4K': 0, 'HD': 0, 'SD': 0, 'Unknown': 0}
-
     with concurrent.futures.ThreadPoolExecutor(max_workers=CFG.workers) as ex:
         futs = [ex.submit(process_channel, i, e, u, txt_logos, cache, label)
                 for i, (e, u) in enumerate(channels)]
@@ -1348,25 +1316,21 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 pbar.set_postfix(ok=ok_cnt, filt=filt_cnt, unst=unstable_cnt, err=err_cnt)
     if pbar:
         pbar.close()
-
     valid.sort(key=lambda x: x[0])
     ordered = group_channels(valid)
     gs = {}
     for _, e, _ in ordered:
         g = get_group(e) or '(без группы)'
         gs[g] = gs.get(g, 0) + 1
-
     avg_el = round(sum(elapsed_list) / len(elapsed_list), 2) if elapsed_list else None
     fastest = round(min(elapsed_list), 2) if elapsed_list else None
     slow_list.sort(key=lambda x: -x[2])
-
     emit(f"    Рабочих: {ok_cnt}, фильтр: {filt_cnt}, нестабильных: {unstable_cnt}, ошибок: {err_cnt}")
     if logo_counts:
         parts = ", ".join(f"{k}={v}" for k, v in sorted(logo_counts.items(), key=lambda x: -x[1]))
         emit(f"    Логотипы: {parts}")
         for k, v in logo_counts.items():
             LOGO_STATS[k] = LOGO_STATS.get(k, 0) + v
-
     return {'label': label, 'channels': [(e, u) for _, e, u in ordered],
             'total': len(channels), 'ok': ok_cnt, 'filtered': filt_cnt,
             'unstable': unstable_cnt,
@@ -1654,6 +1618,10 @@ COMMON_CSS = """
   --bg:#f6f7f9; --panel:rgba(255,255,255,0.75); --border:#e4e6ea;
   --text:#1a1d21; --muted:#6b7280; --accent:#2563eb;
 }
+[data-theme="navy"]{
+  --bg:#0a1628; --panel:rgba(20,35,60,0.72); --border:#1e3a5f;
+  --text:#e0e7ff; --muted:#94a3b8; --accent:#60a5fa;
+}
 html{min-height:100%}
 body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
 color:var(--text);margin:0;padding:24px;max-width:1100px;margin:0 auto;
@@ -1675,42 +1643,72 @@ gap:12px;margin-bottom:24px}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;
 padding:16px;backdrop-filter:blur(var(--glass-blur));
 -webkit-backdrop-filter:blur(var(--glass-blur));
-transition:transform .15s,border-color .15s,box-shadow .15s}
-.card:hover{transform:translateY(-1px);border-color:var(--accent)}
+transition:transform .15s,border-color .15s,box-shadow .15s;
+animation:fadeInUp .5s ease-out both}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.10s}
+.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.20s}
+.card:nth-child(5){animation-delay:.25s}
+.card:nth-child(6){animation-delay:.30s}
+.card:hover{transform:translateY(-2px);border-color:var(--accent);
+box-shadow:0 8px 24px rgba(0,0,0,0.15)}
 .card .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 .card .v{font-size:26px;font-weight:700;margin-top:6px;letter-spacing:-.5px;
 font-variant-numeric:tabular-nums}
 .card .v.good{color:#4ade80;text-shadow:0 0 24px rgba(74,222,128,0.25)}
 .card .v.bad{color:#f87171}
 .card .v.warn{color:#facc15}
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
 .section{background:var(--panel);border:1px solid var(--border);border-radius:14px;
 padding:18px;margin-bottom:16px;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur))}
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
 tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(96,165,250,0.05)}
 .tag{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--border);
 font-size:12px;color:var(--muted);margin:2px}
 .back{display:inline-block;margin-bottom:16px;color:var(--accent);text-decoration:none}
 .box{background:var(--panel);border:1px solid var(--border);border-radius:14px;
 padding:18px;margin-bottom:12px;backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur))}
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
 code{background:var(--bg);padding:3px 8px;border-radius:6px;font-size:13px;
 word-break:break-all;color:#facc15;font-family:ui-monospace,Menlo,monospace}
-.theme-btn{position:fixed;top:16px;right:16px;background:var(--panel);
-border:1px solid var(--border);color:var(--text);width:42px;height:42px;
-border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1;
-backdrop-filter:blur(var(--glass-blur));
+.top-right{position:fixed;top:16px;right:16px;z-index:100;
+display:flex;gap:8px;align-items:center}
+.theme-btn{background:var(--panel);border:1px solid var(--border);
+color:var(--text);width:42px;height:42px;border-radius:50%;cursor:pointer;
+font-size:18px;line-height:1;backdrop-filter:blur(var(--glass-blur));
 -webkit-backdrop-filter:blur(var(--glass-blur));
 transition:transform .15s}
 .theme-btn:hover{transform:scale(1.08)}
+.live-widget{background:var(--panel);border:1px solid var(--border);
+border-radius:20px;padding:8px 14px;font-size:13px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+display:flex;gap:14px;align-items:center;white-space:nowrap}
+.live-widget .live-item{display:flex;align-items:center;gap:4px;color:var(--muted)}
+.live-widget .live-item strong{color:var(--text);font-weight:500}
+@media(max-width:600px){
+  .live-widget{padding:6px 10px;font-size:12px;gap:10px}
+}
+@media(max-width:420px){
+  .live-widget .hide-mobile{display:none}
+}
 .health-wrap{margin-bottom:24px;padding:14px 18px;background:var(--panel);
 border:1px solid var(--border);border-radius:14px;
 backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur))}
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
 .health-bar{height:8px;background:var(--border);border-radius:8px;overflow:hidden}
-.health-bar > div{height:100%;border-radius:8px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.health-bar > div{height:100%;border-radius:8px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
 .health-label{margin-top:8px;font-size:13px;color:var(--muted)}
 .donut-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
 .donut-chart{flex:0 0 220px}
@@ -1726,7 +1724,8 @@ font-weight:500;min-width:44px;text-align:right}
 .wf-status{font-size:13px;margin-bottom:16px;padding:10px 14px;
 background:var(--panel);border:1px solid var(--border);border-radius:12px;
 backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur))}
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
 .copy-btn{background:var(--border);border:none;color:var(--text);padding:6px 12px;
 border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .copy-btn:hover{background:var(--accent);color:#fff}
@@ -1745,17 +1744,68 @@ font-size:11px;font-weight:500;background:var(--border);color:var(--muted)}
 .quality-sd{color:#facc15;font-weight:600;font-size:11px}
 .chk{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
 background:var(--panel);border:1px solid var(--border);border-radius:10px;
-cursor:pointer;font-size:13px;user-select:none;transition:border-color .15s}
-.chk:hover{border-color:var(--accent)}
+cursor:pointer;font-size:13px;user-select:none;transition:border-color .15s,transform .15s}
+.chk:hover{border-color:var(--accent);transform:translateY(-1px)}
 .chk input{accent-color:var(--accent);cursor:pointer}
 .chk-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.view-toggle{background:var(--panel);border:1px solid var(--border);
+color:var(--text);padding:8px 16px;border-radius:10px;cursor:pointer;
+font-size:13px;transition:border-color .15s;user-select:none}
+.view-toggle:hover{border-color:var(--accent)}
+.channels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:12px;margin-bottom:16px}
+.channel-card{background:var(--panel);border:1px solid var(--border);
+border-radius:14px;padding:14px;text-align:center;cursor:pointer;
+transition:transform .15s,border-color .15s,box-shadow .15s;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+position:relative;animation:fadeInUp .4s ease-out both}
+.channel-card:hover{transform:translateY(-3px);border-color:var(--accent);
+box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.channel-card .cc-logo{width:56px;height:56px;object-fit:contain;
+background:var(--border);border-radius:10px;padding:6px;margin-bottom:8px}
+.channel-card .cc-name{font-size:13px;font-weight:500;margin-bottom:4px;
+overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.channel-card .cc-meta{font-size:11px;color:var(--muted);
+overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.channel-card .cc-status{position:absolute;top:8px;right:8px;font-size:14px}
+.channel-card .cc-actions{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.channel-card .cc-btn{background:var(--border);border:none;color:var(--muted);
+padding:3px 8px;border-radius:6px;font-size:10px;cursor:pointer;
+transition:background .15s}
+.channel-card .cc-btn:hover{background:var(--accent);color:#fff}
+.channel-card .cc-btn.ok{background:#4ade80;color:#0f1115}
+.charts-tip{position:fixed;background:var(--panel);border:1px solid var(--border);
+border-radius:10px;padding:8px 12px;font-size:12px;pointer-events:none;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+box-shadow:0 4px 16px rgba(0,0,0,0.3);z-index:200;
+opacity:0;transition:opacity .15s;color:var(--text);white-space:nowrap}
+.charts-tip.show{opacity:1}
+.charts-tip .tt-val{font-weight:600;color:var(--accent)}
+.charts-tip .tt-date{color:var(--muted);font-size:11px;margin-top:2px}
+.bg-decor{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg-decor::before{content:'';position:absolute;top:-20%;left:-10%;
+width:50vw;height:50vw;border-radius:50%;
+background:radial-gradient(circle,rgba(96,165,250,0.08),transparent 60%);
+animation:float1 25s ease-in-out infinite}
+.bg-decor::after{content:'';position:absolute;bottom:-20%;right:-10%;
+width:60vw;height:60vw;border-radius:50%;
+background:radial-gradient(circle,rgba(74,222,128,0.06),transparent 60%);
+animation:float2 30s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,-50px)}}
 """
 
 THEME_JS = """
 <script>
 (function(){
-  const saved = localStorage.getItem('theme') || 'dark';
+  const THEMES = ['dark', 'light', 'navy'];
+  const ICONS = {dark: '☀', light: '☾', navy: '🌙'};
+  let saved = localStorage.getItem('theme') || 'dark';
+  if (!THEMES.includes(saved)) saved = 'dark';
   document.documentElement.setAttribute('data-theme', saved);
+
   function animateCounters(){
     document.querySelectorAll('[data-count]').forEach(el => {
       const target = parseInt(el.dataset.count, 10);
@@ -1771,35 +1821,138 @@ THEME_JS = """
       requestAnimationFrame(step);
     });
   }
+
+  function weatherEmoji(code){
+    if (code === 0) return '☀️';
+    if (code <= 3) return '⛅';
+    if (code <= 48) return '🌫️';
+    if (code <= 57) return '🌦️';
+    if (code <= 67) return '🌧️';
+    if (code <= 77) return '❄️';
+    if (code <= 82) return '🌧️';
+    if (code <= 86) return '❄️';
+    return '⛈️';
+  }
+  async function updateWeather(){
+    const el = document.getElementById('weather');
+    if (!el) return;
+    try {
+      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=43.4981&longitude=43.6189&current=temperature_2m,weather_code&timezone=Europe%2FMoscow');
+      const d = await r.json();
+      const t = Math.round(d.current.temperature_2m);
+      const code = d.current.weather_code;
+      el.innerHTML = weatherEmoji(code) + ' <strong>' + t + '°C</strong> <span class="hide-mobile">· Нальчик</span>';
+    } catch(e) {
+      el.innerHTML = '🌡️ <span class="hide-mobile">Нальчик</span>';
+    }
+  }
+  updateWeather();
+  setInterval(updateWeather, 15*60*1000);
+
+  function updateClock(){
+    const el = document.getElementById('clock');
+    if (!el) return;
+    try {
+      const now = new Date();
+      const t = now.toLocaleTimeString('ru-RU', {
+        timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit'
+      });
+      el.innerHTML = '🕐 <strong>' + t + '</strong> <span class="hide-mobile">МСК</span>';
+    } catch(e) { el.innerHTML = ''; }
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  function updateTicker(){
+    const el = document.getElementById('ticker');
+    if (!el) return;
+    const gh = el.dataset.repo;
+    if (!gh) { el.innerHTML = ''; return; }
+    fetch('https://api.github.com/repos/' + gh + '/actions/workflows/check.yml/runs?per_page=1')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if(!d || !d.workflow_runs || !d.workflow_runs.length) return;
+        const run = d.workflow_runs[0];
+        const when = new Date(run.updated_at || run.created_at);
+        const ago = Math.round((Date.now() - when.getTime())/60000);
+        let agoStr = ago < 1 ? 'только что'
+                   : ago < 60 ? ago + ' мин назад'
+                   : Math.round(ago/60) + ' ч назад';
+        let status = '';
+        if(run.status === 'in_progress') status = '🔄';
+        else if(run.conclusion === 'success') status = '✅';
+        else if(run.conclusion === 'failure') status = '❌';
+        else status = '⏸';
+        const nextIn = 360 - ago;
+        let nextStr = '';
+        if (nextIn > 0) {
+          const h = Math.floor(nextIn/60), m = nextIn % 60;
+          nextStr = ' · <span class="hide-mobile">след. через ' + (h>0? h+'ч ':'') + m + 'м</span>';
+        }
+        el.innerHTML = status + ' <strong>' + agoStr + '</strong>' + nextStr;
+      })
+      .catch(() => {});
+  }
+  updateTicker();
+  setInterval(updateTicker, 60000);
+
   document.addEventListener('DOMContentLoaded', function(){
     const btn = document.querySelector('.theme-btn');
     if(btn){
-      btn.textContent = saved === 'dark' ? '☀' : '☾';
+      btn.textContent = ICONS[saved];
       btn.addEventListener('click', function(){
-        const cur = document.documentElement.getAttribute('data-theme');
-        const nxt = cur === 'dark' ? 'light' : 'dark';
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const idx = THEMES.indexOf(cur);
+        const nxt = THEMES[(idx + 1) % THEMES.length];
         document.documentElement.setAttribute('data-theme', nxt);
         localStorage.setItem('theme', nxt);
-        btn.textContent = nxt === 'dark' ? '☀' : '☾';
+        btn.textContent = ICONS[nxt];
       });
     }
     animateCounters();
   });
+
+  window.showChartTip = function(e, text, date){
+    let tip = document.getElementById('chart-tip');
+    if(!tip){
+      tip = document.createElement('div');
+      tip.id = 'chart-tip';
+      tip.className = 'charts-tip';
+      document.body.appendChild(tip);
+    }
+    tip.innerHTML = '<div class="tt-val">' + text + '</div>' +
+                    (date ? '<div class="tt-date">' + date + '</div>' : '');
+    tip.classList.add('show');
+    tip.style.left = (e.clientX + 12) + 'px';
+    tip.style.top = (e.clientY - 40) + 'px';
+  };
+  window.hideChartTip = function(){
+    const tip = document.getElementById('chart-tip');
+    if(tip) tip.classList.remove('show');
+  };
 })();
 </script>
 """
 
-THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
+TOP_RIGHT_WIDGET = '''<div class="top-right">
+<div class="live-widget">
+  <span class="live-item" id="weather">🌡️ <span class="hide-mobile">Нальчик</span></span>
+  <span class="live-item" id="clock">🕐 <span class="hide-mobile">МСК</span></span>
+  <span class="live-item" id="ticker" data-repo="{github_repo}">⏳</span>
+</div>
+<button class="theme-btn" aria-label="Theme">☀</button>
+</div>
+<div class="bg-decor"></div>'''
 
 
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v19 - {date}</title>
+<title>M3U Check v20 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
-{theme_btn}
+{top_right}
 <a class="back" href="index.html">← на главную</a>
 <h1>Отчёт проверки</h1>
 <div class="sub">{date} · источников: {n_playlists}</div>
@@ -1819,6 +1972,7 @@ REPORT_T = """<!DOCTYPE html>
 {logo_block}
 {ua_block}
 {slow_block}
+{ffprobe_block}
 <div class="section"><h2>По источникам</h2>
 <table><thead><tr><th>Источник</th><th>Всего</th><th>Рабочих</th><th>Нестаб.</th><th>Фильтр</th><th>%</th><th>Ср. отклик</th></tr></thead>
 <tbody>{playlists_rows}</tbody></table></div>
@@ -1843,12 +1997,12 @@ INDEX_T = """<!DOCTYPE html>
 <meta name="apple-mobile-web-app-title" content="IPTV">
 <link rel="apple-touch-icon" href="icon.svg">
 <style>{common_css}
-.qr-wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-.qr-wrap img{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}
-.qr-info{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}
-.link-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.qr-wrap{{display:flex;gap:20px;align-items:center;flex-wrap:wrap}}
+.qr-wrap img{{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}}
+.qr-info{{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}}
+.link-line{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}
 </style></head><body>
-{theme_btn}
+{top_right}
 <h1>IPTV — авто-обновляемый плейлист</h1>
 <div class="sub">Обновлено: {date}</div>
 <div id="wf-status" class="wf-status">Проверяю статус последнего запуска...</div>
@@ -1924,25 +2078,25 @@ CHANNELS_T = """<!DOCTYPE html>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}
-input[type=search],select{background:var(--panel);border:1px solid var(--border);
+input[type=search],select{{background:var(--panel);border:1px solid var(--border);
 color:var(--text);padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
 margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px)}
-.controls{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}
-@media(max-width:600px){.controls{grid-template-columns:1fr}}
-th{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);z-index:2}
-tr:hover td{background:var(--panel)}
-.logo{width:32px;height:32px;object-fit:contain;vertical-align:middle;
-background:var(--border);border-radius:6px;padding:3px}
-.name{font-weight:500}
-.group{color:var(--muted);font-size:12px}
-.copy{background:var(--border);border:none;color:var(--muted);padding:5px 10px;
-border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
-.copy:hover{background:var(--accent);color:#fff}
-.copy.ok{background:#4ade80;color:#0f1115}
+-webkit-backdrop-filter:blur(10px)}}
+.controls{{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}}
+@media(max-width:600px){{.controls{{grid-template-columns:1fr}}}}
+th{{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);z-index:2}}
+.logo{{width:32px;height:32px;object-fit:contain;vertical-align:middle;
+background:var(--border);border-radius:6px;padding:3px}}
+.name{{font-weight:500}}
+.group{{color:var(--muted);font-size:12px}}
+.copy{{background:var(--border);border:none;color:var(--muted);padding:5px 10px;
+border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}}
+.copy:hover{{background:var(--accent);color:#fff}}
+.copy.ok{{background:#4ade80;color:#0f1115}}
+.view-bar{{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}}
 </style></head><body>
-{theme_btn}
+{top_right}
 <a href="index.html">← на главную</a>
 <h1>Каналы</h1>
 <div class="sub">Всего: <b>{total}</b> · с EPG: <b>{epg}</b> · показано: <span id="shown">{total}</span></div>
@@ -1953,17 +2107,29 @@ border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
 <label class="chk"><input type="checkbox" id="f-4k"> Только 4K</label>
 <label class="chk"><input type="checkbox" id="f-hd"> Только HD</label>
 </div>
+<div class="view-bar">
+<button class="view-toggle" id="view-table">📋 Таблица</button>
+<button class="view-toggle" id="view-grid">🔲 Карточки</button>
+</div>
 <div class="controls">
 <input id="q" type="search" placeholder="Поиск по названию...">
 <select id="g"><option value="">Все группы</option>{group_options}</select>
 </div>
+<div id="table-view">
 <table>
 <thead><tr><th></th><th>Название</th><th>Кач.</th><th>Аптайм</th><th>Группа</th><th></th></tr></thead>
 <tbody id="tb"></tbody>
 </table>
+</div>
+<div id="grid-view" style="display:none">
+<div class="channels-grid" id="grid"></div>
+</div>
 <script>
 const CH = {channels_json};
 const tb = document.getElementById('tb');
+const grid = document.getElementById('grid');
+const tableWrap = document.getElementById('table-view');
+const gridWrap = document.getElementById('grid-view');
 const q = document.getElementById('q');
 const g = document.getElementById('g');
 const fEpg = document.getElementById('f-epg');
@@ -1972,24 +2138,36 @@ const fStable = document.getElementById('f-stable');
 const f4k = document.getElementById('f-4k');
 const fHd = document.getElementById('f-hd');
 const shown = document.getElementById('shown');
+const btnTable = document.getElementById('view-table');
+const btnGrid = document.getElementById('view-grid');
+let viewMode = localStorage.getItem('ch-view') || 'table';
+
 const params = new URLSearchParams(location.search);
 const initGroup = params.get('group');
 if(initGroup) g.value = initGroup;
-function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function uptimeHtml(pct, samples) {
+
+function esc(s){{ return (s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c])); }}
+function uptimeHtml(pct, samples) {{
   if (pct === null || pct === undefined || samples < 2) return '<span class="uptime-none">—</span>';
   let cls = 'uptime-good';
   if (pct < 50) cls = 'uptime-low';
   else if (pct < 80) cls = 'uptime-mid';
   return '<span class="' + cls + '">' + pct + '%</span>';
-}
-function qualityHtml(q) {
+}}
+function qualityHtml(q) {{
   if (q === '4K') return '<span class="quality-4k">4K</span>';
   if (q === 'HD') return '<span class="quality-hd">HD</span>';
   if (q === 'SD') return '<span class="quality-sd">SD</span>';
   return '<span style="color:var(--muted);font-size:11px">—</span>';
-}
-function render(){
+}}
+function statusEmoji(pct, samples) {{
+  if (pct === null || pct === undefined || samples < 2) return '⚪';
+  if (pct >= 90) return '🟢';
+  if (pct >= 50) return '🟡';
+  return '🔴';
+}}
+
+function filtered() {{
   const term = q.value.trim().toLowerCase();
   const grp = g.value;
   const onlyEpg = fEpg.checked;
@@ -1998,21 +2176,25 @@ function render(){
   const only4k = f4k.checked;
   const onlyHd = fHd.checked;
   let out = [];
-  for (const c of CH) {
+  for (const c of CH) {{
     if (grp && c.group !== grp) continue;
     if (term && !c.name.toLowerCase().includes(term)) continue;
     if (onlyEpg && !c.tvg_id) continue;
     if (onlyLogo && !c.logo) continue;
-    if (onlyStable) {
+    if (onlyStable) {{
       if (c.uptime_pct === null || c.uptime_pct === undefined) continue;
       if (c.uptime_pct < 80) continue;
-    }
+    }}
     if (only4k && c.quality !== '4K') continue;
     if (onlyHd && c.quality !== 'HD') continue;
     out.push(c);
-  }
+  }}
   if (out.length > 800) out = out.slice(0, 800);
-  const html = out.map(c => {
+  return out;
+}}
+
+function renderTable(out) {{
+  const html = out.map(c => {{
     const logo = c.logo ? '<img class="logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '';
     const epg = c.tvg_id ? '<span style="color:#4ade80;font-size:11px;margin-left:4px" title="' + esc(c.tvg_id) + '">EPG</span>' : '';
     const up = uptimeHtml(c.uptime_pct, c.uptime_samples);
@@ -2022,17 +2204,67 @@ function render(){
       + '<td>' + up + '</td>'
       + '<td class="group">' + esc(c.group) + '</td>'
       + '<td><button class="copy" data-u="' + esc(c.url) + '">URL</button></td></tr>';
-  }).join('');
+  }}).join('');
   tb.innerHTML = html || '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
-  shown.textContent = out.length;
-  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
-    navigator.clipboard.writeText(b.dataset.u).then(() => {
+  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {{
+    navigator.clipboard.writeText(b.dataset.u).then(() => {{
       b.classList.add('ok');
       const t = b.textContent; b.textContent = '✓';
-      setTimeout(() => { b.classList.remove('ok'); b.textContent = t; }, 1000);
-    });
-  }));
-}
+      setTimeout(() => {{ b.classList.remove('ok'); b.textContent = t; }}, 1000);
+    }});
+  }}));
+}}
+
+function renderGrid(out) {{
+  const html = out.map((c, i) => {{
+    const logo = c.logo ? '<img class="cc-logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '<div class="cc-logo" style="display:inline-block"></div>';
+    const st = statusEmoji(c.uptime_pct, c.uptime_samples);
+    const q = c.quality && c.quality !== 'Unknown' ? ' · ' + c.quality : '';
+    return '<div class="channel-card" style="animation-delay:' + (i * 0.01) + 's">'
+      + '<span class="cc-status">' + st + '</span>'
+      + logo
+      + '<div class="cc-name">' + esc(c.name) + '</div>'
+      + '<div class="cc-meta">' + esc(c.group) + q + '</div>'
+      + '<div class="cc-actions">'
+      + '<button class="cc-btn copy" data-u="' + esc(c.url) + '">URL</button>'
+      + '</div></div>';
+  }}).join('');
+  grid.innerHTML = html || '<div style="text-align:center;color:var(--muted);padding:24px;grid-column:1/-1">Ничего не найдено</div>';
+  grid.querySelectorAll('.copy').forEach(b => b.addEventListener('click', (e) => {{
+    e.stopPropagation();
+    navigator.clipboard.writeText(b.dataset.u).then(() => {{
+      b.classList.add('ok');
+      const t = b.textContent; b.textContent = '✓';
+      setTimeout(() => {{ b.classList.remove('ok'); b.textContent = t; }}, 1000);
+    }});
+  }}));
+}}
+
+function render() {{
+  const out = filtered();
+  if (viewMode === 'grid') {{
+    tableWrap.style.display = 'none';
+    gridWrap.style.display = 'block';
+    renderGrid(out);
+  }} else {{
+    tableWrap.style.display = 'block';
+    gridWrap.style.display = 'none';
+    renderTable(out);
+  }}
+  shown.textContent = out.length;
+}}
+
+btnTable.addEventListener('click', () => {{
+  viewMode = 'table';
+  localStorage.setItem('ch-view', 'table');
+  render();
+}});
+btnGrid.addEventListener('click', () => {{
+  viewMode = 'grid';
+  localStorage.setItem('ch-view', 'grid');
+  render();
+}});
+
 q.addEventListener('input', render);
 g.addEventListener('change', render);
 fEpg.addEventListener('change', render);
@@ -2052,21 +2284,20 @@ REJECTED_T = """<!DOCTYPE html>
 <title>Отсеянные каналы</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}
-input,select{background:var(--panel);border:1px solid var(--border);color:var(--text);
+input,select{{background:var(--panel);border:1px solid var(--border);color:var(--text);
 padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
 margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px)}
-.controls{display:grid;grid-template-columns:1fr 260px;gap:10px;margin-bottom:16px}
-@media(max-width:600px){.controls{grid-template-columns:1fr}}
-th{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);z-index:2}
-tr:hover td{background:var(--panel)}
-.name{font-weight:500}
-.group{color:var(--muted);font-size:12px}
-.url-cell{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);
-max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+-webkit-backdrop-filter:blur(10px)}}
+.controls{{display:grid;grid-template-columns:1fr 260px;gap:10px;margin-bottom:16px}}
+@media(max-width:600px){{.controls{{grid-template-columns:1fr}}}}
+th{{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);z-index:2}}
+.name{{font-weight:500}}
+.group{{color:var(--muted);font-size:12px}}
+.url-cell{{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);
+max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 </style></head><body>
-{theme_btn}
+{top_right}
 <a href="index.html">← на главную</a>
 <h1>Отсеянные каналы</h1>
 <div class="sub">Всего: <span id="cnt">{total}</span> · показано: <span id="shown">{total}</span></div>
@@ -2084,34 +2315,34 @@ const tb = document.getElementById('tb');
 const q = document.getElementById('q');
 const r = document.getElementById('r');
 const shown = document.getElementById('shown');
-function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function reasonClass(rs) {
+function esc(s){{ return (s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c])); }}
+function reasonClass(rs) {{
   if (!rs) return 'reason-badge';
   if (rs.startsWith('dead')) return 'reason-badge dead';
   if (rs.startsWith('unstable')) return 'reason-badge unstable';
   return 'reason-badge filter';
-}
-function render(){
+}}
+function render(){{
   const term = q.value.trim().toLowerCase();
   const rs = r.value;
   let out = [];
-  for (const c of REJ) {
+  for (const c of REJ) {{
     if (rs && !c.reason.startsWith(rs)) continue;
     if (term && !(c.name.toLowerCase().includes(term) || c.url.toLowerCase().includes(term))) continue;
     out.push(c);
-  }
+  }}
   if (out.length > 800) out = out.slice(0, 800);
-  const html = out.map(c => {
+  const html = out.map(c => {{
     return '<tr>'
       + '<td class="name">' + esc(c.name) + '</td>'
       + '<td class="group">' + esc(c.group) + '</td>'
       + '<td class="url-cell" title="' + esc(c.url) + '">' + esc(c.url) + '</td>'
       + '<td><span class="' + reasonClass(c.reason) + '">' + esc(c.reason) + '</span></td>'
       + '</tr>';
-  }).join('');
+  }}).join('');
   tb.innerHTML = html || '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
   shown.textContent = out.length;
-}
+}}
 q.addEventListener('input', render);
 r.addEventListener('change', render);
 render();
@@ -2176,7 +2407,7 @@ def render_trend_svg(history):
         for i, v in enumerate(vals):
             x = P + i * step
             y = H - P - (v / mx) * (H - 2 * P)
-            pts.append((x, y))
+            pts.append((x, y, v))
         return pts
 
     pts_ok = line_points('ok')
@@ -2184,12 +2415,31 @@ def render_trend_svg(history):
     pts_epg = line_points('epg')
 
     def poly(pts):
-        return " ".join(f"{x:.1f},{y:.1f}" for x, y in pts)
+        return " ".join(f"{x:.1f},{y:.1f}" for x, y, _ in pts)
 
     def area(pts):
         if not pts:
             return ''
-        return f"M{pts[0][0]:.1f},{H-P} L" + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts) + f" L{pts[-1][0]:.1f},{H-P} Z"
+        return f"M{pts[0][0]:.1f},{H-P} L" + " L".join(f"{x:.1f},{y:.1f}" for x, y, _ in pts) + f" L{pts[-1][0]:.1f},{H-P} Z"
+
+    # Метки с датами и tooltip
+    dots = ""
+    hover_targets = ""
+    for i, (x, y, v) in enumerate(pts_ok):
+        date_str = history[i].get('date', '')
+        dots += f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3" fill="#4ade80"/>'
+        hover_targets += (
+            f'<circle cx="{x:.1f}" cy="{y:.1f}" r="10" fill="transparent" '
+            f'style="cursor:pointer" '
+            f'onmouseover="showChartTip(event, \'{v} каналов (OK)\', \'{date_str}\')" '
+            f'onmouseout="hideChartTip()"/>'
+        )
+    for i, (x, y, v) in enumerate(pts_merged):
+        date_str = history[i].get('date', '')
+        dots += f'<circle cx="{x:.1f}" cy="{y:.1f}" r="2" fill="#60a5fa"/>'
+    for i, (x, y, v) in enumerate(pts_epg):
+        date_str = history[i].get('date', '')
+        dots += f'<circle cx="{x:.1f}" cy="{y:.1f}" r="2" fill="#facc15"/>'
 
     labels = ""
     for i in range(0, n, max(1, n // 6)):
@@ -2214,6 +2464,8 @@ def render_trend_svg(history):
 <polyline points="{poly(pts_merged)}" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
 <path d="{area(pts_epg)}" fill="#facc15" fill-opacity="0.08"/>
 <polyline points="{poly(pts_epg)}" fill="none" stroke="#facc15" stroke-width="1.5"/>
+{dots}
+{hover_targets}
 {labels}
 </svg>
 <div style="margin-top:12px;font-size:12px;color:var(--muted)">
@@ -2226,7 +2478,7 @@ def render_trend_svg(history):
 
 def render_report(path, stats, merged, total, ok, filt, dead, unstable,
                   dur, ua, history, groups_all, logo_stats, unstable_channels,
-                  quality_stats, ffprobe_stats):
+                  quality_stats, ffprobe_stats, github_repo):
     rows_pl = []
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
@@ -2324,9 +2576,10 @@ def render_report(path, stats, merged, total, ok, filt, dead, unstable,
     sp_ok = _sparkline_for_history(history, 'ok')
     sp_merged = _sparkline_for_history(history, 'merged')
     d = int(dur)
+    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo)
     out = fmt(
         REPORT_T,
-        common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
+        common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         n_playlists=len(stats), total=total, ok=ok, filtered=filt, dead=dead,
         unstable=unstable, merged=merged, duration=f"{d // 60}м {d % 60}с",
@@ -2360,9 +2613,10 @@ def render_index(path, url, merged, ok, total, unstable, splits, qr_path,
     qr_block = f'<img src="{os.path.basename(qr_path)}" alt="QR">' if os.path.isfile(qr_path) else ''
     gh_repo = _github_repo_from_pages(pages_url)
     trend_block = render_trend_svg(history)
+    top_right = TOP_RIGHT_WIDGET.format(github_repo=gh_repo)
     out = fmt(
         INDEX_T,
-        common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
+        common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         playlist_url=url, merged_count=merged, ok=ok, total=total,
         unstable=unstable, qr_block=qr_block, splits_block=split_html,
@@ -2371,7 +2625,7 @@ def render_index(path, url, merged, ok, total, unstable, splits, qr_path,
         f.write(out)
 
 
-def render_channels(path, channels):
+def render_channels(path, channels, github_repo):
     groups = {}
     ch_list = []
     epg_count = 0
@@ -2393,16 +2647,17 @@ def render_channels(path, channels):
     group_opts = "\n".join(
         f'<option value="{html.escape(g)}">{html.escape(g)} ({c})</option>'
         for g, c in sorted(groups.items()))
+    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo)
     out = fmt(
         CHANNELS_T,
-        common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
+        common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
         total=len(ch_list), epg=epg_count, group_options=group_opts,
         channels_json=json.dumps(ch_list, ensure_ascii=False))
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
 
 
-def render_rejected(path):
+def render_rejected(path, github_repo):
     seen = set()
     rows = []
     for name, group, url, reason in REJECTED:
@@ -2421,9 +2676,10 @@ def render_rejected(path):
         f'<option value="{html.escape(k)}">{html.escape(k)} ({v})</option>'
         for k, v in sorted(reason_counts.items(), key=lambda x: -x[1]))
 
+    top_right = TOP_RIGHT_WIDGET.format(github_repo=github_repo)
     out = fmt(
         REJECTED_T,
-        common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
+        common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
         total=len(rows), reason_options=reason_opts,
         rejected_json=json.dumps(rows, ensure_ascii=False))
     with open(path, 'w', encoding='utf-8') as f:
@@ -2480,7 +2736,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v19</b>"]
+    lines = ["<b>M3U Check v20</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -2540,14 +2796,10 @@ def parse_args():
     p.add_argument('--no-iptv-logos', action='store_true')
     p.add_argument('--check-all-logos', action='store_true')
     p.add_argument('--no-hls-quality', action='store_true')
-    p.add_argument('--ffprobe', action='store_true',
-                   help='Включить глубокую проверку через ffprobe')
-    p.add_argument('--ffprobe-workers', type=int, default=4,
-                   help='Число параллельных ffprobe процессов')
-    p.add_argument('--ffprobe-timeout', type=int, default=8,
-                   help='Таймаут ffprobe на один канал (сек)')
-    p.add_argument('--ffprobe-cache-days', type=int, default=3,
-                   help='Кэш ffprobe на N дней')
+    p.add_argument('--ffprobe', action='store_true')
+    p.add_argument('--ffprobe-workers', type=int, default=4)
+    p.add_argument('--ffprobe-timeout', type=int, default=8)
+    p.add_argument('--ffprobe-cache-days', type=int, default=3)
     p.add_argument('--split-all', action='store_true')
     p.add_argument('--weekly-backup', action='store_true')
     p.add_argument('--min-uptime', type=int, default=50)
@@ -2647,6 +2899,9 @@ def main():
     os.makedirs(CFG.output, exist_ok=True)
     os.makedirs(CFG.docs_dir, exist_ok=True)
 
+    pages = CFG.pages_url.rstrip('/')
+    gh_repo = _github_repo_from_pages(pages)
+
     started = time.time()
     stats_list, merged_all, seen, pl = [], [], set(), 0
     all_current_urls = []
@@ -2737,16 +2992,16 @@ def main():
         write_csv(ordered_merged, os.path.join(CFG.docs_dir, 'channels.csv'))
 
         rejected_count = write_rejected_csv(os.path.join(CFG.docs_dir, 'rejected.csv'))
-        rejected_html_count = render_rejected(os.path.join(CFG.docs_dir, 'rejected.html'))
+        rejected_html_count = render_rejected(os.path.join(CFG.docs_dir, 'rejected.html'), gh_repo)
         emit(f"\nrejected.csv: {rejected_count} записей (уникальных)")
         emit(f"rejected.html: {rejected_html_count} записей")
 
         render_report(os.path.join(CFG.docs_dir, 'report.html'),
                       stats_list, len(ordered_merged), total, ok, filt, dead, unstable,
                       time.time() - started, ua_totals, history, groups_all,
-                      LOGO_STATS, unstable_list, quality_stats, FFPROBE_STATS)
+                      LOGO_STATS, unstable_list, quality_stats, FFPROBE_STATS,
+                      gh_repo)
 
-        pages = CFG.pages_url.rstrip('/')
         purl = f'{pages}/{CFG.merged_name}' if pages else CFG.merged_name
         iurl = f'{pages}/index.html' if pages else ''
         qr_path = os.path.join(CFG.docs_dir, 'qr.png')
@@ -2755,7 +3010,7 @@ def main():
         render_index(os.path.join(CFG.docs_dir, 'index.html'),
                      purl, len(ordered_merged), ok, total, unstable,
                      splits, qr_path, pages, history)
-        render_channels(os.path.join(CFG.docs_dir, 'channels.html'), ordered_merged)
+        render_channels(os.path.join(CFG.docs_dir, 'channels.html'), ordered_merged, gh_repo)
         write_pwa_assets(CFG.docs_dir)
 
         save_uptime(uptime_path, all_current_urls)
