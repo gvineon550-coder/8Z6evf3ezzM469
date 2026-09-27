@@ -1,0 +1,53 @@
+name: M3U Cleaner
+
+on:
+  schedule:
+    - cron: '0 3,15 * * *'   # 06:00 и 18:00 МСК
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cleaner
+  cancel-in-progress: true
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Установка requests
+        run: pip install requests
+
+      - name: Чистка листов
+        run: python m3u_cleaner.py --strip-trackers
+
+      - name: Показать статистику
+        run: |
+          echo "=== cleaned_stats.json ==="
+          cat docs/cleaned_stats.json
+          echo ""
+          echo "=== top-10 rejected ==="
+          head -n 10 docs/rejected_clean.csv
+
+      - name: Коммит результата
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/all_cleaned.m3u docs/cleaned_stats.json docs/rejected_clean.csv
+          if git diff --staged --quiet; then
+            echo "Нечего коммитить"
+            exit 0
+          fi
+          git commit -m "🧹 Auto-clean $(date -u +'%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash && git push && break
+            echo "Попытка $i не удалась, ждём 5 сек..."; sleep 5
+          done
