@@ -1,0 +1,65 @@
+{
+  "name_blocklist": [
+    "(?i)\\btest\\b", "(?i)\\bтест\\b", "(?i)\\bdemo\\b",
+    "(?i)\\bпромо\\b", "(?i)\\bpromo\\b", "(?i)\\bbackup\\b",
+    "(?i)\\bрезерв\\b", "(?i)\\bдубл", "(?i)\\bxxx\\b",
+    "(?i)\\badult\\b", "(?i)\\bэрот", "(?i)\\bпорно"
+  ],
+  "name_exclude": [
+    "(?i)\\b(детск|детский|kids|child|children|cartoon|мульт|мультик|малыш|baby)\\b",
+    "(?i)\\b(disney|nickelodeon|nick\\s*jr|карусель)\\b",
+    "(?i)\\b(discovery\\s*kids|baby\\s*tv|радость\\s*моя)\\b"
+  ],
+  "group_exclude": [
+    "(?i)^детск", "(?i)kids", "(?i)^мульт"
+  ],
+  "url_blocklist": [
+    "^https?://127\\.", "^https?://0\\.0\\.0\\.0",
+    "^https?://localhost", "^https?://192\\.168\\.",
+    "^https?://10\\.", "^https?://172\\.(1[6-9]|2[0-9]|3[01])\\.",
+    "^https?://169\\.254\\.",
+    "^https?://100\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\\.",
+    "^https?://\\[::1\\]", "^https?://\\[fe80:",
+    "^https?://\\[fc00:", "^https?://\\[fd[0-9a-f]{2}:",
+    "^https?://224\\.", "^https?://22[5-9]\\.",
+    "^https?://23[0-9]\\.", "^https?://24[0-9]\\.",
+    "^https?://25[0-5]\\."
+  ],
+  "url_extension_blocklist": [
+    ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp", ".svg", ".ico",
+    ".html", ".htm", ".php", ".asp", ".aspx", ".jsp",
+    ".zip", ".rar", ".7z", ".tar", ".gz",
+    ".exe", ".dmg", ".apk", ".deb", ".rpm"
+  ],
+  "shortener_blocklist": [
+    "bit.ly", "tinyurl.com", "goo.gl", "t.co", "ow.ly",
+    "is.gd", "buff.ly", "rebrand.ly", "cutt.ly", "shorturl.at",
+    "clck.ru", "vk.cc", "u.to", "qps.ru", "clc.to",
+    "urlz.fr", "mcaf.ee", "shorte.st", "adf.ly", "sh.st",
+    "ouo.io", "linkvertise.com", "sub2unlock.com",
+    "bitly.com", "tiny.cc", "shorturl.com", "rb.gy", "surl.li"
+  ],
+  "port_blocklist": [
+    ":22/", ":21/", ":23/", ":25/", ":110/", ":143/", ":465/", ":587/",
+    ":993/", ":995/", ":3306/", ":5432/", ":6379/", ":27017/",
+    ":9200/", ":11211/", ":5672/", ":15672/"
+  ],
+  "suspicious_patterns": [
+    "\\?utm_", "\\?ref=", "\\?aff=", "&utm_",
+    "/ads/", "/ad/", "/adv/", "/banner/",
+    "/click/", "/redirect/", "/track/", "/beacon/", "/pixel/"
+  ],
+  "domain_blocklist": [
+    "cinerama.uz",
+    "adf.ly", "shorte.st", "sh.st", "ouo.io",
+    "linkvertise.com", "sub2unlock.com",
+    "tinyurl.com"
+  ],
+  "malformed_patterns": [
+    "\\s", "\\.\\.", ":///", "http://$", "https://$", "://[^/]*://"
+  ],
+  "block_all_ip_urls": false,
+  "block_ipv6_urls": true,
+  "dedup_by_name": false,
+  "dedup_name_keep": "first"
+}
