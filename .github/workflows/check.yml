@@ -26,6 +26,18 @@ jobs:
       - name: Install deps
         run: pip install -r requirements.txt
 
+      - name: Get week number
+        id: week
+        run: echo "week=$(date -u +%Y-%V)" >> $GITHUB_OUTPUT
+
+      - name: Cache iptv-org database
+        uses: actions/cache@v4
+        with:
+          path: _cache_sources
+          key: iptv-org-${{ steps.week.outputs.week }}
+          restore-keys: |
+            iptv-org-
+
       - name: Run checker
         id: run
         env:
