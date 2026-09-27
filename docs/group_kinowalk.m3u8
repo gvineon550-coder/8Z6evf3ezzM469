@@ -17,7 +17,7 @@ http://kinowalk.hopto.org/akudjitv_live
 #EXTINF:-1 tvg-id="aleksej26" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/aleksej26.png" group-title="🎞️ Kinowalk",Aleksej 54 rus
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/aleksej26_live
-#EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://images.live.vkvideo.ru/user/19397267/avatar?change_time=1763534733&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",Alex.Films
+#EXTINF:-1 tvg-id="alex.films" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/alex.films.jpg" group-title="🎞️ Kinowalk",Alex.Films
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/alex.films_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://kinowalk.hopto.org/web/image/275/128x128?unique=2026-04-19%2006:55:19.206545&access_token=e8a436a0-7eb4-46b1-8f7e-06fc05b14ca1" group-title="🎞️ Kinowalk",AlexVira
