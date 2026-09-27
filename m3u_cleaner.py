@@ -7,15 +7,11 @@ m3u_cleaner.py — отдельный чистильщик M3U-листов и U
   • Стриминг: читает/пишет построчно, не держит лист в памяти
   • СОХРАНЯЕТ #EXTVLCOPT (http-user-agent и др.)
   • СОХРАНЯЕТ шапку url-tvg, или подставляет из header_url_tvg конфига
-  • Дедуп по URL глобальный
+  • WHITELIST: URL/имя из whitelist НИКОГДА не отсеиваются
+  • Дедуп по URL глобальный (кроме whitelist)
   • Понимает regex И подстроки в filters.json (auto-detect)
   • Shortener/домен — только по hostname
   • Защита: пустой лист НЕ перезаписывает старый
-  • В лог пишет примеры URL по каждой причине отсева
-
-Запуск:
-    python m3u_cleaner.py --sources sources_cleaner.json
-    python m3u_cleaner.py --sources sources_cleaner.json --strip-trackers
 """
 from __future__ import annotations
 
@@ -220,6 +216,15 @@ def _match_any_url(url: str, compiled) -> bool:
     return False
 
 
+def is_whitelisted(url: str, name: str, flt) -> bool:
+    """Проверка whitelist: URL или имя из белого списка — неприкосновенны."""
+    if url and _match_any_url(url, flt["_whitelist_url_compiled"]):
+        return True
+    if name and _match_any_name(name, flt["_whitelist_name_compiled"]):
+        return True
+    return False
+
+
 def reject_reason(url: str, name: str, flt) -> str | None:
     if not url:
         return "empty_url"
@@ -280,6 +285,8 @@ def load_filters(path: str):
         "url_extension_blocklist": [],
         "shortener_blocklist": list(SHORTENERS),
         "domain_blocklist": list(DEFAULT_DOMAIN_BLOCK),
+        "whitelist_url_patterns": [],
+        "whitelist_name_patterns": [],
     }
     p = Path(path)
     if p.exists():
@@ -296,7 +303,8 @@ def load_filters(path: str):
 
             for key in ("name_exclude", "name_blocklist", "url_blocklist",
                         "url_extension_blocklist", "shortener_blocklist",
-                        "domain_blocklist"):
+                        "domain_blocklist",
+                        "whitelist_url_patterns", "whitelist_name_patterns"):
                 v = _get_list(key)
                 if v:
                     flt[key] = v
@@ -309,6 +317,10 @@ def load_filters(path: str):
     flt["_extension_compiled"] = _compiled_patterns(
         [s.lower() for s in flt["url_extension_blocklist"]])
     flt["_shortener_domains"] = [s.lower() for s in flt["shortener_blocklist"]]
+    flt["_whitelist_url_compiled"] = _compiled_patterns(
+        [s.lower() for s in flt["whitelist_url_patterns"]])
+    flt["_whitelist_name_compiled"] = _compiled_patterns(
+        flt["whitelist_name_patterns"])
     return flt
 
 
@@ -350,15 +362,19 @@ def main() -> int:
         f"name_blocklist={len(flt['name_blocklist'])} "
         f"url_blocklist={len(flt['url_blocklist'])} "
         f"shortener={len(flt['shortener_blocklist'])}")
+    log(f"⭐ Whitelist: url={len(flt['whitelist_url_patterns'])} "
+        f"name={len(flt['whitelist_name_patterns'])}")
 
     session = make_session()
     seen = set()
     per_source = []
     reasons = Counter()
     examples: dict = defaultdict(list)
+    wl_examples: list = []
     total_raw = total_kept = total_rej = 0
     header_saved: str | None = None
     directives_kept = 0
+    whitelisted_kept = 0
 
     def write_entry(fout, attrs, name, directives, url):
         nonlocal directives_kept
@@ -373,13 +389,29 @@ def main() -> int:
         fout.write(url + "\n")
 
     def process(lines, src_name: str, kind: str):
-        nonlocal total_raw, total_kept, total_rej
+        nonlocal total_raw, total_kept, total_rej, whitelisted_kept
         raw = kept = rej = 0
         for attrs, name, directives, url in iter_m3u(lines):
             raw += 1
             url = url.strip().strip('"').strip("'")
             if args.strip_trackers and url:
                 url = strip_tracking(url)
+
+            # WHITELIST
+            wl = False
+            if url and url.lower().startswith(VALID_SCHEMES_EXTENDED):
+                if is_whitelisted(url, name, flt):
+                    wl = True
+
+            if wl:
+                seen.add(url)
+                write_entry(fout, attrs, name, directives, url)
+                whitelisted_kept += 1
+                if len(wl_examples) < 10:
+                    wl_examples.append(f"[{src_name}] {name} | {url}")
+                kept += 1
+                continue
+
             reason = reject_reason(url, name, flt)
             if reason is None and url in seen:
                 reason = "duplicate_url"
@@ -393,8 +425,10 @@ def main() -> int:
             seen.add(url)
             write_entry(fout, attrs, name, directives, url)
             kept += 1
+
         per_source.append({"name": src_name, "type": kind,
-                           "raw": raw, "kept": kept, "rejected": rej})
+                           "raw": raw, "kept": kept, "rejected": rej,
+                           "whitelisted": whitelisted_kept})
         total_raw += raw
         total_kept += kept
         total_rej += rej
@@ -405,7 +439,6 @@ def main() -> int:
         w = csv.writer(wcsv)
         w.writerow(["source", "name", "url", "reason"])
 
-        # --- URL-источники ---
         for src in url_srcs:
             name, url = src.get("name", "?"), src.get("url", "")
             if not url:
@@ -438,7 +471,6 @@ def main() -> int:
                                    "raw": 0, "kept": 0, "rejected": 0,
                                    "error": str(e)})
 
-        # --- Локальные ---
         for src in local_srcs:
             name, path = src.get("name", "?"), src.get("path", "")
             if not path or not Path(path).exists():
@@ -461,12 +493,10 @@ def main() -> int:
             except Exception as e:
                 log(f"  ❌ [{name}] {e}")
 
-    # Если url-tvg не найден ни в одном источнике — берём из конфига
     if header_url_tvg and (not header_saved or "url-tvg" not in header_saved):
         header_saved = f'#EXTM3U url-tvg="{header_url_tvg}"'
         log(f"  📌 Шапка без url-tvg → подставил из header_url_tvg конфига")
 
-    # Защита: не затираем существующий лист пустотой
     if total_kept == 0:
         body_path.unlink(missing_ok=True)
         if out_m3u.exists():
@@ -489,6 +519,7 @@ def main() -> int:
         "strip_trackers": bool(args.strip_trackers),
         "header_saved": header_saved,
         "directives_kept": directives_kept,
+        "whitelisted_kept": whitelisted_kept,
         "sources": per_source,
         "totals": {"raw": total_raw, "kept": total_kept, "rejected": total_rej},
         "reasons": dict(reasons),
@@ -508,8 +539,14 @@ def main() -> int:
         log(f"   🔍 {r}:")
         for ex in examples[r]:
             log(f"      • {ex[:140]}")
+    if wl_examples:
+        log("")
+        log("⭐ Whitelist (сохранено вне правил):")
+        for ex in wl_examples:
+            log(f"      • {ex[:140]}")
     log("")
     log(f"📌 Сохранено #EXTVLCOPT: {directives_kept}")
+    log(f"⭐ Сохранено через whitelist: {whitelisted_kept}")
     log(f"📌 Шапка: {header_saved}")
     log(f"✅ {total_raw} → {total_kept} (отсеяно {total_rej})")
     log(f"📄 {out_m3u}")
