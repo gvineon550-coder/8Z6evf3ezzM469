@@ -35,6 +35,9 @@ https://vod.tuva.ru/friday/index.m3u8
 #EXTINF:-1 tvg-id="5kanal-ru" tvg-logo="https://epg.iptvx.one/picons/piaty-int.png" group-title="📺 Основные",Пятый канал
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/1050/index.m3u8
+#EXTINF:-1 tvg-id="5kanal-ru" tvg-logo="https://epg.iptvx.one/picons/piaty-int.png" group-title="📺 Основные",Пятый канал HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://edge02p.mediavitrina.ru/hls-livef8/5tv/index.m3u8?token=v2.tgWpynLv_dBNjMuo6qgX2luN9X5IgQWkmQuhVuaIP1w.zyeMkdQHKor_DycDF8f6-xLQeGn8gMgcqhGKU8UgXWM.1790929065.37b27259e95c7f08a4e8cdd83ee015a1
 #EXTINF:-1 tvg-id="rentv" tvg-logo="http://epg.propg.net/img/channel_icons/14.png" group-title="📺 Основные",Рен ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/2010/index.m3u8
@@ -59,6 +62,9 @@ https://stream.smotrim.ru/hls/solovievlive/playlist_6.m3u8
 #EXTINF:-1 tvg-id="sts" tvg-logo="http://epg.propg.net/img/channel_icons/12.png" group-title="📺 Основные",СТС
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/2030/index.m3u8
+#EXTINF:-1 tvg-id="sts" tvg-logo="https://epg.iptvx.one/picons/sts.png" group-title="📺 Основные",СТС HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://edge07r.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.IPTZi0OX6BWY8aN9h7epxJo3NULi6eKcNeuT4kA5BQs.Ta3LeSNdOf8djhQqPTK0C8cqzNWjISAvclKmHYSIfH0.1790928908.bb2a7539447508cbd5ad4b3928c2604a
 #EXTINF:-1 group-title="📺 Основные" tvg-id="tvcentr" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/72/TV_Tsentr_2013_Logo.svg",ТВ Центр
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221.smil/playlist.m3u8
@@ -71,9 +77,6 @@ http://tvoetv.space:8080/tvoetv_humor/index.m3u8
 #EXTINF:-1 tvg-id="tvcentr" tvg-logo="http://epg.propg.net/img/channel_icons/10.png" group-title="📺 Основные",ТВЦ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/1100/index.m3u8
-#EXTINF:-1 tvg-id="tvcentr" tvg-logo="http://epg.propg.net/img/channel_icons/10.png" group-title="📺 Основные",ТВЦ HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://edge07r.mediavitrina.ru/hls-livef5/tvc/index.m3u8?token=v2.nPiGGw0bAt8o43U9aezUh4ZZ6hGA9toZLReQhlfpgv0.z8P5nwplONqS4k5nLt06aZtoBHDLSFqSAhJ8aecQr4U.1790928989.2b6ba29ab5de971cf49a9a11db3ced96
 #EXTINF:-1 tvg-logo="https://www.kharkov-z.ru/upload/iblock/15f/yfycwhv2zv5o62xg8idydfrki6d2k8mn.png" group-title="📺 Основные",ХАРЬКОВ Z
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.kharkov-z.ru/app/potok/playlist.m3u8
@@ -755,9 +758,6 @@ https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия",Rossiya 1 Vainah (576i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.chechensoft.ru/vainahtv/ngrp:vaynahtv_all/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия",RT (720p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://212.5.144.156:8080/rt/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия",RT Balkan (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://rt-srb.rttv.com/dvr/rtbalkan/playlist.m3u8
@@ -917,6 +917,9 @@ https://tv.mediacdn.ru/live/solntse/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия",Solovyov Live (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/solovievlive/playlist_6.m3u8
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://i.imgur.com/nM7LbmV.png",SONGTV Russia
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия",Soyuzny (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/TRO/index.m3u8
@@ -1349,6 +1352,9 @@ https://hls.tv.3angels.ru/stream.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия",Хузур ТВ (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-mycdn08724960135.cdnvideo.ru/mycdn08724960135/stream1/playlist.m3u8
+#EXTINF:-1 group-title="🇷🇺 Россия",Шансон ТВ (512p) [Geo-blocked]
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия",Шансон ТВ (576p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://uiptv.do.am/1ufc/602079679/playlist.m3u8
@@ -2141,9 +2147,6 @@ http://5.188.158.65:4040/IPTVPLAYVEDMAK.tv/video.m3u8?token=lqRGka5-YwwqF0
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/v8KFj826/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY Великая Отечественная HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYVOV.tv/video.m3u8?token=lqRGka5-YwwqF0
-#EXTINF:-1 tvg-logo="https://i.postimg.cc/D06WvJWn/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY ДЕСЯТОЕ КОРОЛЕВСТВО
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.158.65:4040/IPTVPLAY10KOROLEVSTVO.tv/video.m3u8?token=lqRGka5-YwwqF0
 #EXTINF:-1 tvg-logo="https://i.postimg.cc/Rh516HVw/1.png" group-title="👁️ СМОТРИМ +",IPTVPLAY МультСказки HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.158.65:4040/IPTVPLAYMultSkazki.tv/video.m3u8?token=lqRGka5-YwwqF0
@@ -2780,9 +2783,6 @@ https://lbgo.bozztv.com/07/ushba60/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-id="muzhskoy" tvg-logo="https://i.imgur.com/xyztpBf.png" group-title="🎭 Развлекательные",Мужской
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-55c94e838b306657/video.m3u8
-#EXTINF:-1 tvg-id="nasha-tema" tvg-logo="https://i.imgur.com/67ZVDKW.png" group-title="🎭 Развлекательные",Наша Тема
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://live-3.otcnet.ru/nashatema/index.m3u8
 #EXTINF:-1 tvg-id="tnt-pl4" tvg-logo="https://epg.iptvx.one/picons/tnt4.png" group-title="🎭 Развлекательные",ТНТ 4
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-5f6d3cfda1af8989/video.m3u8
@@ -2846,9 +2846,6 @@ http://stitch.teletarget.ru/api/v1/hls/vintera/neplaneta/index.m3u8
 #EXTINF:-1 tvg-id="moya-planeta" tvg-logo="https://i.imgur.com/MeYWJu8.png" group-title="🧠 Познавательные",Планета HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.46.16.239:8000/Planeta_HD
-#EXTINF:-1 tvg-id="bridge-hd" tvg-logo="https://epg.iptvx.one/picons/bridge-tv.png" group-title="Музыкальные",Bridge
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.159.128:8070/bridgetv/index.m3u8
 #EXTINF:-1 tvg-id="bridge-hd" tvg-logo="https://epg.iptvx.one/picons/bridge-hd.png" group-title="Музыкальные",Bridge Deluxe HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/Bridge_TV_Deluxe/index.m3u8

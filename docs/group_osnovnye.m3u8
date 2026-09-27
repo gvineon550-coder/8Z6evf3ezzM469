@@ -35,6 +35,9 @@ https://vod.tuva.ru/friday/index.m3u8
 #EXTINF:-1 tvg-id="5kanal-ru" tvg-logo="https://epg.iptvx.one/picons/piaty-int.png" group-title="📺 Основные",Пятый канал
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/1050/index.m3u8
+#EXTINF:-1 tvg-id="5kanal-ru" tvg-logo="https://epg.iptvx.one/picons/piaty-int.png" group-title="📺 Основные",Пятый канал HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://edge02p.mediavitrina.ru/hls-livef8/5tv/index.m3u8?token=v2.tgWpynLv_dBNjMuo6qgX2luN9X5IgQWkmQuhVuaIP1w.zyeMkdQHKor_DycDF8f6-xLQeGn8gMgcqhGKU8UgXWM.1790929065.37b27259e95c7f08a4e8cdd83ee015a1
 #EXTINF:-1 tvg-id="rentv" tvg-logo="http://epg.propg.net/img/channel_icons/14.png" group-title="📺 Основные",Рен ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/2010/index.m3u8
@@ -59,6 +62,9 @@ https://stream.smotrim.ru/hls/solovievlive/playlist_6.m3u8
 #EXTINF:-1 tvg-id="sts" tvg-logo="http://epg.propg.net/img/channel_icons/12.png" group-title="📺 Основные",СТС
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/2030/index.m3u8
+#EXTINF:-1 tvg-id="sts" tvg-logo="https://epg.iptvx.one/picons/sts.png" group-title="📺 Основные",СТС HD
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://edge07r.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.IPTZi0OX6BWY8aN9h7epxJo3NULi6eKcNeuT4kA5BQs.Ta3LeSNdOf8djhQqPTK0C8cqzNWjISAvclKmHYSIfH0.1790928908.bb2a7539447508cbd5ad4b3928c2604a
 #EXTINF:-1 group-title="📺 Основные" tvg-id="tvcentr" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/72/TV_Tsentr_2013_Logo.svg",ТВ Центр
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221.smil/playlist.m3u8
@@ -71,9 +77,6 @@ http://tvoetv.space:8080/tvoetv_humor/index.m3u8
 #EXTINF:-1 tvg-id="tvcentr" tvg-logo="http://epg.propg.net/img/channel_icons/10.png" group-title="📺 Основные",ТВЦ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/1100/index.m3u8
-#EXTINF:-1 tvg-id="tvcentr" tvg-logo="http://epg.propg.net/img/channel_icons/10.png" group-title="📺 Основные",ТВЦ HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://edge07r.mediavitrina.ru/hls-livef5/tvc/index.m3u8?token=v2.nPiGGw0bAt8o43U9aezUh4ZZ6hGA9toZLReQhlfpgv0.z8P5nwplONqS4k5nLt06aZtoBHDLSFqSAhJ8aecQr4U.1790928989.2b6ba29ab5de971cf49a9a11db3ced96
 #EXTINF:-1 tvg-logo="https://www.kharkov-z.ru/upload/iblock/15f/yfycwhv2zv5o62xg8idydfrki6d2k8mn.png" group-title="📺 Основные",ХАРЬКОВ Z
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.kharkov-z.ru/app/potok/playlist.m3u8
