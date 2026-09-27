@@ -26,9 +26,6 @@ http://46.53.200.153:7777/play/a00u/index.m3u8
 #EXTINF:-1 tvg-id="terra-ru" tvg-logo="https://i.imgur.com/ZxUjCpF.png" group-title="🧠 Познавательные",Terra HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://195.64.140.147:10150/150
-#EXTINF:-1 tvg-id="travel-xp-4k" tvg-logo="https://epg.iptvx.one/picons/travel-xp-4k.png" group-title="🧠 Познавательные",TravelXP 4K
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://91.247.68.229:8000/play/Travelxp/index.m3u8
 #EXTINF:-1 tvg-id="viasat-nature" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/24/Cropped-viasat-nature.png" group-title="🧠 Познавательные",Viasat Nature
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-7a85ea25208f5bf7/video.m3u8

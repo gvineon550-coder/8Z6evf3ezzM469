@@ -1,5 +1,4 @@
 name,group,url,reason
-Moskva 24 (1080p),,https://stream.smotrim.ru/hls/givc8/playlist.m3u8?entity=channel&id=798&sign=37881ef2e289f062ceff0dca6c24dc58,dead:empty
 Channel One HD (720p),,https://edge1.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd,dead:html
 Радио Говорит Москва (Веб-камера) (720p),,https://video.govoritmoskva.ru/rufm/index.m3u8,dead:http_206
 .black (576p),,http://str2.iptvhd.ru:8080/Sony_Turbo/index.m3u8,dead:http_403
@@ -107,7 +106,6 @@ REN TV HD (1080p),,http://str2.iptvhd.ru:8080/REN_TV/index.m3u8,dead:http_403
 Retro (576p),,http://str2.iptvhd.ru:8080/Retro/index.m3u8,dead:http_403
 Rodnoe Kino (576p),,http://str2.iptvhd.ru:8080/Nashe_kino/index.m3u8,dead:http_403
 Romantichnoe HD (1080p),,http://str2.iptvhd.ru:8080/Semeynoe_HD/index.m3u8,dead:http_403
-RT (720p),,http://212.5.144.156:8080/rt/index.m3u8,dead:http_403
 RTG TV HD (1080p),,http://str2.iptvhd.ru:8080/RTG_TV/index.m3u8,dead:http_403
 RTVi (450p) [Geo-blocked],,https://s70378.cdn.ngenix.net/rtvi/index.m3u8,dead:http_403
 RTVi (576p),,http://str2.iptvhd.ru:8080/RTVi/index.m3u8,dead:http_403
@@ -173,6 +171,7 @@ Zvezda HD (1080p),,http://str2.iptvhd.ru:8080/Zvezda/index.m3u8,dead:http_403
 Патриот (576i),,http://catchup.videoline.ru/asvtv/index.m3u8,dead:http_403
 РЖД ТВ (1080p) [Geo-blocked],,http://hls.tva.cdnvideo.ru/tva/tvahd.sdp/playlist.m3u8,dead:http_403
 РЖД ТВ (360p) [Geo-blocked],,http://hls.tva.cdnvideo.ru/tva/tva.sdp/playlist.m3u8,dead:http_403
+Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,dead:http_403
 .Black,Кино,http://89.33.29.115:8080/Sony_Turbo/tracks-v1a1/mono.m3u8,dead:http_403
 TV1000 action HD,Кино,http://89.33.29.115:8080/TV1000_Action/tracks-v1a1/mono.m3u8,dead:http_403
 TV1000 HD,Кино,http://89.33.29.115:8080/TV1000/tracks-v1a1/mono.m3u8,dead:http_403
@@ -186,6 +185,7 @@ Channel 12 (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7004.m3u8
 Channel 8 (576p),,http://v4.proofix.ru/okino-tv/index.m3u8,dead:http_404
 Fast&FunBox HD (1080p),,http://str2.iptvhd.ru:8080/FastFunBoxHD/index.m3u8,dead:http_404
 Gulli Girl (576p),,https://live-3.otcnet.ru/GulliGirl/index.m3u8,dead:http_404
+Law TV (1080p),,http://stream.mcquack.net/406/index.m3u8,dead:http_404
 Match! Strana (576p),,http://ukr.ukrainske.tv/134/keytvainua/video.m3u8,dead:http_404
 National Geographic (1080p),,http://dtv.vol.net.ua/National_Geographic-HD/index.m3u8,dead:http_404
 NTV SD (576p),,http://45.153.24.78/NTV/index.m3u8,dead:http_404
@@ -203,12 +203,14 @@ ZubrilomFilm,Kinowalk TV,http://kinowalk.hopto.org/zubrilomfilm_live,dead:http_4
 КИНО05,Kinowalk TV,http://kinowalk.hopto.org/kino05_live,dead:http_404
 Коновал ТВ,Kinowalk TV,http://kinowalk.hopto.org/www.konoval_tv_live,dead:http_404
 Феникс+Кино,Кино,http://tv.teamm.workers.dev/ch147/tv.m3u8?tv=tv,dead:http_404
-Bridge,Музыкальные,http://5.188.159.128:8070/bridgetv/index.m3u8,dead:http_404
 EDM Mainstage,Музыкальные,https://mbit1.worldcast.tv/dancetelevisionseven/stream_0.m3u8,dead:http_404
+TravelXP 4K,Познавательные,http://91.247.68.229:8000/play/Travelxp/index.m3u8,dead:http_404
+Первый FHD,Основные,https://edge07d.mediavitrina.ru/hls-livef6/1tv/index.m3u8?token=v2.Ibn-3seXzKQRH-0-AS8g5FbvxtKAgNtikaUiP1Nx_sk.FVVUgUnXlLuNIQyOzkjLY9jkVKyvd93-7Mk6MMRFnsQ.1790928714.36e3bc8b0e226fdf87238c9ab29ef472,dead:http_409
 Пятый канал HD,Основные,https://edge02p.mediavitrina.ru/hls-livef8/5tv/index.m3u8?token=v2.tgWpynLv_dBNjMuo6qgX2luN9X5IgQWkmQuhVuaIP1w.zyeMkdQHKor_DycDF8f6-xLQeGn8gMgcqhGKU8UgXWM.1790929065.37b27259e95c7f08a4e8cdd83ee015a1,dead:http_409
 Рен ТВ HD,Основные,https://edge06d.mediavitrina.ru/hls-livef6/ren-tv/index.m3u8?token=v2.PsDEIEIPzwadDScYvKAEyDwHS0WLeQ6gJUQ-e3BaZzg.M1GAoaPeoR6a7zsCuGBJAoJnYaQ8Wcqf9WdyPDuHQ5s.1790928815.e8a1027430e9ae18ce1612f277ded1de,dead:http_409
 СТС HD,Основные,https://edge07r.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.IPTZi0OX6BWY8aN9h7epxJo3NULi6eKcNeuT4kA5BQs.Ta3LeSNdOf8djhQqPTK0C8cqzNWjISAvclKmHYSIfH0.1790928908.bb2a7539447508cbd5ad4b3928c2604a,dead:http_409
-Channel One (576p),,http://45.153.24.78/1TV/index.m3u8,dead:http_503
+VIVA Russia,Музыкальные,https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8,dead:http_503
+Наша Тема,Развлекательные,http://live-3.otcnet.ru/nashatema/index.m3u8,dead:http_503
 Afontovo,,https://stream.afontovo.ru/hd.m3u8,dead:timeout
 Bolt (576p),,http://hls127.freeott.top:8080/Bolt/video.m3u8,dead:timeout
 Channel 8 (576p),,http://hls127.freeott.top:8080/8_KANAL/video.m3u8,dead:timeout
@@ -257,7 +259,6 @@ Russia-24 HD (1080p),,https://vgtrkregion-reg.cdnvideo.ru/vgtrk/0/russia24-hd/in
 Shanson TV (576p),,http://hls127.freeott.top:8080/Shanson_Tv/video.m3u8,dead:timeout
 Shot TV (576p),,http://hls127.freeott.top:8080/SHOT_TV/video.m3u8,dead:timeout
 Solnce (576p),,http://31.148.48.15/Solnce/index.m3u8,dead:timeout
-Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,dead:timeout
 Spas (576p),,http://hls127.freeott.top:8080/Spas/video.m3u8,dead:timeout
 STS Love (576p),,http://hls127.freeott.top:8080/CTC-LOVE/video.m3u8,dead:timeout
 SuperGeroi (1080p),,http://31.148.48.15/Malish_TV/index.m3u8,dead:timeout
@@ -288,7 +289,6 @@ Zvezda Plus (576p),,http://45.145.32.13:20440/zvezdaplus/index.m3u8?token=test,d
 Первый Крымский (720p),,https://live1.1tvcrimea.ru/1tvcrimea.m3u8,dead:timeout
 Симферополь 24,,https://simf.1tvcrimea.ru/simferopol24.m3u8,dead:timeout
 Смайл ТВ,,https://5f05e059699ae.streamlock.net/WEB_Smilik/ngrp:Smilik.stream-adaptive/playlist.m3u8,dead:timeout
-Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,dead:timeout
 ТВК 24 (576p),,https://air.tvk6.ru/tvk24/playlist.m3u8,dead:timeout
 FantasticMistyc,Kinowalk TV,"rtmp://vkvsd199.okcdn.ru/playback/3780958366657?stkn=c3qCEto7Z19Gl6AT2PFZujdHvggU3zjJ1Wd4nvkEESOm9yVb5Ua8iL_YwVUg7G8dNsZOAkV5dUs&uid=0&sp=uid,sp&sig=vlibqm4nyu&fromCache=1",dead:timeout
 TDM KINO,Kinowalk TV,"rtmp://vkvsd79.okcdn.ru/playback/11865043512184?stkn=iP9X2jyo6Zr-w_LUZKkXvBaBp3-lOX9JjFgyOpcPnbsjorW-MN9cBeUsyuGVMWt0uqYPqhnhKxwK&uid=0&sp=uid,sp&sig=vlibqm4nyu&fromCache=1",dead:timeout
@@ -471,9 +471,8 @@ Gagsnetwork,Развлекательные,https://tinyurl.com/upwnsw7p/14024/in
 Зал суда,Развлекательные,https://tinyurl.com/teh55yef/7141/index.m3u8,shortener
 Кто Куда,Развлекательные,https://tinyurl.com/4tfv9tup/2112/index.m3u8,shortener
 Оружие,Развлекательные,https://tinyurl.com/teh55yef/2087/index.m3u8,shortener
-Первый FHD,Основные,https://edge07d.mediavitrina.ru/hls-livef6/1tv/index.m3u8?token=v2.Ibn-3seXzKQRH-0-AS8g5FbvxtKAgNtikaUiP1Nx_sk.FVVUgUnXlLuNIQyOzkjLY9jkVKyvd93-7Mk6MMRFnsQ.1790928714.36e3bc8b0e226fdf87238c9ab29ef472,unstable:0%
-SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,unstable:33%
-Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,unstable:33%
+Channel One (576p),,http://45.153.24.78/1TV/index.m3u8,unstable:25%
+Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,unstable:25%
 Setanta Sports 1,,http://158.101.222.193:88/georgia_play.php?id=setanta_georgia,url_extension
 Setanta Sports 2,,http://158.101.222.193:88/georgia_play.php?id=setanta_sports_plus_georgia,url_extension
 TV1000 русское HD,Кино,http://line.tivi-one.net:80/play/live.php?mac=A0:BB:3E:75:52:64&stream=1031904&extension=ts&play_token=TngILrSNZd,url_extension

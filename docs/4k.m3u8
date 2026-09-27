@@ -1,0 +1,7 @@
+#EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
+#EXTINF:0 group-title="🎬 Кино" tvg-id="cineman-relax" tvg-logo="https://iptvx.one/picons/cineman-relax.png",Cineman Relax 4K
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/459/index.m3u8
+#EXTINF:-1 tvg-id="love-nature-4k" tvg-logo="https://epg.iptvx.one/picons/love-nature-4k.png" group-title="🧠 Познавательные",Love Nature 4K
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://jmp2.uk/stvp-USBA3400003IP
