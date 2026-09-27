@@ -197,7 +197,6 @@ ufotv,Cartoon Network,http://45.132.87.69:8080/cartoon_network/index.m3u8,banned
 ufotv,В гостях у сказки,https://stream1.cinerama.uz/1270/tracks-v1a1/mono.m3u8,blocked_domain
 ufotv,Cartoonito,https://tinyurl.com/upwnsw7p/723/index.m3u8,shortener
 ufotv,Nick Jr,https://stream8.cinerama.uz/1501/tracks-v1a1/mono.m3u8,blocked_domain
-ufotv,Nickelodeon,https://bl.rutube.ru/livestream/e902c1a059034a1537430b2aa5aedece/index.m3u8?s=Ac5CNFCTPyjvI502W6xgrw&e=2090404676&scheme=https,banned_name
 ufotv,Nicktoons,https://stream8.cinerama.uz/1502/tracks-v1a1/mono.m3u8,blocked_domain
 ufotv,TiJi,https://flussonic.mkpnet.ru/tv-3848dd8604a262e0/video.m3u8,banned_name
 ufotv,Мульт,https://flussonic.mkpnet.ru/tv-c8b065a591077c26/video.m3u8,banned_name
@@ -208,14 +207,11 @@ ufotv,English Club TV,https://stream8.cinerama.uz/1442/tracks-v1a1/mono.m3u8,blo
 ufotv,СТС Kids HD,http://stream.mcquack.net/197/index.m3u8,banned_name
 ufotv,СТС Kids,https://fs.uplink.kz/sts_kids/mono.m3u8?token=onlinetv,banned_name
 ufotv,Cartoon Classics,http://5.188.159.128:8070/Cartoon_Network/index.m3u8,banned_name
-ufotv,Канал Disney Онлайн,http://kinowalk.hopto.org/kanaldisneyonline_live,banned_name
 ufotv,1HD Music,http://176.118.197.101/1HD/index.m3u8,duplicate_url
 ufotv,Bridge TV Hits,http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8,duplicate_url
 ufotv,Музыка Первого,https://stream8.cinerama.uz/1201/tracks-v1a1/mono.m3u8,blocked_domain
 ufotv,MCM Top,http://46.32.176.50/mcmtop/index.m3u8,duplicate_url
 ufotv,Europa Plus TV,http://stream.mcquack.net/184/index.m3u8,duplicate_url
-ufotv,KINOPRO,http://kinowalk.hopto.org/kinopro_live,duplicate_url
-ufotv,Kycman мульт,http://kinowalk.hopto.org/kycman_live,banned_name
 ufotv,IPTVPLAY PROMO,http://5.188.158.65:4040/IPTVPLAYPromo.tv/video.m3u8?token=lqRGka5-YwwqF0,banned_name
 ufotv,Fresh Kids,http://stream.mcquack.net/425/index.m3u8,banned_name
 ufotv,CineMan,https://tinyurl.com/4tfv9tup/11004/index.m3u8,shortener
@@ -243,69 +239,3 @@ ufotv,CineMan Симпсоны,https://tinyurl.com/upwnsw7p/15101/index.m3u8,sho
 ufotv,CineMan Cartoons 90,https://tinyurl.com/upwnsw7p/11001/index.m3u8,shortener
 ufotv,CineMan Cartoons Short,https://tinyurl.com/upwnsw7p/11002/index.m3u8,shortener
 ufotv,CineMan Cartoons Big,https://tinyurl.com/upwnsw7p/11003/index.m3u8,shortener
-my_list,Kinowalk_tv,http://kinowalk.hopto.org/kinowalk_live,duplicate_url
-my_list,KinoMix Юрич,http://kinowalk.hopto.org/yurich_kinomix_live,duplicate_url
-my_list,Video_Prokat,http://kinowalk.hopto.org/video_prokat_live,duplicate_url
-my_list,MovieToper,http://kinowalk.hopto.org/movietoper_live,duplicate_url
-my_list,TimeToHorror,http://kinowalk.hopto.org/timetohorror_live,duplicate_url
-my_list,TimeToMovie,http://kinowalk.hopto.org/timetomovie_live,duplicate_url
-my_list,Blockbusters Time,http://kinowalk.hopto.org/blockbusterstime_live,duplicate_url
-my_list,DimponHD,http://kinowalk.hopto.org/dimpon_live,duplicate_url
-my_list,kinolampa,http://kinowalk.hopto.org/kinolampa_live,duplicate_url
-my_list,Малдер всё тв hd,http://kinowalk.hopto.org/maldrvsetv_live,duplicate_url
-my_list,VideoArsenal,http://kinowalk.hopto.org/videoarsenal_live,duplicate_url
-my_list,Kino Jam,http://kinowalk.hopto.org/kinojam_live,duplicate_url
-my_list,ScripachTV,http://kinowalk.hopto.org/scripachtv_live,duplicate_url
-my_list,SeleCaoTV,http://kinowalk.hopto.org/selecaotv_live,duplicate_url
-my_list,SeleCaoTV1,http://kinowalk.hopto.org/selecaotv1_live,duplicate_url
-my_list,SerialTV,http://kinowalk.hopto.org/serialtv_live,duplicate_url
-my_list,ФИЛЬМЫ у Максима,http://kinowalk.hopto.org/mmaxim0vich_live,duplicate_url
-my_list,Канал Disney Онлайн,http://kinowalk.hopto.org/kanaldisneyonline_live,banned_name
-my_list,Тоха Киноман,http://kinowalk.hopto.org/kinomania_stream_live,duplicate_url
-my_list,Alex.Films,http://kinowalk.hopto.org/alex.films_live,duplicate_url
-my_list,ZubrilomFilm,http://kinowalk.hopto.org/zubrilomfilm_live,duplicate_url
-my_list,JTX Online,http://kinowalk.hopto.org/jtxonline_live,duplicate_url
-my_list,kinofon_,http://kinowalk.hopto.org/kinofon_live,duplicate_url
-my_list,Пᛊየᛒьᵻӥ የጸሏ,http://kinowalk.hopto.org/perviryad_live,duplicate_url
-my_list,Baragozz_TV,http://kinowalk.hopto.org/baragozz_tv_live,duplicate_url
-my_list,ℂℂ,http://kinowalk.hopto.org/kasseta_live,duplicate_url
-my_list,Тоха Стрим,http://kinowalk.hopto.org/toxa_stream_live,duplicate_url
-my_list,Мы из 90-х,http://kinowalk.hopto.org/miiz90x_live,duplicate_url
-my_list,Кинотека FULL_HD,http://kinowalk.hopto.org/kinoteka_full_hd_top_live,duplicate_url
-my_list,Aisman,http://kinowalk.hopto.org/aisman_live,duplicate_url
-my_list,VHS Forever,http://kinowalk.hopto.org/vhs-forever_live,duplicate_url
-my_list,lampoTV,http://kinowalk.hopto.org/lampotv_live,duplicate_url
-my_list,Игрун 1997,http://kinowalk.hopto.org/igrun1997_live,duplicate_url
-my_list,Video Channel,http://kinowalk.hopto.org/video_channel_live,duplicate_url
-my_list,swat2k,http://kinowalk.hopto.org/swat2k_live,duplicate_url
-my_list,Wfliq,http://kinowalk.hopto.org/wfliq_live,duplicate_url
-my_list,Snoochies Boochies,http://kinowalk.hopto.org/sinema_live,duplicate_url
-my_list,FoxKids-Remastered,http://kinowalk.hopto.org/foxkids_remastered_live,duplicate_url
-my_list,КОМЕДИИ 24/7,http://kinowalk.hopto.org/cmexye4ku_live,duplicate_url
-my_list,Эквилибриум69,http://kinowalk.hopto.org/equilibrium_live,duplicate_url
-my_list,ROMEO Video,http://kinowalk.hopto.org/romantic_live,duplicate_url
-my_list,AkudjiTV,http://kinowalk.hopto.org/akudjitv_live,duplicate_url
-my_list,ChowAmigo,http://kinowalk.hopto.org/chowamigo_live,duplicate_url
-my_list,TopMoment LiVE,http://kinowalk.hopto.org/topmomentlive_live,duplicate_url
-my_list,Назад в СССР,http://kinowalk.hopto.org/backtotheussr_live,duplicate_url
-my_list,У КРАЯ БЕЗДНЫ,http://kinowalk.hopto.org/ddator_live,duplicate_url
-my_list,InMuNa Live,http://kinowalk.hopto.org/inmuna_live,duplicate_url
-my_list,не Кино,http://kinowalk.hopto.org/notnotes_live,duplicate_url
-my_list,АPRICUS live,http://kinowalk.hopto.org/apricus_live,duplicate_url
-my_list,Play 4 Fun,http://kinowalk.hopto.org/play4fun_live,duplicate_url
-my_list,Disney XD,http://kinowalk.hopto.org/disneyxd_live,banned_name
-my_list,dj Zour,http://kinowalk.hopto.org/zsmedia_live,duplicate_url
-my_list,AlexVira,http://kinowalk.hopto.org/alexvira_live,duplicate_url
-my_list,NeoVision TV,http://kinowalk.hopto.org/neovisiontv_live,duplicate_url
-my_list,кино кино кино,http://kinowalk.hopto.org/kinopro_live,duplicate_url
-my_list,Кинотеатр без билетов,http://kinowalk.hopto.org/x-x-vanes-x-x_live,duplicate_url
-my_list,Serials RE_BOOT,http://kinowalk.hopto.org/re_boot_live,duplicate_url
-my_list,MTV Old Россия,http://kinowalk.hopto.org/vovanb_iptv_live,duplicate_url
-my_list,VB_EDH90sandDH90s,http://kinowalk.hopto.org/vb_edh90sanddh90s_live,duplicate_url
-my_list,VB-All-In-One,http://kinowalk.hopto.org/vb-all-in-one_live,duplicate_url
-my_list,VB_GH_and_RandB,http://kinowalk.hopto.org/gh_and_randb_live,duplicate_url
-my_list,VB-RusSerails,http://kinowalk.hopto.org/russerials_live,duplicate_url
-my_list,VBRusDancePops80-90,http://kinowalk.hopto.org/vbrusdancepops80_live,duplicate_url
-my_list,Россия 24,https://bl.rutube.ru/livestream/ad6ba2e9e587406b29978b861b7b7dd1/index.m3u8?s=2xI0szFZPbr-yIu5m8Ee2Q&e=2090410051&scheme=https,duplicate_url
-my_list,Тнт,https://bl.rutube.ru/livestream/546602986e6a424d74d594876ddb3f04/index.m3u8?s=2wFiZzRdBsgLEi-A59erSg&e=2090410357&scheme=https,duplicate_url
-my_list,Тнт 4,https://bl.rutube.ru/livestream/c801a7087e29a097192d74c270fbc6c1/index.m3u8?s=MchU3jytJK5_XoSzeP_PJA&e=2090410583&scheme=https,duplicate_url
