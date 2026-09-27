@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v12.1 — EPG только от iptvx.one, автоподстановка tvg-id,
-фильтры, категоризация, логотипы iptv-org, PWA, темы, CSV, статистика.
+M3U Checker v13 — аптайм каналов, автоотсев мигающих.
 """
 import os
 import re
@@ -72,6 +71,7 @@ BOM = b'\xef\xbb\xbf'
 WHITESPACE = b' \t\r\n'
 SLOW_THRESHOLD = 2.0
 HISTORY_MAX = 30
+UPTIME_MAX = 30
 
 DONUT_COLORS = [
     '#4ade80', '#60a5fa', '#facc15', '#f87171', '#a78bfa',
@@ -85,6 +85,11 @@ CATEGORIES = {}
 FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}}
 IPTV_IDS = {'by_name': {}, 'by_name_translit': {}}
+LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
+              'from_translit': 0, 'from_txt': 0, 'none': 0}
+UPTIME = {}  # url -> [0/1, ...]
+UPTIME_NEW = {}  # url -> [0/1] для этого запуска
+UPTIME_LOCK = threading.Lock()
 
 
 def setup_logging(path, quiet):
@@ -151,6 +156,65 @@ def normalize_name(name):
 def normalize_name_translit(name):
     n = normalize_name(name)
     return translit_ru(n) if n else ''
+
+
+# ---------- UPTIME ----------
+def load_uptime(path):
+    global UPTIME
+    if not os.path.isfile(path):
+        UPTIME = {}
+        return
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            UPTIME = {k: v for k, v in data.items() if isinstance(v, list)}
+        else:
+            UPTIME = {}
+    except Exception as e:
+        log.warning("Не удалось прочитать uptime.json: %s", e)
+        UPTIME = {}
+
+
+def save_uptime(path, current_urls):
+    """Сохраняет uptime.json с учётом новых результатов и очисткой старых."""
+    os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+
+    with UPTIME_LOCK:
+        # Обновляем историю по новым результатам
+        for url, val in UPTIME_NEW.items():
+            hist = UPTIME.get(url, [])
+            hist.append(val)
+            UPTIME[url] = hist[-UPTIME_MAX:]
+        # Чистим URL, которых больше нет ни в одном источнике
+        alive = set(current_urls)
+        for url in list(UPTIME.keys()):
+            if url not in alive:
+                del UPTIME[url]
+
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(UPTIME, f, ensure_ascii=False, separators=(',', ':'))
+
+
+def get_uptime_pct(url):
+    hist = UPTIME.get(url)
+    if not hist:
+        return None, 0
+    total = len(hist)
+    if total == 0:
+        return None, 0
+    ok = sum(hist)
+    return round(ok / total * 100), total
+
+
+def is_migayushchiy(url):
+    """True если канал надо отсеять из-за низкого аптайма."""
+    if CFG.min_uptime <= 0:
+        return False
+    pct, total = get_uptime_pct(url)
+    if pct is None or total < CFG.min_uptime_samples:
+        return False
+    return pct < CFG.min_uptime
 
 
 class UrlCache:
@@ -300,15 +364,21 @@ def load_iptv_org():
         if cur is None or (w and cur[1] < w):
             by_id_raw[cid] = (url, w)
     by_id = {k: v[0] for k, v in by_id_raw.items()}
+
     by_name_logo = {}
+    by_name_logo_translit = {}
     for cid, url in by_id.items():
         for name in id_to_names.get(cid, []):
             k = normalize_name(name)
             if k and k not in by_name_logo:
                 by_name_logo[k] = url
+            kt = normalize_name_translit(name)
+            if kt and kt not in by_name_logo_translit:
+                by_name_logo_translit[kt] = url
 
     IPTV_LOGOS['by_id'] = by_id
     IPTV_LOGOS['by_name'] = by_name_logo
+    IPTV_LOGOS['by_name_translit'] = by_name_logo_translit
 
     by_name_id = {}
     by_name_id_translit = {}
@@ -324,7 +394,8 @@ def load_iptv_org():
     IPTV_IDS['by_name'] = by_name_id
     IPTV_IDS['by_name_translit'] = by_name_id_translit
 
-    emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени")
+    emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени, "
+         f"{len(by_name_logo_translit)} по транслиту")
     emit(f"  tvg-id: {len(by_name_id)} по имени, {len(by_name_id_translit)} с транслитом")
 
 
@@ -612,22 +683,30 @@ def check_logo(url, cache):
 
 def resolve_logo(extinf, url, txt_logos, cache):
     m = re.search(r'tvg-logo="([^"]*)"', extinf)
-    if m and m.group(1) and check_logo(m.group(1), cache):
-        return m.group(1)
-    tid = re.search(r'tvg-id="([^"]*)"', extinf)
-    if tid and tid.group(1):
-        l = IPTV_LOGOS['by_id'].get(tid.group(1))
+    if m and m.group(1):
+        if check_logo(m.group(1), cache):
+            return m.group(1), 'from_src'
+    tid = get_tvg_id(extinf)
+    if tid:
+        l = IPTV_LOGOS['by_id'].get(tid)
         if l and check_logo(l, cache):
-            return l
+            return l, 'from_id'
     name = get_name(extinf)
     if name:
-        l = IPTV_LOGOS['by_name'].get(normalize_name(name))
-        if l and check_logo(l, cache):
-            return l
+        k = normalize_name(name)
+        if k:
+            l = IPTV_LOGOS['by_name'].get(k)
+            if l and check_logo(l, cache):
+                return l, 'from_name'
+        kt = normalize_name_translit(name)
+        if kt:
+            l = IPTV_LOGOS.get('by_name_translit', {}).get(kt)
+            if l and check_logo(l, cache):
+                return l, 'from_translit'
         l = txt_logos.get(name.lower())
         if l and check_logo(l, cache):
-            return l
-    return None
+            return l, 'from_txt'
+    return None, 'none'
 
 
 def resolve_tvg_id(extinf):
@@ -655,18 +734,32 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     group = get_group(extinf)
     filtered, reason = is_filtered(name, group, url)
     if filtered:
-        return index, 'filtered', None, None, reason, None, None, None
+        return index, 'filtered', None, None, reason, None, None, None, None
     ok, ua, elapsed = check_stream(url, cache)
     if not ok:
-        return index, 'dead', None, None, None, None, None, None
+        # Записываем как мёртвого в историю
+        with UPTIME_LOCK:
+            UPTIME_NEW[url] = 0
+        return index, 'dead', None, None, None, None, None, None, None
+
+    # Живой — записываем как успех
+    with UPTIME_LOCK:
+        UPTIME_NEW[url] = 1
+
+    # Проверяем аптайм — мигающий?
+    if is_migayushchiy(url):
+        pct, total = get_uptime_pct(url)
+        return index, 'unstable', None, None, f"uptime {pct}% ({total} проверок)", None, None, None, None
+
     extinf = clean_extinf(extinf)
-    extinf = set_logo_in_extinf(extinf, resolve_logo(extinf, url, txt_logos, cache))
     new_tvg_id = resolve_tvg_id(extinf)
     if new_tvg_id:
         extinf = set_tvg_id_in_extinf(extinf, new_tvg_id)
+    logo, logo_src = resolve_logo(extinf, url, txt_logos, cache)
+    extinf = set_logo_in_extinf(extinf, logo)
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
-    return index, 'ok', extinf, url, None, ua, new_group, elapsed
+    return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src
 
 
 def parse_playlist(filename):
@@ -698,24 +791,29 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
         return None
     if not channels:
         return {'label': label, 'channels': [], 'total': 0, 'ok': 0,
-                'filtered': 0, 'groups': {}, 'ua_stats': {}, 'slow': [],
-                'fastest': None, 'avg_elapsed': None}
+                'filtered': 0, 'unstable': 0, 'groups': {}, 'ua_stats': {},
+                'slow': [], 'fastest': None, 'avg_elapsed': None,
+                'logo_stats': {}, 'all_urls': []}
 
     emit(f"    Каналов: {len(channels)}")
 
     if not check:
         out = []
+        all_urls = []
         for i, (extinf, url) in enumerate(channels):
+            all_urls.append(url)
             name = get_name(extinf)
             group = get_group(extinf)
             filtered, _ = is_filtered(name, group, url)
             if filtered:
                 continue
+            # Локальный лист — не проверяем аптайм, всегда добавляем
             extinf = clean_extinf(extinf)
-            extinf = set_logo_in_extinf(extinf, resolve_logo(extinf, url, txt_logos, cache))
             new_tvg_id = resolve_tvg_id(extinf)
             if new_tvg_id:
                 extinf = set_tvg_id_in_extinf(extinf, new_tvg_id)
+            logo, _ = resolve_logo(extinf, url, txt_logos, cache)
+            extinf = set_logo_in_extinf(extinf, logo)
             extinf = set_group_in_extinf(extinf, add_emoji(categorize(extinf, url, label)))
             out.append((i, extinf, url))
         ordered = group_channels(out)
@@ -725,34 +823,41 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             gs[g] = gs.get(g, 0) + 1
         return {'label': label, 'channels': [(e, u) for _, e, u in ordered],
                 'total': len(channels), 'ok': len(ordered),
-                'filtered': len(channels) - len(ordered),
+                'filtered': len(channels) - len(ordered), 'unstable': 0,
                 'groups': gs, 'ua_stats': {'skipped': len(ordered)},
-                'slow': [], 'fastest': None, 'avg_elapsed': None}
+                'slow': [], 'fastest': None, 'avg_elapsed': None,
+                'logo_stats': {}, 'all_urls': all_urls}
 
     pbar = None
     if HAS_TQDM and not CFG.quiet and not CFG.no_progress:
         pbar = tqdm(total=len(channels), desc=label, unit='ch', ncols=90, leave=True)
 
-    valid, ok_cnt, err_cnt, filt_cnt = [], 0, 0, 0
+    valid, ok_cnt, err_cnt, filt_cnt, unstable_cnt = [], 0, 0, 0, 0
     ua_stats, filt_by_reason = {}, {}
     slow_list, elapsed_list = [], []
+    logo_counts = {}
+    all_urls = []
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=CFG.workers) as ex:
         futs = [ex.submit(process_channel, i, e, u, txt_logos, cache, label)
                 for i, (e, u) in enumerate(channels)]
         for fu in concurrent.futures.as_completed(futs):
             try:
-                idx, status, extinf, url, msg, ua, grp, el = fu.result()
+                idx, status, extinf, url, msg, ua, grp, el, logo_src = fu.result()
             except Exception as e:
                 err_cnt += 1
                 log.exception("Ошибка: %s", e)
                 if pbar:
                     pbar.update(1)
                 continue
+            # Собираем все URL для сохранения в uptime
+            all_urls.append(channels[idx][1] if idx < len(channels) else '')
             if status == 'ok':
                 valid.append((idx, extinf, url))
                 ok_cnt += 1
                 ua_stats[ua] = ua_stats.get(ua, 0) + 1
+                if logo_src:
+                    logo_counts[logo_src] = logo_counts.get(logo_src, 0) + 1
                 if el is not None:
                     elapsed_list.append(el)
                     if el >= SLOW_THRESHOLD:
@@ -760,9 +865,12 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             elif status == 'filtered':
                 filt_cnt += 1
                 filt_by_reason[msg] = filt_by_reason.get(msg, 0) + 1
+            elif status == 'unstable':
+                unstable_cnt += 1
+                filt_by_reason['unstable'] = filt_by_reason.get('unstable', 0) + 1
             if pbar:
                 pbar.update(1)
-                pbar.set_postfix(ok=ok_cnt, filt=filt_cnt, err=err_cnt)
+                pbar.set_postfix(ok=ok_cnt, filt=filt_cnt, unst=unstable_cnt, err=err_cnt)
     if pbar:
         pbar.close()
 
@@ -777,11 +885,19 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
     fastest = round(min(elapsed_list), 2) if elapsed_list else None
     slow_list.sort(key=lambda x: -x[2])
 
-    emit(f"    Рабочих: {ok_cnt}, фильтр: {filt_cnt}, ошибок: {err_cnt}")
+    emit(f"    Рабочих: {ok_cnt}, фильтр: {filt_cnt}, нестабильных: {unstable_cnt}, ошибок: {err_cnt}")
+    if logo_counts:
+        parts = ", ".join(f"{k}={v}" for k, v in sorted(logo_counts.items(), key=lambda x: -x[1]))
+        emit(f"    Логотипы: {parts}")
+        for k, v in logo_counts.items():
+            LOGO_STATS[k] = LOGO_STATS.get(k, 0) + v
+
     return {'label': label, 'channels': [(e, u) for _, e, u in ordered],
             'total': len(channels), 'ok': ok_cnt, 'filtered': filt_cnt,
+            'unstable': unstable_cnt,
             'groups': gs, 'ua_stats': ua_stats, 'filter_reasons': filt_by_reason,
-            'slow': slow_list, 'fastest': fastest, 'avg_elapsed': avg_el}
+            'slow': slow_list, 'fastest': fastest, 'avg_elapsed': avg_el,
+            'logo_stats': logo_counts, 'all_urls': all_urls}
 
 
 def dedup_by_name_fn(channels):
@@ -877,14 +993,16 @@ def write_splits(channels, docs_dir, split_all=False):
 def write_csv(channels, path):
     with open(path, 'w', encoding='utf-8', newline='') as f:
         w = csv.writer(f)
-        w.writerow(['name', 'group', 'tvg_id', 'logo', 'url'])
+        w.writerow(['name', 'group', 'tvg_id', 'uptime_pct', 'uptime_samples', 'logo', 'url'])
         for extinf, url in channels:
             name = get_name(extinf)
             group = get_group(extinf)
             tid = get_tvg_id(extinf)
+            pct, total = get_uptime_pct(url)
+            pct_v = pct if pct is not None else ''
             m = re.search(r'tvg-logo="([^"]*)"', extinf)
             logo = m.group(1) if m else ''
-            w.writerow([name, group, tid, logo, url])
+            w.writerow([name, group, tid, pct_v, total, logo, url])
 
 
 def load_history(path):
@@ -1099,6 +1217,10 @@ backdrop-filter:blur(var(--glass-blur));
 border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .copy-btn:hover{background:var(--accent);color:#fff}
 .copy-btn.copied{background:#4ade80;color:#0f1115}
+.uptime-good{color:#4ade80;font-weight:500}
+.uptime-mid{color:#facc15;font-weight:500}
+.uptime-low{color:#f87171;font-weight:500}
+.uptime-none{color:var(--muted)}
 """
 
 THEME_JS = """
@@ -1148,7 +1270,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v12.1 - {date}</title>
+<title>M3U Check v13 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1160,17 +1282,19 @@ REPORT_T = """<!DOCTYPE html>
 <div class="cards">
 <div class="card"><div class="k">Проверено</div><div class="v" data-count="{total}">0</div>{sp_total}</div>
 <div class="card"><div class="k">Рабочих</div><div class="v good" data-count="{ok}">0</div>{sp_ok}</div>
+<div class="card"><div class="k">Нестабильных</div><div class="v warn" data-count="{unstable}">0</div></div>
 <div class="card"><div class="k">Отфильтровано</div><div class="v warn" data-count="{filtered}">0</div></div>
 <div class="card"><div class="k">Мёртвых</div><div class="v bad" data-count="{dead}">0</div></div>
 <div class="card"><div class="k">В merged</div><div class="v" data-count="{merged}">0</div>{sp_merged}</div>
-<div class="card"><div class="k">Время</div><div class="v">{duration}</div></div>
 </div>
 {donut_block}
 {history_block}
+{unstable_block}
+{logo_block}
 {ua_block}
 {slow_block}
 <div class="section"><h2>По источникам</h2>
-<table><thead><tr><th>Источник</th><th>Всего</th><th>Рабочих</th><th>Фильтр</th><th>%</th><th>Ср. отклик</th></tr></thead>
+<table><thead><tr><th>Источник</th><th>Всего</th><th>Рабочих</th><th>Нестаб.</th><th>Фильтр</th><th>%</th><th>Ср. отклик</th></tr></thead>
 <tbody>{playlists_rows}</tbody></table></div>
 <div class="section"><h2>Фильтры</h2>
 <table><thead><tr><th>Причина</th><th>Каналов</th></tr></thead>
@@ -1221,7 +1345,8 @@ INDEX_T = """<!DOCTYPE html>
 <h2>Статистика</h2>
 <div class="box">
 Каналов в merged: <b>{merged_count}</b><br>
-Рабочих: <b>{ok}</b> из <b>{total}</b>
+Рабочих: <b>{ok}</b> из <b>{total}</b><br>
+Нестабильных отсеяно: <b>{unstable}</b>
 </div>
 {splits_block}
 <script>
@@ -1309,7 +1434,7 @@ border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}
 <select id="g"><option value="">Все группы</option>{group_options}</select>
 </div>
 <table>
-<thead><tr><th></th><th>Название</th><th>Группа</th><th></th></tr></thead>
+<thead><tr><th></th><th>Название</th><th>Аптайм</th><th>Группа</th><th></th></tr></thead>
 <tbody id="tb"></tbody>
 </table>
 <script>
@@ -1324,6 +1449,15 @@ const initGroup = params.get('group');
 if(initGroup) g.value = initGroup;
 
 function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function uptimeHtml(pct, samples) {
+  if (pct === null || pct === undefined || samples < 2) {
+    return '<span class="uptime-none">—</span>';
+  }
+  let cls = 'uptime-good';
+  if (pct < 50) cls = 'uptime-low';
+  else if (pct < 80) cls = 'uptime-mid';
+  return '<span class="' + cls + '">' + pct + '%</span>';
+}
 function render(){
   const term = q.value.trim().toLowerCase();
   const grp = g.value;
@@ -1337,12 +1471,14 @@ function render(){
   const html = out.map(c => {
     const logo = c.logo ? '<img class="logo" src="' + esc(c.logo) + '" loading="lazy" onerror="this.style.display=\\'none\\'">' : '';
     const epg = c.tvg_id ? '<span class="epg-yes" title="' + esc(c.tvg_id) + '">EPG</span>' : '<span class="epg-no">no-EPG</span>';
+    const up = uptimeHtml(c.uptime_pct, c.uptime_samples);
     return '<tr><td>' + logo + '</td>'
       + '<td class="name">' + esc(c.name) + epg + '</td>'
+      + '<td>' + up + '</td>'
       + '<td class="group">' + esc(c.group) + '</td>'
       + '<td><button class="copy" data-u="' + esc(c.url) + '">URL</button></td></tr>';
   }).join('');
-  tb.innerHTML = html || '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
+  tb.innerHTML = html || '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
   shown.textContent = out.length;
   tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
     navigator.clipboard.writeText(b.dataset.u).then(() => {
@@ -1401,7 +1537,8 @@ def _sparkline_for_history(history, key):
     return sparkline_svg(vals)
 
 
-def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history, groups_all):
+def render_report(path, stats, merged, total, ok, filt, dead, unstable,
+                  dur, ua, history, groups_all, logo_stats, unstable_channels):
     rows_pl = []
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
@@ -1409,7 +1546,8 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history, 
         avg_s = f"{avg}s" if avg is not None else "—"
         rows_pl.append(
             f"<tr><td>{html.escape(st['label'])}</td><td>{st['total']}</td>"
-            f"<td>{st['ok']}</td><td>{st.get('filtered', 0)}</td>"
+            f"<td>{st['ok']}</td><td>{st.get('unstable', 0)}</td>"
+            f"<td>{st.get('filtered', 0)}</td>"
             f"<td>{pct:.1f}%</td><td>{avg_s}</td></tr>"
         )
     all_f = {}
@@ -1425,6 +1563,39 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history, 
         tags = " ".join(f"<span class='tag'>{UA_ICONS.get(k,'•')} {html.escape(k)}: {v}</span>"
                         for k, v in sorted(ua.items(), key=lambda x: -x[1]))
         ua_block = f"<div class='section'><h2>По User-Agent</h2><div>{tags}</div></div>"
+
+    unstable_block = ''
+    if unstable_channels:
+        unstable_channels.sort(key=lambda x: x[2])
+        rows = "\n".join(
+            f"<tr><td>{html.escape(nm)}</td><td>{pct}%</td><td>{tot}</td></tr>"
+            for nm, u, pct, tot in unstable_channels[:30])
+        unstable_block = (
+            f"<div class='section'><h2>Нестабильные каналы (аптайм < {CFG.min_uptime}%)</h2>"
+            f"<table><thead><tr><th>Канал</th><th>Аптайм</th><th>Проверок</th></tr></thead>"
+            f"<tbody>{rows}</tbody></table>"
+            f"<div class='sub' style='margin-top:8px'>Эти каналы отсеяны из merged</div></div>")
+
+    logo_block = ''
+    if logo_stats:
+        total_logo = sum(logo_stats.values()) or 1
+        labels = {
+            'from_src': 'Из источника',
+            'from_id': 'По tvg-id из базы',
+            'from_name': 'По имени из базы',
+            'from_translit': 'По транслиту из базы',
+            'from_txt': 'Из .txt',
+            'none': 'Не найдено',
+        }
+        rows = "\n".join(
+            f"<tr><td>{labels.get(k, k)}</td><td>{v}</td>"
+            f"<td>{v/total_logo*100:.1f}%</td></tr>"
+            for k, v in sorted(logo_stats.items(), key=lambda x: -x[1])
+        )
+        logo_block = (
+            f"<div class='section'><h2>Откуда логотипы</h2>"
+            f"<table><thead><tr><th>Источник</th><th>Каналов</th><th>%</th></tr></thead>"
+            f"<tbody>{rows}</tbody></table></div>")
 
     all_slow = []
     for st in stats:
@@ -1445,7 +1616,7 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history, 
     hist_block = render_history_svg(history)
     donut_block = render_donut_svg(groups_all)
 
-    denom = (ok + dead) or 1
+    denom = (ok + dead + unstable) or 1
     hpct = (ok / denom) * 100
     hb = health_bar(hpct)
 
@@ -1459,9 +1630,10 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history, 
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         n_playlists=len(stats), total=total, ok=ok, filtered=filt, dead=dead,
-        merged=merged, duration=f"{d // 60}м {d % 60}с",
+        unstable=unstable, merged=merged, duration=f"{d // 60}м {d % 60}с",
         health_block=hb,
         history_block=hist_block, donut_block=donut_block,
+        unstable_block=unstable_block, logo_block=logo_block,
         ua_block=ua_block, slow_block=slow_block,
         sp_total=sp_total, sp_ok=sp_ok, sp_merged=sp_merged,
         playlists_rows="\n".join(rows_pl), filter_rows=f_rows)
@@ -1478,7 +1650,7 @@ def _github_repo_from_pages(pages_url):
     return ''
 
 
-def render_index(path, url, merged, ok, total, splits, qr_path, pages_url):
+def render_index(path, url, merged, ok, total, unstable, splits, qr_path, pages_url):
     split_html = ''
     if splits:
         items = "\n".join(
@@ -1495,6 +1667,7 @@ def render_index(path, url, merged, ok, total, splits, qr_path, pages_url):
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         playlist_url=url, merged_count=merged, ok=ok, total=total,
+        unstable=unstable,
         qr_block=qr_block, splits_block=split_html,
         github_repo=gh_repo)
     with open(path, 'w', encoding='utf-8') as f:
@@ -1511,11 +1684,13 @@ def render_channels(path, channels):
         tid = get_tvg_id(extinf)
         if tid:
             epg_count += 1
+        pct, total = get_uptime_pct(url)
         m = re.search(r'tvg-logo="([^"]*)"', extinf)
         logo = m.group(1) if m else ''
         groups[group] = groups.get(group, 0) + 1
         ch_list.append({'name': name, 'group': group, 'logo': logo,
-                        'url': url, 'tvg_id': tid})
+                        'url': url, 'tvg_id': tid,
+                        'uptime_pct': pct, 'uptime_samples': total})
     group_opts = "\n".join(
         f'<option value="{html.escape(g)}">{html.escape(g)} ({c})</option>'
         for g, c in sorted(groups.items()))
@@ -1574,14 +1749,15 @@ def tg_file(token, chat, path, caption=''):
         return False
 
 
-def tg_report(stats, total, ok, filt, merged, dur, index_url,
-              source_results, is_weekly):
-    lines = ["<b>M3U Check v12.1</b>"]
+def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
+              source_results, is_weekly, logo_stats):
+    lines = ["<b>M3U Check v13</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
         f"Проверено: <b>{total}</b>",
         f"Рабочих: <b>{ok}</b>",
+        f"Нестабильных отсеяно: <b>{unstable}</b>",
         f"Отфильтровано: <b>{filt}</b>",
         f"В merged: <b>{merged}</b>",
         f"Время: {int(dur)}с",
@@ -1590,6 +1766,14 @@ def tg_report(stats, total, ok, filt, merged, dur, index_url,
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
         lines.append(f"• {html.escape(st['label'])}: {st['ok']}/{st['total']} ({pct:.0f}%)")
+
+    if logo_stats:
+        total_with_logo = sum(v for k, v in logo_stats.items() if k != 'none')
+        total_all = sum(logo_stats.values()) or 1
+        lines.append("")
+        lines.append(f"<b>Логотипы:</b> {total_with_logo}/{total_all} "
+                     f"({total_with_logo/total_all*100:.0f}%)")
+
     bad_sources = [(n, err) for n, ok_, err in source_results if not ok_]
     if bad_sources:
         lines.append("")
@@ -1614,12 +1798,16 @@ def parse_args():
     p.add_argument('--no-dedup', action='store_true')
     p.add_argument('-w', '--workers', type=int, default=15)
     p.add_argument('--timeout', type=float, default=5.0)
-    p.add_argument('--logo-timeout', type=float, default=3.0)
+    p.add_argument('--logo-timeout', type=float, default=5.0)
     p.add_argument('--no-ssl-verify', action='store_true')
     p.add_argument('--multi-ua', action='store_true')
     p.add_argument('--no-iptv-logos', action='store_true')
     p.add_argument('--split-all', action='store_true')
     p.add_argument('--weekly-backup', action='store_true')
+    p.add_argument('--min-uptime', type=int, default=50,
+                   help='Минимальный аптайм для попадания в merged (%). 0 = выкл')
+    p.add_argument('--min-uptime-samples', type=int, default=3,
+                   help='Мин. число проверок для расчёта аптайма')
     p.add_argument('--cache', default='m3u_cache.sqlite')
     p.add_argument('--cache-ttl', type=int, default=3600)
     p.add_argument('--log', default='m3u_checker.log')
@@ -1633,7 +1821,7 @@ def parse_args():
 
 
 def main():
-    global CFG, CATEGORIES, FILTERS
+    global CFG, CATEGORIES, FILTERS, UPTIME_NEW
     CFG = parse_args()
     CFG.verify_ssl = not CFG.no_ssl_verify
     if CFG.no_ssl_verify:
@@ -1648,6 +1836,12 @@ def main():
     FILTERS['_url_block'] = compile_patterns(FILTERS.get('url_blocklist', []))
     FILTERS['_suspicious'] = compile_patterns(FILTERS.get('suspicious_patterns', []))
     FILTERS['_malformed'] = compile_patterns(FILTERS.get('malformed_patterns', []))
+
+    # Загружаем историю аптайма ДО начала проверки
+    uptime_path = os.path.join(CFG.docs_dir, 'uptime.json')
+    load_uptime(uptime_path)
+    if UPTIME:
+        emit(f"Аптайм: загружено {len(UPTIME)} URL из истории")
 
     emit("Загружаю базу iptv-org (логотипы + tvg-id)...")
     load_iptv_org()
@@ -1686,12 +1880,14 @@ def main():
 
     started = time.time()
     stats_list, merged_all, seen, pl = [], [], set(), 0
+    all_current_urls = []
 
     try:
         for path, label, check in all_sources:
             st = process_playlist(path, label, txt_logos, cache, check=check)
             if st is None:
                 continue
+            all_current_urls.extend(st.get('all_urls', []))
             safe = re.sub(r'[^A-Za-z0-9_.-]+', '_', label)
             write_playlist(os.path.join(CFG.output, f"{safe}.m3u8"), st['channels'])
             for e, u in st['channels']:
@@ -1724,7 +1920,8 @@ def main():
         total = sum(s['total'] for s in stats_list)
         ok = sum(s['ok'] for s in stats_list)
         filt = sum(s.get('filtered', 0) for s in stats_list)
-        dead = total - ok - filt
+        unstable = sum(s.get('unstable', 0) for s in stats_list)
+        dead = total - ok - filt - unstable
 
         ua_totals = {}
         for s in stats_list:
@@ -1733,11 +1930,35 @@ def main():
                     continue
                 ua_totals[k] = ua_totals.get(k, 0) + c
 
+        # Собираем нестабильные каналы для отчёта
+        unstable_channels = []
+        for st in stats_list:
+            for nm, u, el in st.get('slow', []):
+                pass  # not used here
+        for st in stats_list:
+            pass
+        # Соберём из filt_by_reason
+        unstable_list = []
+        # Проходим по всем URL, у которых аптайм низкий
+        for u, hist in UPTIME.items():
+            if len(hist) < CFG.min_uptime_samples:
+                continue
+            pct = round(sum(hist) / len(hist) * 100)
+            if pct < CFG.min_uptime:
+                # найдём имя канала
+                for st in stats_list:
+                    for e, uu in st['channels']:
+                        if uu == u:
+                            unstable_list.append((get_name(e), u, pct, len(hist)))
+                            break
+        # Дополнительно — те, что сейчас отсеяны как unstable
+        # (уже есть в unstable_list, если URL тот же)
+
         history_path = os.path.join(CFG.docs_dir, 'history.json')
         history = load_history(history_path)
         history.append({
             'date': datetime.datetime.now().strftime('%Y-%m-%d %H:%M'),
-            'total': total, 'ok': ok, 'filtered': filt,
+            'total': total, 'ok': ok, 'filtered': filt, 'unstable': unstable,
             'dead': dead, 'merged': len(ordered_merged),
         })
         save_history(history_path, history)
@@ -1750,8 +1971,9 @@ def main():
         write_csv(ordered_merged, os.path.join(CFG.docs_dir, 'channels.csv'))
 
         render_report(os.path.join(CFG.docs_dir, 'report.html'),
-                      stats_list, len(ordered_merged), total, ok, filt, dead,
-                      time.time() - started, ua_totals, history, groups_all)
+                      stats_list, len(ordered_merged), total, ok, filt, dead, unstable,
+                      time.time() - started, ua_totals, history, groups_all,
+                      LOGO_STATS, unstable_list)
 
         pages = CFG.pages_url.rstrip('/')
         purl = f'{pages}/{CFG.merged_name}' if pages else CFG.merged_name
@@ -1760,18 +1982,31 @@ def main():
         if pages and HAS_QR:
             generate_qr(purl, qr_path)
         render_index(os.path.join(CFG.docs_dir, 'index.html'),
-                     purl, len(ordered_merged), ok, total, splits, qr_path, pages)
+                     purl, len(ordered_merged), ok, total, unstable,
+                     splits, qr_path, pages)
         render_channels(os.path.join(CFG.docs_dir, 'channels.html'), ordered_merged)
         write_pwa_assets(CFG.docs_dir)
 
+        # Сохраняем аптайм
+        save_uptime(uptime_path, all_current_urls)
+        emit(f"\nАптайм: сохранено {len(UPTIME)} URL в истории")
+
         epg_count = sum(1 for e, _ in ordered_merged if get_tvg_id(e))
+        logo_total = sum(v for k, v in LOGO_STATS.items() if k != 'none')
+        logo_all = sum(LOGO_STATS.values()) or 1
         emit(f"\nГотово за {int(time.time() - started)}с. "
-             f"OK={ok}, фильтр={filt}, merged={len(ordered_merged)}, с EPG={epg_count}")
+             f"OK={ok}, фильтр={filt}, нестабильных={unstable}, "
+             f"merged={len(ordered_merged)}, "
+             f"с EPG={epg_count}, с лого={logo_total}/{logo_all} ({logo_total/logo_all*100:.0f}%)")
+        if LOGO_STATS:
+            for k in ['from_src', 'from_id', 'from_name', 'from_translit', 'from_txt', 'none']:
+                if LOGO_STATS.get(k):
+                    emit(f"    лого {k}: {LOGO_STATS[k]}")
 
         if CFG.tg_token and CFG.tg_chat:
-            tg_report(stats_list, total, ok, filt, len(ordered_merged),
+            tg_report(stats_list, total, ok, filt, unstable, len(ordered_merged),
                       time.time() - started, iurl, source_results,
-                      is_weekly=CFG.weekly_backup)
+                      is_weekly=CFG.weekly_backup, logo_stats=LOGO_STATS)
             if CFG.tg_send_merged and merged_path:
                 tg_file(CFG.tg_token, CFG.tg_chat, merged_path,
                         caption="Merged плейлист")
