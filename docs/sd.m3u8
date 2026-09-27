@@ -11,6 +11,9 @@ https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221.smil/playlist.m3u8
 #EXTINF:-1 tvg-id="che" tvg-logo="https://epg.iptvx.one/picons/che.png" group-title="📺 Основные",Че!
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-cf5a26a180f402ef/video.m3u8
+#EXTINF:-1 tvg-id="spas" tvg-logo="https://epg.iptvx.one/picons/spas.png" group-title="📹 Rutube",Спас
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://bl.rutube.ru/livestream/2bbfa9ebf9d79ade480d7281fcef1008/index.m3u8?s=NHub-eOBFspYXWp6UM7VjA&e=2090404673&scheme=https
 #EXTINF:-1 tvg-id="sony-tv" tvg-logo="https://i.imgur.com/heZeqPQ.png" group-title="🎬 Кино",.Red
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.100.46.245:90/red/index.m3u8
