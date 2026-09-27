@@ -24,7 +24,8 @@
   },
   "url_patterns": [
     { "pattern": "kinowalk\\.hopto\\.org", "group": "Kinowalk", "force": true },
-    { "pattern": "bl\\.rutube|rutube\\.ru", "group": "Rutube", "force": true }
+    { "pattern": "bl\\.rutube|rutube\\.ru", "group": "Rutube", "force": true },
+    { "pattern": "radiorecord\\.hostingradio\\.ru", "group": "Радио Рекорд", "force": true }
   ],
   "name_patterns": [
     { "pattern": "(?i)(radio\\s*record|радио\\s*рекорд|рекорд\\s*radio|radiorecord)", "group": "Радио Рекорд" },
