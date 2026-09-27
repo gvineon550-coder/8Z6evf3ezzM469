@@ -1,23 +1,7 @@
 {
-  "url_sources": [
-    {
-      "name": "iptv_org_ru",
-      "url": "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/ru.m3u",
-      "enabled": true
-    },
-    {
-      "name": "ufotv",
-      "url": "https://raw.githubusercontent.com/UFOTVM/TV/refs/heads/main/ufo.m3u",
-      "enabled": true
-    }
-  ],
+  "url_sources": [],
   "local_sources": [
-    {
-      "name": "my_list",
-      "path": "local/my_list.m3u",
-      "enabled": true,
-      "check": false
-    }
+    { "name": "cleaned", "path": "docs/all_cleaned.m3u", "enabled": true, "check": true }
   ],
   "logo_sources": []
 }
