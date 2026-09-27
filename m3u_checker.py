@@ -2,6 +2,7 @@
 """
 M3U Checker v21 — ffprobe с wink UA + погода через серверы GitHub.
 + Whitelist: URL/имя из filters.json пропускают все проверки (VIP).
++ Зашифрованные ссылки на главной (AES-256-GCM + Telegram-пароль).
 """
 import os
 import re
@@ -15,6 +16,7 @@ import base64
 import shutil
 import sqlite3
 import logging
+import secrets
 import argparse
 import threading
 import datetime
@@ -34,6 +36,14 @@ try:
     HAS_QR = True
 except ImportError:
     HAS_QR = False
+
+try:
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+    from cryptography.hazmat.primitives import hashes
+    HAS_CRYPTO = True
+except ImportError:
+    HAS_CRYPTO = False
 
 
 USER_AGENTS = [
@@ -1721,6 +1731,60 @@ def health_bar(pct):
 </div>'''
 
 
+# ===== ШИФРОВАНИЕ ССЫЛОК (AES-256-GCM) =====
+def generate_password(length=16):
+    """Криптостойкий пароль для шифрования."""
+    alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789'
+    return ''.join(secrets.choice(alphabet) for _ in range(length))
+
+
+def encrypt_links(url_playlist, url_qr, password, iterations=150000):
+    """
+    Шифрует JSON со ссылками.
+    Возвращает base64(salt + iv + ciphertext + tag).
+    """
+    if not HAS_CRYPTO:
+        raise RuntimeError("cryptography не установлен")
+    salt = secrets.token_bytes(16)
+    iv = secrets.token_bytes(12)
+
+    kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=salt,
+        iterations=iterations,
+    )
+    key = kdf.derive(password.encode('utf-8'))
+
+    payload = json.dumps(
+        {'playlist': url_playlist, 'qr': url_qr},
+        ensure_ascii=False,
+    ).encode('utf-8')
+
+    aesgcm = AESGCM(key)
+    ciphertext = aesgcm.encrypt(iv, payload, None)
+
+    blob = salt + iv + ciphertext
+    return base64.b64encode(blob).decode('ascii')
+
+
+def send_password_to_telegram(password, playlist_url):
+    """Отправляет пароль в Telegram + пояснение."""
+    if not CFG.tg_token or not CFG.tg_chat:
+        log.warning("⚠️  Telegram не настроен — пароль не отправлен")
+        return False
+    pages = CFG.pages_url.rstrip('/') if CFG.pages_url else ''
+    text = (
+        f"🔐 <b>Новый пароль для страницы</b>\n\n"
+        f"<code>{password}</code>\n\n"
+        f"📍 Открывай: <a href='{pages}/index.html'>index.html</a>\n"
+        f"⏱ Действует до следующего запуска (6 часов)\n"
+        f"📺 Внутри — ссылка на плейлист и QR"
+    )
+    return tg_send(CFG.tg_token, CFG.tg_chat, text)
+# ===== /ШИФРОВАНИЕ =====
+
+
 COMMON_CSS = """
 *{box-sizing:border-box}
 :root{
@@ -1909,6 +1973,44 @@ background:radial-gradient(circle,rgba(74,222,128,0.06),transparent 60%);
 animation:float2 30s ease-in-out infinite}
 @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
 @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,-50px)}}
+
+/* ===== Secure block (шифрование ссылок) ===== */
+.secure-block{background:var(--panel);border:1px solid var(--border);
+border-radius:16px;padding:24px;margin-bottom:24px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
+.secure-locked{text-align:center}
+.secure-icon{font-size:48px;line-height:1;margin-bottom:12px}
+.secure-title{font-size:16px;font-weight:500;margin-bottom:6px}
+.secure-hint{font-size:13px;color:var(--muted);margin-bottom:20px}
+.secure-input-wrap{display:flex;gap:8px;max-width:400px;margin:0 auto}
+.secure-input-wrap input{flex:1;background:var(--bg);border:1px solid var(--border);
+color:var(--text);padding:12px 16px;border-radius:10px;font-size:14px;
+font-family:inherit}
+.secure-input-wrap input:focus{outline:none;border-color:var(--accent)}
+.secure-btn{background:var(--accent);border:none;color:#fff;padding:12px 24px;
+border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;
+transition:transform .15s,background .15s;white-space:nowrap}
+.secure-btn:hover{transform:translateY(-1px);background:#3b82f6}
+.secure-btn:disabled{opacity:0.5;cursor:wait}
+.secure-error{color:#f87171;font-size:13px;margin-top:12px;min-height:18px}
+.secure-unlocked{text-align:center}
+.secure-timer{font-size:13px;color:var(--muted);margin-bottom:16px;
+padding:8px 16px;background:var(--bg);border-radius:20px;display:inline-block}
+.secure-timer b{color:var(--accent);font-variant-numeric:tabular-nums}
+.secure-result{display:flex;gap:20px;align-items:center;flex-wrap:wrap;
+justify-content:center}
+.secure-qr{background:#fff;padding:10px;border-radius:12px}
+.secure-qr canvas,.secure-qr img{display:block;width:180px;height:180px}
+.secure-links{flex:1;min-width:240px;text-align:left;
+display:flex;flex-direction:column;gap:10px}
+.secure-label{font-size:12px;color:var(--muted);text-transform:uppercase;
+letter-spacing:0.5px}
+.secure-btn-close{background:transparent;border:1px solid var(--border);
+color:var(--muted);padding:8px 16px;border-radius:10px;font-size:13px;
+cursor:pointer;transition:border-color .15s;align-self:flex-start}
+.secure-btn-close:hover{border-color:var(--accent);color:var(--accent)}
 """
 
 THEME_JS = """
@@ -2072,7 +2174,7 @@ REPORT_T = """<!DOCTYPE html>
 </body></html>
 """
 
-INDEX_T = """<!DOCTYPE html>
+INDEX_T_SECURE = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <title>IPTV</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -2083,27 +2185,16 @@ INDEX_T = """<!DOCTYPE html>
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="IPTV">
 <link rel="apple-touch-icon" href="icon.svg">
-<style>{common_css}
-.qr-wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-.qr-wrap img{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}
-.qr-info{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}
-.link-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-</style></head><body>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<style>{common_css}</style></head><body>
 {top_right}
 <h1>IPTV — авто-обновляемый плейлист</h1>
 <div class="sub">Обновлено: {date}</div>
 <div id="wf-status" class="wf-status">Проверяю статус последнего запуска...</div>
-<h2>Ссылка для плеера (M3U)</h2>
-<div class="box qr-wrap">
-{qr_block}
-<div class="qr-info">
-<div class="link-line">
-<code id="player-url">{playlist_url}</code>
-<button class="copy-btn" data-target="player-url">📋 Копировать</button>
-</div>
-<div class="sub" style="margin:0">Вставь в TiviMate / Televizo / OTT Navigator как Playlist URL</div>
-</div>
-</div>
+
+<h2>Ссылка для плеера</h2>
+{secure_block}
+
 {trend_block}
 <h2>Разделы</h2>
 <div class="box"><a href="report.html">📊 Отчёт проверки</a></div>
@@ -2119,19 +2210,6 @@ INDEX_T = """<!DOCTYPE html>
 {splits_block}
 <script>
 (function(){
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.dataset.target;
-      const el = document.getElementById(id);
-      if(!el) return;
-      navigator.clipboard.writeText(el.textContent).then(() => {
-        btn.classList.add('copied');
-        const old = btn.textContent;
-        btn.textContent = '✓ Скопировано';
-        setTimeout(() => { btn.classList.remove('copied'); btn.textContent = old; }, 1500);
-      });
-    });
-  });
   const gh = "{github_repo}";
   if(gh){
     fetch('https://api.github.com/repos/' + gh + '/actions/workflows/check.yml/runs?per_page=1')
@@ -2152,6 +2230,126 @@ INDEX_T = """<!DOCTYPE html>
         el.innerHTML = html;
       }).catch(() => {});
   }
+
+  // ===== Расшифровка =====
+  const secureBlock = document.getElementById('secureBlock');
+  const encBlob = secureBlock ? secureBlock.dataset.enc : '';
+  const input = document.getElementById('pwdInput');
+  const btn = document.getElementById('pwdBtn');
+  const errEl = document.getElementById('pwdError');
+  const locked = document.getElementById('secureLocked');
+  const unlocked = document.getElementById('secureUnlocked');
+  const timerEl = document.getElementById('timerVal');
+  let hideTimer = null;
+  let countdownTimer = null;
+
+  if(!encBlob){
+    if(locked) locked.innerHTML = '<div class="secure-icon">⚠️</div><div class="secure-title">Раздел временно недоступен</div><div class="secure-hint">Попробуй позже</div>';
+    return;
+  }
+
+  function base64ToBytes(b64){
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for(let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes;
+  }
+
+  async function deriveKey(password, salt){
+    const enc = new TextEncoder();
+    const baseKey = await crypto.subtle.importKey(
+      'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']
+    );
+    return crypto.subtle.deriveKey(
+      {name:'PBKDF2', salt: salt, iterations: 150000, hash: 'SHA-256'},
+      baseKey,
+      {name:'AES-GCM', length:256},
+      false,
+      ['decrypt']
+    );
+  }
+
+  async function decrypt(blob, password){
+    const raw = base64ToBytes(blob);
+    const salt = raw.slice(0, 16);
+    const iv = raw.slice(16, 28);
+    const data = raw.slice(28);
+    const key = await deriveKey(password, salt);
+    const plain = await crypto.subtle.decrypt({name:'AES-GCM', iv: iv}, key, data);
+    return JSON.parse(new TextDecoder().decode(plain));
+  }
+
+  function startHideTimer(seconds){
+    let left = seconds;
+    function tick(){
+      const m = Math.floor(left/60), s = left % 60;
+      timerEl.textContent = m + ':' + String(s).padStart(2, '0');
+      if(left <= 0){
+        hideNow();
+        return;
+      }
+      left -= 1;
+    }
+    tick();
+    countdownTimer = setInterval(tick, 1000);
+  }
+
+  function hideNow(){
+    if(countdownTimer) clearInterval(countdownTimer);
+    if(hideTimer) clearTimeout(hideTimer);
+    unlocked.style.display = 'none';
+    locked.style.display = 'block';
+    input.value = '';
+    errEl.textContent = '';
+    const qrWrap = document.getElementById('qrWrap');
+    if(qrWrap) qrWrap.innerHTML = '';
+  }
+
+  document.getElementById('closeBtn')?.addEventListener('click', hideNow);
+
+  if(btn) btn.addEventListener('click', async () => {
+    const pwd = input.value.trim();
+    if(!pwd){ errEl.textContent = 'Введите пароль'; return; }
+    btn.disabled = true;
+    errEl.textContent = 'Расшифровка...';
+    try {
+      const data = await decrypt(encBlob, pwd);
+      document.getElementById('playerUrlLocked').textContent = data.playlist;
+      const qrWrap = document.getElementById('qrWrap');
+      qrWrap.innerHTML = '';
+      new QRCode(qrWrap, {
+        text: data.playlist,
+        width: 180,
+        height: 180,
+        colorDark: '#000',
+        colorLight: '#fff',
+        correctLevel: QRCode.CorrectLevel.M,
+      });
+      locked.style.display = 'none';
+      unlocked.style.display = 'block';
+      errEl.textContent = '';
+      startHideTimer(300);
+    } catch(e) {
+      errEl.textContent = '❌ Неверный пароль';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  if(input) input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') btn.click();
+  });
+
+  document.querySelectorAll('.copy-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      const el = document.getElementById(b.dataset.target);
+      if(!el || el.textContent === '—') return;
+      navigator.clipboard.writeText(el.textContent).then(() => {
+        const t = b.textContent; b.textContent = '✓';
+        setTimeout(() => b.textContent = t, 1200);
+      });
+    });
+  });
 })();
 </script>
 {theme_js}
@@ -2689,24 +2887,77 @@ def _github_repo_from_pages(pages_url):
 
 def render_index(path, url, merged, ok, total, unstable, splits, qr_path,
                  pages_url, history):
+    """Главная страница. Ссылки зашифрованы AES-256."""
     split_html = ''
     if splits:
         items = "\n".join(
             f"<div class='box'><a href='{fname}'>{fname}</a> — {cnt} каналов</div>"
             for fname, cnt in splits)
         split_html = f"<h2>Отдельные плейлисты</h2>{items}"
-    qr_block = f'<img src="{os.path.basename(qr_path)}" alt="QR">' if os.path.isfile(qr_path) else ''
+
     gh_repo = _github_repo_from_pages(pages_url)
     trend_block = render_trend_svg(history)
+
+    # Генерируем пароль и шифруем ссылки
+    encrypted_blob = ''
+    password_plain = ''
+    if HAS_CRYPTO:
+        password_plain = generate_password(16)
+        qr_url = f"{pages_url.rstrip('/')}/qr.png" if pages_url else 'qr.png'
+        try:
+            encrypted_blob = encrypt_links(url, qr_url, password_plain)
+            log.info("🔐 Ссылки зашифрованы (пароль %d символов)", len(password_plain))
+        except Exception as e:
+            log.error("Шифрование: %s", e)
+            encrypted_blob = ''
+    else:
+        log.warning("⚠️  cryptography не установлен — страница без шифрования")
+
+    # Отправляем пароль в Telegram
+    if password_plain and CFG.tg_token and CFG.tg_chat:
+        send_password_to_telegram(password_plain, url)
+
     top_right = TOP_RIGHT_WIDGET.format(github_repo=gh_repo,
                                         weather_html=WEATHER_HTML)
+
+    # Шифрованный блок = только эта строка утекает в HTML
+    secure_block = f'''
+    <div class="secure-block" id="secureBlock" data-enc="{encrypted_blob}">
+      <div class="secure-locked" id="secureLocked">
+        <div class="secure-icon">🔒</div>
+        <div class="secure-title">Ссылка на плейлист зашифрована</div>
+        <div class="secure-hint">Пароль приходит в Telegram от бота</div>
+        <div class="secure-input-wrap">
+          <input type="password" id="pwdInput" placeholder="Введите пароль" autocomplete="off" spellcheck="false">
+          <button class="secure-btn" id="pwdBtn">Открыть</button>
+        </div>
+        <div class="secure-error" id="pwdError"></div>
+      </div>
+      <div class="secure-unlocked" id="secureUnlocked" style="display:none">
+        <div class="secure-timer">⏱ Ссылка видна ещё <b id="timerVal">5:00</b></div>
+        <div class="secure-result">
+          <div class="secure-qr" id="qrWrap"></div>
+          <div class="secure-links">
+            <div class="secure-label">Ссылка для плеера:</div>
+            <div class="link-line">
+              <code id="playerUrlLocked">—</code>
+              <button class="copy-btn" data-target="playerUrlLocked">📋</button>
+            </div>
+            <button class="secure-btn-close" id="closeBtn">🔒 Скрыть</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    '''
+
     out = fmt(
-        INDEX_T,
+        INDEX_T_SECURE,
         common_css=COMMON_CSS, top_right=top_right, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-        playlist_url=url, merged_count=merged, ok=ok, total=total,
-        unstable=unstable, qr_block=qr_block, splits_block=split_html,
-        github_repo=gh_repo, trend_block=trend_block)
+        merged_count=merged, ok=ok, total=total,
+        unstable=unstable, splits_block=split_html,
+        github_repo=gh_repo, trend_block=trend_block,
+        secure_block=secure_block)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
 
@@ -2945,6 +3196,10 @@ def main():
     compile_whitelist()
     if WHITELIST_URLS or WHITELIST_NAMES:
         emit(f"⭐ Whitelist: url={len(WHITELIST_URLS)} name={len(WHITELIST_NAMES)}")
+    if HAS_CRYPTO:
+        emit("🔐 Шифрование ссылок: включено (AES-256-GCM)")
+    else:
+        emit("⚠️  cryptography не установлен — ссылки не будут зашифрованы")
 
     uptime_path = os.path.join(CFG.docs_dir, 'uptime.json')
     load_uptime(uptime_path)
