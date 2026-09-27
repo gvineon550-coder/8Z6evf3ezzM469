@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -53,6 +55,8 @@ jobs:
             --multi-ua \
             --split-all \
             --weekly-backup \
+            --min-uptime 50 \
+            --min-uptime-samples 3 \
             --tg-send-merged
 
       - name: Notify on failure
