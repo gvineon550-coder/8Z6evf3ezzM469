@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-M3U Checker v14 — логотипы из базы iptv-org без проверки (они всегда валидны).
+M3U Checker v15 — tvg-id из EPG iptvx.one, аптайм, автоотсев мигающих.
 """
 import os
 import re
 import sys
 import csv
+import gzip
 import time
 import html
 import json
@@ -63,6 +64,13 @@ IPTV_ORG_CHANNELS_CACHE = '_cache_sources/iptv_org_channels.json'
 IPTV_ORG_LOGOS_CACHE = '_cache_sources/iptv_org_logos.json'
 IPTV_ORG_TTL_DAYS = 7
 
+EPG_URLS = [
+    'http://iptvx.one/epg/epg_lite.xml.gz',
+    'https://iptvx.one/epg/epg_lite.xml.gz',
+]
+EPG_CACHE = 'docs/epg_map.json'
+EPG_TTL_DAYS = 7
+
 HTML_PREFIXES = (
     b'<!DOCTYPE', b'<html', b'<HTML',
     b'<head', b'<HEAD', b'<?xml', b'<error',
@@ -84,7 +92,7 @@ CFG = None
 CATEGORIES = {}
 FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}}
-IPTV_IDS = {'by_name': {}, 'by_name_translit': {}}
+EPG_MAP = {'by_name': {}, 'by_translit': {}}
 LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
               'from_translit': 0, 'from_txt': 0, 'none': 0}
 UPTIME = {}
@@ -152,6 +160,7 @@ def normalize_name_translit(name):
     return translit_ru(n) if n else ''
 
 
+# ---------- UPTIME ----------
 def load_uptime(path):
     global UPTIME
     if not os.path.isfile(path):
@@ -266,6 +275,7 @@ def load_sources_config(path):
     return data
 
 
+# ---------- IPTV-ORG (логотипы) ----------
 def _download_json(urls, cache_path):
     os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
@@ -300,7 +310,7 @@ def _download_json(urls, cache_path):
 
 
 def load_iptv_org():
-    global IPTV_LOGOS, IPTV_IDS
+    global IPTV_LOGOS
     if CFG.no_iptv_logos:
         emit("База iptv-org: отключено")
         return
@@ -362,25 +372,88 @@ def load_iptv_org():
     IPTV_LOGOS['by_name'] = by_name_logo
     IPTV_LOGOS['by_name_translit'] = by_name_logo_translit
 
-    by_name_id = {}
-    by_name_id_translit = {}
-    for cid, names in id_to_names.items():
-        for name in names:
-            k = normalize_name(name)
-            if k and k not in by_name_id:
-                by_name_id[k] = cid
-            kt = normalize_name_translit(name)
-            if kt and kt not in by_name_id_translit:
-                by_name_id_translit[kt] = cid
-
-    IPTV_IDS['by_name'] = by_name_id
-    IPTV_IDS['by_name_translit'] = by_name_id_translit
-
     emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени, "
          f"{len(by_name_logo_translit)} по транслиту")
-    emit(f"  tvg-id: {len(by_name_id)} по имени, {len(by_name_id_translit)} с транслитом")
 
 
+# ---------- EPG iptvx ----------
+def download_epg_map():
+    """Скачивает EPG iptvx.one, парсит XMLTV, строит карту имя → tvg-id."""
+    global EPG_MAP
+
+    # Кэш
+    if os.path.isfile(EPG_CACHE):
+        try:
+            with open(EPG_CACHE, 'r', encoding='utf-8') as f:
+                cached = json.load(f)
+            age_days = (time.time() - cached.get('ts', 0)) / 86400
+            if age_days < EPG_TTL_DAYS:
+                EPG_MAP['by_name'] = cached.get('by_name', {})
+                EPG_MAP['by_translit'] = cached.get('by_translit', {})
+                emit(f"  EPG: из кэша {len(EPG_MAP['by_name'])} имён")
+                return
+        except Exception as e:
+            log.warning("EPG cache: %s", e)
+
+    # Скачиваем
+    for url in EPG_URLS:
+        try:
+            emit(f"  EPG: скачиваю {url}")
+            r = requests.get(url, timeout=180, verify=CFG.verify_ssl,
+                             headers={'User-Agent': DEFAULT_UA})
+            if r.status_code != 200:
+                continue
+            raw = r.content
+            try:
+                xml_data = gzip.decompress(raw)
+            except Exception:
+                xml_data = raw
+            emit(f"  EPG: распакован {len(xml_data)//1024} KB, парсим...")
+
+            # Определяем кодировку
+            head = xml_data[:200].decode('ascii', errors='ignore')
+            if 'windows-1251' in head or 'cp1251' in head:
+                xml_str = xml_data.decode('windows-1251', errors='replace')
+            else:
+                xml_str = xml_data.decode('utf-8', errors='replace')
+
+            # Регулярки для быстрого парсинга
+            ch_re = re.compile(r'<channel\s+id="([^"]+)"[^>]*>(.*?)</channel>',
+                               re.DOTALL)
+            dn_re = re.compile(r'<display-name[^>]*>([^<]+)</display-name>')
+
+            by_name = {}
+            by_translit = {}
+            for m in ch_re.finditer(xml_str):
+                cid = m.group(1)
+                body = m.group(2)
+                for dn in dn_re.finditer(body):
+                    name = html.unescape(dn.group(1)).strip()
+                    if not name:
+                        continue
+                    k = normalize_name(name)
+                    if k and k not in by_name:
+                        by_name[k] = cid
+                    kt = normalize_name_translit(name)
+                    if kt and kt not in by_translit:
+                        by_translit[kt] = cid
+
+            EPG_MAP['by_name'] = by_name
+            EPG_MAP['by_translit'] = by_translit
+            emit(f"  EPG: {len(by_name)} имён, {len(by_translit)} с транслитом")
+
+            os.makedirs(os.path.dirname(EPG_CACHE) or '.', exist_ok=True)
+            with open(EPG_CACHE, 'w', encoding='utf-8') as f:
+                json.dump({'by_name': by_name, 'by_translit': by_translit,
+                           'ts': time.time()}, f, ensure_ascii=False,
+                          separators=(',', ':'))
+            return
+        except Exception as e:
+            log.warning("EPG %s: %s", url, e)
+    emit("  EPG: не удалось скачать, tvg-id не трогаем")
+
+
+# ---------- ИСТОЧНИКИ ----------
 def download_url_sources(url_sources, cache_dir):
     os.makedirs(cache_dir, exist_ok=True)
     results = []
@@ -469,11 +542,15 @@ def set_logo_in_extinf(extinf, logo):
 
 def set_tvg_id_in_extinf(extinf, tvg_id):
     if not tvg_id:
-        return extinf
+        return remove_tvg_id_from_extinf(extinf)
     tvg_id = tvg_id.replace('"', "'")
     if re.search(r'tvg-id="[^"]*"', extinf):
         return re.sub(r'tvg-id="[^"]*"', f'tvg-id="{tvg_id}"', extinf)
     return re.sub(r'^(#EXTINF:-?\d+)', rf'\1 tvg-id="{tvg_id}"', extinf, count=1)
+
+
+def remove_tvg_id_from_extinf(extinf):
+    return re.sub(r'\s?tvg-id="[^"]*"', '', extinf, count=1)
 
 
 def compile_patterns(patterns):
@@ -640,7 +717,6 @@ def check_stream(url, cache):
 
 
 def _check_logo(url):
-    """Проверяет логотип. Только для лого из источника (мусорных)."""
     try:
         r = requests.head(url, headers={'User-Agent': DEFAULT_UA},
                           timeout=CFG.logo_timeout, allow_redirects=True,
@@ -665,18 +741,13 @@ def check_logo(url, cache):
 
 
 def resolve_logo(extinf, url, txt_logos, cache):
-    """Возвращает (logo_url, source).
-    
-    ВАЖНО: Логотипы из базы iptv-org НЕ проверяются — они всегда валидны.
-    Проверяется только логотип из исходного плейлиста (может быть мусор).
-    """
-    # 1. Логотип из исходного плейлиста — ПРОВЕРЯЕМ
+    # 1. Из источника — ПРОВЕРЯЕМ
     m = re.search(r'tvg-logo="([^"]*)"', extinf)
     if m and m.group(1):
         if not CFG.check_all_logos or check_logo(m.group(1), cache):
             return m.group(1), 'from_src'
 
-    # 2. По tvg-id из базы — НЕ проверяем (доверяем базе)
+    # 2. По tvg-id — НЕ проверяем
     tid = get_tvg_id(extinf)
     if tid:
         l = IPTV_LOGOS['by_id'].get(tid)
@@ -706,20 +777,24 @@ def resolve_logo(extinf, url, txt_logos, cache):
 
 
 def resolve_tvg_id(extinf):
+    """Возвращает правильный tvg-id из EPG iptvx.one.
+    Если EPG не загружен — не трогаем.
+    Если не нашли в EPG — возвращаем '' (уберём тег)."""
     current = get_tvg_id(extinf)
-    if current.strip():
+    if not EPG_MAP['by_name'] and not EPG_MAP['by_translit']:
+        # EPG не загружен, оставляем как есть
         return current
     name = get_name(extinf)
     if not name:
         return ''
     k = normalize_name(name)
     if k:
-        cid = IPTV_IDS['by_name'].get(k)
+        cid = EPG_MAP['by_name'].get(k)
         if cid:
             return cid
     kt = normalize_name_translit(name)
     if kt:
-        cid = IPTV_IDS['by_name_translit'].get(kt)
+        cid = EPG_MAP['by_translit'].get(kt)
         if cid:
             return cid
     return ''
@@ -745,13 +820,22 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
         return index, 'unstable', None, None, f"uptime {pct}% ({total})", None, None, None, None
 
     extinf = clean_extinf(extinf)
+
+    # tvg-id — сначала ставим правильный из EPG
     new_tvg_id = resolve_tvg_id(extinf)
     if new_tvg_id:
         extinf = set_tvg_id_in_extinf(extinf, new_tvg_id)
+    else:
+        extinf = remove_tvg_id_from_extinf(extinf)
+
+    # Логотип
     logo, logo_src = resolve_logo(extinf, url, txt_logos, cache)
     extinf = set_logo_in_extinf(extinf, logo)
+
+    # Группа
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
+
     return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src
 
 
@@ -803,6 +887,8 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             new_tvg_id = resolve_tvg_id(extinf)
             if new_tvg_id:
                 extinf = set_tvg_id_in_extinf(extinf, new_tvg_id)
+            else:
+                extinf = remove_tvg_id_from_extinf(extinf)
             logo, _ = resolve_logo(extinf, url, txt_logos, cache)
             extinf = set_logo_in_extinf(extinf, logo)
             extinf = set_group_in_extinf(extinf, add_emoji(categorize(extinf, url, label)))
@@ -1255,7 +1341,7 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v14 - {date}</title>
+<title>M3U Check v15 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -1708,8 +1794,8 @@ def tg_file(token, chat, path, caption=''):
 
 
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
-              source_results, is_weekly, logo_stats):
-    lines = ["<b>M3U Check v14</b>"]
+              source_results, is_weekly, logo_stats, epg_count):
+    lines = ["<b>M3U Check v15</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -1718,6 +1804,7 @@ def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
         f"Нестабильных отсеяно: <b>{unstable}</b>",
         f"Отфильтровано: <b>{filt}</b>",
         f"В merged: <b>{merged}</b>",
+        f"С EPG (iptvx): <b>{epg_count}</b>",
         f"Время: {int(dur)}с",
         "",
     ])
@@ -1758,8 +1845,7 @@ def parse_args():
     p.add_argument('--no-ssl-verify', action='store_true')
     p.add_argument('--multi-ua', action='store_true')
     p.add_argument('--no-iptv-logos', action='store_true')
-    p.add_argument('--check-all-logos', action='store_true',
-                   help='Проверять все логотипы (включая из базы iptv-org)')
+    p.add_argument('--check-all-logos', action='store_true')
     p.add_argument('--split-all', action='store_true')
     p.add_argument('--weekly-backup', action='store_true')
     p.add_argument('--min-uptime', type=int, default=50)
@@ -1798,8 +1884,11 @@ def main():
     if UPTIME:
         emit(f"Аптайм: загружено {len(UPTIME)} URL из истории")
 
-    emit("Загружаю базу iptv-org (логотипы + tvg-id)...")
+    emit("Загружаю базу iptv-org (логотипы)...")
     load_iptv_org()
+
+    emit("Загружаю EPG iptvx.one (tvg-id)...")
+    download_epg_map()
 
     cfg = load_sources_config(CFG.sources)
     url_sources = cfg.get('url_sources', [])
@@ -1877,6 +1966,7 @@ def main():
         filt = sum(s.get('filtered', 0) for s in stats_list)
         unstable = sum(s.get('unstable', 0) for s in stats_list)
         dead = total - ok - filt - unstable
+        epg_count = sum(1 for e, _ in ordered_merged if get_tvg_id(e))
 
         ua_totals = {}
         for s in stats_list:
@@ -1902,7 +1992,7 @@ def main():
         history.append({
             'date': datetime.datetime.now().strftime('%Y-%m-%d %H:%M'),
             'total': total, 'ok': ok, 'filtered': filt, 'unstable': unstable,
-            'dead': dead, 'merged': len(ordered_merged),
+            'dead': dead, 'merged': len(ordered_merged), 'epg': epg_count,
         })
         save_history(history_path, history)
 
@@ -1933,13 +2023,12 @@ def main():
         save_uptime(uptime_path, all_current_urls)
         emit(f"\nАптайм: сохранено {len(UPTIME)} URL в истории")
 
-        epg_count = sum(1 for e, _ in ordered_merged if get_tvg_id(e))
         logo_total = sum(v for k, v in LOGO_STATS.items() if k != 'none')
         logo_all = sum(LOGO_STATS.values()) or 1
         emit(f"\nГотово за {int(time.time() - started)}с. "
              f"OK={ok}, фильтр={filt}, нестабильных={unstable}, "
              f"merged={len(ordered_merged)}, "
-             f"с EPG={epg_count}, с лого={logo_total}/{logo_all} ({logo_total/logo_all*100:.0f}%)")
+             f"с EPG iptvx={epg_count}, с лого={logo_total}/{logo_all} ({logo_total/logo_all*100:.0f}%)")
         if LOGO_STATS:
             for k in ['from_src', 'from_id', 'from_name', 'from_translit', 'from_txt', 'none']:
                 if LOGO_STATS.get(k):
@@ -1950,7 +2039,7 @@ def main():
             tg_report(stats_list, total, ok, filt, unstable, len(ordered_merged),
                       time.time() - started, iurl, source_results,
                       is_weekly=(CFG.weekly_backup and is_sunday),
-                      logo_stats=LOGO_STATS)
+                      logo_stats=LOGO_STATS, epg_count=epg_count)
             if CFG.tg_send_merged and merged_path:
                 tg_file(CFG.tg_token, CFG.tg_chat, merged_path,
                         caption="Merged плейлист")
