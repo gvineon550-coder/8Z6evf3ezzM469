@@ -5,9 +5,6 @@ http://stream.mcquack.net/459/index.m3u8
 #EXTINF:-1 tvg-id="love-nature-4k" tvg-logo="https://epg.iptvx.one/picons/love-nature-4k.png" group-title="🧠 Познавательные",Love Nature 4K
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://jmp2.uk/stvp-USBA3400003IP
-#EXTINF:-1 tvg-id="travel-xp-4k" tvg-logo="https://epg.iptvx.one/picons/travel-xp-4k.png" group-title="🧠 Познавательные",TravelXP 4K
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://91.247.68.229:8000/play/Travelxp/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-logo="https://i.imgur.com/slLuRel.png",Insayt TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/361/index.m3u8
