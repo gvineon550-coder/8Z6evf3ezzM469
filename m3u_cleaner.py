@@ -6,11 +6,16 @@ m3u_cleaner.py — отдельный чистильщик M3U-листов и U
 Особенности:
   • Стриминг: читает/пишет построчно, не держит лист в памяти
   • СОХРАНЯЕТ #EXTVLCOPT (http-user-agent и др.)
-  • СОХРАНЯЕТ или ПОДСТАВЛЯЕТ шапку #EXTM3U url-tvg="..." (для EPG)
+  • СОХРАНЯЕТ шапку url-tvg, или подставляет из header_url_tvg конфига
   • Дедуп по URL глобальный
   • Понимает regex И подстроки в filters.json (auto-detect)
   • Shortener/домен — только по hostname
+  • Защита: пустой лист НЕ перезаписывает старый
   • В лог пишет примеры URL по каждой причине отсева
+
+Запуск:
+    python m3u_cleaner.py --sources sources_cleaner.json
+    python m3u_cleaner.py --sources sources_cleaner.json --strip-trackers
 """
 from __future__ import annotations
 
@@ -38,13 +43,7 @@ DEFAULT_UA = "WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36"
 DEFAULT_TIMEOUT = 30
 CHUNK = 8192
 SHORT_PATTERN_LEN = 5
-HEADER_SCAN_LINES = 20  # сколько строк искать #EXTM3U
-
-# Дефолтная шапка с EPG iptvx — если ни один источник не дал url-tvg
-DEFAULT_HEADER = (
-    '#EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; '
-    'https://iptvx.one/EPG_NOARCH"'
-)
+HEADER_SCAN_LINES = 20
 
 PRIVATE_PREFIXES = ("127.", "10.", "192.168.", "169.254.", "0.")
 SHORTENERS = ("bit.ly", "tinyurl.com", "clck.ru", "adf.ly", "bitly.com",
@@ -321,7 +320,8 @@ def load_sources(path: str):
     sj = json.loads(p.read_text(encoding="utf-8-sig"))
     urls = [s for s in sj.get("url_sources", []) if s.get("enabled", True)]
     locs = [s for s in sj.get("local_sources", []) if s.get("enabled", True)]
-    return urls, locs
+    tvg = sj.get("header_url_tvg", "").strip()
+    return urls, locs, tvg
 
 
 # ---------- Main ----------
@@ -336,7 +336,7 @@ def main() -> int:
 
     t0 = time.time()
     flt = load_filters(args.filters)
-    url_srcs, local_srcs = load_sources(args.sources)
+    url_srcs, local_srcs, header_url_tvg = load_sources(args.sources)
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -355,7 +355,7 @@ def main() -> int:
     seen = set()
     per_source = []
     reasons = Counter()
-    examples: dict = defaultdict(list)  # reason -> [примеры]
+    examples: dict = defaultdict(list)
     total_raw = total_kept = total_rej = 0
     header_saved: str | None = None
     directives_kept = 0
@@ -414,7 +414,6 @@ def main() -> int:
                 gen = stream_lines(session, url, args.timeout)
                 header_line = None
                 buffered = []
-                # читаем до HEADER_SCAN_LINES строк, ищем шапку
                 for i, line in enumerate(gen):
                     buffered.append(line)
                     s = line.strip()
@@ -462,10 +461,19 @@ def main() -> int:
             except Exception as e:
                 log(f"  ❌ [{name}] {e}")
 
-    # Если никто не дал url-tvg — подставляем дефолт (iptvx EPG)
-    if not header_saved or "url-tvg" not in header_saved:
-        header_saved = DEFAULT_HEADER
-        log(f"  📌 Шапка не содержала url-tvg → подставил дефолт")
+    # Если url-tvg не найден ни в одном источнике — берём из конфига
+    if header_url_tvg and (not header_saved or "url-tvg" not in header_saved):
+        header_saved = f'#EXTM3U url-tvg="{header_url_tvg}"'
+        log(f"  📌 Шапка без url-tvg → подставил из header_url_tvg конфига")
+
+    # Защита: не затираем существующий лист пустотой
+    if total_kept == 0:
+        body_path.unlink(missing_ok=True)
+        if out_m3u.exists():
+            log(f"⚠️  0 каналов — НЕ перезаписываю {out_m3u}, оставляю старый")
+        else:
+            log(f"⚠️  0 каналов и {out_m3u} нет — не создаю")
+        return 2
 
     with out_m3u.open("w", encoding="utf-8") as fo, \
          body_path.open("r", encoding="utf-8") as fi:
@@ -476,6 +484,7 @@ def main() -> int:
 
     stats = {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "total_sources_ok": sum(1 for s in per_source if s.get("kept", 0) > 0),
         "duration_sec": round(time.time() - t0, 1),
         "strip_trackers": bool(args.strip_trackers),
         "header_saved": header_saved,
@@ -495,7 +504,7 @@ def main() -> int:
     log("📋 Примеры (до 3 URL на причину):")
     for r in sorted(examples):
         if r == "duplicate_url":
-            continue  # дубли не интересны
+            continue
         log(f"   🔍 {r}:")
         for ex in examples[r]:
             log(f"      • {ex[:140]}")
