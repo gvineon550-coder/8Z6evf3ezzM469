@@ -1,5 +1,5 @@
 #EXTM3U url-tvg="http://epg.one/epg.xml; http://uztv.su/uploads/channelsarch/channels.xml; https://iptvx.one/EPG_NOARCH; http://gabbarit.drm-play.com/epg_lite.xml.gz; http://epg.cdntv.online/lite.xml; http://epg.it999.ru/epg.xml; http://iptv-content.rv77.pw/guide-lite.xml"
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/33/8channeltv.png" group-title="📺 Основные",8 канал
+#EXTINF:-1 tvg-id="Channel8.by" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/33/8channeltv.png" group-title="📺 Основные",8 канал
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-a308d006109b1c1f/video.m3u8
 #EXTINF:-1 tvg-id="rtd-ru" tvg-logo="https://epg.iptvx.one/picons/rt-doc.png" group-title="📺 Основные",RT Doc HD

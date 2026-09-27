@@ -1,8 +1,8 @@
 #EXTM3U url-tvg="http://epg.one/epg.xml; http://uztv.su/uploads/channelsarch/channels.xml; https://iptvx.one/EPG_NOARCH; http://gabbarit.drm-play.com/epg_lite.xml.gz; http://epg.cdntv.online/lite.xml; http://epg.it999.ru/epg.xml; http://iptv-content.rv77.pw/guide-lite.xml"
-#EXTINF:-1 tvg-logo="https://i.imgur.com/GET9Qut.png" group-title="🎬 Кино",.Red
+#EXTINF:-1 tvg-id="red.ru" tvg-logo="https://i.imgur.com/GET9Qut.png" group-title="🎬 Кино",.Red
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.100.46.245:90/red/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/0La6W4x.png" group-title="🎬 Кино",.Sci-Fi
+#EXTINF:-1 tvg-id="SciFi.au" tvg-logo="https://i.imgur.com/0La6W4x.png" group-title="🎬 Кино",.Sci-Fi
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-e80cc885d4ae14d1/video.m3u8
 #EXTINF:-1 tvg-id="amedia1" tvg-logo="https://epg.iptvx.one/picons/amedia1.png" group-title="🎬 Кино",Amedia 1 HD
@@ -20,7 +20,7 @@ http://stream.mcquack.net/73/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="Cinema.ru@SD" tvg-logo="https://i.imgur.com/B5UN7C8.png",Cinema
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream8.cinerama.uz/1227/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/B5UN7C8.png" group-title="🎬 Кино",Cinema
+#EXTINF:-1 tvg-id="AzCinema.mx" tvg-logo="https://i.imgur.com/B5UN7C8.png" group-title="🎬 Кино",Cinema
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.46.16.239:8000/Cinema
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="Cinema.ru@SD",Cinema (576p)
@@ -107,19 +107,19 @@ https://tinyurl.com/upwnsw7p/31629/index.m3u8
 #EXTINF:-1 tvg-id="flixsnip" tvg-logo="https://epg.iptvx.one/picons/flixsnip.png" group-title="🎬 Кино",FlixSnip HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tinyurl.com/teh55yef/10060/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/1j7cT2I.png" group-title="🎬 Кино",Hollywood
+#EXTINF:-1 tvg-id="Hollywood.ru" tvg-logo="https://i.imgur.com/1j7cT2I.png" group-title="🎬 Кино",Hollywood
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/HollywoodHD/index.m3u8
 #EXTINF:-1 tvg-id="kion-xit" tvg-logo="https://epg.iptvx.one/picons/kion-xit.png" group-title="🎬 Кино",Kion Хит HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tinyurl.com/teh55yef/20211/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/V1kDv8H.png" group-title="🎬 Кино",Plan B
+#EXTINF:-1 tvg-id="PlanB.ru" tvg-logo="https://i.imgur.com/V1kDv8H.png" group-title="🎬 Кино",Plan B
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/196/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="StarCinema.ru@SD" tvg-logo="https://i.imgur.com/5sis895.png",Star Cinema
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://dash2.antik.sk/live/test_star_cinema_atktv/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png" group-title="🎬 Кино",Start Air HD
+#EXTINF:-1 tvg-id="STARTAir.ru" tvg-logo="https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png" group-title="🎬 Кино",Start Air HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tinyurl.com/4tfv9tup/18036/index.m3u8
 #EXTINF:-1 tvg-id="sumiko" tvg-logo="https://epg.iptvx.one/picons/sumiko.png" group-title="🎬 Кино",Sumiko
@@ -146,19 +146,19 @@ https://tinyurl.com/teh55yef/5006/index.m3u8
 #EXTINF:-1 tvg-id="vhska-serial" tvg-logo="https://static.kion.ru/tv/channels/images/formats/BLACK_AND_WHITE_d6dfac5490b4dfe7efb5690da846bf3c.png" group-title="🎬 Кино",VHS-ка Сериал HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tinyurl.com/teh55yef/31931/index.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/YoNOFu7.png" group-title="🎬 Кино",Vip Comedy HD
+#EXTINF:-1 tvg-id="vijuPlusComedy.ru" tvg-logo="https://i.imgur.com/YoNOFu7.png" group-title="🎬 Кино",Vip Comedy HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-c385ec3bab3a3605/video.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/oIQNddV.png" group-title="🎬 Кино",Vip Megahit HD
+#EXTINF:-1 tvg-id="vijuPlusMegahit.ru" tvg-logo="https://i.imgur.com/oIQNddV.png" group-title="🎬 Кино",Vip Megahit HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-3d1cedf99303d057/video.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/klRvhR5.png" group-title="🎬 Кино",Vip Premiere HD
+#EXTINF:-1 tvg-id="vijuPlusPremiere.ru" tvg-logo="https://i.imgur.com/klRvhR5.png" group-title="🎬 Кино",Vip Premiere HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-e107d21a90cb808f/video.m3u8
 #EXTINF:-1 tvg-id="blokbaster-hd" tvg-logo="https://epg.iptvx.one/picons/blokbaster.png" group-title="🎬 Кино",Блокбастер HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tinyurl.com/2x47stw5/1031.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/8LPtPf6.png" group-title="🎬 Кино",Еврокино
+#EXTINF:-1 tvg-id="Evrokino.ru" tvg-logo="https://i.imgur.com/8LPtPf6.png" group-title="🎬 Кино",Еврокино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/eurokino/tracks-v1a1/mono.ts.m3u8?token=onlinetv
 #EXTINF:-1 tvg-id="kineko" tvg-logo="https://epg.iptvx.one/picons/kineko.png" group-title="🎬 Кино",Кинеко
@@ -173,7 +173,7 @@ http://176.118.197.101/Kinopokaz/index.m3u8
 #EXTINF:-1 tvg-id="kinopremiera-hd" tvg-logo="https://epg.iptvx.one/picons/kinopremiera.png" group-title="🎬 Кино",Кинопремьера HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinopremiera_hd/tracks-v1a1/mono.ts.m3u8?token=onlinetv
-#EXTINF:-1 tvg-logo="https://i.imgur.com/7KsNvBz.png" group-title="🎬 Кино",Киносат
+#EXTINF:-1 tvg-id="KinoSat.ru" tvg-logo="https://i.imgur.com/7KsNvBz.png" group-title="🎬 Кино",Киносат
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-e055808223a74709/video.m3u8
 #EXTINF:-1 tvg-id="kinosemiya" tvg-logo="https://epg.iptvx.one/picons/kinosemia.png" group-title="🎬 Кино",Киносемья
@@ -209,7 +209,7 @@ https://tinyurl.com/2x47stw5/902.m3u8
 #EXTINF:-1 tvg-id="premialnoe-hd" tvg-logo="https://epg.iptvx.one/picons/premialnoe-hd.png" group-title="🎬 Кино",Премиальное HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tinyurl.com/2x47stw5/901.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/RlsqFN8.png" group-title="🎬 Кино",Русский Иллюзион
+#EXTINF:-1 tvg-id="RusskiyIllusion.ru" tvg-logo="https://i.imgur.com/RlsqFN8.png" group-title="🎬 Кино",Русский Иллюзион
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.46.16.239:8000/Russkiy_Illyuzion
 #EXTINF:-1 tvg-id="khit-hd" tvg-logo="https://epg.iptvx.one/picons/khit.png" group-title="🎬 Кино",Хит HD

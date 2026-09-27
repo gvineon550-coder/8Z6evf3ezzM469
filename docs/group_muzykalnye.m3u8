@@ -29,7 +29,7 @@ http://livestream.siliconweb.com/live/kissfm/index.m3u8
 #EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://i.imgur.com/dQJQv1X.png" group-title="Музыкальные",Kronehit
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://bitcdn-kronehit.bitmovin.com/v2/hls/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/auNdGeW.png" group-title="Музыкальные",Mezzo
+#EXTINF:-1 tvg-id="Mezzo.fr" tvg-logo="https://i.imgur.com/auNdGeW.png" group-title="Музыкальные",Mezzo
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-3.otcnet.ru/Mezzo/index.m3u8
 #EXTINF:-1 tvg-id="no_epg_music" tvg-logo="http://i115.fastpic.org/big/2021/0924/b4/206c12e5512b5f3646db19d45c620bb4.png" group-title="Музыкальные",radio m2o
@@ -44,6 +44,9 @@ https://edge1-eu-west.picarto.tv/stream/hls/golive+TMFRUS/1_0/index.m3u8
 #EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://telik.live/images/v2beat.png" group-title="Музыкальные",V2BEAT HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://de1se01.v2beat.live/playlist.m3u8
-#EXTINF:-1 tvg-logo="https://i.imgur.com/Fk4sd8t.png" group-title="Музыкальные",Шансон ТВ
+#EXTINF:-1 tvg-id="viva-rus" tvg-logo="https://epg.iptvx.one/picons/viva-rus.png" group-title="Музыкальные",VIVA Russia
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8
+#EXTINF:-1 tvg-id="ShansonTV.ru" tvg-logo="https://i.imgur.com/Fk4sd8t.png" group-title="Музыкальные",Шансон ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-181e3f7698288892/video.m3u8

@@ -178,9 +178,6 @@ https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
 https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@SD",Channel One (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://45.153.24.78/1TV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@SD",Channel One (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.217.49.7/1/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOneCIS.ru@SD",Channel One CIS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
@@ -437,9 +434,6 @@ http://stream.mcquack.net/64/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopremyera.ru@SD" tvg-logo="https://i.imgur.com/s0UYT8T.png",Kinopremyera
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream8.cinerama.uz/1207/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopremyera.ru@SD",Kinopremyera (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.159.128:8070/KINOPREMIERA/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopremyera.ru@HD",Kinopremyera HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinopremiera_hd/mono.m3u8?token=onlinetv
@@ -503,9 +497,6 @@ https://fs.uplink.kz/kvn_tv/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LapkiLive.ru@SD",Lapki Live (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/lapki_live/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LawTV.ru@SD",Law TV (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/406/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Maidan.ru@SD",Maidan (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-maidantv.cdnvideo.ru/maidantv/maidantv.smil/playlist.m3u8
@@ -800,6 +791,9 @@ https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Rossiya1Vainah.ru@SD",Rossiya 1 Vainah (576i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.chechensoft.ru/vainahtv/ngrp:vaynahtv_all/playlist.m3u8
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RT.ru@SD",RT (720p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://212.5.144.156:8080/rt/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTBalkan.ru@SD",RT Balkan (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://rt-srb.rttv.com/dvr/rtbalkan/playlist.m3u8
@@ -977,9 +971,15 @@ https://tv.mediacdn.ru/live/solntse/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SolovyovLive.ru@SD",Solovyov Live (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/solovievlive/playlist_6.m3u8
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SONGTVRussia.ru@SD" tvg-logo="https://i.imgur.com/nM7LbmV.png",SONGTV Russia
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Soyuzny.ru@SD",Soyuzny (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/TRO/index.m3u8
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Soyuzny.ru@SD",Soyuzny (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Spas.ru@SD",Spas (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8
@@ -1466,9 +1466,6 @@ https://hls.tv.3angels.ru/stream.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="HuzurTV.ru@SD",Хузур ТВ (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-mycdn08724960135.cdnvideo.ru/mycdn08724960135/stream1/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShansonTV.ru@SD",Шансон ТВ (512p) [Geo-blocked]
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShansonTV.ru@SD",Шансон ТВ (576p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://uiptv.do.am/1ufc/602079679/playlist.m3u8
