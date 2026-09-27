@@ -8,7 +8,6 @@ RT Doc HD,📺 Основные,rtd-ru,https://epg.iptvx.one/picons/rt-doc.png,h
 НТВ,📺 Основные,ntv,http://epg.propg.net/img/channel_icons/3.png,http://31.131.141.195:8000/play/1040/index.m3u8
 ОНТ HD,📺 Основные,ont-by,https://epg.iptvx.one/picons/ont-by.png,http://194.158.222.36:6102
 Первый,📺 Основные,pervy,http://epg.propg.net/img/channel_icons/1.png,http://31.131.141.195:8000/play/1010/index.m3u8
-Первый FHD,📺 Основные,pervy,https://epg.iptvx.one/picons/pervy.png,https://edge07d.mediavitrina.ru/hls-livef6/1tv/index.m3u8?token=v2.Ibn-3seXzKQRH-0-AS8g5FbvxtKAgNtikaUiP1Nx_sk.FVVUgUnXlLuNIQyOzkjLY9jkVKyvd93-7Mk6MMRFnsQ.1790928714.36e3bc8b0e226fdf87238c9ab29ef472
 Пятница,📺 Основные,piatnica,http://epg.propg.net/img/channel_icons/53.png,http://31.131.141.195:8000/play/2060/index.m3u8
 Пятница! (576p),📺 Основные,Friday.ru@SD,,https://vod.tuva.ru/friday/index.m3u8
 Пятый канал,📺 Основные,5kanal-ru,https://epg.iptvx.one/picons/piaty-int.png,http://31.131.141.195:8000/play/1050/index.m3u8
@@ -448,6 +447,7 @@ Zvezda HD (1080p) [Not 24/7],🇷🇺 Россия,Zvezda.ru@HD,,https://tvchann
 Сочи 24 HD (720p),🇷🇺 Россия,Sochi24.ru@SD,,http://serv30.vintera.tv:8081/sochi/sochi24_tv/playlist.m3u8
 Союз (576p),🇷🇺 Россия,Soyuz.ru@SD,,https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz/soyuz/playlist.m3u8
 Страна FM (720p) [Not 24/7],🇷🇺 Россия,StranaFM.ru@SD,,http://live.stranafm.cdnvideo.ru/stranafm/stranafm_hd.sdp/playlist.m3u8
+Тамыр (Уфа),🇷🇺 Россия,Tamyr.ru@SD,,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8
 Твое TV HD (1080p),🇷🇺 Россия,TvoeTV.ru@SD,,http://tvoetv.space:8080/tvoetv/index.m3u8
 Телеканал 86 (Сургут) (1080p) [Not 24/7],🇷🇺 Россия,86.ru@SD,,https://sitv.ru/hls/s86.m3u8
 ТКР (Рязань) (1080p) [Not 24/7],🇷🇺 Россия,TKR.ru@SD,,http://live.tkr.cdnvideo.ru/tkr/tkr.sdp/playlist.m3u8
@@ -803,6 +803,7 @@ Russian MusicBox (576p),🎵 Музыка,RussianMusicBox.ru@SD,,http://stream.m
 Smotrim 100% Muzhskoe (720p),🎵 Музыка,Smotrim100Muzhskoe.ru@SD,,https://stream.smotrim.ru/hls/fasttv02/playlist_3.m3u8
 Астрахань.Ru TV (480p),🎵 Музыка,AstrahanRuTV.ru@SD,,https://streaming.astrakhan.ru/astrakhanrulivehd/playlist.m3u8
 Radio 1 (720p) [Geo-blocked],📻 Радио,Radio1.ru@SD,,https://stream.radio1.ru/memfs/49dee7fe-77ba-4e6b-8cdc-fa840535b242.m3u8
+Radio Rossii (720p),📻 Радио,RadioRossii.ru@HD,,https://stream.smotrim.ru/hls2/radio_rus/playlist_4.m3u8
 Радио Шансон (720p) [Not 24/7],📻 Радио,RadioShanson.ru@SD,,http://chanson-video.hostingradio.ru:8080/hls/chansonabr/live.m3u8
 Телерадиокомпания 555 (Алушта) (720p),📻 Радио,555.ru@SD,,http://trk555.tv:8888/live
 10's Dance,🎧 Радио Рекорд,no_epg_music,https://www.radiorecord.ru/upload/stations_images/2010_image600_colored_fill.png,https://radiorecord.hostingradio.ru/201096.aacp
@@ -967,4 +968,5 @@ radio m2o,Музыкальные,no_epg_music,http://i115.fastpic.org/big/2021/0
 RU.TV HD,Музыкальные,ru-tv,https://epg.iptvx.one/picons/ru-tv.png,http://flussonic.mkpnet.ru/tv-64b2c4ff13365817/video.m3u8
 TMF RUS,Музыкальные,no_epg_music,https://i.imgur.com/rYe4a8q.png,https://edge1-eu-west.picarto.tv/stream/hls/golive+TMFRUS/1_0/index.m3u8
 V2BEAT HD,Музыкальные,no_epg_music,https://telik.live/images/v2beat.png,http://de1se01.v2beat.live/playlist.m3u8
+VIVA Russia,Музыкальные,viva-rus,https://epg.iptvx.one/picons/viva-rus.png,https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8
 Шансон ТВ,Музыкальные,ShansonTV.ru,https://i.imgur.com/Fk4sd8t.png,https://flussonic.mkpnet.ru/tv-181e3f7698288892/video.m3u8
