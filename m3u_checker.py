@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v10.1 — PWA, темы, CSV, скорость, split-all, дедуп по имени,
-алерт источников, weekly backup, фикс загрузки логотипов (channels + logos).
+M3U Checker v11 — glassmorphism, донат-чарт, спарклайны, live-статус.
 """
 import os
 import re
@@ -41,6 +40,7 @@ USER_AGENTS = [
 ]
 DEFAULT_UA = USER_AGENTS[0][1]
 UA_LINE = f'#EXTVLCOPT:http-user-agent={DEFAULT_UA}'
+UA_ICONS = {'wink': '📺', 'vlc': '🎬', 'tivimate': '📱', 'smarttv': '📡', 'cached': '⚡'}
 
 HEADER_LINE = (
     '#EXTM3U url-tvg="http://epg.one/epg.xml; '
@@ -77,6 +77,11 @@ WHITESPACE = b' \t\r\n'
 SLOW_THRESHOLD = 2.0
 HISTORY_MAX = 30
 
+DONUT_COLORS = [
+    '#4ade80', '#60a5fa', '#facc15', '#f87171', '#a78bfa',
+    '#fb923c', '#34d399', '#f472b6', '#22d3ee', '#fbbf24',
+    '#818cf8', '#fca5a5',
+]
 
 log = logging.getLogger('m3u')
 CFG = None
@@ -85,7 +90,6 @@ FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}}
 
 
-# ---------- ЛОГИ ----------
 def setup_logging(path, quiet):
     log.setLevel(logging.DEBUG)
     log.handlers.clear()
@@ -110,7 +114,6 @@ def emit(text, pbar=None):
         print(text)
 
 
-# ---------- КЭШ URL ----------
 class UrlCache:
     def __init__(self, path, ttl):
         self.ttl = ttl
@@ -187,9 +190,7 @@ def normalize_name(name):
     return re.sub(r'\s+', ' ', n).strip()
 
 
-# ---------- IPTV-ORG ----------
 def _download_json(urls, cache_path):
-    """Скачивает JSON по списку URL, кэширует. Возвращает list или None."""
     os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
     if os.path.isfile(cache_path):
@@ -227,20 +228,16 @@ def load_iptv_org_logos():
     if CFG.no_iptv_logos:
         emit("Логотипы iptv-org: отключено")
         return
-
     emit("  Скачиваю каналы...")
     channels = _download_json(IPTV_ORG_URLS_CHANNELS, IPTV_ORG_CHANNELS_CACHE)
     if not channels:
         emit("  Каналы iptv-org недоступны")
         return
-
     emit("  Скачиваю логотипы...")
     logos = _download_json(IPTV_ORG_URLS_LOGOS, IPTV_ORG_LOGOS_CACHE)
     if not logos:
         emit("  Логотипы iptv-org недоступны")
         return
-
-    # id -> [names]
     id_to_names = {}
     for ch in channels:
         if not isinstance(ch, dict):
@@ -258,8 +255,6 @@ def load_iptv_org_logos():
         elif isinstance(an, str):
             names.append(an)
         id_to_names[cid] = names
-
-    # channel_id -> logo_url (выбираем самое крупное изображение)
     by_id_raw = {}
     for logo in logos:
         if not isinstance(logo, dict):
@@ -273,21 +268,17 @@ def load_iptv_org_logos():
         if cur is None or (w and cur[1] < w):
             by_id_raw[cid] = (url, w)
     by_id = {k: v[0] for k, v in by_id_raw.items()}
-
-    # name -> logo_url
     by_name = {}
     for cid, url in by_id.items():
         for name in id_to_names.get(cid, []):
             k = normalize_name(name)
             if k and k not in by_name:
                 by_name[k] = url
-
     IPTV_LOGOS['by_id'] = by_id
     IPTV_LOGOS['by_name'] = by_name
     emit(f"  Логотипов: {len(by_id)} по id, {len(by_name)} по имени")
 
 
-# ---------- ИСТОЧНИКИ ----------
 def download_url_sources(url_sources, cache_dir):
     os.makedirs(cache_dir, exist_ok=True)
     results = []
@@ -313,7 +304,6 @@ def download_url_sources(url_sources, cache_dir):
     return results
 
 
-# ---------- ПАРСИНГ ----------
 def split_extinf(line):
     in_q = False
     for i, ch in enumerate(line):
@@ -487,7 +477,6 @@ def load_txt_logos(dirs):
     return logos
 
 
-# ---------- ПРОВЕРКИ ----------
 def _try_stream(url, ua):
     try:
         t0 = time.time()
@@ -755,13 +744,10 @@ def write_playlist(path, channels):
 def slugify_group(g):
     s = re.sub(r'^\S+\s+', '', g)
     s = s.lower()
-    translit = {
-        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e',
-        'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
-        'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
-        'ф': 'f', 'х': 'h', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch',
-        'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya',
-    }
+    translit = {'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh',
+                'з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o',
+                'п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'ts',
+                'ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya'}
     out = []
     for ch in s:
         if ch in translit:
@@ -789,7 +775,6 @@ def write_splits(channels, docs_dir, split_all=False):
             fname = f"group_{slug}.m3u8"
             if fname not in splits:
                 splits[fname] = [g]
-
     for fname, groups in splits.items():
         wanted = set(groups)
         sel = []
@@ -816,7 +801,6 @@ def write_csv(channels, path):
             w.writerow([name, group, logo, url])
 
 
-# ---------- ИСТОРИЯ ----------
 def load_history(path):
     if not os.path.isfile(path):
         return []
@@ -831,6 +815,26 @@ def load_history(path):
 def save_history(path, history):
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(history[-HISTORY_MAX:], f, ensure_ascii=False, indent=2)
+
+
+# ---------- SVG-генераторы ----------
+def sparkline_svg(vals, color='#4ade80', w=100, h=24):
+    if not vals or len(vals) < 2:
+        return ''
+    mx = max(vals) or 1
+    n = len(vals)
+    step = w / max(n - 1, 1)
+    pts = []
+    for i, v in enumerate(vals):
+        x = i * step
+        y = h - (v / mx) * (h - 2) - 1
+        pts.append(f"{x:.1f},{y:.1f}")
+    poly = " ".join(pts)
+    area = f"M0,{h} L" + " L".join(pts) + f" L{w},{h} Z"
+    return (f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none" '
+            f'style="width:100%;height:{h}px;display:block;margin-top:8px">'
+            f'<path d="{area}" fill="{color}" fill-opacity="0.15"/>'
+            f'<polyline points="{poly}" fill="none" stroke="{color}" stroke-width="1.5"/></svg>')
 
 
 def render_history_svg(history):
@@ -869,46 +873,147 @@ def render_history_svg(history):
 </svg></div>'''
 
 
-# ---------- CSS/HTML ----------
+def render_donut_svg(groups_dict):
+    if not groups_dict:
+        return ''
+    items = sorted(groups_dict.items(), key=lambda x: -x[1])
+    top = items[:10]
+    rest = sum(c for _, c in items[10:])
+    if rest:
+        top.append(('Прочее', rest))
+    total = sum(c for _, c in top) or 1
+    cx, cy, R, SW = 110, 110, 80, 22
+    C = 2 * 3.14159265 * R
+    svg_parts = [f'<circle cx="{cx}" cy="{cy}" r="{R}" fill="none" '
+                 f'stroke="var(--border)" stroke-width="{SW}"/>']
+    offset = 0
+    legend = []
+    for i, (name, count) in enumerate(top):
+        frac = count / total
+        dash = frac * C
+        color = DONUT_COLORS[i % len(DONUT_COLORS)]
+        svg_parts.append(
+            f'<circle cx="{cx}" cy="{cy}" r="{R}" fill="none" '
+            f'stroke="{color}" stroke-width="{SW}" '
+            f'stroke-dasharray="{dash:.2f} {C - dash:.2f}" '
+            f'stroke-dashoffset="{-offset:.2f}" '
+            f'transform="rotate(-90 {cx} {cy})"/>'
+        )
+        offset += dash
+        legend.append(
+            f'<div class="legend-row">'
+            f'<span class="legend-dot" style="background:{color}"></span>'
+            f'<span class="legend-name">{html.escape(name)}</span>'
+            f'<span class="legend-count">{count}</span>'
+            f'<span class="legend-pct">{frac*100:.1f}%</span></div>'
+        )
+    total_label = f'<text x="{cx}" y="{cy-4}" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="600">{total}</text>'
+    total_sub = f'<text x="{cx}" y="{cy+14}" text-anchor="middle" fill="var(--muted)" font-size="10">КАНАЛОВ</text>'
+    svg = (f'<svg viewBox="0 0 {cx*2} {cy*2}" style="max-width:220px;width:100%">'
+           + "".join(svg_parts) + total_label + total_sub + '</svg>')
+    return f'''<div class="section"><h2>Распределение по группам</h2>
+<div class="donut-wrap">
+<div class="donut-chart">{svg}</div>
+<div class="donut-legend">{"".join(legend)}</div>
+</div></div>'''
+
+
+def health_bar(pct):
+    color = '#4ade80' if pct >= 70 else ('#facc15' if pct >= 40 else '#f87171')
+    return f'''<div class="health-wrap">
+<div class="health-bar"><div style="width:{pct:.1f}%;background:{color}"></div></div>
+<div class="health-label">Здоровье системы: <b style="color:{color}">{pct:.0f}%</b></div>
+</div>'''
+
+
 COMMON_CSS = """
 *{box-sizing:border-box}
 :root{
-  --bg:#0f1115; --panel:#181b20; --border:#23272e;
+  --bg:#0f1115; --panel:rgba(24,27,32,0.72); --border:#23272e;
   --text:#e6e6e6; --muted:#8a8f98; --accent:#60a5fa;
+  --glass-blur:20px;
 }
 [data-theme="light"]{
-  --bg:#f6f7f9; --panel:#ffffff; --border:#e4e6ea;
+  --bg:#f6f7f9; --panel:rgba(255,255,255,0.75); --border:#e4e6ea;
   --text:#1a1d21; --muted:#6b7280; --accent:#2563eb;
 }
-body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);
+html{min-height:100%}
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
 color:var(--text);margin:0;padding:24px;max-width:1100px;margin:0 auto;
-transition:background .2s,color .2s}
-h1{margin:0 0 4px;font-size:22px} h2{font-size:15px;margin:0 0 12px}
+min-height:100vh;
+background:var(--bg);
+background-image:
+  radial-gradient(circle at 15% -10%, rgba(96,165,250,0.12) 0%, transparent 40%),
+  radial-gradient(circle at 85% 0%, rgba(74,222,128,0.10) 0%, transparent 40%),
+  radial-gradient(circle at 50% 100%, rgba(167,139,250,0.06) 0%, transparent 50%);
+background-attachment:fixed;
+transition:background-color .3s,color .3s}
+h1{margin:0 0 4px;font-size:22px;letter-spacing:-.3px}
+h2{font-size:15px;margin:0 0 12px;letter-spacing:-.1px}
 .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
-a{color:var(--accent)}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:12px;margin-bottom:24px}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
-.card .k{font-size:11px;color:var(--muted);text-transform:uppercase}
-.card .v{font-size:22px;font-weight:600;margin-top:6px}
-.card .v.good{color:#4ade80} .card .v.bad{color:#f87171}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:16px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+transition:transform .15s,border-color .15s,box-shadow .15s}
+.card:hover{transform:translateY(-1px);border-color:var(--accent)}
+.card .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.card .v{font-size:26px;font-weight:700;margin-top:6px;letter-spacing:-.5px;
+font-variant-numeric:tabular-nums}
+.card .v.good{color:#4ade80;text-shadow:0 0 24px rgba(74,222,128,0.25)}
+.card .v.bad{color:#f87171}
 .card .v.warn{color:#facc15}
-.section{background:var(--panel);border:1px solid var(--border);border-radius:10px;
-padding:16px;margin-bottom:16px}
+.section{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:18px;margin-bottom:16px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur))}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
-th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase}
-.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--border);
+th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+tr:last-child td{border-bottom:none}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--border);
 font-size:12px;color:var(--muted);margin:2px}
 .back{display:inline-block;margin-bottom:16px;color:var(--accent);text-decoration:none}
-.box{background:var(--panel);border:1px solid var(--border);border-radius:10px;
-padding:18px;margin-bottom:12px}
+.box{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:18px;margin-bottom:12px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur))}
 code{background:var(--bg);padding:3px 8px;border-radius:6px;font-size:13px;
-word-break:break-all;color:#facc15}
+word-break:break-all;color:#facc15;font-family:ui-monospace,Menlo,monospace}
 .theme-btn{position:fixed;top:16px;right:16px;background:var(--panel);
-border:1px solid var(--border);color:var(--text);width:40px;height:40px;
-border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1}
-.theme-btn:hover{background:var(--border)}
+border:1px solid var(--border);color:var(--text);width:42px;height:42px;
+border-radius:50%;cursor:pointer;font-size:18px;z-index:100;line-height:1;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+transition:transform .15s}
+.theme-btn:hover{transform:scale(1.08)}
+.health-wrap{margin-bottom:24px;padding:14px 18px;background:var(--panel);
+border:1px solid var(--border);border-radius:14px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur))}
+.health-bar{height:8px;background:var(--border);border-radius:8px;overflow:hidden}
+.health-bar > div{height:100%;border-radius:8px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.health-label{margin-top:8px;font-size:13px;color:var(--muted)}
+.donut-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.donut-chart{flex:0 0 220px}
+.donut-legend{flex:1;min-width:240px}
+.legend-row{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:13px;
+border-bottom:1px solid var(--border)}
+.legend-row:last-child{border-bottom:none}
+.legend-dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
+.legend-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.legend-count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
+.legend-pct{font-variant-numeric:tabular-nums;color:var(--text);font-size:12px;
+font-weight:500;min-width:44px;text-align:right}
+.wf-status{font-size:13px;margin-bottom:16px;padding:10px 14px;
+background:var(--panel);border:1px solid var(--border);border-radius:12px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur))}
+.copy-btn{background:var(--border);border:none;color:var(--text);padding:6px 12px;
+border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.copy-btn.copied{background:#4ade80;color:#0f1115}
 """
 
 THEME_JS = """
@@ -916,17 +1021,37 @@ THEME_JS = """
 (function(){
   const saved = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', saved);
+
+  function animateCounters(){
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count, 10);
+      if (isNaN(target)) return;
+      const dur = 900;
+      const t0 = performance.now();
+      function step(t){
+        const p = Math.min((t - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(target * eased).toLocaleString('ru-RU');
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target.toLocaleString('ru-RU');
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function(){
     const btn = document.querySelector('.theme-btn');
-    if(!btn) return;
-    btn.textContent = saved === 'dark' ? '☀' : '☾';
-    btn.addEventListener('click', function(){
-      const cur = document.documentElement.getAttribute('data-theme');
-      const nxt = cur === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', nxt);
-      localStorage.setItem('theme', nxt);
-      btn.textContent = nxt === 'dark' ? '☀' : '☾';
-    });
+    if(btn){
+      btn.textContent = saved === 'dark' ? '☀' : '☾';
+      btn.addEventListener('click', function(){
+        const cur = document.documentElement.getAttribute('data-theme');
+        const nxt = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nxt);
+        localStorage.setItem('theme', nxt);
+        btn.textContent = nxt === 'dark' ? '☀' : '☾';
+      });
+    }
+    animateCounters();
   });
 })();
 </script>
@@ -938,21 +1063,24 @@ THEME_BTN = '<button class="theme-btn" aria-label="Theme">☀</button>'
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v10.1 - {date}</title>
+<title>M3U Check v11 - {date}</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
 {theme_btn}
 <a class="back" href="index.html">← на главную</a>
-<h1>M3U Check v10.1</h1>
+<h1>Отчёт проверки</h1>
 <div class="sub">{date} · источников: {n_playlists}</div>
+{health_block}
 <div class="cards">
-<div class="card"><div class="k">Проверено</div><div class="v">{total}</div></div>
-<div class="card"><div class="k">Рабочих</div><div class="v good">{ok}</div></div>
-<div class="card"><div class="k">Отфильтровано</div><div class="v warn">{filtered}</div></div>
-<div class="card"><div class="k">Мёртвых</div><div class="v bad">{dead}</div></div>
-<div class="card"><div class="k">В merged</div><div class="v">{merged}</div></div>
+<div class="card"><div class="k">Проверено</div><div class="v" data-count="{total}">0</div>{sp_total}</div>
+<div class="card"><div class="k">Рабочих</div><div class="v good" data-count="{ok}">0</div>{sp_ok}</div>
+<div class="card"><div class="k">Отфильтровано</div><div class="v warn" data-count="{filtered}">0</div></div>
+<div class="card"><div class="k">Мёртвых</div><div class="v bad" data-count="{dead}">0</div></div>
+<div class="card"><div class="k">В merged</div><div class="v" data-count="{merged}">0</div>{sp_merged}</div>
 <div class="card"><div class="k">Время</div><div class="v">{duration}</div></div>
 </div>
+{donut_block}
 {history_block}
 {ua_block}
 {slow_block}
@@ -962,9 +1090,6 @@ REPORT_T = """<!DOCTYPE html>
 <div class="section"><h2>Фильтры</h2>
 <table><thead><tr><th>Причина</th><th>Каналов</th></tr></thead>
 <tbody>{filter_rows}</tbody></table></div>
-<div class="section"><h2>Группы (итог)</h2>
-<table><thead><tr><th>Группа</th><th>Каналов</th></tr></thead>
-<tbody>{groups_rows}</tbody></table></div>
 {theme_js}
 </body></html>
 """
@@ -982,19 +1107,24 @@ INDEX_T = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="icon.svg">
 <style>{common_css}
 .qr-wrap{{display:flex;gap:20px;align-items:center;flex-wrap:wrap}}
-.qr-wrap img{{background:#fff;padding:10px;border-radius:10px;width:200px;height:200px}}
-.qr-info{{flex:1;min-width:200px}}
+.qr-wrap img{{background:#fff;padding:10px;border-radius:12px;width:200px;height:200px}}
+.qr-info{{flex:1;min-width:200px;display:flex;flex-direction:column;gap:8px}}
+.link-line{{display:flex;gap:8px;align-items:center;flex-wrap:wrap}}
 </style></head><body>
 {theme_btn}
-<h1>IPTV - авто-обновляемый плейлист</h1>
+<h1>IPTV — авто-обновляемый плейлист</h1>
 <div class="sub">Обновлено: {date}</div>
+<div id="wf-status" class="wf-status">Проверяю статус последнего запуска...</div>
 
 <h2>Ссылка для плеера (M3U)</h2>
 <div class="box qr-wrap">
 {qr_block}
 <div class="qr-info">
-<code>{playlist_url}</code>
-<div class="sub" style="margin-top:8px">Скопируй в TiviMate / VLC / OTT Navigator</div>
+<div class="link-line">
+<code id="player-url">{playlist_url}</code>
+<button class="copy-btn" data-target="player-url">📋 Копировать</button>
+</div>
+<div class="sub" style="margin:0">Вставь в TiviMate / VLC / OTT Navigator как Playlist URL</div>
 </div>
 </div>
 
@@ -1009,6 +1139,51 @@ INDEX_T = """<!DOCTYPE html>
 Рабочих: <b>{ok}</b> из <b>{total}</b>
 </div>
 {splits_block}
+<script>
+(function(){{
+  document.querySelectorAll('.copy-btn').forEach(btn => {{
+    btn.addEventListener('click', () => {{
+      const id = btn.dataset.target;
+      const el = document.getElementById(id);
+      if(!el) return;
+      const text = el.textContent;
+      navigator.clipboard.writeText(text).then(() => {{
+        btn.classList.add('copied');
+        const old = btn.textContent;
+        btn.textContent = '✓ Скопировано';
+        setTimeout(() => {{ btn.classList.remove('copied'); btn.textContent = old; }}, 1500);
+      }});
+    }});
+  }});
+
+  const gh = "{github_repo}";
+  if(gh){
+    fetch('https://api.github.com/repos/' + gh + '/actions/workflows/check.yml/runs?per_page=1')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {{
+        if(!d || !d.workflow_runs || !d.workflow_runs.length) return;
+        const run = d.workflow_runs[0];
+        const el = document.getElementById('wf-status');
+        const when = new Date(run.updated_at || run.created_at);
+        const ago = Math.round((Date.now() - when.getTime())/60000);
+        const agoStr = ago < 1 ? 'только что' : ago < 60 ? ago + ' мин назад'
+                       : Math.round(ago/60) + ' ч назад';
+        let html = '';
+        if(run.status === 'in_progress')
+          html = '<span style="color:#facc15">🔄 Идёт проверка…</span>';
+        else if(run.conclusion === 'success')
+          html = '<span style="color:#4ade80">✅ Последняя проверка успешна</span>';
+        else if(run.conclusion === 'failure')
+          html = '<span style="color:#f87171">❌ Последняя проверка упала</span>';
+        else
+          html = '<span style="color:var(--muted)">⏸ Статус: ' + (run.status||'?') + '</span>';
+        html += ' <span style="color:var(--muted);font-size:12px">· ' + agoStr + '</span>';
+        el.innerHTML = html;
+      }})
+      .catch(() => {{}});
+  }}
+}})();
+</script>
 {theme_js}
 </body></html>
 """
@@ -1021,19 +1196,22 @@ CHANNELS_T = """<!DOCTYPE html>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}
 input,select{{background:var(--panel);border:1px solid var(--border);color:var(--text);
-padding:10px 12px;border-radius:8px;font-size:14px;width:100%;
-margin-bottom:10px;font-family:inherit}}
+padding:10px 12px;border-radius:10px;font-size:14px;width:100%;
+margin-bottom:10px;font-family:inherit;backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px)}}
 .controls{{display:grid;grid-template-columns:1fr 220px;gap:10px;margin-bottom:16px}}
 @media(max-width:600px){{.controls{{grid-template-columns:1fr}}}}
-th{{position:sticky;top:0;background:var(--bg)}}
-tr:hover{{background:var(--panel)}}
+th{{position:sticky;top:0;background:var(--bg);backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);z-index:2}}
+tr:hover td{{background:var(--panel)}}
 .logo{{width:32px;height:32px;object-fit:contain;vertical-align:middle;
-background:var(--border);border-radius:4px;padding:2px}}
+background:var(--border);border-radius:6px;padding:3px}}
 .name{{font-weight:500}}
 .group{{color:var(--muted);font-size:12px}}
-.copy{{background:var(--border);border:none;color:var(--muted);padding:4px 8px;
-border-radius:4px;font-size:11px;cursor:pointer}}
+.copy{{background:var(--border);border:none;color:var(--muted);padding:5px 10px;
+border-radius:6px;font-size:11px;cursor:pointer;transition:background .15s}}
 .copy:hover{{background:var(--accent);color:#fff}}
+.copy.ok{{background:#4ade80;color:#0f1115}}
 </style></head><body>
 {theme_btn}
 <a href="index.html">← на главную</a>
@@ -1053,6 +1231,11 @@ const tb = document.getElementById('tb');
 const q = document.getElementById('q');
 const g = document.getElementById('g');
 const shown = document.getElementById('shown');
+
+const params = new URLSearchParams(location.search);
+const initGroup = params.get('group');
+if(initGroup) g.value = initGroup;
+
 function esc(s) {{ return (s||'').replace(/[&<>"']/g, c => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[c])); }}
 function render() {{
   const term = q.value.trim().toLowerCase();
@@ -1073,9 +1256,11 @@ function render() {{
   }}).join('');
   tb.innerHTML = html || '<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:24px">Ничего не найдено</td></tr>';
   shown.textContent = out.length;
-  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', e => {{
+  tb.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {{
     navigator.clipboard.writeText(b.dataset.u).then(() => {{
-      const t = b.textContent; b.textContent = '✓'; setTimeout(() => b.textContent = t, 1000);
+      b.classList.add('ok');
+      const t = b.textContent; b.textContent = '✓';
+      setTimeout(() => {{ b.classList.remove('ok'); b.textContent = t; }}, 1000);
     }});
   }}));
 }}
@@ -1088,10 +1273,22 @@ render();
 """
 
 ICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-<rect width="192" height="192" rx="40" fill="#0f1115"/>
-<rect x="24" y="48" width="144" height="96" rx="12" fill="none" stroke="#4ade80" stroke-width="6"/>
-<path d="M80 80 L80 112 L110 96 Z" fill="#4ade80"/>
-<circle cx="96" cy="160" r="4" fill="#8a8f98"/>
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#4ade80"/>
+<stop offset="1" stop-color="#22d3ee"/>
+</linearGradient>
+<radialGradient id="bg" cx="0.3" cy="0.1" r="1">
+<stop offset="0" stop-color="#1a2332"/>
+<stop offset="1" stop-color="#0f1115"/>
+</radialGradient>
+</defs>
+<rect width="192" height="192" rx="44" fill="url(#bg)"/>
+<rect x="28" y="50" width="136" height="92" rx="14" fill="none" stroke="url(#g)" stroke-width="6"/>
+<path d="M82 78 L82 114 L116 96 Z" fill="url(#g)"/>
+<circle cx="60" cy="164" r="4" fill="#8a8f98"/>
+<circle cx="96" cy="164" r="4" fill="#8a8f98"/>
+<circle cx="132" cy="164" r="4" fill="#8a8f98"/>
 </svg>"""
 
 MANIFEST_T = """{{
@@ -1109,7 +1306,14 @@ MANIFEST_T = """{{
 """
 
 
-def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history):
+def _sparkline_for_history(history, key):
+    vals = [h.get(key, 0) for h in history][-20:]
+    if len(vals) < 2:
+        return ''
+    return sparkline_svg(vals)
+
+
+def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history, groups_all):
     rows_pl = []
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
@@ -1127,16 +1331,10 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history):
     f_rows = "\n".join(f"<tr><td>{html.escape(r)}</td><td>{c}</td></tr>"
                        for r, c in sorted(all_f.items(), key=lambda x: -x[1])) \
              or "<tr><td colspan='2'>нет</td></tr>"
-    all_g = {}
-    for st in stats:
-        for g, c in st['groups'].items():
-            all_g[g] = all_g.get(g, 0) + c
-    g_rows = "\n".join(f"<tr><td>{html.escape(g)}</td><td>{c}</td></tr>"
-                       for g, c in sorted(all_g.items(), key=lambda x: -x[1])) \
-             or "<tr><td colspan='2'>нет</td></tr>"
+
     ua_block = ''
     if ua:
-        tags = " ".join(f"<span class='tag'>{html.escape(k)}: {v}</span>"
+        tags = " ".join(f"<span class='tag'>{UA_ICONS.get(k,'•')} {html.escape(k)}: {v}</span>"
                         for k, v in sorted(ua.items(), key=lambda x: -x[1]))
         ua_block = f"<div class='section'><h2>По User-Agent</h2><div>{tags}</div></div>"
 
@@ -1157,19 +1355,44 @@ def render_report(path, stats, merged, total, ok, filt, dead, dur, ua, history):
             f"<tbody>{rows}</tbody></table></div>")
 
     hist_block = render_history_svg(history)
+    donut_block = render_donut_svg(groups_all)
+
+    # Здоровье = ok / (ok + dead) — без отфильтрованных
+    denom = (ok + dead) or 1
+    hpct = (ok / denom) * 100
+    hb = health_bar(hpct)
+
+    # Спарклайны
+    sp_total = _sparkline_for_history(history, 'total')
+    sp_ok = _sparkline_for_history(history, 'ok')
+    sp_merged = _sparkline_for_history(history, 'merged')
+
     d = int(dur)
     out = REPORT_T.format(
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         n_playlists=len(stats), total=total, ok=ok, filtered=filt, dead=dead,
         merged=merged, duration=f"{d // 60}м {d % 60}с",
-        history_block=hist_block, ua_block=ua_block, slow_block=slow_block,
-        playlists_rows="\n".join(rows_pl), filter_rows=f_rows, groups_rows=g_rows)
+        health_block=hb,
+        history_block=hist_block, donut_block=donut_block,
+        ua_block=ua_block, slow_block=slow_block,
+        sp_total=sp_total, sp_ok=sp_ok, sp_merged=sp_merged,
+        playlists_rows="\n".join(rows_pl), filter_rows=f_rows)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
 
 
-def render_index(path, url, merged, ok, total, splits, qr_path):
+def _github_repo_from_pages(pages_url):
+    """Из https://USER.github.io/REPO делает USER/REPO."""
+    if not pages_url:
+        return ''
+    m = re.match(r'https?://([^.]+)\.github\.io/([^/]+)', pages_url)
+    if m:
+        return f"{m.group(1)}/{m.group(2)}"
+    return ''
+
+
+def render_index(path, url, merged, ok, total, splits, qr_path, pages_url):
     split_html = ''
     if splits:
         items = "\n".join(
@@ -1180,11 +1403,13 @@ def render_index(path, url, merged, ok, total, splits, qr_path):
         qr_block = f'<img src="{os.path.basename(qr_path)}" alt="QR">'
     else:
         qr_block = ''
+    gh_repo = _github_repo_from_pages(pages_url)
     out = INDEX_T.format(
         common_css=COMMON_CSS, theme_btn=THEME_BTN, theme_js=THEME_JS,
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         playlist_url=url, merged_count=merged, ok=ok, total=total,
-        qr_block=qr_block, splits_block=split_html)
+        qr_block=qr_block, splits_block=split_html,
+        github_repo=gh_repo)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(out)
 
@@ -1229,7 +1454,6 @@ def generate_qr(url, path):
         return False
 
 
-# ---------- TELEGRAM ----------
 def tg_send(token, chat, text):
     if not token or not chat:
         return False
@@ -1259,7 +1483,7 @@ def tg_file(token, chat, path, caption=''):
 
 def tg_report(stats, total, ok, filt, merged, dur, index_url,
               source_results, is_weekly):
-    lines = ["<b>M3U Check v10.1</b>"]
+    lines = ["<b>M3U Check v11</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -1273,21 +1497,18 @@ def tg_report(stats, total, ok, filt, merged, dur, index_url,
     for st in stats:
         pct = (st['ok'] / st['total'] * 100) if st['total'] else 0
         lines.append(f"• {html.escape(st['label'])}: {st['ok']}/{st['total']} ({pct:.0f}%)")
-
     bad_sources = [(n, err) for n, ok_, err in source_results if not ok_]
     if bad_sources:
         lines.append("")
         lines.append("<b>⚠️ Проблемные источники:</b>")
         for n, err in bad_sources:
             lines.append(f"• {html.escape(n)}: {html.escape(str(err))[:80]}")
-
     if index_url:
         lines.append("")
         lines.append(f'<a href="{index_url}">Открыть страницу</a>')
     tg_send(CFG.tg_token, CFG.tg_chat, "\n".join(lines))
 
 
-# ---------- MAIN ----------
 def parse_args():
     p = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     p.add_argument('--sources', default='sources.json')
@@ -1428,11 +1649,16 @@ def main():
         })
         save_history(history_path, history)
 
+        groups_all = {}
+        for e, _ in ordered_merged:
+            g = get_group(e) or '(без группы)'
+            groups_all[g] = groups_all.get(g, 0) + 1
+
         write_csv(ordered_merged, os.path.join(CFG.docs_dir, 'channels.csv'))
 
         render_report(os.path.join(CFG.docs_dir, 'report.html'),
                       stats_list, len(ordered_merged), total, ok, filt, dead,
-                      time.time() - started, ua_totals, history)
+                      time.time() - started, ua_totals, history, groups_all)
 
         pages = CFG.pages_url.rstrip('/')
         purl = f'{pages}/{CFG.merged_name}' if pages else CFG.merged_name
@@ -1441,7 +1667,7 @@ def main():
         if pages and HAS_QR:
             generate_qr(purl, qr_path)
         render_index(os.path.join(CFG.docs_dir, 'index.html'),
-                     purl, len(ordered_merged), ok, total, splits, qr_path)
+                     purl, len(ordered_merged), ok, total, splits, qr_path, pages)
         render_channels(os.path.join(CFG.docs_dir, 'channels.html'), ordered_merged)
         write_pwa_assets(CFG.docs_dir)
 
@@ -1455,7 +1681,6 @@ def main():
             if CFG.tg_send_merged and merged_path:
                 tg_file(CFG.tg_token, CFG.tg_chat, merged_path,
                         caption="Merged плейлист")
-
             if CFG.weekly_backup:
                 for fn in ('report.html', 'channels.csv', 'channels.html'):
                     fp = os.path.join(CFG.docs_dir, fn)
