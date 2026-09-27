@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v20.1 — фикс погоды (wttr.in + Open-Meteo с резервом).
+M3U Checker v20.2 — фикс User-Agent для ffprobe (ufotv-каналы вернутся).
 """
 import os
 import re
@@ -405,6 +405,7 @@ def ffprobe_check(url):
                  '-show_streams', '-show_format',
                  '-analyzeduration', '3000000',
                  '-probesize', '1000000',
+                 '-user_agent', DEFAULT_UA,
                  '-i', url],
                 capture_output=True, timeout=CFG.ffprobe_timeout
             )
@@ -1834,7 +1835,6 @@ THEME_JS = """
     return '⛈️';
   }
 
-  // Погода: сначала wttr.in, потом Open-Meteo, иначе просто "Нальчик"
   async function updateWeather(){
     const el = document.getElementById('weather');
     if (!el) return;
@@ -1972,7 +1972,7 @@ TOP_RIGHT_WIDGET = '''<div class="top-right">
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check v20.1 - {date}</title>
+<title>M3U Check v20.2 - {date}</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>{common_css}</style>
 </head><body>
@@ -2757,7 +2757,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v20.1</b>"]
+    lines = ["<b>M3U Check v20.2</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -2853,7 +2853,7 @@ def main():
 
     if CFG.ffprobe:
         if HAS_FFPROBE:
-            emit("ffprobe: включён (все каналы через реальную проверку)")
+            emit("ffprobe: включён (все каналы через реальную проверку, UA=wink)")
         else:
             emit("ffprobe: НЕ НАЙДЕН в системе, пропускаем проверку")
             CFG.ffprobe = False
