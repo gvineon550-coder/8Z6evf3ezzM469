@@ -14,9 +14,7 @@ Bass House,,https://radiorecord.hostingradio.ru/jackin96.aacp,dead:ffprobe
 Beach Party,,https://radiorecord.hostingradio.ru/beach96.aacp,dead:ffprobe
 Big Hits,,https://radiorecord.hostingradio.ru/bighits96.aacp,dead:ffprobe
 Black Rap,,https://radiorecord.hostingradio.ru/yo96.aacp,dead:ffprobe
-Bober (576p),,http://88.212.15.19/live/test_bober/playlist.m3u8,dead:ffprobe
 Breaks,,https://radiorecord.hostingradio.ru/brks96.aacp,dead:ffprobe
-Carousel (576p),,http://88.212.15.19/live/test_karusel/playlist.m3u8,dead:ffprobe
 Channel 10 (576i),,https://bl.rutube.ru/livestream/c9e26bf5c003fd8d477200065ca1a05f/index.m3u8?e=2072611029&s=eqlTXebDP9wSWTZgre6BwQ&scheme=https,dead:ffprobe
 Channel 5 International (576i),,https://cdn4.skygo.mn/live/disk1/Channel_5/HLSv3-FTA/Channel_5.m3u8,dead:ffprobe
 Chill House,,https://radiorecord.hostingradio.ru/chillhouse96.aacp,dead:ffprobe
@@ -32,8 +30,6 @@ Deep,,https://radiorecord.hostingradio.ru/deep96.aacp,dead:ffprobe
 Disco/Funk,,https://radiorecord.hostingradio.ru/discofunk96.aacp,dead:ffprobe
 DJ Gvozd,,https://radiorecord.hostingradio.ru/djgvozd96.aacp,dead:ffprobe
 DJ Цветкоff,,https://radiorecord.hostingradio.ru/tsvetkov96.aacp,dead:ffprobe
-Dom kino (576p),,http://88.212.15.19/live/test_dom_kino/playlist.m3u8,dead:ffprobe
-Dom kino Premium (576p),,http://88.212.15.19/live/test_dom_kino_premium/playlist.m3u8,dead:ffprobe
 Dream Dance,,https://radiorecord.hostingradio.ru/dream96.aacp,dead:ffprobe
 Dream Pop,,https://radiorecord.hostingradio.ru/dreampop96.aacp,dead:ffprobe
 Dubstep,,https://radiorecord.hostingradio.ru/dub96.aacp,dead:ffprobe
@@ -69,15 +65,12 @@ Megamix,,https://radiorecord.hostingradio.ru/mix96.aacp,dead:ffprobe
 Melodic Techno,,https://radiorecord.hostingradio.ru/melodic96.aacp,dead:ffprobe
 Midtempo,,https://radiorecord.hostingradio.ru/mt96.aacp,dead:ffprobe
 Minimal/Tech,,https://radiorecord.hostingradio.ru/mini96.aacp,dead:ffprobe
-Mir Kazakhstan (576p),,http://tvcdn01.esilnet.kz/tv/mir/index.m3u8,dead:ffprobe
 Moombahton,,https://radiorecord.hostingradio.ru/mmbt96.aacp,dead:ffprobe
-Muzyka Pervogo (576p),,http://88.212.15.19/live/test_muzyka_pervogo/playlist.m3u8,dead:ffprobe
 Nejtrino & Baur,,https://radiorecord.hostingradio.ru/nejtrinobaur96.aacp,dead:ffprobe
 Neurofunk,,https://radiorecord.hostingradio.ru/neurofunk96.aacp,dead:ffprobe
-NST (576p),,https://vod.tuva.ru/nst/index.m3u8,dead:ffprobe
+Nostalgia (576p),,http://176.118.197.101/Nostalgiya/index.m3u8,dead:ffprobe
 NTV HD (1080p),,https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?e=2077050299&s=HSWg81JrQ3OqmwuWkEIDAQ&scheme=https,dead:ffprobe
-NTV SD (576p),,https://cdn.ntv.ru/ntv-spb/index.m3u8,dead:ffprobe
-NTV Vitrina (720p),,https://cdn.ntv.ru/vitrina/index.m3u8,dead:ffprobe
+NTV HD (1080p),,https://cdn-dvr.ntv.ru/ntv0_hd/index.m3u8,dead:ffprobe
 Nu Dance,,https://radiorecord.hostingradio.ru/nudance96.aacp,dead:ffprobe
 Old School,,https://hls-01-radiorecord.hostingradio.ru/record-rap/96/playlist.m3u8,dead:ffprobe
 Oliver Heldens,,https://radiorecord.hostingradio.ru/oliverheldens96.aacp,dead:ffprobe
@@ -119,13 +112,12 @@ Sportivnyy (1080p),,https://live-3.otcnet.ru/sportivny/index.m3u8,dead:ffprobe
 Subbota! (1080p),,https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?e=2066519758&s=dmUf6BUQzDBTwtQOseAfog&scheme=https,dead:ffprobe
 Summer Dance,,https://radiorecord.hostingradio.ru/summerparty96.aacp,dead:ffprobe
 Summer Lounge,,https://radiorecord.hostingradio.ru/summerlounge96.aacp,dead:ffprobe
-Svoboda,,http://88.212.15.19/live/svoboda/index.m3u8,dead:ffprobe
 Synthwave,,https://radiorecord.hostingradio.ru/synth96.aacp,dead:ffprobe
 Tech House,,https://radiorecord.hostingradio.ru/techouse96.aacp,dead:ffprobe
 Techno,,https://radiorecord.hostingradio.ru/techno96.aacp,dead:ffprobe
 Technopop,,https://radiorecord.hostingradio.ru/technopop96.aacp,dead:ffprobe
 Tecktonik,,https://radiorecord.hostingradio.ru/tecktonik96.aacp,dead:ffprobe
-Telecafe (576p),,http://88.212.15.19/live/test_telecafe_tv/playlist.m3u8,dead:ffprobe
+TeleDom,,https://iam-profi.ru/hls-live/livepkgr/_definst_/liveevent/td720.m3u8,dead:ffprobe
 Tiesto,,https://radiorecord.hostingradio.ru/tiesto96.aacp,dead:ffprobe
 TOP 100 EDM,,https://radiorecord.hostingradio.ru/top100edm96.aacp,dead:ffprobe
 Trance Classics,,https://radiorecord.hostingradio.ru/trancehits96.aacp,dead:ffprobe
@@ -142,8 +134,8 @@ Univer TV (1080p) [Not 24/7],,https://cdn.universmotri.ru/live/smil:mbr.smil/pla
 Uplifting,,https://radiorecord.hostingradio.ru/uplift96.aacp,dead:ffprobe
 VIP House,,https://radiorecord.hostingradio.ru/vip96.aacp,dead:ffprobe
 Vmeste-RF (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7006.m3u8,dead:ffprobe
-Vremya (576p),,http://88.212.15.19/live/test_vremya/playlist.m3u8,dead:ffprobe
 Workout,,https://radiorecord.hostingradio.ru/workout96.aacp,dead:ffprobe
+Zvezda HD (1080p) [Not 24/7],,https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8,dead:ffprobe
 Астрахань 24 (720p),,https://streaming.astrakhan.ru/astrakhan24/playlist.m3u8,dead:ffprobe
 Астрахань.Ru Sport (720p),,https://streaming.astrakhan.ru/astrakhanrusporthd/playlist.m3u8,dead:ffprobe
 Астрахань.Ru TV (480p),,https://streaming.astrakhan.ru/astrakhanrulivehd/playlist.m3u8,dead:ffprobe
@@ -156,9 +148,9 @@ Workout,,https://radiorecord.hostingradio.ru/workout96.aacp,dead:ffprobe
 Медляк FM,,https://radiorecord.hostingradio.ru/mdl96.aacp,dead:ffprobe
 На Хайпе,,https://radiorecord.hostingradio.ru/hype96.aacp,dead:ffprobe
 На шашлыки!,,https://radiorecord.hostingradio.ru/nashashlyki96.aacp,dead:ffprobe
-Нано ТВ HD (576p),,http://s1.tv-nano.com/Nano_rec/index.m3u8,dead:ffprobe
 Нафталин FM,,https://radiorecord.hostingradio.ru/naft96.aacp,dead:ffprobe
 Прима (1080p),,https://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Prima/hls/index.m3u8,dead:ffprobe
+Пятница! (576p),,https://vod.tuva.ru/friday/index.m3u8,dead:ffprobe
 РБК (СПБ) (576p),,https://online-video.rbc.ru/spb/rbctv_spb.m3u8,dead:ffprobe
 РБК-ТВ,,http://online-video.rbc.ru/online2/rbctv.m3u8,dead:ffprobe
 Рекорд 00-х,,https://radiorecord.hostingradio.ru/200096.aacp,dead:ffprobe
@@ -172,7 +164,6 @@ Workout,,https://radiorecord.hostingradio.ru/workout96.aacp,dead:ffprobe
 Телплюс ТВ (Астрахань) (360p) [Not 24/7],,https://streaming.astrakhan.ru/telplushd/playlist.m3u8,dead:ffprobe
 Три Ангела (720p),,https://hls.tv.3angels.ru/stream.m3u8,dead:ffprobe
 Хиты всех времен,,https://radiorecord.hostingradio.ru/alltimers96.aacp,dead:ffprobe
-Шансон ТВ (576p) [Geo-blocked],,https://uiptv.do.am/1ufc/602079679/playlist.m3u8,dead:ffprobe
 Щёлковское ТВ (576p) [Not 24/7],,http://stream0.tv41.ru/live.m3u8,dead:ffprobe
 Aisman,Kinowalk TV,http://kinowalk.hopto.org/aisman_live,dead:ffprobe
 AkudjiTV,Kinowalk TV,http://kinowalk.hopto.org/akudjitv_live,dead:ffprobe
@@ -240,21 +231,21 @@ Marvel,Кино,https://bl.rutube.ru/livestream/3abeb7577fd38ac4b8130bb8e03418f2
 Звездные войны,Кино,https://bl.rutube.ru/livestream/dcd36c7833f9431e6e6c902515c6c3ac/index.m3u8?s=V6xxaC-8NJNujIneTTwOQQ&e=2088894152&scheme=https,dead:ffprobe
 Кино и Жизнь HD,Кино,https://bl.rutube.ru/livestream/09e51eefa939595a4ac67182c6fb3e4e/index.m3u8?s=ix0NUYiM353oJ7eEIovyVA&e=2066519843&scheme=https,dead:ffprobe
 Кинолаффка HD,Кино,https://bl.rutube.ru/livestream/3b7d1499da9396462bfd17282d758d30/index.m3u8?s=uWEwgWbkG33r2o5mU0X38A&e=2082027011&scheme=https,dead:ffprobe
+Любимое кино,Кино,http://176.118.197.101/LubimoeKino/index.m3u8,dead:ffprobe
 Твой кинотеатр,Кино,https://bl.rutube.ru/livestream/e08e513c4e33f52fce3a975b5cb6932c/index.m3u8?s=CDANA7lfLAqGndYFwAD5Eg&e=2088894154&scheme=https,dead:ffprobe
 Bridge TV FRESH,Музыкальные,http://stream-tv-prostar.hf.space/ch/9230?key=AB001829BB,dead:ffprobe
 Deejay TV,Музыкальные,https://4c4b867c89244861ac216426883d1ad0.msvdn.net/live/S85984808/sMO0tz9Sr2Rk/playlist.m3u8,dead:ffprobe
 FON Music HD,Музыкальные,https://bl.rutube.ru/livestream/5a294ae1ed12c44c7053301fb5fa9ba0/index.m3u8?s=6QcJACKS47Q7h0LTv8kAgw&e=2071746933&scheme=https,dead:ffprobe
-Mezzo,Музыкальные,http://live-3.otcnet.ru/Mezzo/index.m3u8,dead:ffprobe
 MM TB rut,Музыкальные,https://bl.rutube.ru/livestream/965a025e4ebbaf0957415f80c6de8534/index.m3u8?s=v7dOOrEjRKjoFtTAlfRRcg&e=2088807401&scheme=https,dead:ffprobe
 Record Megamix,Музыкальные,https://bl.rutube.ru/livestream/60b73481dcc9880850f22690142c8d17/index.m3u8?s=A6TrQmZyPv2n8X6TnDy-AA&e=2068506969&scheme=https,dead:ffprobe
 VB Eurodance Hits of 90s & Dance Hits of 90s,Музыкальные,http://kinowalk.hopto.org/vb_edh90sanddh90s_live,dead:ffprobe
 VB Greatest Hits & Romantic and Ballads,Музыкальные,http://kinowalk.hopto.org/gh_and_randb_live,dead:ffprobe
 VB MTV Old Россия,Музыкальные,http://kinowalk.hopto.org/vovanb_iptv_live,dead:ffprobe
 VB Русская Танцевальная Попса 80х-90х,Музыкальные,http://kinowalk.hopto.org/vbrusdancepops80_live,dead:ffprobe
+VIVA Russia,Музыкальные,https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8,dead:ffprobe
 VIVA Russia rut,Музыкальные,https://bl.rutube.ru/livestream/f712ae5ff3db23ec09b3674133d44daa/index.m3u8?s=gMiCSZ4n6zXhu914XD0K0Q&e=2088807415&scheme=https,dead:ffprobe
 Муз ТВ HD,Музыкальные,https://bl.rutube.ru/livestream/df6fe73494a26f74da51573fd97b9baa/index.m3u8?s=JTAW4J-xV9JKMAUbJmgmIQ&e=2068506966&scheme=https,dead:ffprobe
 360° HD,Основные,https://bl.rutube.ru/livestream/07beff61e617797db550cc3a5f6ad92b/index.m3u8?s=8uNH_vgO7peCdRd0GvteNg&e=2077359351&scheme=https,dead:ffprobe
-RT Doc HD,Основные,https://flussonic.mkpnet.ru/tv-501eac834b24c3cf/video.m3u8,dead:ffprobe
 THT HD,Основные,https://bl.rutube.ru/livestream/546602986e6a424d74d594876ddb3f04/index.m3u8?s=E0R2kfCL_-Hcl58HPM1jgA&e=2072222110&scheme=https,dead:ffprobe
 Звезда HD,Основные,https://tvzvezda.bonus-tv.ru/cdn/tvzvezda/playlist.m3u8,dead:ffprobe
 КРИК-ТВ HD,Основные,https://bl.rutube.ru/livestream/f372aa2aff09518d050ecdf70956012c/index.m3u8?s=zqF8COx7qN-jbhFv7NK-7A&e=2066519811&scheme=https,dead:ffprobe
@@ -262,8 +253,10 @@ THT HD,Основные,https://bl.rutube.ru/livestream/546602986e6a424d74d59487
 Москва 24,Основные,https://bl.rutube.ru/livestream/ca70d39eba2e8771358bbcb4bfbad860/index.m3u8?s=2hpFHyGd4ABvaVKRieBvOg&e=2077359297&scheme=https,dead:ffprobe
 НТВ HD,Основные,https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?s=KRpRtdju100oOaCoxpKyPg&e=2066519750&scheme=https,dead:ffprobe
 ОТР,Основные,https://bl.rutube.ru/livestream/faa934385b83f9e8a92f5484defae5fa/index.m3u8?s=ZmLtvCuYVyFf-diSZ0THiw&e=2090404670&scheme=https,dead:ffprobe
+Первый FHD,Основные,https://edge07d.mediavitrina.ru/hls-livef6/1tv/index.m3u8?token=v2.Ibn-3seXzKQRH-0-AS8g5FbvxtKAgNtikaUiP1Nx_sk.FVVUgUnXlLuNIQyOzkjLY9jkVKyvd93-7Mk6MMRFnsQ.1790928714.36e3bc8b0e226fdf87238c9ab29ef472,dead:ffprobe
 Первый HD,Основные,https://bl.rutube.ru/livestream/c58f502c7bb34a8fcdd976b221fca292/index.m3u8?s=S18LD_G9b2BgxLMuDWfQPQ&e=2072222109&scheme=https,dead:ffprobe
 Пятница HD,Основные,https://bl.rutube.ru/livestream/9f87a9a0cecbe773be6fddcbd93585ac/index.m3u8?s=XhfUK7cRUF2Ss3pJ9kCOmg&e=2069846622&scheme=https,dead:ffprobe
+Пятый канал HD,Основные,https://edge02p.mediavitrina.ru/hls-livef8/5tv/index.m3u8?token=v2.tgWpynLv_dBNjMuo6qgX2luN9X5IgQWkmQuhVuaIP1w.zyeMkdQHKor_DycDF8f6-xLQeGn8gMgcqhGKU8UgXWM.1790929065.37b27259e95c7f08a4e8cdd83ee015a1,dead:ffprobe
 Спас,Основные,https://bl.rutube.ru/livestream/2bbfa9ebf9d79ade480d7281fcef1008/index.m3u8?s=NHub-eOBFspYXWp6UM7VjA&e=2090404673&scheme=https,dead:ffprobe
 Суббота,Основные,https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?s=ygOk2tDua8hSzJnHH27dwA&e=2069500956&scheme=https,dead:ffprobe
 ТВ3 HD,Основные,https://bl.rutube.ru/livestream/7bf12d9c050f9a7ef3728db5730432ae/index.m3u8?s=574vg6yabF0PZrSsdpRKuw&e=2069846623&scheme=https,dead:ffprobe
@@ -280,9 +273,7 @@ Viasat Nature HD,Познавательные,https://cdn.itvuz.workers.dev/stre
 Rutube TV,Развлекательные,https://bl.rutube.ru/livestream/9ae8e8a6dc58bdad66190475f9872ecd/index.m3u8?s=0n7KfJ7ClPM1At-kR4sR8g&e=2072265313&scheme=https,dead:ffprobe
 THT4 HD,Развлекательные,https://bl.rutube.ru/livestream/c801a7087e29a097192d74c270fbc6c1/index.m3u8?s=YmLsZ86xBHJzGryIFXgrmg&e=2069500953&scheme=https,dead:ffprobe
 Продвижение HD,Развлекательные,https://bl.rutube.ru/livestream/ff5c11c9a51750f5d33427762abc315c/index.m3u8?s=IBzoayhf0EhnnlzfDnDidg&e=2066519813&scheme=https,dead:ffprobe
-КиноКомедия,СМОТРИМ +,https://cityeden.catcast.tv/content/41331/index.m3u8,dead:ffprobe
 Киномистика,СМОТРИМ +,https://autopilot.catcast.tv/content/40783/index.m3u8?password=promolive,dead:ffprobe
-КиноФантастика,СМОТРИМ +,https://cityeden.catcast.tv/content/45268/index.m3u8,dead:ffprobe
 КиноЭкшен,СМОТРИМ +,https://autopilot.catcast.tv/content/41333/index.m3u8?password=promolive,dead:ffprobe
 NBA TV,Спорт,https://bl.rutube.ru/livestream/d01241e9fd2bc2d65dbf6d74cca02f89/index.m3u8?s=PQW3hpuI4ixSmkvZ8DFYSA&e=2081160974&scheme=https,dead:ffprobe
 NHL Network,Спорт,https://bl.rutube.ru/livestream/7a485ef5da9fe50ba939f36ca3e6ed96/index.m3u8?s=kzFd14_NM5e7oc008gaZnQ&e=2073777469&scheme=https,dead:ffprobe
@@ -398,6 +389,7 @@ REN TV HD (1080p),,http://str2.iptvhd.ru:8080/REN_TV/index.m3u8,dead:http_403
 Retro (576p),,http://str2.iptvhd.ru:8080/Retro/index.m3u8,dead:http_403
 Rodnoe Kino (576p),,http://str2.iptvhd.ru:8080/Nashe_kino/index.m3u8,dead:http_403
 Romantichnoe HD (1080p),,http://str2.iptvhd.ru:8080/Semeynoe_HD/index.m3u8,dead:http_403
+RT (720p),,http://212.5.144.156:8080/rt/index.m3u8,dead:http_403
 RTG TV HD (1080p),,http://str2.iptvhd.ru:8080/RTG_TV/index.m3u8,dead:http_403
 RTVi (450p) [Geo-blocked],,https://s70378.cdn.ngenix.net/rtvi/index.m3u8,dead:http_403
 RTVi (576p),,http://str2.iptvhd.ru:8080/RTVi/index.m3u8,dead:http_403
@@ -463,7 +455,6 @@ Zvezda HD (1080p),,http://str2.iptvhd.ru:8080/Zvezda/index.m3u8,dead:http_403
 Патриот (576i),,http://catchup.videoline.ru/asvtv/index.m3u8,dead:http_403
 РЖД ТВ (1080p) [Geo-blocked],,http://hls.tva.cdnvideo.ru/tva/tvahd.sdp/playlist.m3u8,dead:http_403
 РЖД ТВ (360p) [Geo-blocked],,http://hls.tva.cdnvideo.ru/tva/tva.sdp/playlist.m3u8,dead:http_403
-Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,dead:http_403
 .Black,Кино,http://89.33.29.115:8080/Sony_Turbo/tracks-v1a1/mono.m3u8,dead:http_403
 TV1000 action HD,Кино,http://89.33.29.115:8080/TV1000_Action/tracks-v1a1/mono.m3u8,dead:http_403
 TV1000 HD,Кино,http://89.33.29.115:8080/TV1000/tracks-v1a1/mono.m3u8,dead:http_403
@@ -477,7 +468,6 @@ Channel 12 (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7004.m3u8
 Channel 8 (576p),,http://v4.proofix.ru/okino-tv/index.m3u8,dead:http_404
 Fast&FunBox HD (1080p),,http://str2.iptvhd.ru:8080/FastFunBoxHD/index.m3u8,dead:http_404
 Gulli Girl (576p),,https://live-3.otcnet.ru/GulliGirl/index.m3u8,dead:http_404
-Law TV (1080p),,http://stream.mcquack.net/406/index.m3u8,dead:http_404
 Match! Strana (576p),,http://ukr.ukrainske.tv/134/keytvainua/video.m3u8,dead:http_404
 National Geographic (1080p),,http://dtv.vol.net.ua/National_Geographic-HD/index.m3u8,dead:http_404
 NTV SD (576p),,http://45.153.24.78/NTV/index.m3u8,dead:http_404
@@ -497,12 +487,11 @@ ZubrilomFilm,Kinowalk TV,http://kinowalk.hopto.org/zubrilomfilm_live,dead:http_4
 Феникс+Кино,Кино,http://tv.teamm.workers.dev/ch147/tv.m3u8?tv=tv,dead:http_404
 EDM Mainstage,Музыкальные,https://mbit1.worldcast.tv/dancetelevisionseven/stream_0.m3u8,dead:http_404
 TravelXP 4K,Познавательные,http://91.247.68.229:8000/play/Travelxp/index.m3u8,dead:http_404
-СТС HD,Основные,https://edge07r.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.IPTZi0OX6BWY8aN9h7epxJo3NULi6eKcNeuT4kA5BQs.Ta3LeSNdOf8djhQqPTK0C8cqzNWjISAvclKmHYSIfH0.1790928908.bb2a7539447508cbd5ad4b3928c2604a,dead:http_409
-Channel One (576p),,http://45.153.24.78/1TV/index.m3u8,dead:http_503
 SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,dead:http_503
-VIVA Russia,Музыкальные,https://live20.bozztv.com/akamaissh101/ssh101/vivarussia/playlist.m3u8,dead:http_503
+.red (576p),,http://5.188.159.128:8070/RED/index.m3u8,dead:timeout
 Afontovo,,https://stream.afontovo.ru/hd.m3u8,dead:timeout
 Bolt (576p),,http://hls127.freeott.top:8080/Bolt/video.m3u8,dead:timeout
+BRIDGE Classic (576p),,http://5.188.159.128:8070/Bridge_TV_Classic/index.m3u8,dead:timeout
 Channel 8 (576p),,http://hls127.freeott.top:8080/8_KANAL/video.m3u8,dead:timeout
 Channel One (576p),,http://45.145.32.13:20440/pervyj_kanal/index.m3u8?token=test,dead:timeout
 Da Vinci (576p),,http://hls127.freeott.top:8080/Da_Vinci_Learning/video.m3u8,dead:timeout
@@ -516,7 +505,9 @@ Hit HD (1080p),,http://hls127.freeott.top:8080/XitHD/video.m3u8,dead:timeout
 Istoriya (576p),,http://hls127.freeott.top:8080/Istoriya/video.m3u8,dead:timeout
 Kino 24 (720p),,http://sirius.greenhosting.ru/Kino24Ru/video.m3u8,dead:timeout
 Kinopokaz HD (1080p),,http://hls127.freeott.top:8080/Kinopokaz_HD/video.m3u8,dead:timeout
+Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,dead:timeout
 Kinoseriya (1080p),,http://hls127.freeott.top:8080/Kinoseriya_HD/video.m3u8,dead:timeout
+Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,dead:timeout
 Kluch (576p),,http://hls127.freeott.top:8080/Kluch/video.m3u8,dead:timeout
 Kukhnya TV (576p),,http://hls127.freeott.top:8080/Kuhnya_TV/video.m3u8,dead:timeout
 Maidan (576p),,http://hls127.freeott.top:8080/Maydan/video.m3u8,dead:timeout
@@ -598,6 +589,7 @@ TechnoDanceMusic,Музыкальные,"rtmp://vkvsd260.okcdn.ru/playback/45411
 Русский экстрим,Развлекательные,http://tv.ttk.mx:9095,dead:timeout
 Матч!,Спорт,http://46.151.151.250:9002,dead:timeout
 Мир Баскетбола,Спорт,http://45.145.32.13:20440/mir_basketbola/index.m3u8?token=test,dead:timeout
+Киносвидание,Кино,http://5.188.159.128:8070/kinosvidanie/index.m3u8,dead:unknown
 1HD Music Television (1080p),,https://stream8.cinerama.uz/1267/tracks-v1a1/mono.m3u8,domain
 365 days TV (576p),,https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8,domain
 Arsenal (576p),,https://stream8.cinerama.uz/1414/tracks-v1a1/mono.m3u8,domain
@@ -760,11 +752,9 @@ Gagsnetwork,Развлекательные,https://tinyurl.com/upwnsw7p/14024/in
 Зал суда,Развлекательные,https://tinyurl.com/teh55yef/7141/index.m3u8,shortener
 Кто Куда,Развлекательные,https://tinyurl.com/4tfv9tup/2112/index.m3u8,shortener
 Оружие,Развлекательные,https://tinyurl.com/teh55yef/2087/index.m3u8,shortener
-Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,unstable:0%
-Рен ТВ HD,Основные,https://edge06d.mediavitrina.ru/hls-livef6/ren-tv/index.m3u8?token=v2.PsDEIEIPzwadDScYvKAEyDwHS0WLeQ6gJUQ-e3BaZzg.M1GAoaPeoR6a7zsCuGBJAoJnYaQ8Wcqf9WdyPDuHQ5s.1790928815.e8a1027430e9ae18ce1612f277ded1de,unstable:14%
-Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,unstable:43%
-Первый FHD,Основные,https://edge07d.mediavitrina.ru/hls-livef6/1tv/index.m3u8?token=v2.Ibn-3seXzKQRH-0-AS8g5FbvxtKAgNtikaUiP1Nx_sk.FVVUgUnXlLuNIQyOzkjLY9jkVKyvd93-7Mk6MMRFnsQ.1790928714.36e3bc8b0e226fdf87238c9ab29ef472,unstable:43%
-Пятый канал HD,Основные,https://edge02p.mediavitrina.ru/hls-livef8/5tv/index.m3u8?token=v2.tgWpynLv_dBNjMuo6qgX2luN9X5IgQWkmQuhVuaIP1w.zyeMkdQHKor_DycDF8f6-xLQeGn8gMgcqhGKU8UgXWM.1790929065.37b27259e95c7f08a4e8cdd83ee015a1,unstable:43%
+Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,unstable:25%
+Рен ТВ HD,Основные,https://edge06d.mediavitrina.ru/hls-livef6/ren-tv/index.m3u8?token=v2.PsDEIEIPzwadDScYvKAEyDwHS0WLeQ6gJUQ-e3BaZzg.M1GAoaPeoR6a7zsCuGBJAoJnYaQ8Wcqf9WdyPDuHQ5s.1790928815.e8a1027430e9ae18ce1612f277ded1de,unstable:25%
+СТС HD,Основные,https://edge07r.mediavitrina.ru/hls-livef6/ctc/index.m3u8?token=v2.IPTZi0OX6BWY8aN9h7epxJo3NULi6eKcNeuT4kA5BQs.Ta3LeSNdOf8djhQqPTK0C8cqzNWjISAvclKmHYSIfH0.1790928908.bb2a7539447508cbd5ad4b3928c2604a,unstable:25%
 Setanta Sports 1,,http://158.101.222.193:88/georgia_play.php?id=setanta_georgia,url_extension
 Setanta Sports 2,,http://158.101.222.193:88/georgia_play.php?id=setanta_sports_plus_georgia,url_extension
 TV1000 русское HD,Кино,http://line.tivi-one.net:80/play/live.php?mac=A0:BB:3E:75:52:64&stream=1031904&extension=ts&play_token=TngILrSNZd,url_extension
