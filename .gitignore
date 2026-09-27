@@ -1,11 +1,28 @@
-checked_playlists/
+# === Служебные файлы Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# === Кэши и временные ===
 _cache_sources/
 m3u_cache.sqlite
-m3u_checker.log
+m3u_cache.sqlite-journal
 *.log
-__pycache__/
-*.pyc
-.venv/
-venv/
-.env
-!docs/
+*.tmp
+docs/_cleaned_body.tmp
+
+# === OS-мусор ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
