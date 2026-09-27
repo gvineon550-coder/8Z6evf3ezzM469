@@ -1,0 +1,71 @@
+name: Monthly cleanup
+
+on:
+  schedule:
+    - cron: '0 4 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Check .git size
+        id: size
+        run: |
+          SIZE=$(du -sm .git | cut -f1)
+          echo "size_mb=${SIZE}" >> $GITHUB_OUTPUT
+          echo "Размер .git: ${SIZE} MB"
+
+      - name: Skip if not needed
+        if: steps.size.outputs.size_mb < 500
+        run: |
+          echo "Репо меньше 500 MB — очистка не нужна."
+          exit 0
+
+      - name: Install git-filter-repo
+        if: steps.size.outputs.size_mb >= 500
+        run: pip install git-filter-repo
+
+      - name: Backup current docs
+        if: steps.size.outputs.size_mb >= 500
+        run: |
+          mkdir -p /tmp/docs-backup
+          cp -r docs/* /tmp/docs-backup/ 2>/dev/null || true
+
+      - name: Purge docs history
+        if: steps.size.outputs.size_mb >= 500
+        run: |
+          git filter-repo --path docs/ --invert-paths --force || true
+          git remote add origin "https://github.com/${{ github.repository }}.git" || true
+          git fetch origin main || true
+          git reset --soft origin/main 2>/dev/null || true
+
+      - name: Restore docs and commit
+        if: steps.size.outputs.size_mb >= 500
+        run: |
+          mkdir -p docs
+          cp -r /tmp/docs-backup/* docs/ 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "Нет изменений"
+          else
+            git commit -m "Cleanup docs history $(date -u +%Y-%m-%d)"
+            git push --force origin main
+          fi
+
+      - name: Report size after
+        run: |
+          SIZE=$(du -sm .git | cut -f1)
+          echo "Размер .git после: ${SIZE} MB"
