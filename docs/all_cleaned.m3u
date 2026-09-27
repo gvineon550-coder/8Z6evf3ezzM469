@@ -385,6 +385,8 @@ https://streaming.thestream.cyou/live/46.m3u8
 https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
 #EXTINF:-1 tvg-id="RT.ru@HD",RT HD (1080p)
 http://31.148.48.15/RT_HD/index.m3u8
+#EXTINF:-1 tvg-id="RT.ru@HD",RT HD (1080p)
+https://wisewatchoott.wiseplayout.com/RT/master.m3u8
 #EXTINF:-1 tvg-id="RTGint.ru@SD",RTG int.
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.3
 http://213.91.179.28:8000/play/a0bw
@@ -773,6 +775,12 @@ https://uiptv.do.am/1ufc/602079679/playlist.m3u8
 http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8
 #EXTINF:-1 tvg-id="ShchyolkovskoeTV.ru@SD",Щёлковское ТВ (576p) [Not 24/7]
 http://stream0.tv41.ru/live.m3u8
+#EXTINF:-1 tvg-id="SetantaSports1.ru@SD",Setanta Sports 1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://158.101.222.193:88/georgia_play.php?id=setanta_georgia
+#EXTINF:-1 tvg-id="SetantaSports2.ru@SD",Setanta Sports 2
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+http://158.101.222.193:88/georgia_play.php?id=setanta_sports_plus_georgia
 #EXTINF:-1 tvg-id="2x2.ru@SD",2x2 (576p)
 http://flussonic.mkpnet.ru/tv-17540fb90079a865/video.m3u8
 #EXTINF:-1 tvg-id="DumaTV.ru@SD",Duma TV (720p)
@@ -1630,6 +1638,8 @@ https://flussonic.mkpnet.ru/tv-aab84159a39fbe84/video.m3u8
 http://89.33.29.115:8080/TV1000_Action/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/tv1000-action.png" tvg-id="tv1000-action" group-title="Кино",TV1000 action
 https://flussonic.mkpnet.ru/tv-0991ea2ac6292de8/video.m3u8
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/tv1000-russkoe-kino.png" tvg-id="tv1000-russkoe-kino" group-title="Кино",TV1000 русское HD
+http://line.tivi-one.net:80/play/live.php?mac=A0%3ABB%3A3E%3A75%3A52%3A64&stream=1031904&extension=ts&play_token=TngILrSNZd
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/tv1000-russkoe-kino.png" tvg-id="tv1000-russkoe-kino" group-title="Кино",TV1000 русское
 https://flussonic.mkpnet.ru/tv-7510472b0133abb2/video.m3u8
 #EXTINF:-1 tvg-id="viju-tv1000-novella" tvg-logo="https://epg.iptvx.one/picons/viju-tv1000-novella.png" group-title="Кино",TV1000 Новелла
@@ -1650,6 +1660,8 @@ http://89.33.29.115:8080/Sony_Turbo/tracks-v1a1/mono.m3u8
 http://176.100.46.245:90/red/index.m3u8
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/kinopremiera.png" tvg-id="kinopremiera-hd" group-title="Кино",Кинопремьера HD
 https://fs.uplink.kz/kinopremiera_hd/tracks-v1a1/mono.ts.m3u8?token=onlinetv
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/kinopremiera.png" tvg-id="kinopremiera-hd" group-title="Кино",Кинопремьера
+http://158.101.222.193:88/georgia_play.php?id=kinopremyerahd
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/kinosemia.png" tvg-id="kinosemiya" group-title="Кино",Киносемья
 https://fs.uplink.kz/kinosemya/tracks-v1a1/mono.ts.m3u8?token=onlinetv
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/kinomiks.png" tvg-id="kinomiks" group-title="Кино",Киномикс
@@ -1660,6 +1672,8 @@ http://195.26.83.96:7005/play/a00m/index.m3u8
 https://fs.uplink.kz/kinohit/tracks-v1a1/mono.ts.m3u8?token=onlinetv
 #EXTINF:-1 tvg-id="kinouzhas" tvg-logo="https://epg.iptvx.one/picons/kinouzhas.png" group-title="Кино",Киноужас
 https://s70378.cdn.ngenix.net/kinouzhas/2/index.m3u8
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/nashe-novoe-kino.png" tvg-id="nashe-novoe-kino" group-title="Кино",Наше новое кино HD
+http://line.tivi-one.net:80/play/live.php?mac=A0%3ABB%3A3E%3A75%3A52%3A64&stream=1031893&extension=ts&play_token=FVTY1Deq2j
 #EXTINF:-1 tvg-id="kinopokaz-hd" tvg-logo="https://epg.iptvx.one/picons/kinopokaz.png" group-title="Кино",Кинопоказ HD
 http://176.118.197.101/Kinopokaz/index.m3u8
 #EXTINF:-1 group-title="Кино",Cinema
@@ -1816,6 +1830,9 @@ https://flussonic.mkpnet.ru/tv-181e3f7698288892/video.m3u8
 https://tv.city.bg/play/tshls/citytv/2.m3u8
 #EXTINF:-1 tvg-logo="https://i.imgur.com/rYe4a8q.png" tvg-id="no_epg_music" group-title="Музыкальные",TMF RUS
 https://edge1-eu-west.picarto.tv/stream/hls/golive+TMFRUS/1_0/index.m3u8
+#EXTINF:-1 tvg-logo="https://sun9-81.userapi.com/WJ0Zg9HH9jna5O1M4BwV5rpMcJuCL_GAyd5Luw/HXvx3v4PSec.jpg" tvg-name="no_epg_music" group-title="Музыкальные",TechnoDanceMusic
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 YaBrowser/25.2.0.0 Safari/537.36
+rtmp://vkvsd260.okcdn.ru/playback/4541149555686?stkn=_GLaJIlrWpbJgXi_b5gtNKlx404aCHbd48x9zKalkpUqDF0ccnViROdGa7iV8JjrPLmm0qJTU0w&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1
 #EXTINF:-1 tvg-logo="https://i.imgur.com/dQJQv1X.png" tvg-id="no_epg_music" group-title="Музыкальные",Kronehit
 http://bitcdn-kronehit.bitmovin.com/v2/hls/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/viva-rus.png" tvg-id="viva-rus" group-title="Музыкальные",VIVA Russia
@@ -1830,6 +1847,9 @@ https://bl.rutube.ru/livestream/60b73481dcc9880850f22690142c8d17/index.m3u8?s=A6
 http://46.151.151.250:9201
 #EXTINF:-1 tvg-logo="https://www.dancetv.net/img/DTlogo.png" tvg-id="no_epg_music" group-title="Музыкальные",EDM Mainstage
 https://mbit1.worldcast.tv/dancetelevisionseven/stream_0.m3u8
+#EXTINF:-1 tvg-logo="https://sun9-17.userapi.com/impg/7ZcuhP1R7Pgp14bH--fi8MqQw9IMlqSC66Ckzg/xJr21AFCPmY.jpg?size=320x201&quality=95&sign=9b9b8268f3cfb73b72b3e4da66029e79&c_uniq_tag=M29CRtGxcOE-UaBhy-HOdk7osjucQ4Tw88LGjjPAsNs&type=video_thumb" tvg-id="no_epg_music" group-title="Музыкальные",RETROHITS
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 YaBrowser/25.2.0.0 Safari/537.36
+rtmp://vkvsd285.okcdn.ru/playback/7765205854979?stkn=3YIqbICN3HQXqSqHe0t6L_U4aObzKpZdQDqaZigiXarsKvoVAU1g9ABrdjLIO7hYZdJPsBcdTGk&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1
 #EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://i128.fastpic.org/big/2026/0730/07/d9764ae7e54fe2220bd749d0d2bfe007.jpg" group-title="Музыкальные",VB Русская Танцевальная Попса 80х-90х
 http://kinowalk.hopto.org/vbrusdancepops80_live
 #EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://s6.iimage.su/s/20/g1zxt89xQkzA02VCWMRsrXmNCAiO4XXEm78szycEW.jpg" group-title="Музыкальные",VB MTV Old Россия
@@ -1850,6 +1870,9 @@ http://kinowalk.hopto.org/yurich_kinomix_live
 http://kinowalk.hopto.org/vhs-forever_live
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/UFOTVM/LOGO/refs/heads/main/Video-Arsenal.png" tvg-id="no_epg_cinema" group-title="Kinowalk TV",VideoArsenal
 http://kinowalk.hopto.org/videoarsenal_live
+#EXTINF:-1 tvg-logo="http://telik.live/images/fmc-tv.png" tvg-id="no_epg_cinema" group-title="Kinowalk TV",FantasticMistyc
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 YaBrowser/25.2.0.0 Safari/537.36
+rtmp://vkvsd199.okcdn.ru/playback/3780958366657?stkn=c3qCEto7Z19Gl6AT2PFZujdHvggU3zjJ1Wd4nvkEESOm9yVb5Ua8iL_YwVUg7G8dNsZOAkV5dUs&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1
 #EXTINF:-1 tvg-logo="https://pic.rtbcdn.ru/user/d0/24/d02422c0078c8517a1a4c2678a25529b.jpg" tvg-id="no_epg_cinema" group-title="Kinowalk TV",Фильмач
 https://bl.rutube.ru/livestream/300560a65014ec501a25b1f79df9ad90/index.m3u8?s=ts6K4yoGVWl3-MeiAHjvnw&e=2088807301&scheme=https
 #EXTINF:-1 tvg-logo="https://pic.rtbcdn.ru/user/c4/53/c453149b8774d33966cf7967c0647bfd.jpg" tvg-id="no_epg_cinema" group-title="Kinowalk TV",Epic Media Love
@@ -1858,6 +1881,12 @@ https://bl.rutube.ru/livestream/21f3993ed8291b70208aa06c982c731f/index.m3u8?s=O_
 https://bl.rutube.ru/livestream/0ed0696149c131d3a7349372d730d4e6/index.m3u8?s=1HXyp-V_dC9Tc4r0glGRCA&e=2088807305&scheme=https
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://raw.githubusercontent.com/UFOTVM/LOGO/refs/heads/main/kinowalk.png" group-title="Kinowalk TV",Kino Walk
 http://kinowalk.hopto.org/kinowalk_live
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/UFOTVM/LOGO/refs/heads/main/TVseries.jpg" tvg-id="no_epg_cinema" group-title="Kinowalk TV",TV Series
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 YaBrowser/25.2.0.0 Safari/537.36
+rtmp://vkvsd258.okcdn.ru/playback/4212830514154?stkn=3-5AxYkRTClGxxwNYsB-PosDfNMu_Z8wVCxKPRiA5P1eG-dXv3IyUKjRPAmaGd92HY3VjEPNPE4&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1
+#EXTINF:-1 tvg-logo="https://sun9-81.userapi.com/WJ0Zg9HH9jna5O1M4BwV5rpMcJuCL_GAyd5Luw/HXvx3v4PSec.jpg" tvg-id="no_epg_cinema" group-title="Kinowalk TV",TDM KINO
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 YaBrowser/25.2.0.0 Safari/537.36
+rtmp://vkvsd79.okcdn.ru/playback/11865043512184?stkn=iP9X2jyo6Zr-w_LUZKkXvBaBp3-lOX9JjFgyOpcPnbsjorW-MN9cBeUsyuGVMWt0uqYPqhnhKxwK&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://i128.fastpic.org/big/2026/0730/e6/455f183c1745a2acf6f6e223f80129e6.jpg" group-title="Kinowalk TV",VB Всё в одном
 http://kinowalk.hopto.org/vb-all-in-one_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://s6.iimage.su/s/06/gnyQeTex0fqIpdBByaiOiDoVXqaKsc43DiiS9Qq6v.jpg" group-title="Kinowalk TV",VB Российские сериалы

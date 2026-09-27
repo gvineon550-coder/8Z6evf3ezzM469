@@ -1,23 +1,23 @@
 {
-  "generated_at_utc": "2026-09-27T10:07:14+00:00",
-  "duration_sec": 0.5,
+  "generated_at_utc": "2026-09-27T10:12:17+00:00",
+  "duration_sec": 0.2,
   "strip_trackers": true,
   "header_saved": "#EXTM3U",
-  "directives_kept": 153,
+  "directives_kept": 160,
   "sources": [
     {
       "name": "iptv_org_ru",
       "type": "url",
       "raw": 851,
-      "kept": 722,
-      "rejected": 129
+      "kept": 725,
+      "rejected": 126
     },
     {
       "name": "ufotv",
       "type": "url",
       "raw": 523,
-      "kept": 397,
-      "rejected": 126
+      "kept": 405,
+      "rejected": 118
     },
     {
       "name": "my_list",
@@ -29,16 +29,14 @@
   ],
   "totals": {
     "raw": 1550,
-    "kept": 1229,
-    "rejected": 321
+    "kept": 1240,
+    "rejected": 310
   },
   "reasons": {
     "banned_name": 75,
     "blocked_domain": 79,
-    "shortener": 48,
-    "bad_extension": 5,
     "multicast": 1,
     "duplicate_url": 108,
-    "bad_scheme": 5
+    "shortener": 47
   }
 }

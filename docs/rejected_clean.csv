@@ -46,7 +46,6 @@ iptv_org_ru,Ohotnik i rybolov (576i),https://stream8.cinerama.uz/1413/tracks-v1a
 iptv_org_ru,Okhota i rybalka,https://stream8.cinerama.uz/1038/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Retro,https://stream8.cinerama.uz/1047/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Rodnoe Kino,https://stream8.cinerama.uz/1052/tracks-v1a1/mono.m3u8,blocked_domain
-iptv_org_ru,RT HD (1080p),https://wisewatchoott.wiseplayout.com/RT/master.m3u8,shortener
 iptv_org_ru,RU.TV,https://stream8.cinerama.uz/1202/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,RU.TV Kids (720p),https://rutvkids.ru/live/efir/index.m3u8,banned_name
 iptv_org_ru,Russia-1,https://stream8.cinerama.uz/1020/tracks-v1a1/mono.m3u8,blocked_domain
@@ -77,8 +76,6 @@ iptv_org_ru,Zagorodnaya Zhizn,https://stream8.cinerama.uz/1044/tracks-v1a1/mono.
 iptv_org_ru,Zoopark (576i),https://stream8.cinerama.uz/1417/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Zvezda,https://stream8.cinerama.uz/1050/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Ювелирочка ТВ (576p),https://live-uvelirochka.cdnvideo.ru/uvelirochka/uvelirochka_720p3/playlist.m3u8,banned_name
-iptv_org_ru,Setanta Sports 1,http://158.101.222.193:88/georgia_play.php?id=setanta_georgia,bad_extension
-iptv_org_ru,Setanta Sports 2,http://158.101.222.193:88/georgia_play.php?id=setanta_sports_plus_georgia,bad_extension
 iptv_org_ru,STS kids HD (1080p),http://45.145.32.13:20440/ctc_kids_hd/index.m3u8?token=test,banned_name
 iptv_org_ru,Baby Time (576p),http://178.134.1.158:8081/babytime/index.m3u8,banned_name
 iptv_org_ru,Mult (576p),http://flussonic.linkintel.ru/Mult/index.m3u8,banned_name
@@ -154,19 +151,16 @@ ufotv,Аппетитный,https://tinyurl.com/upwnsw7p/9067/index.m3u8,shortene
 ufotv,Trace Sport Stars HD,https://stream8.cinerama.uz/1274/tracks-v1a1/mono.m3u8,blocked_domain
 ufotv,Удар HD,http://stream.mcquack.net/279/index.m3u8,duplicate_url
 ufotv,MMA-TV,https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv,duplicate_url
-ufotv,TV1000 русское HD,http://line.tivi-one.net:80/play/live.php?mac=A0%3ABB%3A3E%3A75%3A52%3A64&stream=1031904&extension=ts&play_token=TngILrSNZd,bad_extension
 ufotv,Vip Serial HD,http://stream.mcquack.net/311/index.m3u8,duplicate_url
 ufotv,Дом кино,https://fs.uplink.kz/dom_kino/mono.m3u8?token=onlinetv,duplicate_url
 ufotv,.Sci-Fi HD,http://stream.mcquack.net/180/index.m3u8,duplicate_url
 ufotv,Start Air HD,https://tinyurl.com/4tfv9tup/18036/index.m3u8,shortener
 ufotv,Start Air,https://fs.uplink.kz/start_air/mono.m3u8?token=onlinetv,duplicate_url
 ufotv,Start World HD,https://fs.uplink.kz/start_world/mono.m3u8?token=onlinetv,duplicate_url
-ufotv,Кинопремьера,http://158.101.222.193:88/georgia_play.php?id=kinopremyerahd,bad_extension
 ufotv,Мужское кино HD,http://stream.mcquack.net/107/index.m3u8,duplicate_url
 ufotv,Кинокомедия,http://stream.mcquack.net/265/index.m3u8,duplicate_url
 ufotv,Киноужас HD,http://stream.mcquack.net/278/index.m3u8,duplicate_url
 ufotv,Наше новое кино,https://fs.uplink.kz/nashe_novoe_kino/mono.m3u8?token=onlinetv,duplicate_url
-ufotv,Наше новое кино HD,http://line.tivi-one.net:80/play/live.php?mac=A0%3ABB%3A3E%3A75%3A52%3A64&stream=1031893&extension=ts&play_token=FVTY1Deq2j,bad_extension
 ufotv,Киносвидание,http://5.188.159.128:8070/kinosvidanie/index.m3u8,duplicate_url
 ufotv,VHS-ка,https://tinyurl.com/teh55yef/5006/index.m3u8,shortener
 ufotv,VHS-ка Сериал HD,https://tinyurl.com/teh55yef/31931/index.m3u8,shortener
@@ -219,12 +213,7 @@ ufotv,1HD Music,http://176.118.197.101/1HD/index.m3u8,duplicate_url
 ufotv,Bridge TV Hits,http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8,duplicate_url
 ufotv,Музыка Первого,https://stream8.cinerama.uz/1201/tracks-v1a1/mono.m3u8,blocked_domain
 ufotv,MCM Top,http://46.32.176.50/mcmtop/index.m3u8,duplicate_url
-ufotv,TechnoDanceMusic,rtmp://vkvsd260.okcdn.ru/playback/4541149555686?stkn=_GLaJIlrWpbJgXi_b5gtNKlx404aCHbd48x9zKalkpUqDF0ccnViROdGa7iV8JjrPLmm0qJTU0w&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,bad_scheme
 ufotv,Europa Plus TV,http://stream.mcquack.net/184/index.m3u8,duplicate_url
-ufotv,RETROHITS,rtmp://vkvsd285.okcdn.ru/playback/7765205854979?stkn=3YIqbICN3HQXqSqHe0t6L_U4aObzKpZdQDqaZigiXarsKvoVAU1g9ABrdjLIO7hYZdJPsBcdTGk&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,bad_scheme
-ufotv,FantasticMistyc,rtmp://vkvsd199.okcdn.ru/playback/3780958366657?stkn=c3qCEto7Z19Gl6AT2PFZujdHvggU3zjJ1Wd4nvkEESOm9yVb5Ua8iL_YwVUg7G8dNsZOAkV5dUs&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,bad_scheme
-ufotv,TV Series,rtmp://vkvsd258.okcdn.ru/playback/4212830514154?stkn=3-5AxYkRTClGxxwNYsB-PosDfNMu_Z8wVCxKPRiA5P1eG-dXv3IyUKjRPAmaGd92HY3VjEPNPE4&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,bad_scheme
-ufotv,TDM KINO,rtmp://vkvsd79.okcdn.ru/playback/11865043512184?stkn=iP9X2jyo6Zr-w_LUZKkXvBaBp3-lOX9JjFgyOpcPnbsjorW-MN9cBeUsyuGVMWt0uqYPqhnhKxwK&uid=0&sp=uid%2Csp&sig=vlibqm4nyu&fromCache=1,bad_scheme
 ufotv,KINOPRO,http://kinowalk.hopto.org/kinopro_live,duplicate_url
 ufotv,Kycman мульт,http://kinowalk.hopto.org/kycman_live,banned_name
 ufotv,IPTVPLAY PROMO,http://5.188.158.65:4040/IPTVPLAYPromo.tv/video.m3u8?token=lqRGka5-YwwqF0,banned_name
