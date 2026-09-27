@@ -1,1285 +1,1279 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="black.ru@SD",.black (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",.black (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/263/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="red.ru@SD",.red (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",.red (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/RED/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="red.ru@SD",.red (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",.red (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/69/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="red.ru@HD",.red HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",.red HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/red/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="scifi.ru@SD",.sci-fi (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",.sci-fi (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/180/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="2x2.ru@SD",2x2 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",2x2 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.mkpnet.ru/tv-17540fb90079a865/video.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="2x2.ru@SD",2x2 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",2x2 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/2x2/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="2x2.ru@SD",2x2 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",2x2 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/2x2/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="2x2.ru@SD",2x2 SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",2x2 SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/187/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="365daysTV.ru@SD",365 days TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",365 days TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/70/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="365daysTV.ru@SD",365 days TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",365 days TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/365_dney/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="5minuttishiny.ru@SD",5 minut tishiny (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",5 minut tishiny (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/5_minut_tishiny/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="6TVGorlovka.ru@SD",6 TV Gorlovka (720p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",6 TV Gorlovka (720p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://91.214.48.158:4022/udp/224.2.2.4:10000
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="AISTTV.ru@SD",AIST TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",AIST TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://194.143.148.28:8080/Aist/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="AmediaHit.ru@SD",Amedia Hit (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Amedia Hit (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/162/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="AmediaHit.ru@SD",Amedia Hit (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Amedia Hit (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/amedia-hit/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Ani.ru@SD",Ani (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Ani (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/anitv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Ani.ru@SD",Ani (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Ani (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/306/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ART.ru@SD",ART (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",ART (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://89.104.114.24:8080/art/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ART.ru@SD",ART (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",ART (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/ART/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Avto24.ru@SD",Avto24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Avto24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/78/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Avto24.ru@SD",Avto24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Avto24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/avto24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Balabol.ru@SD",Balabol (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Balabol (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Balabol/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BigPlanet.ru@SD",Big Planet (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Big Planet (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/big_planet/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Blokbaster.ru@HD",Blokbaster HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Blokbaster HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/364/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Bober.ru@SD",Bober (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Bober (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bober/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Bober.ru@SD",Bober (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Bober (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_bober/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BoksTV.ru@SD",Boks TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Boks TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/154/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Bollywood.ru@HD",Bollywood HD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Bollywood HD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Bollywood_HD/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGE.ru@SD",BRIDGE (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/318/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGE.ru@SD",BRIDGE (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/BRIDGE/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGE.ru@SD",BRIDGE (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://194.143.148.28:8080/RT_DOC/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGEClassic.ru@SD",BRIDGE Classic (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE Classic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/272/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGEClassic.ru@SD",BRIDGE Classic (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE Classic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/Bridge_TV_Classic/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGEClassic.ru@SD",BRIDGE Classic (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE Classic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGEDeluxe.ru@HD",BRIDGE Deluxe HD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE Deluxe HD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/92/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGEHits.ru@SD",BRIDGE Hits (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE Hits (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/320/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGEHits.ru@SD",BRIDGE Hits (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE Hits (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BRIDGERock.ru@SD",BRIDGE Rock (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",BRIDGE Rock (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Carousel.ru@SD",Carousel (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Carousel (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Carousel.ru@SD",Carousel (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Carousel (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/Karusel/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Carousel.ru@SD",Carousel (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Carousel (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_karusel/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Carousel.ru@Plus4",Carousel (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Carousel (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.37.150.46/Karusel/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="CarouselInternational.ru@SD",Carousel International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Carousel International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/karusel/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Carousel.ru@SD",Carousel SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Carousel SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/120/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel5International.ru@SD",Channel 5 International (576i)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 5 International (576i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn4.skygo.mn/live/disk1/Channel_5/HLSv3-FTA/Channel_5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel5International.ru@SD",Channel 5 International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 5 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/5channel/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel5International.ru@SD",Channel 5 International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 5 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/5_kanal/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel8.ru@SD",Channel 8 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 8 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://45.11.139.43:8555/8kanal/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel8.ru@SD",Channel 8 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 8 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tshift-1.telecoma.tv/8channel/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel8.ru@SD",Channel 8 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 8 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://v4.proofix.ru/8tv-russia/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel8International.ru@SD",Channel 8 International (576p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 8 International (576p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-11cinema.cdnvideo.net/11cinemanet/11cinemanet/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel8Krasnoyarsk.ru@HD",Channel 8 Krasnoyarsk HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 8 Krasnoyarsk HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel8Novosibirsk.ru@SD",Channel 8 Novosibirsk (480i)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel 8 Novosibirsk (480i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@SD",Channel One (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://45.153.24.78/1TV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@SD",Channel One (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel One (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.217.49.7/1/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOneCIS.ru@SD",Channel One CIS (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel One CIS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/perviy_kanal_sng/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ChannelOne.ru@Europa",Channel One Europa (480p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Channel One Europa (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.thestream.cyou/live/210-req_offset_28000000-req_window_0-1k_v5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Che.ru@SD",Che! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Che! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/che/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Che.ru@SD",Che! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Che! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Che/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DaVinci.ru@SD",Da Vinci (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Da Vinci (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/238/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DaVinci.ru@SD",Da Vinci (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Da Vinci (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/da_vinci/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DanceHits80.ru@SD" tvg-logo="https://i.imgur.com/uMw3kks.png",DanceHits80
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://i.imgur.com/uMw3kks.png",DanceHits80
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://dancehits80.denvs.ru:8080/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dikayaokhota.ru@HD",Dikaya okhota HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dikaya okhota HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/274/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dikayarybalka.ru@HD",Dikaya rybalka HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dikaya rybalka HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/275/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Doctor.ru@SD",Doctor (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Doctor (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/doktor/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Doctor.ru@SD",Doctor (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Doctor (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/80/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domkino.ru@SD",Dom kino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dom kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/236/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domkino.ru@SD",Dom kino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dom kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_dom_kino/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domkino.ru@International",Dom kino International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dom kino International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dom_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DomkinoPremium.ru@SD",Dom kino Premium (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dom kino Premium (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_dom_kino_premium/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DomkinoPremium.ru@HD",Dom kino Premium HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dom kino Premium HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/108/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DomkinoPremium.ru@HD",Dom kino Premium HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dom kino Premium HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dom_kino_premium/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DomashnieZhivotnye.ru@SD",Domashnie Zhivotnye (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Domashnie Zhivotnye (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/domashnie_zhivotnie/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domashniy.ru@SD",Domashniy (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Domashniy (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/domashniy/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Domashniy.ru@SD",Domashniy SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Domashniy SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/227/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dorama.ru@SD",Dorama (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dorama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dorama/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dorama.ru@HD",Dorama HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dorama HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/412/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="DumaTV.ru@SD",Duma TV (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Duma TV (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/DumaTV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Dushevnoe.ru@HD",Dushevnoe HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Dushevnoe HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/213/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Enisey.ru@SD",Enisey (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Enisey (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tshift-1.telecoma.tv/enisei/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="EuropaPlusTV.ru@SD",Europa Plus TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Europa Plus TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/europa_plus/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="EuropaPlusTV.ru@SD",Europa Plus TV SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Europa Plus TV SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/184/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Evrokino.ru@SD",Evrokino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Evrokino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/eurokino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Evrokino.ru@SD",Evrokino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Evrokino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Evrokino/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Evrokino.ru@HD",Evrokino HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Evrokino HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/385/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="FAN.ru@SD",FAN (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",FAN (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/420/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="FashionLifeStyle.ru@SD",Fashion&LifeStyle (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Fashion&LifeStyle (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/119/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="FashionTV.ru@SD",FashionTV (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",FashionTV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://fashionlive.mediacdn.ru/cdn/fashiontv/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="FoodTime.ru@SD",FoodTime (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",FoodTime (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/216/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Fox.ru@SD",Fox (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Fox (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/182/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="FoxLife.ru@SD",Fox Life (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Fox Life (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/129/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Friday.ru@SD",Friday! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Friday! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/181/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Friday.ru@SD",Friday! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Friday! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/Pyatnica/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="FridayInternational.ru@Kazakhstan",Friday! International Kazakhstan (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Friday! International Kazakhstan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bolshaya_pyatnica/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Groznyj.ru@SD" tvg-logo="https://i.imgur.com/yrN0Vl6.png",Groznyj
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://i.imgur.com/yrN0Vl6.png",Groznyj
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://balancer.facecast.io/evacoder_hls_hi/UUMLQVAYVlZyH14GRENQVV0G/2/720-3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="GulliGirl.ru@SD",Gulli Girl (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Gulli Girl (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/305/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Hit.ru@HD",Hit HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Hit HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/363/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="HorosheeKino.ru@SD",Horoshee Kino (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Horoshee Kino (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-rian.cdnvideo.ru/rian/rus-radio/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="IllusionPlus.ru@SD",Illusion+ (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Illusion+ (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Illuzion+/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="India.ru@SD",India (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",India (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/india/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="IndiyskoyeKino.ru@SD",Indiyskoye Kino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Indiyskoye Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://188.113.190.12/329/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="IndiyskoyeKino.ru@SD",Indiyskoye Kino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Indiyskoye Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/104/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="IndiyskoyeKino.ru@SD",Indiyskoye Kino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Indiyskoye Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/indiyskoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="InsaytTV.ru@4K",Insayt TV (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Insayt TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/361/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Istoki.ru@SD",Istoki (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Istoki (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://istoki.tv/live/stream1/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Istoriya.ru@SD",Istoriya (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Istoriya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/istoriya/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KapitanFantastika.ru@SD",Kapitan Fantastika (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kapitan Fantastika (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/144/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KHL.ru@SD",KHL (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/166/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KHL.ru@SD",KHL (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/telekanal_khl/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KHL.ru@SD",KHL (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/KHL/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KHLPrime.ru@SD",KHL Prime (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KHL Prime (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/178/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KHLPrime.ru@SD",KHL Prime (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KHL Prime (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/khl_prime/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KinoTV.ru@SD",Kino TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kino TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/kino-tv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KinoTV.ru@HD",Kino TV HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kino TV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/KinoTvHD/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KinoTV.ru@SD",Kino TV SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kino TV SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/221/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KinoHit.ru@SD",KinoHit (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KinoHit (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/126/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KinoHit.ru@SD",KinoHit (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KinoHit (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinohit/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinokomedija.ru@SD",Kinokomedija (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinokomedija (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/265/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinokomedija.ru@SD",Kinokomedija (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinokomedija (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinokomedia/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinomix.ru@SD",Kinomix (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinomix (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://93.170.254.17/Kinomiks/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinomix.ru@SD",Kinomix (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinomix (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/133/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinomix.ru@SD",Kinomix (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinomix (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinomix/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopokaz.ru@SD",Kinopokaz (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinopokaz (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/64/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinopremyera.ru@HD",Kinopremyera HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinopremyera HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinopremiera_hd/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinosemja.ru@SD",Kinosemja (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinosemja (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/170/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinosemja.ru@SD",Kinosemja (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinosemja (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinosemya/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinoseriya.ru@SD",Kinoseriya (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinoseriya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinoseria/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinosvidanie.ru@SD",Kinosvidanie (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinosvidanie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/kinosvidanie/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinosvidanie.ru@SD",Kinosvidanie (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinosvidanie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/171/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinosvidanie.ru@SD",Kinosvidanie (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinosvidanie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinosvidanie/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinouzhas.ru@SD",Kinouzhas (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinouzhas (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/278/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kinouzhas.ru@SD",Kinouzhas (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kinouzhas (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinouzhas/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Komedia.ru@SD",Komedia (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Komedia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/68/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Komedia.ru@SD",Komedia (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Komedia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Komediya/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Komediynoe.ru@HD",Komediynoe HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Komediynoe HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/74/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KongressTV.ru@SD",Kongress TV (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kongress TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-3.otcnet.ru/congresstv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KongressTV.ru@SD",Kongress TV (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kongress TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stitch.teletarget.ru/api/v1/hls/504/158/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Kuhnya.ru@SD",Kuhnya (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kuhnya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/179/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KulinarTV.ru@SD",Kulinar TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Kulinar TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://api.alpaca.t62a.com/hls/9110/stream0.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KVNTV.ru@SD",KVN TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KVN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/KVN-TV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="KVNTV.ru@SD",KVN TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",KVN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kvn_tv/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LapkiLive.ru@SD",Lapki Live (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Lapki Live (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/lapki_live/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LawTV.ru@SD",Law TV (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Law TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/406/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Maidan.ru@SD",Maidan (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Maidan (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-maidantv.cdnvideo.ru/maidantv/maidantv.smil/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mama.ru@SD",Mama (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/79/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mama.ru@SD",Mama (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/mama/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MCMTop.ru@SD",MCM Top (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",MCM Top (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/mcmtop/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir.ru@SD",Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://45.153.24.78/MIR/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir.ru@SD",Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvcdn01.oktv.kz/tv/mir/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir.ru@SD",Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mir/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir24.ru@SD",Mir 24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mir 24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/mir_24/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir.ru@HD",Mir HD (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Mir HD (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mirtv_2500/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir.ru@Kazakhstan",Mir Kazakhstan (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mir Kazakhstan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tvcdn01.esilnet.kz/tv/mir/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MirSeriala.ru@SD",Mir Seriala (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mir Seriala (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/MirSeriala/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MosfilmGoldCollection.ru@SD",Mosfilm Gold Collection (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mosfilm Gold Collection (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/369/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MosfilmGoldCollection.ru@SD",Mosfilm Gold Collection (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mosfilm Gold Collection (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mosfilm/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Moskva24.ru@SD",Moskva 24 (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moskva 24 (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls/givc8/playlist.m3u8?entity=channel&id=798&sign=37881ef2e289f062ceff0dca6c24dc58
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Moskva24.ru@SD",Moskva 24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moskva 24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/moscow_24/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Moskva24.ru@SD",Moskva 24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moskva 24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/moskva24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Moskva24.ru@SD",Moskva 24 (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moskva 24 (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/givc9/playlist_4.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MoskvaDoveriye.ru@SD",Moskva. Doveriye (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moskva. Doveriye (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/doverie/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Moymir.ru@SD",Moy mir (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moy mir (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://moymir.ru/hls/onair.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MoyaPlaneta.ru@SD",Moya Planeta (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moya Planeta (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://91.226.120.120/chid210/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MoyaPlaneta.ru@SD",Moya Planeta (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moya Planeta (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/124/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MoyaPlaneta.ru@SD",Moya Planeta (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moya Planeta (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/moya_planeta/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Moyastikhiya.ru@HD",Moya stikhiya HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Moya stikhiya HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/141/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mult.ru@SD",Mult (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mult (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/232/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mult.ru@SD",Mult (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mult (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/Mult/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mult.ru@International",Mult International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Mult International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mult/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Multilandia.ru@SD",Multilandia (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Multilandia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/multilandia/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nano.ru@SD",Nano (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Nano (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/419/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nano.ru@HD",Nano HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Nano HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/NANO_HD/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nashe.ru@HD",Nashe HD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Nashe HD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/217/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NasheNovoeKino.ru@SD",Nashe Novoe Kino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Nashe Novoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nashe_novoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nauka.ru@SD",Nauka (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Nauka (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/125/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nevskiy.ru@SD",Nevskiy (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Nevskiy (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Nevskiy/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nostalgia.ru@SD",Nostalgia (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Nostalgia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nostalgia/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nostalgia.ru@SD",Nostalgia (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Nostalgia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Nostalgiya/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NovorossiyaTV.ru@SD",Novorossiya TV (1080p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Novorossiya TV (1080p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.139.253:9002/novoros/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NST.ru@SD",NST (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NST (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/207/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NST.ru@SD",NST (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NST (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/nst/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTV.ru@SD",NTV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/NTV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTV.ru@HD",NTV HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/ntv0_hd/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTV.ru@HD",NTV HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/ntv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTVMir.ru@SD",NTV Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/ntvmir_TV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTVMir.ru@SD",NTV Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/ntv_mir/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTV.ru@SD",NTV SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn.ntv.ru/ntv-spb/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTVSeries.ru@SD",NTV Series (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV Series (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/301/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTVVitrina.ru@SD",NTV Vitrina (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV Vitrina (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn.ntv.ru/vitrina/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTVHit.ru@SD",NTV-Hit (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",NTV-Hit (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/ntvhit/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="O.ru@SD",O! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",O! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/60/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="O.ru@International",O! International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",O! International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/o/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Ohotnikirybolov.ru@HD",Ohotnik i rybolov HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Ohotnik i rybolov HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/194/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Okhotairybalka.ru@SD",Okhota i rybalka (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Okhota i rybalka (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/155/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="OkkoFutbol.ru@SD",Okko Futbol (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Okko Futbol (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/491/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="OkkoFutbol.ru@SD",Okko Futbol (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Okko Futbol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/Setanta1/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="OplotTV.ru@SD",Oplot TV (1080p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Oplot TV (1080p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.139.253:9002/oplot_hd/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Oruzhie.ru@SD",Oruzhie (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Oruzhie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/oruzhie/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Ostrosyuzhetnoye.ru@HD",Ostrosyuzhetnoye HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Ostrosyuzhetnoye HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/214/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="OTR.ru@SD",OTR (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",OTR (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/otr/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Patriot.ru@SD",Patriot (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Patriot (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/static/playlist_4.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="PeretzInternational.ru@SD",Peretz International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Peretz International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/121/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="PeretzInternational.ru@SD",Peretz International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Peretz International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/perec/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Perviyotdel.ru@SD",Perviy otdel (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Perviy otdel (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Perviy_otdel/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Pes.ru@SD",Pes (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Pes (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Pes/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Pobeda.ru@SD",Pobeda (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Pobeda (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/pobeda/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Poehali.ru@SD",Poehali! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Poehali! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/poehali/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Poehali.ru@SD",Poehali! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Poehali! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_poehali/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Premialnoe.ru@HD",Premialnoe HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Premialnoe HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/421/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Priklyucheniya.ru@HD",Priklyucheniya HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Priklyucheniya HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/198/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ProBusiness.ru@SD",Pro Business (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Pro Business (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tv-streaming.bsh.ru:21938/probusiness/probusiness.stream/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Prodvizhenie.ru@SD",Prodvizhenie (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Prodvizhenie (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.astrakhan.ru/proastrakhanhd/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Prodvizhenie.ru@SD",Prodvizhenie (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Prodvizhenie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://origin5.mediacdn.ru/live/prodvizhenie_new/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Prosveshchenie.ru@SD",Prosveshchenie (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Prosveshchenie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://cdn-01.bonus-tv.ru/prosveschenie_edge/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RadostMoya.ru@SD",Radost Moya (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Radost Moya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radm.mediacdn.ru/cdn/radost/playlist_sdhigh.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RBKTV.ru@SD",RBK-TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RBK-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/RBK/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RENTV.ru@SD",REN TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",REN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/REN/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RENTV.ru@SD",REN TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",REN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/ren_tv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RENTVInternational.ru@SD",REN TV International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",REN TV International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/RENTV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RENTVInternational.ru@SD",REN TV International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",REN TV International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/ren/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Retro.ru@SD",Retro (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Retro (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/191/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Retro.ru@SD",Retro (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Retro (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Retro/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RodnoeKino.ru@SD",Rodnoe Kino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Rodnoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/242/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RodnoeKino.ru@SD",Rodnoe Kino (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Rodnoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Rossiya1Vainah.ru@SD",Rossiya 1 Vainah (576i)
+#EXTINF:-1 group-title="🇷🇺 Россия",Rossiya 1 Vainah (576i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.chechensoft.ru/vainahtv/ngrp:vaynahtv_all/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RT.ru@SD",RT (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RT (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://212.5.144.156:8080/rt/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTBalkan.ru@SD",RT Balkan (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RT Balkan (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://rt-srb.rttv.com/dvr/rtbalkan/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTBalkan.ru@SD",RT Balkan (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RT Balkan (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://rt-srb.rttv.com/live/rtbalkan/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTenEspanol.ru@SD",RT en Espanol (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RT en Espanol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.thestream.cyou/live/46.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTenEspanol.ru@SD",RT en Espanol (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RT en Espanol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTenEspanol.ru@SD",RT en Espanol (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RT en Espanol (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-evg10.tv360.bitel.com.pe/bitel/rt/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTGTV.ru@HD",RTG TV HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RTG TV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/164/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTRPlaneta.ru@CIS",RTR-Planeta (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RTR-Planeta (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rtr_planeta/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RTVi.ru@SD",RTVi (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",RTVi (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://shift03.isp.bg/RTVi/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia1.ru@HD",Russia-1 HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-1 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/russia_hd/playlist_6.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia1.ru@HD",Russia-1 HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-1 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia1.ru@HD",Russia-1 HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-1 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/RossiyaHD/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia1.ru@SD",Russia-1 SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-1 SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://109.207.243.18/2/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Rossiya-24_Logo.svg/960px-Rossiya-24_Logo.svg.png",Russia-24
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Rossiya-24_Logo.svg/960px-Rossiya-24_Logo.svg.png",Russia-24
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://dmi3y-tv.online/hls/smotrim/T2/CH_RUSSIA24_INT.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@SD",Russia-24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rossia_24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@SD",Russia-24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Rossiya24/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@SD",Russia-24 (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-24 (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/russia24nl_smotrim/playlist_5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@HD",Russia-24 HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-24 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://77.232.131.211/Rossiya24/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@HD",Russia-24 HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-24 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.smotrim.ru/vgtrk/0/russia24-hd/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RussiaK.ru@SD",Russia-K (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-K (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/229/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RussiaK.ru@SD",Russia-K (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-K (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rossia_k/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RussiaK.ru@HD",Russia-K HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-K HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/russia_k/playlist_5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RussiaK.ru@HD",Russia-K HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russia-K HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.smotrim.ru/vgtrk/0/kultura-hd/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RusskiyBestseller.ru@SD",Russkiy Bestseller (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russkiy Bestseller (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/208/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RusskiyDetektiv.ru@SD",Russkiy Detektiv (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russkiy Detektiv (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/204/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RusskiyIllusion.ru@SD",Russkiy Illusion (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russkiy Illusion (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/russkiy_illusion/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russkiyroman.ru@SD",Russkiy roman (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russkiy roman (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/266/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russkiyroman.ru@SD",Russkiy roman (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Russkiy roman (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/rusroman/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Rybalkaiokhota.ru@SD",Rybalka i okhota (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Rybalka i okhota (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/ohota_i_ribalka/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Rybolov.ru@SD",Rybolov (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Rybolov (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/264/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SanktPeterburg.ru@HD",Sankt-Peterburg HD (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Sankt-Peterburg HD (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/ext_spbtv/playlist_5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Saphire.ru@SD",Saphire (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Saphire (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://77.232.131.211/Sapfir/manifest.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Sarafan.ru@SD",Sarafan (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Sarafan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/81/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Sarafan.ru@SD",Sarafan (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Sarafan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/sarafan/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShansonTV.ru@SD",Shanson TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Shanson TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://catchup.videoline.ru/shanson/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShansonTV.ru@SD",Shanson TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Shanson TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/shanson/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShansonTV.ru@SD",Shanson TV (576p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Shanson TV (576p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.thestream.cyou/live/7009.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Shef.ru@SD",Shef (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Shef (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Shef/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Shokiruyushchee.ru@HD",Shokiruyushchee HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Shokiruyushchee HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/75/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShoppingLive.ru@SD",Shopping Live (576p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Shopping Live (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv30.vintera.tv:8081/shoppinglive/shoppinglive_stream/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShoppingLive.ru@SD",Shopping Live (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Shopping Live (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://nonmirya7cc.a.trbcdn.net/livemaster/tzrz5_sazlypl5ot.smil/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Skorayapomoshch.ru@SD",Skoraya pomoshch (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Skoraya pomoshch (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Skoraja_pomosh/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SmileTV.ru@SD",Smile TV (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Smile TV (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://5d23269b3ec0c.streamlock.net/WEB_Smilik/ngrp:Smilik.stream-adaptive/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Smotrim100Detskoe.ru@SD",Smotrim 100% Detskoe (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Smotrim 100% Detskoe (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls/fasttv05/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Smotrim100Fakty.ru@SD",Smotrim 100% Fakty (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Smotrim 100% Fakty (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls/fasttv06/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Smotrim100Klassika.ru@SD",Smotrim 100% Klassika (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Smotrim 100% Klassika (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls/fasttv03/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Smotrim100Lyubov.ru@SD",Smotrim 100% Lyubov (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Smotrim 100% Lyubov (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls/fasttv01/playlist_2.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Smotrim100Prazdnik.ru@SD",Smotrim 100% Prazdnik (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Smotrim 100% Prazdnik (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls/fasttv04/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SochiLive.ru@HD",Sochi Live HD (720p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Sochi Live HD (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv30.vintera.tv:8081/sochi/sochi_stream/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Solnce.ru@SD",Solnce (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Solnce (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/solnce/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Solnce.ru@SD",Solnce (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Solnce (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://217.114.191.150/Solnce/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Solnce.ru@SD",Solnce (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Solnce (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/118/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Solnce.ru@SD",Solnce (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Solnce (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tv.mediacdn.ru/live/solntse/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SolovyovLive.ru@SD",Solovyov Live (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Solovyov Live (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/solovievlive/playlist_6.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Soyuzny.ru@SD",Soyuzny (480p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Soyuzny (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/TRO/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Soyuzny.ru@SD",Soyuzny (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Soyuzny (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Spas.ru@SD",Spas (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Spas (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="StarFamily.ru@SD",Star Family (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Star Family (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://dash2.antik.sk/live/test_star_family_atktv/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STARTAir.ru@SD",START Air (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",START Air (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/START_AIR/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STARTAir.ru@SD",START Air (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",START Air (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/128/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STARTAir.ru@SD",START Air (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",START Air (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/start_air/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STARTWorld.ru@SD",START World (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",START World (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/start_world/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STS.ru@SD",STS (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",STS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tshift-1.telecoma.tv/sts/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STS.ru@SD",STS (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",STS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/sts/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STS.ru@SD",STS (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",STS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/sts/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STS.ru@SD",STS (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",STS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/CTC/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STS.ru@HD",STS HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",STS HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/138/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STSInternational.ru@SD",STS International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",STS International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/CTC/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STSLove.ru@SD",STS Love (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",STS Love (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/183/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="STSLove.ru@SD",STS Love (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",STS Love (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/sts_love/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Subbota.ru@SD",Subbota! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Subbota! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://217.114.191.150/Subbota/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Subbota.ru@HD",Subbota! HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Subbota! HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/269/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Subbota.ru@SD",Subbota! SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Subbota! SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/subbota/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SuperGeroi.ru@SD",SuperGeroi (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",SuperGeroi (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://109.94.1.3:8080/132/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Svoboda.ru@SD" tvg-logo="https://web02.antik.sk/assets/img/channels/db23090472360f39401398f924a47461.svg",Svoboda
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="svoboda" tvg-logo="https://web02.antik.sk/assets/img/channels/db23090472360f39401398f924a47461.svg",Svoboda
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/svoboda/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="T24.ru@SD",T24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/t24/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="T24.ru@SD",T24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/209/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="T24.ru@SD",T24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tehno_24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Telecafe.ru@SD",Telecafe (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/314/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Telecafe.ru@SD",Telecafe (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/telecafe/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Telecafe.ru@SD",Telecafe (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_telecafe_tv/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TeleDom.ru@SD" tvg-logo="https://i.imgur.com/vceJmuk.png",TeleDom
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="teledom" tvg-logo="https://i.imgur.com/vceJmuk.png",TeleDom
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://iam-profi.ru/hls-live/livepkgr/_definst_/liveevent/td720.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TiJi.ru@SD",TiJi (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TiJi (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/111/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNT.ru@SD",TNT (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNT (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tnt/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNT.ru@SD",TNT (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNT (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/THT/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNTInternational.ru@Belarus",TNT International Belarus (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNT International Belarus (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://05cea6e8.ucomist.net/iptv/VK7YCHHWNDD8XC/15230/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNT.ru@SD",TNT SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNT SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/135/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNT4.ru@SD",TNT4 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNT4 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tnt4/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNT4.ru@SD",TNT4 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNT4 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/106/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNT4International.ru@SD",TNT4 International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNT4 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tnt4/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNVPlanet.ru@SD",TNV-Planet (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNV-Planet (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tnv/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TNVTatarstan.ru@SD",TNV-Tatarstan (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TNV-Tatarstan (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://user91229.clients-cdnnow.ru/hls/user91229_1.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Tochkaotryva.ru@SD",Tochka otryva (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Tochka otryva (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tochka_otriva/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TochkaRF.ru@SD",Tochka RF (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Tochka RF (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/161/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Tonus.ru@SD",Tonus (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Tonus (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://194.143.148.28:8080/Mir24/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Tooku.ru@SD",Tooku (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Tooku (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-saha.cdnvideo.ru/saha/tooky/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TravelPlusAdventure.ru@HD",Travel+Adventure HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Travel+Adventure HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/206/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TravelPlusAdventure.ru@HD",Travel+Adventure HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Travel+Adventure HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://77.232.131.211/TravelAdventureHD/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TV21.ru@SD",TV 21 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV 21 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/TVXXI/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TV21.ru@SD",TV 21 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV 21 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tvxxi/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TV21International.ru@SD",TV 21 International (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV 21 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/152/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TVBRICSRussian.ru@SD",TV BRICS Russian (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV BRICS Russian (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/TVBRICS/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TVCentr.ru@SD",TV Centr (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV Centr (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tvc/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TVCentr.ru@SD",TV Centr (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV Centr (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tvc/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TVPRO.ru@SD" tvg-logo="https://i.imgur.com/sbuSefI.png",TV PRO
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://i.imgur.com/sbuSefI.png",TV PRO
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://rtmp.tvpro-online.ru/hls/ch1.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TV3.ru@Belarus",TV-3 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV-3 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/TB-3/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TV3.ru@SD",TV-3 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV-3 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tv-3/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TV3.ru@SD",TV-3 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV-3 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/TB3/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TV3.ru@HD",TV-3 HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",TV-3 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/136/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="U.ru@SD",U (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",U (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/U/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="U.ru@SD",U (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",U (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/230/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="U.ru@SD",U (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",U (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/u/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="UDAR.ru@SD",UDAR (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",UDAR (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/udar/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="UDAR.ru@SD",UDAR (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",UDAR (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/279/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="UniverTV.ru@SD",Univer TV (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Univer TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn.universmotri.ru/live/smil:univer.smil/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="UniverTV.ru@SD",Univer TV (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Univer TV (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn.universmotri.ru/live/smil:mbr.smil/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="UnknownRussia.ru@HD",Unknown Russia HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Unknown Russia HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/NeizvestnayaRossia/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Usadba.ru@SD",Usadba (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Usadba (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/211/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vgostyakhuskazki.ru@SD",V gostyakh u skazki (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",V gostyakh u skazki (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/93/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vgostyakhuskazki.ru@SD",V gostyakh u skazki (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",V gostyakh u skazki (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/v_gostyah_u_skazki/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vmirezhivotnykh.ru@SD",V mire zhivotnykh (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",V mire zhivotnykh (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/241/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="VestiFM.ru@HD",Vesti FM (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Vesti FM (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/vesti_fm/playlist_4.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuExplore.ru@SD",viju Explore (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju Explore (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/239/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuExplore.ru@SD",viju Explore (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju Explore (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_explore/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000.ru@SD",viju TV1000 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju TV1000 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/110/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000.ru@SD",viju TV1000 (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju TV1000 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000action.ru@SD",viju TV1000 action (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju TV1000 action (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/100/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000action.ru@SD",viju TV1000 action (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju TV1000 action (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000_action/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuTV1000russkoe.ru@SD",viju TV1000 russkoe (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju TV1000 russkoe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000_russkoe/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuPlusMegahit.ru@HD",viju+ Megahit HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju+ Megahit HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/200/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuPlusPlanet.ru@HD",viju+ Planet HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju+ Planet HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/240/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuPlusPremiere.ru@HD",viju+ Premiere HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju+ Premiere HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/202/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="vijuPlusSerial.ru@HD",viju+ Serial HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",viju+ Serial HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/311/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="VitrinaTV.ru@SD",Vitrina TV (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Vitrina TV (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-11cinema.cdnvideo.ru/11cinema/11cinema/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="VmesteRF.ru@SD",Vmeste-RF (576p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Vmeste-RF (576p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.thestream.cyou/live/7006.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="VoprosyiOtvety.ru@SD",Voprosy i Otvety (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Voprosy i Otvety (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/76/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vremya.ru@SD",Vremya (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Vremya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/237/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vremya.ru@SD",Vremya (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Vremya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/vremya/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vremya.ru@SD",Vremya (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Vremya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_vremya/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="YaltaTV.ru@SD",Yalta TV (480p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Yalta TV (480p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://195.26.83.96:7029/play/a006
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ZagorodnayaZhizn.ru@SD",Zagorodnaya Zhizn (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zagorodnaya Zhizn (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.57.68.33/40/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhara.ru@SD",Zhara (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zhara (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/386/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhara.ru@SD",Zhara (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zhara (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zhara/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhivayapriroda.ru@SD",Zhivaya priroda (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zhivaya priroda (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/83/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhivayapriroda.ru@HD",Zhivaya priroda HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zhivaya priroda HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/225/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zhivi.ru@SD",Zhivi! (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zhivi! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zhivi/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zoopark.ru@SD",Zoopark (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zoopark (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zoopark/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zvezda.ru@SD",Zvezda (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zvezda (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://51.158.144.33:2021/zvezda/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zvezda.ru@SD",Zvezda (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zvezda (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/zvezda/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zvezda.ru@SD",Zvezda (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Zvezda (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zvezda/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Zvezda.ru@HD",Zvezda HD (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Zvezda HD (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="AISTTV.ru@SD",Аист ТВ (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Аист ТВ (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live2-aisttv.cdnvideo.ru/aisttv2/aisttv.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Aris24.ru@SD",Арис 24 (720p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Арис 24 (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv25.vintera.tv:8081/test/aris/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Astrahan24.ru@SD",Астрахань 24 (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Астрахань 24 (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.astrakhan.ru/astrakhan24/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Belgorod24.ru@SD",Белгород 24 (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Белгород 24 (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://belnovosti.cdn.easyhoster.ru:8443/stream.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BigAsia.ru@SD",Большая Азия (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Большая Азия (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-bigasia.cdnvideo.ru/bigasia/bigasia.smil/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="BST.ru@SD",БСТ 24 (Братск)
+#EXTINF:-1 group-title="🇷🇺 Россия",БСТ 24 (Братск)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://bst.bratsk.ru/hls/bst2/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Vetta24.ru@SD",Ветта 24 (Пермь) (576p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Ветта 24 (Пермь) (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv24.vintera.tv:8081/vetta/vetta_office/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Volga.ru@SD" tvg-logo="https://i.imgur.com/xHs1pr1.png",Волга (HD)
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="volga" tvg-logo="https://i.imgur.com/xHs1pr1.png",Волга (HD)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Volga/hls/1920x1080@4504/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="GuberniaSamara.ru@SD",Губерния (Самара) (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Губерния (Самара) (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.guberniatv.cdnvideo.ru/guberniatv/guberniatv.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Eurasia.ru@SD",Евразия (Орск) (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Евразия (Орск) (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://infochh.trkeurasia.ru/hlsinfoch/infochhd.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Enisey.ru@SD",Енисей (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Енисей (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-eniseytv.cdnvideo.ru/eniseytv/stream1/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Channel16.ru@SD",К16 (Саров) (406p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",К16 (Саров) (406p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv25.vintera.tv:8081/test/k16/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RedLine.ru@SD",Красная линия (288p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Красная линия (288p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://s55766.cdn.ngenix.net/s55766-media-origin/rline_low/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="RedLine.ru@SD",Красная линия (480p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Красная линия (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://s55766.cdn.ngenix.net/s55766-media-origin/rline_high/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LDPRTV.ru@SD",ЛДПР ТВ (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",ЛДПР ТВ (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.46.143.222:1935/live/mp4:ldpr.stream/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LDPRTV.ru@SD",ЛДПР ТВ (480p)
+#EXTINF:-1 group-title="🇷🇺 Россия",ЛДПР ТВ (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.46.143.222:1935/live/mp4:ldpr.stream_480p/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="LDPRTV.ru@SD",ЛДПР ТВ (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",ЛДПР ТВ (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.46.143.222:1935/live/mp4:ldpr.stream_720p/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Mir24.ru@SD",Мир 24 (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Мир 24 (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mir24_2500/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MirBelogorya.ru@SD",Мир Белагорья (720p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Мир Белагорья (720p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://mirbelogorya.ru:8080/mirbelogorya/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MirBelogorya.ru@SD",Мир Белогорья (720p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Мир Белогорья (720p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.tvbelgorod.ru:8080/mirbelogorya/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MTVVolgograd.ru@SD",МТВ (Волгоград) (720p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",МТВ (Волгоград) (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://hls.volgograd1vtv.cdnvideo.ru/volgograd1vtv/volgograd1vtv.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="MuzSoyuz.ru@SD",Муз союз (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Муз союз (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz2/muzsoyuz.6fw0-58xp-acts-esy0/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="HopeChannelRussia.ru@SD",Надежда (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Надежда (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-tvhope.cdnvideo.ru/tvhope-pull/tvhope_1/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="HopeChannelRussia.ru@SD",Надежда (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Надежда (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvhope.cdnvideo.ru/tvhope-pull/tvhope_1/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Nano.ru@HD",Нано ТВ HD (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Нано ТВ HD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://s1.tv-nano.com/Nano_rec/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NVKSakha.ru@SD",НВК Саха (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",НВК Саха (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-saha.cdnvideo.ru/saha/saha/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NizhniyNovgorod24.ru@SD",Нижний Новгород 24 (720p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Нижний Новгород 24 (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-vestinn.cdnvideo.ru/vestinn/nn24-khl/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NikaTV.ru@SD",Ника ТВ (576p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Ника ТВ (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-nikatv.cdnvideo.ru/nikatv/nikatv.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTM.ru@SD",НТМ (Народное телевидение Мордовии) (720p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",НТМ (Народное телевидение Мордовии) (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-ntm13.cdnvideo.ru/ntm13/smil:ntm13.smil/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="NTS.ru@SD",НТС (Севастополь) (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",НТС (Севастополь) (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://peqk71plnjy.a.trbcdn.net/livemaster/w4kz7pki62_nts_tv/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="OSN.ru@SD" tvg-logo="https://www.osnmedia.ru/wp-content/uploads/2024/11/osn-logo-header.png",ОСН
+#EXTINF:-1 group-title="🇷🇺 Россия" tvg-logo="https://www.osnmedia.ru/wp-content/uploads/2024/11/osn-logo-header.png",ОСН
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://osnmedia.servicecdn.ru/streams/17603_88089/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="OtkritiymirZdorove.ru@SD",Открытый мир. Здоровье (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Открытый мир. Здоровье (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://v4.proofix.ru/0mir/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Prima.ru@SD",Прима (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Прима (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Prima/hls/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Russia24.ru@SD",Россия 24 (576p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Россия 24 (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://uiptv.do.am/1ufc/000000006/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="S1.ru@SD",С1 (Сургут) (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",С1 (Сургут) (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://sitv.ru/hls/stv.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="SamaraGIS.ru@SD",Самара ГИС (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Самара ГИС (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tv.samaragis.ru/new/new/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Sever.ru@SD",Север (Нарьян-Мар)
+#EXTINF:-1 group-title="🇷🇺 Россия",Север (Нарьян-Мар)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://2vko9pchwon.a.trbcdn.net/livemaster/8ilgc_cw63ucn03p.smil/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Solnce.ru@SD",Солнце (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Солнце (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tv.mediacdn.ru/live/solntse/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Sochi24.ru@SD",Сочи 24 HD (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Сочи 24 HD (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv30.vintera.tv:8081/sochi/sochi24_tv/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Soyuz.ru@SD",Союз (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Союз (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz/soyuz/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="StranaFM.ru@SD",Страна FM (720p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Страна FM (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.stranafm.cdnvideo.ru/stranafm/stranafm_hd.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Tamyr.ru@SD",Тамыр (Уфа)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TvoeTV.ru@SD",Твое TV HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Твое TV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tvoetv.space:8080/tvoetv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="86.ru@SD",Телеканал 86 (Сургут) (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Телеканал 86 (Сургут) (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://sitv.ru/hls/s86.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="TKR.ru@SD",ТКР (Рязань) (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",ТКР (Рязань) (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.tkr.cdnvideo.ru/tkr/tkr.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Tolk.ru@HD",Толк HD (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Толк HD (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-tolknews.cdnvideo.ru/tolknews/stream/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="3ABNRussia.ru@SD",Три Ангела (720p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Три Ангела (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls.tv.3angels.ru/stream.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="HuzurTV.ru@SD",Хузур ТВ (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Хузур ТВ (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-mycdn08724960135.cdnvideo.ru/mycdn08724960135/stream1/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShansonTV.ru@SD",Шансон ТВ (576p) [Geo-blocked]
+#EXTINF:-1 group-title="🇷🇺 Россия",Шансон ТВ (576p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://uiptv.do.am/1ufc/602079679/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="ShchyolkovskoeTV.ru@SD",Щёлковское ТВ (576p) [Not 24/7]
+#EXTINF:-1 group-title="🇷🇺 Россия",Щёлковское ТВ (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream0.tv41.ru/live.m3u8
-#EXTINF:-1 group-title="🇷🇺 Россия" tvg-id="Yuvelirochka.ru@SD",Ювелирочка ТВ (576p)
+#EXTINF:-1 group-title="🇷🇺 Россия",Ювелирочка ТВ (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-uvelirochka.cdnvideo.ru/uvelirochka/uvelirochka_720p3/playlist.m3u8

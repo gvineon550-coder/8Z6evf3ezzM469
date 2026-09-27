@@ -1,28 +1,28 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 tvg-id="sts-love" tvg-logo="https://epg.iptvx.one/picons/sts-love.png" group-title="🎭 Развлекательные",CTC Love
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/sts-love.png" group-title="🎭 Развлекательные",CTC Love
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-b9f0884f9a81b8c6/video.m3u8
-#EXTINF:-1 group-title="🎭 Развлекательные" tvg-id="vijuPlusComedy.ru@HD",viju+ Comedy HD (1080p)
+#EXTINF:-1 group-title="🎭 Развлекательные",viju+ Comedy HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/201/index.m3u8
-#EXTINF:-1 tvg-id="world-fashion-channel" tvg-logo="https://epg.iptvx.one/picons/world-fashion-channel.png" group-title="🎭 Развлекательные",WF мода HD
+#EXTINF:-1 tvg-logo="https://epg.iptvx.one/picons/world-fashion-channel.png" group-title="🎭 Развлекательные",WF мода HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-3.otcnet.ru/wfcrus/index.m3u8
-#EXTINF:-1 tvg-id="Bober.ru" tvg-logo="https://i.imgur.com/clWWhB8.png" group-title="🎭 Развлекательные",Бобер
+#EXTINF:-1 tvg-id="bobior" tvg-logo="https://i.imgur.com/clWWhB8.png" group-title="🎭 Развлекательные",Бобер
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-319cadb3fff5fb3e/video.m3u8
-#EXTINF:-1 tvg-id="ZagorodnayaZhizn.ru" tvg-logo="https://i.imgur.com/RoYd5pz.png" group-title="🎭 Развлекательные",Загородная жизнь HD
+#EXTINF:-1 tvg-id="zagorodnaya-zhizn" tvg-logo="https://i.imgur.com/RoYd5pz.png" group-title="🎭 Развлекательные",Загородная жизнь HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.57.68.33/40/mpegts
-#EXTINF:-1 tvg-id="no_epg_music" tvg-logo="https://avatars.mds.yandex.net/i?id=a5cfa43179f7b313920bf743b1cf92191a0302c1-5333794-images-thumbs&n=13" group-title="🎭 Развлекательные",Залипательные ролики
+#EXTINF:-1 tvg-logo="https://avatars.mds.yandex.net/i?id=a5cfa43179f7b313920bf743b1cf92191a0302c1-5333794-images-thumbs&n=13" group-title="🎭 Развлекательные",Залипательные ролики
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://lbgo.bozztv.com/07/ushba60/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="Muzhskoy.ru" tvg-logo="https://i.imgur.com/xyztpBf.png" group-title="🎭 Развлекательные",Мужской
+#EXTINF:-1 tvg-id="muzhskoy" tvg-logo="https://i.imgur.com/xyztpBf.png" group-title="🎭 Развлекательные",Мужской
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-55c94e838b306657/video.m3u8
-#EXTINF:-1 tvg-id="NashaTema.ru" tvg-logo="https://i.imgur.com/67ZVDKW.png" group-title="🎭 Развлекательные",Наша Тема
+#EXTINF:-1 tvg-id="nasha-tema" tvg-logo="https://i.imgur.com/67ZVDKW.png" group-title="🎭 Развлекательные",Наша Тема
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-3.otcnet.ru/nashatema/index.m3u8
-#EXTINF:-1 tvg-id="tnt4" tvg-logo="https://epg.iptvx.one/picons/tnt4.png" group-title="🎭 Развлекательные",ТНТ 4
+#EXTINF:-1 tvg-id="tnt-pl4" tvg-logo="https://epg.iptvx.one/picons/tnt4.png" group-title="🎭 Развлекательные",ТНТ 4
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-5f6d3cfda1af8989/video.m3u8

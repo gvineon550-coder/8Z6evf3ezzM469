@@ -1,40 +1,40 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 group-title="🌿 Fresh",BCU СССР HD
+#EXTINF:-1 tvg-id="bcu-sssr" group-title="🌿 Fresh",BCU СССР HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/488/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Adventure
+#EXTINF:-1 tvg-id="fresh-adventure" group-title="🌿 Fresh",Fresh Adventure
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/432/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Cinema
+#EXTINF:-1 tvg-id="fresh-cinema" group-title="🌿 Fresh",Fresh Cinema
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/423/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Comedy
+#EXTINF:-1 tvg-id="fresh-comedy" group-title="🌿 Fresh",Fresh Comedy
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/426/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Family
+#EXTINF:-1 tvg-id="fresh-family" group-title="🌿 Fresh",Fresh Family
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/427/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Fantastic
+#EXTINF:-1 tvg-id="fresh-fantastic" group-title="🌿 Fresh",Fresh Fantastic
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/429/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Horror
+#EXTINF:-1 tvg-id="fresh-horror" group-title="🌿 Fresh",Fresh Horror
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/431/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Premiere
+#EXTINF:-1 tvg-id="fresh-premiere" group-title="🌿 Fresh",Fresh Premiere
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/424/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Rating
+#EXTINF:-1 tvg-id="fresh-rating" group-title="🌿 Fresh",Fresh Rating
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/422/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Romantic
+#EXTINF:-1 tvg-id="fresh-romatic" group-title="🌿 Fresh",Fresh Romantic
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/433/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Series
+#EXTINF:-1 tvg-id="fresh-series" group-title="🌿 Fresh",Fresh Series
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/430/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh Thriller
+#EXTINF:-1 tvg-id="fresh-thriller" group-title="🌿 Fresh",Fresh Thriller
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/434/index.m3u8
-#EXTINF:-1 group-title="🌿 Fresh",Fresh VHS
+#EXTINF:-1 tvg-id="fresh-vhs" group-title="🌿 Fresh",Fresh VHS
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/428/index.m3u8
