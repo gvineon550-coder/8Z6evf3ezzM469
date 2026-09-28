@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-counter.py v2 — точная оценка HTTP-запросов checker'а (±3%).
-Читает docs/*.json + rejected.csv. НЕ патчит, НЕ правит скрипт.
+counter.py v3 — точная оценка HTTP-запросов checker'а + отчёт в Telegram.
 """
+import os
 import json
 import csv
 import datetime
 from pathlib import Path
 from collections import Counter
 
+import requests
 
 DOCS = Path('docs')
 
@@ -25,7 +26,6 @@ def load_json(name, default=None):
 
 
 def count_m3u_stats():
-    """Точное число URL и whitelist в all_cleaned.m3u."""
     p = DOCS / 'all_cleaned.m3u'
     if not p.exists():
         return 0, 0
@@ -42,7 +42,6 @@ def count_m3u_stats():
 
 
 def count_ffprobe_recent(hours=24):
-    """Сколько записей ffprobe обновлено за N часов (по ts)."""
     ff = load_json('ffprobe.json')
     if not ff:
         return 0
@@ -52,7 +51,6 @@ def count_ffprobe_recent(hours=24):
 
 
 def parse_rejected():
-    """Парсит rejected.csv → считает причины."""
     p = DOCS / 'rejected.csv'
     if not p.exists():
         return Counter()
@@ -73,38 +71,25 @@ def parse_rejected():
 
 
 def avg_recent_runs(history, n=3):
-    """Среднее ok/dead за последние N прогонов."""
     if not history:
         return {}
     recent = history[-n:]
     if not recent:
         return {}
     return {
-        'ok':     sum(r.get('ok', 0) for r in recent) // len(recent),
-        'dead':   sum(r.get('dead', 0) for r in recent) // len(recent),
+        'ok': sum(r.get('ok', 0) for r in recent) // len(recent),
+        'dead': sum(r.get('dead', 0) for r in recent) // len(recent),
         'unstable': sum(r.get('unstable', 0) for r in recent) // len(recent),
         'filtered': sum(r.get('filtered', 0) for r in recent) // len(recent),
-        'runs':   len(recent),
+        'runs': len(recent),
     }
 
 
 def estimate_http_requests(ok, dead, wl, reasons):
-    """
-    Точная оценка HTTP-запросов:
-      живые: wink срабатывает в 90% случаев → avg 1.1 UA
-      мёртвые timeout: все 4 UA пробуются → × 4
-      мёртвые http_XXX: сервер ответил кодом → × 1
-      мёртвые прочие (empty/html/small): обычно × 1
-    """
     ok_no_wl = max(0, ok - wl)
-
-    # Живые
     live_requests = int(ok_no_wl * 1.10)
-
-    # Мёртвые — разбиваем по типу
     dead_total = max(0, dead)
 
-    # Из rejected.csv знаем пропорции
     timeout = reasons.get('dead_detail:timeout', 0)
     http_code = sum(v for k, v in reasons.items()
                     if k.startswith('dead_detail:http_'))
@@ -115,16 +100,11 @@ def estimate_http_requests(ok, dead, wl, reasons):
 
     rejected_dead = timeout + http_code + empty + html + small + unknown
     if rejected_dead == 0:
-        # fallback: 40% timeout, 60% код
         timeout = int(dead_total * 0.4)
         http_code = dead_total - timeout
 
-    # Коэффициенты
-    dead_requests = (
-        timeout * 4 +
-        http_code * 1 +
-        (empty + html + small + unknown) * 1
-    )
+    dead_requests = (timeout * 4 + http_code * 1 +
+                     (empty + html + small + unknown) * 1)
 
     return {
         'live_channels': ok_no_wl,
@@ -140,14 +120,56 @@ def estimate_http_requests(ok, dead, wl, reasons):
     }
 
 
+def send_to_telegram(result):
+    token = os.environ.get('TG_BOT_TOKEN', '').strip()
+    chat = os.environ.get('TG_CHAT_ID', '').strip()
+    if not token or not chat:
+        print("⚠️  Telegram не настроен — пропускаю")
+        return False
+
+    est = result['estimated_requests']
+    http = est['http_checker']
+    real = result['real_data']
+    avg = real['avg_last_3_runs']
+
+    text = (
+        f"📊 <b>Счётчик запросов</b>\n\n"
+        f"🔢 <b>Всего: ~{est['TOTAL']:,}</b> запросов/день\n\n"
+        f"📡 <b>По источникам:</b>\n"
+        f"• HTTP-чекер: <b>{http['total']:,}</b>\n"
+        f"   ├ живые: {http['live_requests']:,}\n"
+        f"   └ мёртвые: {http['dead_requests']:,}\n"
+        f"• ffprobe: <b>{est['ffprobe']['requests']:,}</b>\n"
+        f"• Cleaner: {est['cleaner']}\n"
+        f"• Дашборд: {est['dashboard_other_repo']}\n"
+        f"• Прочее: {est['misc']}\n\n"
+        f"📈 <b>Среднее за {avg.get('runs', 0)} прогона:</b>\n"
+        f"OK={avg.get('ok', 0):,} · dead={avg.get('dead', 0):,}\n\n"
+        f"🎯 Точность: {result['accuracy']}"
+    )
+
+    try:
+        r = requests.post(
+            f'https://api.telegram.org/bot{token}/sendMessage',
+            data={'chat_id': chat, 'text': text, 'parse_mode': 'HTML',
+                  'disable_web_page_preview': 'true'},
+            timeout=15,
+        )
+        ok = r.status_code == 200
+        print(f"{'✅' if ok else '❌'} Telegram: {r.status_code}")
+        return ok
+    except Exception as e:
+        print(f"❌ Telegram: {e}")
+        return False
+
+
 def main():
-    print("📊 Анализирую checker v2...")
+    print("📊 Анализирую checker v3...")
 
     history = load_json('history.json', [])
     total_m3u, wl = count_m3u_stats()
     ffprobe_24h = count_ffprobe_recent(24)
     reasons = parse_rejected()
-
     avg = avg_recent_runs(history, n=3)
 
     ok = avg.get('ok', 0)
@@ -156,27 +178,19 @@ def main():
     filtered = avg.get('filtered', 0)
 
     http = estimate_http_requests(ok, dead, wl, reasons)
-
-    # ffprobe: считаем записи обновлённые за 24ч — это точно число запусков
-    # Каждый ffprobe-запуск делает ~2 запроса (playlist + сегмент)
     ffprobe_requests = ffprobe_24h * 2
-
-    # Логотипы: БЕЗ --check-all-logos НЕ проверяются → 0
     logo_requests = 0
-
-    # Внешние
-    cleaner = 8          # 4 прогона × 2 URL
-    dashboard = 480      # 20 API × 24ч (другой репо)
-    misc = 5             # Telegram, EPG кэш, iptv-org кэш
+    cleaner = 8
+    dashboard = 480
+    misc = 5
 
     total = (http['total'] + ffprobe_requests +
              logo_requests + cleaner + dashboard + misc)
 
     result = {
         'date': datetime.datetime.now().isoformat(timespec='seconds'),
-        'method': 'counter v2 — точная оценка из docs/*.json + rejected.csv',
+        'method': 'counter v3 — точная оценка из docs/*.json + rejected.csv',
         'accuracy': '±3%',
-
         'real_data': {
             'total_in_all_cleaned': total_m3u,
             'whitelist_count': wl,
@@ -188,7 +202,6 @@ def main():
             'ffprobe_updated_24h': ffprobe_24h,
             'rejected_reasons': dict(reasons),
         },
-
         'estimated_requests': {
             'http_checker': http,
             'ffprobe': {
@@ -198,7 +211,7 @@ def main():
             },
             'logo_head': {
                 'requests': logo_requests,
-                'note': 'в текущей конфигурации логотипы НЕ проверяются (нет --check-all-logos)',
+                'note': 'не проверяются (нет --check-all-logos)',
             },
             'cleaner': cleaner,
             'dashboard_other_repo': dashboard,
@@ -213,33 +226,13 @@ def main():
         encoding='utf-8',
     )
 
-    # Вывод
     print("")
     print("=" * 60)
-    print("📦 РЕАЛЬНЫЕ ДАННЫЕ")
-    print("=" * 60)
-    print(f"  URL в all_cleaned.m3u:    {total_m3u}")
-    print(f"  Whitelist в нём:          {wl}")
-    print(f"  ffprobe обновлён за 24ч:  {ffprobe_24h}")
-    print(f"  Последние {avg.get('runs', 0)} прогона (среднее):")
-    print(f"    OK={ok}, dead={dead}, unstable={unstable}, filter={filtered}")
-    print("")
-    print("=" * 60)
-    print("📊 HTTP-ЗАПРОСОВ В ДЕНЬ (точная оценка)")
-    print("=" * 60)
-    print(f"  HTTP живым:               {http['live_requests']:>6}")
-    print(f"  HTTP мёртвым (timeout×4): {http['timeout_breakdown']['timeout_4ua'] * 4:>6}")
-    print(f"  HTTP мёртвым (http_XXX):  {http['timeout_breakdown']['http_code_1ua']:>6}")
-    print(f"  HTTP мёртвым (прочее):    {http['timeout_breakdown']['other_1ua']:>6}")
-    print(f"  ffprobe:                  {ffprobe_requests:>6}")
-    print(f"  Логотипы (HEAD):          {logo_requests:>6}  (не проверяются)")
-    print(f"  Cleaner:                  {cleaner:>6}")
-    print(f"  Дашборд (др. репо):       {dashboard:>6}")
-    print(f"  Прочее:                   {misc:>6}")
-    print(f"  ──────────────────────────────")
-    print(f"  ВСЕГО:                    {total:>6}")
-    print("=" * 60)
+    print(f"📊 ВСЕГО: ~{total:,} запросов/день")
     print(f"📄 {DOCS / 'requests_count.json'}")
+    print("=" * 60)
+
+    send_to_telegram(result)
     return 0
 
 
