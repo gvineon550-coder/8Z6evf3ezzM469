@@ -146,6 +146,9 @@ https://fs.uplink.kz/viju_nature/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nauka" tvg-logo="https://i.imgur.com/ZZxzueO.png",Наука
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/nauka2/index.m3u8
+#EXTINF:-1 tvg-id="bridge-hd" tvg-logo="https://epg.iptvx.one/picons/bridge-tv.png" group-title="Музыкальные",Bridge
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://5.188.159.128:8070/bridgetv/index.m3u8
 #EXTINF:-1 tvg-id="shanson-tv" tvg-logo="https://i.imgur.com/Fk4sd8t.png" group-title="Музыкальные",Шансон ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://flussonic.mkpnet.ru/tv-181e3f7698288892/video.m3u8
@@ -506,9 +509,6 @@ https://fs.uplink.kz/rtr_planeta/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="📦 Разное" tvg-id="rtvi" tvg-logo="https://i.imgur.com/1AEhXyS.png",RTVi (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://shift03.isp.bg/RTVi/index.m3u8
-#EXTINF:-1 group-title="📦 Разное" tvg-id="rossia1" tvg-logo="https://i.imgur.com/6BVWk8z.png",Russia-1 SD (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://109.207.243.18/2/index.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rossia_24/mono.m3u8?token=onlinetv
