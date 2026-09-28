@@ -1,11 +1,11 @@
 {
-  "generated_at_utc": "2026-09-28T17:13:00+00:00",
-  "total_sources_ok": 3,
-  "duration_sec": 0.4,
+  "generated_at_utc": "2026-09-28T19:25:23+00:00",
+  "total_sources_ok": 2,
+  "duration_sec": 0.1,
   "strip_trackers": true,
   "header_saved": "#EXTM3U url-tvg=\"http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH\"",
-  "directives_kept": 160,
-  "whitelisted_kept": 300,
+  "directives_kept": 14,
+  "whitelisted_kept": 185,
   "sources": [
     {
       "name": "iptv_org_ru",
@@ -16,32 +16,22 @@
       "whitelisted": 7
     },
     {
-      "name": "ufotv",
-      "type": "url",
-      "raw": 523,
-      "kept": 409,
-      "rejected": 114,
-      "whitelisted": 122
-    },
-    {
       "name": "my_list",
       "type": "local",
       "raw": 178,
       "kept": 178,
       "rejected": 0,
-      "whitelisted": 300
+      "whitelisted": 185
     }
   ],
   "totals": {
-    "raw": 1554,
-    "kept": 1314,
-    "rejected": 240
+    "raw": 1031,
+    "kept": 905,
+    "rejected": 126
   },
   "reasons": {
-    "banned_name": 70,
-    "blocked_domain": 79,
-    "multicast": 1,
-    "duplicate_url": 43,
-    "shortener": 47
+    "banned_name": 58,
+    "blocked_domain": 67,
+    "multicast": 1
   }
 }
