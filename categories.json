@@ -3,56 +3,66 @@
     { "pattern": "kinowalk\\.hopto\\.org", "group": "Kinowalk", "force": true },
     { "pattern": "rutube\\.ru", "group": "Rutube", "force": true },
     { "pattern": "radiorecord", "group": "Радио Рекорд", "force": true },
-
-    { "pattern": "cdn-dvr\\.ntv\\.ru", "group": "Кино", "force": true },
-    { "pattern": "cdn\\.ntv\\.ru/(ntv-spb|ntv)", "group": "Россия", "force": true },
-    { "pattern": "smotrim\\.ru/hls2/(russia_hd|russia24|russia_k|moscow_24|solovievlive|vesti_fm|doverie|ext_spbtv|static)", "group": "Россия", "force": true },
-    { "pattern": "live\\.smotrim\\.ru/vgtrk", "group": "Россия", "force": true },
+    { "pattern": "cdn-dvr\\.ntv\\.ru", "group": "Сериалы НТВ", "force": true },
+    { "pattern": "cdn\\.ntv\\.ru/(ntv-spb|ntv)", "group": "Основные", "force": true },
+    { "pattern": "smotrim\\.ru/hls2/(russia_hd|russia24|russia_k|moscow_24|solovievlive|vesti_fm|doverie|ext_spbtv|static)", "group": "Основные", "force": true },
+    { "pattern": "live\\.smotrim\\.ru/vgtrk", "group": "Основные", "force": true },
     { "pattern": "fs\\.uplink\\.kz/(dom_kino|kinohit|kinokomedia|kinomix|kinopremiera|kinosemya|kinoseria|kinosvidanie|kinouzhas|eurokino|indiyskoe_kino|nashe_novoe_kino|rodnoe_kino|russkiy_illusion|mosfilm|nostalgia|zhara)", "group": "Кино", "force": true },
-    { "pattern": "fs\\.uplink\\.kz/(5_kanal|perviy_kanal_sng|mir|ntv_mir|ren|rtr_planeta|rossia_24|rossia_k|start_air|start_world|sts|sts_love|tnt4|tvc|zvezda|vremya|domashniy)", "group": "Россия", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/(5_kanal|perviy_kanal_sng|mir|ntv_mir|ren|rtr_planeta|rossia_24|rossia_k|start_air|start_world|sts|sts_love|tnt4|tvc|zvezda|vremya|domashniy)", "group": "Основные", "force": true },
     { "pattern": "fs\\.uplink\\.kz/(viju|tv1000|khl|shanson|muz|zhara|radio|viju_explore)", "group": "Музыка", "force": false }
   ],
 
   "name_patterns": [
-    { "pattern": "(?i)(\\.black|\\.red|\\.sci-?fi|sony[- ]?turbo|sony[- ]?tv|sony[- ]?sci)", "group": "Кино" },
+    { "pattern": "(?i)(\\.black|\\.red|\\.sci-?fi|sony)", "group": "Кино" },
 
-    { "pattern": "(?i)(amedia|blokbaster|kino[- ]?tv|kinohit|kinokomed|kinomix|kinopokaz|kinopremyera|kinosemya|kinoseriya|kinosvidanie|kinouzhas|dom[\\s-]*kino|domkino|evrokino|illusion|indiyskoye|bollywood|kapitan fantastika|komedia|komediynoe|mosfilm|nashe novoe kino|nostalgia|priklyucheniya|rodnoe kino|russkiy detektiv|russkiy roman|saphire|shokiruyushchee|star family|tochka otryva|365 days|5 minut tishiny|che!|dorama|fox life|^fox |peretz|tv ?21|viju.*(tv1000|megahit|premiere|serial|planet|explore))", "group": "Кино" },
+    { "pattern": "(?i)^(channel one|channel 5|perviy|russia-?1|russia-?24|russia-?k|rossia|^ntv$|ntv hd|ntv sd|ntv mir|^mir |mir hd|mir 24|mir seriala|^tnt |tnt$|tnt hd|tnt sd|^sts|sts hd|sts sd|sts international|sts love|tv-?3|tv ?3|tv3 |zvezda|otr|ren tv|ren-?tv|tv centr|^tvc |^tvc$|match|karusel|solovyov live|spas|muz-?tv|che!|piaty|5 kanal|5 канал|тв ?центр|тв-?3|пятниц|звезда|россия|рен ?тв|спас|^мир$|^мир |муз-?тв|^o! |o! international|solnce|^солнце|domashniy|домашний)", "group": "Основные" },
 
-    { "pattern": "(?i)(khl|okko futbol|setanta|udar|boks|fanhd|^fan |match|futbol|futball|sport|ufc)", "group": "Спорт" },
+    { "pattern": "(?i)(ntv series|ntv-hit|ntv hit)", "group": "Сериалы НТВ" },
 
-    { "pattern": "(?i)(bridge|dancehits|europa plus|mcm|nashe hd|shanson|zhara|muz[\\s-]*soyuz|муз ?союз|muz ?soyuz|mtv|муз[- ]?тв)", "group": "Музыка" },
+    { "pattern": "(?i)(friday|пятница|subbota|суббота|kvn|2x2|карусель|тнт4|tnt4|peretz|перец|sarafan|сарафан|^mama|^мама|voprosy i otvety|вопросы и ответы|poehali|поехали)", "group": "Развлекательные" },
 
-    { "pattern": "(?i)(^radio|радио|vesti fm|record|рок|rekord|hit fm|dfm|energy|maximum|retro fm|шансон|radio record|love radio|ретро)", "group": "Радио" },
+    { "pattern": "(?i)(amedia|blokbaster|kino[- ]?tv|kinohit|kinokomed|kinomix|kinopokaz|kinopremyera|kinosemya|kinoseriya|kinosvidanie|kinouzhas|dom[\\s-]*kino|domkino|evrokino|illusion|indiyskoye|india|bollywood|kapitan fantastika|komedia|komediynoe|mosfilm|nashe novoe kino|nostalgia|priklyucheniya|rodnoe kino|russkiy detektiv|russkiy roman|saphire|shokiruyushchee|star family|tochka otryva|365 days|dorama|^fox|fox ?$|fox |foxlife|fox life|start air|start world|tv1000|megahit|premialnoe|ostrosyuzhetnoye|^fan$|^fan |fanhd|okko (premiere|film|movies|series|fantasy|kids|show)|^pobeda|^победа|^retro$|^retro |^ретро|tv ?2[0-9])", "group": "Кино" },
 
-    { "pattern": "(?i)(big planet|dikaya|domashnie zhivotnye|food|foodtime|istoriya|istoki|moya planeta|moya stikhiya|nauka|okhota|rybalka|rybolov|ohotnik|oruzhie|prosveshchenie|v mire zhivotnykh|usadba|zagorodnaya|zhivaya priroda|zoopark|travel\\+|telecafe|kulinar|kuhnya|lapki|pro business|otkryty mir|tochka rf)", "group": "Познавательные" },
+    { "pattern": "(?i)(okko ?(sport|futbol|football|basketball|tennis|hockey|mma|boxing)|^okko$|khl|setanta|udar|boks|futbol|futball|ufc)", "group": "Спорт" },
 
-    { "pattern": "(?i)(^2x2 |2x2|friday|kvn|^mama|sarafan|subbota|tnt4|tnv|tv centr|tv pro|^u \\(|peretz international|subbota!|komediynoe|^che!|karusel|пятница|тнт4|суббота)", "group": "Развлекательные" },
+    { "pattern": "(?i)(bridge|dancehits|europa plus|^mcm|nashe hd|^shanson|^zhara|muz[\\s-]*soyuz|муз ?союз|муз-?тв|music box|страна fm|странаfm|radio record|авторадио|retro fm|hit fm|dfm|energy|maximum|^hit hd$|^hit tv|^hit$)", "group": "Музыка" },
 
-    { "pattern": "(?i)(channel one|channel 5|^perviy|russia-?1|russia-?24|russia-?k|rossia|^ntv|ntv mir|ntv series|ntv-hit|^mir |mir 24|mir hd|mir kazakhstan|mir seriala|moskva 24|moskva\\. doveriye|moy mir|^o! |otr|rbk|ren tv|rtr-?planeta|rtvi|^rt |rt en|start air|start world|^sts|sts international|sts love|tv-?3|tv brics|unknown russia|zvezda|tonus|tooku|teledom|telecafe|^ntv|ntv |tnt |tnt$|tv 21 international|sankt-peterburg|solnce|solovyov live|soyuzny|universal|u$)", "group": "Россия" },
+    { "pattern": "(?i)(^radio|^радио|vesti fm|весте? fm|радио рекорд)", "group": "Радио" },
 
-    { "pattern": "(?i)(news|novosti|24 ?news|24 часа|^t24|^t24 |russia-24|rtvi|^rt$|rt en espanol|^rbk|moskva 24)", "group": "Новости" },
+    { "pattern": "(?i)(big planet|dikaya|domashnie zhivotnye|^food|foodtime|istoriya|istoki|moya planeta|moya stikhiya|^nauka|okhota|rybalka|rybolov|ohotnik|oruzhie|prosveshchenie|v mire zhivotnykh|usadba|zagorodnaya|zhivaya priroda|zoopark|travel\\+|telecafe|kulinar|kuhnya|lapki|pro business|otkryty mir|tochka rf|doktor|^doctor|nano|nano tv|большая азия|надежда|открытый мир|law tv|insayt|tonus|soyuz|союз|patriot|патриот|dushevnoe|^art$|^art tv|avto24|viju.*(explore|planet)|^rtg|russkiy bestseller|^zhivi|^zhivi!)", "group": "Познавательные" },
 
-    { "pattern": "(?i)(aist|aris ?24|belgorod|bolshaya azia|vetta|volga|gubernia|evrasia|enisey|k16|krasnaya liniya|ldpr|nadezhda|nano tv|nvk sakha|nizhniy novgorod|nika tv|ntm|nts|osn|prima|^s1 |samara|sochi|tkr|tolk|khuzur|хузур|channel 8|kuban|yalta|муз ?союз)", "group": "Разное" }
+    { "pattern": "(?i)(^rt$|^rt |rt en|^rtvi$|^t24|^t24 |24 ?news|24 часа|novosti|moskva 24|moscow 24|rbk|рбк|vesti|вести|duma tv|дума|maidan|майдан|novorossiya|новороссия|ldpr|лдпр|krasnaya liniya|красная линия|osn|осн|tv brics|rbc tv|^т24|oplot|svoboda)", "group": "Новости" },
+
+    { "pattern": "(?i)(aist|аист|aris ?24|арис|belgorod|белгород|vetta|ветта|volga|волга|gubernia|губерния|evrasia|евразия|enisey|енисей|k16|к16|nadezhda|надежда|nvk sakha|нвк саха|nizhniy novgorod|нижний новгород|nika tv|ника|ntm|нтм|nts|нтс|prima|прима|^s1 |^с1 |samara|самара|sochi|сочи|tkr|ткр|tolk|толк|khuzur|хузур|channel 8|kuban|кубан|yalta|ялта|unknown russia|sankt-peterburg|санкт-петербург|tooku|току|tonus|тонус|moy mir|мой мир|prodvizhenie|продвижение|tnv|тнв|mir belog|мир белог|region|регион|krasnoyarsk|красноярск|novosibirsk|новосибирск|мтв ?\\(волгоград\\)|mtv volgograd|телеканал 86|86 ?\\(сургут\\)|86 surgut)", "group": "Региональные" }
   ],
 
   "group_aliases": {
-    "Россия": "Россия",
-    "Россия 1": "Россия"
+    "Россия 1": "Основные",
+    "Первый": "Основные",
+    "НТВ": "Основные",
+    "СТС": "Основные",
+    "ТНТ": "Основные",
+    "Пятница": "Основные",
+    "ТВ-3": "Основные",
+    "Звезда": "Основные",
+    "Мир": "Основные",
+    "Россия": "Региональные"
   },
 
   "group_emoji": {
-    "Основные": "📺",
-    "Россия": "🇷🇺",
+    "Основные": "🇷🇺",
+    "Региональные": "🏙️",
     "Мой список": "⭐",
     "Rutube": "📹",
     "Кино": "🎬",
     "Kinowalk": "🎞️",
+    "Сериалы НТВ": "🎭",
     "Спорт": "⚽",
     "Новости": "📰",
     "Музыка": "🎵",
     "Радио": "📻",
     "Радио Рекорд": "🎧",
-    "Развлекательные": "🎭",
+    "Развлекательные": "🎪",
     "Познавательные": "🧠",
     "Разное": "📦"
   },
@@ -65,12 +75,13 @@
     "news.m3u8": ["Новости"],
     "kinowalk.m3u8": ["Kinowalk"],
     "rutube.m3u8": ["Rutube"],
-    "radio.m3u8": ["Радио", "Радио Рекорд"]
+    "radio.m3u8": ["Радио", "Радио Рекорд"],
+    "serialy_ntv.m3u8": ["Сериалы НТВ"]
   },
 
   "priority_groups": [
-    "Основные", "Россия", "Kinowalk", "Rutube", "Кино",
-    "Спорт", "Новости", "Музыка", "Развлекательные",
+    "Основные", "Региональные", "Kinowalk", "Rutube", "Кино",
+    "Сериалы НТВ", "Спорт", "Новости", "Музыка", "Развлекательные",
     "Познавательные", "Радио", "Радио Рекорд", "Разное"
   ]
 }
