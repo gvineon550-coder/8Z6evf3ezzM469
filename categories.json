@@ -1,9 +1,45 @@
 {
-  "source_defaults": {
-    "iptv_org_ru": "Россия",
-    "my_list": "Мой список"
+  "url_patterns": [
+    { "pattern": "kinowalk\\.hopto\\.org", "group": "Kinowalk", "force": true },
+    { "pattern": "rutube\\.ru", "group": "Rutube", "force": true },
+    { "pattern": "radiorecord", "group": "Радио Рекорд", "force": true },
+
+    { "pattern": "cdn-dvr\\.ntv\\.ru", "group": "Кино", "force": true },
+    { "pattern": "cdn\\.ntv\\.ru/(ntv-spb|ntv)", "group": "Россия", "force": true },
+    { "pattern": "smotrim\\.ru/hls2/(russia_hd|russia24|russia_k|moscow_24|solovievlive|vesti_fm|doverie|ext_spbtv|static)", "group": "Россия", "force": true },
+    { "pattern": "live\\.smotrim\\.ru/vgtrk", "group": "Россия", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/(dom_kino|kinohit|kinokomedia|kinomix|kinopremiera|kinosemya|kinoseria|kinosvidanie|kinouzhas|eurokino|indiyskoe_kino|nashe_novoe_kino|rodnoe_kino|russkiy_illusion|mosfilm|nostalgia|zhara)", "group": "Кино", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/(5_kanal|perviy_kanal_sng|mir|ntv_mir|ren|rtr_planeta|rossia_24|rossia_k|start_air|start_world|sts|sts_love|tnt4|tvc|zvezda|vremya|domashniy)", "group": "Россия", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/(viju|tv1000|khl|shanson|muz|zhara|radio|viju_explore)", "group": "Музыка", "force": false }
+  ],
+
+  "name_patterns": [
+    { "pattern": "(?i)(\\.black|\\.red|\\.sci-?fi|sony[- ]?turbo|sony[- ]?tv|sony[- ]?sci)", "group": "Кино" },
+
+    { "pattern": "(?i)(amedia|blokbaster|kino[- ]?tv|kinohit|kinokomed|kinomix|kinopokaz|kinopremyera|kinosemya|kinoseriya|kinosvidanie|kinouzhas|dom[\\s-]*kino|domkino|evrokino|illusion|indiyskoye|bollywood|kapitan fantastika|komedia|komediynoe|mosfilm|nashe novoe kino|nostalgia|priklyucheniya|rodnoe kino|russkiy detektiv|russkiy roman|saphire|shokiruyushchee|star family|tochka otryva|365 days|5 minut tishiny|che!|dorama|fox life|^fox |peretz|tv ?21|viju.*(tv1000|megahit|premiere|serial|planet|explore))", "group": "Кино" },
+
+    { "pattern": "(?i)(khl|okko futbol|setanta|udar|boks|fanhd|^fan |match|futbol|futball|sport|ufc)", "group": "Спорт" },
+
+    { "pattern": "(?i)(bridge|dancehits|europa plus|mcm|nashe hd|shanson|zhara|muz[\\s-]*soyuz|муз ?союз|muz ?soyuz|mtv|муз[- ]?тв)", "group": "Музыка" },
+
+    { "pattern": "(?i)(^radio|радио|vesti fm|record|рок|rekord|hit fm|dfm|energy|maximum|retro fm|шансон|radio record|love radio|ретро)", "group": "Радио" },
+
+    { "pattern": "(?i)(big planet|dikaya|domashnie zhivotnye|food|foodtime|istoriya|istoki|moya planeta|moya stikhiya|nauka|okhota|rybalka|rybolov|ohotnik|oruzhie|prosveshchenie|v mire zhivotnykh|usadba|zagorodnaya|zhivaya priroda|zoopark|travel\\+|telecafe|kulinar|kuhnya|lapki|pro business|otkryty mir|tochka rf)", "group": "Познавательные" },
+
+    { "pattern": "(?i)(^2x2 |2x2|friday|kvn|^mama|sarafan|subbota|tnt4|tnv|tv centr|tv pro|^u \\(|peretz international|subbota!|komediynoe|^che!|karusel|пятница|тнт4|суббота)", "group": "Развлекательные" },
+
+    { "pattern": "(?i)(channel one|channel 5|^perviy|russia-?1|russia-?24|russia-?k|rossia|^ntv|ntv mir|ntv series|ntv-hit|^mir |mir 24|mir hd|mir kazakhstan|mir seriala|moskva 24|moskva\\. doveriye|moy mir|^o! |otr|rbk|ren tv|rtr-?planeta|rtvi|^rt |rt en|start air|start world|^sts|sts international|sts love|tv-?3|tv brics|unknown russia|zvezda|tonus|tooku|teledom|telecafe|^ntv|ntv |tnt |tnt$|tv 21 international|sankt-peterburg|solnce|solovyov live|soyuzny|universal|u$)", "group": "Россия" },
+
+    { "pattern": "(?i)(news|novosti|24 ?news|24 часа|^t24|^t24 |russia-24|rtvi|^rt$|rt en espanol|^rbk|moskva 24)", "group": "Новости" },
+
+    { "pattern": "(?i)(aist|aris ?24|belgorod|bolshaya azia|vetta|volga|gubernia|evrasia|enisey|k16|krasnaya liniya|ldpr|nadezhda|nano tv|nvk sakha|nizhniy novgorod|nika tv|ntm|nts|osn|prima|^s1 |samara|sochi|tkr|tolk|khuzur|хузур|channel 8|kuban|yalta|муз ?союз)", "group": "Разное" }
+  ],
+
+  "group_aliases": {
+    "Россия": "Россия",
+    "Россия 1": "Россия"
   },
-  "group_aliases": {},
+
   "group_emoji": {
     "Основные": "📺",
     "Россия": "🇷🇺",
@@ -11,8 +47,6 @@
     "Rutube": "📹",
     "Кино": "🎬",
     "Kinowalk": "🎞️",
-    "СМОТРИМ +": "👁️",
-    "Fresh": "🌿",
     "Спорт": "⚽",
     "Новости": "📰",
     "Музыка": "🎵",
@@ -22,37 +56,21 @@
     "Познавательные": "🧠",
     "Разное": "📦"
   },
-  "url_patterns": [
-    { "pattern": "kinowalk\\.hopto\\.org", "group": "Kinowalk", "force": true },
-    { "pattern": "bl\\.rutube|rutube\\.ru", "group": "Rutube", "force": true },
-    { "pattern": "radiorecord\\.hostingradio\\.ru", "group": "Радио Рекорд", "force": true }
-  ],
-  "name_patterns": [
-    { "pattern": "(?i)(radio\\s*record|радио\\s*рекорд|рекорд\\s*radio|radiorecord)", "group": "Радио Рекорд" },
-    { "pattern": "(?i)(радио|radio|\\bradio\\b|\\d+[\\.\\,]?\\d*\\s*(fm|am|мгц))", "group": "Радио" },
-    { "pattern": "(?i)\\b(спорт|sport|футбол|football|хоккей|hockey|nba|nhl|ufc|mma|бокс|boxing|матч|match|гол\\b)", "group": "Спорт" },
-    { "pattern": "(?i)\\b(музык|music|mtv|vh1|ru.?tv|муз.?тв|muz)", "group": "Музыка" },
-    { "pattern": "(?i)\\b(кино|cinema|movie|film|боевик|триллер|детектив|ужас|вестерн|мелодрам|фантастик)", "group": "Кино" },
-    { "pattern": "(?i)\\b(новост|news|рбк|360|извести|мир24|euronews|cnn|bbc|dw\\b)", "group": "Новости" },
-    { "pattern": "(?i)\\b(discovery|nat.?geo|national.?geo|history|наука|nature|animal|вокруг\\s*света|путешеств|планета)", "group": "Познавательные" },
-    { "pattern": "(?i)\\b(тнт|ctc|стс|тв.?3|тв3|рен\\s*тв|рен.?tv|нтв|первый|россия\\s*1|ртр|тв.?центр|пятниц|юмор|тнт4|че\\b|домашн)", "group": "Основные" },
-    { "pattern": "(?i)\\b(развлек|entertain|комеди|comedy|тнт\\s*comedy)", "group": "Развлекательные" }
-  ],
-  "priority_groups": [
-    "📺 Основные", "🇷🇺 Россия", "⭐ Мой список",
-    "📹 Rutube", "🎬 Кино", "🎞️ Kinowalk",
-    "👁️ СМОТРИМ +", "🌿 Fresh", "⚽ Спорт", "📰 Новости",
-    "🎵 Музыка", "📻 Радио", "🎧 Радио Рекорд",
-    "🎭 Развлекательные", "🧠 Познавательные"
-  ],
+
+  "source_defaults": {},
+
   "split_playlists": {
     "sport.m3u8": ["Спорт"],
     "music.m3u8": ["Музыка"],
     "news.m3u8": ["Новости"],
     "kinowalk.m3u8": ["Kinowalk"],
     "rutube.m3u8": ["Rutube"],
-    "radio.m3u8": ["Радио"],
-    "radiorecord.m3u8": ["Радио Рекорд"]
+    "radio.m3u8": ["Радио", "Радио Рекорд"]
   },
-  "sort_channels_in_group": true
+
+  "priority_groups": [
+    "Основные", "Россия", "Kinowalk", "Rutube", "Кино",
+    "Спорт", "Новости", "Музыка", "Развлекательные",
+    "Познавательные", "Радио", "Радио Рекорд", "Разное"
+  ]
 }
