@@ -1,49 +1,48 @@
 {
-  "date": "2026-09-28T13:14:30",
+  "date": "2026-09-28T18:20:32",
   "method": "counter v2 — точная оценка из docs/*.json + rejected.csv",
   "accuracy": "±3%",
   "real_data": {
-    "total_in_all_cleaned": 1312,
-    "whitelist_count": 298,
+    "total_in_all_cleaned": 1314,
+    "whitelist_count": 300,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 837,
-      "dead": 455,
+      "ok": 836,
+      "dead": 456,
       "unstable": 8,
       "filtered": 11
     },
-    "ffprobe_updated_24h": 2,
+    "ffprobe_updated_24h": 3,
     "rejected_reasons": {
-      "dead": 453,
-      "dead_detail:ffprobe": 177,
+      "dead": 454,
+      "dead_detail:ffprobe": 179,
       "dead_detail:html": 1,
       "dead_detail:http_206": 1,
-      "dead_detail:http_403": 167,
-      "dead_detail:http_404": 19,
-      "dead_detail:http_409": 1,
-      "dead_detail:http_503": 2,
-      "dead_detail:timeout": 85,
+      "dead_detail:http_403": 168,
+      "dead_detail:http_404": 18,
+      "dead_detail:http_503": 1,
+      "dead_detail:timeout": 86,
       "group_exclude": 10,
       "shortener": 1,
-      "unstable": 12
+      "unstable": 11
     }
   },
   "estimated_requests": {
     "http_checker": {
-      "live_channels": 539,
-      "dead_channels": 455,
-      "live_requests": 592,
-      "dead_requests": 531,
+      "live_channels": 536,
+      "dead_channels": 456,
+      "live_requests": 589,
+      "dead_requests": 533,
       "timeout_breakdown": {
-        "timeout_4ua": 85,
-        "http_code_1ua": 190,
+        "timeout_4ua": 86,
+        "http_code_1ua": 188,
         "other_1ua": 1
       },
-      "total": 1123
+      "total": 1122
     },
     "ffprobe": {
-      "entries_24h": 2,
-      "requests": 4,
+      "entries_24h": 3,
+      "requests": 6,
       "note": "2 запроса на ffprobe-запуск"
     },
     "logo_head": {
@@ -53,6 +52,6 @@
     "cleaner": 8,
     "dashboard_other_repo": 480,
     "misc": 5,
-    "TOTAL": 1620
+    "TOTAL": 1621
   }
 }

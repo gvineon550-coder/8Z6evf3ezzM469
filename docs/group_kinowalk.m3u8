@@ -137,6 +137,9 @@ http://kinowalk.hopto.org/kycman_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://images.live.vkvideo.ru/user/18907130/avatar?change_time=1734455298&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",lampoTV
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/lampotv_live
+#EXTINF:-1 tvg-id="LampovoeTV" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/lampovoe.png" group-title="🎞️ Kinowalk",Lampovoe TV
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://kinowalk.hopto.org/lampovoetv_live
 #EXTINF:-1 tvg-id="legion_tv" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/legion_tv.jpg" group-title="🎞️ Kinowalk",LEGION TV
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/legion-tv_live
@@ -236,6 +239,9 @@ http://kinowalk.hopto.org/sinema_live
 #EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://images.live.vkvideo.ru/user/16123819/avatar?change_time=1744393606&croped=1&mh=140&mw=140" group-title="🎞️ Kinowalk",Solo ink
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/soloink_live
+#EXTINF:-1 tvg-id="Strimach" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/strimach.jpg" group-title="🎞️ Kinowalk",STRIMACH
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://kinowalk.hopto.org/strimach_live
 #EXTINF:-1 tvg-id="swat2k" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/swat2k.jpg" group-title="🎞️ Kinowalk",swat2k
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/swat2k_live
