@@ -1,5 +1,5 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 group-title="📦 Разное" tvg-id="cineman-relax" tvg-logo="https://iptvx.one/picons/cineman-relax.png",Cineman Relax 4K
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="cineman-relax" tvg-logo="https://iptvx.one/picons/cineman-relax.png",Cineman Relax 4K
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/459/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="InsaytTV.ru@4K" tvg-logo="https://i.imgur.com/slLuRel.png",Insayt TV (1080p)

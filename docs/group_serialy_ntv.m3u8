@@ -11,9 +11,6 @@ https://cdn-dvr.ntv.ru/Nevskiy/index.m3u8
 #EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="NTVSeries.ru@SD" tvg-logo="https://i.imgur.com/QdVa8tl.png",NTV Series (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/301/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="ntv-xit" tvg-logo="https://i.imgur.com/FfKBvz5.png",NTV-Hit (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://178.134.1.158:8081/ntvhit/index.m3u8
 #EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Perviyotdel.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/perv_otdel_llive.jpg",Perviy otdel (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Perviy_otdel/index.m3u8

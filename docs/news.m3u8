@@ -1,4 +1,7 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
+#EXTINF:-1 group-title="📰 Новости" tvg-id="360-lv" tvg-logo="https://i.imgur.com/VTJqdoX.png",360°
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/0.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="dumatv" tvg-logo="https://i.imgur.com/JvlO3PU.png",Duma TV (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/DumaTV/index.m3u8
@@ -20,15 +23,15 @@ http://31.131.139.253:9002/oplot_hd/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="rbk" tvg-logo="https://i.imgur.com/CwhmJby.png",RBK-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/RBK/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="rt-news" tvg-logo="https://i.imgur.com/55SK22l.png",RT (720p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://212.5.144.156:8080/rt/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="RTenEspanol.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="RTenEspanol.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-evg10.tv360.bitel.com.pe/bitel/rt/playlist.m3u8
+#EXTINF:-1 group-title="📰 Новости" tvg-id="rtvi" tvg-logo="https://i.imgur.com/1AEhXyS.png",RTVi (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://shift03.isp.bg/RTVi/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="svoboda" tvg-logo="https://web02.antik.sk/assets/img/channels/db23090472360f39401398f924a47461.svg",Svoboda
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/svoboda/index.m3u8

@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-28T12:22:57",
+  "method": "counter v2 — точная оценка из docs/*.json + rejected.csv",
+  "accuracy": "±3%",
+  "real_data": {
+    "total_in_all_cleaned": 1312,
+    "whitelist_count": 298,
+    "avg_last_3_runs": {
+      "runs": 3,
+      "ok": 837,
+      "dead": 455,
+      "unstable": 8,
+      "filtered": 11
+    },
+    "ffprobe_updated_24h": 3,
+    "rejected_reasons": {
+      "dead": 462,
+      "dead_detail:ffprobe": 179,
+      "dead_detail:html": 1,
+      "dead_detail:http_206": 1,
+      "dead_detail:http_403": 167,
+      "dead_detail:http_404": 18,
+      "dead_detail:http_409": 1,
+      "dead_detail:http_503": 1,
+      "dead_detail:timeout": 94,
+      "group_exclude": 10,
+      "shortener": 1,
+      "unstable": 3
+    }
+  },
+  "estimated_requests": {
+    "http_checker": {
+      "live_channels": 539,
+      "dead_channels": 455,
+      "live_requests": 592,
+      "dead_requests": 565,
+      "timeout_breakdown": {
+        "timeout_4ua": 94,
+        "http_code_1ua": 188,
+        "other_1ua": 1
+      },
+      "total": 1157
+    },
+    "ffprobe": {
+      "entries_24h": 3,
+      "requests": 6,
+      "note": "2 запроса на ffprobe-запуск"
+    },
+    "logo_head": {
+      "requests": 0,
+      "note": "в текущей конфигурации логотипы НЕ проверяются (нет --check-all-logos)"
+    },
+    "cleaner": 8,
+    "dashboard_other_repo": 480,
+    "misc": 5,
+    "TOTAL": 1656
+  }
+}

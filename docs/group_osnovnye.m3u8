@@ -20,12 +20,6 @@ https://fs.uplink.kz/perviy_kanal_sng/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ChannelOne.ru@Europa" tvg-logo="https://i.imgur.com/vm5sJHP.png",Channel One Europa (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.thestream.cyou/live/210-req_offset_28000000-req_window_0-1k_v5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="che" tvg-logo="https://i.imgur.com/ZOcDGpB.png",Che! (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://flussonic.linkintel.ru/che/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="che" tvg-logo="https://i.imgur.com/ZOcDGpB.png",Che! (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://176.118.197.101/Che/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Domashniy.ru@SD" tvg-logo="https://i.imgur.com/WaLwOyt.jpeg",Domashniy (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/domashniy/mono.m3u8?token=onlinetv
@@ -89,12 +83,9 @@ https://stream.smotrim.ru/hls2/moscow_24/playlist_3.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="MoskvaDoveriye.ru@SD" tvg-logo="https://i.imgur.com/QDqDQzt.png",Moskva. Doveriye (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/doverie/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv" tvg-logo="https://www.mongolsat.mn/assets/img/channel/38.png",NTV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://46.32.176.50/muztv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/86/index.m3u8
+http://176.118.197.101/NTV/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv" tvg-logo="https://www.mongolsat.mn/assets/img/channel/38.png",NTV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/ntv/index.m3u8
@@ -107,6 +98,9 @@ https://fs.uplink.kz/ntv_mir/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv" tvg-logo="https://www.mongolsat.mn/assets/img/channel/38.png",NTV SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn.ntv.ru/ntv-spb/index.m3u8
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv-xit" tvg-logo="https://i.imgur.com/FfKBvz5.png",NTV-Hit (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://178.134.1.158:8081/ntvhit/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="o_" tvg-logo="https://i.imgur.com/b2pgPW8.png",O! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/60/index.m3u8
@@ -224,9 +218,6 @@ http://flussonic.linkintel.ru/tnt/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/TNT_Logo_2016.svg/960px-TNT_Logo_2016.svg.png",TNT (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/THT/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt-int-by" tvg-logo="https://i.imgur.com/l0RGbRI.png",TNT International (480p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://91.228.35.249:8001/1:0:1:6a7:3138:13e:820000:0:0:0:
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="TNTInternational.ru@Belarus" tvg-logo="https://i.imgur.com/l0RGbRI.png",TNT International Belarus (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://05cea6e8.ucomist.net/iptv/VK7YCHHWNDD8XC/15230/index.m3u8
@@ -259,7 +250,13 @@ http://stream.mcquack.net/136/index.m3u8
 https://stream.smotrim.ru/hls2/vesti_fm/playlist_4.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://i.imgur.com/jZlj3ga.png",Vremya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/237/index.m3u8
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://i.imgur.com/jZlj3ga.png",Vremya (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/vremya/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://i.imgur.com/jZlj3ga.png",Vremya (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://88.212.15.19/live/test_vremya/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://51.158.144.33:2021/zvezda/index.m3u8
@@ -296,9 +293,6 @@ http://31.131.141.195:8000/play/1010/index.m3u8
 #EXTINF:-1 tvg-id="piatnica" tvg-logo="http://epg.propg.net/img/channel_icons/53.png" group-title="🇷🇺 Основные",Пятница
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/2060/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="piatnica" tvg-logo="https://i.imgur.com/UfmlXxe.png",Пятница! (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://vod.tuva.ru/friday/index.m3u8
 #EXTINF:-1 tvg-id="5kanal-ru" tvg-logo="https://epg.iptvx.one/picons/piaty-int.png" group-title="🇷🇺 Основные",Пятый канал
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.131.141.195:8000/play/1050/index.m3u8
