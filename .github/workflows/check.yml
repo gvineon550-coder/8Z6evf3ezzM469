@@ -75,6 +75,9 @@ jobs:
             --tg-send-merged
 
       - name: Count requests
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: python counter.py
 
       - name: Notify on failure
@@ -102,7 +105,7 @@ jobs:
             echo "Нет изменений"
             exit 0
           fi
-          git commit -m "Auto-update $(date -u +%Y-%m-%dT%H:%MZ)"
+          git commit -m "Auto-update $(date -u +'%Y-%m-%dT%H:%MZ')"
           for i in 1 2 3 4 5; do
             git pull --rebase --autostash && git push && break
             echo "Попытка $i не удалась, ждём 5 сек..."; sleep 5
