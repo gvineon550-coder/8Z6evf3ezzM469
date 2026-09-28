@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-28T12:22:57",
+  "date": "2026-09-28T13:14:30",
   "method": "counter v2 — точная оценка из docs/*.json + rejected.csv",
   "accuracy": "±3%",
   "real_data": {
@@ -12,20 +12,20 @@
       "unstable": 8,
       "filtered": 11
     },
-    "ffprobe_updated_24h": 3,
+    "ffprobe_updated_24h": 2,
     "rejected_reasons": {
-      "dead": 462,
-      "dead_detail:ffprobe": 179,
+      "dead": 453,
+      "dead_detail:ffprobe": 177,
       "dead_detail:html": 1,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 167,
-      "dead_detail:http_404": 18,
+      "dead_detail:http_404": 19,
       "dead_detail:http_409": 1,
-      "dead_detail:http_503": 1,
-      "dead_detail:timeout": 94,
+      "dead_detail:http_503": 2,
+      "dead_detail:timeout": 85,
       "group_exclude": 10,
       "shortener": 1,
-      "unstable": 3
+      "unstable": 12
     }
   },
   "estimated_requests": {
@@ -33,17 +33,17 @@
       "live_channels": 539,
       "dead_channels": 455,
       "live_requests": 592,
-      "dead_requests": 565,
+      "dead_requests": 531,
       "timeout_breakdown": {
-        "timeout_4ua": 94,
-        "http_code_1ua": 188,
+        "timeout_4ua": 85,
+        "http_code_1ua": 190,
         "other_1ua": 1
       },
-      "total": 1157
+      "total": 1123
     },
     "ffprobe": {
-      "entries_24h": 3,
-      "requests": 6,
+      "entries_24h": 2,
+      "requests": 4,
       "note": "2 запроса на ffprobe-запуск"
     },
     "logo_head": {
@@ -53,6 +53,6 @@
     "cleaner": 8,
     "dashboard_other_repo": 480,
     "misc": 5,
-    "TOTAL": 1656
+    "TOTAL": 1620
   }
 }
