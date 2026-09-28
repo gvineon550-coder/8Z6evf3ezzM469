@@ -14,6 +14,9 @@
     { "pattern": "stream\\.mcquack\\.net/459/", "group": "Развлекательные", "force": true },
     { "pattern": "fs\\.uplink\\.kz/zhara", "group": "Музыка", "force": true },
 
+    { "pattern": "fs\\.uplink\\.kz/dorama", "group": "Кино", "force": true },
+    { "pattern": "stream\\.mcquack\\.net/412/", "group": "Кино", "force": true },
+
     { "pattern": "fs\\.uplink\\.kz/(dom_kino|kinohit|kinokomedia|kinomix|kinopremiera|kinosemya|kinoseria|kinosvidanie|kinouzhas|eurokino|indiyskoe_kino|nashe_novoe_kino|rodnoe_kino|russkiy_illusion|mosfilm|nostalgia)", "group": "Кино", "force": true },
     { "pattern": "fs\\.uplink\\.kz/(5_kanal|perviy_kanal_sng|mir|ntv_mir|ren|rtr_planeta|rossia_24|rossia_k|start_air|start_world|sts|sts_love|tnt4|tvc|zvezda|vremya|domashniy)", "group": "Основные", "force": true },
     { "pattern": "facecast\\.io.*UBZfFgtKB1JwTwoDERNQVGGs", "group": "Новости", "force": true },
@@ -31,6 +34,7 @@
   ],
 
   "name_patterns": [
+    { "pattern": "(?i)^dorama\\b", "group": "Кино" },
     { "pattern": "(?i)^\\.(black|red|sci-?fi)\\b", "group": "Кино" },
     { "pattern": "(?i)^muz[- ]?tv\\b", "group": "Музыка" },
     { "pattern": "(?i)^ru[\\s.-]*tv\\b", "group": "Музыка" },
