@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v24 — ffprobe + whitelist + улучшенная категоризация.
+M3U Checker v25 — ffprobe + whitelist + фикс tvg-id.
 """
 import os
 import re
@@ -949,25 +949,21 @@ def is_filtered(name, group, url):
 def categorize(extinf, url, source_name):
     current = get_group(extinf)
     name = get_name(extinf)
-    # 1) url_patterns с force всегда побеждают
     for up in CATEGORIES.get('url_patterns', []):
         try:
             if re.search(up['pattern'], url) and up.get('force'):
                 return up['group']
         except re.error:
             pass
-    # 2) Если группа уже хорошая (не «Разное») — оставляем
     if current and current not in GENERIC_GROUPS:
         aliases = CATEGORIES.get('group_aliases', {})
         return aliases.get(current, current)
-    # 3) Обычные url_patterns
     for up in CATEGORIES.get('url_patterns', []):
         try:
             if re.search(up['pattern'], url):
                 return up['group']
         except re.error:
             pass
-    # 4) По имени — сработает и для «Разное»
     if name:
         for np in CATEGORIES.get('name_patterns', []):
             try:
@@ -1248,8 +1244,9 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     extinf = set_logo_in_extinf(extinf, logo)
     if epg_id:
         extinf = set_tvg_id_in_extinf(extinf, epg_id)
-    else:
+    elif not original_tvg_id:
         extinf = remove_tvg_id_from_extinf(extinf)
+    # если original_tvg_id был — оставляем как есть
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
     final_quality = hls_quality or detect_quality_by_name(name)
@@ -1313,7 +1310,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             extinf = set_logo_in_extinf(extinf, logo)
             if epg_id:
                 extinf = set_tvg_id_in_extinf(extinf, epg_id)
-            else:
+            elif not original_tvg_id:
                 extinf = remove_tvg_id_from_extinf(extinf)
             extinf = set_group_in_extinf(extinf, add_emoji(categorize(extinf, url, label)))
             out.append((i, extinf, url))
@@ -2747,7 +2744,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v24</b>"]
+    lines = ["<b>M3U Check v25</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
