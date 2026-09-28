@@ -71,7 +71,7 @@ jobs:
             --ffprobe-workers 4 \
             --ffprobe-timeout 8 \
             --ffprobe-cache-days 3 \
-            --cache-ttl 43200 \
+            --cache-ttl 86400 \
             --tg-send-merged
 
       - name: Notify on failure
