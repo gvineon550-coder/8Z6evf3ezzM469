@@ -74,6 +74,9 @@ jobs:
             --cache-ttl 86400 \
             --tg-send-merged
 
+      - name: Count requests
+        run: python counter.py
+
       - name: Notify on failure
         if: failure()
         env:
