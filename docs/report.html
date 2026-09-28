@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>M3U Check - 2026-09-28 06:24:04</title>
+<title>M3U Check - 2026-09-28 09:44:57</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box}
 :root{
   --bg:#0f1115; --panel:rgba(24,27,32,0.72); --border:#23272e;
   --text:#e6e6e6; --muted:#8a8f98; --accent:#60a5fa;
@@ -19,60 +19,92 @@
   --text:#e0e7ff; --muted:#94a3b8; --accent:#60a5fa;
 }
 html{min-height:100%}
-body{font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;
 color:var(--text);margin:0 auto;padding:24px;max-width:1100px;
 min-height:100vh;
 background:var(--bg);
 background-image:
   radial-gradient(circle at 15% -10%, rgba(96,165,250,0.12) 0%, transparent 40%),
-  radial-gradient(circle at 85% 0%, rgba(74,222,128,0.10) 0%, transparent 40%);
-background-attachment:fixed;transition:background-color .3s,color .3s}
+  radial-gradient(circle at 85% 0%, rgba(74,222,128,0.10) 0%, transparent 40%),
+  radial-gradient(circle at 50% 100%, rgba(167,139,250,0.06) 0%, transparent 50%);
+background-attachment:fixed;
+transition:background-color .3s,color .3s}
 h1{margin:0 0 4px;font-size:22px;letter-spacing:-.3px}
-h2{font-size:15px;margin:0 0 12px}
+h2{font-size:15px;margin:0 0 12px;letter-spacing:-.1px}
 .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
-.section,.card,.box{background:var(--panel);border:1px solid var(--border);
-border-radius:14px;padding:18px;margin-bottom:16px;
-backdrop-filter:blur(var(--glass-blur));
--webkit-backdrop-filter:blur(var(--glass-blur));
-animation:fadeInUp .5s ease-out both}
-.card{padding:16px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:12px;margin-bottom:24px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:16px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+transition:transform .15s,border-color .15s,box-shadow .15s;
+animation:fadeInUp .5s ease-out both}
+.card:nth-child(1){animation-delay:.05s}
+.card:nth-child(2){animation-delay:.10s}
+.card:nth-child(3){animation-delay:.15s}
+.card:nth-child(4){animation-delay:.20s}
+.card:nth-child(5){animation-delay:.25s}
+.card:nth-child(6){animation-delay:.30s}
+.card:hover{transform:translateY(-2px);border-color:var(--accent);
+box-shadow:0 8px 24px rgba(0,0,0,0.15)}
 .card .k{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.card .v{font-size:26px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
-.card .v.good{color:#4ade80}
+.card .v{font-size:26px;font-weight:700;margin-top:6px;letter-spacing:-.5px;
+font-variant-numeric:tabular-nums}
+.card .v.good{color:#4ade80;text-shadow:0 0 24px rgba(74,222,128,0.25)}
 .card .v.bad{color:#f87171}
 .card .v.warn{color:#facc15}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.section{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:18px;margin-bottom:16px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(96,165,250,0.05)}
 .tag{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--border);
 font-size:12px;color:var(--muted);margin:2px}
 .back{display:inline-block;margin-bottom:16px;color:var(--accent);text-decoration:none}
+.box{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+padding:18px;margin-bottom:12px;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
 code{background:var(--bg);padding:3px 8px;border-radius:6px;font-size:13px;
 word-break:break-all;color:#facc15;font-family:ui-monospace,Menlo,monospace}
-.top-right{position:fixed;top:16px;right:16px;z-index:100;display:flex;gap:8px;align-items:center}
-.theme-btn{background:var(--panel);border:1px solid var(--border);color:var(--text);
-width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:18px;
-backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
+.top-right{position:fixed;top:16px;right:16px;z-index:100;
+display:flex;gap:8px;align-items:center}
+.theme-btn{background:var(--panel);border:1px solid var(--border);
+color:var(--text);width:42px;height:42px;border-radius:50%;cursor:pointer;
+font-size:18px;line-height:1;backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
 transition:transform .15s}
 .theme-btn:hover{transform:scale(1.08)}
 .live-widget{background:var(--panel);border:1px solid var(--border);
 border-radius:20px;padding:8px 14px;font-size:13px;
-backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
 display:flex;gap:14px;align-items:center;white-space:nowrap}
 .live-widget .live-item{display:flex;align-items:center;gap:4px;color:var(--muted)}
 .live-widget .live-item strong{color:var(--text);font-weight:500}
-@media(max-width:600px){.live-widget{padding:6px 10px;font-size:12px;gap:10px}}
-@media(max-width:420px){.live-widget .hide-mobile{display:none}}
+@media(max-width:600px){
+  .live-widget{padding:6px 10px;font-size:12px;gap:10px}
+}
+@media(max-width:420px){
+  .live-widget .hide-mobile{display:none}
+}
 .health-wrap{margin-bottom:24px;padding:14px 18px;background:var(--panel);
-border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(var(--glass-blur))}
+border:1px solid var(--border);border-radius:14px;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
 .health-bar{height:8px;background:var(--border);border-radius:8px;overflow:hidden}
-.health-bar > div{height:100%;border-radius:8px;transition:width 1.2s}
+.health-bar > div{height:100%;border-radius:8px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
 .health-label{margin-top:8px;font-size:13px;color:var(--muted)}
 .donut-wrap{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
 .donut-chart{flex:0 0 220px}
@@ -82,11 +114,14 @@ border-bottom:1px solid var(--border)}
 .legend-row:last-child{border-bottom:none}
 .legend-dot{width:10px;height:10px;border-radius:3px;flex:0 0 auto}
 .legend-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.legend-count{color:var(--muted);font-size:12px}
-.legend-pct{color:var(--text);font-size:12px;font-weight:500;min-width:44px;text-align:right}
+.legend-count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
+.legend-pct{font-variant-numeric:tabular-nums;color:var(--text);font-size:12px;
+font-weight:500;min-width:44px;text-align:right}
 .wf-status{font-size:13px;margin-bottom:16px;padding:10px 14px;
 background:var(--panel);border:1px solid var(--border);border-radius:12px;
-backdrop-filter:blur(var(--glass-blur))}
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+animation:fadeInUp .5s ease-out both}
 .copy-btn{background:var(--border);border:none;color:var(--text);padding:6px 12px;
 border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .copy-btn:hover{background:var(--accent);color:#fff}
@@ -95,8 +130,8 @@ border-radius:8px;font-size:12px;cursor:pointer;transition:background .15s}
 .uptime-mid{color:#facc15;font-weight:500}
 .uptime-low{color:#f87171;font-weight:500}
 .uptime-none{color:var(--muted)}
-.reason-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;
-font-weight:500;background:var(--border);color:var(--muted)}
+.reason-badge{display:inline-block;padding:2px 8px;border-radius:6px;
+font-size:11px;font-weight:500;background:var(--border);color:var(--muted)}
 .reason-badge.dead{background:rgba(248,113,113,0.15);color:#f87171}
 .reason-badge.filter{background:rgba(250,204,21,0.15);color:#facc15}
 .reason-badge.unstable{background:rgba(250,204,21,0.15);color:#facc15}
@@ -105,18 +140,24 @@ font-weight:500;background:var(--border);color:var(--muted)}
 .quality-sd{color:#facc15;font-weight:600;font-size:11px}
 .chk{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
 background:var(--panel);border:1px solid var(--border);border-radius:10px;
-cursor:pointer;font-size:13px;user-select:none}
-.chk:hover{border-color:var(--accent)}
+cursor:pointer;font-size:13px;user-select:none;transition:border-color .15s,transform .15s}
+.chk:hover{border-color:var(--accent);transform:translateY(-1px)}
 .chk input{accent-color:var(--accent);cursor:pointer}
 .chk-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-.view-toggle{background:var(--panel);border:1px solid var(--border);color:var(--text);
-padding:8px 16px;border-radius:10px;cursor:pointer;font-size:13px;user-select:none}
+.view-toggle{background:var(--panel);border:1px solid var(--border);
+color:var(--text);padding:8px 16px;border-radius:10px;cursor:pointer;
+font-size:13px;transition:border-color .15s;user-select:none}
 .view-toggle:hover{border-color:var(--accent)}
-.channels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.channels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:12px;margin-bottom:16px}
 .channel-card{background:var(--panel);border:1px solid var(--border);
-border-radius:14px;padding:14px;text-align:center;position:relative;
-backdrop-filter:blur(var(--glass-blur));animation:fadeInUp .4s ease-out both}
-.channel-card:hover{border-color:var(--accent)}
+border-radius:14px;padding:14px;text-align:center;cursor:pointer;
+transition:transform .15s,border-color .15s,box-shadow .15s;
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+position:relative;animation:fadeInUp .4s ease-out both}
+.channel-card:hover{transform:translateY(-3px);border-color:var(--accent);
+box-shadow:0 8px 24px rgba(0,0,0,0.15)}
 .channel-card .cc-logo{width:56px;height:56px;object-fit:contain;
 background:var(--border);border-radius:10px;padding:6px;margin-bottom:8px}
 .channel-card .cc-name{font-size:13px;font-weight:500;margin-bottom:4px;
@@ -124,14 +165,18 @@ overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .channel-card .cc-meta{font-size:11px;color:var(--muted);
 overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .channel-card .cc-status{position:absolute;top:8px;right:8px;font-size:14px}
-.channel-card .cc-actions{margin-top:8px}
+.channel-card .cc-actions{display:flex;gap:4px;justify-content:center;margin-top:8px}
 .channel-card .cc-btn{background:var(--border);border:none;color:var(--muted);
-padding:3px 8px;border-radius:6px;font-size:10px;cursor:pointer}
+padding:3px 8px;border-radius:6px;font-size:10px;cursor:pointer;
+transition:background .15s}
+.channel-card .cc-btn:hover{background:var(--accent);color:#fff}
 .channel-card .cc-btn.ok{background:#4ade80;color:#0f1115}
 .charts-tip{position:fixed;background:var(--panel);border:1px solid var(--border);
 border-radius:10px;padding:8px 12px;font-size:12px;pointer-events:none;
-backdrop-filter:blur(var(--glass-blur));box-shadow:0 4px 16px rgba(0,0,0,0.3);
-z-index:200;opacity:0;transition:opacity .15s;color:var(--text);white-space:nowrap}
+backdrop-filter:blur(var(--glass-blur));
+-webkit-backdrop-filter:blur(var(--glass-blur));
+box-shadow:0 4px 16px rgba(0,0,0,0.3);z-index:200;
+opacity:0;transition:opacity .15s;color:var(--text);white-space:nowrap}
 .charts-tip.show{opacity:1}
 .charts-tip .tt-val{font-weight:600;color:var(--accent)}
 .charts-tip .tt-date{color:var(--muted);font-size:11px;margin-top:2px}
@@ -146,161 +191,6 @@ background:radial-gradient(circle,rgba(74,222,128,0.06),transparent 60%);
 animation:float2 30s ease-in-out infinite}
 @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
 @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,-50px)}}
-.hero{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
-.clock-card{background:var(--panel);border:1px solid var(--border);
-border-radius:24px;padding:32px 24px;text-align:center;
-backdrop-filter:blur(var(--glass-blur));position:relative;overflow:hidden;
-animation:fadeInUp .9s ease-out}
-.clock-card::before{content:'';position:absolute;top:-50%;left:-50%;
-width:200%;height:200%;
-background:conic-gradient(from 0deg,transparent,rgba(96,165,250,0.06),transparent 25%);
-animation:rotate 24s linear infinite;pointer-events:none}
-@keyframes rotate{to{transform:rotate(360deg)}}
-.clock{font-size:clamp(60px,17vw,100px);font-weight:200;letter-spacing:-0.04em;
-line-height:1;font-variant-numeric:tabular-nums;
-background:linear-gradient(135deg, var(--accent), #a78bfa);
--webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-position:relative;z-index:1}
-.clock .colon{animation:blink 1s steps(1) infinite;opacity:0.7}
-@keyframes blink{50%{opacity:0.2}}
-.clock .sec{font-size:0.38em;color:var(--accent);-webkit-text-fill-color:var(--accent);
-margin-left:10px;opacity:0.7;font-variant-numeric:tabular-nums}
-.tz{font-size:13px;color:var(--muted);margin-top:10px;position:relative;z-index:1}
-.date-line{margin-top:16px;font-size:16px;position:relative;z-index:1;
-display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap}
-.date-line .wd{color:var(--accent);font-weight:500}
-.date-line .yr{color:#a78bfa;font-weight:500;font-size:20px;font-variant-numeric:tabular-nums}
-.date-line .mo{color:var(--muted);font-size:14px}
-.art-card{border-radius:24px;overflow:hidden;aspect-ratio:3/2;
-background:var(--panel);border:1px solid var(--border);position:relative;
-animation:fadeInUp .9s ease-out .1s both}
-.art-card svg{width:100%;height:100%;display:block}
-.art-label{position:absolute;bottom:12px;right:14px;font-size:11px;
-color:rgba(255,255,255,0.65);background:rgba(0,0,0,0.35);
-padding:5px 12px;border-radius:14px;backdrop-filter:blur(8px)}
-.holiday-plaque{text-align:center;padding:10px 20px;
-background:linear-gradient(135deg,rgba(255,193,7,0.15),rgba(255,87,34,0.15));
-border:1px solid rgba(255,193,7,0.3);border-radius:14px;margin-bottom:16px;
-font-size:15px;font-weight:500;animation:holidayPulse 3s ease-in-out infinite}
-@keyframes holidayPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,193,7,0.3)}
-50%{box-shadow:0 0 30px 4px rgba(255,193,7,0.2)}}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
-@media(max-width:520px){.info-grid{grid-template-columns:1fr}}
-.wx-hero{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:14px}
-.wx-icon{font-size:64px;line-height:1;filter:drop-shadow(0 4px 16px rgba(96,165,250,0.3))}
-.wx-temp{font-size:46px;font-weight:200;letter-spacing:-0.02em;line-height:1}
-.wx-feels{font-size:12px;color:var(--muted);margin-top:4px}
-.wx-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
-padding-top:12px;border-top:1px solid var(--border)}
-.wx-meta-item{text-align:center;font-size:11px}
-.wx-meta-item span{display:block;font-size:18px;margin-bottom:2px}
-.wx-meta-item b{font-size:13px;font-weight:500}
-.wx-meta-item small{color:var(--muted);display:block;font-size:10px;margin-top:2px}
-.wx-sun{display:flex;justify-content:space-around;padding:12px 0;margin-top:12px;
-border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
-.wx-sun-item{display:flex;align-items:center;gap:6px}
-.wx-sun-item b{color:var(--text);font-weight:500}
-.wx-forecast{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
-margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
-.fc-day{text-align:center}
-.fc-date{font-size:10px;color:var(--muted);margin-bottom:6px}
-.fc-icon{font-size:26px;margin-bottom:6px;line-height:1}
-.fc-temps{font-size:11px;display:flex;flex-direction:column;gap:2px}
-.fc-max{color:var(--text);font-weight:500}
-.fc-min{color:var(--muted);font-size:10px}
-.cur-row{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:14px}
-.cur-row + .cur-row{border-top:1px solid var(--border)}
-.cur-flag{font-size:20px}
-.cur-name{font-size:12px;color:var(--muted);min-width:38px;letter-spacing:0.5px}
-.cur-val{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:500;font-size:16px}
-.moon-wrap{text-align:center;padding:8px 0}
-.moon-icon{font-size:72px;line-height:1;margin-bottom:10px;display:block;
-filter:drop-shadow(0 0 24px rgba(167,139,250,0.5));
-animation:moonGlow 4s ease-in-out infinite}
-@keyframes moonGlow{0%,100%{filter:drop-shadow(0 0 20px rgba(167,139,250,0.4))}
-50%{filter:drop-shadow(0 0 32px rgba(167,139,250,0.6))}}
-.moon-name{font-size:13px;color:var(--muted)}
-.cal-month{font-size:15px;font-weight:500;text-align:center;margin-bottom:12px}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
-.cal-head{font-size:10px;color:var(--muted);text-align:center;font-weight:600;
-padding:4px 0;letter-spacing:0.5px}
-.cal-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
-font-size:12px;border-radius:8px;position:relative;font-variant-numeric:tabular-nums;
-transition:background .2s}
-.cal-cell:hover{background:rgba(96,165,250,0.1)}
-.cal-empty{opacity:0.2}
-.cal-weekend{color:var(--muted)}
-.cal-today{background:linear-gradient(135deg,var(--accent),#a78bfa);color:white;
-font-weight:600;box-shadow:0 0 16px rgba(96,165,250,0.4)}
-.cal-hol{position:absolute;top:2px;right:3px;font-size:8px;color:#f87171;line-height:1}
-.quote-text{font-size:16px;font-style:italic;line-height:1.55;margin-bottom:12px}
-.quote-author{font-size:12px;color:var(--muted);text-align:right}
-.quote-author::before{content:'— '}
-.news-item{display:block;padding:10px 0;color:var(--text);text-decoration:none;
-font-size:13px;line-height:1.4;border-bottom:1px solid var(--border);
-transition:transform .15s}
-.news-item:last-child{border-bottom:none}
-.news-item:hover{transform:translateX(4px)}
-.news-title{font-weight:500;margin-bottom:4px;transition:color .15s}
-.news-item:hover .news-title{color:var(--accent)}
-.news-desc{font-size:11px;color:var(--muted);line-height:1.5}
-.counter{text-align:center;padding:6px 0}
-.counter-num{font-size:60px;font-weight:200;letter-spacing:-0.03em;
-background:linear-gradient(135deg, #f87171, #facc15);
--webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-line-height:1}
-.counter-label{font-size:12px;color:var(--muted);margin-top:8px}
-.secure-block{background:var(--panel);border:1px solid var(--border);
-border-radius:16px;padding:24px;margin-bottom:24px;
-backdrop-filter:blur(var(--glass-blur));animation:fadeInUp .5s ease-out both}
-.secure-locked{text-align:center}
-.secure-icon{font-size:48px;line-height:1;margin-bottom:12px}
-.secure-title{font-size:16px;font-weight:500;margin-bottom:6px}
-.secure-hint{font-size:13px;color:var(--muted);margin-bottom:20px}
-.secure-input-wrap{display:flex;gap:8px;max-width:400px;margin:0 auto}
-.secure-input-wrap input{flex:1;background:var(--bg);border:1px solid var(--border);
-color:var(--text);padding:12px 16px;border-radius:10px;font-size:14px;font-family:inherit}
-.secure-input-wrap input:focus{outline:none;border-color:var(--accent)}
-.secure-btn{background:var(--accent);border:none;color:#fff;padding:12px 24px;
-border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;
-transition:transform .15s;white-space:nowrap}
-.secure-btn:hover{transform:translateY(-1px)}
-.secure-btn:disabled{opacity:0.5;cursor:wait}
-.secure-error{color:#f87171;font-size:13px;margin-top:12px;min-height:18px}
-.secure-unlocked{text-align:center}
-.secure-timer{font-size:13px;color:var(--muted);margin-bottom:16px;padding:8px 16px;
-background:var(--bg);border-radius:20px;display:inline-block}
-.secure-timer b{color:var(--accent);font-variant-numeric:tabular-nums}
-.secure-main{display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:center}
-.secure-qr{background:#fff;padding:10px;border-radius:12px}
-.secure-qr canvas,.secure-qr img{display:block;width:180px;height:180px}
-.secure-links{flex:1;min-width:240px;text-align:left;
-display:flex;flex-direction:column;gap:10px}
-.secure-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
-.link-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.splits-list{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);
-text-align:left}
-.splits-list h4{font-size:11px;color:var(--muted);text-transform:uppercase;
-letter-spacing:1px;margin-bottom:12px;font-weight:600}
-.split-item{display:flex;align-items:center;gap:10px;padding:8px 10px;
-background:var(--bg);border-radius:10px;margin-bottom:6px;font-size:13px}
-.split-name{flex:1;font-weight:500}
-.split-count{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
-.split-copy{background:var(--border);border:none;color:var(--muted);
-padding:5px 10px;border-radius:6px;font-size:11px;cursor:pointer}
-.split-copy:hover{background:var(--accent);color:#fff}
-.split-copy.ok{background:#4ade80;color:#0f1115}
-.secure-btn-close{background:transparent;border:1px solid var(--border);
-color:var(--muted);padding:8px 16px;border-radius:10px;font-size:13px;
-cursor:pointer;align-self:flex-start;margin-top:12px}
-.secure-btn-close:hover{border-color:var(--accent);color:var(--accent)}
-.splash{position:fixed;inset:0;background:var(--bg);z-index:1000;
-display:flex;align-items:center;justify-content:center;font-size:60px;
-animation:splashOut 0.9s ease-out 1.2s forwards;pointer-events:none}
-@keyframes splashOut{to{opacity:0;visibility:hidden}}
-#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;
-pointer-events:none;opacity:0.65}
-.wrap{max-width:1100px;margin:0 auto;position:relative;z-index:1}
 </style>
 </head><body>
 <div class="top-right">
@@ -314,75 +204,75 @@ pointer-events:none;opacity:0.65}
 <div class="bg-decor"></div>
 <a class="back" href="index.html">← на главную</a>
 <h1>Отчёт проверки</h1>
-<div class="sub">2026-09-28 06:24:04 · источников: 1</div>
+<div class="sub">2026-09-28 09:44:57 · источников: 1</div>
 <div class="health-wrap">
-<div class="health-bar"><div style="width:64.4%;background:#facc15"></div></div>
+<div class="health-bar"><div style="width:64.5%;background:#facc15"></div></div>
 <div class="health-label">Здоровье системы: <b style="color:#facc15">64%</b></div>
 </div>
 <div class="cards">
-<div class="card"><div class="k">Проверено</div><div class="v" data-count="1312">0</div></div>
-<div class="card"><div class="k">Рабочих</div><div class="v good" data-count="838">0</div></div>
+<div class="card"><div class="k">Проверено</div><div class="v" data-count="1312">0</div><svg viewBox="0 0 100 24" preserveAspectRatio="none" style="width:100%;height:24px;display:block;margin-top:8px"><path d="M0,24 L0.0,1.0 L5.3,1.0 L10.5,1.0 L15.8,1.0 L21.1,1.0 L26.3,1.0 L31.6,1.0 L36.8,1.0 L42.1,1.0 L47.4,1.0 L52.6,5.4 L57.9,4.4 L63.2,4.4 L68.4,4.4 L73.7,4.4 L78.9,4.4 L84.2,4.4 L89.5,4.4 L94.7,4.4 L100.0,4.4 L100,24 Z" fill="#4ade80" fill-opacity="0.15"/><polyline points="0.0,1.0 5.3,1.0 10.5,1.0 15.8,1.0 21.1,1.0 26.3,1.0 31.6,1.0 36.8,1.0 42.1,1.0 47.4,1.0 52.6,5.4 57.9,4.4 63.2,4.4 68.4,4.4 73.7,4.4 78.9,4.4 84.2,4.4 89.5,4.4 94.7,4.4 100.0,4.4" fill="none" stroke="#4ade80" stroke-width="1.5"/></svg></div>
+<div class="card"><div class="k">Рабочих</div><div class="v good" data-count="839">0</div><svg viewBox="0 0 100 24" preserveAspectRatio="none" style="width:100%;height:24px;display:block;margin-top:8px"><path d="M0,24 L0.0,1.0 L5.3,1.0 L10.5,1.0 L15.8,1.1 L21.1,1.1 L26.3,7.1 L31.6,7.1 L36.8,7.2 L42.1,6.9 L47.4,7.1 L52.6,11.9 L57.9,11.9 L63.2,5.7 L68.4,5.8 L73.7,5.8 L78.9,5.8 L84.2,5.8 L89.5,5.8 L94.7,5.7 L100.0,5.7 L100,24 Z" fill="#4ade80" fill-opacity="0.15"/><polyline points="0.0,1.0 5.3,1.0 10.5,1.0 15.8,1.1 21.1,1.1 26.3,7.1 31.6,7.1 36.8,7.2 42.1,6.9 47.4,7.1 52.6,11.9 57.9,11.9 63.2,5.7 68.4,5.8 73.7,5.8 78.9,5.8 84.2,5.8 89.5,5.8 94.7,5.7 100.0,5.7" fill="none" stroke="#4ade80" stroke-width="1.5"/></svg></div>
 <div class="card"><div class="k">Нестабильных</div><div class="v warn" data-count="11">0</div></div>
 <div class="card"><div class="k">Отфильтровано</div><div class="v warn" data-count="11">0</div></div>
-<div class="card"><div class="k">Мёртвых</div><div class="v bad" data-count="452">0</div></div>
-<div class="card"><div class="k">В merged</div><div class="v" data-count="771">0</div></div>
+<div class="card"><div class="k">Мёртвых</div><div class="v bad" data-count="451">0</div></div>
+<div class="card"><div class="k">В merged</div><div class="v" data-count="772">0</div><svg viewBox="0 0 100 24" preserveAspectRatio="none" style="width:100%;height:24px;display:block;margin-top:8px"><path d="M0,24 L0.0,1.0 L5.3,1.0 L10.5,1.0 L15.8,1.1 L21.1,1.1 L26.3,6.5 L31.6,6.5 L36.8,6.5 L42.1,6.2 L47.4,6.4 L52.6,10.8 L57.9,10.7 L63.2,5.5 L68.4,5.5 L73.7,5.5 L78.9,5.5 L84.2,5.6 L89.5,5.6 L94.7,5.5 L100.0,5.4 L100,24 Z" fill="#4ade80" fill-opacity="0.15"/><polyline points="0.0,1.0 5.3,1.0 10.5,1.0 15.8,1.1 21.1,1.1 26.3,6.5 31.6,6.5 36.8,6.5 42.1,6.2 47.4,6.4 52.6,10.8 57.9,10.7 63.2,5.5 68.4,5.5 73.7,5.5 78.9,5.5 84.2,5.6 89.5,5.6 94.7,5.5 100.0,5.4" fill="none" stroke="#4ade80" stroke-width="1.5"/></svg></div>
 </div>
 <div class="section"><h2>Распределение по качеству</h2>
 <div class="donut-wrap">
-<div class="donut-chart"><svg viewBox="0 0 220 220" style="max-width:220px;width:100%"><circle cx="110" cy="110" r="80" fill="none" stroke="var(--border)" stroke-width="22"/><circle cx="110" cy="110" r="80" fill="none" stroke="#4ade80" stroke-width="22" stroke-dasharray="277.73 224.92" stroke-dashoffset="0.00" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#facc15" stroke-width="22" stroke-dasharray="162.99 339.67" stroke-dashoffset="-277.73" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#8a8f98" stroke-width="22" stroke-dasharray="59.98 442.68" stroke-dashoffset="-440.72" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#a78bfa" stroke-width="22" stroke-dasharray="1.96 500.70" stroke-dashoffset="-500.70" transform="rotate(-90 110 110)"/><text x="110" y="106" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="600">771</text><text x="110" y="124" text-anchor="middle" fill="var(--muted)" font-size="10">КАНАЛОВ</text></svg></div>
-<div class="donut-legend"><div class="legend-row"><span class="legend-dot" style="background:#4ade80"></span><span class="legend-name">HD</span><span class="legend-count">426</span><span class="legend-pct">55.3%</span></div><div class="legend-row"><span class="legend-dot" style="background:#facc15"></span><span class="legend-name">SD</span><span class="legend-count">250</span><span class="legend-pct">32.4%</span></div><div class="legend-row"><span class="legend-dot" style="background:#8a8f98"></span><span class="legend-name">Unknown</span><span class="legend-count">92</span><span class="legend-pct">11.9%</span></div><div class="legend-row"><span class="legend-dot" style="background:#a78bfa"></span><span class="legend-name">4K</span><span class="legend-count">3</span><span class="legend-pct">0.4%</span></div></div>
+<div class="donut-chart"><svg viewBox="0 0 220 220" style="max-width:220px;width:100%"><circle cx="110" cy="110" r="80" fill="none" stroke="var(--border)" stroke-width="22"/><circle cx="110" cy="110" r="80" fill="none" stroke="#4ade80" stroke-width="22" stroke-dasharray="279.33 223.33" stroke-dashoffset="0.00" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#facc15" stroke-width="22" stroke-dasharray="162.13 340.53" stroke-dashoffset="-279.33" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#8a8f98" stroke-width="22" stroke-dasharray="59.25 443.40" stroke-dashoffset="-441.45" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#a78bfa" stroke-width="22" stroke-dasharray="1.95 500.70" stroke-dashoffset="-500.70" transform="rotate(-90 110 110)"/><text x="110" y="106" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="600">772</text><text x="110" y="124" text-anchor="middle" fill="var(--muted)" font-size="10">КАНАЛОВ</text></svg></div>
+<div class="donut-legend"><div class="legend-row"><span class="legend-dot" style="background:#4ade80"></span><span class="legend-name">HD</span><span class="legend-count">429</span><span class="legend-pct">55.6%</span></div><div class="legend-row"><span class="legend-dot" style="background:#facc15"></span><span class="legend-name">SD</span><span class="legend-count">249</span><span class="legend-pct">32.3%</span></div><div class="legend-row"><span class="legend-dot" style="background:#8a8f98"></span><span class="legend-name">Unknown</span><span class="legend-count">91</span><span class="legend-pct">11.8%</span></div><div class="legend-row"><span class="legend-dot" style="background:#a78bfa"></span><span class="legend-name">4K</span><span class="legend-count">3</span><span class="legend-pct">0.4%</span></div></div>
 </div></div>
 <div class="section"><h2>Распределение по группам</h2>
 <div class="donut-wrap">
-<div class="donut-chart"><svg viewBox="0 0 220 220" style="max-width:220px;width:100%"><circle cx="110" cy="110" r="80" fill="none" stroke="var(--border)" stroke-width="22"/><circle cx="110" cy="110" r="80" fill="none" stroke="#4ade80" stroke-width="22" stroke-dasharray="238.61 264.04" stroke-dashoffset="0.00" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#60a5fa" stroke-width="22" stroke-dasharray="103.01 399.65" stroke-dashoffset="-238.61" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#facc15" stroke-width="22" stroke-dasharray="47.59 455.06" stroke-dashoffset="-341.62" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#f87171" stroke-width="22" stroke-dasharray="21.51 481.14" stroke-dashoffset="-389.22" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#a78bfa" stroke-width="22" stroke-dasharray="19.56 483.10" stroke-dashoffset="-410.73" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#fb923c" stroke-width="22" stroke-dasharray="14.99 487.66" stroke-dashoffset="-430.29" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#34d399" stroke-width="22" stroke-dasharray="10.43 492.22" stroke-dashoffset="-445.28" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#f472b6" stroke-width="22" stroke-dasharray="9.78 492.88" stroke-dashoffset="-455.71" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#22d3ee" stroke-width="22" stroke-dasharray="9.13 493.53" stroke-dashoffset="-465.49" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#fbbf24" stroke-width="22" stroke-dasharray="8.48 494.18" stroke-dashoffset="-474.62" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#818cf8" stroke-width="22" stroke-dasharray="19.56 483.10" stroke-dashoffset="-483.10" transform="rotate(-90 110 110)"/><text x="110" y="106" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="600">771</text><text x="110" y="124" text-anchor="middle" fill="var(--muted)" font-size="10">КАНАЛОВ</text></svg></div>
-<div class="donut-legend"><div class="legend-row"><span class="legend-dot" style="background:#4ade80"></span><span class="legend-name">📦 Разное</span><span class="legend-count">366</span><span class="legend-pct">47.5%</span></div><div class="legend-row"><span class="legend-dot" style="background:#60a5fa"></span><span class="legend-name">🎞️ Kinowalk</span><span class="legend-count">158</span><span class="legend-pct">20.5%</span></div><div class="legend-row"><span class="legend-dot" style="background:#facc15"></span><span class="legend-name">📹 Rutube</span><span class="legend-count">73</span><span class="legend-pct">9.5%</span></div><div class="legend-row"><span class="legend-dot" style="background:#f87171"></span><span class="legend-name">🎬 Кино</span><span class="legend-count">33</span><span class="legend-pct">4.3%</span></div><div class="legend-row"><span class="legend-dot" style="background:#a78bfa"></span><span class="legend-name">⚽ Спорт</span><span class="legend-count">30</span><span class="legend-pct">3.9%</span></div><div class="legend-row"><span class="legend-dot" style="background:#fb923c"></span><span class="legend-name">📺 Основные</span><span class="legend-count">23</span><span class="legend-pct">3.0%</span></div><div class="legend-row"><span class="legend-dot" style="background:#34d399"></span><span class="legend-name">🧠 Познавательные</span><span class="legend-count">16</span><span class="legend-pct">2.1%</span></div><div class="legend-row"><span class="legend-dot" style="background:#f472b6"></span><span class="legend-name">🎵 Музыка</span><span class="legend-count">15</span><span class="legend-pct">1.9%</span></div><div class="legend-row"><span class="legend-dot" style="background:#22d3ee"></span><span class="legend-name">Музыкальные</span><span class="legend-count">14</span><span class="legend-pct">1.8%</span></div><div class="legend-row"><span class="legend-dot" style="background:#fbbf24"></span><span class="legend-name">👁️ СМОТРИМ +</span><span class="legend-count">13</span><span class="legend-pct">1.7%</span></div><div class="legend-row"><span class="legend-dot" style="background:#818cf8"></span><span class="legend-name">Прочее</span><span class="legend-count">30</span><span class="legend-pct">3.9%</span></div></div>
+<div class="donut-chart"><svg viewBox="0 0 220 220" style="max-width:220px;width:100%"><circle cx="110" cy="110" r="80" fill="none" stroke="var(--border)" stroke-width="22"/><circle cx="110" cy="110" r="80" fill="none" stroke="#4ade80" stroke-width="22" stroke-dasharray="102.87 399.78" stroke-dashoffset="0.00" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#60a5fa" stroke-width="22" stroke-dasharray="74.88 427.78" stroke-dashoffset="-102.87" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#facc15" stroke-width="22" stroke-dasharray="72.27 430.38" stroke-dashoffset="-177.75" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#f87171" stroke-width="22" stroke-dasharray="47.53 455.12" stroke-dashoffset="-250.03" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#a78bfa" stroke-width="22" stroke-dasharray="41.02 461.64" stroke-dashoffset="-297.56" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#fb923c" stroke-width="22" stroke-dasharray="33.86 468.80" stroke-dashoffset="-338.58" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#34d399" stroke-width="22" stroke-dasharray="26.70 475.96" stroke-dashoffset="-372.43" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#f472b6" stroke-width="22" stroke-dasharray="20.18 482.47" stroke-dashoffset="-399.13" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#22d3ee" stroke-width="22" stroke-dasharray="19.53 483.12" stroke-dashoffset="-419.31" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#fbbf24" stroke-width="22" stroke-dasharray="15.63 487.03" stroke-dashoffset="-438.85" transform="rotate(-90 110 110)"/><circle cx="110" cy="110" r="80" fill="none" stroke="#818cf8" stroke-width="22" stroke-dasharray="48.18 454.47" stroke-dashoffset="-454.47" transform="rotate(-90 110 110)"/><text x="110" y="106" text-anchor="middle" fill="var(--text)" font-size="20" font-weight="600">772</text><text x="110" y="124" text-anchor="middle" fill="var(--muted)" font-size="10">КАНАЛОВ</text></svg></div>
+<div class="donut-legend"><div class="legend-row"><span class="legend-dot" style="background:#4ade80"></span><span class="legend-name">🎞️ Kinowalk</span><span class="legend-count">158</span><span class="legend-pct">20.5%</span></div><div class="legend-row"><span class="legend-dot" style="background:#60a5fa"></span><span class="legend-name">🇷🇺 Основные</span><span class="legend-count">115</span><span class="legend-pct">14.9%</span></div><div class="legend-row"><span class="legend-dot" style="background:#facc15"></span><span class="legend-name">🎬 Кино</span><span class="legend-count">111</span><span class="legend-pct">14.4%</span></div><div class="legend-row"><span class="legend-dot" style="background:#f87171"></span><span class="legend-name">📹 Rutube</span><span class="legend-count">73</span><span class="legend-pct">9.5%</span></div><div class="legend-row"><span class="legend-dot" style="background:#a78bfa"></span><span class="legend-name">🧠 Познавательные</span><span class="legend-count">63</span><span class="legend-pct">8.2%</span></div><div class="legend-row"><span class="legend-dot" style="background:#fb923c"></span><span class="legend-name">📦 Разное</span><span class="legend-count">52</span><span class="legend-pct">6.7%</span></div><div class="legend-row"><span class="legend-dot" style="background:#34d399"></span><span class="legend-name">🏙️ Региональные</span><span class="legend-count">41</span><span class="legend-pct">5.3%</span></div><div class="legend-row"><span class="legend-dot" style="background:#f472b6"></span><span class="legend-name">🎪 Развлекательные</span><span class="legend-count">31</span><span class="legend-pct">4.0%</span></div><div class="legend-row"><span class="legend-dot" style="background:#22d3ee"></span><span class="legend-name">🎵 Музыка</span><span class="legend-count">30</span><span class="legend-pct">3.9%</span></div><div class="legend-row"><span class="legend-dot" style="background:#fbbf24"></span><span class="legend-name">📰 Новости</span><span class="legend-count">24</span><span class="legend-pct">3.1%</span></div><div class="legend-row"><span class="legend-dot" style="background:#818cf8"></span><span class="legend-name">Прочее</span><span class="legend-count">74</span><span class="legend-pct">9.6%</span></div></div>
 </div></div>
-<div class="section"><h2>История (последние 24)</h2>
+<div class="section"><h2>История (последние 25)</h2>
 <svg viewBox="0 0 900 200" style="width:100%;height:auto">
 <line x1="30" y1="30" x2="870" y2="30" stroke="var(--border)" stroke-width="1"/><text x="4" y="33" fill="var(--muted)" font-size="10">1236</text><line x1="30" y1="65" x2="870" y2="65" stroke="var(--border)" stroke-width="1"/><text x="4" y="68" fill="var(--muted)" font-size="10">927</text><line x1="30" y1="100" x2="870" y2="100" stroke="var(--border)" stroke-width="1"/><text x="4" y="103" fill="var(--muted)" font-size="10">618</text><line x1="30" y1="135" x2="870" y2="135" stroke="var(--border)" stroke-width="1"/><text x="4" y="138" fill="var(--muted)" font-size="10">309</text><line x1="30" y1="170" x2="870" y2="170" stroke="var(--border)" stroke-width="1"/><text x="4" y="173" fill="var(--muted)" font-size="10">0</text>
-<path d="M30,170 L30.0,30.2 L66.5,30.0 L103.0,30.0 L139.6,48.7 L176.1,48.5 L212.6,49.0 L249.1,49.0 L285.7,49.1 L322.2,49.7 L358.7,49.6 L395.2,82.8 L431.7,82.7 L468.3,82.9 L504.8,81.7 L541.3,82.3 L577.8,109.2 L614.3,108.7 L650.9,75.1 L687.4,75.2 L723.9,75.3 L760.4,75.2 L797.0,75.5 L833.5,75.6 L870.0,75.1 L870,170 Z" fill="#4ade80" fill-opacity="0.15"/>
-<polyline points="30.0,30.2 66.5,30.0 103.0,30.0 139.6,48.7 176.1,48.5 212.6,49.0 249.1,49.0 285.7,49.1 322.2,49.7 358.7,49.6 395.2,82.8 431.7,82.7 468.3,82.9 504.8,81.7 541.3,82.3 577.8,109.2 614.3,108.7 650.9,75.1 687.4,75.2 723.9,75.3 760.4,75.2 797.0,75.5 833.5,75.6 870.0,75.1" fill="none" stroke="#4ade80" stroke-width="2"/>
-<text x="30" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="176" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="322" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="468" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="614" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="760" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text>
+<path d="M30,170 L30.0,30.2 L65.0,30.0 L100.0,30.0 L135.0,48.7 L170.0,48.5 L205.0,49.0 L240.0,49.0 L275.0,49.1 L310.0,49.7 L345.0,49.6 L380.0,82.8 L415.0,82.7 L450.0,82.9 L485.0,81.7 L520.0,82.3 L555.0,109.2 L590.0,108.7 L625.0,75.1 L660.0,75.2 L695.0,75.3 L730.0,75.2 L765.0,75.5 L800.0,75.6 L835.0,75.1 L870.0,75.0 L870,170 Z" fill="#4ade80" fill-opacity="0.15"/>
+<polyline points="30.0,30.2 65.0,30.0 100.0,30.0 135.0,48.7 170.0,48.5 205.0,49.0 240.0,49.0 275.0,49.1 310.0,49.7 345.0,49.6 380.0,82.8 415.0,82.7 450.0,82.9 485.0,81.7 520.0,82.3 555.0,109.2 590.0,108.7 625.0,75.1 660.0,75.2 695.0,75.3 730.0,75.2 765.0,75.5 800.0,75.6 835.0,75.1 870.0,75.0" fill="none" stroke="#4ade80" stroke-width="2"/>
+<text x="30" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="170" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="310" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="450" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="590" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="730" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-27</text><text x="870" y="192" fill="var(--muted)" font-size="10" text-anchor="middle">2026-09-28</text>
 </svg></div>
-<div class='section'><h2>Нестабильные</h2><table><thead><tr><th>Канал</th><th>Аптайм</th><th>Проверок</th></tr></thead><tbody><tr><td>Коновал ТВ</td><td>0%</td><td>12</td></tr>
+<div class='section'><h2>Нестабильные (аптайм < 50%)</h2><table><thead><tr><th>Канал</th><th>Аптайм</th><th>Проверок</th></tr></thead><tbody><tr><td>Коновал ТВ</td><td>0%</td><td>12</td></tr>
 <tr><td>ZubrilomFilm</td><td>0%</td><td>12</td></tr>
 <tr><td>КИНО05</td><td>0%</td><td>12</td></tr>
 <tr><td>Snoochies Boochies</td><td>0%</td><td>12</td></tr>
 <tr><td>ROMEO Video</td><td>0%</td><td>12</td></tr></tbody></table></div>
-<div class='section'><h2>Откуда логотипы</h2><table><thead><tr><th>Источник</th><th>Каналов</th><th>%</th></tr></thead><tbody><tr><td>По iptv-org id</td><td>449</td><td>53.6%</td></tr>
-<tr><td>Из источника</td><td>367</td><td>43.8%</td></tr>
+<div class='section'><h2>Откуда логотипы</h2><table><thead><tr><th>Источник</th><th>Каналов</th><th>%</th></tr></thead><tbody><tr><td>По iptv-org id</td><td>450</td><td>53.6%</td></tr>
+<tr><td>Из источника</td><td>367</td><td>43.7%</td></tr>
 <tr><td>Из EPG icon</td><td>17</td><td>2.0%</td></tr>
 <tr><td>Не найдено</td><td>5</td><td>0.6%</td></tr>
 <tr><td>По имени</td><td>0</td><td>0.0%</td></tr>
 <tr><td>По транслиту</td><td>0</td><td>0.0%</td></tr>
 <tr><td>По префиксу</td><td>0</td><td>0.0%</td></tr>
 <tr><td>Из .txt</td><td>0</td><td>0.0%</td></tr></tbody></table></div>
-<div class='section'><h2>По User-Agent</h2><div><span class='tag'>📺 wink: 837</span> <span class='tag'>🎬 vlc: 1</span></div></div>
-<div class='section'><h2>Медленные</h2><table><thead><tr><th>Канал</th><th>Отклик</th></tr></thead><tbody><tr><td>RU.TV HD</td><td>4.35s</td></tr>
-<tr><td>Clubbing TV</td><td>4.16s</td></tr>
-<tr><td>Extreme Sports</td><td>3.85s</td></tr>
-<tr><td>Пятница! (576p)</td><td>3.78s</td></tr>
-<tr><td>Футбол2</td><td>3.3s</td></tr>
-<tr><td>Хит HD</td><td>3.12s</td></tr>
-<tr><td>Kuban 24 (480p) [Geo-blocked]</td><td>3.06s</td></tr>
-<tr><td>CTC Love</td><td>2.79s</td></tr>
-<tr><td>Russia-24</td><td>2.64s</td></tr>
-<tr><td>NST (576p)</td><td>2.58s</td></tr></tbody></table></div>
+<div class='section'><h2>По User-Agent</h2><div><span class='tag'>📺 wink: 832</span> <span class='tag'>🎬 vlc: 4</span> <span class='tag'>📱 tivimate: 2</span> <span class='tag'>📡 smarttv: 1</span></div></div>
+<div class='section'><h2>Медленные</h2><table><thead><tr><th>Канал</th><th>Отклик</th></tr></thead><tbody><tr><td>Vesti FM (720p)</td><td>7.33s</td></tr>
+<tr><td>Russia-24 HD (1080p)</td><td>7.27s</td></tr>
+<tr><td>Russia-1 HD (1080p)</td><td>6.17s</td></tr>
+<tr><td>Бобер</td><td>5.78s</td></tr>
+<tr><td>HGTV HD</td><td>5.44s</td></tr>
+<tr><td>ТНТ 4</td><td>4.8s</td></tr>
+<tr><td>Moskva 24 (720p)</td><td>4.78s</td></tr>
+<tr><td>Sankt-Peterburg HD (720p)</td><td>4.78s</td></tr>
+<tr><td>Russia-24 (720p)</td><td>4.75s</td></tr>
+<tr><td>Solovyov Live (1080p)</td><td>4.71s</td></tr></tbody></table></div>
 <div class='section'><h2>ffprobe</h2><table><thead><tr><th>Статус</th><th>Каналов</th></tr></thead><tbody><tr><td>ok</td><td>1</td></tr>
 <tr><td>fail</td><td>0</td></tr>
-<tr><td>cached_ok</td><td>539</td></tr>
-<tr><td>cached_fail</td><td>180</td></tr>
+<tr><td>cached_ok</td><td>540</td></tr>
+<tr><td>cached_fail</td><td>179</td></tr>
 <tr><td>skipped</td><td>0</td></tr></tbody></table></div>
 <div class="section"><h2>По источникам</h2>
 <table><thead><tr><th>Источник</th><th>Всего</th><th>Рабочих</th><th>Нестаб.</th><th>Фильтр</th><th>%</th><th>Ср. отклик</th></tr></thead>
-<tbody><tr><td>cleaned</td><td>1312</td><td>838</td><td>11</td><td>11</td><td>63.9%</td><td>0.57s</td></tr></tbody></table></div>
+<tbody><tr><td>cleaned</td><td>1312</td><td>839</td><td>11</td><td>11</td><td>63.9%</td><td>0.89s</td></tr></tbody></table></div>
 <div class="section"><h2>Фильтры</h2>
 <table><thead><tr><th>Причина</th><th>Каналов</th></tr></thead>
 <tbody><tr><td>unstable</td><td>11</td></tr>
 <tr><td>group_exclude</td><td>10</td></tr>
 <tr><td>shortener</td><td>1</td></tr></tbody></table></div>
-<div class="box"><a href="rejected.html">🚫 Отсеянные каналы</a> ·
-<a href="rejected.csv">📥 CSV</a></div>
+<div class="box"><a href="rejected.html">🚫 Посмотреть отсеянные каналы</a> ·
+<a href="rejected.csv">📥 Скачать CSV отсеянных</a></div>
 
 <script>
 (function(){
@@ -417,7 +307,7 @@ pointer-events:none;opacity:0.65}
         timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit'
       });
       el.innerHTML = '🕐 <strong>' + t + '</strong> <span class="hide-mobile">МСК</span>';
-    } catch(e) {}
+    } catch(e) { el.innerHTML = ''; }
   }
   updateClock();
   setInterval(updateClock, 1000);
