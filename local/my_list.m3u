@@ -462,6 +462,12 @@ http://kinowalk.hopto.org/paranormal404_live
 #EXTINF:-1 tvg-id="johan_grohan_live" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/johan_grohan_live.jpg" group-title="Kinowalk",Johan Grohan Live
 http://kinowalk.hopto.org/johan_grohan_live
 
+#EXTINF:-1 tvg-id="LampovoeTV" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/lampovoe.png" group-title="Основные",Lampovoe TV
+http://kinowalk.hopto.org/lampovoetv_live
+
+#EXTINF:-1 tvg-id="Strimach" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/strimach.jpg" group-title="Основные",STRIMACH
+http://kinowalk.hopto.org/strimach_live
+
 #EXTINF:-1 group-title="Rutube",Россия 24
 https://bl.rutube.ru/livestream/ad6ba2e9e587406b29978b861b7b7dd1/index.m3u8?s=2xI0szFZPbr-yIu5m8Ee2Q&e=2090410051&scheme=https
 
