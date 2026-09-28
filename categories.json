@@ -9,9 +9,18 @@
     { "pattern": "live\\.smotrim\\.ru/vgtrk", "group": "Основные", "force": true },
     { "pattern": "fs\\.uplink\\.kz/(dom_kino|kinohit|kinokomedia|kinomix|kinopremiera|kinosemya|kinoseria|kinosvidanie|kinouzhas|eurokino|indiyskoe_kino|nashe_novoe_kino|rodnoe_kino|russkiy_illusion|mosfilm|nostalgia|zhara)", "group": "Кино", "force": true },
     { "pattern": "fs\\.uplink\\.kz/(5_kanal|perviy_kanal_sng|mir|ntv_mir|ren|rtr_planeta|rossia_24|rossia_k|start_air|start_world|sts|sts_love|tnt4|tvc|zvezda|vremya|domashniy)", "group": "Основные", "force": true },
-    { "pattern": "fs\\.uplink\\.kz/(viju|tv1000|khl|shanson|muz|zhara|radio|viju_explore|bober)", "group": "Познавательные", "force": false },
     { "pattern": "facecast\\.io.*UBZfFgtKB1JwTwoDERNQVGGs", "group": "Новости", "force": true },
-    { "pattern": "stranafm\\.cdnvideo\\.ru", "group": "Радио", "force": true }
+    { "pattern": "stranafm\\.cdnvideo\\.ru", "group": "Радио", "force": true },
+
+    { "pattern": "fs\\.uplink\\.kz/khl_prime", "group": "Спорт", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/viju_sport", "group": "Спорт", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/muz_tv", "group": "Музыка", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/shanson", "group": "Музыка", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/muzhskoe_kino", "group": "Кино", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/viju_tv1000", "group": "Кино", "force": true },
+    { "pattern": "hls-tvsoyuz\\.cdnvideo\\.ru/tvsoyuz2/muzsoyuz", "group": "Музыка", "force": true },
+
+    { "pattern": "fs\\.uplink\\.kz/(viju_explore|viju_history|viju_nature|viju_planet|bober)", "group": "Познавательные", "force": false }
   ],
 
   "name_patterns": [
@@ -24,7 +33,7 @@
 
     { "pattern": "(?i)^ntv (series|hit)|ntv-series|ntv\\.hit", "group": "Сериалы НТВ" },
 
-    { "pattern": "(?i)(big planet|dikaya|domashnie zhivotnye|^food|foodtime|istoriya|istoki|moya planeta|moya stikhiya|^nauka\\b|^наука\\b|okhota|rybalka|rybolov|ohotnik|oruzhie|prosveshchenie|v mire zhivotnykh|usadba|zagorodnaya|zhivaya priroda|zoopark|travel\\+|telecafe|kulinar|kuhnya|lapki|pro business|otkryty mir|tochka rf|doktor|^doctor\\b|^nano\\b|^нано\\b|большая азия|надежда|открытый мир|law tv|insayt|tonus|soyuz|союз|patriot|патриот|dushevnoe|^art\\b|^art tv|avto24|viju.*(history|explore|planet)|^rtg|russkiy bestseller|^zhivi|^zhivi!|national geographic|nat geo|nat-geo|viju history|^bober\\b|^бобер\\b|^бобёр\\b|remont|ремонт|dacha|дача)", "group": "Познавательные" },
+    { "pattern": "(?i)(big planet|dikaya|domashnie zhivotnye|^food|foodtime|istoriya|istoki|moya planeta|moya stikhiya|^nauka\\b|^наука\\b|okhota|rybalka|rybolov|ohotnik|oruzhie|prosveshchenie|v mire zhivotnykh|usadba|zagorodnaya|zhivaya priroda|zoopark|travel\\+|telecafe|kulinar|kuhnya|lapki|pro business|otkryty mir|tochka rf|doktor|^doctor\\b|^nano\\b|^нано\\b|большая азия|надежда|открытый мир|law tv|insayt|tonus|soyuz|союз|patriot|патриот|dushevnoe|^art\\b|^art tv|avto24|viju.*(history|explore|planet|nature)|^rtg|russkiy bestseller|^zhivi|^zhivi!|national geographic|nat geo|nat-geo|viju history|^bober\\b|^бобер\\b|^бобёр\\b|remont|ремонт|dacha|дача)", "group": "Познавательные" },
 
     { "pattern": "(?i)(^okko ?(sport|futbol|football|basketball|tennis|hockey|mma|boxing)|prajm sport|extreme sports|khl\\b|setanta|udar|boks|futbol|futball|ufc|mma\\b|sport\\b)", "group": "Спорт" },
 
