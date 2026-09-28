@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-counter.py v2 — точная оценка HTTP-запросов checker'а (±3%).
-Читает docs/*.json + rejected.csv. НЕ патчит, НЕ правит скрипт.
+counter.py v4 — оценка HTTP-запросов checker'а за СУТКИ.
+Читает docs/*.json + rejected.csv.
+Учитывает:
+  - check.yml запускается 4 раза в сутки (cron 0 */6 * * *)
+  - мёртвые каналы проверяются по 4 User-Agent (wink, vlc, tivimate, smarttv)
+  - живые каналы обычно срабатывают на первом UA
+Whitelist НЕ учитывается (к whitelist-каналам запросов не идёт).
 """
 import json
 import csv
@@ -12,6 +17,12 @@ from collections import Counter
 
 
 DOCS = Path('docs')
+
+# Сколько раз в сутки запускается check.yml (cron: 0 */6 * * *)
+CHECK_RUNS_PER_DAY = 4
+
+# Сколько User-Agent пробуется на мёртвых каналах
+UA_COUNT = 4
 
 
 def load_json(name, default=None):
@@ -25,20 +36,16 @@ def load_json(name, default=None):
 
 
 def count_m3u_stats():
-    """Точное число URL и whitelist в all_cleaned.m3u."""
+    """Число URL в all_cleaned.m3u."""
     p = DOCS / 'all_cleaned.m3u'
     if not p.exists():
-        return 0, 0
+        return 0
     total = 0
-    wl = 0
     for line in p.read_text(encoding='utf-8', errors='replace').splitlines():
         if not line or line.startswith('#'):
             continue
         total += 1
-        low = line.lower()
-        if 'kinowalk.hopto.org' in low or 'rutube.ru' in low:
-            wl += 1
-    return total, wl
+    return total
 
 
 def count_ffprobe_recent(hours=24):
@@ -80,71 +87,61 @@ def avg_recent_runs(history, n=3):
     if not recent:
         return {}
     return {
-        'ok':     sum(r.get('ok', 0) for r in recent) // len(recent),
-        'dead':   sum(r.get('dead', 0) for r in recent) // len(recent),
+        'ok':       sum(r.get('ok', 0) for r in recent) // len(recent),
+        'dead':     sum(r.get('dead', 0) for r in recent) // len(recent),
         'unstable': sum(r.get('unstable', 0) for r in recent) // len(recent),
         'filtered': sum(r.get('filtered', 0) for r in recent) // len(recent),
-        'runs':   len(recent),
+        'runs':     len(recent),
     }
 
 
-def estimate_http_requests(ok, dead, wl, reasons):
+def estimate_http_requests(ok, dead, reasons):
     """
-    Точная оценка HTTP-запросов:
-      живые: wink срабатывает в 90% случаев → avg 1.1 UA
-      мёртвые timeout: все 4 UA пробуются → × 4
-      мёртвые http_XXX: сервер ответил кодом → × 1
-      мёртвые прочие (empty/html/small): обычно × 1
+    Оценка HTTP-запросов ЗА ОДИН ЗАПУСК.
+    Живые — ~1.1 запрос (wink срабатывает в 90% случаев).
+    Мёртвые — 4 запроса (перебор всех UA).
     """
-    ok_no_wl = max(0, ok - wl)
-
-    # Живые
-    live_requests = int(ok_no_wl * 1.10)
-
-    # Мёртвые — разбиваем по типу
+    live_requests = int(ok * 1.10)
     dead_total = max(0, dead)
 
-    # Из rejected.csv знаем пропорции
     timeout = reasons.get('dead_detail:timeout', 0)
     http_code = sum(v for k, v in reasons.items()
                     if k.startswith('dead_detail:http_'))
+    ffprobe_fail = reasons.get('dead_detail:ffprobe', 0)
     empty = reasons.get('dead_detail:empty', 0)
     html = reasons.get('dead_detail:html', 0)
     small = reasons.get('dead_detail:too_small', 0)
     unknown = reasons.get('dead_detail:unknown', 0)
 
-    rejected_dead = timeout + http_code + empty + html + small + unknown
+    rejected_dead = (timeout + http_code + ffprobe_fail +
+                     empty + html + small + unknown)
     if rejected_dead == 0:
-        # fallback: 40% timeout, 60% код
         timeout = int(dead_total * 0.4)
         http_code = dead_total - timeout
 
-    # Коэффициенты
-    dead_requests = (
-        timeout * 4 +
-        http_code * 1 +
-        (empty + html + small + unknown) * 1
-    )
+    dead_requests = dead_total * UA_COUNT
 
     return {
-        'live_channels': ok_no_wl,
+        'live_channels': ok,
         'dead_channels': dead_total,
         'live_requests': live_requests,
         'dead_requests': dead_requests,
-        'timeout_breakdown': {
-            'timeout_4ua': timeout,
-            'http_code_1ua': http_code,
-            'other_1ua': empty + html + small + unknown,
+        'breakdown': {
+            'timeout': timeout,
+            'http_code': http_code,
+            'ffprobe_fail': ffprobe_fail,
+            'empty_html_small_unknown': empty + html + small + unknown,
+            'ua_count': UA_COUNT,
         },
         'total': live_requests + dead_requests,
     }
 
 
 def main():
-    print("📊 Анализирую checker v2...")
+    print("📊 Анализирую checker (за СУТКИ)...")
 
     history = load_json('history.json', [])
-    total_m3u, wl = count_m3u_stats()
+    total_m3u = count_m3u_stats()
     ffprobe_24h = count_ffprobe_recent(24)
     reasons = parse_rejected()
 
@@ -155,31 +152,27 @@ def main():
     unstable = avg.get('unstable', 0)
     filtered = avg.get('filtered', 0)
 
-    http = estimate_http_requests(ok, dead, wl, reasons)
+    http = estimate_http_requests(ok, dead, reasons)
+    http_per_day = http['total'] * CHECK_RUNS_PER_DAY
 
-    # ffprobe: считаем записи обновлённые за 24ч — это точно число запусков
-    # Каждый ffprobe-запуск делает ~2 запроса (playlist + сегмент)
     ffprobe_requests = ffprobe_24h * 2
-
-    # Логотипы: БЕЗ --check-all-logos НЕ проверяются → 0
     logo_requests = 0
+    cleaner = 8
+    dashboard = 480
+    misc = 5
 
-    # Внешние
-    cleaner = 8          # 4 прогона × 2 URL
-    dashboard = 480      # 20 API × 24ч (другой репо)
-    misc = 5             # Telegram, EPG кэш, iptv-org кэш
-
-    total = (http['total'] + ffprobe_requests +
+    total = (http_per_day + ffprobe_requests +
              logo_requests + cleaner + dashboard + misc)
 
     result = {
         'date': datetime.datetime.now().isoformat(timespec='seconds'),
-        'method': 'counter v2 — точная оценка из docs/*.json + rejected.csv',
+        'method': f'counter v4 — оценка за СУТКИ (check × {CHECK_RUNS_PER_DAY}/день, {UA_COUNT} UA на мёртвых)',
         'accuracy': '±3%',
+        'check_runs_per_day': CHECK_RUNS_PER_DAY,
+        'ua_per_dead_channel': UA_COUNT,
 
         'real_data': {
             'total_in_all_cleaned': total_m3u,
-            'whitelist_count': wl,
             'avg_last_3_runs': {
                 'runs': avg.get('runs', 0),
                 'ok': ok, 'dead': dead,
@@ -190,7 +183,12 @@ def main():
         },
 
         'estimated_requests': {
-            'http_checker': http,
+            'http_checker_per_run': http,
+            'http_checker_per_day': {
+                'runs': CHECK_RUNS_PER_DAY,
+                'total': http_per_day,
+                'note': f'{http["total"]} × {CHECK_RUNS_PER_DAY} запуска/сутки',
+            },
             'ffprobe': {
                 'entries_24h': ffprobe_24h,
                 'requests': ffprobe_requests,
@@ -198,12 +196,12 @@ def main():
             },
             'logo_head': {
                 'requests': logo_requests,
-                'note': 'в текущей конфигурации логотипы НЕ проверяются (нет --check-all-logos)',
+                'note': 'логотипы НЕ проверяются (нет --check-all-logos)',
             },
             'cleaner': cleaner,
             'dashboard_other_repo': dashboard,
             'misc': misc,
-            'TOTAL': total,
+            'TOTAL_per_day': total,
         },
     }
 
@@ -213,31 +211,29 @@ def main():
         encoding='utf-8',
     )
 
-    # Вывод
     print("")
     print("=" * 60)
     print("📦 РЕАЛЬНЫЕ ДАННЫЕ")
     print("=" * 60)
     print(f"  URL в all_cleaned.m3u:    {total_m3u}")
-    print(f"  Whitelist в нём:          {wl}")
     print(f"  ffprobe обновлён за 24ч:  {ffprobe_24h}")
     print(f"  Последние {avg.get('runs', 0)} прогона (среднее):")
     print(f"    OK={ok}, dead={dead}, unstable={unstable}, filter={filtered}")
     print("")
     print("=" * 60)
-    print("📊 HTTP-ЗАПРОСОВ В ДЕНЬ (точная оценка)")
+    print(f"📊 HTTP-ЗАПРОСОВ (check × {CHECK_RUNS_PER_DAY}, {UA_COUNT} UA на мёртвых)")
     print("=" * 60)
-    print(f"  HTTP живым:               {http['live_requests']:>6}")
-    print(f"  HTTP мёртвым (timeout×4): {http['timeout_breakdown']['timeout_4ua'] * 4:>6}")
-    print(f"  HTTP мёртвым (http_XXX):  {http['timeout_breakdown']['http_code_1ua']:>6}")
-    print(f"  HTTP мёртвым (прочее):    {http['timeout_breakdown']['other_1ua']:>6}")
+    print(f"  HTTP за ОДИН запуск:      {http['total']:>6}")
+    print(f"    из них живым:           {http['live_requests']:>6}")
+    print(f"    из них мёртвым (×{UA_COUNT}):    {http['dead_requests']:>6}")
+    print(f"  HTTP за СУТКИ (×{CHECK_RUNS_PER_DAY}):       {http_per_day:>6}")
     print(f"  ffprobe:                  {ffprobe_requests:>6}")
     print(f"  Логотипы (HEAD):          {logo_requests:>6}  (не проверяются)")
     print(f"  Cleaner:                  {cleaner:>6}")
     print(f"  Дашборд (др. репо):       {dashboard:>6}")
     print(f"  Прочее:                   {misc:>6}")
     print(f"  ──────────────────────────────")
-    print(f"  ВСЕГО:                    {total:>6}")
+    print(f"  ВСЕГО за СУТКИ:           {total:>6}")
     print("=" * 60)
     print(f"📄 {DOCS / 'requests_count.json'}")
     return 0
