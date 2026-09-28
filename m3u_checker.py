@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-M3U Checker v23 — ffprobe + whitelist + красивая главная (без шифрования).
+M3U Checker v24 — ffprobe + whitelist + улучшенная категоризация.
 """
 import os
 import re
@@ -84,6 +84,13 @@ def is_whitelisted(url, name):
                 return True
     return False
 # ===== /WHITELIST =====
+
+# ===== КАТЕГОРИЗАЦИЯ =====
+GENERIC_GROUPS = {
+    '📦 Разное', 'Разное', 'Other', '(без группы)', '', 'General', 'Общее',
+    'Misc', 'Miscellaneous', 'Undefined',
+}
+# ===== /КАТЕГОРИЗАЦИЯ =====
 
 HEADER_LINE = (
     '#EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; '
@@ -942,21 +949,25 @@ def is_filtered(name, group, url):
 def categorize(extinf, url, source_name):
     current = get_group(extinf)
     name = get_name(extinf)
+    # 1) url_patterns с force всегда побеждают
     for up in CATEGORIES.get('url_patterns', []):
         try:
             if re.search(up['pattern'], url) and up.get('force'):
                 return up['group']
         except re.error:
             pass
-    if current:
+    # 2) Если группа уже хорошая (не «Разное») — оставляем
+    if current and current not in GENERIC_GROUPS:
         aliases = CATEGORIES.get('group_aliases', {})
         return aliases.get(current, current)
+    # 3) Обычные url_patterns
     for up in CATEGORIES.get('url_patterns', []):
         try:
             if re.search(up['pattern'], url):
                 return up['group']
         except re.error:
             pass
+    # 4) По имени — сработает и для «Разное»
     if name:
         for np in CATEGORIES.get('name_patterns', []):
             try:
@@ -2736,7 +2747,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v23</b>"]
+    lines = ["<b>M3U Check v24</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
