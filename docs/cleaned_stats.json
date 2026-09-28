@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-09-28T19:25:23+00:00",
+  "generated_at_utc": "2026-09-28T23:12:08+00:00",
   "total_sources_ok": 2,
-  "duration_sec": 0.1,
+  "duration_sec": 0.2,
   "strip_trackers": true,
   "header_saved": "#EXTM3U url-tvg=\"http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH\"",
   "directives_kept": 14,
