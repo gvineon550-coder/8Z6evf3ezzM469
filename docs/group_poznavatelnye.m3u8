@@ -47,12 +47,6 @@ http://stream.mcquack.net/213/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="eda-hd" tvg-logo="https://i.imgur.com/gxCYAwH.png",FoodTime (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/216/index.m3u8
-#EXTINF:-1 tvg-id="hgtv" tvg-logo="https://epg.iptvx.one/picons/hgtv.png" group-title="🧠 Познавательные",HGTV HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://ott.ip-tv.workers.dev/stream/L0FBMzI5MVcvaW5kZXgubTN1OA==?key=halva
-#EXTINF:-1 tvg-id="history" tvg-logo="https://epg.iptvx.one/picons/history.png" group-title="🧠 Познавательные",History HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://46.32.176.50/HistoryHD/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="InsaytTV.ru@4K" tvg-logo="https://i.imgur.com/slLuRel.png",Insayt TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/361/index.m3u8
@@ -74,9 +68,6 @@ https://fs.uplink.kz/lapki_live/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="LawTV.ru@SD" tvg-logo="https://i.imgur.com/QcO5Gxl.png",Law TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/406/index.m3u8
-#EXTINF:-1 tvg-id="love-nature-4k" tvg-logo="https://epg.iptvx.one/picons/love-nature-4k.png" group-title="🧠 Познавательные",Love Nature 4K
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://jmp2.uk/stvp-USBA3400003IP
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="moya-planeta" tvg-logo="https://i.imgur.com/uIiAdBv.png",Moya Planeta (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://91.226.120.120/chid210/tracks-v1a1/mono.m3u8
@@ -107,9 +98,6 @@ https://fs.uplink.kz/nat_geo_wild/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nauka" tvg-logo="https://i.imgur.com/ZZxzueO.png",Nauka (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/125/index.m3u8
-#EXTINF:-1 tvg-id="ocean-tv" tvg-logo="https://epg.iptvx.one/picons/ocean-tv.png" group-title="🧠 Познавательные",Ocean TV
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream-tv-prostar.hf.space/ch/AA2126W?key=AB001829BB
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="oxotnik-i-rybolov" tvg-logo="https://i.imgur.com/Bj1jI7F.png",Ohotnik i rybolov HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/194/index.m3u8
@@ -125,9 +113,6 @@ https://tv-streaming.bsh.ru:21938/probusiness/probusiness.stream/playlist.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Prosveshchenie.ru@SD" tvg-logo="https://i.imgur.com/uppFhhq.png",Prosveshchenie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://cdn-01.bonus-tv.ru/prosveschenie_edge/index.m3u8
-#EXTINF:-1 tvg-id="rtg-hd" tvg-logo="https://epg.iptvx.one/picons/rtg-hd.png" group-title="🧠 Познавательные",RTG HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://46.53.200.153:7777/play/a00u/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="rtg-hd" tvg-logo="https://i.imgur.com/k9M2MOT.png",RTG TV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/164/index.m3u8
@@ -149,9 +134,6 @@ https://fs.uplink.kz/telecafe/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Telecafe.ru@SD" tvg-logo="https://i.imgur.com/28XmS1J.png",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_telecafe_tv/playlist.m3u8
-#EXTINF:-1 tvg-id="terra-ru" tvg-logo="https://i.imgur.com/ZxUjCpF.png" group-title="🧠 Познавательные",Terra HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://195.64.140.147:10150/150
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="tochka-otryva" tvg-logo="https://i.imgur.com/TZiBQDK.png",Tochka otryva (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tochka_otriva/mono.m3u8?token=onlinetv
@@ -173,9 +155,6 @@ http://stream.mcquack.net/211/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Vmirezhivotnykh.ru@SD" tvg-logo="https://i.imgur.com/6uotdVQ.png",V mire zhivotnykh (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/241/index.m3u8
-#EXTINF:-1 tvg-id="viasat-nature" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/24/Cropped-viasat-nature.png" group-title="🧠 Познавательные",Viasat Nature
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://flussonic.mkpnet.ru/tv-7a85ea25208f5bf7/video.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-explore" tvg-logo="https://i.imgur.com/EGIpLPu.png",viju Explore (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/239/index.m3u8
@@ -227,15 +206,9 @@ http://s1.tv-nano.com/Nano_rec/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nauka" tvg-logo="https://i.imgur.com/ZZxzueO.png",Наука
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/nauka2/index.m3u8
-#EXTINF:-1 tvg-id="neizvestnaya-planeta" tvg-logo="https://epg.iptvx.one/picons/neizvestnaya-planeta.png" group-title="🧠 Познавательные",Неизвестная Планета
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stitch.teletarget.ru/api/v1/hls/vintera/neplaneta/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="otkryty-mir" tvg-logo="https://i.imgur.com/7orZOJA.png",Открытый мир. Здоровье (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://v4.proofix.ru/0mir/index.m3u8
-#EXTINF:-1 tvg-id="moya-planeta" tvg-logo="https://i.imgur.com/MeYWJu8.png" group-title="🧠 Познавательные",Планета HD
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://185.46.16.239:8000/Planeta_HD
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="soyuz" tvg-logo="https://i.imgur.com/w3OewHc.png",Союз (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz/soyuz/playlist.m3u8
