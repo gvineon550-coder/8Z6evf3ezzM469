@@ -1804,7 +1804,7 @@ https://rpn3.bozztv.com/dvrfl07/giatv-208314/playlist.m3u8
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 OPR/98.0.0.0
 https://hostrec.ru/live/wic2AtEFCLwsZcUkAgtZcjlYgjc.m3u8
 #EXTINF:-1 tvg-logo="http://epg.one/img2/88047.png" tvg-id="no_epg_music" group-title="Музыкальные",Deluxe Dance
-http://92.114.85.52:1453/play/a02f/index.m3u8
+http://sdn-global-live-streaming-packager-cache.3qsdn.com/64733/64733_264_live.m3u8
 #EXTINF:-1 tvg-logo="https://epg.iptvx.one./picons/deluxe-music-de.png" tvg-id="deluxe-music-de" group-title="Музыкальные",Deluxe Music
 https://sdn-global-live-streaming-packager-cache.3qsdn.com/13456/13456_264_live.m3u8
 #EXTINF:-1 tvg-logo="https://telik.live/images/v2beat.png" tvg-id="no_epg_music" group-title="Музыкальные",V2BEAT HD
@@ -2739,6 +2739,10 @@ http://kinowalk.hopto.org/film4khdclub_live
 http://kinowalk.hopto.org/paranormal404_live
 #EXTINF:-1 tvg-id="johan_grohan_live" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/johan_grohan_live.jpg" group-title="Kinowalk",Johan Grohan Live
 http://kinowalk.hopto.org/johan_grohan_live
+#EXTINF:-1 tvg-id="LampovoeTV" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/lampovoe.png" group-title="Основные",Lampovoe TV
+http://kinowalk.hopto.org/lampovoetv_live
+#EXTINF:-1 tvg-id="Strimach" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/strimach.jpg" group-title="Основные",STRIMACH
+http://kinowalk.hopto.org/strimach_live
 #EXTINF:-1 group-title="Rutube",Россия 24
 https://bl.rutube.ru/livestream/ad6ba2e9e587406b29978b861b7b7dd1/index.m3u8?s=2xI0szFZPbr-yIu5m8Ee2Q&e=2090410051&scheme=https
 #EXTINF:-1 group-title="Rutube",Тнт

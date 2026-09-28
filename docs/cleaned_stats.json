@@ -1,11 +1,11 @@
 {
-  "generated_at_utc": "2026-09-28T11:12:49+00:00",
+  "generated_at_utc": "2026-09-28T17:13:00+00:00",
   "total_sources_ok": 3,
-  "duration_sec": 0.3,
+  "duration_sec": 0.4,
   "strip_trackers": true,
   "header_saved": "#EXTM3U url-tvg=\"http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH\"",
   "directives_kept": 160,
-  "whitelisted_kept": 298,
+  "whitelisted_kept": 300,
   "sources": [
     {
       "name": "iptv_org_ru",
@@ -26,15 +26,15 @@
     {
       "name": "my_list",
       "type": "local",
-      "raw": 176,
-      "kept": 176,
+      "raw": 178,
+      "kept": 178,
       "rejected": 0,
-      "whitelisted": 298
+      "whitelisted": 300
     }
   ],
   "totals": {
-    "raw": 1552,
-    "kept": 1312,
+    "raw": 1554,
+    "kept": 1314,
     "rejected": 240
   },
   "reasons": {
