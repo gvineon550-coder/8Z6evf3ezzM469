@@ -122,9 +122,6 @@ https://fs.uplink.kz/ohota_i_ribalka/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="oxotnik-i-rybolov" tvg-logo="https://i.imgur.com/wJMTcFS.png",Rybolov (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/264/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Soyuzny.ru@SD" tvg-logo="https://www.mtis.by/upload/medialibrary/717/v07nk6rmf6m1mno8ujhbkcg8nstkfjgv/Slide%2016_9%20-%2050.png",Soyuzny (480p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://178.124.179.122:8080/TRO/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Telecafe.ru@SD" tvg-logo="https://i.imgur.com/28XmS1J.png",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/314/index.m3u8
@@ -161,9 +158,6 @@ http://stream.mcquack.net/239/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-explore" tvg-logo="https://i.imgur.com/EGIpLPu.png",viju Explore (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_explore/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-history" tvg-logo="https://i.imgur.com/FqWkeXb.png",viju History (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://178.124.179.122:8080/HistoryHD/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-history" tvg-logo="https://i.imgur.com/FqWkeXb.png",viju History (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/101/index.m3u8

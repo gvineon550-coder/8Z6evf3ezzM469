@@ -1,54 +1,54 @@
 {
-  "date": "2026-09-29T00:23:12",
+  "date": "2026-09-29T06:22:07",
   "method": "counter v4 — оценка за СУТКИ (check × 4/день, 4 UA на мёртвых)",
   "accuracy": "±3%",
   "check_runs_per_day": 4,
   "ua_per_dead_channel": 4,
   "real_data": {
-    "total_in_all_cleaned": 905,
+    "total_in_all_cleaned": 908,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 682,
-      "dead": 350,
-      "unstable": 4,
-      "filtered": 4
+      "ok": 603,
+      "dead": 300,
+      "unstable": 1,
+      "filtered": 1
     },
-    "ffprobe_updated_24h": 2,
+    "ffprobe_updated_24h": 4,
     "rejected_reasons": {
-      "dead": 297,
-      "dead_detail:ffprobe": 44,
-      "dead_detail:html": 1,
+      "dead": 305,
+      "dead_detail:ffprobe": 43,
+      "dead_detail:html": 2,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 162,
-      "dead_detail:http_404": 15,
-      "dead_detail:timeout": 74,
-      "shortener": 1,
-      "unstable": 2
+      "dead_detail:http_404": 17,
+      "dead_detail:http_503": 1,
+      "dead_detail:timeout": 79,
+      "shortener": 1
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 682,
-      "dead_channels": 350,
-      "live_requests": 750,
-      "dead_requests": 1400,
+      "live_channels": 603,
+      "dead_channels": 300,
+      "live_requests": 663,
+      "dead_requests": 1200,
       "breakdown": {
-        "timeout": 74,
-        "http_code": 178,
-        "ffprobe_fail": 44,
-        "empty_html_small_unknown": 1,
+        "timeout": 79,
+        "http_code": 181,
+        "ffprobe_fail": 43,
+        "empty_html_small_unknown": 2,
         "ua_count": 4
       },
-      "total": 2150
+      "total": 1863
     },
     "http_checker_per_day": {
       "runs": 4,
-      "total": 8600,
-      "note": "2150 × 4 запуска/сутки"
+      "total": 7452,
+      "note": "1863 × 4 запуска/сутки"
     },
     "ffprobe": {
-      "entries_24h": 2,
-      "requests": 4,
+      "entries_24h": 4,
+      "requests": 8,
       "note": "2 запроса на ffprobe-запуск"
     },
     "logo_head": {
@@ -58,6 +58,6 @@
     "cleaner": 8,
     "dashboard_other_repo": 480,
     "misc": 5,
-    "TOTAL_per_day": 9097
+    "TOTAL_per_day": 7953
   }
 }
