@@ -22,6 +22,9 @@ http://flussonic.linkintel.ru/Pyatnica/index.m3u8
 https://fs.uplink.kz/bolshaya_pyatnica/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="kvn-tv" tvg-logo="https://i.imgur.com/Vw3LFLX.png",KVN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://178.124.179.122:8080/KVN-TV/index.m3u8
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="kvn-tv" tvg-logo="https://i.imgur.com/Vw3LFLX.png",KVN TV (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kvn_tv/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="mama" tvg-logo="https://i.imgur.com/kmMIjjf.png",Mama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36

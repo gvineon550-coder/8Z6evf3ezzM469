@@ -26,9 +26,6 @@ http://stream.mcquack.net/279/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/333/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://45.153.24.78/1TV/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Domashniy.ru@SD" tvg-logo="https://i.imgur.com/WaLwOyt.jpeg",Domashniy SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/227/index.m3u8
@@ -427,9 +424,6 @@ http://tvoetv.space:8080/tvoetv_humor/index.m3u8
 http://stream.mcquack.net/263/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="sony-tv" tvg-logo="https://i.imgur.com/heZeqPQ.png",.red (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.159.128:8070/RED/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="sony-tv" tvg-logo="https://i.imgur.com/heZeqPQ.png",.red (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/69/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="sony-tv" tvg-logo="https://i.imgur.com/heZeqPQ.png",.red HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
@@ -665,9 +659,6 @@ http://hls.volgograd1vtv.cdnvideo.ru/volgograd1vtv/volgograd1vtv.sdp/playlist.m3
 #EXTINF:-1 group-title="🏙️ Региональные" tvg-id="saxa" tvg-logo="https://i.imgur.com/LwXNUhf.png",НВК Саха (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-saha.cdnvideo.ru/saha/saha/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nn-24" tvg-logo="https://i.imgur.com/ZWgPVIC.png",Нижний Новгород 24 (720p) [Not 24/7]
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://live-vestinn.cdnvideo.ru/vestinn/nn24-khl/playlist.m3u8
 #EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nika-tv" tvg-logo="https://i.imgur.com/dccsFAu.png",Ника ТВ (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-nikatv.cdnvideo.ru/nikatv/nikatv.sdp/playlist.m3u8
@@ -728,9 +719,6 @@ http://176.118.197.101/RBK/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="rt-news" tvg-logo="https://i.imgur.com/55SK22l.png",RT (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://212.5.144.156:8080/rt/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="RTenEspanol.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://168.196.127.137:6001/play/a0a9/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="RTenEspanol.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-evg10.tv360.bitel.com.pe/bitel/rt/playlist.m3u8
