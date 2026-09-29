@@ -533,3 +533,7 @@ https://bl.rutube.ru/livestream/e7e04192431a24a750fd8704fa221461/index.m3u8?s=R8
 
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/obrazovach.png" group-title="Rutube",Образовач
 https://bl.rutube.ru/livestream/eddcc86d1dee0b5def546ea388eb38ea/index.m3u8?s=yB2QyHQvyETyjlpmZSn0yw&e=2090413246&scheme=https
+
+#EXTINF:-1 tvg-id="no_epg_cinema" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/dvach.jpg" group-title="Rutube",Фильмач
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://bl.rutube.ru/livestream/300560a65014ec501a25b1f79df9ad90/index.m3u8?s=N8TJOWs8LP7kcPfcr5F2vg&e=2090409436&scheme=https
