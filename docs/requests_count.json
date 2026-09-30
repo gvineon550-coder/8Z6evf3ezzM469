@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-30T12:30:56",
+  "date": "2026-09-30T18:20:43",
   "method": "counter v4 — оценка за СУТКИ (check × 4/день, 4 UA на мёртвых)",
   "accuracy": "±3%",
   "check_runs_per_day": 4,
@@ -8,47 +8,47 @@
     "total_in_all_cleaned": 928,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 621,
-      "dead": 303,
-      "unstable": 2,
+      "ok": 623,
+      "dead": 302,
+      "unstable": 1,
       "filtered": 1
     },
-    "ffprobe_updated_24h": 460,
+    "ffprobe_updated_24h": 464,
     "rejected_reasons": {
-      "dead": 300,
-      "dead_detail:ffprobe": 41,
+      "dead": 301,
+      "dead_detail:empty": 1,
+      "dead_detail:ffprobe": 43,
       "dead_detail:html": 1,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 162,
-      "dead_detail:http_404": 18,
-      "dead_detail:timeout": 77,
-      "shortener": 1,
-      "unstable": 2
+      "dead_detail:http_404": 14,
+      "dead_detail:timeout": 79,
+      "shortener": 1
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 621,
-      "dead_channels": 303,
-      "live_requests": 683,
-      "dead_requests": 1212,
+      "live_channels": 623,
+      "dead_channels": 302,
+      "live_requests": 685,
+      "dead_requests": 1208,
       "breakdown": {
-        "timeout": 77,
-        "http_code": 181,
-        "ffprobe_fail": 41,
-        "empty_html_small_unknown": 1,
+        "timeout": 79,
+        "http_code": 177,
+        "ffprobe_fail": 43,
+        "empty_html_small_unknown": 2,
         "ua_count": 4
       },
-      "total": 1895
+      "total": 1893
     },
     "http_checker_per_day": {
       "runs": 4,
-      "total": 7580,
-      "note": "1895 × 4 запуска/сутки"
+      "total": 7572,
+      "note": "1893 × 4 запуска/сутки"
     },
     "ffprobe": {
-      "entries_24h": 460,
-      "requests": 920,
+      "entries_24h": 464,
+      "requests": 928,
       "note": "2 запроса на ffprobe-запуск"
     },
     "logo_head": {

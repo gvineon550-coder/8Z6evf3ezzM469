@@ -61,7 +61,6 @@ REN TV (576p),🇷🇺 Основные,SD,rentv,100,30,https://iks-online.net/s
 REN TV International (576p),🇷🇺 Основные,SD,rentv-int,100,30,https://i.imgur.com/gBjk9oF.png,http://178.134.1.158:8081/RENTV/index.m3u8
 REN TV International (576p),🇷🇺 Основные,SD,rentv-int,100,30,https://i.imgur.com/gBjk9oF.png,https://fs.uplink.kz/ren/mono.m3u8?token=onlinetv
 RTR-Planeta (576p),🇷🇺 Основные,SD,RTRPlaneta.ru@CIS,100,30,https://i.imgur.com/0YEahxs.png,https://fs.uplink.kz/rtr_planeta/mono.m3u8?token=onlinetv
-Russia-1 HD (1080p),🇷🇺 Основные,HD,rossia1,100,30,https://i.imgur.com/6BVWk8z.png,https://stream.smotrim.ru/hls2/russia_hd/playlist_6.m3u8
 Russia-1 HD (1080p),🇷🇺 Основные,HD,rossia1,100,30,https://i.imgur.com/6BVWk8z.png,https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
 Russia-1 SD (576p),🇷🇺 Основные,SD,rossia1,93,30,https://i.imgur.com/6BVWk8z.png,http://109.207.243.18/2/index.m3u8
 Russia-24,🇷🇺 Основные,HD,24news-ua,100,30,https://i.imgur.com/tTCuczU.png,http://dmi3y-tv.online/hls/smotrim/T2/CH_RUSSIA24_INT.m3u8
@@ -301,7 +300,6 @@ Voprosy i Otvety (576p),🎪 Развлекательные,SD,voprosy-i-otvety,
 Твое TV HD (1080p),🎪 Развлекательные,HD,tvoyo-tv-hd,100,30,https://i.imgur.com/kKAM7dP.png,http://tvoetv.space:8080/tvoetv/index.m3u8
 Твое ТВ Юмор (1080p),🎪 Развлекательные,HD,tvoetv-humor,100,30,https://smotret.tv/images/tvoe-tv-yumor.webp,http://tvoetv.space:8080/tvoetv_humor/index.m3u8
 .black (576p),🎬 Кино,HD,sony-turbo,100,30,https://i.imgur.com/Q4A6ci4.png,http://stream.mcquack.net/263/index.m3u8
-.red (576p),🎬 Кино,SD,sony-tv,80,30,https://i.imgur.com/heZeqPQ.png,http://5.188.159.128:8070/RED/index.m3u8
 .red (576p),🎬 Кино,HD,sony-tv,100,30,https://i.imgur.com/heZeqPQ.png,http://stream.mcquack.net/69/index.m3u8
 .red HD (1080p),🎬 Кино,HD,sony-tv,90,30,https://i.imgur.com/heZeqPQ.png,http://178.134.1.158:8081/red/index.m3u8
 .sci-fi (576p),🎬 Кино,HD,scifi-pl,100,30,https://i.imgur.com/0La6W4x.png,http://stream.mcquack.net/180/index.m3u8
@@ -408,6 +406,7 @@ BRIDGE Classic (576p),🎵 Музыка,SD,bridge-tv-classic,90,30,https://i.img
 BRIDGE Classic (576p),🎵 Музыка,SD,bridge-tv-classic,100,30,https://i.imgur.com/JJTQq81.png,https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
 BRIDGE Deluxe HD (576p),🎵 Музыка,HD,bridge-hd,100,30,https://i.imgur.com/EazL8w7.png,http://stream.mcquack.net/92/index.m3u8
 BRIDGE Hits (576p),🎵 Музыка,SD,bridge-tv-dance,100,30,https://i.imgur.com/sIW9oR4.png,http://stream.mcquack.net/320/index.m3u8
+BRIDGE Hits (576p),🎵 Музыка,SD,bridge-tv-dance,87,30,https://i.imgur.com/sIW9oR4.png,http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8
 BRIDGE Rock (576p),🎵 Музыка,SD,bridge-tv-rock,100,30,https://i.imgur.com/MHuwct2.png,http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
 Classic Music (1080p),🎵 Музыка,HD,classic-music,100,30,https://i.imgur.com/TpXs1qA.png,http://stream.mcquack.net/312/index.m3u8
 DanceHits80,🎵 Музыка,Unknown,DanceHits80.ru@SD,100,30,https://i.imgur.com/uMw3kks.png,http://dancehits80.denvs.ru:8080/index.m3u8
@@ -439,7 +438,7 @@ Channel 8 International (576p) [Geo-blocked],🏙️ Региональные,SD
 Channel 8 Krasnoyarsk HD (1080p),🏙️ Региональные,HD,Channel8Krasnoyarsk.ru@HD,100,30,https://i.imgur.com/q3JCAC3.png,https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
 Channel 8 Novosibirsk (480i),🏙️ Региональные,SD,Channel8Novosibirsk.ru@SD,100,30,https://i.imgur.com/eHGETvU.png,https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
 Enisey (576p),🏙️ Региональные,SD,Enisey.ru@SD,100,30,https://i.imgur.com/57deE7f.png,http://tshift-1.telecoma.tv/enisei/index.m3u8
-Kuban 24 (480p) [Geo-blocked],🏙️ Региональные,HD,kuban-24,100,12,https://i.imgur.com/atzrXcz.png,http://dmi3y-tv.online/hls/zabava/region/MAYK/CH_MAYKOP.m3u8
+Kuban 24 (480p) [Geo-blocked],🏙️ Региональные,HD,kuban-24,100,13,https://i.imgur.com/atzrXcz.png,http://dmi3y-tv.online/hls/zabava/region/MAYK/CH_MAYKOP.m3u8
 Moy mir (720p),🏙️ Региональные,HD,Moymir.ru@SD,100,30,https://www.cableman.ru/sites/default/files/MM-TV_logo-1%5B1509%5D.png,https://moymir.ru/hls/onair.m3u8
 NST (576p),🏙️ Региональные,SD,nst,100,30,https://i.imgur.com/5dJE8Fc.jpg,http://stream.mcquack.net/207/index.m3u8
 NST (576p),🏙️ Региональные,SD,nst,100,30,https://i.imgur.com/5dJE8Fc.jpg,https://vod.tuva.ru/nst/index.m3u8
@@ -459,6 +458,7 @@ Yalta TV (480p) [Geo-blocked],🏙️ Региональные,SD,YaltaTV.ru@SD,
 Губерния (Самара) (576p),🏙️ Региональные,SD,gubernia,100,30,https://i.imgur.com/1Qpg40L.png,http://live.guberniatv.cdnvideo.ru/guberniatv/guberniatv.sdp/playlist.m3u8
 Евразия (Орск) (720p),🏙️ Региональные,HD,evrasia,100,30,https://i.imgur.com/4JUHIVS.png,https://infochh.trkeurasia.ru/hlsinfoch/infochhd.m3u8
 Енисей (1080p) [Not 24/7],🏙️ Региональные,HD,enisey-region,100,30,https://i.imgur.com/57deE7f.png,https://hls-eniseytv.cdnvideo.ru/eniseytv/stream1/playlist.m3u8
+К16 (Саров) (406p) [Not 24/7],🏙️ Региональные,SD,k16-sarov,97,30,https://iptvx.one/picons/k16-sarov.png,http://serv25.vintera.tv:8081/test/k16/playlist.m3u8
 МТВ (Волгоград) (720p) [Not 24/7],🏙️ Региональные,HD,mtv-de,100,30,https://i.imgur.com/pdCAUrP.png,http://hls.volgograd1vtv.cdnvideo.ru/volgograd1vtv/volgograd1vtv.sdp/playlist.m3u8
 НВК Саха (1080p) [Not 24/7],🏙️ Региональные,HD,saxa,100,30,https://i.imgur.com/LwXNUhf.png,https://live-saha.cdnvideo.ru/saha/saha/playlist.m3u8
 Нижний Новгород 24 (720p) [Not 24/7],🏙️ Региональные,HD,nn-24,93,30,https://i.imgur.com/ZWgPVIC.png,https://live-vestinn.cdnvideo.ru/vestinn/nn24-khl/playlist.m3u8
@@ -481,9 +481,10 @@ Duma TV (720p),📰 Новости,HD,dumatv,100,30,https://i.imgur.com/JvlO3PU.
 Maidan (720p),📰 Новости,HD,maydan,100,30,https://i.imgur.com/C8CCjZK.png,https://live-maidantv.cdnvideo.ru/maidantv/maidantv.smil/playlist.m3u8
 Moskva 24 (576p),📰 Новости,SD,moskva-24,100,30,https://i.imgur.com/gXbUMVy.png,https://fs.uplink.kz/moskva24/mono.m3u8?token=onlinetv
 Moskva 24 (720p),📰 Новости,HD,moskva-24,100,30,https://i.imgur.com/gXbUMVy.png,https://stream.smotrim.ru/hls2/givc9/playlist_4.m3u8
+Oplot TV (1080p) [Geo-blocked],📰 Новости,HD,OplotTV.ru@Khartsyzsk,67,6,https://pic.rtbcdn.ru/user/2025-08-18/24/91/24919316f6594ce2542686d540894797.jpg,http://31.131.141.195:8000/play/a006/index.m3u8
 RBK-TV (576p),📰 Новости,HD,rbk,100,30,https://i.imgur.com/CwhmJby.png,http://176.118.197.101/RBK/index.m3u8
 RT (720p),📰 Новости,HD,rt-news,73,30,https://i.imgur.com/55SK22l.png,http://212.5.144.156:8080/rt/index.m3u8
-RT en Espanol (1080p),📰 Новости,SD,RTenEspanol.ru@SD,100,5,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png,http://168.196.127.137:6001/play/a0a9/index.m3u8
+RT en Espanol (1080p),📰 Новости,SD,RTenEspanol.ru@SD,100,6,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png,http://168.196.127.137:6001/play/a0a9/index.m3u8
 RT en Espanol (576p),📰 Новости,SD,RTenEspanol.ru@SD,100,30,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png,https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
 RT en Espanol (720p),📰 Новости,HD,RTenEspanol.ru@SD,90,30,https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png,https://live-evg10.tv360.bitel.com.pe/bitel/rt/playlist.m3u8
 RTVi (576p),📰 Новости,SD,rtvi,100,30,https://i.imgur.com/1AEhXyS.png,https://shift03.isp.bg/RTVi/index.m3u8
