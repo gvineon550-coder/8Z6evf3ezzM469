@@ -1,55 +1,55 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="box-tv" tvg-logo="https://iptvx.one/picons/box-tv.png",Boks TV (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="box-tv" tvg-logo="https://i.imgur.com/R1UjyfX.png",Boks TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/154/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="extreme-sports" tvg-logo="https://iptvx.one/picons/extreme-sports.png",Extreme Sports Channel (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="extreme-sports" tvg-logo="https://i.imgur.com/m7IC01U.png",Extreme Sports Channel (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/extremesport/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="extreme-sports" tvg-logo="https://iptvx.one/picons/extreme-sports.png",Extreme Sports Channel (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="extreme-sports" tvg-logo="https://i.imgur.com/m7IC01U.png",Extreme Sports Channel (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/extreme_sports/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://iptvx.one/picons/kxl.png",KHL (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/166/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://iptvx.one/picons/kxl.png",KHL (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/telekanal_khl/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://iptvx.one/picons/kxl.png",KHL (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/KHL/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl-hd" tvg-logo="https://iptvx.one/picons/kxl-hd.png",KHL Prime (1080p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl-hd" tvg-logo="https://i.imgur.com/pwxT0ON.png",KHL Prime (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/178/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl-hd" tvg-logo="https://iptvx.one/picons/kxl-hd.png",KHL Prime (1080p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl-hd" tvg-logo="https://i.imgur.com/pwxT0ON.png",KHL Prime (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/khl_prime/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD",MMA-TV.com (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD" tvg-logo="https://i.imgur.com/QhdxNsB.png",MMA-TV.com (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://iptvx.one/picons/okko-football.png",Okko Futbol (1080p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png",Okko Futbol (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/491/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://iptvx.one/picons/okko-football.png",Okko Futbol (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png",Okko Futbol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/Setanta1/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="OkkoPrajmSport.ru@SD",Okko Prajm Sport (1080p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="OkkoPrajmSport.ru@SD" tvg-logo="https://i.imgur.com/kQq5DMU.png",Okko Prajm Sport (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/493/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-sport" tvg-logo="https://iptvx.one/picons/okko-sport.png",Okko Sport (1080p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-sport" tvg-logo="https://i.imgur.com/SYOaOQc.png",Okko Sport (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/492/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="setanta-sports" tvg-logo="https://iptvx.one/picons/setanta-sports.png",Setanta Sports 1 HD
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="setanta-sports" tvg-logo="https://i.imgur.com/8ANUZAu.png",Setanta Sports 1 HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/setanta_sports_1_hd/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="ufc" tvg-logo="https://iptvx.one/picons/ufc.png",UDAR (1080p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="ufc" tvg-logo="https://mt.media/upload/iblock/2b3/2b3cf99141bf7f99cda377eec62ec084.png",UDAR (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/udar/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="ufc" tvg-logo="https://iptvx.one/picons/ufc.png",UDAR (1080p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="ufc" tvg-logo="https://mt.media/upload/iblock/2b3/2b3cf99141bf7f99cda377eec62ec084.png",UDAR (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/279/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://iptvx.one/picons/viasat-sport.png",viju+ Sport (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/333/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://iptvx.one/picons/viasat-sport.png",viju+ Sport (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_sport/mono.m3u8?token=onlinetv

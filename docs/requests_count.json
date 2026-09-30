@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-30T23:01:49",
+  "date": "2026-09-30T23:18:19",
   "method": "counter v4 — оценка за СУТКИ (check × 4/день, 4 UA на мёртвых)",
   "accuracy": "±3%",
   "check_runs_per_day": 4,
@@ -8,9 +8,9 @@
     "total_in_all_cleaned": 928,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 626,
-      "dead": 299,
-      "unstable": 1,
+      "ok": 627,
+      "dead": 297,
+      "unstable": 2,
       "filtered": 1
     },
     "ffprobe_updated_24h": 464,
@@ -28,10 +28,10 @@
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 626,
-      "dead_channels": 299,
-      "live_requests": 688,
-      "dead_requests": 1196,
+      "live_channels": 627,
+      "dead_channels": 297,
+      "live_requests": 689,
+      "dead_requests": 1188,
       "breakdown": {
         "timeout": 77,
         "http_code": 177,
@@ -39,12 +39,12 @@
         "empty_html_small_unknown": 1,
         "ua_count": 4
       },
-      "total": 1884
+      "total": 1877
     },
     "http_checker_per_day": {
       "runs": 4,
-      "total": 7536,
-      "note": "1884 × 4 запуска/сутки"
+      "total": 7508,
+      "note": "1877 × 4 запуска/сутки"
     },
     "ffprobe": {
       "entries_24h": 464,
@@ -58,6 +58,6 @@
     "cleaner": 8,
     "dashboard_other_repo": 480,
     "misc": 5,
-    "TOTAL_per_day": 8957
+    "TOTAL_per_day": 8929
   }
 }

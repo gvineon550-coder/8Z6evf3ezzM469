@@ -1,28 +1,28 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="5minuttishiny.ru@SD",5 minut tishiny (1080p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="5minuttishiny.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/5minut_live.jpg",5 minut tishiny (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/5_minut_tishiny/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Balabol.ru@SD",Balabol (1080p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Balabol.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/balabol_vse.jpg",Balabol (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Balabol/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Nevskiy.ru@SD",Nevskiy (1080p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Nevskiy.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/nevski_llive.jpg",Nevskiy (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Nevskiy/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="ntv" tvg-logo="https://iptvx.one/picons/ntv.png",NTV HD (1080p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="ntv" tvg-logo="https://www.mongolsat.mn/assets/img/channel/38.png",NTV HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/ntv0_hd/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="NTVSeries.ru@SD",NTV Series (576p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="NTVSeries.ru@SD" tvg-logo="https://i.imgur.com/QdVa8tl.png",NTV Series (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/301/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Perviyotdel.ru@SD",Perviy otdel (1080p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Perviyotdel.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/perv_otdel_llive.jpg",Perviy otdel (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Perviy_otdel/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="pes-ua" tvg-logo="https://iptvx.one/picons/pes-ua.png",Pes (1080p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="pes-ua" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/pes_llive.jpg",Pes (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Pes/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Shef.ru@SD",Shef (1080p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Shef.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/shef_llive.jpg",Shef (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Shef/index.m3u8
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Skorayapomoshch.ru@SD",Skoraya pomoshch (1080p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Skorayapomoshch.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/skoraya_pom_llive.jpg",Skoraya pomoshch (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Skoraja_pomosh/index.m3u8
