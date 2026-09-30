@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-30T06:22:09",
+  "date": "2026-09-30T12:30:56",
   "method": "counter v4 — оценка за СУТКИ (check × 4/день, 4 UA на мёртвых)",
   "accuracy": "±3%",
   "check_runs_per_day": 4,
@@ -8,48 +8,47 @@
     "total_in_all_cleaned": 928,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 619,
-      "dead": 305,
+      "ok": 621,
+      "dead": 303,
       "unstable": 2,
       "filtered": 1
     },
-    "ffprobe_updated_24h": 1,
+    "ffprobe_updated_24h": 460,
     "rejected_reasons": {
-      "dead": 306,
-      "dead_detail:ffprobe": 44,
+      "dead": 300,
+      "dead_detail:ffprobe": 41,
       "dead_detail:html": 1,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 162,
-      "dead_detail:http_404": 16,
-      "dead_detail:timeout": 81,
-      "dead_detail:too_small": 1,
+      "dead_detail:http_404": 18,
+      "dead_detail:timeout": 77,
       "shortener": 1,
       "unstable": 2
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 619,
-      "dead_channels": 305,
-      "live_requests": 680,
-      "dead_requests": 1220,
+      "live_channels": 621,
+      "dead_channels": 303,
+      "live_requests": 683,
+      "dead_requests": 1212,
       "breakdown": {
-        "timeout": 81,
-        "http_code": 179,
-        "ffprobe_fail": 44,
-        "empty_html_small_unknown": 2,
+        "timeout": 77,
+        "http_code": 181,
+        "ffprobe_fail": 41,
+        "empty_html_small_unknown": 1,
         "ua_count": 4
       },
-      "total": 1900
+      "total": 1895
     },
     "http_checker_per_day": {
       "runs": 4,
-      "total": 7600,
-      "note": "1900 × 4 запуска/сутки"
+      "total": 7580,
+      "note": "1895 × 4 запуска/сутки"
     },
     "ffprobe": {
-      "entries_24h": 1,
-      "requests": 2,
+      "entries_24h": 460,
+      "requests": 920,
       "note": "2 запроса на ffprobe-запуск"
     },
     "logo_head": {
@@ -59,6 +58,6 @@
     "cleaner": 8,
     "dashboard_other_repo": 480,
     "misc": 5,
-    "TOTAL_per_day": 8095
+    "TOTAL_per_day": 8993
   }
 }
