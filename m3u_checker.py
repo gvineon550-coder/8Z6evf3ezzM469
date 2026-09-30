@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-M3U Checker v27 — ffprobe + whitelist + soft-uptime + UA-per-URL + один запрос к iptv-org.
+M3U Checker v27 — ffprobe + whitelist + soft-uptime + UA-per-URL + возвращён logos.json.
 
 Что нового относительно v25:
   • clean_extinf сохраняет ВСЕ атрибуты EXTINF (tvg-name, catchup, ...)
@@ -19,7 +19,7 @@ M3U Checker v27 — ffprobe + whitelist + soft-uptime + UA-per-URL + один з
   • [v27] пустые URL не попадают в all_urls (и не создают мусор в uptime)
   • [v27] ffprobe_check принимает UA, использует сработавший (кроме 'cached')
   • [v27] _download_json без кастомного UA (CDN отдаёт охотнее)
-  • [v27] убран logos.json — логотипы из channels.json (один запрос вместо двух)
+  • [v27-fix] логично: логотипы берём из logos.json (в channels.json их нет)
 """
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -132,7 +132,6 @@ HEADER_LINE = (
     'https://iptvx.one/EPG_NOARCH"'
 )
 
-# [v27] Один файл channels.json вместо channels + logos
 IPTV_ORG_URLS_CHANNELS = [
     'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/channels.json',
     'https://cdn.jsdelivr.net/gh/iptv-org/api@master/channels.json',
@@ -140,6 +139,14 @@ IPTV_ORG_URLS_CHANNELS = [
     'https://raw.githubusercontent.com/iptv-org/api/master/channels.json',
 ]
 IPTV_ORG_CHANNELS_CACHE = '_cache_sources/iptv_org_channels.json'
+# [v27-fix] логотипы берём из отдельного файла (в channels.json их нет)
+IPTV_ORG_URLS_LOGOS = [
+    'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/logos.json',
+    'https://cdn.jsdelivr.net/gh/iptv-org/api@master/logos.json',
+    'https://raw.githubusercontent.com/iptv-org/api/gh-pages/logos.json',
+    'https://raw.githubusercontent.com/iptv-org/api/master/logos.json',
+]
+IPTV_ORG_LOGOS_CACHE = '_cache_sources/iptv_org_logos.json'
 IPTV_ORG_TTL_DAYS = 7
 
 EPG_URLS = [
@@ -273,7 +280,6 @@ def _weather_emoji(code):
 
 
 def fetch_weather():
-    """[v27] URL-encode имени города."""
     lat = getattr(CFG, 'weather_lat', 43.4981)
     lon = getattr(CFG, 'weather_lon', 43.6189)
     wname = getattr(CFG, 'weather_name', 'Нальчик')
@@ -435,7 +441,6 @@ def load_uptime(path):
 
 
 def save_uptime(path, current_urls):
-    """Мягкое удаление: URL не пропадает сразу, только после N пропусков подряд."""
     os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
     alive = set(current_urls)
     with UPTIME_LOCK:
@@ -535,7 +540,7 @@ def save_ffprobe_cache(path, current_urls):
 # FFPROBE
 # ═══════════════════════════════════════════════════════════════════════
 def ffprobe_check(url, ua=None):
-    """[v27] Принимает UA. Значение 'cached' не должно сюда попадать — вызывающий фильтрует."""
+    """Принимает UA. Значение 'cached' не должно сюда попадать — вызывающий фильтрует."""
     if not HAS_FFPROBE:
         FFPROBE_STATS['skipped'] += 1
         return None, None
@@ -624,8 +629,8 @@ def is_migayushchiy(url):
 # ═══════════════════════════════════════════════════════════════════════
 class UrlCache:
     """
-    [v27] Хранит UA вместе с записью. get() возвращает (ok, ua) или None.
-    Добавлен индекс по ts и метод vacuum().
+    Хранит UA вместе с записью. get() возвращает (ok, ua) или None.
+    Есть индекс по ts и метод vacuum().
     """
 
     def __init__(self, path, ttl):
@@ -673,7 +678,7 @@ class UrlCache:
             self.conn.commit()
 
     def vacuum(self):
-        """[v27] Чистит старые записи и уплотняет БД."""
+        """Чистит старые записи и уплотняет БД."""
         if not self.enabled:
             return
         with self.lock:
@@ -719,7 +724,7 @@ def load_sources_config(path):
 # IPTV-ORG
 # ═══════════════════════════════════════════════════════════════════════
 def _download_json(urls, cache_path):
-    """[v27] Без кастомного UA — CDN отдаёт охотнее."""
+    """Без кастомного UA — CDN отдаёт охотнее."""
     os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
     if os.path.isfile(cache_path):
@@ -758,7 +763,7 @@ def _add_to_prefix_map(prefix_map, prefix, value):
 
 
 def load_iptv_org():
-    """[v27] Один запрос: channels.json (логотипы встроены, closed обрабатывается)."""
+    """channels.json + logos.json (в channels.json логотипов нет)."""
     global IPTV_LOGOS, IPTV_IDS
     if CFG.no_iptv_logos:
         emit("База iptv-org: отключено")
@@ -768,9 +773,10 @@ def load_iptv_org():
     if not channels:
         emit("  Каналы iptv-org недоступны")
         return
+    emit("  Скачиваю logos.json...")
+    logos = _download_json(IPTV_ORG_URLS_LOGOS, IPTV_ORG_LOGOS_CACHE) or []
 
     id_to_names = {}
-    id_to_logo = {}
     closed_ids = set()
     for ch in channels:
         if not isinstance(ch, dict):
@@ -791,11 +797,21 @@ def load_iptv_org():
         elif isinstance(an, str):
             names.append(an)
         id_to_names[cid] = names
-        logo = ch.get('logo')
-        if isinstance(logo, str) and logo:
-            id_to_logo[cid] = logo
 
-    by_id = dict(id_to_logo)
+    # Выбираем лучший логотип (по ширине) для каждого id
+    by_id_raw = {}
+    for logo in logos:
+        if not isinstance(logo, dict):
+            continue
+        cid = logo.get('channel')
+        url = logo.get('url') or logo.get('logo')
+        if not cid or not url:
+            continue
+        w = logo.get('width') or 0
+        cur = by_id_raw.get(cid)
+        if cur is None or (w and cur[1] < w):
+            by_id_raw[cid] = (url, w)
+    by_id = {k: v[0] for k, v in by_id_raw.items()}
 
     by_name_logo = {}
     by_name_logo_translit = {}
@@ -1200,7 +1216,7 @@ def _check_stream(url):
 
 
 def check_stream(url, cache):
-    """[v27] Возвращает (ok, ua_name_or_'cached', elapsed, reason, quality)."""
+    """Возвращает (ok, ua_name_or_'cached', elapsed, reason, quality)."""
     cached = cache.get(url, 'stream')
     if cached is not None:
         ok, ua = cached
@@ -1379,7 +1395,7 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
                 if len(REJECTED) < REJECTED_LIMIT:
                     REJECTED.append((name, group, url, f'unstable:{pct}%'))
             return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None, None
-        # [v27] передаём сработавший UA в ffprobe; 'cached' — не UA, подменяем
+        # передаём сработавший UA в ffprobe; 'cached' — не UA, подменяем
         if CFG.ffprobe:
             ff_ua = ua if ua and ua != 'cached' else DEFAULT_UA
             ff_ok, ff_info = ffprobe_check(url, ua=ff_ua)
