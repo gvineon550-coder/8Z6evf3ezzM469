@@ -1,7 +1,30 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-M3U Checker v25 — ffprobe + whitelist + фикс tvg-id.
+M3U Checker v27 — ffprobe + whitelist + soft-uptime + UA-per-URL + один запрос к iptv-org.
+
+Что нового относительно v25:
+  • clean_extinf сохраняет ВСЕ атрибуты EXTINF (tvg-name, catchup, ...)
+  • save_uptime: URL не удаляется сразу, а помечается missing; удаление
+    только после UPTIME_MISSING_MAX пропусков подряд (обратная совместимость
+    со старым форматом uptime.json сохранена)
+  • в итоговый плейлист пишется тот User-Agent, через который поток
+    реально открылся (а не всегда wink)
+  • get_quality_for_url смотрит и в свежий кэш текущего запуска
+  • каналы iptv-org с closed=true не резолвятся в ID
+  • координаты/город погоды вынесены в аргументы
+  • [v27] SQLite: индекс по ts + vacuum() в конце запуска
+  • [v27] SQLite хранит UA для URL, из кэша отдаётся тот же UA
+  • [v27] fetch_weather: URL-encode имени города
+  • [v27] пустые URL не попадают в all_urls (и не создают мусор в uptime)
+  • [v27] ffprobe_check принимает UA, использует сработавший (кроме 'cached')
+  • [v27] _download_json без кастомного UA (CDN отдаёт охотнее)
+  • [v27] убран logos.json — логотипы из channels.json (один запрос вместо двух)
 """
+
+# ═══════════════════════════════════════════════════════════════════════
+# ИМПОРТЫ
+# ═══════════════════════════════════════════════════════════════════════
 import os
 import re
 import sys
@@ -23,6 +46,7 @@ import subprocess
 import requests
 import urllib3
 import concurrent.futures
+from urllib.parse import quote
 
 try:
     from tqdm import tqdm
@@ -37,6 +61,9 @@ except ImportError:
     HAS_QR = False
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ПОЛЬЗОВАТЕЛЬСКИЕ АГЕНТЫ
+# ═══════════════════════════════════════════════════════════════════════
 USER_AGENTS = [
     ('wink',     'WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36'),
     ('vlc',      'VLC/3.0.20 LibVLC/3.0.20'),
@@ -44,10 +71,13 @@ USER_AGENTS = [
     ('smarttv',  'Mozilla/5.0 (SMART-TV; Linux; Tizen 6.0) AppleWebKit/537.36'),
 ]
 DEFAULT_UA = USER_AGENTS[0][1]
-UA_LINE = f'#EXTVLCOPT:http-user-agent={DEFAULT_UA}'
+UA_MAP = {name: ua for name, ua in USER_AGENTS}
 UA_ICONS = {'wink': '📺', 'vlc': '🎬', 'tivimate': '📱', 'smarttv': '📡', 'cached': '⚡'}
 
-# ===== WHITELIST =====
+
+# ═══════════════════════════════════════════════════════════════════════
+# WHITELIST
+# ═══════════════════════════════════════════════════════════════════════
 WHITELIST_URLS = []
 WHITELIST_NAMES = []
 WHITELIST_STATS = {'skipped': 0, 'kept': 0}
@@ -83,34 +113,33 @@ def is_whitelisted(url, name):
             if p.search(name):
                 return True
     return False
-# ===== /WHITELIST =====
 
-# ===== КАТЕГОРИЗАЦИЯ =====
+
+# ═══════════════════════════════════════════════════════════════════════
+# КАТЕГОРИЗАЦИЯ
+# ═══════════════════════════════════════════════════════════════════════
 GENERIC_GROUPS = {
     '📦 Разное', 'Разное', 'Other', '(без группы)', '', 'General', 'Общее',
     'Misc', 'Miscellaneous', 'Undefined',
 }
-# ===== /КАТЕГОРИЗАЦИЯ =====
 
+
+# ═══════════════════════════════════════════════════════════════════════
+# КОНСТАНТЫ
+# ═══════════════════════════════════════════════════════════════════════
 HEADER_LINE = (
     '#EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; '
     'https://iptvx.one/EPG_NOARCH"'
 )
 
+# [v27] Один файл channels.json вместо channels + logos
 IPTV_ORG_URLS_CHANNELS = [
     'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/channels.json',
     'https://cdn.jsdelivr.net/gh/iptv-org/api@master/channels.json',
     'https://raw.githubusercontent.com/iptv-org/api/gh-pages/channels.json',
     'https://raw.githubusercontent.com/iptv-org/api/master/channels.json',
 ]
-IPTV_ORG_URLS_LOGOS = [
-    'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/logos.json',
-    'https://cdn.jsdelivr.net/gh/iptv-org/api@master/logos.json',
-    'https://raw.githubusercontent.com/iptv-org/api/gh-pages/logos.json',
-    'https://raw.githubusercontent.com/iptv-org/api/master/logos.json',
-]
 IPTV_ORG_CHANNELS_CACHE = '_cache_sources/iptv_org_channels.json'
-IPTV_ORG_LOGOS_CACHE = '_cache_sources/iptv_org_logos.json'
 IPTV_ORG_TTL_DAYS = 7
 
 EPG_URLS = [
@@ -136,7 +165,8 @@ BOM = b'\xef\xbb\xbf'
 WHITESPACE = b' \t\r\n'
 SLOW_THRESHOLD = 2.0
 HISTORY_MAX = 180
-UPTIME_MAX = 30
+UPTIME_MAX = 180
+UPTIME_MISSING_MAX = 30
 REJECTED_LIMIT = 3000
 HLS_CHUNK_SIZE = 4096
 
@@ -151,32 +181,47 @@ DONUT_COLORS = [
 ]
 QUALITY_COLORS = {'4K': '#a78bfa', 'HD': '#4ade80', 'SD': '#facc15', 'Unknown': '#8a8f98'}
 
+
+# ═══════════════════════════════════════════════════════════════════════
+# ГЛОБАЛЬНОЕ СОСТОЯНИЕ
+# ═══════════════════════════════════════════════════════════════════════
 log = logging.getLogger('m3u')
 CFG = None
 CATEGORIES = {}
 FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}}
-IPTV_IDS = {'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}}
+IPTV_IDS = {'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}, 'closed': set()}
 EPG_MAP = {'by_name': {}, 'by_translit': {}, 'by_prefix': {}, 'icons': {}}
 LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
               'from_translit': 0, 'from_epg_icon': 0, 'from_prefix': 0,
               'from_txt': 0, 'none': 0}
+
 UPTIME = {}
 UPTIME_NEW = {}
+UPTIME_MISSING = {}
 UPTIME_LOCK = threading.Lock()
+
+URL_UA_MAP = {}
+
 REJECTED = []
 REJECTED_LOCK = threading.Lock()
+
 QUALITY_MAP = {}
 QUALITY_MAP_NEW = {}
 QUALITY_LOCK = threading.Lock()
+
 FFPROBE_MAP = {}
 FFPROBE_MAP_NEW = {}
 FFPROBE_LOCK = threading.Lock()
 FFPROBE_SEM = threading.Semaphore(4)
 FFPROBE_STATS = {'ok': 0, 'fail': 0, 'cached_ok': 0, 'cached_fail': 0, 'skipped': 0}
-WEATHER_HTML = '🌡️ <span class="hide-mobile">Нальчик</span>'
+
+WEATHER_HTML = '🌡️ <span class="hide-mobile">—</span>'
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ЛОГИРОВАНИЕ И БАЗОВЫЕ УТИЛИТЫ
+# ═══════════════════════════════════════════════════════════════════════
 def setup_logging(path, quiet):
     log.setLevel(logging.DEBUG)
     log.handlers.clear()
@@ -208,6 +253,9 @@ def fmt(template, **kwargs):
     return out.replace('\x00', '{').replace('\x01', '}')
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ПОГОДА
+# ═══════════════════════════════════════════════════════════════════════
 def _weather_emoji(code):
     try:
         code = int(code)
@@ -225,8 +273,14 @@ def _weather_emoji(code):
 
 
 def fetch_weather():
+    """[v27] URL-encode имени города."""
+    lat = getattr(CFG, 'weather_lat', 43.4981)
+    lon = getattr(CFG, 'weather_lon', 43.6189)
+    wname = getattr(CFG, 'weather_name', 'Нальчик')
+    wname_short = f' <span class="hide-mobile">· {html.escape(wname)}</span>'
+
     try:
-        r = requests.get('https://wttr.in/Nalchik?format=j1',
+        r = requests.get(f'https://wttr.in/{quote(wname)}?format=j1',
                          timeout=10, verify=CFG.verify_ssl)
         if r.status_code == 200:
             d = r.json()
@@ -234,26 +288,29 @@ def fetch_weather():
             t = cc.get('temp_C')
             code = cc.get('weatherCode') or 0
             if t is not None:
-                return f'{_weather_emoji(code)} <strong>{t}°C</strong> <span class="hide-mobile">· Нальчик</span>'
+                return f'{_weather_emoji(code)} <strong>{t}°C</strong>{wname_short}'
     except Exception as e:
         log.debug("wttr.in: %s", e)
     try:
         r = requests.get(
-            'https://api.open-meteo.com/v1/forecast'
-            '?latitude=43.4981&longitude=43.6189'
-            '&current=temperature_2m,weather_code&timezone=Europe%2FMoscow',
+            f'https://api.open-meteo.com/v1/forecast'
+            f'?latitude={lat}&longitude={lon}'
+            f'&current=temperature_2m,weather_code&timezone=Europe%2FMoscow',
             timeout=10, verify=CFG.verify_ssl)
         if r.status_code == 200:
             c = r.json().get('current') or {}
             t = c.get('temperature_2m')
             code = c.get('weather_code') or 0
             if t is not None:
-                return f'{_weather_emoji(code)} <strong>{round(t)}°C</strong> <span class="hide-mobile">· Нальчик</span>'
+                return f'{_weather_emoji(code)} <strong>{round(t)}°C</strong>{wname_short}'
     except Exception as e:
         log.debug("open-meteo: %s", e)
-    return '🌡️ <span class="hide-mobile">Нальчик</span>'
+    return f'🌡️{wname_short}'
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# НОРМАЛИЗАЦИЯ ИМЁН
+# ═══════════════════════════════════════════════════════════════════════
 _TRANSLIT_MAP = {
     'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh',
     'з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o',
@@ -261,6 +318,7 @@ _TRANSLIT_MAP = {
     'ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e',
     'ю':'yu','я':'ya','і':'i','ї':'i','є':'e','ґ':'g',
 }
+
 NOISE_WORDS = re.compile(
     r'\b(тв|tv|телеканал|channel|канал|hd|fhd|uhd|4k|8k|sd|hevc|h265|h264|mp4|hq|lq|'
     r'ру|ru|россия|russia|online|live)\b', re.IGNORECASE)
@@ -298,6 +356,9 @@ def make_prefix(normalized):
     return s[:5] if len(s) >= 5 else ''
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ОПРЕДЕЛЕНИЕ КАЧЕСТВА
+# ═══════════════════════════════════════════════════════════════════════
 def detect_quality_by_name(name):
     if not name: return 'Unknown'
     if QUALITY_4K_NAME.search(name): return '4K'
@@ -345,32 +406,54 @@ def parse_hls_quality(chunk):
         return None
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# КЭШИ
+# ═══════════════════════════════════════════════════════════════════════
 def load_uptime(path):
-    global UPTIME
+    global UPTIME, UPTIME_MISSING
     if not os.path.isfile(path):
         UPTIME = {}
+        UPTIME_MISSING = {}
         return
     try:
         with open(path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-        UPTIME = {k: v for k, v in data.items() if isinstance(v, list)} if isinstance(data, dict) else {}
+        if isinstance(data, dict) and data.get('version') == 2:
+            u = data.get('uptime', {}) or {}
+            m = data.get('missing', {}) or {}
+            UPTIME = {k: v for k, v in u.items() if isinstance(v, list)}
+            UPTIME_MISSING = {k: v for k, v in m.items() if isinstance(v, int)}
+        elif isinstance(data, dict):
+            UPTIME = {k: v for k, v in data.items() if isinstance(v, list)}
+            UPTIME_MISSING = {}
+        else:
+            UPTIME = {}
+            UPTIME_MISSING = {}
     except Exception:
         UPTIME = {}
+        UPTIME_MISSING = {}
 
 
 def save_uptime(path, current_urls):
+    """Мягкое удаление: URL не пропадает сразу, только после N пропусков подряд."""
     os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+    alive = set(current_urls)
     with UPTIME_LOCK:
-        for url, val in UPTIME_NEW.items():
-            hist = UPTIME.get(url, [])
-            hist.append(val)
-            UPTIME[url] = hist[-UPTIME_MAX:]
-        alive = set(current_urls)
+        for url in alive:
+            if url in UPTIME_NEW:
+                hist = UPTIME.get(url, [])
+                hist.append(UPTIME_NEW[url])
+                UPTIME[url] = hist[-UPTIME_MAX:]
+            UPTIME_MISSING.pop(url, None)
         for url in list(UPTIME.keys()):
             if url not in alive:
-                del UPTIME[url]
+                UPTIME_MISSING[url] = UPTIME_MISSING.get(url, 0) + 1
+                if UPTIME_MISSING[url] > UPTIME_MISSING_MAX:
+                    del UPTIME[url]
+                    del UPTIME_MISSING[url]
+    payload = {'version': 2, 'uptime': UPTIME, 'missing': UPTIME_MISSING}
     with open(path, 'w', encoding='utf-8') as f:
-        json.dump(UPTIME, f, ensure_ascii=False, separators=(',', ':'))
+        json.dump(payload, f, ensure_ascii=False, separators=(',', ':'))
 
 
 def load_quality_cache(path):
@@ -409,7 +492,7 @@ def save_quality_cache(path, current_urls):
 
 def get_quality_for_url(url, name):
     with QUALITY_LOCK:
-        q = QUALITY_MAP.get(url)
+        q = QUALITY_MAP_NEW.get(url) or QUALITY_MAP.get(url)
     if q and q != 'Unknown':
         return q
     return detect_quality_by_name(name)
@@ -448,10 +531,15 @@ def save_ffprobe_cache(path, current_urls):
         pass
 
 
-def ffprobe_check(url):
+# ═══════════════════════════════════════════════════════════════════════
+# FFPROBE
+# ═══════════════════════════════════════════════════════════════════════
+def ffprobe_check(url, ua=None):
+    """[v27] Принимает UA. Значение 'cached' не должно сюда попадать — вызывающий фильтрует."""
     if not HAS_FFPROBE:
         FFPROBE_STATS['skipped'] += 1
         return None, None
+    ua = ua or DEFAULT_UA
     with FFPROBE_LOCK:
         cached = FFPROBE_MAP.get(url)
     if cached:
@@ -469,7 +557,7 @@ def ffprobe_check(url):
                 ['ffprobe', '-v', 'quiet', '-print_format', 'json',
                  '-show_streams', '-show_format',
                  '-analyzeduration', '3000000', '-probesize', '1000000',
-                 '-user_agent', DEFAULT_UA, '-i', url],
+                 '-user_agent', ua, '-i', url],
                 capture_output=True, timeout=CFG.ffprobe_timeout
             )
             if result.returncode != 0:
@@ -509,6 +597,9 @@ def ffprobe_check(url):
             return False, None
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# АПТАЙМ
+# ═══════════════════════════════════════════════════════════════════════
 def get_uptime_pct(url):
     hist = UPTIME.get(url)
     if not hist:
@@ -528,7 +619,15 @@ def is_migayushchiy(url):
     return pct < CFG.min_uptime
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# SQLITE КЭШ HTTP
+# ═══════════════════════════════════════════════════════════════════════
 class UrlCache:
+    """
+    [v27] Хранит UA вместе с записью. get() возвращает (ok, ua) или None.
+    Добавлен индекс по ts и метод vacuum().
+    """
+
     def __init__(self, path, ttl):
         self.ttl = ttl
         self.lock = threading.Lock()
@@ -540,29 +639,48 @@ class UrlCache:
         self.conn.execute("""CREATE TABLE IF NOT EXISTS cache (
             url TEXT NOT NULL, kind TEXT NOT NULL,
             ok INTEGER NOT NULL, ts REAL NOT NULL,
+            ua TEXT DEFAULT NULL,
             PRIMARY KEY (url, kind))""")
+        try:
+            self.conn.execute("ALTER TABLE cache ADD COLUMN ua TEXT DEFAULT NULL")
+        except sqlite3.OperationalError:
+            pass
+        self.conn.execute("CREATE INDEX IF NOT EXISTS idx_cache_ts ON cache(ts)")
         self.conn.commit()
 
     def get(self, url, kind):
+        """Возвращает (ok, ua) или None."""
         if not self.enabled:
             return None
         with self.lock:
-            row = self.conn.execute("SELECT ok, ts FROM cache WHERE url=? AND kind=?",
-                                    (url, kind)).fetchone()
+            row = self.conn.execute(
+                "SELECT ok, ts, ua FROM cache WHERE url=? AND kind=?",
+                (url, kind)).fetchone()
         if not row:
             return None
-        ok, ts = row
+        ok, ts, ua = row
         if time.time() - ts > self.ttl:
             return None
-        return bool(ok)
+        return bool(ok), ua
 
-    def put(self, url, kind, ok):
+    def put(self, url, kind, ok, ua=None):
         if not self.enabled:
             return
         with self.lock:
             self.conn.execute(
-                "INSERT OR REPLACE INTO cache (url, kind, ok, ts) VALUES (?,?,?,?)",
-                (url, kind, int(ok), time.time()))
+                "INSERT OR REPLACE INTO cache (url, kind, ok, ts, ua) VALUES (?,?,?,?,?)",
+                (url, kind, int(ok), time.time(), ua))
+            self.conn.commit()
+
+    def vacuum(self):
+        """[v27] Чистит старые записи и уплотняет БД."""
+        if not self.enabled:
+            return
+        with self.lock:
+            cutoff = time.time() - max(self.ttl, 86400) * 7
+            self.conn.execute("DELETE FROM cache WHERE ts < ?", (cutoff,))
+            self.conn.commit()
+            self.conn.execute("VACUUM")
             self.conn.commit()
 
     def close(self):
@@ -571,6 +689,9 @@ class UrlCache:
                 self.conn.close()
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ЗАГРУЗКА JSON
+# ═══════════════════════════════════════════════════════════════════════
 def load_json(path):
     if not os.path.isfile(path):
         return {}
@@ -594,7 +715,11 @@ def load_sources_config(path):
     return data
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# IPTV-ORG
+# ═══════════════════════════════════════════════════════════════════════
 def _download_json(urls, cache_path):
+    """[v27] Без кастомного UA — CDN отдаёт охотнее."""
     os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
     if os.path.isfile(cache_path):
@@ -603,8 +728,7 @@ def _download_json(urls, cache_path):
     if not fresh:
         for url in urls:
             try:
-                r = requests.get(url, timeout=60, verify=CFG.verify_ssl,
-                                 headers={'User-Agent': DEFAULT_UA})
+                r = requests.get(url, timeout=60, verify=CFG.verify_ssl)
                 if r.status_code != 200:
                     continue
                 data = r.json()
@@ -634,24 +758,28 @@ def _add_to_prefix_map(prefix_map, prefix, value):
 
 
 def load_iptv_org():
+    """[v27] Один запрос: channels.json (логотипы встроены, closed обрабатывается)."""
     global IPTV_LOGOS, IPTV_IDS
     if CFG.no_iptv_logos:
         emit("База iptv-org: отключено")
         return
-    emit("  Скачиваю каналы...")
+    emit("  Скачиваю channels.json...")
     channels = _download_json(IPTV_ORG_URLS_CHANNELS, IPTV_ORG_CHANNELS_CACHE)
     if not channels:
         emit("  Каналы iptv-org недоступны")
         return
-    emit("  Скачиваю логотипы...")
-    logos = _download_json(IPTV_ORG_URLS_LOGOS, IPTV_ORG_LOGOS_CACHE) or []
 
     id_to_names = {}
+    id_to_logo = {}
+    closed_ids = set()
     for ch in channels:
         if not isinstance(ch, dict):
             continue
         cid = ch.get('id')
         if not cid:
+            continue
+        if ch.get('closed'):
+            closed_ids.add(cid)
             continue
         names = []
         n = ch.get('name')
@@ -663,20 +791,11 @@ def load_iptv_org():
         elif isinstance(an, str):
             names.append(an)
         id_to_names[cid] = names
+        logo = ch.get('logo')
+        if isinstance(logo, str) and logo:
+            id_to_logo[cid] = logo
 
-    by_id_raw = {}
-    for logo in logos:
-        if not isinstance(logo, dict):
-            continue
-        cid = logo.get('channel')
-        url = logo.get('url') or logo.get('logo')
-        if not cid or not url:
-            continue
-        w = logo.get('width') or 0
-        cur = by_id_raw.get(cid)
-        if cur is None or (w and cur[1] < w):
-            by_id_raw[cid] = (url, w)
-    by_id = {k: v[0] for k, v in by_id_raw.items()}
+    by_id = dict(id_to_logo)
 
     by_name_logo = {}
     by_name_logo_translit = {}
@@ -712,11 +831,15 @@ def load_iptv_org():
     IPTV_IDS['by_name'] = by_name_id
     IPTV_IDS['by_name_translit'] = by_name_id_translit
     IPTV_IDS['by_prefix'] = by_prefix_id
+    IPTV_IDS['closed'] = closed_ids
 
     emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени")
-    emit(f"  iptv-org id: {len(by_name_id)} по имени")
+    emit(f"  iptv-org id: {len(by_name_id)} по имени (закрытых: {len(closed_ids)})")
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# EPG
+# ═══════════════════════════════════════════════════════════════════════
 def download_epg_map():
     global EPG_MAP
     if os.path.isfile(EPG_CACHE):
@@ -798,6 +921,9 @@ def download_epg_map():
     emit("  EPG: не удалось скачать")
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# СКАЧИВАНИЕ URL-ИСТОЧНИКОВ
+# ═══════════════════════════════════════════════════════════════════════
 def download_url_sources(url_sources, cache_dir):
     os.makedirs(cache_dir, exist_ok=True)
     results = []
@@ -823,6 +949,9 @@ def download_url_sources(url_sources, cache_dir):
     return results
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ПАРСИНГ EXTINF
+# ═══════════════════════════════════════════════════════════════════════
 def split_extinf(line):
     in_q = False
     for i, ch in enumerate(line):
@@ -848,20 +977,21 @@ def get_tvg_id(line):
     return m.group(1) if m else ''
 
 
+_ATTR_RE = re.compile(r'([a-zA-Z][\w-]*)="([^"]*)"')
+
+
 def clean_extinf(line):
+    """Сохраняет dur, name и все key="value" атрибуты в исходном порядке."""
     dm = re.match(r'#EXTINF:\s*(-?\d+)', line)
     dur = dm.group(1) if dm else '-1'
-    tid = re.search(r'tvg-id="([^"]*)"', line)
-    lg = re.search(r'tvg-logo="([^"]*)"', line)
-    gr = re.search(r'group-title="([^"]*)"', line)
     nm = get_name(line)
+    head, _ = split_extinf(line)
+    head = re.sub(r'^#EXTINF:\s*-?\d+\s*', '', head)
+    attrs = _ATTR_RE.findall(head)
     parts = [f'#EXTINF:{dur}']
-    if tid and tid.group(1):
-        parts.append(f'tvg-id="{tid.group(1)}"')
-    if lg and lg.group(1):
-        parts.append(f'tvg-logo="{lg.group(1)}"')
-    if gr and gr.group(1):
-        parts.append(f'group-title="{gr.group(1)}"')
+    for k, v in attrs:
+        if v:
+            parts.append(f'{k}="{v}"')
     return ' '.join(parts) + ',' + nm
 
 
@@ -897,6 +1027,9 @@ def remove_tvg_id_from_extinf(extinf):
     return re.sub(r'\s?tvg-id="[^"]*"', '', extinf, count=1)
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ФИЛЬТРАЦИЯ
+# ═══════════════════════════════════════════════════════════════════════
 def compile_patterns(patterns):
     out = []
     for p in patterns or []:
@@ -946,6 +1079,9 @@ def is_filtered(name, group, url):
     return False, None
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# КАТЕГОРИЗАЦИЯ
+# ═══════════════════════════════════════════════════════════════════════
 def categorize(extinf, url, source_name):
     current = get_group(extinf)
     name = get_name(extinf)
@@ -984,6 +1120,9 @@ def add_emoji(group):
     return f"{emoji[base]} {base}" if base in emoji else group
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ЛОГОТИПЫ ИЗ .TXT
+# ═══════════════════════════════════════════════════════════════════════
 def load_txt_logos(dirs):
     logos = {}
     files = []
@@ -1014,6 +1153,9 @@ def load_txt_logos(dirs):
     return logos
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# HTTP-ПРОВЕРКА
+# ═══════════════════════════════════════════════════════════════════════
 def _try_stream(url, ua):
     try:
         t0 = time.time()
@@ -1058,19 +1200,24 @@ def _check_stream(url):
 
 
 def check_stream(url, cache):
-    c = cache.get(url, 'stream')
-    if c is not None:
+    """[v27] Возвращает (ok, ua_name_or_'cached', elapsed, reason, quality)."""
+    cached = cache.get(url, 'stream')
+    if cached is not None:
+        ok, ua = cached
         with QUALITY_LOCK:
-            q = QUALITY_MAP.get(url)
-        return c, 'cached', None, None, q
+            q = QUALITY_MAP_NEW.get(url) or QUALITY_MAP.get(url)
+        return ok, (ua or 'cached'), None, None, q
     ok, n, el, reason, quality = _check_stream(url)
-    cache.put(url, 'stream', ok)
+    cache.put(url, 'stream', ok, n if ok else None)
     if ok and quality:
         with QUALITY_LOCK:
             QUALITY_MAP_NEW[url] = quality
     return ok, (n or DEFAULT_UA), el, reason, quality
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ПРОВЕРКА ЛОГОТИПОВ
+# ═══════════════════════════════════════════════════════════════════════
 def _check_logo(url):
     try:
         r = requests.head(url, headers={'User-Agent': DEFAULT_UA},
@@ -1087,14 +1234,18 @@ def _check_logo(url):
 
 
 def check_logo(url, cache):
-    c = cache.get(url, 'logo')
-    if c is not None:
-        return c
+    cached = cache.get(url, 'logo')
+    if cached is not None:
+        ok, _ua = cached
+        return ok
     ok = _check_logo(url)
     cache.put(url, 'logo', ok)
     return ok
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# РАЗРЕШЕНИЕ ID
+# ═══════════════════════════════════════════════════════════════════════
 def _pick_prefix_match(prefix_map, prefix):
     if not prefix:
         return None
@@ -1143,8 +1294,12 @@ def resolve_logo(extinf, url, txt_logos, cache, iptv_org_id=None, epg_id=None):
 
 
 def resolve_iptv_org_id(extinf, original_tvg_id):
-    if original_tvg_id and original_tvg_id in IPTV_LOGOS['by_id']:
-        return original_tvg_id
+    closed = IPTV_IDS.get('closed', set())
+    if original_tvg_id:
+        if original_tvg_id in closed:
+            return None
+        if original_tvg_id in IPTV_LOGOS['by_id']:
+            return original_tvg_id
     name = get_name(extinf)
     if not name:
         return None
@@ -1188,6 +1343,9 @@ def resolve_epg_id(extinf):
     return None
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ОБРАБОТКА ОДНОГО КАНАЛА
+# ═══════════════════════════════════════════════════════════════════════
 def process_channel(index, extinf, url, txt_logos, cache, source_name):
     name = get_name(extinf)
     group = get_group(extinf)
@@ -1221,8 +1379,10 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
                 if len(REJECTED) < REJECTED_LIMIT:
                     REJECTED.append((name, group, url, f'unstable:{pct}%'))
             return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None, None
+        # [v27] передаём сработавший UA в ffprobe; 'cached' — не UA, подменяем
         if CFG.ffprobe:
-            ff_ok, ff_info = ffprobe_check(url)
+            ff_ua = ua if ua and ua != 'cached' else DEFAULT_UA
+            ff_ok, ff_info = ffprobe_check(url, ua=ff_ua)
             if ff_ok is False:
                 with REJECTED_LOCK:
                     if len(REJECTED) < REJECTED_LIMIT:
@@ -1235,6 +1395,9 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
                     if fq:
                         hls_quality = fq
 
+    if ua and ua != 'cached':
+        URL_UA_MAP[url] = ua
+
     extinf = clean_extinf(extinf)
     original_tvg_id = get_tvg_id(extinf)
     iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
@@ -1246,7 +1409,6 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
         extinf = set_tvg_id_in_extinf(extinf, epg_id)
     elif not original_tvg_id:
         extinf = remove_tvg_id_from_extinf(extinf)
-    # если original_tvg_id был — оставляем как есть
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
     final_quality = hls_quality or detect_quality_by_name(name)
@@ -1255,6 +1417,9 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src, final_quality
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ПАРСИНГ ПЛЕЙЛИСТА
+# ═══════════════════════════════════════════════════════════════════════
 def parse_playlist(filename):
     try:
         with open(filename, 'r', encoding='utf-8-sig', errors='ignore') as f:
@@ -1277,6 +1442,9 @@ def parse_playlist(filename):
     return channels
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ОБРАБОТКА ПЛЕЙЛИСТА
+# ═══════════════════════════════════════════════════════════════════════
 def process_playlist(filename, label, txt_logos, cache, check=True):
     emit(f"\n>>> [{label}] {filename} {'(без проверки)' if not check else ''}")
     channels = parse_playlist(filename)
@@ -1288,10 +1456,12 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 'slow': [], 'fastest': None, 'avg_elapsed': None,
                 'logo_stats': {}, 'all_urls': [], 'quality_stats': {}}
     emit(f"    Каналов: {len(channels)}")
+
     if not check:
         out, all_urls = [], []
         for i, (extinf, url) in enumerate(channels):
-            all_urls.append(url)
+            if url:
+                all_urls.append(url)
             name = get_name(extinf)
             group = get_group(extinf)
             is_wl = is_whitelisted(url, name)
@@ -1325,6 +1495,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 'groups': gs, 'ua_stats': {'skipped': len(ordered)},
                 'slow': [], 'fastest': None, 'avg_elapsed': None,
                 'logo_stats': {}, 'all_urls': all_urls, 'quality_stats': {}}
+
     pbar = None
     if HAS_TQDM and not CFG.quiet and not CFG.no_progress:
         pbar = tqdm(total=len(channels), desc=label, unit='ch', ncols=90, leave=True)
@@ -1334,6 +1505,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
     logo_counts = {}
     all_urls = []
     quality_stats = {'4K': 0, 'HD': 0, 'SD': 0, 'Unknown': 0}
+
     with concurrent.futures.ThreadPoolExecutor(max_workers=CFG.workers) as ex:
         futs = [ex.submit(process_channel, i, e, u, txt_logos, cache, label)
                 for i, (e, u) in enumerate(channels)]
@@ -1346,7 +1518,9 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 if pbar:
                     pbar.update(1)
                 continue
-            all_urls.append(channels[idx][1] if idx < len(channels) else '')
+            u = channels[idx][1] if idx < len(channels) else ''
+            if u:
+                all_urls.append(u)
             if status == 'ok':
                 valid.append((idx, extinf, url))
                 ok_cnt += 1
@@ -1370,6 +1544,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 pbar.set_postfix(ok=ok_cnt, filt=filt_cnt, unst=unstable_cnt, err=err_cnt)
     if pbar:
         pbar.close()
+
     valid.sort(key=lambda x: x[0])
     ordered = group_channels(valid)
     gs = {}
@@ -1394,6 +1569,9 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             'quality_stats': quality_stats}
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ДЕДУПЛИКАЦИЯ И ГРУППИРОВКА
+# ═══════════════════════════════════════════════════════════════════════
 def dedup_by_name_fn(channels):
     seen, out = set(), []
     for extinf, url in channels:
@@ -1429,13 +1607,18 @@ def group_channels(channels):
     return ordered
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ЗАПИСЬ ПЛЕЙЛИСТОВ
+# ═══════════════════════════════════════════════════════════════════════
 def write_playlist(path, channels):
     os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
     with open(path, 'w', encoding='utf-8') as f:
         f.write(HEADER_LINE + "\n")
         for extinf, url in channels:
+            ua_key = URL_UA_MAP.get(url)
+            ua = UA_MAP.get(ua_key, DEFAULT_UA) if ua_key else DEFAULT_UA
             f.write(extinf + "\n")
-            f.write(UA_LINE + "\n")
+            f.write(f'#EXTVLCOPT:http-user-agent={ua}\n')
             f.write(url + "\n")
 
 
@@ -1497,6 +1680,9 @@ def write_quality_splits(channels, docs_dir):
     return created
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# CSV
+# ═══════════════════════════════════════════════════════════════════════
 def write_csv(channels, path):
     with open(path, 'w', encoding='utf-8', newline='') as f:
         w = csv.writer(f)
@@ -1532,6 +1718,9 @@ def write_rejected_csv(path):
     return len(rows)
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ИСТОРИЯ
+# ═══════════════════════════════════════════════════════════════════════
 def load_history(path):
     if not os.path.isfile(path):
         return []
@@ -1548,6 +1737,9 @@ def save_history(path, history):
         json.dump(history[-HISTORY_MAX:], f, ensure_ascii=False, indent=2)
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# SVG-ГРАФИКИ
+# ═══════════════════════════════════════════════════════════════════════
 def sparkline_svg(vals, color='#4ade80', w=100, h=24):
     if not vals or len(vals) < 2:
         return ''
@@ -1658,6 +1850,9 @@ def health_bar(pct):
 </div>'''
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# CSS
+# ═══════════════════════════════════════════════════════════════════════
 COMMON_CSS = """
 *{box-sizing:border-box}
 :root{
@@ -1848,6 +2043,10 @@ animation:float2 30s ease-in-out infinite}
 @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-80px,-50px)}}
 """
 
+
+# ═══════════════════════════════════════════════════════════════════════
+# JS
+# ═══════════════════════════════════════════════════════════════════════
 THEME_JS = """
 <script>
 (function(){
@@ -1958,6 +2157,7 @@ THEME_JS = """
 </script>
 """
 
+
 TOP_RIGHT_WIDGET = '''<div class="top-right">
 <div class="live-widget">
   <span class="live-item">{weather_html}</span>
@@ -1969,6 +2169,9 @@ TOP_RIGHT_WIDGET = '''<div class="top-right">
 <div class="bg-decor"></div>'''
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# HTML-ШАБЛОНЫ
+# ═══════════════════════════════════════════════════════════════════════
 REPORT_T = """<!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -2376,6 +2579,10 @@ render();
 </body></html>
 """
 
+
+# ═══════════════════════════════════════════════════════════════════════
+# PWA
+# ═══════════════════════════════════════════════════════════════════════
 ICON_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
 <defs>
 <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
@@ -2410,6 +2617,9 @@ MANIFEST_T = """{
 """
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ТРЕНД
+# ═══════════════════════════════════════════════════════════════════════
 def _sparkline_for_history(history, key):
     vals = [h.get(key, 0) for h in history][-20:]
     if len(vals) < 2:
@@ -2493,6 +2703,9 @@ def render_trend_svg(history):
 </div>'''
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# РЕНДЕР ОТЧЁТОВ
+# ═══════════════════════════════════════════════════════════════════════
 def render_report(path, stats, merged, total, ok, filt, dead, unstable,
                   dur, ua, history, groups_all, logo_stats, unstable_channels,
                   quality_stats, ffprobe_stats, github_repo):
@@ -2714,6 +2927,9 @@ def generate_qr(url, path):
         return False
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# TELEGRAM
+# ═══════════════════════════════════════════════════════════════════════
 def tg_send(token, chat, text):
     if not token or not chat:
         return False
@@ -2744,7 +2960,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v25</b>"]
+    lines = ["<b>M3U Check v27</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
@@ -2764,6 +2980,9 @@ def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
     tg_send(CFG.tg_token, CFG.tg_chat, "\n".join(lines))
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# ARGPARSE
+# ═══════════════════════════════════════════════════════════════════════
 def parse_args():
     p = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     p.add_argument('--sources', default='sources.json')
@@ -2799,12 +3018,20 @@ def parse_args():
     p.add_argument('--tg-token', default=os.environ.get('TG_BOT_TOKEN', ''))
     p.add_argument('--tg-chat', default=os.environ.get('TG_CHAT_ID', ''))
     p.add_argument('--tg-send-merged', action='store_true')
+    p.add_argument('--weather-lat', type=float, default=43.4981)
+    p.add_argument('--weather-lon', type=float, default=43.6189)
+    p.add_argument('--weather-name', default='Нальчик')
     return p.parse_args()
 
 
+# ═══════════════════════════════════════════════════════════════════════
+# MAIN
+# ═══════════════════════════════════════════════════════════════════════
 def main():
     global CFG, CATEGORIES, FILTERS, UPTIME_NEW, REJECTED, QUALITY_MAP_NEW
-    global FFPROBE_MAP_NEW, FFPROBE_SEM, WEATHER_HTML
+    global FFPROBE_MAP_NEW, FFPROBE_SEM, WEATHER_HTML, URL_UA_MAP
+
+    # ─── 1. Аргументы и логи ───
     CFG = parse_args()
     CFG.verify_ssl = not CFG.no_ssl_verify
     if CFG.no_ssl_verify:
@@ -2814,6 +3041,7 @@ def main():
     REJECTED = []
     QUALITY_MAP_NEW = {}
     FFPROBE_MAP_NEW = {}
+    URL_UA_MAP.clear()
     FFPROBE_SEM = threading.Semaphore(max(1, CFG.ffprobe_workers))
 
     if CFG.ffprobe:
@@ -2823,10 +3051,12 @@ def main():
             emit("ffprobe: НЕ НАЙДЕН")
             CFG.ffprobe = False
 
+    # ─── 2. Погода ───
     emit("Загружаю погоду...")
     WEATHER_HTML = fetch_weather()
     emit(f"  → {WEATHER_HTML}")
 
+    # ─── 3. Конфиги ───
     CATEGORIES = load_json(CFG.categories)
     FILTERS = load_json(CFG.filters)
     FILTERS['_name_block'] = compile_patterns(FILTERS.get('name_blocklist', []))
@@ -2839,10 +3069,11 @@ def main():
     if WHITELIST_URLS or WHITELIST_NAMES:
         emit(f"⭐ Whitelist: url={len(WHITELIST_URLS)} name={len(WHITELIST_NAMES)}")
 
+    # ─── 4. Кэши ───
     uptime_path = os.path.join(CFG.docs_dir, 'uptime.json')
     load_uptime(uptime_path)
     if UPTIME:
-        emit(f"Аптайм: {len(UPTIME)} URL")
+        emit(f"Аптайм: {len(UPTIME)} URL (missing: {len(UPTIME_MISSING)})")
 
     quality_path = os.path.join(CFG.docs_dir, 'quality.json')
     load_quality_cache(quality_path)
@@ -2854,11 +3085,13 @@ def main():
     if FFPROBE_MAP:
         emit(f"ffprobe: {len(FFPROBE_MAP)} URL")
 
+    # ─── 5. База iptv-org + EPG ───
     emit("Загружаю базу iptv-org...")
     load_iptv_org()
     emit("Загружаю EPG iptvx.one...")
     download_epg_map()
 
+    # ─── 6. Источники ───
     cfg = load_sources_config(CFG.sources)
     url_sources = cfg.get('url_sources', [])
     local_sources = cfg.get('local_sources', [])
@@ -2898,6 +3131,7 @@ def main():
     stats_list, merged_all, seen, pl = [], [], set(), 0
     all_current_urls = []
 
+    # ─── 7. Обработка ───
     try:
         for path, label, check in all_sources:
             st = process_playlist(path, label, txt_logos, cache, check=check)
@@ -3008,7 +3242,7 @@ def main():
         save_uptime(uptime_path, all_current_urls)
         save_quality_cache(quality_path, all_current_urls)
         save_ffprobe_cache(ffprobe_path, all_current_urls)
-        emit(f"\nАптайм: {len(UPTIME)} URL")
+        emit(f"\nАптайм: {len(UPTIME)} URL (missing: {len(UPTIME_MISSING)})")
         emit(f"Качество: {len(QUALITY_MAP)} URL")
         if CFG.ffprobe:
             emit(f"ffprobe: {len(FFPROBE_MAP)} URL")
@@ -3041,6 +3275,12 @@ def main():
                     fp = os.path.join(CFG.docs_dir, fn)
                     if os.path.isfile(fp):
                         tg_file(CFG.tg_token, CFG.tg_chat, fp, caption=f"Weekly: {fn}")
+
+        try:
+            cache.vacuum()
+            emit("SQLite: vacuum выполнен")
+        except Exception as e:
+            log.warning("vacuum: %s", e)
 
     finally:
         cache.close()
