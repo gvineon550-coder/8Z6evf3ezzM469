@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-30T18:20:43",
+  "date": "2026-09-30T23:01:49",
   "method": "counter v4 — оценка за СУТКИ (check × 4/день, 4 UA на мёртвых)",
   "accuracy": "±3%",
   "check_runs_per_day": 4,
@@ -8,43 +8,43 @@
     "total_in_all_cleaned": 928,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 623,
-      "dead": 302,
+      "ok": 626,
+      "dead": 299,
       "unstable": 1,
       "filtered": 1
     },
     "ffprobe_updated_24h": 464,
     "rejected_reasons": {
-      "dead": 301,
-      "dead_detail:empty": 1,
-      "dead_detail:ffprobe": 43,
+      "dead": 296,
+      "dead_detail:ffprobe": 41,
       "dead_detail:html": 1,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 162,
       "dead_detail:http_404": 14,
-      "dead_detail:timeout": 79,
-      "shortener": 1
+      "dead_detail:timeout": 77,
+      "shortener": 1,
+      "unstable": 3
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 623,
-      "dead_channels": 302,
-      "live_requests": 685,
-      "dead_requests": 1208,
+      "live_channels": 626,
+      "dead_channels": 299,
+      "live_requests": 688,
+      "dead_requests": 1196,
       "breakdown": {
-        "timeout": 79,
+        "timeout": 77,
         "http_code": 177,
-        "ffprobe_fail": 43,
-        "empty_html_small_unknown": 2,
+        "ffprobe_fail": 41,
+        "empty_html_small_unknown": 1,
         "ua_count": 4
       },
-      "total": 1893
+      "total": 1884
     },
     "http_checker_per_day": {
       "runs": 4,
-      "total": 7572,
-      "note": "1893 × 4 запуска/сутки"
+      "total": 7536,
+      "note": "1884 × 4 запуска/сутки"
     },
     "ffprobe": {
       "entries_24h": 464,
@@ -58,6 +58,6 @@
     "cleaner": 8,
     "dashboard_other_repo": 480,
     "misc": 5,
-    "TOTAL_per_day": 8993
+    "TOTAL_per_day": 8957
   }
 }

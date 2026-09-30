@@ -1,482 +1,482 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="box-tv" tvg-logo="https://i.imgur.com/R1UjyfX.png",Boks TV (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="box-tv" tvg-logo="https://iptvx.one/picons/box-tv.png",Boks TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/154/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="extreme-sports" tvg-logo="https://i.imgur.com/m7IC01U.png",Extreme Sports Channel (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="extreme-sports" tvg-logo="https://iptvx.one/picons/extreme-sports.png",Extreme Sports Channel (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/extremesport/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="extreme-sports" tvg-logo="https://i.imgur.com/m7IC01U.png",Extreme Sports Channel (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="extreme-sports" tvg-logo="https://iptvx.one/picons/extreme-sports.png",Extreme Sports Channel (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/extreme_sports/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",KHL (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://iptvx.one/picons/kxl.png",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/166/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",KHL (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://iptvx.one/picons/kxl.png",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/telekanal_khl/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",KHL (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://iptvx.one/picons/kxl.png",KHL (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/KHL/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD" tvg-logo="https://i.imgur.com/QhdxNsB.png",MMA-TV.com (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD",MMA-TV.com (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png",Okko Futbol (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://iptvx.one/picons/okko-football.png",Okko Futbol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/Setanta1/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://iptvx.one/picons/viasat-sport.png",viju+ Sport (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_sport/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="piaty-int" tvg-logo="https://i.imgur.com/8VKc2Ya.png",Channel 5 International (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="piaty-int" tvg-logo="https://iptvx.one/picons/piaty-int.png",Channel 5 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/5channel/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="piaty-int" tvg-logo="https://i.imgur.com/8VKc2Ya.png",Channel 5 International (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="piaty-int" tvg-logo="https://iptvx.one/picons/piaty-int.png",Channel 5 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/5_kanal/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="one-il" tvg-logo="https://iptvx.one/picons/one-il.png",Channel One (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.217.49.7/1/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ChannelOneCIS.ru@SD" tvg-logo="https://i.imgur.com/RUSX0rX.png",Channel One CIS (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ChannelOneCIS.ru@SD",Channel One CIS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/perviy_kanal_sng/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ChannelOne.ru@Europa" tvg-logo="https://i.imgur.com/vm5sJHP.png",Channel One Europa (480p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ChannelOne.ru@Europa",Channel One Europa (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.thestream.cyou/live/210-req_offset_28000000-req_window_0-1k_v5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="che" tvg-logo="https://i.imgur.com/ZOcDGpB.png",Che! (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="che" tvg-logo="https://iptvx.one/picons/che.png",Che! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/che/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="che" tvg-logo="https://i.imgur.com/ZOcDGpB.png",Che! (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="che" tvg-logo="https://iptvx.one/picons/che.png",Che! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Che/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Domashniy.ru@SD" tvg-logo="https://i.imgur.com/WaLwOyt.jpeg",Domashniy (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Domashniy.ru@SD",Domashniy (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/domashniy/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match-planeta" tvg-logo="https://i.imgur.com/vhyMb9D.png",Match! Planeta (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match-planeta" tvg-logo="https://iptvx.one/picons/match-planeta.png",Match! Planeta (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/match_planeta/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg",Match! Ultra (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://iptvx.one/picons/match4-hu.png",Match! Ultra (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/match/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg",Match! Ultra (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://iptvx.one/picons/match4-hu.png",Match! Ultra (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/match/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg",Match! Ultra (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://iptvx.one/picons/match4-hu.png",Match! Ultra (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://45.132.87.69:8080/match/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg",Match! Ultra (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://iptvx.one/picons/match4-hu.png",Match! Ultra (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tv.tuva.ru/machtv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://i.imgur.com/AqWaJT8.png",Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://iptvx.one/picons/mir.png",Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://45.153.24.78/MIR/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://i.imgur.com/AqWaJT8.png",Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://iptvx.one/picons/mir.png",Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvcdn01.oktv.kz/tv/mir/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://i.imgur.com/AqWaJT8.png",Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://iptvx.one/picons/mir.png",Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mir/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Mir.ru@Kazakhstan",Mir Kazakhstan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tvcdn01.esilnet.kz/tv/mir/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir-seriala" tvg-logo="https://i.imgur.com/uzj7wVp.png",Mir Seriala (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir-seriala" tvg-logo="https://iptvx.one/picons/mir-seriala.png",Mir Seriala (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/MirSeriala/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="moskva-24" tvg-logo="https://i.imgur.com/gXbUMVy.png",Moskva 24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="moskva-24" tvg-logo="https://iptvx.one/picons/moskva-24.png",Moskva 24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/moscow_24/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="MoskvaDoveriye.ru@SD" tvg-logo="https://i.imgur.com/QDqDQzt.png",Moskva. Doveriye (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="MoskvaDoveriye.ru@SD",Moskva. Doveriye (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/doverie/playlist_3.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv" tvg-logo="https://www.mongolsat.mn/assets/img/channel/38.png",NTV (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv" tvg-logo="https://iptvx.one/picons/ntv.png",NTV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/NTV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv-mir" tvg-logo="https://i.imgur.com/pUcV46F.png",NTV Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv-mir" tvg-logo="https://iptvx.one/picons/ntv-mir.png",NTV Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/ntvmir_TV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv-mir" tvg-logo="https://i.imgur.com/pUcV46F.png",NTV Mir (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv-mir" tvg-logo="https://iptvx.one/picons/ntv-mir.png",NTV Mir (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/ntv_mir/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv-xit" tvg-logo="https://i.imgur.com/FfKBvz5.png",NTV-Hit (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="ntv-xit" tvg-logo="https://iptvx.one/picons/ntv-xit.png",NTV-Hit (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/ntvhit/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="o_" tvg-logo="https://i.imgur.com/b2pgPW8.png",O! (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="o_" tvg-logo="https://iptvx.one/picons/o_.png",O! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/60/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="O.ru@International",O! International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/o/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rentv" tvg-logo="https://iks-online.net/storage/2018/07/REN-TV-HD.png",REN TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rentv" tvg-logo="https://iptvx.one/picons/rentv.png",REN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/REN/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rentv" tvg-logo="https://iks-online.net/storage/2018/07/REN-TV-HD.png",REN TV (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rentv" tvg-logo="https://iptvx.one/picons/rentv.png",REN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/ren_tv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rentv-int" tvg-logo="https://i.imgur.com/gBjk9oF.png",REN TV International (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rentv-int" tvg-logo="https://iptvx.one/picons/rentv-int.png",REN TV International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/RENTV/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rentv-int" tvg-logo="https://i.imgur.com/gBjk9oF.png",REN TV International (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rentv-int" tvg-logo="https://iptvx.one/picons/rentv-int.png",REN TV International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/ren/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="RTRPlaneta.ru@CIS" tvg-logo="https://i.imgur.com/0YEahxs.png",RTR-Planeta (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="RTRPlaneta.ru@CIS",RTR-Planeta (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rtr_planeta/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia1" tvg-logo="https://i.imgur.com/6BVWk8z.png",Russia-1 SD (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia1" tvg-logo="https://iptvx.one/picons/rossia1.png",Russia-1 SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://109.207.243.18/2/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="24news-ua" tvg-logo="https://iptvx.one/picons/24news-ua.png",Russia-24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rossia_24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="24news-ua" tvg-logo="https://iptvx.one/picons/24news-ua.png",Russia-24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Rossiya24/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="kultura" tvg-logo="https://i.imgur.com/6PqxuhF.png",Russia-K (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="kultura" tvg-logo="https://iptvx.one/picons/kultura.png",Russia-K (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/229/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="kultura" tvg-logo="https://i.imgur.com/6PqxuhF.png",Russia-K (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="kultura" tvg-logo="https://iptvx.one/picons/kultura.png",Russia-K (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rossia_k/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Solnce.ru@SD" tvg-logo="https://i.imgur.com/HCefxaK.png",Solnce (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Solnce.ru@SD",Solnce (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/solnce/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Solnce.ru@SD" tvg-logo="https://i.imgur.com/HCefxaK.png",Solnce (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Solnce.ru@SD",Solnce (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://217.114.191.150/Solnce/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Solnce.ru@SD" tvg-logo="https://i.imgur.com/HCefxaK.png",Solnce (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Solnce.ru@SD",Solnce (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/118/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="spas" tvg-logo="https://i.imgur.com/yY39nMg.png",Spas (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="spas" tvg-logo="https://iptvx.one/picons/spas.png",Spas (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="start-air" tvg-logo="https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png",START Air (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="start-air" tvg-logo="https://iptvx.one/picons/start-air.png",START Air (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/start_air/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="start-world" tvg-logo="https://images.iptv.rt.ru/images/d6iist8mifeailfopupg.png",START World (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="start-world" tvg-logo="https://iptvx.one/picons/start-world.png",START World (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/start_world/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts" tvg-logo="https://i.imgur.com/ilUzAeb.png",STS (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts" tvg-logo="https://iptvx.one/picons/sts.png",STS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tshift-1.telecoma.tv/sts/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts" tvg-logo="https://i.imgur.com/ilUzAeb.png",STS (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts" tvg-logo="https://iptvx.one/picons/sts.png",STS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/sts/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts" tvg-logo="https://i.imgur.com/ilUzAeb.png",STS (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts" tvg-logo="https://iptvx.one/picons/sts.png",STS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/sts/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts" tvg-logo="https://i.imgur.com/ilUzAeb.png",STS (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts" tvg-logo="https://iptvx.one/picons/sts.png",STS (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/CTC/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts-int" tvg-logo="https://i.imgur.com/mwiC0RG.png",STS International (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts-int" tvg-logo="https://iptvx.one/picons/sts-int.png",STS International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/CTC/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts-love" tvg-logo="https://upload.wikimedia.org/wikipedia/ru/thumb/3/35/%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg/1920px-%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg.png",STS Love (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts-love" tvg-logo="https://iptvx.one/picons/sts-love.png",STS Love (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/183/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts-love" tvg-logo="https://upload.wikimedia.org/wikipedia/ru/thumb/3/35/%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg/1920px-%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg.png",STS Love (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts-love" tvg-logo="https://iptvx.one/picons/sts-love.png",STS Love (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/sts_love/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/TNT_Logo_2016.svg/960px-TNT_Logo_2016.svg.png",TNT (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt" tvg-logo="https://iptvx.one/picons/tnt.png",TNT (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tnt/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/TNT_Logo_2016.svg/960px-TNT_Logo_2016.svg.png",TNT (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt" tvg-logo="https://iptvx.one/picons/tnt.png",TNT (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/THT/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt4-international" tvg-logo="https://i.imgur.com/gBokU5i.png",TNT4 International (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt4-international" tvg-logo="https://iptvx.one/picons/tnt4.png",TNT4 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tnt4/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="TVCentr.ru@SD" tvg-logo="https://i.imgur.com/5fxFaup.png",TV Centr (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="TVCentr.ru@SD",TV Centr (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tvc/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="TVCentr.ru@SD" tvg-logo="https://i.imgur.com/5fxFaup.png",TV Centr (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="TVCentr.ru@SD",TV Centr (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tvc/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="3-plus-ee" tvg-logo="https://i.imgur.com/YRiulCU.png",TV-3 (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="3-plus-ee" tvg-logo="https://iptvx.one/picons/3-plus-ee.png",TV-3 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/TB-3/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="3-plus-ee" tvg-logo="https://i.imgur.com/YRiulCU.png",TV-3 (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="3-plus-ee" tvg-logo="https://iptvx.one/picons/3-plus-ee.png",TV-3 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tv-3/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="3-plus-ee" tvg-logo="https://i.imgur.com/YRiulCU.png",TV-3 (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="3-plus-ee" tvg-logo="https://iptvx.one/picons/3-plus-ee.png",TV-3 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/TB3/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://i.imgur.com/jZlj3ga.png",Vremya (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://iptvx.one/picons/vremia.png",Vremya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/237/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://i.imgur.com/jZlj3ga.png",Vremya (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://iptvx.one/picons/vremia.png",Vremya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/vremya/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://i.imgur.com/jZlj3ga.png",Vremya (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="vremia" tvg-logo="https://iptvx.one/picons/vremia.png",Vremya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_vremya/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="zvezda" tvg-logo="https://iptvx.one/picons/zvezda.png",Zvezda (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/zvezda/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Zvezda (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="zvezda" tvg-logo="https://iptvx.one/picons/zvezda.png",Zvezda (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zvezda/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="solnce" tvg-logo="https://i.imgur.com/HCefxaK.png",Солнце (576p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="solnce" tvg-logo="https://iptvx.one/picons/solnce.png",Солнце (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tv.mediacdn.ru/live/solntse/playlist.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tvcentr" tvg-logo="https://i.imgur.com/5fxFaup.png",ТВ Центр
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tvcentr" tvg-logo="https://iptvx.one/picons/tvcentr.png",ТВ Центр
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221.smil/playlist.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="2na2" tvg-logo="https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png",2x2 (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="2na2" tvg-logo="https://iptvx.one/picons/2na2.png",2x2 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.mkpnet.ru/tv-17540fb90079a865/video.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="2na2" tvg-logo="https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png",2x2 (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="2na2" tvg-logo="https://iptvx.one/picons/2na2.png",2x2 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/2x2/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="2na2" tvg-logo="https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png",2x2 SD (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="2na2" tvg-logo="https://iptvx.one/picons/2na2.png",2x2 SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/187/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="Friday.ru@SD" tvg-logo="https://i.imgur.com/UfmlXxe.png",Friday! (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="Friday.ru@SD",Friday! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/Pyatnica/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="FridayInternational.ru@Kazakhstan" tvg-logo="https://i.imgur.com/UfmlXxe.png",Friday! International Kazakhstan (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="FridayInternational.ru@Kazakhstan",Friday! International Kazakhstan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bolshaya_pyatnica/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="kvn-tv" tvg-logo="https://i.imgur.com/Vw3LFLX.png",KVN TV (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="kvn-tv" tvg-logo="https://iptvx.one/picons/kvn-tv.png",KVN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/KVN-TV/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="kvn-tv" tvg-logo="https://i.imgur.com/Vw3LFLX.png",KVN TV (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="kvn-tv" tvg-logo="https://iptvx.one/picons/kvn-tv.png",KVN TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kvn_tv/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="mama" tvg-logo="https://i.imgur.com/kmMIjjf.png",Mama (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="mama" tvg-logo="https://iptvx.one/picons/mama.png",Mama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/79/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="mama" tvg-logo="https://i.imgur.com/kmMIjjf.png",Mama (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="mama" tvg-logo="https://iptvx.one/picons/mama.png",Mama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/mama/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="PeretzInternational.ru@SD" tvg-logo="https://i.imgur.com/Y84p1y6.png",Peretz International (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="PeretzInternational.ru@SD",Peretz International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/121/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="PeretzInternational.ru@SD" tvg-logo="https://i.imgur.com/Y84p1y6.png",Peretz International (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="PeretzInternational.ru@SD",Peretz International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/perec/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="poexali" tvg-logo="https://i.imgur.com/ZNCpbII.png",Poehali! (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="poexali" tvg-logo="https://iptvx.one/picons/poexali.png",Poehali! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/poehali/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="poexali" tvg-logo="https://i.imgur.com/ZNCpbII.png",Poehali! (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="poexali" tvg-logo="https://iptvx.one/picons/poexali.png",Poehali! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_poehali/playlist.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="radost-moya" tvg-logo="https://i.imgur.com/B5FA62o.png",Radost Moya (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="radost-moya" tvg-logo="https://iptvx.one/picons/radost-moya.png",Radost Moya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://radm.mediacdn.ru/cdn/radost/playlist_sdhigh.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="sarafan" tvg-logo="https://i.imgur.com/u4q1rMT.png",Sarafan (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="sarafan" tvg-logo="https://iptvx.one/picons/sarafan.png",Sarafan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/81/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="sarafan" tvg-logo="https://i.imgur.com/u4q1rMT.png",Sarafan (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="sarafan" tvg-logo="https://iptvx.one/picons/sarafan.png",Sarafan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/sarafan/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="super" tvg-logo="https://i.imgur.com/nsk8PpB.png",Subbota! (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="super" tvg-logo="https://iptvx.one/picons/subbota.png",Subbota! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://217.114.191.150/Subbota/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="super" tvg-logo="https://i.imgur.com/nsk8PpB.png",Subbota! SD (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="super" tvg-logo="https://iptvx.one/picons/subbota.png",Subbota! SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/subbota/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="tnt4" tvg-logo="https://i.imgur.com/gBokU5i.png",TNT4 (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="tnt4" tvg-logo="https://iptvx.one/picons/tnt4.png",TNT4 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/tnt4/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="U.ru@SD" tvg-logo="https://i.ibb.co/23ktDgvx/IMG-2461.png",U (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="U.ru@SD",U (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/U/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="U.ru@SD" tvg-logo="https://i.ibb.co/23ktDgvx/IMG-2461.png",U (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="U.ru@SD",U (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/230/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="U.ru@SD" tvg-logo="https://i.ibb.co/23ktDgvx/IMG-2461.png",U (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="U.ru@SD",U (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/u/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="voprosy-i-otvety" tvg-logo="https://i.imgur.com/yjETxk1.png",Voprosy i Otvety (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="voprosy-i-otvety" tvg-logo="https://iptvx.one/picons/voprosy-i-otvety.png",Voprosy i Otvety (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/76/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="piatnica" tvg-logo="https://i.imgur.com/UfmlXxe.png",Пятница! (576p)
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="piatnica" tvg-logo="https://iptvx.one/picons/piatnica.png",Пятница! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/friday/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="cinema-ru" tvg-logo="https://i.imgur.com/B5UN7C8.png",Cinema (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="cinema-ru" tvg-logo="https://iptvx.one/picons/cinema-ru.png",Cinema (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/cinema/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png",Dom kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino" tvg-logo="https://iptvx.one/picons/domkino.png",Dom kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/236/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png",Dom kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino" tvg-logo="https://iptvx.one/picons/domkino.png",Dom kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_dom_kino/playlist.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino-int" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png",Dom kino International (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino-int" tvg-logo="https://iptvx.one/picons/domkino.png",Dom kino International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dom_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino-premium" tvg-logo="https://i.imgur.com/rJpQtvK.png",Dom kino Premium (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino-premium" tvg-logo="https://iptvx.one/picons/domkino-premium.png",Dom kino Premium (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_dom_kino_premium/playlist.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="dorama" tvg-logo="https://i.imgur.com/ZH5LuXU.png",Dorama (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="dorama" tvg-logo="https://iptvx.one/picons/dorama.png",Dorama (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dorama/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="evrokino" tvg-logo="https://i.imgur.com/8LPtPf6.png",Evrokino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="evrokino" tvg-logo="https://iptvx.one/picons/eurokino.png",Evrokino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/eurokino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="evrokino" tvg-logo="https://i.imgur.com/8LPtPf6.png",Evrokino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="evrokino" tvg-logo="https://iptvx.one/picons/eurokino.png",Evrokino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Evrokino/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="IllusionPlus.ru@SD" tvg-logo="https://i.imgur.com/9GvuHQ5.png",Illusion+ (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="IllusionPlus.ru@SD",Illusion+ (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Illuzion+/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="India.ru@SD" tvg-logo="https://i.imgur.com/xDVcDOc.png",India (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="India.ru@SD",India (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/india/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD" tvg-logo="https://i.imgur.com/LL8GyCh.png",Indiyskoye Kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD",Indiyskoye Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://188.113.190.12/329/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD" tvg-logo="https://i.imgur.com/LL8GyCh.png",Indiyskoye Kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD",Indiyskoye Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/104/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD" tvg-logo="https://i.imgur.com/LL8GyCh.png",Indiyskoye Kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD",Indiyskoye Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/indiyskoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinoxit" tvg-logo="https://i.imgur.com/Ge8vkQM.png",KinoHit (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinoxit" tvg-logo="https://iptvx.one/picons/kinoxit.png",KinoHit (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinohit/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinokazka" tvg-logo="https://i.imgur.com/dVjtth0.png",Kinokomedija (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinokazka" tvg-logo="https://iptvx.one/picons/kinokazka.png",Kinokomedija (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinokomedia/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="Kinomix.ru@SD" tvg-logo="https://i.imgur.com/D4q2XUT.png",Kinomix (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Kinomix.ru@SD",Kinomix (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://93.170.254.17/Kinomiks/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="Kinomix.ru@SD" tvg-logo="https://i.imgur.com/D4q2XUT.png",Kinomix (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Kinomix.ru@SD",Kinomix (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinomix/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosweet" tvg-logo="https://i.imgur.com/4BF5VeK.png",Kinosemja (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosweet" tvg-logo="https://iptvx.one/picons/kinosweet.png",Kinosemja (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinosemya/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinoseria" tvg-logo="https://i.imgur.com/iao7zLZ.png",Kinoseriya (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinoseria" tvg-logo="https://iptvx.one/picons/kinoseria.png",Kinoseriya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinoseria/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosvidanie" tvg-logo="https://i.imgur.com/ZRaWqxj.png",Kinosvidanie (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosvidanie" tvg-logo="https://iptvx.one/picons/kinosvidanie.png",Kinosvidanie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinosvidanie/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinouzhas" tvg-logo="https://i.imgur.com/mAcAAQF.png",Kinouzhas (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinouzhas" tvg-logo="https://iptvx.one/picons/kinouzhas.png",Kinouzhas (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinouzhas/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="Komedia.ru@SD" tvg-logo="https://i.imgur.com/VRC5juh.png",Komedia (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Komedia.ru@SD",Komedia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/68/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="Komedia.ru@SD" tvg-logo="https://i.imgur.com/VRC5juh.png",Komedia (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Komedia.ru@SD",Komedia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Komediya/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="MosfilmGoldCollection.ru@SD" tvg-logo="https://i.imgur.com/95Y8jb6.png",Mosfilm Gold Collection (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="MosfilmGoldCollection.ru@SD",Mosfilm Gold Collection (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mosfilm/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="muzhskoe-kino" tvg-logo="https://i.imgur.com/8RN3tQC.png",Muzhskoe kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="muzhskoe-kino" tvg-logo="https://iptvx.one/picons/muzhskoe-kino.png",Muzhskoe kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/muzhskoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="nashe-novoe-kino" tvg-logo="https://i.imgur.com/IOxIsPj.png",Nashe Novoe Kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="nashe-novoe-kino" tvg-logo="https://iptvx.one/picons/nashe-novoe-kino.png",Nashe Novoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nashe_novoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="Nostalgia.ru@SD" tvg-logo="https://i.imgur.com/JU1dFfK.png",Nostalgia (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Nostalgia.ru@SD",Nostalgia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nostalgia/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="Nostalgia.ru@SD" tvg-logo="https://i.imgur.com/JU1dFfK.png",Nostalgia (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Nostalgia.ru@SD",Nostalgia (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Nostalgiya/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="pobeda" tvg-logo="https://i.imgur.com/4KiYSln.png",Pobeda (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="pobeda" tvg-logo="https://iptvx.one/picons/pobeda.png",Pobeda (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/pobeda/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="retro-tv" tvg-logo="https://i.imgur.com/p21co1w.png",Retro (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="retro-tv" tvg-logo="https://iptvx.one/picons/retro-tv.png",Retro (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/191/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="retro-tv" tvg-logo="https://i.imgur.com/p21co1w.png",Retro (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="retro-tv" tvg-logo="https://iptvx.one/picons/retro-tv.png",Retro (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/Retro/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="rodnoe-kino" tvg-logo="https://i.imgur.com/H70LxoZ.png",Rodnoe Kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="rodnoe-kino" tvg-logo="https://iptvx.one/picons/rodnoe-kino.png",Rodnoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/242/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="rodnoe-kino" tvg-logo="https://i.imgur.com/H70LxoZ.png",Rodnoe Kino (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="rodnoe-kino" tvg-logo="https://iptvx.one/picons/rodnoe-kino.png",Rodnoe Kino (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="RusskiyDetektiv.ru@SD" tvg-logo="https://i.imgur.com/H3qhN8S.png",Russkiy Detektiv (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="RusskiyDetektiv.ru@SD",Russkiy Detektiv (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/204/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="RusskiyIllusion.ru@SD" tvg-logo="https://i.imgur.com/RlsqFN8.png",Russkiy Illusion (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="RusskiyIllusion.ru@SD",Russkiy Illusion (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/russkiy_illusion/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="Russkiyroman.ru@SD" tvg-logo="https://i.imgur.com/cQN0P2B.png",Russkiy roman (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Russkiyroman.ru@SD",Russkiy roman (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/rusroman/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="start-air" tvg-logo="https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png",START Air (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="start-air" tvg-logo="https://iptvx.one/picons/start-air.png",START Air (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/128/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv21plus" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRO7jWKujUVD6jbcgA0vraQnkAtls50WlO11pwnQ3FlKTGpvVcIYzyl2kQfOUDrJMMPmc&usqp=CAU",TV 21 (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv21plus" tvg-logo="https://iptvx.one/picons/tv21plus.png",TV 21 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/TVXXI/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv21plus" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRO7jWKujUVD6jbcgA0vraQnkAtls50WlO11pwnQ3FlKTGpvVcIYzyl2kQfOUDrJMMPmc&usqp=CAU",TV 21 (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv21plus" tvg-logo="https://iptvx.one/picons/tv21plus.png",TV 21 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tvxxi/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="TV21International.ru@SD" tvg-logo="https://ibb.co/BH6CZx3K",TV 21 International (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="TV21International.ru@SD",TV 21 International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/152/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv1000" tvg-logo="https://i.imgur.com/ZMsyjSr.png",viju TV1000 (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv1000" tvg-logo="https://iptvx.one/picons/tv1000.png",viju TV1000 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv1000-action" tvg-logo="https://i.imgur.com/TMmyuzh.png",viju TV1000 action (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv1000-action" tvg-logo="https://iptvx.one/picons/tv1000-action.png",viju TV1000 action (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000_action/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv1000-russkoe-kino" tvg-logo="https://i.imgur.com/Meak2y4.png",viju TV1000 russkoe (576p)
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="tv1000-russkoe-kino" tvg-logo="https://iptvx.one/picons/tv1000-russkoe-kino.png",viju TV1000 russkoe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_tv1000_russkoe/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="NTVSeries.ru@SD" tvg-logo="https://i.imgur.com/QdVa8tl.png",NTV Series (576p)
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="NTVSeries.ru@SD",NTV Series (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/301/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://i.imgur.com/qYObfrG.png",BRIDGE (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://iptvx.one/picons/bridge-hd.png",BRIDGE (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/318/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://i.imgur.com/qYObfrG.png",BRIDGE (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://iptvx.one/picons/bridge-hd.png",BRIDGE (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/BRIDGE/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://i.imgur.com/qYObfrG.png",BRIDGE (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://iptvx.one/picons/bridge-hd.png",BRIDGE (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://194.143.148.28:8080/RT_DOC/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://i.imgur.com/JJTQq81.png",BRIDGE Classic (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://iptvx.one/picons/bridge-tv-classic.png",BRIDGE Classic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/272/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://i.imgur.com/JJTQq81.png",BRIDGE Classic (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://iptvx.one/picons/bridge-tv-classic.png",BRIDGE Classic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/Bridge_TV_Classic/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://i.imgur.com/JJTQq81.png",BRIDGE Classic (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://iptvx.one/picons/bridge-tv-classic.png",BRIDGE Classic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-dance" tvg-logo="https://i.imgur.com/sIW9oR4.png",BRIDGE Hits (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-dance" tvg-logo="https://iptvx.one/picons/bridge-tv-dance.png",BRIDGE Hits (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/320/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-dance" tvg-logo="https://i.imgur.com/sIW9oR4.png",BRIDGE Hits (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-dance" tvg-logo="https://iptvx.one/picons/bridge-tv-dance.png",BRIDGE Hits (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-rock" tvg-logo="https://i.imgur.com/MHuwct2.png",BRIDGE Rock (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-rock" tvg-logo="https://iptvx.one/picons/bridge-tv-rock.png",BRIDGE Rock (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="europa-plus-tv" tvg-logo="https://i.imgur.com/GLc4qrc.png",Europa Plus TV (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="europa-plus-tv" tvg-logo="https://iptvx.one/picons/europa-plus-tv.png",Europa Plus TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/europa_plus/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="europa-plus-tv" tvg-logo="https://i.imgur.com/GLc4qrc.png",Europa Plus TV SD (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="europa-plus-tv" tvg-logo="https://iptvx.one/picons/europa-plus-tv.png",Europa Plus TV SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/184/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="tnt-music" tvg-logo="https://i.imgur.com/tXABQDE.png",Fon Music (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="tnt-music" tvg-logo="https://iptvx.one/picons/tnt-music.png",Fon Music (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/317/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="mcm-top" tvg-logo="https://i.imgur.com/EVtWQLd.png",MCM Top (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="mcm-top" tvg-logo="https://iptvx.one/picons/mcm-top.png",MCM Top (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/mcmtop/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://iptvx.one/picons/muztv.png",Muz-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.32.176.50/muztv/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://iptvx.one/picons/muztv.png",Muz-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/86/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://iptvx.one/picons/muztv.png",Muz-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/muz_tv/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="la-minor" tvg-logo="https://i.imgur.com/RH6hTWG.png",Muzyka Live (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="la-minor" tvg-logo="https://iptvx.one/picons/la-minor.png",Muzyka Live (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/303/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzyka-pervogo" tvg-logo="https://i.imgur.com/U0vKj3P.png",Muzyka Pervogo (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzyka-pervogo" tvg-logo="https://iptvx.one/picons/muzyka-pervogo.png",Muzyka Pervogo (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/153/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzyka-pervogo" tvg-logo="https://i.imgur.com/U0vKj3P.png",Muzyka Pervogo (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzyka-pervogo" tvg-logo="https://iptvx.one/picons/muzyka-pervogo.png",Muzyka Pervogo (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_muzyka_pervogo/playlist.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD",RU.TV (576p)
@@ -485,46 +485,46 @@ https://fs.uplink.kz/RuTV/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD",RU.TV SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/109/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="ShansonTV.ru@SD" tvg-logo="https://i.imgur.com/Fk4sd8t.png",Shanson TV (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="ShansonTV.ru@SD",Shanson TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://catchup.videoline.ru/shanson/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="ShansonTV.ru@SD" tvg-logo="https://i.imgur.com/Fk4sd8t.png",Shanson TV (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="ShansonTV.ru@SD",Shanson TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/shanson/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="zhara" tvg-logo="https://images.restream-media.net/images/d6k2670mifea4e56t850.png",Zhara (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="zhara" tvg-logo="https://iptvx.one/picons/zhara.png",Zhara (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zhara/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-by" tvg-logo="https://i.imgur.com/ADQkn9l.png",Channel 8 (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-by" tvg-logo="https://iptvx.one/picons/8by.png",Channel 8 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://v4.proofix.ru/8tv-russia/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-eu" tvg-logo="https://i.imgur.com/I8OU9oa.png",Channel 8 International (576p) [Geo-blocked]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-eu" tvg-logo="https://iptvx.one/picons/8kanal-eu.png",Channel 8 International (576p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-11cinema.cdnvideo.net/11cinemanet/11cinemanet/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Channel8Novosibirsk.ru@SD" tvg-logo="https://i.imgur.com/eHGETvU.png",Channel 8 Novosibirsk (480i)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Channel8Novosibirsk.ru@SD",Channel 8 Novosibirsk (480i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Enisey.ru@SD" tvg-logo="https://i.imgur.com/57deE7f.png",Enisey (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Enisey.ru@SD",Enisey (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tshift-1.telecoma.tv/enisei/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nst" tvg-logo="https://i.imgur.com/5dJE8Fc.jpg",NST (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nst" tvg-logo="https://iptvx.one/picons/nst.png",NST (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/207/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nst" tvg-logo="https://i.imgur.com/5dJE8Fc.jpg",NST (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nst" tvg-logo="https://iptvx.one/picons/nst.png",NST (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/nst/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="prodvizhenie" tvg-logo="https://i.imgur.com/KlsnfG9.png",Prodvizhenie (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="prodvizhenie" tvg-logo="https://iptvx.one/picons/prodvizhenie.png",Prodvizhenie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://origin5.mediacdn.ru/live/prodvizhenie_new/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="TNVPlanet.ru@SD" tvg-logo="https://i.imgur.com/ijA1zDw.png",TNV-Planet (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="TNVPlanet.ru@SD",TNV-Planet (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tnv/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="YaltaTV.ru@SD" tvg-logo="https://img.cataloxy.ru/fl/97/e3/808131.gif",Yalta TV (480p) [Geo-blocked]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="YaltaTV.ru@SD",Yalta TV (480p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://195.26.83.96:7029/play/a006
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="vetta24" tvg-logo="https://i.imgur.com/zKH1b5k.png",Ветта 24 (Пермь) (576p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="vetta24" tvg-logo="https://iptvx.one/picons/vetta24.png",Ветта 24 (Пермь) (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv24.vintera.tv:8081/vetta/vetta_office/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="gubernia" tvg-logo="https://i.imgur.com/1Qpg40L.png",Губерния (Самара) (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="gubernia" tvg-logo="https://iptvx.one/picons/gubernia.png",Губерния (Самара) (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.guberniatv.cdnvideo.ru/guberniatv/guberniatv.sdp/playlist.m3u8
 #EXTINF:-1 group-title="🏙️ Региональные" tvg-id="k16-sarov" tvg-logo="https://iptvx.one/picons/k16-sarov.png",К16 (Саров) (406p) [Not 24/7]
@@ -533,159 +533,159 @@ http://serv25.vintera.tv:8081/test/k16/playlist.m3u8
 #EXTINF:-1 group-title="📦 Разное" tvg-id="kino-tv" tvg-logo="https://iptvx.one/picons/kino-tv.png",КИНОТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/kinotv/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="360-lv" tvg-logo="https://i.imgur.com/VTJqdoX.png",360°
+#EXTINF:-1 group-title="📰 Новости" tvg-id="360-lv" tvg-logo="https://iptvx.one/picons/360-lv.png",360°
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/0.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="moskva-24" tvg-logo="https://i.imgur.com/gXbUMVy.png",Moskva 24 (576p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="moskva-24" tvg-logo="https://iptvx.one/picons/moskva-24.png",Moskva 24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/moskva24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="📰 Новости" tvg-id="RTenEspanol.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (1080p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="RTenEspanol.ru@SD",RT en Espanol (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://168.196.127.137:6001/play/a0a9/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="RTenEspanol.ru@SD" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Russia-today-logo.svg/960px-Russia-today-logo.svg.png",RT en Espanol (576p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="RTenEspanol.ru@SD",RT en Espanol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="rtvi" tvg-logo="https://i.imgur.com/1AEhXyS.png",RTVi (576p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="rtvi" tvg-logo="https://iptvx.one/picons/rtvi.png",RTVi (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://shift03.isp.bg/RTVi/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png",T24 (576p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://iptvx.one/picons/ct24-cz.png",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/t24/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png",T24 (576p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://iptvx.one/picons/ct24-cz.png",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/209/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png",T24 (576p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://iptvx.one/picons/ct24-cz.png",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tehno_24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="📰 Новости" tvg-id="krasnaya-linia" tvg-logo="https://i.imgur.com/TgZ8Uv1.png",Красная линия (288p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="krasnaya-linia" tvg-logo="https://iptvx.one/picons/krasnaya-linia.png",Красная линия (288p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://s55766.cdn.ngenix.net/s55766-media-origin/rline_low/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="krasnaya-linia" tvg-logo="https://i.imgur.com/TgZ8Uv1.png",Красная линия (480p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="krasnaya-linia" tvg-logo="https://iptvx.one/picons/krasnaya-linia.png",Красная линия (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://s55766.cdn.ngenix.net/s55766-media-origin/rline_high/index.m3u8
-#EXTINF:-1 group-title="📰 Новости" tvg-id="ldpr-tv" tvg-logo="https://i.imgur.com/gCmCRfe.png",ЛДПР ТВ (480p)
+#EXTINF:-1 group-title="📰 Новости" tvg-id="ldpr-tv" tvg-logo="https://iptvx.one/picons/ldpr-tv.png",ЛДПР ТВ (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://46.46.143.222:1935/live/mp4:ldpr.stream_480p/playlist.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="365daysTV.ru@SD" tvg-logo="https://i.imgur.com/NfnAiTR.png",365 days TV (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="365daysTV.ru@SD",365 days TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/70/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="365daysTV.ru@SD" tvg-logo="https://i.imgur.com/NfnAiTR.png",365 days TV (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="365daysTV.ru@SD",365 days TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/365_dney/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="art-tv" tvg-logo="https://i.imgur.com/mNeLu04.png",ART (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="art-tv" tvg-logo="https://iptvx.one/picons/art-tv.png",ART (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://89.104.114.24:8080/art/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="art-tv" tvg-logo="https://i.imgur.com/mNeLu04.png",ART (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="art-tv" tvg-logo="https://iptvx.one/picons/art-tv.png",ART (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/ART/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="avto24" tvg-logo="https://i.imgur.com/GXSXmN2.png",Avto24 (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="avto24" tvg-logo="https://iptvx.one/picons/avto24.png",Avto24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/avto24/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="big-planet" tvg-logo="https://i.imgur.com/wyuqWTR.png",Big Planet (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="big-planet" tvg-logo="https://iptvx.one/picons/big-planet.png",Big Planet (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/big_planet/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="bobior" tvg-logo="https://i.imgur.com/clWWhB8.png",Bober (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="bobior" tvg-logo="https://iptvx.one/picons/bobior.png",Bober (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bober/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="bobior" tvg-logo="https://i.imgur.com/clWWhB8.png",Bober (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="bobior" tvg-logo="https://iptvx.one/picons/bobior.png",Bober (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_bober/playlist.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Doctor.ru@SD" tvg-logo="https://i.imgur.com/VNirxxn.png",Doctor (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Doctor.ru@SD",Doctor (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/doktor/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="domashnie-zhivotnye" tvg-logo="https://tv-stream.ru/uploads/D_Zh_ad21d48199.svg",Domashnie Zhivotnye (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="domashnie-zhivotnye" tvg-logo="https://iptvx.one/picons/domashnie-zhivotnye.png",Domashnie Zhivotnye (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/domashnie_zhivotnie/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="rentv-istoki" tvg-logo="https://istoki.tv/local/templates/istoki_new/img/logo.png",Istoki (1080p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="rentv-istoki" tvg-logo="https://iptvx.one/picons/rentv-istoki.png",Istoki (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://istoki.tv/live/stream1/playlist.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="istoria" tvg-logo="https://i.imgur.com/eEjPail.png",Istoriya (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="istoria" tvg-logo="https://iptvx.one/picons/istoria.png",Istoriya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/istoriya/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="kuxnia-tv" tvg-logo="https://i.imgur.com/7jxZnuS.png",Kuhnya (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="kuxnia-tv" tvg-logo="https://iptvx.one/picons/kuxnia-tv.png",Kuhnya (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/179/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="KulinarTV.ru@SD" tvg-logo="https://smotret.tv/images/kulinar-tv.webp",Kulinar TV (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="KulinarTV.ru@SD",Kulinar TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://api.alpaca.t62a.com/hls/9110/stream0.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="lapki-live" tvg-logo="https://lapki.live/lapki_og.png",Lapki Live (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="lapki-live" tvg-logo="https://iptvx.one/picons/lapki-live.png",Lapki Live (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/lapki_live/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="moya-planeta" tvg-logo="https://i.imgur.com/uIiAdBv.png",Moya Planeta (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="moya-planeta" tvg-logo="https://iptvx.one/picons/moya-planeta.png",Moya Planeta (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/moya_planeta/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="national-geographic" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png",National Geographic (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="national-geographic" tvg-logo="https://iptvx.one/picons/national-geographic.png",National Geographic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nat_geo/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nat-geo-wild-pl" tvg-logo="https://i.imgur.com/HoeaQJC.png",National Geographic Wild (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nat-geo-wild-pl" tvg-logo="https://iptvx.one/picons/nat-geo-wild-pl.png",National Geographic Wild (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nat_geo_wild/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Okhotairybalka.ru@SD" tvg-logo="https://i.imgur.com/nZwBaeW.png",Okhota i rybalka (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Okhotairybalka.ru@SD",Okhota i rybalka (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/155/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="oruzhie" tvg-logo="https://i.imgur.com/lfJQJqa.png",Oruzhie (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="oruzhie" tvg-logo="https://iptvx.one/picons/oruzhie.png",Oruzhie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/oruzhie/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="pro-business" tvg-logo="https://i.imgur.com/1u8KvTD.png",Pro Business (720p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="pro-business" tvg-logo="https://iptvx.one/picons/pro-business.png",Pro Business (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tv-streaming.bsh.ru:21938/probusiness/probusiness.stream/playlist.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Prosveshchenie.ru@SD" tvg-logo="https://i.imgur.com/uppFhhq.png",Prosveshchenie (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Prosveshchenie.ru@SD",Prosveshchenie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://cdn-01.bonus-tv.ru/prosveschenie_edge/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Rybalkaiokhota.ru@SD" tvg-logo="https://www.cableman.ru/sites/default/files/rybalka_i_ohota_int.png",Rybalka i okhota (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Rybalkaiokhota.ru@SD",Rybalka i okhota (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/ohota_i_ribalka/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Soyuzny.ru@SD" tvg-logo="https://www.mtis.by/upload/medialibrary/717/v07nk6rmf6m1mno8ujhbkcg8nstkfjgv/Slide%2016_9%20-%2050.png",Soyuzny (480p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Soyuzny.ru@SD",Soyuzny (480p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/TRO/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Telecafe.ru@SD" tvg-logo="https://i.imgur.com/28XmS1J.png",Telecafe (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Telecafe.ru@SD",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/314/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Telecafe.ru@SD" tvg-logo="https://i.imgur.com/28XmS1J.png",Telecafe (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Telecafe.ru@SD",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/telecafe/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Telecafe.ru@SD" tvg-logo="https://i.imgur.com/28XmS1J.png",Telecafe (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Telecafe.ru@SD",Telecafe (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://88.212.15.19/live/test_telecafe_tv/playlist.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="tochka-otryva" tvg-logo="https://i.imgur.com/TZiBQDK.png",Tochka otryva (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="tochka-otryva" tvg-logo="https://iptvx.one/picons/tochka-otryva.png",Tochka otryva (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tochka_otriva/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="tonus-tv" tvg-logo="https://i.imgur.com/pGm8QCj.png",Tonus (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="tonus-tv" tvg-logo="https://iptvx.one/picons/tonus-tv.png",Tonus (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://194.143.148.28:8080/Mir24/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="usadba" tvg-logo="https://i.imgur.com/mf13haG.png",Usadba (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="usadba" tvg-logo="https://iptvx.one/picons/usadba.png",Usadba (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/211/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-explore" tvg-logo="https://i.imgur.com/EGIpLPu.png",viju Explore (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-explore" tvg-logo="https://iptvx.one/picons/viasat-explore.png",viju Explore (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_explore/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-history" tvg-logo="https://i.imgur.com/FqWkeXb.png",viju History (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-history" tvg-logo="https://iptvx.one/picons/viasat-history.png",viju History (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/HistoryHD/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-history" tvg-logo="https://i.imgur.com/FqWkeXb.png",viju History (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-history" tvg-logo="https://iptvx.one/picons/viasat-history.png",viju History (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_history/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-nature" tvg-logo="https://i.imgur.com/8BPZ18l.png",viju Nature (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="viasat-nature" tvg-logo="https://iptvx.one/picons/viasat-nature.png",viju Nature (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/viju_nature/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="zagorodnaya-zhizn" tvg-logo="https://i.imgur.com/RoYd5pz.png",Zagorodnaya Zhizn (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="zagorodnaya-zhizn" tvg-logo="https://iptvx.one/picons/zagorodnaya-zhizn.png",Zagorodnaya Zhizn (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.57.68.33/40/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="zhivaya-priroda" tvg-logo="https://i.imgur.com/9lHQPdN.png",Zhivaya priroda (1080p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="zhivaya-priroda" tvg-logo="https://iptvx.one/picons/zhivaya-priroda.png",Zhivaya priroda (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/83/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="zhivi" tvg-logo="https://i.imgur.com/LPqySGk.png",Zhivi! (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="zhivi" tvg-logo="https://iptvx.one/picons/zhivi.png",Zhivi! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zhivi/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="zoopark" tvg-logo="https://i.imgur.com/IO5jegK.png",Zoopark (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="zoopark" tvg-logo="https://iptvx.one/picons/zoopark.png",Zoopark (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zoopark/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nano-tv" tvg-logo="https://i.imgur.com/dYj3XDa.png",Нано ТВ HD (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nano-tv" tvg-logo="https://iptvx.one/picons/nano-tv.png",Нано ТВ HD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://s1.tv-nano.com/Nano_rec/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nauka" tvg-logo="https://i.imgur.com/ZZxzueO.png",Наука
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="nauka" tvg-logo="https://iptvx.one/picons/nauka.png",Наука
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/nauka2/index.m3u8
-#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="otkryty-mir" tvg-logo="https://i.imgur.com/7orZOJA.png",Открытый мир. Здоровье (576p)
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="otkryty-mir" tvg-logo="https://iptvx.one/picons/otkryty-mir.png",Открытый мир. Здоровье (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://v4.proofix.ru/0mir/index.m3u8

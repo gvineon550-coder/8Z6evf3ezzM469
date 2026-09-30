@@ -1,133 +1,133 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="aist" tvg-logo="https://i.imgur.com/bcw0s4V.png",AIST TV (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="aist" tvg-logo="https://iptvx.one/picons/aist.png",AIST TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://194.143.148.28:8080/Aist/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-by" tvg-logo="https://i.imgur.com/ADQkn9l.png",Channel 8 (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-by" tvg-logo="https://iptvx.one/picons/8by.png",Channel 8 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://45.11.139.43:8555/8kanal/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-by" tvg-logo="https://i.imgur.com/ADQkn9l.png",Channel 8 (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-by" tvg-logo="https://iptvx.one/picons/8by.png",Channel 8 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tshift-1.telecoma.tv/8channel/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-by" tvg-logo="https://i.imgur.com/ADQkn9l.png",Channel 8 (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-by" tvg-logo="https://iptvx.one/picons/8by.png",Channel 8 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://v4.proofix.ru/8tv-russia/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-eu" tvg-logo="https://i.imgur.com/I8OU9oa.png",Channel 8 International (576p) [Geo-blocked]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="8kanal-eu" tvg-logo="https://iptvx.one/picons/8kanal-eu.png",Channel 8 International (576p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-11cinema.cdnvideo.net/11cinemanet/11cinemanet/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Channel8Krasnoyarsk.ru@HD" tvg-logo="https://i.imgur.com/q3JCAC3.png",Channel 8 Krasnoyarsk HD (1080p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Channel8Krasnoyarsk.ru@HD",Channel 8 Krasnoyarsk HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Channel8Novosibirsk.ru@SD" tvg-logo="https://i.imgur.com/eHGETvU.png",Channel 8 Novosibirsk (480i)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Channel8Novosibirsk.ru@SD",Channel 8 Novosibirsk (480i)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Enisey.ru@SD" tvg-logo="https://i.imgur.com/57deE7f.png",Enisey (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Enisey.ru@SD",Enisey (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tshift-1.telecoma.tv/enisei/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="kuban-24" tvg-logo="https://i.imgur.com/atzrXcz.png",Kuban 24 (480p) [Geo-blocked]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="kuban-24" tvg-logo="https://iptvx.one/picons/kuban-24.png",Kuban 24 (480p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://dmi3y-tv.online/hls/zabava/region/MAYK/CH_MAYKOP.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Moymir.ru@SD" tvg-logo="https://www.cableman.ru/sites/default/files/MM-TV_logo-1%5B1509%5D.png",Moy mir (720p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="Moymir.ru@SD",Moy mir (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://moymir.ru/hls/onair.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nst" tvg-logo="https://i.imgur.com/5dJE8Fc.jpg",NST (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nst" tvg-logo="https://iptvx.one/picons/nst.png",NST (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/207/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nst" tvg-logo="https://i.imgur.com/5dJE8Fc.jpg",NST (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nst" tvg-logo="https://iptvx.one/picons/nst.png",NST (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://vod.tuva.ru/nst/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="prodvizhenie" tvg-logo="https://i.imgur.com/KlsnfG9.png",Prodvizhenie (1080p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="prodvizhenie" tvg-logo="https://iptvx.one/picons/prodvizhenie.png",Prodvizhenie (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://streaming.astrakhan.ru/proastrakhanhd/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="prodvizhenie" tvg-logo="https://i.imgur.com/KlsnfG9.png",Prodvizhenie (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="prodvizhenie" tvg-logo="https://iptvx.one/picons/prodvizhenie.png",Prodvizhenie (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://origin5.mediacdn.ru/live/prodvizhenie_new/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="SochiLive.ru@HD" tvg-logo="https://www.cableman.ru/sites/default/files/sochi_live.png",Sochi Live HD (720p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="SochiLive.ru@HD",Sochi Live HD (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv30.vintera.tv:8081/sochi/sochi_stream/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="TNVPlanet.ru@SD" tvg-logo="https://i.imgur.com/ijA1zDw.png",TNV-Planet (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="TNVPlanet.ru@SD",TNV-Planet (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tnv/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="tnv" tvg-logo="https://i.imgur.com/58u9TQT.png",TNV-Tatarstan (720p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="tnv" tvg-logo="https://iptvx.one/picons/tnv-tat.png",TNV-Tatarstan (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://user91229.clients-cdnnow.ru/hls/user91229_1.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="tooku" tvg-logo="https://tooku.ru/wp-content/uploads/2024/11/tooku-kanal-logo.png",Tooku (1080p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="tooku" tvg-logo="https://iptvx.one/picons/tooku.png",Tooku (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-saha.cdnvideo.ru/saha/tooky/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="UnknownRussia.ru@HD" tvg-logo="https://i.imgur.com/W7ste2f.png",Unknown Russia HD (1080p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="UnknownRussia.ru@HD",Unknown Russia HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://185.23.80.23:8080/NeizvestnayaRossia/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="YaltaTV.ru@SD" tvg-logo="https://img.cataloxy.ru/fl/97/e3/808131.gif",Yalta TV (480p) [Geo-blocked]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="YaltaTV.ru@SD",Yalta TV (480p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://195.26.83.96:7029/play/a006
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="aist" tvg-logo="https://i.imgur.com/bcw0s4V.png",Аист ТВ (1080p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="aist" tvg-logo="https://iptvx.one/picons/aist.png",Аист ТВ (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live2-aisttv.cdnvideo.ru/aisttv2/aisttv.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="aris24" tvg-logo="https://i.imgur.com/CTFVEAb.png",Арис 24 (720p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="aris24" tvg-logo="https://iptvx.one/picons/aris24.png",Арис 24 (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv25.vintera.tv:8081/test/aris/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="belgorod24" tvg-logo="https://i.imgur.com/EEirvyx.png",Белгород 24 (1080p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="belgorod24" tvg-logo="https://iptvx.one/picons/belgorod24.png",Белгород 24 (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://belnovosti.cdn.easyhoster.ru:8443/stream.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="vetta24" tvg-logo="https://i.imgur.com/zKH1b5k.png",Ветта 24 (Пермь) (576p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="vetta24" tvg-logo="https://iptvx.one/picons/vetta24.png",Ветта 24 (Пермь) (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv24.vintera.tv:8081/vetta/vetta_office/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="volga" tvg-logo="https://i.imgur.com/xHs1pr1.png",Волга (HD)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="volga" tvg-logo="https://iptvx.one/picons/volga.png",Волга (HD)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Volga/hls/1920x1080@4504/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="gubernia" tvg-logo="https://i.imgur.com/1Qpg40L.png",Губерния (Самара) (576p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="gubernia" tvg-logo="https://iptvx.one/picons/gubernia.png",Губерния (Самара) (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.guberniatv.cdnvideo.ru/guberniatv/guberniatv.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="evrasia" tvg-logo="https://i.imgur.com/4JUHIVS.png",Евразия (Орск) (720p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="evrasia" tvg-logo="https://iptvx.one/picons/evrasia.png",Евразия (Орск) (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://infochh.trkeurasia.ru/hlsinfoch/infochhd.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="enisey-region" tvg-logo="https://i.imgur.com/57deE7f.png",Енисей (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="enisey-region" tvg-logo="https://iptvx.one/picons/enisey-region.png",Енисей (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-eniseytv.cdnvideo.ru/eniseytv/stream1/playlist.m3u8
 #EXTINF:-1 group-title="🏙️ Региональные" tvg-id="k16-sarov" tvg-logo="https://iptvx.one/picons/k16-sarov.png",К16 (Саров) (406p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv25.vintera.tv:8081/test/k16/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="mtv-de" tvg-logo="https://i.imgur.com/pdCAUrP.png",МТВ (Волгоград) (720p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="mtv-de" tvg-logo="https://iptvx.one/picons/mtv-de.png",МТВ (Волгоград) (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://hls.volgograd1vtv.cdnvideo.ru/volgograd1vtv/volgograd1vtv.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="saxa" tvg-logo="https://i.imgur.com/LwXNUhf.png",НВК Саха (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="saxa" tvg-logo="https://iptvx.one/picons/saxa.png",НВК Саха (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-saha.cdnvideo.ru/saha/saha/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nn-24" tvg-logo="https://i.imgur.com/ZWgPVIC.png",Нижний Новгород 24 (720p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nn-24" tvg-logo="https://iptvx.one/picons/nn-24.png",Нижний Новгород 24 (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-vestinn.cdnvideo.ru/vestinn/nn24-khl/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nika-tv" tvg-logo="https://i.imgur.com/dccsFAu.png",Ника ТВ (576p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nika-tv" tvg-logo="https://iptvx.one/picons/nika-tv.png",Ника ТВ (576p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-nikatv.cdnvideo.ru/nikatv/nikatv.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="ntm" tvg-logo="https://i.imgur.com/AH50pGT.png",НТМ (Народное телевидение Мордовии) (720p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="ntm" tvg-logo="https://iptvx.one/picons/ntm.png",НТМ (Народное телевидение Мордовии) (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live-ntm13.cdnvideo.ru/ntm13/smil:ntm13.smil/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nts-irkutsk" tvg-logo="https://i.ibb.co/hCf7v4D/nts.jpg",НТС (Севастополь) (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="nts-irkutsk" tvg-logo="https://iptvx.one/picons/nts-irkutsk.png",НТС (Севастополь) (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://peqk71plnjy.a.trbcdn.net/livemaster/w4kz7pki62_nts_tv/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="prima" tvg-logo="https://i.imgur.com/33XGMch.png",Прима (1080p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="prima" tvg-logo="https://iptvx.one/picons/prima.png",Прима (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Prima/hls/index.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="S1.ru@SD" tvg-logo="https://i.imgur.com/chNBF5t.png",С1 (Сургут) (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="S1.ru@SD",С1 (Сургут) (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://sitv.ru/hls/stv.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="samara24" tvg-logo="https://samaragis.ru/wp-includes/images/logo.png",Самара ГИС (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="samara24" tvg-logo="https://iptvx.one/picons/samara24.png",Самара ГИС (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://tv.samaragis.ru/new/new/tracks-v1a1/mono.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="sochi24" tvg-logo="https://i.imgur.com/iwWxkl6.png",Сочи 24 HD (720p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="sochi24" tvg-logo="https://iptvx.one/picons/sochi24.png",Сочи 24 HD (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://serv30.vintera.tv:8081/sochi/sochi24_tv/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="86-surgut" tvg-logo="https://i.imgur.com/0dRS4Cb.png",Телеканал 86 (Сургут) (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="86-surgut" tvg-logo="https://iptvx.one/picons/86-surgut.png",Телеканал 86 (Сургут) (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://sitv.ru/hls/s86.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="555.ru@SD" tvg-logo="https://i.imgur.com/Ouv51WB.png",Телерадиокомпания 555 (Алушта) (720p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="555.ru@SD",Телерадиокомпания 555 (Алушта) (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://trk555.tv:8888/live
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="TKR.ru@SD" tvg-logo="https://i.imgur.com/VqtPB7L.png",ТКР (Рязань) (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="TKR.ru@SD",ТКР (Рязань) (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.tkr.cdnvideo.ru/tkr/tkr.sdp/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="tolk" tvg-logo="https://i.imgur.com/l7JZ79P.png",Толк HD (720p)
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="tolk" tvg-logo="https://iptvx.one/picons/tolk.png",Толк HD (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live-tolknews.cdnvideo.ru/tolknews/stream/playlist.m3u8
-#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="xuzur-tv" tvg-logo="https://i.imgur.com/Abg1fct.png",Хузур ТВ (1080p) [Not 24/7]
+#EXTINF:-1 group-title="🏙️ Региональные" tvg-id="xuzur-tv" tvg-logo="https://iptvx.one/picons/xuzur-tv.png",Хузур ТВ (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-mycdn08724960135.cdnvideo.ru/mycdn08724960135/stream1/playlist.m3u8
