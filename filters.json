@@ -39,7 +39,10 @@
     "^https?://224\\.", "^https?://22[5-9]\\.",
     "^https?://23[0-9]\\.", "^https?://24[0-9]\\.",
     "^https?://25[0-5]\\.",
-    "/udp/", "/rtp/", "/multicast/"
+    "/udp/", "/rtp/", "/multicast/",
+    "stream\\.mcquack\\.net/364/",
+    "freeott\\.top",
+    "wiseplayout\\.com"
   ],
   "url_extension_blocklist": [
     ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp", ".svg", ".ico",
