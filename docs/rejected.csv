@@ -4,8 +4,8 @@ name,group,url,reason
 360° Новости,,https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/index.m3u8,dead:ffprobe
 Channel 5 International (576i),,https://cdn4.skygo.mn/live/disk1/Channel_5/HLSv3-FTA/Channel_5.m3u8,dead:ffprobe
 Groznyj,,https://balancer.facecast.io/evacoder_hls_hi/UUMLQVAYVlZyH14GRENQVV0G/2/720-3.m3u8,dead:ffprobe
-Kongress TV (1080p),,https://stitch.teletarget.ru/api/v1/hls/504/158/index.m3u8,dead:ffprobe
 Kongress TV (1080p),,https://live-3.otcnet.ru/congresstv/index.m3u8,dead:ffprobe
+Kongress TV (1080p),,https://stitch.teletarget.ru/api/v1/hls/504/158/index.m3u8,dead:ffprobe
 Moskva 24 (1080p),,https://stream.smotrim.ru/hls/givc8/playlist.m3u8?entity=channel&id=798&sign=37881ef2e289f062ceff0dca6c24dc58,dead:ffprobe
 Novorossiya TV (1080p) [Geo-blocked],,http://31.131.139.253:9002/novoros/index.m3u8,dead:ffprobe
 Oplot TV (1080p) [Geo-blocked],,http://31.131.139.253:9002/oplot_hd/index.m3u8,dead:ffprobe
@@ -26,6 +26,8 @@ Smotrim 100% Prazdnik (720p),,https://stream.smotrim.ru/hls/fasttv04/playlist_3.
 Solnce (576p),,https://tv.mediacdn.ru/live/solntse/playlist.m3u8,dead:ffprobe
 SONGTV Russia,,https://songtv.hls.iptvdc.com/web-russia/playlist.m3u8,dead:ffprobe
 Sportivnyy (1080p),,https://live-3.otcnet.ru/sportivny/index.m3u8,dead:ffprobe
+Univer TV (1080p),,https://cdn.universmotri.ru/live/smil:univer.smil/playlist.m3u8,dead:ffprobe
+Univer TV (1080p) [Not 24/7],,https://cdn.universmotri.ru/live/smil:mbr.smil/playlist.m3u8,dead:ffprobe
 Vmeste-RF (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7006.m3u8,dead:ffprobe
 Астрахань 24 (720p),,https://streaming.astrakhan.ru/astrakhan24/playlist.m3u8,dead:ffprobe
 Астрахань.Ru Sport (720p),,https://streaming.astrakhan.ru/astrakhanrusporthd/playlist.m3u8,dead:ffprobe
@@ -141,6 +143,7 @@ REN TV HD (1080p),,http://str2.iptvhd.ru:8080/REN_TV/index.m3u8,dead:http_403
 Retro (576p),,http://str2.iptvhd.ru:8080/Retro/index.m3u8,dead:http_403
 Rodnoe Kino (576p),,http://str2.iptvhd.ru:8080/Nashe_kino/index.m3u8,dead:http_403
 Romantichnoe HD (1080p),,http://str2.iptvhd.ru:8080/Semeynoe_HD/index.m3u8,dead:http_403
+RT (720p),,http://212.5.144.156:8080/rt/index.m3u8,dead:http_403
 RTG TV HD (1080p),,http://str2.iptvhd.ru:8080/RTG_TV/index.m3u8,dead:http_403
 RTVi (450p) [Geo-blocked],,https://s70378.cdn.ngenix.net/rtvi/index.m3u8,dead:http_403
 RTVi (576p),,http://str2.iptvhd.ru:8080/RTVi/index.m3u8,dead:http_403
@@ -203,7 +206,6 @@ Zvezda HD (1080p),,http://str2.iptvhd.ru:8080/Zvezda/index.m3u8,dead:http_403
 Патриот (576i),,http://catchup.videoline.ru/asvtv/index.m3u8,dead:http_403
 РЖД ТВ (1080p) [Geo-blocked],,http://hls.tva.cdnvideo.ru/tva/tvahd.sdp/playlist.m3u8,dead:http_403
 РЖД ТВ (360p) [Geo-blocked],,http://hls.tva.cdnvideo.ru/tva/tva.sdp/playlist.m3u8,dead:http_403
-Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,dead:http_403
 Channel 12 (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7004.m3u8,dead:http_404
 Channel 8 (576p),,http://v4.proofix.ru/okino-tv/index.m3u8,dead:http_404
 Fast&FunBox HD (1080p),,http://str2.iptvhd.ru:8080/FastFunBoxHD/index.m3u8,dead:http_404
@@ -262,6 +264,7 @@ Setanta Sports 2,,http://158.101.222.193:88/georgia_play.php?id=setanta_sports_p
 Shanson TV (576p),,http://hls127.freeott.top:8080/Shanson_Tv/video.m3u8,dead:timeout
 Shot TV (576p),,http://hls127.freeott.top:8080/SHOT_TV/video.m3u8,dead:timeout
 Solnce (576p),,http://31.148.48.15/Solnce/index.m3u8,dead:timeout
+Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,dead:timeout
 Spas (576p),,http://hls127.freeott.top:8080/Spas/video.m3u8,dead:timeout
 STS Love (576p),,http://hls127.freeott.top:8080/CTC-LOVE/video.m3u8,dead:timeout
 Teatr (576p),,http://hls127.freeott.top:8080/Teatr/video.m3u8,dead:timeout
@@ -271,8 +274,6 @@ Top Secret (576p),,http://hls127.freeott.top:8080/Sovershenno_Sekretno/video.m3u
 Travel+Adventure (576p),,http://45.145.32.13:20440/travel_adventure/index.m3u8?token=test,dead:timeout
 TV Centr (576p),,http://hls127.freeott.top:8080/Tv_Center/video.m3u8,dead:timeout
 TV Centr SD (576p),,http://185.71.81.6:8080/10/index.m3u8,dead:timeout
-Univer TV (1080p),,https://cdn.universmotri.ru/live/smil:univer.smil/playlist.m3u8,dead:timeout
-Univer TV (1080p) [Not 24/7],,https://cdn.universmotri.ru/live/smil:mbr.smil/playlist.m3u8,dead:timeout
 Velvet. European Movies (1080p),,https://cdn.rostelekom-tv.xyz/live/LQ3j0n7j0Kq4OQm8.m3u8,dead:timeout
 Velvet. Golden Collection (1080p),,https://cdn.rostelekom-tv.xyz/live/v804qFZr0QVQ1s9Z.m3u8,dead:timeout
 Velvet. Mentovskiye Serialy (1080p),,https://cdn.rostelekom-tv.xyz/live/tWQ0ge9rspBQhRst.m3u8,dead:timeout
@@ -293,9 +294,9 @@ Zvezda Plus (576p),,http://45.145.32.13:20440/zvezdaplus/index.m3u8?token=test,d
 Первый Крымский (720p),,https://live1.1tvcrimea.ru/1tvcrimea.m3u8,dead:timeout
 Симферополь 24,,https://simf.1tvcrimea.ru/simferopol24.m3u8,dead:timeout
 Смайл ТВ,,https://5f05e059699ae.streamlock.net/WEB_Smilik/ngrp:Smilik.stream-adaptive/playlist.m3u8,dead:timeout
-Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,dead:timeout
 ТВК 24 (576p),,https://air.tvk6.ru/tvk24/playlist.m3u8,dead:timeout
 RT HD (1080p),,https://wisewatchoott.wiseplayout.com/RT/master.m3u8,shortener
-Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,unstable:19%
-Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,unstable:32%
-Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,unstable:48%
+Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,unstable:22%
+Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,unstable:28%
+Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,unstable:28%
+Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,unstable:34%
