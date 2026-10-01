@@ -40,6 +40,9 @@ https://shift03.isp.bg/RTVi/index.m3u8
 http://88.212.15.19/live/svoboda/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://178.134.1.158:8081/t24/index.m3u8
+#EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png",T24 (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/209/index.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="ct24-cz" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png",T24 (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36

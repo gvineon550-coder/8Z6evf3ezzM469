@@ -7,13 +7,13 @@ http://176.118.197.101/1HD/index.m3u8
 http://stream.mcquack.net/318/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://i.imgur.com/qYObfrG.png",BRIDGE (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://178.134.1.158:8081/BRIDGE/index.m3u8
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://i.imgur.com/qYObfrG.png",BRIDGE (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://194.143.148.28:8080/RT_DOC/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://i.imgur.com/JJTQq81.png",BRIDGE Classic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/272/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://i.imgur.com/JJTQq81.png",BRIDGE Classic (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.159.128:8070/Bridge_TV_Classic/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-classic" tvg-logo="https://i.imgur.com/JJTQq81.png",BRIDGE Classic (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
@@ -21,11 +21,11 @@ https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/92/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-dance" tvg-logo="https://i.imgur.com/sIW9oR4.png",BRIDGE Hits (576p)
-#EXTVLCOPT:http-user-agent=VLC/3.0.20 LibVLC/3.0.20
-http://stream.mcquack.net/320/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-dance" tvg-logo="https://i.imgur.com/sIW9oR4.png",BRIDGE Hits (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8
+http://stream.mcquack.net/320/index.m3u8
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-rock" tvg-logo="https://i.imgur.com/MHuwct2.png",BRIDGE Rock (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="classic-music" tvg-logo="https://i.imgur.com/TpXs1qA.png",Classic Music (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/312/index.m3u8
@@ -42,7 +42,7 @@ http://stream.mcquack.net/184/index.m3u8
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/317/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="hit-tv" tvg-logo="https://i.imgur.com/jl3MNPe.png",Hit HD (1080p)
-#EXTVLCOPT:http-user-agent=VLC/3.0.20 LibVLC/3.0.20
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/363/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
