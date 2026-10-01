@@ -1,54 +1,55 @@
 {
-  "date": "2026-10-01T00:26:03",
+  "date": "2026-10-01T06:24:26",
   "method": "counter v4 — оценка за СУТКИ (check × 4/день, 4 UA на мёртвых)",
   "accuracy": "±3%",
   "check_runs_per_day": 4,
   "ua_per_dead_channel": 4,
   "real_data": {
-    "total_in_all_cleaned": 928,
+    "total_in_all_cleaned": 950,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 627,
-      "dead": 296,
-      "unstable": 3,
+      "ok": 632,
+      "dead": 298,
+      "unstable": 4,
       "filtered": 1
     },
-    "ffprobe_updated_24h": 463,
+    "ffprobe_updated_24h": 486,
     "rejected_reasons": {
-      "dead": 296,
-      "dead_detail:ffprobe": 43,
+      "dead": 302,
+      "dead_detail:ffprobe": 42,
       "dead_detail:html": 1,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 162,
-      "dead_detail:http_404": 14,
-      "dead_detail:timeout": 75,
+      "dead_detail:http_404": 15,
+      "dead_detail:http_503": 1,
+      "dead_detail:timeout": 80,
       "shortener": 1,
-      "unstable": 4
+      "unstable": 5
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 627,
-      "dead_channels": 296,
-      "live_requests": 689,
-      "dead_requests": 1184,
+      "live_channels": 632,
+      "dead_channels": 298,
+      "live_requests": 695,
+      "dead_requests": 1192,
       "breakdown": {
-        "timeout": 75,
-        "http_code": 177,
-        "ffprobe_fail": 43,
+        "timeout": 80,
+        "http_code": 179,
+        "ffprobe_fail": 42,
         "empty_html_small_unknown": 1,
         "ua_count": 4
       },
-      "total": 1873
+      "total": 1887
     },
     "http_checker_per_day": {
       "runs": 4,
-      "total": 7492,
-      "note": "1873 × 4 запуска/сутки"
+      "total": 7548,
+      "note": "1887 × 4 запуска/сутки"
     },
     "ffprobe": {
-      "entries_24h": 463,
-      "requests": 926,
+      "entries_24h": 486,
+      "requests": 972,
       "note": "2 запроса на ffprobe-запуск"
     },
     "logo_head": {
@@ -58,6 +59,6 @@
     "cleaner": 8,
     "dashboard_other_repo": 480,
     "misc": 5,
-    "TOTAL_per_day": 8911
+    "TOTAL_per_day": 9013
   }
 }

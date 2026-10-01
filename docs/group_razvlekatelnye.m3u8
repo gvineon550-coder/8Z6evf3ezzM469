@@ -17,6 +17,9 @@ http://stream.mcquack.net/181/index.m3u8
 #EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="Friday.ru@SD" tvg-logo="https://i.imgur.com/UfmlXxe.png",Friday! (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://flussonic.linkintel.ru/Pyatnica/index.m3u8
+#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="Friday.ru@SD" tvg-logo="https://i.imgur.com/UfmlXxe.png",Friday! (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://31.148.5.241/kanal_16/index.m3u8
 #EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="FridayInternational.ru@Kazakhstan" tvg-logo="https://i.imgur.com/UfmlXxe.png",Friday! International Kazakhstan (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/bolshaya_pyatnica/mono.m3u8?token=onlinetv
@@ -59,9 +62,6 @@ http://217.114.191.150/Subbota/index.m3u8
 #EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="super" tvg-logo="https://i.imgur.com/nsk8PpB.png",Subbota! HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/269/index.m3u8
-#EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="super" tvg-logo="https://i.imgur.com/nsk8PpB.png",Subbota! SD (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://46.32.176.50/subbota/index.m3u8
 #EXTINF:-1 group-title="🎪 Развлекательные" tvg-id="teledom" tvg-logo="https://i.imgur.com/vceJmuk.png",TeleDom
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://iam-profi.ru/hls-live/livepkgr/_definst_/liveevent/td720.m3u8

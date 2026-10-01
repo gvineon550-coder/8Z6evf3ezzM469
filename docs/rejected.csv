@@ -4,14 +4,13 @@ name,group,url,reason
 360° Новости,,https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/index.m3u8,dead:ffprobe
 Channel 5 International (576i),,https://cdn4.skygo.mn/live/disk1/Channel_5/HLSv3-FTA/Channel_5.m3u8,dead:ffprobe
 Groznyj,,https://balancer.facecast.io/evacoder_hls_hi/UUMLQVAYVlZyH14GRENQVV0G/2/720-3.m3u8,dead:ffprobe
-Kongress TV (1080p),,https://live-3.otcnet.ru/congresstv/index.m3u8,dead:ffprobe
 Kongress TV (1080p),,https://stitch.teletarget.ru/api/v1/hls/504/158/index.m3u8,dead:ffprobe
 Moskva 24 (1080p),,https://stream.smotrim.ru/hls/givc8/playlist.m3u8?entity=channel&id=798&sign=37881ef2e289f062ceff0dca6c24dc58,dead:ffprobe
 Novorossiya TV (1080p) [Geo-blocked],,http://31.131.139.253:9002/novoros/index.m3u8,dead:ffprobe
 Oplot TV (1080p) [Geo-blocked],,http://31.131.139.253:9002/oplot_hd/index.m3u8,dead:ffprobe
 Rossiya 1 Vainah (576i),,https://live.chechensoft.ru/vainahtv/ngrp:vaynahtv_all/playlist.m3u8,dead:ffprobe
-RT Balkan (1080p),,https://rt-srb.rttv.com/dvr/rtbalkan/playlist.m3u8,dead:ffprobe
 RT Balkan (1080p),,https://rt-srb.rttv.com/live/rtbalkan/playlist.m3u8,dead:ffprobe
+RT Balkan (1080p),,https://rt-srb.rttv.com/dvr/rtbalkan/playlist.m3u8,dead:ffprobe
 RT en Espanol (576p),,https://streaming.thestream.cyou/live/46.m3u8,dead:ffprobe
 Russia-1 HD (1080p),,http://176.118.197.101/RossiyaHD/index.m3u8,dead:ffprobe
 Russia-K HD (1080p),,https://live.smotrim.ru/vgtrk/0/kultura-hd/index.m3u8,dead:ffprobe
@@ -220,13 +219,17 @@ TNT HD (1080p),,http://45.153.24.78/TNT/index.m3u8,dead:http_404
 TNT4 (576p),,http://176.118.197.101/TNT4/index.m3u8,dead:http_404
 TV1000 Russian Kino Global,,http://213.91.179.28:8000/play/a0bx,dead:http_404
 Vkus (576p),,http://178.134.1.158:8081/vkus/index.m3u8,dead:http_404
+Zhivi! (576p),,https://fs.uplink.kz/zhivi/mono.m3u8?token=onlinetv,dead:http_404
+Kongress TV (1080p),,https://live-3.otcnet.ru/congresstv/index.m3u8,dead:http_503
 Afontovo,,https://stream.afontovo.ru/hd.m3u8,dead:timeout
 Bolt (576p),,http://hls127.freeott.top:8080/Bolt/video.m3u8,dead:timeout
+BRIDGE Hits (576p),,http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8,dead:timeout
 Channel 8 (576p),,http://hls127.freeott.top:8080/8_KANAL/video.m3u8,dead:timeout
 Channel One (576p),,http://45.145.32.13:20440/pervyj_kanal/index.m3u8?token=test,dead:timeout
 Detskiy (576p),,http://45.145.32.13:20440/unikum/index.m3u8?token=test,dead:timeout
 Detvora+ (1080p),,https://cdn.rostelekom-tv.xyz/live/WAYU4PTJ_VVz4wAQ.m3u8,dead:timeout
 Dikij (576p),,http://hls127.freeott.top:8080/Dikiy/video.m3u8,dead:timeout
+Extreme Sports Channel (576p),,http://46.32.176.50/extremesport/index.m3u8,dead:timeout
 Fon Music (1080p),,http://hls127.freeott.top:8080/TNT_MUSIC_HD/video.m3u8,dead:timeout
 Football (576p),,http://hls127.freeott.top:8080/Football/video.m3u8,dead:timeout
 Hit HD (1080p),,http://hls127.freeott.top:8080/XitHD/video.m3u8,dead:timeout
@@ -237,9 +240,11 @@ Kinoseriya (1080p),,http://hls127.freeott.top:8080/Kinoseriya_HD/video.m3u8,dead
 Kluch (576p),,http://hls127.freeott.top:8080/Kluch/video.m3u8,dead:timeout
 Kukhnya TV (576p),,http://hls127.freeott.top:8080/Kuhnya_TV/video.m3u8,dead:timeout
 Maidan (576p),,http://hls127.freeott.top:8080/Maydan/video.m3u8,dead:timeout
+MCM Top (576p),,http://46.32.176.50/mcmtop/index.m3u8,dead:timeout
 MMA-TV.com (576p),,http://45.145.32.13:20440/mmatv/index.m3u8?token=test,dead:timeout
 Mosfilm Gold Collection (576p),,http://hls127.freeott.top:8080/Mosfilm/video.m3u8,dead:timeout
 Moskva 24 (576p),,http://45.145.32.13:20440/moskva24/index.m3u8?token=test,dead:timeout
+Muz-TV (576p),,http://46.32.176.50/muztv/index.m3u8,dead:timeout
 Muz-TV (576p),,http://185.71.81.6:8080/20/index.m3u8,dead:timeout
 Muz-TV (576p),,http://hls127.freeott.top:8080/MUZ_TV/video.m3u8,dead:timeout
 Nashe Lubimoe Kino (576p),,http://hls127.freeott.top:8080/Lubimoe_Kino/video.m3u8,dead:timeout
@@ -264,11 +269,12 @@ Setanta Sports 2,,http://158.101.222.193:88/georgia_play.php?id=setanta_sports_p
 Shanson TV (576p),,http://hls127.freeott.top:8080/Shanson_Tv/video.m3u8,dead:timeout
 Shot TV (576p),,http://hls127.freeott.top:8080/SHOT_TV/video.m3u8,dead:timeout
 Solnce (576p),,http://31.148.48.15/Solnce/index.m3u8,dead:timeout
+Solnce (576p),,http://46.32.176.50/solnce/index.m3u8,dead:timeout
 Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,dead:timeout
 Spas (576p),,http://hls127.freeott.top:8080/Spas/video.m3u8,dead:timeout
 STS Love (576p),,http://hls127.freeott.top:8080/CTC-LOVE/video.m3u8,dead:timeout
+Subbota! SD (576p),,http://46.32.176.50/subbota/index.m3u8,dead:timeout
 Teatr (576p),,http://hls127.freeott.top:8080/Teatr/video.m3u8,dead:timeout
-TNT International (480p),,http://91.228.35.249:8001/1:0:1:6a7:3138:13e:820000:0:0:0:,dead:timeout
 Tochka RF (1080p),,http://45.145.32.13:20440/hdl/index.m3u8?token=test,dead:timeout
 Top Secret (576p),,http://hls127.freeott.top:8080/Sovershenno_Sekretno/video.m3u8,dead:timeout
 Travel+Adventure (576p),,http://45.145.32.13:20440/travel_adventure/index.m3u8?token=test,dead:timeout
@@ -296,7 +302,8 @@ Zvezda Plus (576p),,http://45.145.32.13:20440/zvezdaplus/index.m3u8?token=test,d
 Смайл ТВ,,https://5f05e059699ae.streamlock.net/WEB_Smilik/ngrp:Smilik.stream-adaptive/playlist.m3u8,dead:timeout
 ТВК 24 (576p),,https://air.tvk6.ru/tvk24/playlist.m3u8,dead:timeout
 RT HD (1080p),,https://wisewatchoott.wiseplayout.com/RT/master.m3u8,shortener
-Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,unstable:22%
-Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,unstable:28%
-Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,unstable:28%
-Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,unstable:34%
+Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,unstable:24%
+TNT International (480p),,http://91.228.35.249:8001/1:0:1:6a7:3138:13e:820000:0:0:0:,unstable:29%
+Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,unstable:30%
+Шансон ТВ (512p) [Geo-blocked],,http://hls.shansontv.cdnvideo.ru/shansontv/shansontv.sdp/playlist.m3u8,unstable:30%
+Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,unstable:36%
