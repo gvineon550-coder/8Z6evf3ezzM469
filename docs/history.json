@@ -397,5 +397,15 @@
     "dead": 302,
     "merged": 639,
     "epg": 628
+  },
+  {
+    "date": "2026-10-01 12:23",
+    "total": 915,
+    "ok": 627,
+    "filtered": 0,
+    "unstable": 3,
+    "dead": 285,
+    "merged": 624,
+    "epg": 613
   }
 ]
