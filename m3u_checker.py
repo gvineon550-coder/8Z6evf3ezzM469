@@ -1,25 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-M3U Checker v27 — ffprobe + whitelist + soft-uptime + UA-per-URL + возвращён logos.json.
+M3U Checker v28 — ffprobe + whitelist + soft-uptime + UA-per-URL + EPG-fix.
 
-Что нового относительно v25:
-  • clean_extinf сохраняет ВСЕ атрибуты EXTINF (tvg-name, catchup, ...)
-  • save_uptime: URL не удаляется сразу, а помечается missing; удаление
-    только после UPTIME_MISSING_MAX пропусков подряд (обратная совместимость
-    со старым форматом uptime.json сохранена)
-  • в итоговый плейлист пишется тот User-Agent, через который поток
-    реально открылся (а не всегда wink)
-  • get_quality_for_url смотрит и в свежий кэш текущего запуска
-  • каналы iptv-org с closed=true не резолвятся в ID
-  • координаты/город погоды вынесены в аргументы
-  • [v27] SQLite: индекс по ts + vacuum() в конце запуска
-  • [v27] SQLite хранит UA для URL, из кэша отдаётся тот же UA
-  • [v27] fetch_weather: URL-encode имени города
-  • [v27] пустые URL не попадают в all_urls (и не создают мусор в uptime)
-  • [v27] ffprobe_check принимает UA, использует сработавший (кроме 'cached')
-  • [v27] _download_json без кастомного UA (CDN отдаёт охотнее)
-  • [v27-fix] логично: логотипы берём из logos.json (в channels.json их нет)
+Что нового относительно v27:
+  • [v28] resolve_epg_id: tvg-id ставится только если он ТОЧНО валиден
+  • [v28] Если tvg-id невалиден — удаляется полностью (не подтягивается чужая программа)
+  • [v28] Дополнительная проверка через EPG_MAP['icons']
+  • [v28] Плюсовые версии (+2/+4/+7) не матчатся с базовым каналом
 """
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -139,7 +127,6 @@ IPTV_ORG_URLS_CHANNELS = [
     'https://raw.githubusercontent.com/iptv-org/api/master/channels.json',
 ]
 IPTV_ORG_CHANNELS_CACHE = '_cache_sources/iptv_org_channels.json'
-# [v27-fix] логотипы берём из отдельного файла (в channels.json их нет)
 IPTV_ORG_URLS_LOGOS = [
     'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/logos.json',
     'https://cdn.jsdelivr.net/gh/iptv-org/api@master/logos.json',
@@ -154,7 +141,7 @@ EPG_URLS = [
     'https://iptvx.one/epg/epg_lite.xml.gz',
 ]
 EPG_CACHE = 'docs/epg_map.json'
-EPG_CACHE_VERSION = 17
+EPG_CACHE_VERSION = 18  # [v28] бампнули — формат кэша не изменился, но логика resolve другая
 EPG_TTL_DAYS = 7
 
 QUALITY_CACHE = 'docs/quality.json'
@@ -198,7 +185,8 @@ CATEGORIES = {}
 FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}}
 IPTV_IDS = {'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}, 'closed': set()}
-EPG_MAP = {'by_name': {}, 'by_translit': {}, 'by_prefix': {}, 'icons': {}}
+# [v28] добавили id_to_name для проверки валидности tvg-id
+EPG_MAP = {'by_name': {}, 'by_translit': {}, 'by_prefix': {}, 'icons': {}, 'id_to_name': {}}
 LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
               'from_translit': 0, 'from_epg_icon': 0, 'from_prefix': 0,
               'from_txt': 0, 'none': 0}
@@ -227,7 +215,7 @@ WEATHER_HTML = '🌡️ <span class="hide-mobile">—</span>'
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# ЛОГИРОВАНИЕ И БАЗОВЫЕ УТИЛИТЫ
+# ЛОГИРОВАНИЕ
 # ═══════════════════════════════════════════════════════════════════════
 def setup_logging(path, quiet):
     log.setLevel(logging.DEBUG)
@@ -540,7 +528,6 @@ def save_ffprobe_cache(path, current_urls):
 # FFPROBE
 # ═══════════════════════════════════════════════════════════════════════
 def ffprobe_check(url, ua=None):
-    """Принимает UA. Значение 'cached' не должно сюда попадать — вызывающий фильтрует."""
     if not HAS_FFPROBE:
         FFPROBE_STATS['skipped'] += 1
         return None, None
@@ -628,11 +615,6 @@ def is_migayushchiy(url):
 # SQLITE КЭШ HTTP
 # ═══════════════════════════════════════════════════════════════════════
 class UrlCache:
-    """
-    Хранит UA вместе с записью. get() возвращает (ok, ua) или None.
-    Есть индекс по ts и метод vacuum().
-    """
-
     def __init__(self, path, ttl):
         self.ttl = ttl
         self.lock = threading.Lock()
@@ -654,7 +636,6 @@ class UrlCache:
         self.conn.commit()
 
     def get(self, url, kind):
-        """Возвращает (ok, ua) или None."""
         if not self.enabled:
             return None
         with self.lock:
@@ -678,7 +659,6 @@ class UrlCache:
             self.conn.commit()
 
     def vacuum(self):
-        """Чистит старые записи и уплотняет БД."""
         if not self.enabled:
             return
         with self.lock:
@@ -724,7 +704,6 @@ def load_sources_config(path):
 # IPTV-ORG
 # ═══════════════════════════════════════════════════════════════════════
 def _download_json(urls, cache_path):
-    """Без кастомного UA — CDN отдаёт охотнее."""
     os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
     if os.path.isfile(cache_path):
@@ -763,7 +742,6 @@ def _add_to_prefix_map(prefix_map, prefix, value):
 
 
 def load_iptv_org():
-    """channels.json + logos.json (в channels.json логотипов нет)."""
     global IPTV_LOGOS, IPTV_IDS
     if CFG.no_iptv_logos:
         emit("База iptv-org: отключено")
@@ -798,7 +776,6 @@ def load_iptv_org():
             names.append(an)
         id_to_names[cid] = names
 
-    # Выбираем лучший логотип (по ширине) для каждого id
     by_id_raw = {}
     for logo in logos:
         if not isinstance(logo, dict):
@@ -856,6 +833,15 @@ def load_iptv_org():
 # ═══════════════════════════════════════════════════════════════════════
 # EPG
 # ═══════════════════════════════════════════════════════════════════════
+def _build_id_to_name(by_name):
+    """[v28] Обратный словарь: EPG-id → нормализованное имя."""
+    out = {}
+    for name, cid in by_name.items():
+        if cid not in out:
+            out[cid] = name
+    return out
+
+
 def download_epg_map():
     global EPG_MAP
     if os.path.isfile(EPG_CACHE):
@@ -869,6 +855,8 @@ def download_epg_map():
                 EPG_MAP['by_translit'] = cached.get('by_translit', {})
                 EPG_MAP['by_prefix'] = cached.get('by_prefix', {})
                 EPG_MAP['icons'] = cached.get('icons', {})
+                # [v28] строим id_to_name
+                EPG_MAP['id_to_name'] = _build_id_to_name(EPG_MAP['by_name'])
                 emit(f"  EPG: из кэша v{cached_ver} {len(EPG_MAP['by_name'])} имён")
                 return
         except Exception:
@@ -922,6 +910,7 @@ def download_epg_map():
             EPG_MAP['by_translit'] = by_translit
             EPG_MAP['by_prefix'] = by_prefix
             EPG_MAP['icons'] = icons
+            EPG_MAP['id_to_name'] = _build_id_to_name(by_name)
             emit(f"  EPG: {len(by_name)} имён, {len(icons)} icon")
 
             os.makedirs(os.path.dirname(EPG_CACHE) or '.', exist_ok=True)
@@ -997,7 +986,6 @@ _ATTR_RE = re.compile(r'([a-zA-Z][\w-]*)="([^"]*)"')
 
 
 def clean_extinf(line):
-    """Сохраняет dur, name и все key="value" атрибуты в исходном порядке."""
     dm = re.match(r'#EXTINF:\s*(-?\d+)', line)
     dur = dm.group(1) if dm else '-1'
     nm = get_name(line)
@@ -1216,7 +1204,6 @@ def _check_stream(url):
 
 
 def check_stream(url, cache):
-    """Возвращает (ok, ua_name_or_'cached', elapsed, reason, quality)."""
     cached = cache.get(url, 'stream')
     if cached is not None:
         ok, ua = cached
@@ -1337,26 +1324,74 @@ def resolve_iptv_org_id(extinf, original_tvg_id):
 
 
 def resolve_epg_id(extinf):
+    """
+    [v28] Возвращает EPG-id, но только если он ТОЧНО соответствует имени канала.
+    Иначе — удаляем tvg-id (плеер не подтянет чужую программу).
+    """
     if not EPG_MAP['by_name'] and not EPG_MAP['by_translit']:
         return None
+
     name = get_name(extinf)
     if not name:
         return None
     k = normalize_name_v2(name)
-    if k:
-        cid = EPG_MAP['by_name'].get(k)
-        if cid:
-            return cid
+    if not k:
+        return None
+
+    # Шаг 1 — валидация исходного tvg-id
+    original = get_tvg_id(extinf)
+    if original:
+        # 1a. Если tvg-id есть в иконках EPG — он точно валидный, оставляем
+        if original in EPG_MAP.get('icons', {}):
+            return original
+        # 1b. Проверяем, что имя под этим id в EPG совпадает с именем канала
+        epg_name_for_id = EPG_MAP.get('id_to_name', {}).get(original)
+        if epg_name_for_id:
+            if epg_name_for_id == k:
+                return original
+            # Допускаем вхождение, но не для плюсовых версий
+            if _safe_name_match(k, epg_name_for_id):
+                return original
+
+    # Шаг 2 — ищем по имени
+    cid = EPG_MAP['by_name'].get(k)
+    if cid:
+        return cid
     kt = normalize_name_translit(name)
     if kt:
         cid = EPG_MAP['by_translit'].get(kt)
         if cid:
             return cid
-    if k:
-        cid = _pick_prefix_match(EPG_MAP.get('by_prefix', {}), make_prefix(k))
-        if cid:
-            return cid
+    cid = _pick_prefix_match(EPG_MAP.get('by_prefix', {}), make_prefix(k))
+    if cid:
+        return cid
+
+    # Шаг 3 — ничего не подошло
     return None
+
+
+def _safe_name_match(a, b):
+    """
+    [v28] Проверяет, что имена a и b описывают один канал.
+    Не допускает матч, если у одного есть плюсовая версия (+2/+4/+7), а у другого нет.
+    """
+    if not a or not b:
+        return False
+    # Извлекаем числовые "плюсовые" суффиксы
+    num_a = re.search(r'\b(\d{1,2})\b', a)
+    num_b = re.search(r'\b(\d{1,2})\b', b)
+    if num_a and num_b:
+        # Оба с числом — должны совпадать точно
+        return a == b
+    if num_a or num_b:
+        # Один с числом, другой без — не совпадение (это +2/+4/+7)
+        return False
+    # Без чисел — допускаем вхождение только если разница невелика
+    if a == b:
+        return True
+    shorter, longer = (a, b) if len(a) < len(b) else (b, a)
+    # Допускаем вхождение только если разница не более 4 символов
+    return len(longer) - len(shorter) <= 4 and shorter in longer
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -1395,7 +1430,6 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
                 if len(REJECTED) < REJECTED_LIMIT:
                     REJECTED.append((name, group, url, f'unstable:{pct}%'))
             return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None, None
-        # передаём сработавший UA в ffprobe; 'cached' — не UA, подменяем
         if CFG.ffprobe:
             ff_ua = ua if ua and ua != 'cached' else DEFAULT_UA
             ff_ok, ff_info = ffprobe_check(url, ua=ff_ua)
@@ -1421,9 +1455,10 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     logo, logo_src = resolve_logo(extinf, url, txt_logos, cache,
                                    iptv_org_id, epg_id)
     extinf = set_logo_in_extinf(extinf, logo)
+    # [v28] ставим tvg-id только если он валиден, иначе удаляем полностью
     if epg_id:
         extinf = set_tvg_id_in_extinf(extinf, epg_id)
-    elif not original_tvg_id:
+    else:
         extinf = remove_tvg_id_from_extinf(extinf)
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
@@ -1494,9 +1529,10 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             epg_id = resolve_epg_id(extinf)
             logo, _ = resolve_logo(extinf, url, txt_logos, cache, iptv_org_id, epg_id)
             extinf = set_logo_in_extinf(extinf, logo)
+            # [v28] ставим tvg-id только если валиден
             if epg_id:
                 extinf = set_tvg_id_in_extinf(extinf, epg_id)
-            elif not original_tvg_id:
+            else:
                 extinf = remove_tvg_id_from_extinf(extinf)
             extinf = set_group_in_extinf(extinf, add_emoji(categorize(extinf, url, label)))
             out.append((i, extinf, url))
@@ -2976,7 +3012,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v27</b>"]
+    lines = ["<b>M3U Check v28</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
