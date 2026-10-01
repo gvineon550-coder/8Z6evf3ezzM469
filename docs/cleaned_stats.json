@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-09-30T23:11:29+00:00",
+  "generated_at_utc": "2026-10-01T05:13:18+00:00",
   "total_sources_ok": 2,
-  "duration_sec": 0.2,
+  "duration_sec": 0.1,
   "strip_trackers": true,
   "header_saved": "#EXTM3U url-tvg=\"http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH\"",
   "directives_kept": 14,
@@ -10,9 +10,9 @@
     {
       "name": "iptv_org_ru",
       "type": "url",
-      "raw": 857,
-      "kept": 731,
-      "rejected": 126,
+      "raw": 880,
+      "kept": 753,
+      "rejected": 127,
       "whitelisted": 7
     },
     {
@@ -25,12 +25,12 @@
     }
   ],
   "totals": {
-    "raw": 1054,
-    "kept": 928,
-    "rejected": 126
+    "raw": 1077,
+    "kept": 950,
+    "rejected": 127
   },
   "reasons": {
-    "banned_name": 58,
+    "banned_name": 59,
     "blocked_domain": 67,
     "multicast": 1
   }

@@ -125,3 +125,4 @@ iptv_org_ru,Baby Time (576p),http://str2.iptvhd.ru:8080/Baby_TV/index.m3u8,banne
 iptv_org_ru,STS kids HD (1080p),http://str2.iptvhd.ru:8080/sts_kids_hd/index.m3u8,banned_name
 iptv_org_ru,Carousel (576p),http://88.212.15.19/live/test_karusel/playlist.m3u8,banned_name
 iptv_org_ru,6 TV Gorlovka (720p) [Geo-blocked],http://91.214.48.158:4022/udp/224.2.2.4:10000,multicast
+iptv_org_ru,Carousel (576p),http://31.148.5.241/kanal_8/index.m3u8,banned_name
