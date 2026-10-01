@@ -20,7 +20,7 @@ http://stream.mcquack.net/178/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl-hd" tvg-logo="https://i.imgur.com/pwxT0ON.png",KHL Prime (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/khl_prime/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD" tvg-logo="https://i.imgur.com/QhdxNsB.png",MMA-TV.com (576p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-logo="https://i.imgur.com/QhdxNsB.png",MMA-TV.com (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png",Okko Futbol (1080p)
@@ -29,7 +29,7 @@ http://stream.mcquack.net/491/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png",Okko Futbol (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.124.179.122:8080/Setanta1/index.m3u8
-#EXTINF:-1 group-title="⚽ Спорт" tvg-id="OkkoPrajmSport.ru@SD" tvg-logo="https://i.imgur.com/kQq5DMU.png",Okko Prajm Sport (1080p)
+#EXTINF:-1 group-title="⚽ Спорт" tvg-logo="https://i.imgur.com/kQq5DMU.png",Okko Prajm Sport (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/493/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-sport" tvg-logo="https://i.imgur.com/SYOaOQc.png",Okko Sport (1080p)
