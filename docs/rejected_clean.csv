@@ -2,77 +2,112 @@
 iptv_org_ru,Ani (576p),http://46.32.176.50/anitv/index.m3u8,banned_name
 iptv_org_ru,Ani (576p),http://stream.mcquack.net/306/index.m3u8,banned_name
 iptv_org_ru,Auto Plus,https://stream8.cinerama.uz/1036/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Blokbaster HD (1080p),http://stream.mcquack.net/364/index.m3u8,blocked_url
+iptv_org_ru,Bolt (576p),http://hls127.freeott.top:8080/Bolt/video.m3u8,blocked_url
 iptv_org_ru,Carousel (720p),http://185.37.150.46/Karusel/index.m3u8,banned_name
 iptv_org_ru,Carousel (576p),https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8,banned_name
 iptv_org_ru,Carousel SD (576p),http://stream.mcquack.net/120/index.m3u8,banned_name
+iptv_org_ru,Channel 8 (576p),http://hls127.freeott.top:8080/8_KANAL/video.m3u8,blocked_url
 iptv_org_ru,Channel One HD (720p),https://stream8.cinerama.uz/1214/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Cinema,https://stream8.cinerama.uz/1227/tracks-v1a1/mono.m3u8,blocked_domain
-iptv_org_ru,Da Vinci (576p),http://hls127.freeott.top:8080/Da_Vinci_Learning/video.m3u8,banned_name
+iptv_org_ru,Da Vinci (576p),http://hls127.freeott.top:8080/Da_Vinci_Learning/video.m3u8,blocked_url
 iptv_org_ru,Da Vinci (576p),http://stream.mcquack.net/238/index.m3u8,banned_name
 iptv_org_ru,Da Vinci,https://stream8.cinerama.uz/1231/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Dikij (576p),http://hls127.freeott.top:8080/Dikiy/video.m3u8,blocked_url
 iptv_org_ru,Doctor (576i),https://stream8.cinerama.uz/1409/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Dom kino,https://stream8.cinerama.uz/1054/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Dorama,https://stream8.cinerama.uz/1273/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Drive (576i),https://stream8.cinerama.uz/1421/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Fashion&LifeStyle (1080p),http://stream.mcquack.net/119/index.m3u8,banned_name
+iptv_org_ru,Fon Music (1080p),http://hls127.freeott.top:8080/TNT_MUSIC_HD/video.m3u8,blocked_url
+iptv_org_ru,Football (576p),http://hls127.freeott.top:8080/Football/video.m3u8,blocked_url
 iptv_org_ru,Glazami Turista (576i),https://stream8.cinerama.uz/1423/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Gulli Girl (720p),https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Gulli Girl (576p),http://stream.mcquack.net/305/index.m3u8,banned_name
 iptv_org_ru,Gulli Girl (576p),https://live-3.otcnet.ru/GulliGirl/index.m3u8,banned_name
+iptv_org_ru,Hit HD (1080p),http://hls127.freeott.top:8080/XitHD/video.m3u8,blocked_url
 iptv_org_ru,Indiyskoye Kino,https://stream8.cinerama.uz/1060/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Insayt TV (2160p),https://stream8.cinerama.uz/1416/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Istoriya (576p),http://hls127.freeott.top:8080/Istoriya/video.m3u8,blocked_url
 iptv_org_ru,KinoHit,https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Kinopokaz,https://stream8.cinerama.uz/1057/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Kinopokaz HD (1080p),http://hls127.freeott.top:8080/Kinopokaz_HD/video.m3u8,blocked_url
 iptv_org_ru,Kinopremyera,https://stream8.cinerama.uz/1207/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Kinoseriya (1080p),http://hls127.freeott.top:8080/Kinoseriya_HD/video.m3u8,blocked_url
 iptv_org_ru,Kinosvidanie,https://stream8.cinerama.uz/1203/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Kluch (576p),http://hls127.freeott.top:8080/Kluch/video.m3u8,blocked_url
+iptv_org_ru,Kukhnya TV (576p),http://hls127.freeott.top:8080/Kuhnya_TV/video.m3u8,blocked_url
+iptv_org_ru,Maidan (576p),http://hls127.freeott.top:8080/Maydan/video.m3u8,blocked_url
 iptv_org_ru,Mir,https://stream8.cinerama.uz/1218/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Mir 24,https://stream8.cinerama.uz/1219/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,MMA-TV.com,https://stream8.cinerama.uz/1226/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Mosfilm Gold Collection (576p),http://hls127.freeott.top:8080/Mosfilm/video.m3u8,blocked_url
 iptv_org_ru,Mult (576p),http://stream.mcquack.net/232/index.m3u8,banned_name
-iptv_org_ru,Mult i muzyka (576p),http://hls127.freeott.top:8080/Mult_Muzika/video.m3u8,banned_name
+iptv_org_ru,Mult i muzyka (576p),http://hls127.freeott.top:8080/Mult_Muzika/video.m3u8,blocked_url
 iptv_org_ru,Mult i muzyka (576p),http://stream.mcquack.net/82/index.m3u8,banned_name
 iptv_org_ru,Multilandia,https://stream8.cinerama.uz/1440/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Muz-TV (576p),http://hls127.freeott.top:8080/MUZ_TV/video.m3u8,blocked_url
 iptv_org_ru,Muz-TV,https://stream8.cinerama.uz/1200/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Muzyka Pervogo,https://stream8.cinerama.uz/1201/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Nashe Lubimoe Kino (576p),http://hls127.freeott.top:8080/Lubimoe_Kino/video.m3u8,blocked_url
+iptv_org_ru,Nashe Novoe Kino (1080p),http://hls127.freeott.top:8080/Nashe_Novoe_Kino_HD/video.m3u8,blocked_url
 iptv_org_ru,Nashe Novoe Kino,https://stream8.cinerama.uz/1051/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,National Geographic Wild (1080p),http://hls127.freeott.top:8080/Nat_Geo_Wild_SD/video.m3u8,blocked_url
 iptv_org_ru,Nick Jr. (576p),http://stream.mcquack.net/220/index.m3u8,banned_name
 iptv_org_ru,Nick Jr. (576p),https://stream8.cinerama.uz/1501/playlist.m3u8,blocked_domain
 iptv_org_ru,Nickelodeon (576p),http://stream.mcquack.net/443/index.m3u8,banned_name
 iptv_org_ru,Nicktoons CIS (1080p),https://stream8.cinerama.uz/1502/playlist.m3u8,blocked_domain
+iptv_org_ru,Nostalgia (576p),http://hls127.freeott.top:8080/Nostalgiya/video.m3u8,blocked_url
+iptv_org_ru,NST (576p),http://hls127.freeott.top:8080/HCTV/video.m3u8,blocked_url
 iptv_org_ru,NTV,https://stream8.cinerama.uz/1023/tracks-v1a1/mono.m3u8,blocked_domain
-iptv_org_ru,NTV Style (576p),http://hls127.freeott.top:8080/NTV_STIL_TV/video.m3u8,banned_name
+iptv_org_ru,NTV Law (576p),http://hls127.freeott.top:8080/NTV_PRAVO_TV/video.m3u8,blocked_url
+iptv_org_ru,NTV Style (576p),http://hls127.freeott.top:8080/NTV_STIL_TV/video.m3u8,blocked_url
 iptv_org_ru,NTV Vitrina (720p),https://cdn.ntv.ru/vitrina/index.m3u8,banned_name
+iptv_org_ru,Ocean-TV (576p),http://hls127.freeott.top:8080/Ocean_TV/video.m3u8,blocked_url
 iptv_org_ru,Ohotnik i rybolov (576i),https://stream8.cinerama.uz/1413/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Okhota i rybalka,https://stream8.cinerama.uz/1038/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Ostrosyuzhetnoye HD (1080p),http://stream.mcquack.net/214/index.m3u8,blocked_url
+iptv_org_ru,Pro Lyubov (1080p),http://hls127.freeott.top:8080/ProLubovHD/video.m3u8,blocked_url
+iptv_org_ru,RBK-TV SD (576p),http://hls127.freeott.top:8080/RBK/video.m3u8,blocked_url
 iptv_org_ru,Retro,https://stream8.cinerama.uz/1047/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Rodnoe Kino,https://stream8.cinerama.uz/1052/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,RT HD (1080p),https://wisewatchoott.wiseplayout.com/RT/master.m3u8,blocked_url
 iptv_org_ru,RU.TV,https://stream8.cinerama.uz/1202/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,RU.TV Kids (720p),https://rutvkids.ru/live/efir/index.m3u8,banned_name
 iptv_org_ru,Russia-1,https://stream8.cinerama.uz/1020/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Russia-24,https://stream8.cinerama.uz/1021/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Russkiy Bestseller (576p),http://stream.mcquack.net/208/index.m3u8,banned_name
 iptv_org_ru,Ryzhiy (576i),https://stream8.cinerama.uz/1407/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Shanson TV (576p),http://hls127.freeott.top:8080/Shanson_Tv/video.m3u8,blocked_url
 iptv_org_ru,Shopping Live (720p),https://nonmirya7cc.a.trbcdn.net/livemaster/tzrz5_sazlypl5ot.smil/playlist.m3u8,banned_name
 iptv_org_ru,Shopping Live (576p) [Not 24/7],http://serv30.vintera.tv:8081/shoppinglive/shoppinglive_stream/playlist.m3u8,banned_name
-iptv_org_ru,STS kids (576p),http://hls127.freeott.top:8080/STS_Kids/video.m3u8,banned_name
+iptv_org_ru,Shot TV (576p),http://hls127.freeott.top:8080/SHOT_TV/video.m3u8,blocked_url
+iptv_org_ru,Spas (576p),http://hls127.freeott.top:8080/Spas/video.m3u8,blocked_url
+iptv_org_ru,STS kids (576p),http://hls127.freeott.top:8080/STS_Kids/video.m3u8,blocked_url
 iptv_org_ru,STS kids (576p),http://stream.mcquack.net/197/index.m3u8,banned_name
+iptv_org_ru,STS Love (576p),http://hls127.freeott.top:8080/CTC-LOVE/video.m3u8,blocked_url
 iptv_org_ru,SuperGeroi (1080p),http://31.148.48.15/Malish_TV/index.m3u8,banned_name
 iptv_org_ru,SuperGeroi (576p),http://109.94.1.3:8080/132/index.m3u8,banned_name
 iptv_org_ru,T24,https://stream8.cinerama.uz/1037/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Teatr (576p),http://hls127.freeott.top:8080/Teatr/video.m3u8,blocked_url
 iptv_org_ru,Telecafe,https://stream8.cinerama.uz/1035/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,TiJi (576p),http://stream.mcquack.net/111/index.m3u8,banned_name
 iptv_org_ru,TiJi (576p),https://live-3.otcnet.ru/Tiji/index.m3u8,banned_name
 iptv_org_ru,TiJi (576p),https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,TNV-Planet,https://stream8.cinerama.uz/1062/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Top Secret (576p),http://hls127.freeott.top:8080/Sovershenno_Sekretno/video.m3u8,blocked_url
+iptv_org_ru,TV Centr (576p),http://hls127.freeott.top:8080/Tv_Center/video.m3u8,blocked_url
 iptv_org_ru,Detskiy (576p),https://stream8.cinerama.uz/1033/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,V gostyakh u skazki (576p),http://stream.mcquack.net/93/index.m3u8,banned_name
 iptv_org_ru,viju Nature,https://stream8.cinerama.uz/1228/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,viju TV1000 action (576p),http://stream.mcquack.net/100/index.m3u8,blocked_url
 iptv_org_ru,viju TV1000 action,https://stream8.cinerama.uz/1225/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,viju TV1000 russkoe,https://stream8.cinerama.uz/1058/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,viju TV1000 russkoe,https://stream8.cinerama.uz/1059/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,viju+ Sport,https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Vitrina TV (720p),https://live-11cinema.cdnvideo.ru/11cinema/11cinema/playlist.m3u8,banned_name
 iptv_org_ru,Zagorodnaya Zhizn,https://stream8.cinerama.uz/1044/tracks-v1a1/mono.m3u8,blocked_domain
+iptv_org_ru,Zhara (576p),http://hls127.freeott.top:8080/Zhara/video.m3u8,blocked_url
 iptv_org_ru,Zoopark (576i),https://stream8.cinerama.uz/1417/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Zvezda,https://stream8.cinerama.uz/1050/tracks-v1a1/mono.m3u8,blocked_domain
 iptv_org_ru,Ювелирочка ТВ (576p),https://live-uvelirochka.cdnvideo.ru/uvelirochka/uvelirochka_720p3/playlist.m3u8,banned_name
