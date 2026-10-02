@@ -12,7 +12,11 @@
     "(?i)\\bрезерв\\b", "(?i)\\bдубл", "(?i)\\bxxx\\b",
     "(?i)\\badult\\b", "(?i)\\bэрот", "(?i)\\bпорно",
     "(?i)\\bshop\\b", "(?i)\\bshopping\\b", "(?i)\\bteleshop\\b",
-    "(?i)\\bleomax\\b", "(?i)\\bqvc\\b", "(?i)\\bhsn\\b"
+    "(?i)\\bleomax\\b", "(?i)\\bqvc\\b", "(?i)\\bhsn\\b",
+    "(?i)\\bkinopokaz\\b",
+    "(?i)\\brt en espanol\\b",
+    "(?i)\\brt balkan\\b",
+    "(?i)\\brt international\\b"
   ],
   "name_exclude": [
     "(?i)\\b(детск|детский|kids|child|children|cartoon|мульт|мультик|малыш|baby)\\b",
@@ -23,7 +27,9 @@
     "(?i)\\b(магазин|шопинг|телегазета|телемагазин|распродаж|ювелирочка|ювелир)\\b",
     "(?i)\\b(fashion|fashion\\s*tv|fashiontv|lifestyle|beauty|glamour|home\\s*shopping|vitrina|bestseller|best\\s*sell)\\b",
     "(?i)\\bfashion&",
-    "(?i)\\bstyle\\b"
+    "(?i)\\bstyle\\b",
+    "(?i)\\b(mr\\.?\\s*bean|чип\\s*и\\s*дейл|chip[- ]?n[- ]?dale|смайлик|smilik|nicktoons|союзмультфильм|мультиландия|мультимания)\\b",
+    "(?i)\\b(lego|marvel\\s*heroes|my\\s*little\\s*pony|transformers|barbie|bratz|winx|покемон|pokemon|tom\\s*and\\s*jerry|tom\\s*\\&\\s*jerry)\\b"
   ],
   "group_exclude": [
     "(?i)^детск", "(?i)kids", "(?i)^мульт"
@@ -43,8 +49,23 @@
     "stream\\.mcquack\\.net/364/",
     "stream\\.mcquack\\.net/214/",
     "stream\\.mcquack\\.net/100/",
+    "stream\\.mcquack\\.net/64/",
     "freeott\\.top",
-    "wiseplayout\\.com"
+    "wiseplayout\\.com",
+    "clck\\.ru",
+    "bozztv\\.com",
+    "194\\.26\\.229\\.213",
+    "catcast\\.tv",
+    "73mtv\\.org",
+    "cinerama\\.uz",
+    "amtv\\.tulixcdn\\.com",
+    "45\\.159\\.74\\.22",
+    "livestream\\.usatv\\.com",
+    "us1\\.ottstream\\.live",
+    "45\\.11\\.139\\.43:8555",
+    "185\\.57\\.68\\.33",
+    "185\\.177\\.104\\.228",
+    "edge1-us-losangeles\\.picarto\\.tv"
   ],
   "url_extension_blocklist": [
     ".jpg", ".jpeg", ".png", ".gif", ".webp", ".bmp", ".svg", ".ico",
