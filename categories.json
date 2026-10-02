@@ -18,7 +18,7 @@
     { "pattern": "stream\\.mcquack\\.net/412/", "group": "Кино", "force": true },
 
     { "pattern": "fs\\.uplink\\.kz/(dom_kino|kinohit|kinokomedia|kinomix|kinopremiera|kinosemya|kinoseria|kinosvidanie|kinouzhas|eurokino|indiyskoe_kino|nashe_novoe_kino|rodnoe_kino|russkiy_illusion|mosfilm|nostalgia)", "group": "Кино", "force": true },
-    { "pattern": "fs\\.uplink\\.kz/(5_kanal|perviy_kanal_sng|mir|ntv_mir|ren|rtr_planeta|rossia_24|rossia_k|start_air|start_world|sts|sts_love|tnt4|tvc|zvezda|vremya|domashniy)", "group": "Основные", "force": true },
+    { "pattern": "fs\\.uplink\\.kz/(5_kanal|perviy_kanal_sng|mir|ntv_mir|ren|rtr_planeta|rossia_24|rossia_k|sts|sts_love|tnt4|tvc|zvezda|vremya|domashniy)", "group": "Основные", "force": true },
     { "pattern": "facecast\\.io.*UBZfFgtKB1JwTwoDERNQVGGs", "group": "Новости", "force": true },
     { "pattern": "stranafm\\.cdnvideo\\.ru", "group": "Радио", "force": true },
 
@@ -44,11 +44,11 @@
 
     { "pattern": "(?i)^ntv (series|hit)|ntv-series|ntv\\.hit", "group": "Сериалы НТВ" },
 
-    { "pattern": "(?i)(big planet|dikaya|domashnie zhivotnye|^food|foodtime|istoriya|istoki|moya planeta|moya stikhiya|^nauka\\b|^наука\\b|okhota|rybalka|rybolov|ohotnik|oruzhie|prosveshchenie|v mire zhivotnykh|usadba|zagorodnaya|zhivaya priroda|zoopark|travel\\+|telecafe|kulinar|kuhnya|lapki|pro business|otkryty mir|tochka rf|doktor|^doctor\\b|^nano\\b|^нано\\b|большая азия|надежда|открытый мир|law tv|insayt|tonus|soyuz|союз|patriot|патриот|dushevnoe|^art\\b|^art tv|avto24|viju.*(history|explore|planet|nature)|^rtg|russkiy bestseller|^zhivi|^zhivi!|national geographic|nat geo|nat-geo|viju history|^bober\\b|^бобер\\b|^бобёр\\b|remont|ремонт|dacha|дача)", "group": "Познавательные" },
+    { "pattern": "(?i)(big planet|dikaya|domashnie zhivotnye|^food|foodtime|istoriya|istoki|moya planeta|moya stikhiya|^nauka\\b|^наука\\b|okhota|rybalka|rybolov|ohotnik|oruzhie|prosveshchenie|v mire zhivotnykh|usadba|zagorodnaya|zhivaya priroda|zoopark|travel\\+|telecafe|kulinar|kuhnya|lapki|pro business|otkryty mir|tochka rf|doktor|^doctor\\b|^nano\\b|^нано\\b|большая азия|надежда|открытый мир|law tv|insayt|tonus|soyuz|союз|patriot|патриот|^art\\b|^art tv|avto24|viju.*(history|explore|planet|nature)|^rtg|russkiy bestseller|^zhivi|^zhivi!|national geographic|nat geo|nat-geo|viju history|^bober\\b|^бобер\\b|^бобёр\\b|remont|ремонт|dacha|дача)", "group": "Познавательные" },
 
     { "pattern": "(?i)(^okko ?(sport|futbol|football|basketball|tennis|hockey|mma|boxing)|prajm sport|extreme sports|khl\\b|setanta|udar|boks|futbol|futball|ufc|mma\\b|sport\\b)", "group": "Спорт" },
 
-    { "pattern": "(?i)(amedia|blokbaster|kino[- ]?tv|kinohit|kinokomed|kinomix|kinopokaz|kinopremyera|kinosem[yj]|kinoseriya|kinosvidanie|kinouzhas|dom[\\s-]*kino|domkino|evrokino|illusion|indiyskoye|india|bollywood|kapitan fantastika|komedia|komediynoe|mosfilm|nashe novoe kino|nostalgia|priklyucheniya|rodnoe kino|russkiy detektiv|russkiy roman|saphire|shokiruyushchee|star family|star cinema|^fox|fox ?$|fox |foxlife|fox life|start air|start world|tv1000|megahit|premialnoe|ostrosyuzhetnoye|^fan\\b|okko (premiere|film|movies|series|fantasy|kids|show)|^pobeda|^победа|^retro$|^retro |^ретро|tv ?2[0-9]|^cinema\\b|muzhskoe kino|nashe muzhskoe|viju.*(comedy|premiere|serial)|viju\\+? comedy|viju\\+? premiere|viju\\+? serial)", "group": "Кино" },
+    { "pattern": "(?i)(amedia|blokbaster|kino[- ]?tv|kinohit|kinokomed|kinomix|kinopokaz|kinopremyera|kinosem[yj]|kinoseriya|kinosvidanie|kinouzhas|dom[\\s-]*kino|domkino|evrokino|illusion|indiyskoye|india|bollywood|kapitan fantastika|komedia|komediynoe|mosfilm|nashe novoe kino|nostalgia|priklyucheniya|rodnoe kino|russkiy detektiv|russkiy roman|saphire|shokiruyushchee|star family|star cinema|^fox|fox ?$|fox |foxlife|fox life|start air|start world|tv1000|megahit|premialnoe|ostrosyuzhetnoye|^fan\\b|okko (premiere|film|movies|series|fantasy|kids|show)|^pobeda|^победа|^retro$|^retro |^ретро|tv ?2[0-9]|^cinema\\b|muzhskoe kino|nashe muzhskoe|viju.*(comedy|premiere|serial)|viju\\+? comedy|viju\\+? premiere|viju\\+? serial|dushevnoe)", "group": "Кино" },
 
     { "pattern": "(?i)(bridge|dancehits|europa plus|^mcm|^nashe\\b|nashe hd|^shanson|^шансон|^zhara|^жара|muz[\\s-]*soyuz|муз ?союз|^муз\\b|music|musicbox|muzyka|classic music|fon music|^hit\\b|1hd music|radio record|авторадио|retro fm|hit fm|dfm|energy|maximum|^ru$)", "group": "Музыка" },
 
