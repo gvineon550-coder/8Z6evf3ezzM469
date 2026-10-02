@@ -7,10 +7,10 @@
     "(?i)\\brutube\\b"
   ],
   "name_blocklist": [
-    "(?i)\\btest\\b", "(?i)\\bтест\\b", "(?i)\\bdemo\\b",
-    "(?i)\\bпромо\\b", "(?i)\\bpromo\\b", "(?i)\\bbackup\\b",
-    "(?i)\\bрезерв\\b", "(?i)\\bдубл", "(?i)\\bxxx\\b",
-    "(?i)\\badult\\b", "(?i)\\bэрот", "(?i)\\bпорно",
+    "(?i)\\btest\\b", "(?i)\\bС‚РµСЃС‚\\b", "(?i)\\bdemo\\b",
+    "(?i)\\bРїСЂРѕРјРѕ\\b", "(?i)\\bpromo\\b", "(?i)\\bbackup\\b",
+    "(?i)\\bСЂРµР·РµСЂРІ\\b", "(?i)\\bРґСѓР±Р»", "(?i)\\bxxx\\b",
+    "(?i)\\badult\\b", "(?i)\\bСЌСЂРѕС‚", "(?i)\\bРїРѕСЂРЅРѕ",
     "(?i)\\bshop\\b", "(?i)\\bshopping\\b", "(?i)\\bteleshop\\b",
     "(?i)\\bleomax\\b", "(?i)\\bqvc\\b", "(?i)\\bhsn\\b",
     "(?i)\\bkinopokaz\\b",
@@ -19,20 +19,20 @@
     "(?i)\\brt international\\b"
   ],
   "name_exclude": [
-    "(?i)\\b(детск|детский|kids|child|children|cartoon|мульт|мультик|малыш|baby)\\b",
-    "(?i)\\b(disney|nickelodeon|nick\\s*jr|карусель|carousel|gulli|tiji|jimjam|boomerang|cartoonito|babytv)\\b",
-    "(?i)\\b(discovery\\s*kids|baby\\s*tv|радость\\s*моя)\\b",
+    "(?i)\\b(РґРµС‚СЃРє|РґРµС‚СЃРєРёР№|kids|child|children|cartoon|РјСѓР»СЊС‚|РјСѓР»СЊС‚РёРє|РјР°Р»С‹С€|baby)\\b",
+    "(?i)\\b(disney|nickelodeon|nick\\s*jr|РєР°СЂСѓСЃРµР»СЊ|carousel|gulli|tiji|jimjam|boomerang|cartoonito|babytv)\\b",
+    "(?i)\\b(discovery\\s*kids|baby\\s*tv|СЂР°РґРѕСЃС‚СЊ\\s*РјРѕСЏ)\\b",
     "(?i)\\b(da\\s*vinci|v\\s*gostyakh\\s*u\\s*skazki|supergeroi|multilandia|mult)\\b",
     "(?i)\\b(ani)\\b",
-    "(?i)\\b(магазин|шопинг|телегазета|телемагазин|распродаж|ювелирочка|ювелир)\\b",
+    "(?i)\\b(РјР°РіР°Р·РёРЅ|С€РѕРїРёРЅРі|С‚РµР»РµРіР°Р·РµС‚Р°|С‚РµР»РµРјР°РіР°Р·РёРЅ|СЂР°СЃРїСЂРѕРґР°Р¶|СЋРІРµР»РёСЂРѕС‡РєР°|СЋРІРµР»РёСЂ)\\b",
     "(?i)\\b(fashion|fashion\\s*tv|fashiontv|lifestyle|beauty|glamour|home\\s*shopping|vitrina|bestseller|best\\s*sell)\\b",
     "(?i)\\bfashion&",
     "(?i)\\bstyle\\b",
-    "(?i)\\b(mr\\.?\\s*bean|чип\\s*и\\s*дейл|chip[- ]?n[- ]?dale|смайлик|smilik|nicktoons|союзмультфильм|мультиландия|мультимания)\\b",
-    "(?i)\\b(lego|marvel\\s*heroes|my\\s*little\\s*pony|transformers|barbie|bratz|winx|покемон|pokemon|tom\\s*and\\s*jerry|tom\\s*\\&\\s*jerry)\\b"
+    "(?i)\\b(mr\\.?\\s*bean|С‡РёРї\\s*Рё\\s*РґРµР№Р»|chip[- ]?n[- ]?dale|СЃРјР°Р№Р»РёРє|smilik|nicktoons|СЃРѕСЋР·РјСѓР»СЊС‚С„РёР»СЊРј|РјСѓР»СЊС‚РёР»Р°РЅРґРёСЏ|РјСѓР»СЊС‚РёРјР°РЅРёСЏ)\\b",
+    "(?i)\\b(lego|marvel\\s*heroes|my\\s*little\\s*pony|transformers|barbie|bratz|winx|РїРѕРєРµРјРѕРЅ|pokemon|tom\\s*and\\s*jerry|tom\\s*\\&\\s*jerry)\\b"
   ],
   "group_exclude": [
-    "(?i)^детск", "(?i)kids", "(?i)^мульт"
+    "(?i)^РґРµС‚СЃРє", "(?i)kids", "(?i)^РјСѓР»СЊС‚"
   ],
   "url_blocklist": [
     "^https?://127\\.", "^https?://0\\.0\\.0\\.0",
@@ -50,6 +50,7 @@
     "stream\\.mcquack\\.net/214/",
     "stream\\.mcquack\\.net/100/",
     "stream\\.mcquack\\.net/64/",
+    "stream\\.mcquack\\.net/362/",
     "freeott\\.top",
     "wiseplayout\\.com",
     "clck\\.ru",
