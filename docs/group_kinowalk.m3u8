@@ -422,10 +422,10 @@ http://kinowalk.hopto.org/severtv_live
 #EXTINF:-1 tvg-id="liveprointerny" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/liveprointerny_live.jpg" tvg-name="СЕМЕЙНЫЙ ПРОСМОТР LIVE" group-title="🎞️ Kinowalk",СЕМЕЙНЫЙ ПРОСМОТР LIVE
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/liveprointerny_live
-#EXTINF:-1 tvg-id="serial-tviksel" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/serialtv.jpg" tvg-name="SerialTV" group-title="🎞️ Kinowalk",Сериал UHD
+#EXTINF:-1 tvg-id="serial-hd" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/serialtv.jpg" tvg-name="SerialTV" group-title="🎞️ Kinowalk",Сериал UHD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/serialtv_live
-#EXTINF:-1 tvg-id="serial-tviksel" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/re_boot.jpg" tvg-name="Serials RE_BOOT" group-title="🎞️ Kinowalk",Сериал UHD
+#EXTINF:-1 tvg-id="serial-hd" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/re_boot.jpg" tvg-name="Serials RE_BOOT" group-title="🎞️ Kinowalk",Сериал UHD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://kinowalk.hopto.org/re_boot_live
 #EXTINF:-1 tvg-id="kinomania_stream" tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinomania_stream.png" tvg-name="Тоха Киноман" group-title="🎞️ Kinowalk",Тоха Киноман

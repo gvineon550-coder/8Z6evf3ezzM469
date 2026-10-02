@@ -8,6 +8,9 @@ https://cdn-dvr.ntv.ru/Balabol/index.m3u8
 #EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Nevskiy.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/nevski_llive.jpg",Невский
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Nevskiy/index.m3u8
+#EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="NTVSeries.ru@SD" tvg-logo="https://i.imgur.com/QdVa8tl.png",НТВ Сериал
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/301/index.m3u8
 #EXTINF:-1 group-title="🎭 Сериалы НТВ" tvg-id="Perviyotdel.ru@SD" tvg-logo="https://cdn2-static.ntv.ru/home/promo/24740/perv_otdel_llive.jpg",Первый отдел
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://cdn-dvr.ntv.ru/Perviy_otdel/index.m3u8

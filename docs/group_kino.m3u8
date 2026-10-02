@@ -94,10 +94,22 @@ http://stream.mcquack.net/202/index.m3u8
 http://stream.mcquack.net/311/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png",Дом кино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/236/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino-int" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png",Дом кино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dom_kino/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png",Дом кино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://88.212.15.19/live/test_dom_kino/playlist.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino-premium" tvg-logo="https://i.imgur.com/rJpQtvK.png",Дом кино Премиум
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/108/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino-premium" tvg-logo="https://i.imgur.com/rJpQtvK.png",Дом кино Премиум
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/dom_kino_premium/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="domkino-premium" tvg-logo="https://i.imgur.com/rJpQtvK.png",Дом кино Премиум
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://88.212.15.19/live/test_dom_kino_premium/playlist.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="dorama" tvg-logo="https://i.imgur.com/ZH5LuXU.png",Дорама
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/412/index.m3u8
@@ -106,23 +118,59 @@ http://stream.mcquack.net/412/index.m3u8
 https://fs.uplink.kz/dorama/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="evrokino" tvg-logo="https://i.imgur.com/8LPtPf6.png",Еврокино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/385/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="evrokino" tvg-logo="https://i.imgur.com/8LPtPf6.png",Еврокино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/eurokino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="indiyskoe-kino" tvg-logo="https://i.imgur.com/LL8GyCh.png",Индийское кино
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="evrokino" tvg-logo="https://i.imgur.com/8LPtPf6.png",Еврокино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://176.118.197.101/Evrokino/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="IllusionPlus.ru@SD" tvg-logo="https://i.imgur.com/9GvuHQ5.png",Иллюзион+
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://176.118.197.101/Illuzion+/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD" tvg-logo="https://i.imgur.com/LL8GyCh.png",Индийское кино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://188.113.190.12/329/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD" tvg-logo="https://i.imgur.com/LL8GyCh.png",Индийское кино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/104/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="IndiyskoyeKino.ru@SD" tvg-logo="https://i.imgur.com/LL8GyCh.png",Индийское кино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/indiyskoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinokomedia" tvg-logo="https://i.imgur.com/dVjtth0.png",Кинокомедия
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="India.ru@SD" tvg-logo="https://i.imgur.com/xDVcDOc.png",Индия
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/india/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="ginger-hd" tvg-logo="https://i.imgur.com/K3PSHiT.png",Капитан Фантастика
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/144/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinokazka" tvg-logo="https://i.imgur.com/dVjtth0.png",Кинокомедия
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/265/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinokazka" tvg-logo="https://i.imgur.com/dVjtth0.png",Кинокомедия
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinokomedia/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinomiks" tvg-logo="https://i.imgur.com/D4q2XUT.png",Киномикс
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Kinomix.ru@SD" tvg-logo="https://i.imgur.com/D4q2XUT.png",Киномикс
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://93.170.254.17/Kinomiks/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Kinomix.ru@SD" tvg-logo="https://i.imgur.com/D4q2XUT.png",Киномикс
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/133/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Kinomix.ru@SD" tvg-logo="https://i.imgur.com/D4q2XUT.png",Киномикс
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinomix/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinopremiera-hd" tvg-logo="https://i.imgur.com/s0UYT8T.png",Кинопремьера
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Kinopremyera.ru@HD" tvg-logo="https://i.imgur.com/s0UYT8T.png",Кинопремьера
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinopremiera_hd/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosvidanie" tvg-logo="https://i.imgur.com/ZRaWqxj.png",Киносвидание
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/171/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosvidanie" tvg-logo="https://i.imgur.com/ZRaWqxj.png",Киносвидание
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinosvidanie/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosemiya" tvg-logo="https://i.imgur.com/4BF5VeK.png",Киносемья
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosweet" tvg-logo="https://i.imgur.com/4BF5VeK.png",Киносемья
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/170/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinosweet" tvg-logo="https://i.imgur.com/4BF5VeK.png",Киносемья
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinosemya/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="kinoseria" tvg-logo="https://i.imgur.com/iao7zLZ.png",Киносерия
@@ -130,22 +178,52 @@ https://fs.uplink.kz/kinosemya/mono.m3u8?token=onlinetv
 https://fs.uplink.kz/kinoseria/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="kinouzhas" tvg-logo="https://i.imgur.com/mAcAAQF.png",Киноужас
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/278/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinouzhas" tvg-logo="https://i.imgur.com/mAcAAQF.png",Киноужас
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinouzhas/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="kinoxit" tvg-logo="https://i.imgur.com/Ge8vkQM.png",Кинохит
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/126/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="kinoxit" tvg-logo="https://i.imgur.com/Ge8vkQM.png",Кинохит
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/kinohit/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="mosfilm" tvg-logo="https://i.imgur.com/95Y8jb6.png",Мосфильм Золотая коллекция
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Komediynoe.ru@HD" tvg-logo="https://i.imgur.com/cEKe8XC.png",Комедийное
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/74/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Komedia.ru@SD" tvg-logo="https://i.imgur.com/VRC5juh.png",Комедия
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/68/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Komedia.ru@SD" tvg-logo="https://i.imgur.com/VRC5juh.png",Комедия
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://176.118.197.101/Komediya/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="MosfilmGoldCollection.ru@SD" tvg-logo="https://i.imgur.com/95Y8jb6.png",Мосфильм Золотая коллекция
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/369/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="MosfilmGoldCollection.ru@SD" tvg-logo="https://i.imgur.com/95Y8jb6.png",Мосфильм Золотая коллекция
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mosfilm/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="muzhskoe-kino" tvg-logo="https://i.imgur.com/8RN3tQC.png",Мужское кино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/107/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="muzhskoe-kino" tvg-logo="https://i.imgur.com/8RN3tQC.png",Мужское кино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/muzhskoe_kino/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="nashe-muzhskoe" tvg-logo="https://i.imgur.com/QRWKpmb.png",Наше мужское
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/362/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="nashe-novoe-kino" tvg-logo="https://i.imgur.com/IOxIsPj.png",Наше новое кино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/nashe_novoe_kino/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="pobeda" tvg-logo="https://i.imgur.com/4KiYSln.png",Победа
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/pobeda/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="premialnoe" tvg-logo="https://i.imgur.com/ck4aLBP.png",Премиальное
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/421/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="prikluchenia-hd" tvg-logo="https://i.imgur.com/qQ6pPPQ.png",Приключения
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/198/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="retro-tv" tvg-logo="https://i.imgur.com/p21co1w.png",Ретро
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/191/index.m3u8
@@ -154,7 +232,25 @@ http://stream.mcquack.net/191/index.m3u8
 http://176.118.197.101/Retro/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="rodnoe-kino" tvg-logo="https://i.imgur.com/H70LxoZ.png",Родное Кино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/242/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="rodnoe-kino" tvg-logo="https://i.imgur.com/H70LxoZ.png",Родное Кино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="russky-illuzion" tvg-logo="https://i.imgur.com/RlsqFN8.png",Русский Иллюзион
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="RusskiyDetektiv.ru@SD" tvg-logo="https://i.imgur.com/H3qhN8S.png",Русский детектив
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/204/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="RusskiyIllusion.ru@SD" tvg-logo="https://i.imgur.com/RlsqFN8.png",Русский Иллюзион
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/russkiy_illusion/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Russkiyroman.ru@SD" tvg-logo="https://i.imgur.com/cQN0P2B.png",Русский роман
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/266/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Russkiyroman.ru@SD" tvg-logo="https://i.imgur.com/cQN0P2B.png",Русский роман
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://vod.tuva.ru/rusroman/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Saphire.ru@SD" tvg-logo="https://i.imgur.com/NMOBvle.png",Сапфир
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://77.232.131.211/Sapfir/manifest.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="Shokiruyushchee.ru@HD" tvg-logo="https://i.imgur.com/UG63hZ0.png",Шокирующее
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/75/index.m3u8

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-02T17:34:02",
+  "date": "2026-10-02T17:44:06",
   "method": "counter v5 — прогон 1 раз в 3 дня, 4 UA на мёртвых",
   "accuracy": "±3%",
   "schedule": {
@@ -12,49 +12,48 @@
     "total_in_all_cleaned": 902,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 631,
-      "dead": 270,
+      "ok": 627,
+      "dead": 271,
       "unstable": 4,
       "filtered": 0
     },
     "ffprobe_updated_72h": 478,
     "rejected_reasons": {
-      "dead": 270,
+      "dead": 274,
       "dead_detail:ffprobe": 41,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 161,
-      "dead_detail:http_404": 13,
-      "dead_detail:http_503": 1,
-      "dead_detail:timeout": 53,
+      "dead_detail:http_404": 14,
+      "dead_detail:timeout": 57,
       "unstable": 4
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 631,
-      "dead_channels": 270,
-      "live_requests": 694,
-      "dead_requests": 1080,
+      "live_channels": 627,
+      "dead_channels": 271,
+      "live_requests": 689,
+      "dead_requests": 1084,
       "breakdown": {
-        "timeout": 53,
+        "timeout": 57,
         "http_code": 176,
         "ffprobe_fail": 41,
         "empty_html_small_unknown": 0,
         "ua_count": 4
       },
-      "total": 1774
+      "total": 1773
     },
     "http_checker_per_3days": {
-      "total": 1774,
-      "note": "1774 × 1 прогон"
+      "total": 1773,
+      "note": "1773 × 1 прогон"
     },
     "http_checker_per_day": {
-      "total": 591.3,
-      "note": "1774 ÷ 3"
+      "total": 591.0,
+      "note": "1773 ÷ 3"
     },
     "http_checker_per_month": {
-      "total": 17740.0,
-      "note": "1774 × 10"
+      "total": 17730.0,
+      "note": "1773 × 10"
     },
     "ffprobe": {
       "entries_72h": 478,
@@ -70,7 +69,7 @@
     "cleaner_per_day": 2.67,
     "dashboard_other_repo_per_day": 480,
     "misc_per_day": 5,
-    "TOTAL_per_day": 1397.7,
-    "TOTAL_per_month": 41930.0
+    "TOTAL_per_day": 1397.3,
+    "TOTAL_per_month": 41920.0
   }
 }

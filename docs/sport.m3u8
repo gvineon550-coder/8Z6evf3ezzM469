@@ -11,6 +11,18 @@ https://fs.uplink.kz/khl_prime/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="MMATVcom.ru@SD" tvg-logo="https://i.imgur.com/QhdxNsB.png",MMA-TV.com (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="OkkoPrajmSport.ru@SD" tvg-logo="https://i.imgur.com/kQq5DMU.png",Okko Прайм Спорт
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/493/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-sport" tvg-logo="https://i.imgur.com/SYOaOQc.png",Okko Спорт
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/492/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png",Okko Футбол
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/491/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="okko-football" tvg-logo="https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png",Okko Футбол
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://178.124.179.122:8080/Setanta1/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="setanta-sports" tvg-logo="https://i.imgur.com/8ANUZAu.png",Setanta Sports 1 HD
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/setanta_sports_1_hd/mono.m3u8?token=onlinetv
@@ -29,3 +41,15 @@ https://fs.uplink.kz/viju_sport/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.148.5.241/Viasat_Sport/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="box-tv" tvg-logo="https://i.imgur.com/R1UjyfX.png",Бокс ТВ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/154/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",КХЛ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/166/index.m3u8
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",КХЛ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/telekanal_khl/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="⚽ Спорт" tvg-id="kxl" tvg-logo="https://i.imgur.com/RgdHdOV.png",КХЛ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://176.118.197.101/KHL/index.m3u8
