@@ -1,63 +1,76 @@
 {
-  "date": "2026-10-02T04:37:07",
-  "method": "counter v4 — оценка за СУТКИ (check × 4/день, 4 UA на мёртвых)",
+  "date": "2026-10-02T17:34:02",
+  "method": "counter v5 — прогон 1 раз в 3 дня, 4 UA на мёртвых",
   "accuracy": "±3%",
-  "check_runs_per_day": 4,
+  "schedule": {
+    "days_between_runs": 3,
+    "runs_per_3days": 1,
+    "runs_per_day": 0.3333
+  },
   "ua_per_dead_channel": 4,
   "real_data": {
     "total_in_all_cleaned": 902,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 635,
-      "dead": 271,
+      "ok": 631,
+      "dead": 270,
       "unstable": 4,
       "filtered": 0
     },
-    "ffprobe_updated_24h": 24,
+    "ffprobe_updated_72h": 478,
     "rejected_reasons": {
-      "dead": 269,
-      "dead_detail:ffprobe": 40,
-      "dead_detail:html": 1,
+      "dead": 270,
+      "dead_detail:ffprobe": 41,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 161,
-      "dead_detail:http_404": 14,
+      "dead_detail:http_404": 13,
       "dead_detail:http_503": 1,
-      "dead_detail:timeout": 51,
+      "dead_detail:timeout": 53,
       "unstable": 4
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 635,
-      "dead_channels": 271,
-      "live_requests": 698,
-      "dead_requests": 1084,
+      "live_channels": 631,
+      "dead_channels": 270,
+      "live_requests": 694,
+      "dead_requests": 1080,
       "breakdown": {
-        "timeout": 51,
-        "http_code": 177,
-        "ffprobe_fail": 40,
-        "empty_html_small_unknown": 1,
+        "timeout": 53,
+        "http_code": 176,
+        "ffprobe_fail": 41,
+        "empty_html_small_unknown": 0,
         "ua_count": 4
       },
-      "total": 1782
+      "total": 1774
+    },
+    "http_checker_per_3days": {
+      "total": 1774,
+      "note": "1774 × 1 прогон"
     },
     "http_checker_per_day": {
-      "runs": 4,
-      "total": 7128,
-      "note": "1782 × 4 запуска/сутки"
+      "total": 591.3,
+      "note": "1774 ÷ 3"
+    },
+    "http_checker_per_month": {
+      "total": 17740.0,
+      "note": "1774 × 10"
     },
     "ffprobe": {
-      "entries_24h": 24,
-      "requests": 48,
-      "note": "2 запроса на ffprobe-запуск"
+      "entries_72h": 478,
+      "requests_per_run": 956,
+      "requests_per_day": 318.7,
+      "requests_per_month": 9560.0,
+      "note": "2 запроса на ffprobe-запись"
     },
     "logo_head": {
       "requests": 0,
       "note": "логотипы НЕ проверяются (нет --check-all-logos)"
     },
-    "cleaner": 8,
-    "dashboard_other_repo": 480,
-    "misc": 5,
-    "TOTAL_per_day": 7669
+    "cleaner_per_day": 2.67,
+    "dashboard_other_repo_per_day": 480,
+    "misc_per_day": 5,
+    "TOTAL_per_day": 1397.7,
+    "TOTAL_per_month": 41930.0
   }
 }

@@ -9,6 +9,7 @@ Kongress TV (1080p),,https://live-3.otcnet.ru/congresstv/index.m3u8,dead:ffprobe
 Moskva 24 (1080p),,https://stream.smotrim.ru/hls/givc8/playlist.m3u8?entity=channel&id=798&sign=37881ef2e289f062ceff0dca6c24dc58,dead:ffprobe
 Novorossiya TV (1080p) [Geo-blocked],,http://31.131.139.253:9002/novoros/index.m3u8,dead:ffprobe
 Oplot TV (1080p) [Geo-blocked],,http://31.131.139.253:9002/oplot_hd/index.m3u8,dead:ffprobe
+Oplot TV (1080p) [Geo-blocked],,http://31.131.141.195:8000/play/a006/index.m3u8,dead:ffprobe
 Rossiya 1 Vainah (576i),,https://live.chechensoft.ru/vainahtv/ngrp:vaynahtv_all/playlist.m3u8,dead:ffprobe
 Russia-1 HD (1080p),,http://176.118.197.101/RossiyaHD/index.m3u8,dead:ffprobe
 Russia-K HD (1080p),,https://live.smotrim.ru/vgtrk/0/kultura-hd/index.m3u8,dead:ffprobe
@@ -39,7 +40,6 @@ Vmeste-RF (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7006.m3u8,
 Три Ангела (720p),,https://hls.tv.3angels.ru/stream.m3u8,dead:ffprobe
 Шансон ТВ (576p) [Geo-blocked],,https://uiptv.do.am/1ufc/602079679/playlist.m3u8,dead:ffprobe
 Щёлковское ТВ (576p) [Not 24/7],,http://stream0.tv41.ru/live.m3u8,dead:ffprobe
-Channel One HD (720p),,https://edge1.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd,dead:html
 Радио Говорит Москва (Веб-камера) (720p),,https://video.govoritmoskva.ru/rufm/index.m3u8,dead:http_206
 .black (576p),,http://str2.iptvhd.ru:8080/Sony_Turbo/index.m3u8,dead:http_403
 .red HD (1080p),,http://str2.iptvhd.ru:8080/SET/index.m3u8,dead:http_403
@@ -206,7 +206,6 @@ Channel 12 (576p) [Geo-blocked],,https://streaming.thestream.cyou/live/7004.m3u8
 Channel 8 (576p),,http://v4.proofix.ru/okino-tv/index.m3u8,dead:http_404
 Fast&FunBox HD (1080p),,http://str2.iptvhd.ru:8080/FastFunBoxHD/index.m3u8,dead:http_404
 Match! Strana (576p),,http://ukr.ukrainske.tv/134/keytvainua/video.m3u8,dead:http_404
-Mosfilm Gold Collection (576p),,http://31.222.235.15/mosfilm/index.m3u8,dead:http_404
 National Geographic (1080p),,http://dtv.vol.net.ua/National_Geographic-HD/index.m3u8,dead:http_404
 NTV SD (576p),,http://45.153.24.78/NTV/index.m3u8,dead:http_404
 RTG int.,,http://213.91.179.28:8000/play/a0bw,dead:http_404
@@ -221,18 +220,21 @@ Channel One (576p),,http://45.153.24.78/1TV/index.m3u8,dead:http_503
 Afontovo,,https://stream.afontovo.ru/hd.m3u8,dead:timeout
 BRIDGE Classic (576p),,http://5.188.159.128:8070/Bridge_TV_Classic/index.m3u8,dead:timeout
 Channel One (576p),,http://45.145.32.13:20440/pervyj_kanal/index.m3u8?token=test,dead:timeout
+Channel One HD (720p),,https://edge1.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd,dead:timeout
 Detskiy (576p),,http://45.145.32.13:20440/unikum/index.m3u8?token=test,dead:timeout
 Detvora+ (1080p),,https://cdn.rostelekom-tv.xyz/live/WAYU4PTJ_VVz4wAQ.m3u8,dead:timeout
 Extreme Sports Channel (576p),,http://46.32.176.50/extremesport/index.m3u8,dead:timeout
 Kino 24 (720p),,http://sirius.greenhosting.ru/Kino24Ru/video.m3u8,dead:timeout
-Match! Ultra (1080p),,http://31.148.5.241/kanal_3/index.m3u8,dead:timeout
 MCM Top (576p),,http://46.32.176.50/mcmtop/index.m3u8,dead:timeout
 MMA-TV.com (576p),,http://45.145.32.13:20440/mmatv/index.m3u8?token=test,dead:timeout
+Mosfilm Gold Collection (576p),,http://31.222.235.15/mosfilm/index.m3u8,dead:timeout
 Moskva 24 (576p),,http://45.145.32.13:20440/moskva24/index.m3u8?token=test,dead:timeout
 Muz-TV (576p),,http://46.32.176.50/muztv/index.m3u8,dead:timeout
 Muz-TV (576p),,http://185.71.81.6:8080/20/index.m3u8,dead:timeout
+Muz-TV (576p),,http://31.148.5.241/kanal_20/index.m3u8,dead:timeout
 Nauka (576p),,http://45.145.32.13:20440/nauka/index.m3u8?token=test,dead:timeout
 Oplot 2 (720p) [Geo-blocked],,http://iptv.mega.net.ru:8888/Oplot_2/index.m3u8,dead:timeout
+OTR (576p),,http://31.148.5.241/kanal_9/index.m3u8,dead:timeout
 Pro100TV (576p),,https://sirius.greenhosting.ru/Pro100tvRu/video.m3u8,dead:timeout
 Radost Moya (576p),,http://31.148.48.15/Radost_moya/index.m3u8,dead:timeout
 REN TV (576p),,http://31.148.48.15/REN-TV/index.m3u8,dead:timeout
@@ -243,7 +245,6 @@ Setanta Sports 1,,http://158.101.222.193:88/georgia_play.php?id=setanta_georgia,
 Setanta Sports 2,,http://158.101.222.193:88/georgia_play.php?id=setanta_sports_plus_georgia,dead:timeout
 Solnce (576p),,http://31.148.48.15/Solnce/index.m3u8,dead:timeout
 Solnce (576p),,http://46.32.176.50/solnce/index.m3u8,dead:timeout
-Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,dead:timeout
 Subbota! SD (576p),,http://46.32.176.50/subbota/index.m3u8,dead:timeout
 TNT International (480p),,http://91.228.35.249:8001/1:0:1:6a7:3138:13e:820000:0:0:0:,dead:timeout
 Tochka RF (1080p),,http://45.145.32.13:20440/hdl/index.m3u8?token=test,dead:timeout
@@ -268,7 +269,7 @@ Zvezda Plus (576p),,http://45.145.32.13:20440/zvezdaplus/index.m3u8?token=test,d
 Смайл ТВ,,https://5f05e059699ae.streamlock.net/WEB_Smilik/ngrp:Smilik.stream-adaptive/playlist.m3u8,dead:timeout
 Тамыр (Уфа),,https://bstonline.mediacdn.ru/cdn/tamyr/playlist.m3u8,dead:timeout
 ТВК 24 (576p),,https://air.tvk6.ru/tvk24/playlist.m3u8,dead:timeout
-Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,unstable:32%
-Russia-K (576p),,http://31.148.5.241/kanal_6/index.m3u8,unstable:40%
-Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,unstable:45%
-Vkus (576p),,http://178.134.1.158:8081/vkus/index.m3u8,unstable:8%
+Vkus (576p),,http://178.134.1.158:8081/vkus/index.m3u8,unstable:10%
+Kinosvidanie (576p),,http://5.188.159.128:8070/kinosvidanie/index.m3u8,unstable:33%
+Kinopremyera (1080p),,http://5.188.159.128:8070/KINOPREMIERA/index.m3u8,unstable:46%
+Soyuzny (576p),,https://souzny.mediacdn.ru/cdn/souzny/playlist.m3u8,unstable:49%

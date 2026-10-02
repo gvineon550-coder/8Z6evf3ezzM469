@@ -1,7 +1,4 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="1hd" tvg-logo="https://i.imgur.com/4Ww7CsR.png",1HD Music Television (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://176.118.197.101/1HD/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-hd" tvg-logo="https://i.imgur.com/qYObfrG.png",BRIDGE (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/318/index.m3u8
@@ -41,33 +38,12 @@ https://fs.uplink.kz/europa_plus/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="europa-plus-tv" tvg-logo="https://i.imgur.com/GLc4qrc.png",Europa Plus TV SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/184/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="tnt-music" tvg-logo="https://i.imgur.com/tXABQDE.png",Fon Music (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/317/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="hit-tv" tvg-logo="https://i.imgur.com/jl3MNPe.png",Hit HD (1080p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/363/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/86/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/muz_tv/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://31.148.5.241/kanal_20/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="la-minor" tvg-logo="https://i.imgur.com/RH6hTWG.png",Muzyka Live (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/303/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzyka-pervogo" tvg-logo="https://i.imgur.com/U0vKj3P.png",Muzyka Pervogo (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/153/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzyka-pervogo" tvg-logo="https://i.imgur.com/U0vKj3P.png",Muzyka Pervogo (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://88.212.15.19/live/test_muzyka_pervogo/playlist.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="nashe-music-hd" tvg-logo="https://i.imgur.com/KO8dhi9.png",Nashe HD (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/217/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD",RU.TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/RuTV/mono.m3u8?token=onlinetv
@@ -77,18 +53,21 @@ http://stream.mcquack.net/109/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="russian-musicbox" tvg-logo="https://i.imgur.com/ZkJ3Rh9.png",Russian MusicBox (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/319/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="ShansonTV.ru@SD" tvg-logo="https://i.imgur.com/Fk4sd8t.png",Shanson TV (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://catchup.videoline.ru/shanson/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="ShansonTV.ru@SD" tvg-logo="https://i.imgur.com/Fk4sd8t.png",Shanson TV (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://fs.uplink.kz/shanson/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="zhara" tvg-logo="https://images.restream-media.net/images/d6k2670mifea4e56t850.png",Zhara (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="zhara" tvg-logo="https://images.restream-media.net/images/d6k2670mifea4e56t850.png",Жара ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/386/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="zhara" tvg-logo="https://images.restream-media.net/images/d6k2670mifea4e56t850.png",Zhara (576p)
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="zhara" tvg-logo="https://images.restream-media.net/images/d6k2670mifea4e56t850.png",Жара ТВ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zhara/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="muzsoyuz" tvg-logo="https://i.imgur.com/Puk1Bhx.png",Муз союз (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz2/muzsoyuz.6fw0-58xp-acts-esy0/playlist.m3u8
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="tnt-music" tvg-logo="https://i.imgur.com/tXABQDE.png",ТНТ Music
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/317/index.m3u8
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="shanson-tv" tvg-logo="https://i.imgur.com/Fk4sd8t.png",Шансон ТВ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://catchup.videoline.ru/shanson/index.m3u8
+#EXTINF:-1 group-title="🎵 Музыка" tvg-id="shanson-tv" tvg-logo="https://i.imgur.com/Fk4sd8t.png",Шансон ТВ
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://fs.uplink.kz/shanson/mono.m3u8?token=onlinetv

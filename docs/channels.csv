@@ -1,135 +1,94 @@
 name,group,quality,tvg_id,uptime_pct,uptime_samples,logo,url
-Boks TV (576p),⚽ Спорт,SD,box-tv,100,38,https://i.imgur.com/R1UjyfX.png,http://stream.mcquack.net/154/index.m3u8
-Extreme Sports Channel (576p),⚽ Спорт,SD,extreme-sports,100,38,https://i.imgur.com/m7IC01U.png,https://fs.uplink.kz/extreme_sports/mono.m3u8?token=onlinetv
-KHL (576p),⚽ Спорт,SD,kxl,100,38,https://i.imgur.com/RgdHdOV.png,http://stream.mcquack.net/166/index.m3u8
-KHL (576p),⚽ Спорт,SD,kxl,100,38,https://i.imgur.com/RgdHdOV.png,https://fs.uplink.kz/telekanal_khl/mono.m3u8?token=onlinetv
-KHL (576p),⚽ Спорт,SD,kxl,100,38,https://i.imgur.com/RgdHdOV.png,http://176.118.197.101/KHL/index.m3u8
-KHL Prime (1080p),⚽ Спорт,HD,kxl-hd,100,38,https://i.imgur.com/pwxT0ON.png,http://stream.mcquack.net/178/index.m3u8
-KHL Prime (1080p),⚽ Спорт,HD,kxl-hd,100,38,https://i.imgur.com/pwxT0ON.png,https://fs.uplink.kz/khl_prime/mono.m3u8?token=onlinetv
-MMA-TV.com (576p),⚽ Спорт,SD,MMATVcom.ru@SD,100,38,https://i.imgur.com/QhdxNsB.png,https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv
-Okko Futbol (1080p),⚽ Спорт,HD,okko-football,100,38,https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png,http://stream.mcquack.net/491/index.m3u8
-Okko Futbol (576p),⚽ Спорт,SD,okko-football,97,38,https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png,http://178.124.179.122:8080/Setanta1/index.m3u8
-Okko Prajm Sport (1080p),⚽ Спорт,HD,OkkoPrajmSport.ru@SD,100,38,https://i.imgur.com/kQq5DMU.png,http://stream.mcquack.net/493/index.m3u8
-Okko Sport (1080p),⚽ Спорт,HD,okko-sport,100,38,https://i.imgur.com/SYOaOQc.png,http://stream.mcquack.net/492/index.m3u8
-Setanta Sports 1 HD,⚽ Спорт,HD,setanta-sports,100,38,https://i.imgur.com/8ANUZAu.png,https://fs.uplink.kz/setanta_sports_1_hd/mono.m3u8?token=onlinetv
-UDAR (1080p),⚽ Спорт,HD,ufc,100,38,https://mt.media/upload/iblock/2b3/2b3cf99141bf7f99cda377eec62ec084.png,http://5.188.159.128:8070/udar/index.m3u8
-UDAR (1080p),⚽ Спорт,HD,ufc,100,38,https://mt.media/upload/iblock/2b3/2b3cf99141bf7f99cda377eec62ec084.png,http://stream.mcquack.net/279/index.m3u8
-viju+ Sport (576p),⚽ Спорт,HD,viasat-sport,100,38,https://i.imgur.com/fXESG0l.png,http://stream.mcquack.net/333/index.m3u8
-viju+ Sport (576p),⚽ Спорт,SD,viasat-sport,100,38,https://i.imgur.com/fXESG0l.png,https://fs.uplink.kz/viju_sport/mono.m3u8?token=onlinetv
-viju+ Sport (576p),⚽ Спорт,SD,viasat-sport,100,5,https://i.imgur.com/fXESG0l.png,http://31.148.5.241/Viasat_Sport/index.m3u8
-Channel 5 (576p),🇷🇺 Основные,SD,5-am,80,5,https://i.imgur.com/SyXVJdM.png,http://31.148.5.241/kanal_5/index.m3u8
-Channel 5 International (576p),🇷🇺 Основные,SD,piaty-int,97,38,https://i.imgur.com/8VKc2Ya.png,http://178.134.1.158:8081/5channel/index.m3u8
-Channel 5 International (576p),🇷🇺 Основные,SD,piaty-int,100,38,https://i.imgur.com/8VKc2Ya.png,https://fs.uplink.kz/5_kanal/mono.m3u8?token=onlinetv
-Channel One (576p),🇷🇺 Основные,SD,one-il,100,38,https://i.imgur.com/2xglh33.png,http://178.217.49.7/1/index.m3u8
-Channel One (576p),🇷🇺 Основные,SD,one-il,80,5,https://i.imgur.com/2xglh33.png,http://31.148.5.241/kanal_1/index.m3u8
-Channel One CIS (576p),🇷🇺 Основные,SD,ChannelOneCIS.ru@SD,100,38,https://i.imgur.com/RUSX0rX.png,https://fs.uplink.kz/perviy_kanal_sng/mono.m3u8?token=onlinetv
-Channel One Europa (480p),🇷🇺 Основные,SD,ChannelOne.ru@Europa,100,38,https://i.imgur.com/vm5sJHP.png,https://streaming.thestream.cyou/live/210-req_offset_28000000-req_window_0-1k_v5.m3u8
-Che! (576p),🇷🇺 Основные,SD,che,100,38,https://i.imgur.com/ZOcDGpB.png,http://flussonic.linkintel.ru/che/index.m3u8
-Che! (576p),🇷🇺 Основные,SD,che,100,38,https://i.imgur.com/ZOcDGpB.png,http://176.118.197.101/Che/index.m3u8
-Domashniy (576p),🇷🇺 Основные,SD,Domashniy.ru@SD,100,38,https://i.imgur.com/WaLwOyt.jpeg,https://fs.uplink.kz/domashniy/mono.m3u8?token=onlinetv
-Domashniy (576p),🇷🇺 Основные,SD,Domashniy.ru@SD,100,5,https://i.imgur.com/WaLwOyt.jpeg,http://31.148.5.241/kanal_14/index.m3u8
-Domashniy SD (576p),🇷🇺 Основные,HD,Domashniy.ru@SD,100,38,https://i.imgur.com/WaLwOyt.jpeg,http://stream.mcquack.net/227/index.m3u8
-Match! Arena (576p),🇷🇺 Основные,HD,match-arena,100,38,https://i.imgur.com/udTzwzu.png,http://stream.mcquack.net/163/index.m3u8
-Match! Boets (576p),🇷🇺 Основные,HD,match-boets,100,38,https://i.imgur.com/DogOkA4.png,http://stream.mcquack.net/112/index.m3u8
-Match! Igra (576p),🇷🇺 Основные,HD,match-igra,100,38,https://i.imgur.com/5XWpF19.png,http://stream.mcquack.net/188/index.m3u8
-Match! Planeta (576p),🇷🇺 Основные,SD,match-planeta,100,38,https://i.imgur.com/vhyMb9D.png,https://fs.uplink.kz/match_planeta/mono.m3u8?token=onlinetv
-Match! Strana (576p),🇷🇺 Основные,HD,match-nash-sport,100,38,https://i.imgur.com/X02s2UE.png,http://stream.mcquack.net/143/index.m3u8
-Match! Ultra (576p),🇷🇺 Основные,SD,match4-hu,100,38,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://flussonic.linkintel.ru/match/index.m3u8
-Match! Ultra (576p),🇷🇺 Основные,SD,match4-hu,100,38,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,https://fs.uplink.kz/match/mono.m3u8?token=onlinetv
-Match! Ultra (576p),🇷🇺 Основные,SD,match4-hu,100,38,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://45.132.87.69:8080/match/index.m3u8
-Match! Ultra (576p),🇷🇺 Основные,SD,match4-hu,100,38,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://tv.tuva.ru/machtv/index.m3u8
-Match! Ultra (720p),🇷🇺 Основные,HD,match4-hu,100,38,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://stream.mcquack.net/169/index.m3u8
-Mir (576p),🇷🇺 Основные,SD,mir,100,38,https://i.imgur.com/AqWaJT8.png,http://45.153.24.78/MIR/index.m3u8
-Mir (576p),🇷🇺 Основные,SD,mir,100,38,https://i.imgur.com/AqWaJT8.png,https://tvcdn01.oktv.kz/tv/mir/index.m3u8
-Mir (576p),🇷🇺 Основные,SD,mir,100,38,https://i.imgur.com/AqWaJT8.png,https://fs.uplink.kz/mir/mono.m3u8?token=onlinetv
-Mir (576p),🇷🇺 Основные,SD,mir,80,5,https://i.imgur.com/AqWaJT8.png,http://31.148.5.241/kanal_18/index.m3u8
-Mir 24 (576p),🇷🇺 Основные,HD,mir-24,100,38,https://i.imgur.com/dj9c8Yd.png,http://5.188.159.128:8070/mir_24/index.m3u8
-Mir HD (1080p) [Not 24/7],🇷🇺 Основные,HD,mir,100,38,https://i.imgur.com/AqWaJT8.png,http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mirtv_2500/playlist.m3u8
-Mir Kazakhstan (576p),🇷🇺 Основные,SD,Mir.ru@Kazakhstan,100,38,,http://tvcdn01.esilnet.kz/tv/mir/index.m3u8
-Mir Seriala (576p),🇷🇺 Основные,SD,mir-seriala,100,38,https://i.imgur.com/uzj7wVp.png,http://176.118.197.101/MirSeriala/index.m3u8
-Moskva 24 (576p),🇷🇺 Основные,SD,moskva-24,100,38,https://i.imgur.com/gXbUMVy.png,https://stream.smotrim.ru/hls2/moscow_24/playlist_3.m3u8
-Moskva. Doveriye (576p),🇷🇺 Основные,SD,MoskvaDoveriye.ru@SD,100,38,https://i.imgur.com/QDqDQzt.png,https://stream.smotrim.ru/hls2/doverie/playlist_3.m3u8
-NTV (576p),🇷🇺 Основные,SD,ntv,100,38,https://www.mongolsat.mn/assets/img/channel/38.png,http://176.118.197.101/NTV/index.m3u8
-NTV (576p),🇷🇺 Основные,SD,ntv,100,5,https://www.mongolsat.mn/assets/img/channel/38.png,http://31.148.5.241/kanal_4/index.m3u8
-NTV HD (1080p),🇷🇺 Основные,HD,ntv,100,38,https://www.mongolsat.mn/assets/img/channel/38.png,http://flussonic.linkintel.ru/ntv/index.m3u8
-NTV Mir (576p),🇷🇺 Основные,SD,ntv-mir,100,38,https://i.imgur.com/pUcV46F.png,http://5.188.159.128:8070/ntvmir_TV/index.m3u8
-NTV Mir (576p),🇷🇺 Основные,SD,ntv-mir,100,38,https://i.imgur.com/pUcV46F.png,https://fs.uplink.kz/ntv_mir/mono.m3u8?token=onlinetv
-NTV SD (576p),🇷🇺 Основные,HD,ntv,100,38,https://www.mongolsat.mn/assets/img/channel/38.png,https://cdn.ntv.ru/ntv-spb/index.m3u8
-NTV-Hit (576p),🇷🇺 Основные,SD,ntv-xit,87,38,https://i.imgur.com/FfKBvz5.png,http://178.134.1.158:8081/ntvhit/index.m3u8
-O! (576p),🇷🇺 Основные,SD,o_,100,38,https://i.imgur.com/b2pgPW8.png,http://stream.mcquack.net/60/index.m3u8
-O! International (576p),🇷🇺 Основные,SD,O.ru@International,100,38,,https://fs.uplink.kz/o/mono.m3u8?token=onlinetv
-OTR (576p),🇷🇺 Основные,HD,otr,100,38,https://upload.wikimedia.org/wikipedia/commons/9/9c/OTR_2025_logo.svg,http://flussonic.linkintel.ru/otr/index.m3u8
-OTR (576p),🇷🇺 Основные,SD,otr,100,5,https://upload.wikimedia.org/wikipedia/commons/9/9c/OTR_2025_logo.svg,http://31.148.5.241/kanal_9/index.m3u8
-Patriot (720p),🇷🇺 Основные,HD,patriot,100,38,https://patriotkanal.ru/assets/cached/2025/02/resize/264_112_q100_patriot-only-logo.png,https://stream.smotrim.ru/hls2/static/playlist_4.m3u8
-REN TV (576p),🇷🇺 Основные,SD,rentv,100,38,https://iks-online.net/storage/2018/07/REN-TV-HD.png,http://185.23.80.23:8080/REN/index.m3u8
-REN TV (576p),🇷🇺 Основные,SD,rentv,100,38,https://iks-online.net/storage/2018/07/REN-TV-HD.png,http://flussonic.linkintel.ru/ren_tv/index.m3u8
-REN TV (576p),🇷🇺 Основные,SD,rentv,100,5,https://iks-online.net/storage/2018/07/REN-TV-HD.png,http://31.148.5.241/kanal_11/index.m3u8
-REN TV International (576p),🇷🇺 Основные,SD,rentv-int,97,38,https://i.imgur.com/gBjk9oF.png,http://178.134.1.158:8081/RENTV/index.m3u8
-REN TV International (576p),🇷🇺 Основные,SD,rentv-int,100,38,https://i.imgur.com/gBjk9oF.png,https://fs.uplink.kz/ren/mono.m3u8?token=onlinetv
-RTR-Planeta (576p),🇷🇺 Основные,SD,RTRPlaneta.ru@CIS,100,38,https://i.imgur.com/0YEahxs.png,https://fs.uplink.kz/rtr_planeta/mono.m3u8?token=onlinetv
-Russia-1 (576p),🇷🇺 Основные,SD,rossia1,100,5,https://i.imgur.com/6BVWk8z.png,http://31.148.5.241/kanal_2/index.m3u8
-Russia-1 HD (1080p),🇷🇺 Основные,HD,rossia1,97,38,https://i.imgur.com/6BVWk8z.png,https://stream.smotrim.ru/hls2/russia_hd/playlist_6.m3u8
-Russia-1 HD (1080p),🇷🇺 Основные,HD,rossia1,100,38,https://i.imgur.com/6BVWk8z.png,https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
-Russia-1 SD (576p),🇷🇺 Основные,SD,rossia1,92,38,https://i.imgur.com/6BVWk8z.png,http://109.207.243.18/2/index.m3u8
-Russia-24,🇷🇺 Основные,HD,24news-ua,100,38,https://i.imgur.com/tTCuczU.png,http://dmi3y-tv.online/hls/smotrim/T2/CH_RUSSIA24_INT.m3u8
-Russia-24 (576p),🇷🇺 Основные,SD,24news-ua,100,38,https://i.imgur.com/tTCuczU.png,https://fs.uplink.kz/rossia_24/mono.m3u8?token=onlinetv
-Russia-24 (576p),🇷🇺 Основные,SD,24news-ua,100,38,https://i.imgur.com/tTCuczU.png,http://176.118.197.101/Rossiya24/index.m3u8
-Russia-24 (576p),🇷🇺 Основные,SD,24news-ua,80,5,https://i.imgur.com/tTCuczU.png,http://31.148.5.241/kanal_7/index.m3u8
-Russia-24 (720p),🇷🇺 Основные,HD,24news-ua,100,38,https://i.imgur.com/tTCuczU.png,https://stream.smotrim.ru/hls2/russia24nl_smotrim/playlist_5.m3u8
-Russia-24 HD (1080p),🇷🇺 Основные,HD,24news-ua,100,38,https://i.imgur.com/tTCuczU.png,http://77.232.131.211/Rossiya24/index.m3u8
-Russia-24 HD (1080p),🇷🇺 Основные,HD,24news-ua,100,38,https://i.imgur.com/tTCuczU.png,https://live.smotrim.ru/vgtrk/0/russia24-hd/index.m3u8
-Russia-K (576p),🇷🇺 Основные,SD,kultura,100,38,https://i.imgur.com/6PqxuhF.png,http://stream.mcquack.net/229/index.m3u8
-Russia-K (576p),🇷🇺 Основные,SD,kultura,100,38,https://i.imgur.com/6PqxuhF.png,https://fs.uplink.kz/rossia_k/mono.m3u8?token=onlinetv
-Russia-K HD (1080p),🇷🇺 Основные,HD,kultura,100,38,https://i.imgur.com/6PqxuhF.png,https://stream.smotrim.ru/hls2/russia_k/playlist_5.m3u8
-Sankt-Peterburg HD (720p),🇷🇺 Основные,HD,sankt-peterburg,100,38,https://i.imgur.com/9At4oG7.png,https://stream.smotrim.ru/hls2/ext_spbtv/playlist_5.m3u8
-Solnce (576p),🇷🇺 Основные,SD,Solnce.ru@SD,100,38,https://i.imgur.com/HCefxaK.png,http://217.114.191.150/Solnce/index.m3u8
-Solnce (576p),🇷🇺 Основные,SD,Solnce.ru@SD,100,38,https://i.imgur.com/HCefxaK.png,http://stream.mcquack.net/118/index.m3u8
-Solovyov Live (1080p),🇷🇺 Основные,HD,SolovyovLive.ru@SD,100,38,https://images.iptv.rt.ru/images/d7efm08mifeaf9jacb30.png,https://stream.smotrim.ru/hls2/solovievlive/playlist_6.m3u8
-Spas (576p),🇷🇺 Основные,SD,spas,100,38,https://i.imgur.com/yY39nMg.png,https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8
-Spas (576p),🇷🇺 Основные,SD,spas,100,5,https://i.imgur.com/yY39nMg.png,http://31.148.5.241/kanal_12/index.m3u8
-START Air (576p),🇷🇺 Основные,SD,start-air,100,38,https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png,https://fs.uplink.kz/start_air/mono.m3u8?token=onlinetv
-START World (576p),🇷🇺 Основные,SD,start-world,100,38,https://images.iptv.rt.ru/images/d6iist8mifeailfopupg.png,https://fs.uplink.kz/start_world/mono.m3u8?token=onlinetv
-STS (576p),🇷🇺 Основные,SD,sts,100,38,https://i.imgur.com/ilUzAeb.png,http://tshift-1.telecoma.tv/sts/index.m3u8
-STS (576p),🇷🇺 Основные,SD,sts,100,38,https://i.imgur.com/ilUzAeb.png,http://flussonic.linkintel.ru/sts/index.m3u8
-STS (576p),🇷🇺 Основные,SD,sts,100,38,https://i.imgur.com/ilUzAeb.png,https://fs.uplink.kz/sts/mono.m3u8?token=onlinetv
-STS (576p),🇷🇺 Основные,SD,sts,100,38,https://i.imgur.com/ilUzAeb.png,http://176.118.197.101/CTC/index.m3u8
-STS (576p),🇷🇺 Основные,SD,sts,100,5,https://i.imgur.com/ilUzAeb.png,http://31.148.5.241/kanal_13/index.m3u8
-STS HD (1080p),🇷🇺 Основные,HD,sts,100,38,https://i.imgur.com/ilUzAeb.png,http://stream.mcquack.net/138/index.m3u8
-STS International (576p),🇷🇺 Основные,SD,sts-int,97,38,https://i.imgur.com/mwiC0RG.png,http://178.134.1.158:8081/CTC/index.m3u8
-STS Love (576p),🇷🇺 Основные,SD,sts-love,100,38,https://upload.wikimedia.org/wikipedia/ru/thumb/3/35/%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg/1920px-%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg.png,http://stream.mcquack.net/183/index.m3u8
-STS Love (576p),🇷🇺 Основные,SD,sts-love,100,38,https://upload.wikimedia.org/wikipedia/ru/thumb/3/35/%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg/1920px-%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg.png,https://fs.uplink.kz/sts_love/mono.m3u8?token=onlinetv
-TNT (576p),🇷🇺 Основные,SD,tnt,100,38,https://i.imgur.com/T4A6rEI.png,http://flussonic.linkintel.ru/tnt/index.m3u8
-TNT (576p),🇷🇺 Основные,SD,tnt,100,38,https://i.imgur.com/T4A6rEI.png,http://176.118.197.101/THT/index.m3u8
-TNT (576p),🇷🇺 Основные,SD,tnt,100,5,https://i.imgur.com/T4A6rEI.png,http://31.148.5.241/kanal_19/index.m3u8
-TNT International Belarus (1080p),🇷🇺 Основные,HD,TNTInternational.ru@Belarus,100,38,https://i.imgur.com/l0RGbRI.png,http://05cea6e8.ucomist.net/iptv/VK7YCHHWNDD8XC/15230/index.m3u8
-TNT SD (576p),🇷🇺 Основные,HD,tnt,100,38,https://i.imgur.com/T4A6rEI.png,http://stream.mcquack.net/135/index.m3u8
-TNT4 International (576p),🇷🇺 Основные,SD,tnt4-international,100,38,https://i.imgur.com/gBokU5i.png,https://fs.uplink.kz/tnt4/mono.m3u8?token=onlinetv
-TV Centr (576p),🇷🇺 Основные,SD,TVCentr.ru@SD,100,38,https://i.imgur.com/5fxFaup.png,http://flussonic.linkintel.ru/tvc/index.m3u8
-TV Centr (576p),🇷🇺 Основные,SD,TVCentr.ru@SD,100,38,https://i.imgur.com/5fxFaup.png,https://fs.uplink.kz/tvc/mono.m3u8?token=onlinetv
-TV Centr (576p),🇷🇺 Основные,SD,TVCentr.ru@SD,100,5,https://i.imgur.com/5fxFaup.png,http://31.148.5.241/kanal_10/index.m3u8
-TV-3 (576p),🇷🇺 Основные,SD,3-plus-ee,97,38,https://i.imgur.com/YRiulCU.png,http://178.124.179.122:8080/TB-3/index.m3u8
-TV-3 (576p),🇷🇺 Основные,SD,3-plus-ee,100,38,https://i.imgur.com/YRiulCU.png,http://flussonic.linkintel.ru/tv-3/index.m3u8
-TV-3 (576p),🇷🇺 Основные,SD,3-plus-ee,100,38,https://i.imgur.com/YRiulCU.png,http://176.118.197.101/TB3/index.m3u8
-TV-3 (576p),🇷🇺 Основные,SD,3-plus-ee,100,5,https://i.imgur.com/YRiulCU.png,http://31.148.5.241/kanal_15/index.m3u8
-TV-3 HD (1080p),🇷🇺 Основные,HD,3-plus-ee,100,38,https://i.imgur.com/YRiulCU.png,http://stream.mcquack.net/136/index.m3u8
-Vesti FM (720p),🇷🇺 Основные,HD,VestiFM.ru@HD,100,38,https://i.imgur.com/ZBHqSZj.png,https://stream.smotrim.ru/hls2/vesti_fm/playlist_4.m3u8
-Vremya (576p),🇷🇺 Основные,SD,vremia,100,38,https://i.imgur.com/jZlj3ga.png,http://stream.mcquack.net/237/index.m3u8
-Vremya (576p),🇷🇺 Основные,SD,vremia,100,38,https://i.imgur.com/jZlj3ga.png,https://fs.uplink.kz/vremya/mono.m3u8?token=onlinetv
-Vremya (576p),🇷🇺 Основные,SD,vremia,100,38,https://i.imgur.com/jZlj3ga.png,http://88.212.15.19/live/test_vremya/playlist.m3u8
-Zvezda (1080p),🇷🇺 Основные,HD,zvezda,95,38,https://i.imgur.com/4PAcpfM.png,http://51.158.144.33:2021/zvezda/index.m3u8
-Zvezda (576p),🇷🇺 Основные,SD,zvezda,100,38,https://i.imgur.com/4PAcpfM.png,http://flussonic.linkintel.ru/zvezda/index.m3u8
-Zvezda (576p),🇷🇺 Основные,SD,zvezda,100,38,https://i.imgur.com/4PAcpfM.png,https://fs.uplink.kz/zvezda/mono.m3u8?token=onlinetv
-Zvezda (576p),🇷🇺 Основные,SD,zvezda,100,5,https://i.imgur.com/4PAcpfM.png,http://31.148.5.241/kanal_17/index.m3u8
-Zvezda HD (1080p) [Not 24/7],🇷🇺 Основные,HD,zvezda,100,38,https://i.imgur.com/4PAcpfM.png,https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8
-Мир 24 (1080p),🇷🇺 Основные,HD,mir-24,100,38,https://i.imgur.com/dj9c8Yd.png,http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mir24_2500/playlist.m3u8
-Мир Белагорья (720p) [Geo-blocked],🇷🇺 Основные,HD,mir-belogoria,100,38,https://mirbelogorya.ru/images/logo/Logo_Mir_Belogorya_purple_gradient.png,http://mirbelogorya.ru:8080/mirbelogorya/index.m3u8
-Солнце (576p),🇷🇺 Основные,SD,solnce,100,38,https://i.imgur.com/HCefxaK.png,http://tv.mediacdn.ru/live/solntse/playlist.m3u8
-ТВ Центр,🇷🇺 Основные,SD,tvcentr,100,38,https://i.imgur.com/5fxFaup.png,https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221.smil/playlist.m3u8
+Extreme Sports Channel (576p),⚽ Спорт,SD,extreme-sports,100,39,https://i.imgur.com/m7IC01U.png,https://fs.uplink.kz/extreme_sports/mono.m3u8?token=onlinetv
+KHL Prime (1080p),⚽ Спорт,HD,kxl-hd,100,39,https://i.imgur.com/pwxT0ON.png,http://stream.mcquack.net/178/index.m3u8
+KHL Prime (1080p),⚽ Спорт,HD,kxl-hd,100,39,https://i.imgur.com/pwxT0ON.png,https://fs.uplink.kz/khl_prime/mono.m3u8?token=onlinetv
+MMA-TV.com (576p),⚽ Спорт,SD,MMATVcom.ru@SD,100,39,https://i.imgur.com/QhdxNsB.png,https://fs.uplink.kz/mma/mono.m3u8?token=onlinetv
+Setanta Sports 1 HD,⚽ Спорт,HD,setanta-sports,100,39,https://i.imgur.com/8ANUZAu.png,https://fs.uplink.kz/setanta_sports_1_hd/mono.m3u8?token=onlinetv
+UDAR (1080p),⚽ Спорт,HD,ufc,100,39,https://mt.media/upload/iblock/2b3/2b3cf99141bf7f99cda377eec62ec084.png,http://5.188.159.128:8070/udar/index.m3u8
+UDAR (1080p),⚽ Спорт,HD,ufc,100,39,https://mt.media/upload/iblock/2b3/2b3cf99141bf7f99cda377eec62ec084.png,http://stream.mcquack.net/279/index.m3u8
+viju+ Sport (576p),⚽ Спорт,HD,viasat-sport,100,39,https://i.imgur.com/fXESG0l.png,http://stream.mcquack.net/333/index.m3u8
+viju+ Sport (576p),⚽ Спорт,SD,viasat-sport,100,39,https://i.imgur.com/fXESG0l.png,https://fs.uplink.kz/viju_sport/mono.m3u8?token=onlinetv
+viju+ Sport (576p),⚽ Спорт,SD,viasat-sport,100,6,https://i.imgur.com/fXESG0l.png,http://31.148.5.241/Viasat_Sport/index.m3u8
+5 канал,🇷🇺 Основные,SD,5-am,83,6,https://i.imgur.com/SyXVJdM.png,http://31.148.5.241/kanal_5/index.m3u8
+Channel One (576p),🇷🇺 Основные,SD,one-il,100,39,https://i.imgur.com/2xglh33.png,http://178.217.49.7/1/index.m3u8
+Channel One (576p),🇷🇺 Основные,SD,one-il,83,6,https://i.imgur.com/2xglh33.png,http://31.148.5.241/kanal_1/index.m3u8
+Dомашний,🇷🇺 Основные,Unknown,domashny,100,39,https://i.imgur.com/WaLwOyt.jpeg,https://fs.uplink.kz/domashniy/mono.m3u8?token=onlinetv
+Mir Kazakhstan (576p),🇷🇺 Основные,SD,Mir.ru@Kazakhstan,100,39,,http://tvcdn01.esilnet.kz/tv/mir/index.m3u8
+NTV (576p),🇷🇺 Основные,SD,ntv,100,39,https://www.mongolsat.mn/assets/img/channel/38.png,http://176.118.197.101/NTV/index.m3u8
+NTV (576p),🇷🇺 Основные,SD,ntv,100,6,https://www.mongolsat.mn/assets/img/channel/38.png,http://31.148.5.241/kanal_4/index.m3u8
+NTV HD (1080p),🇷🇺 Основные,HD,ntv,100,39,https://www.mongolsat.mn/assets/img/channel/38.png,http://flussonic.linkintel.ru/ntv/index.m3u8
+NTV SD (576p),🇷🇺 Основные,HD,ntv,100,39,https://www.mongolsat.mn/assets/img/channel/38.png,https://cdn.ntv.ru/ntv-spb/index.m3u8
+O! (576p),🇷🇺 Основные,SD,o_,100,39,https://i.imgur.com/b2pgPW8.png,http://stream.mcquack.net/60/index.m3u8
+O! International (576p),🇷🇺 Основные,SD,O.ru@International,100,39,,https://fs.uplink.kz/o/mono.m3u8?token=onlinetv
+Russia-1 (576p),🇷🇺 Основные,SD,rossia1,100,6,https://i.imgur.com/6BVWk8z.png,http://31.148.5.241/kanal_2/index.m3u8
+Russia-1 HD (1080p),🇷🇺 Основные,HD,rossia1,97,39,https://i.imgur.com/6BVWk8z.png,https://stream.smotrim.ru/hls2/russia_hd/playlist_6.m3u8
+Russia-1 HD (1080p),🇷🇺 Основные,HD,rossia1,100,39,https://i.imgur.com/6BVWk8z.png,https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
+Russia-1 SD (576p),🇷🇺 Основные,SD,rossia1,92,39,https://i.imgur.com/6BVWk8z.png,http://109.207.243.18/2/index.m3u8
+Russia-24,🇷🇺 Основные,HD,24news-ua,100,39,https://i.imgur.com/tTCuczU.png,http://dmi3y-tv.online/hls/smotrim/T2/CH_RUSSIA24_INT.m3u8
+Russia-24 (576p),🇷🇺 Основные,SD,24news-ua,100,39,https://i.imgur.com/tTCuczU.png,https://fs.uplink.kz/rossia_24/mono.m3u8?token=onlinetv
+Russia-24 (576p),🇷🇺 Основные,SD,24news-ua,100,39,https://i.imgur.com/tTCuczU.png,http://176.118.197.101/Rossiya24/index.m3u8
+Russia-24 (576p),🇷🇺 Основные,SD,24news-ua,83,6,https://i.imgur.com/tTCuczU.png,http://31.148.5.241/kanal_7/index.m3u8
+Russia-24 (720p),🇷🇺 Основные,HD,24news-ua,100,39,https://i.imgur.com/tTCuczU.png,https://stream.smotrim.ru/hls2/russia24nl_smotrim/playlist_5.m3u8
+Russia-24 HD (1080p),🇷🇺 Основные,HD,24news-ua,100,39,https://i.imgur.com/tTCuczU.png,http://77.232.131.211/Rossiya24/index.m3u8
+Russia-24 HD (1080p),🇷🇺 Основные,HD,24news-ua,100,39,https://i.imgur.com/tTCuczU.png,https://live.smotrim.ru/vgtrk/0/russia24-hd/index.m3u8
+Russia-K (576p),🇷🇺 Основные,SD,kultura,100,39,https://i.imgur.com/6PqxuhF.png,http://stream.mcquack.net/229/index.m3u8
+Russia-K (576p),🇷🇺 Основные,SD,kultura,100,39,https://i.imgur.com/6PqxuhF.png,https://fs.uplink.kz/rossia_k/mono.m3u8?token=onlinetv
+Russia-K (576p),🇷🇺 Основные,SD,kultura,50,6,https://i.imgur.com/6PqxuhF.png,http://31.148.5.241/kanal_6/index.m3u8
+Russia-K HD (1080p),🇷🇺 Основные,HD,kultura,100,39,https://i.imgur.com/6PqxuhF.png,https://stream.smotrim.ru/hls2/russia_k/playlist_5.m3u8
+START Air (576p),🇷🇺 Основные,SD,start-air,100,39,https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png,https://fs.uplink.kz/start_air/mono.m3u8?token=onlinetv
+START World (576p),🇷🇺 Основные,SD,start-world,100,39,https://images.iptv.rt.ru/images/d6iist8mifeailfopupg.png,https://fs.uplink.kz/start_world/mono.m3u8?token=onlinetv
+STS International (576p),🇷🇺 Основные,SD,sts-int,97,39,https://i.imgur.com/mwiC0RG.png,http://178.134.1.158:8081/CTC/index.m3u8
+TV-3 (576p),🇷🇺 Основные,SD,3-plus-ee,97,39,https://i.imgur.com/YRiulCU.png,http://178.124.179.122:8080/TB-3/index.m3u8
+TV-3 (576p),🇷🇺 Основные,SD,3-plus-ee,100,39,https://i.imgur.com/YRiulCU.png,http://flussonic.linkintel.ru/tv-3/index.m3u8
+TV-3 (576p),🇷🇺 Основные,SD,3-plus-ee,100,39,https://i.imgur.com/YRiulCU.png,http://176.118.197.101/TB3/index.m3u8
+TV-3 (576p),🇷🇺 Основные,SD,3-plus-ee,100,6,https://i.imgur.com/YRiulCU.png,http://31.148.5.241/kanal_15/index.m3u8
+TV-3 HD (1080p),🇷🇺 Основные,HD,3-plus-ee,100,39,https://i.imgur.com/YRiulCU.png,http://stream.mcquack.net/136/index.m3u8
+Вести FM,🇷🇺 Основные,Unknown,VestiFM.ru@HD,100,39,https://i.imgur.com/ZBHqSZj.png,https://stream.smotrim.ru/hls2/vesti_fm/playlist_4.m3u8
+Время,🇷🇺 Основные,SD,vremia,100,39,https://i.imgur.com/jZlj3ga.png,http://stream.mcquack.net/237/index.m3u8
+Время,🇷🇺 Основные,Unknown,vremia,100,39,https://i.imgur.com/jZlj3ga.png,https://fs.uplink.kz/vremya/mono.m3u8?token=onlinetv
+Время,🇷🇺 Основные,Unknown,vremia,100,39,https://i.imgur.com/jZlj3ga.png,http://88.212.15.19/live/test_vremya/playlist.m3u8
+Звезда,🇷🇺 Основные,HD,zvezda,95,39,https://i.imgur.com/4PAcpfM.png,http://51.158.144.33:2021/zvezda/index.m3u8
+Звезда,🇷🇺 Основные,HD,zvezda,100,39,https://i.imgur.com/4PAcpfM.png,https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8
+Звезда,🇷🇺 Основные,SD,zvezda,100,39,https://i.imgur.com/4PAcpfM.png,http://flussonic.linkintel.ru/zvezda/index.m3u8
+Звезда,🇷🇺 Основные,Unknown,zvezda,100,39,https://i.imgur.com/4PAcpfM.png,https://fs.uplink.kz/zvezda/mono.m3u8?token=onlinetv
+Звезда,🇷🇺 Основные,SD,zvezda,100,6,https://i.imgur.com/4PAcpfM.png,http://31.148.5.241/kanal_17/index.m3u8
+Мир,🇷🇺 Основные,SD,mir,100,39,https://i.imgur.com/AqWaJT8.png,http://45.153.24.78/MIR/index.m3u8
+Мир,🇷🇺 Основные,SD,mir,100,39,https://i.imgur.com/AqWaJT8.png,https://tvcdn01.oktv.kz/tv/mir/index.m3u8
+Мир,🇷🇺 Основные,HD,mir,100,39,https://i.imgur.com/AqWaJT8.png,http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mirtv_2500/playlist.m3u8
+Мир,🇷🇺 Основные,Unknown,mir,100,39,https://i.imgur.com/AqWaJT8.png,https://fs.uplink.kz/mir/mono.m3u8?token=onlinetv
+Мир,🇷🇺 Основные,SD,mir,83,6,https://i.imgur.com/AqWaJT8.png,http://31.148.5.241/kanal_18/index.m3u8
+Мир 24,🇷🇺 Основные,HD,mir-24,100,39,https://i.imgur.com/dj9c8Yd.png,http://5.188.159.128:8070/mir_24/index.m3u8
+Мир 24 (1080p),🇷🇺 Основные,HD,mir-24,100,39,https://i.imgur.com/dj9c8Yd.png,http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mir24_2500/playlist.m3u8
+Мир Белагорья (720p) [Geo-blocked],🇷🇺 Основные,HD,mir-belogoria,100,39,https://mirbelogorya.ru/images/logo/Logo_Mir_Belogorya_purple_gradient.png,http://mirbelogorya.ru:8080/mirbelogorya/index.m3u8
+Мир Сериала,🇷🇺 Основные,SD,mir-seriala,100,39,https://i.imgur.com/uzj7wVp.png,http://176.118.197.101/MirSeriala/index.m3u8
+Москва 24,🇷🇺 Основные,Unknown,moskva-24,100,39,https://i.imgur.com/gXbUMVy.png,https://stream.smotrim.ru/hls2/moscow_24/playlist_3.m3u8
+Москва. Доверие,🇷🇺 Основные,Unknown,doverie,100,39,https://i.imgur.com/QDqDQzt.png,https://stream.smotrim.ru/hls2/doverie/playlist_3.m3u8
+НТВ Мир,🇷🇺 Основные,Unknown,ntv-mir,100,39,https://i.imgur.com/pUcV46F.png,https://fs.uplink.kz/ntv_mir/mono.m3u8?token=onlinetv
+Патриот,🇷🇺 Основные,Unknown,patriot,100,39,https://patriotkanal.ru/assets/cached/2025/02/resize/264_112_q100_patriot-only-logo.png,https://stream.smotrim.ru/hls2/static/playlist_4.m3u8
+Первый СНГ,🇷🇺 Основные,Unknown,pervy-kanal-csi,100,39,https://i.imgur.com/RUSX0rX.png,https://fs.uplink.kz/perviy_kanal_sng/mono.m3u8?token=onlinetv
+Пятый International,🇷🇺 Основные,Unknown,piaty-int,100,39,https://i.imgur.com/8VKc2Ya.png,https://fs.uplink.kz/5_kanal/mono.m3u8?token=onlinetv
+РЕН ТВ,🇷🇺 Основные,SD,rentv,100,39,https://iks-online.net/storage/2018/07/REN-TV-HD.png,http://185.23.80.23:8080/REN/index.m3u8
+РЕН ТВ,🇷🇺 Основные,SD,rentv,100,39,https://iks-online.net/storage/2018/07/REN-TV-HD.png,http://flussonic.linkintel.ru/ren_tv/index.m3u8
+РЕН ТВ,🇷🇺 Основные,SD,rentv,100,6,https://iks-online.net/storage/2018/07/REN-TV-HD.png,http://31.148.5.241/kanal_11/index.m3u8
+РЕН ТВ International,🇷🇺 Основные,SD,rentv-int,97,39,https://i.imgur.com/gBjk9oF.png,http://178.134.1.158:8081/RENTV/index.m3u8
+РЕН ТВ International,🇷🇺 Основные,Unknown,rentv-int,100,39,https://i.imgur.com/gBjk9oF.png,https://fs.uplink.kz/ren/mono.m3u8?token=onlinetv
+РТР-Планета,🇷🇺 Основные,Unknown,RTRPlaneta.ru@CIS,100,39,https://i.imgur.com/0YEahxs.png,https://fs.uplink.kz/rtr_planeta/mono.m3u8?token=onlinetv
+Санкт-Петербург,🇷🇺 Основные,Unknown,sankt-peterburg,100,39,https://i.imgur.com/9At4oG7.png,https://stream.smotrim.ru/hls2/ext_spbtv/playlist_5.m3u8
+Солнце,🇷🇺 Основные,SD,solnce,100,39,https://i.imgur.com/HCefxaK.png,http://217.114.191.150/Solnce/index.m3u8
+Солнце,🇷🇺 Основные,SD,solnce,100,39,https://i.imgur.com/HCefxaK.png,http://stream.mcquack.net/118/index.m3u8
+Солнце (576p),🇷🇺 Основные,SD,solnce,100,39,https://i.imgur.com/HCefxaK.png,http://tv.mediacdn.ru/live/solntse/playlist.m3u8
+Соловьёв Live,🇷🇺 Основные,Unknown,solovjinypomiot,100,39,https://images.iptv.rt.ru/images/d7efm08mifeaf9jacb30.png,https://stream.smotrim.ru/hls2/solovievlive/playlist_6.m3u8
+Спас,🇷🇺 Основные,SD,spas,100,39,https://i.imgur.com/yY39nMg.png,https://tvspas.mediacdn.ru/cdn/spas/playlist.m3u8
+Спас,🇷🇺 Основные,SD,spas,100,6,https://i.imgur.com/yY39nMg.png,http://31.148.5.241/kanal_12/index.m3u8
+СТС,🇷🇺 Основные,Unknown,sts,100,39,https://i.imgur.com/ilUzAeb.png,https://fs.uplink.kz/sts/mono.m3u8?token=onlinetv
+СТС Love,🇷🇺 Основные,Unknown,sts-love,100,39,https://upload.wikimedia.org/wikipedia/ru/thumb/3/35/%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg/1920px-%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg.png,https://fs.uplink.kz/sts_love/mono.m3u8?token=onlinetv
+ТВ Центр,🇷🇺 Основные,SD,tvcentr,100,39,https://i.imgur.com/5fxFaup.png,https://tvc-hls.cdnvideo.ru/tvc-res/smil:vd9221.smil/playlist.m3u8
+ТНТ4 International,🇷🇺 Основные,Unknown,tnt4-international,100,39,https://i.imgur.com/gBokU5i.png,https://fs.uplink.kz/tnt4/mono.m3u8?token=onlinetv
+ЦЕНТР,🇷🇺 Основные,Unknown,tvcentr,100,39,https://i.imgur.com/5fxFaup.png,https://fs.uplink.kz/tvc/mono.m3u8?token=onlinetv
 1st_witch,🎞️ Kinowalk,HD,witch,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/witch.jpg,http://kinowalk.hopto.org/witch_live
 3JIou TaTapuH,🎞️ Kinowalk,Unknown,3jiou_tatapuh,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/3jiou_tatapuh.jpg,http://kinowalk.hopto.org/3jiou_tatapuh_live
 _Kurt_TV_,🎞️ Kinowalk,HD,_kurt_tv__live,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kurt_tv__live.jpg,http://kinowalk.hopto.org/_kurt_tv__live
 Aisman,🎞️ Kinowalk,Unknown,aisman,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/aisman.jpg,http://kinowalk.hopto.org/aisman_live
-AkudjiTV,🎞️ Kinowalk,Unknown,akudjitv,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/akudjitv.jpg,http://kinowalk.hopto.org/akudjitv_live
 Aleksej 54 rus,🎞️ Kinowalk,Unknown,aleksej26,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/aleksej26.png,http://kinowalk.hopto.org/aleksej26_live
 Alex.Films,🎞️ Kinowalk,HD,alex.films,92,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/alex.films.jpg,http://kinowalk.hopto.org/alex.films_live
 AlexVira,🎞️ Kinowalk,HD,alexvira,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/alexvira.png,http://kinowalk.hopto.org/alexvira_live
@@ -160,7 +119,6 @@ KatastroFF,🎞️ Kinowalk,Unknown,katastroff,100,2,https://raw.githubuserconte
 Kino Jam,🎞️ Kinowalk,HD,kinojam,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinojam.png,http://kinowalk.hopto.org/kinojam_live
 KinoFans,🎞️ Kinowalk,Unknown,kinofans,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinofans.jpg,http://kinowalk.hopto.org/kinofans_live
 kinofon_,🎞️ Kinowalk,Unknown,kinofon,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinofon.png,http://kinowalk.hopto.org/kinofon_live
-kinolampa,🎞️ Kinowalk,HD,kinoliving,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinolampa.png,http://kinowalk.hopto.org/kinolampa_live
 KinoMix Юрич,🎞️ Kinowalk,HD,yurich_kinomix,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinomix.png,http://kinowalk.hopto.org/yurich_kinomix_live
 KinoMix Юрич 2,🎞️ Kinowalk,HD,dak3767,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/dak3767.png,http://kinowalk.hopto.org/dak3767_live
 Kinoshnik_8,🎞️ Kinowalk,Unknown,kinosweet,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinoshnik_8.png,http://kinowalk.hopto.org/kinoshnik_8_live
@@ -198,9 +156,6 @@ SANSEY_RU,🎞️ Kinowalk,HD,sansey_ru,100,2,https://raw.githubusercontent.com/
 ScripachTV,🎞️ Kinowalk,HD,scripachtv,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/scripachtv.png,http://kinowalk.hopto.org/scripachtv_live
 SeleCaoTV,🎞️ Kinowalk,HD,selecaotv,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/selecaotv.png,http://kinowalk.hopto.org/selecaotv_live
 SeleCaoTV1,🎞️ Kinowalk,HD,selecaotv1,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/selecaotv1.png,http://kinowalk.hopto.org/selecaotv1_live
-Serials RE_BOOT,🎞️ Kinowalk,HD,serial-hd,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/re_boot.jpg,http://kinowalk.hopto.org/re_boot_live
-SerialTV,🎞️ Kinowalk,HD,serial-hd,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/serialtv.jpg,http://kinowalk.hopto.org/serialtv_live
-sever_tv,🎞️ Kinowalk,Unknown,sever,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/severtv.jpg,http://kinowalk.hopto.org/severtv_live
 Snoochies Boochies,🎞️ Kinowalk,Unknown,sinema,0,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/sinema_live.jpg,http://kinowalk.hopto.org/sinema_live
 STRIMACH,🎞️ Kinowalk,Unknown,Strimach,,0,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/strimach.jpg,http://kinowalk.hopto.org/strimach_live
 swat2k,🎞️ Kinowalk,HD,swat2k,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/swat2k.jpg,http://kinowalk.hopto.org/swat2k_live
@@ -232,6 +187,7 @@ Wfliq,🎞️ Kinowalk,HD,wfliq,100,12,https://raw.githubusercontent.com/gvineon
 ZubrilomFilm,🎞️ Kinowalk,Unknown,zubrilomfilm,0,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/zubrilomfilm.png,http://kinowalk.hopto.org/zubrilomfilm_live
 ZumiBox,🎞️ Kinowalk,Unknown,zumibox,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/zumibox.jpg,http://kinowalk.hopto.org/zumibox_live
 АPRICUS live,🎞️ Kinowalk,Unknown,apricus,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/apricus.png,http://kinowalk.hopto.org/apricus_live
+Акуджи ТВ,🎞️ Kinowalk,Unknown,akudjitv,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/akudjitv.jpg,http://kinowalk.hopto.org/akudjitv_live
 БУДУ СМОТЕТЬ,🎞️ Kinowalk,Unknown,channel35772578,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/channel35772578.png,http://kinowalk.hopto.org/channel35772578_live
 ВАСЬКИНЫ ЗАБАВЫ,🎞️ Kinowalk,HD,poe2proxodim,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/poe2proxodim.jpg,http://kinowalk.hopto.org/poe2proxodim_live
 ВИДЕОКАССЕТА,🎞️ Kinowalk,HD,vhs90e,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/vhs90e.png,http://kinowalk.hopto.org/vhs90e_live
@@ -243,6 +199,7 @@ ZumiBox,🎞️ Kinowalk,Unknown,zumibox,100,2,https://raw.githubusercontent.com
 Канал Disney Онлайн,🎞️ Kinowalk,Unknown,kanaldisneyonline,,0,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kanaldisneyonline.jpg,http://kinowalk.hopto.org/kanaldisneyonline_live
 кино кино кино,🎞️ Kinowalk,HD,kinopro,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinopro.jpg,http://kinowalk.hopto.org/kinopro_live
 КИНОЛЕНТА LIVE,🎞️ Kinowalk,HD,kinolenta,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinolenta_live.png,http://kinowalk.hopto.org/kinolenta_live
+Киноливинг,🎞️ Kinowalk,HD,kinoliving,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinolampa.png,http://kinowalk.hopto.org/kinolampa_live
 Киномульт_HD,🎞️ Kinowalk,Unknown,kinomult,0,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinomult_hd.jpg,http://kinowalk.hopto.org/kinomult_hd_live
 КиноНонСтоп,🎞️ Kinowalk,Unknown,nonestopmovie,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/nonestopmovie.jpg,http://kinowalk.hopto.org/nonestopmovie_live
 КиноСериалы,🎞️ Kinowalk,HD,zagar,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/zagar.jpg,http://kinowalk.hopto.org/zagar_live
@@ -267,7 +224,10 @@ ZumiBox,🎞️ Kinowalk,Unknown,zumibox,100,2,https://raw.githubusercontent.com
 ПАРАНОРМАЛЬНЫЙ АРХИВ,🎞️ Kinowalk,HD,paranormal404,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/paranormal404_live.jpg,http://kinowalk.hopto.org/paranormal404_live
 Пᛊየᛒьᵻӥ የጸሏ,🎞️ Kinowalk,HD,perviryad,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/perviryad.png,http://kinowalk.hopto.org/perviryad_live
 СВЯТОЙ LIVE,🎞️ Kinowalk,Unknown,misha-sdyt,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/misha-sdyt.jpg,http://kinowalk.hopto.org/misha-sdyt_live
+Север,🎞️ Kinowalk,Unknown,sever,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/severtv.jpg,http://kinowalk.hopto.org/severtv_live
 СЕМЕЙНЫЙ ПРОСМОТР LIVE,🎞️ Kinowalk,Unknown,liveprointerny,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/liveprointerny_live.jpg,http://kinowalk.hopto.org/liveprointerny_live
+Сериал UHD,🎞️ Kinowalk,HD,serial-tviksel,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/serialtv.jpg,http://kinowalk.hopto.org/serialtv_live
+Сериал UHD,🎞️ Kinowalk,HD,serial-tviksel,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/re_boot.jpg,http://kinowalk.hopto.org/re_boot_live
 Тоха Киноман,🎞️ Kinowalk,HD,kinomania_stream,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kinomania_stream.png,http://kinowalk.hopto.org/kinomania_stream_live
 Тоха Стрим,🎞️ Kinowalk,HD,toxa_stream,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/toxa_stream.jpg,http://kinowalk.hopto.org/toxa_stream_live
 У КРАЯ БЕЗДНЫ,🎞️ Kinowalk,HD,ddator,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/ddator.jpg,http://kinowalk.hopto.org/ddator_live
@@ -281,232 +241,304 @@ ZumiBox,🎞️ Kinowalk,Unknown,zumibox,100,2,https://raw.githubusercontent.com
 Шурентий Live,🎞️ Kinowalk,HD,shurentiy_live_live,100,2,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/shurentiy_live.png,http://kinowalk.hopto.org/shurentiy_live_live
 Эквилибриум69,🎞️ Kinowalk,Unknown,equilibrium,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/equilibrium.png,http://kinowalk.hopto.org/equilibrium_live
 ℂℂ,🎞️ Kinowalk,HD,kasseta,100,12,https://raw.githubusercontent.com/gvineon550-coder/logotips/main/kasseta.png,http://kinowalk.hopto.org/kasseta_live
-2x2 (576p),🎪 Развлекательные,SD,2na2,100,38,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,http://flussonic.mkpnet.ru/tv-17540fb90079a865/video.m3u8
-2x2 (576p),🎪 Развлекательные,HD,2na2,100,38,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,http://185.23.80.23:8080/2x2/index.m3u8
-2x2 (576p),🎪 Развлекательные,SD,2na2,100,38,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,http://176.118.197.101/2x2/index.m3u8
-2x2 SD (576p),🎪 Развлекательные,SD,2na2,100,38,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,http://stream.mcquack.net/187/index.m3u8
-Friday! (576p),🎪 Развлекательные,HD,Friday.ru@SD,100,38,https://i.imgur.com/UfmlXxe.png,http://stream.mcquack.net/181/index.m3u8
-Friday! (576p),🎪 Развлекательные,SD,Friday.ru@SD,100,38,https://i.imgur.com/UfmlXxe.png,http://flussonic.linkintel.ru/Pyatnica/index.m3u8
-Friday! (576p),🎪 Развлекательные,SD,Friday.ru@SD,100,5,https://i.imgur.com/UfmlXxe.png,http://31.148.5.241/kanal_16/index.m3u8
-Friday! International Kazakhstan (576p),🎪 Развлекательные,SD,FridayInternational.ru@Kazakhstan,100,38,https://i.imgur.com/UfmlXxe.png,https://fs.uplink.kz/bolshaya_pyatnica/mono.m3u8?token=onlinetv
-KVN TV (576p),🎪 Развлекательные,SD,kvn-tv,97,38,https://i.imgur.com/Vw3LFLX.png,http://178.124.179.122:8080/KVN-TV/index.m3u8
-KVN TV (576p),🎪 Развлекательные,SD,kvn-tv,100,38,https://i.imgur.com/Vw3LFLX.png,https://fs.uplink.kz/kvn_tv/mono.m3u8?token=onlinetv
-Mama (576p),🎪 Развлекательные,SD,mama,100,38,https://i.imgur.com/kmMIjjf.png,http://stream.mcquack.net/79/index.m3u8
-Mama (576p),🎪 Развлекательные,SD,mama,100,38,https://i.imgur.com/kmMIjjf.png,http://flussonic.linkintel.ru/mama/index.m3u8
-Peretz International (576p),🎪 Развлекательные,SD,PeretzInternational.ru@SD,100,38,https://i.imgur.com/Y84p1y6.png,http://stream.mcquack.net/121/index.m3u8
-Peretz International (576p),🎪 Развлекательные,SD,PeretzInternational.ru@SD,100,38,https://i.imgur.com/Y84p1y6.png,https://fs.uplink.kz/perec/mono.m3u8?token=onlinetv
-Poehali! (576p),🎪 Развлекательные,SD,poexali,100,38,https://i.imgur.com/ZNCpbII.png,https://fs.uplink.kz/poehali/mono.m3u8?token=onlinetv
-Poehali! (576p),🎪 Развлекательные,SD,poexali,100,38,https://i.imgur.com/ZNCpbII.png,http://88.212.15.19/live/test_poehali/playlist.m3u8
-Radost Moya (576p),🎪 Развлекательные,SD,radost-moya,100,38,https://i.imgur.com/B5FA62o.png,https://radm.mediacdn.ru/cdn/radost/playlist_sdhigh.m3u8
-Sarafan (576p),🎪 Развлекательные,SD,sarafan,100,38,https://i.imgur.com/u4q1rMT.png,http://stream.mcquack.net/81/index.m3u8
-Sarafan (576p),🎪 Развлекательные,SD,sarafan,100,38,https://i.imgur.com/u4q1rMT.png,https://fs.uplink.kz/sarafan/mono.m3u8?token=onlinetv
-Subbota! (576p),🎪 Развлекательные,SD,super,100,38,https://i.imgur.com/nsk8PpB.png,http://217.114.191.150/Subbota/index.m3u8
-Subbota! HD (1080p),🎪 Развлекательные,HD,super,100,38,https://i.imgur.com/nsk8PpB.png,http://stream.mcquack.net/269/index.m3u8
-TeleDom,🎪 Развлекательные,Unknown,teledom,100,38,https://i.imgur.com/vceJmuk.png,https://iam-profi.ru/hls-live/livepkgr/_definst_/liveevent/td720.m3u8
-TNT4 (576p),🎪 Развлекательные,SD,tnt4,100,38,https://i.imgur.com/gBokU5i.png,http://flussonic.linkintel.ru/tnt4/index.m3u8
-TNT4 (576p),🎪 Развлекательные,HD,tnt4,100,38,https://i.imgur.com/gBokU5i.png,http://stream.mcquack.net/106/index.m3u8
-TV PRO,🎪 Развлекательные,Unknown,TVPRO.ru@SD,97,38,https://i.imgur.com/KQmB9Cc.png,http://rtmp.tvpro-online.ru/hls/ch1.m3u8
-U (576p),🎪 Развлекательные,SD,U.ru@SD,97,38,https://i.ibb.co/23ktDgvx/IMG-2461.png,http://178.134.1.158:8081/U/index.m3u8
-U (576p),🎪 Развлекательные,SD,U.ru@SD,100,38,https://i.ibb.co/23ktDgvx/IMG-2461.png,http://stream.mcquack.net/230/index.m3u8
-U (576p),🎪 Развлекательные,SD,U.ru@SD,100,38,https://i.ibb.co/23ktDgvx/IMG-2461.png,https://fs.uplink.kz/u/mono.m3u8?token=onlinetv
-Voprosy i Otvety (576p),🎪 Развлекательные,SD,voprosy-i-otvety,100,38,https://i.imgur.com/yjETxk1.png,http://stream.mcquack.net/76/index.m3u8
-Пятница! (576p),🎪 Развлекательные,SD,piatnica,100,38,https://i.imgur.com/UfmlXxe.png,https://vod.tuva.ru/friday/index.m3u8
-Твое TV HD (1080p),🎪 Развлекательные,HD,tvoyo-tv-hd,100,38,https://i.imgur.com/kKAM7dP.png,http://tvoetv.space:8080/tvoetv/index.m3u8
-Твое ТВ Юмор (1080p),🎪 Развлекательные,HD,tvoetv-humor,100,38,https://smotret.tv/images/tvoe-tv-yumor.webp,http://tvoetv.space:8080/tvoetv_humor/index.m3u8
-.black (576p),🎬 Кино,HD,sony-turbo,100,38,https://i.imgur.com/Q4A6ci4.png,http://stream.mcquack.net/263/index.m3u8
-.red (576p),🎬 Кино,HD,sony-tv,100,38,https://i.imgur.com/heZeqPQ.png,http://stream.mcquack.net/69/index.m3u8
-.red HD (1080p),🎬 Кино,HD,sony-tv,89,38,https://i.imgur.com/heZeqPQ.png,http://178.134.1.158:8081/red/index.m3u8
-.sci-fi (576p),🎬 Кино,HD,scifi-pl,100,38,https://i.imgur.com/0La6W4x.png,http://stream.mcquack.net/180/index.m3u8
-Amedia Hit (1080p),🎬 Кино,HD,amedia-hit,100,38,https://i.imgur.com/a8ZBGBw.png,http://stream.mcquack.net/162/index.m3u8
-Amedia Hit (576p),🎬 Кино,HD,amedia-hit,100,38,https://i.imgur.com/a8ZBGBw.png,http://flussonic.linkintel.ru/amedia-hit/index.m3u8
-Bollywood HD (576p),🎬 Кино,HD,bollywood-hd,100,38,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzqVHuwdhVpyiSqMrUtwO1FlbSdczC-8mWTQ_M4jec6kzjeZOe,http://176.118.197.101/Bollywood_HD/index.m3u8
-Cinema (576p),🎬 Кино,SD,cinema-ru,100,38,https://i.imgur.com/B5UN7C8.png,http://flussonic.linkintel.ru/cinema/index.m3u8
-Dom kino (576p),🎬 Кино,SD,domkino,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png,http://stream.mcquack.net/236/index.m3u8
-Dom kino (576p),🎬 Кино,SD,domkino,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png,http://88.212.15.19/live/test_dom_kino/playlist.m3u8
-Dom kino International (576p),🎬 Кино,SD,domkino-int,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png,https://fs.uplink.kz/dom_kino/mono.m3u8?token=onlinetv
-Dom kino Premium (576p),🎬 Кино,SD,domkino-premium,100,38,https://i.imgur.com/rJpQtvK.png,http://88.212.15.19/live/test_dom_kino_premium/playlist.m3u8
-Dom kino Premium HD (1080p),🎬 Кино,HD,domkino-premium,100,38,https://i.imgur.com/rJpQtvK.png,http://stream.mcquack.net/108/index.m3u8
-Dom kino Premium HD (1080p),🎬 Кино,HD,domkino-premium,100,38,https://i.imgur.com/rJpQtvK.png,https://fs.uplink.kz/dom_kino_premium/mono.m3u8?token=onlinetv
-Dorama (576p),🎬 Кино,SD,dorama,100,38,https://i.imgur.com/ZH5LuXU.png,https://fs.uplink.kz/dorama/mono.m3u8?token=onlinetv
-Dorama HD (1080p),🎬 Кино,HD,dorama,100,38,https://i.imgur.com/ZH5LuXU.png,http://stream.mcquack.net/412/index.m3u8
-Evrokino (576p),🎬 Кино,SD,evrokino,100,38,https://i.imgur.com/8LPtPf6.png,https://fs.uplink.kz/eurokino/mono.m3u8?token=onlinetv
-Evrokino (576p),🎬 Кино,SD,evrokino,100,38,https://i.imgur.com/8LPtPf6.png,http://176.118.197.101/Evrokino/index.m3u8
-Evrokino HD (1080p),🎬 Кино,HD,evrokino,100,38,https://i.imgur.com/8LPtPf6.png,http://stream.mcquack.net/385/index.m3u8
-FAN (576p),🎬 Кино,HD,fanhd,100,38,https://i.imgur.com/mDeTbaF.png,http://stream.mcquack.net/420/index.m3u8
-Fox (576p),🎬 Кино,HD,fox,100,38,https://i.imgur.com/A1voBwC.png,http://stream.mcquack.net/182/index.m3u8
-Fox Life (576p),🎬 Кино,HD,foxlife,100,38,https://i.imgur.com/O2miSLA.png,http://stream.mcquack.net/129/index.m3u8
-Illusion+ (576p),🎬 Кино,SD,IllusionPlus.ru@SD,100,38,https://i.imgur.com/9GvuHQ5.png,http://176.118.197.101/Illuzion+/index.m3u8
-India (576p),🎬 Кино,SD,India.ru@SD,100,38,https://i.imgur.com/xDVcDOc.png,https://fs.uplink.kz/india/mono.m3u8?token=onlinetv
-Indiyskoye Kino (576p),🎬 Кино,SD,IndiyskoyeKino.ru@SD,100,38,https://i.imgur.com/LL8GyCh.png,http://188.113.190.12/329/index.m3u8
-Indiyskoye Kino (576p),🎬 Кино,SD,IndiyskoyeKino.ru@SD,100,38,https://i.imgur.com/LL8GyCh.png,http://stream.mcquack.net/104/index.m3u8
-Indiyskoye Kino (576p),🎬 Кино,SD,IndiyskoyeKino.ru@SD,100,38,https://i.imgur.com/LL8GyCh.png,https://fs.uplink.kz/indiyskoe_kino/mono.m3u8?token=onlinetv
-Kapitan Fantastika (1080p),🎬 Кино,HD,ginger-hd,100,38,https://i.imgur.com/K3PSHiT.png,http://stream.mcquack.net/144/index.m3u8
-Kino TV (576p),🎬 Кино,HD,kino-tv-pl,100,38,https://i.imgur.com/XudSdAe.png,http://flussonic.linkintel.ru/kino-tv/index.m3u8
-Kino TV HD (1080p),🎬 Кино,HD,kino-tv-pl,100,38,https://i.imgur.com/XudSdAe.png,http://176.118.197.101/KinoTvHD/playlist.m3u8
-Kino TV SD (576p),🎬 Кино,HD,kino-tv-pl,100,38,https://i.imgur.com/XudSdAe.png,http://stream.mcquack.net/221/index.m3u8
-KinoHit (576p),🎬 Кино,HD,kinoxit,100,38,https://i.imgur.com/Ge8vkQM.png,http://stream.mcquack.net/126/index.m3u8
-KinoHit (576p),🎬 Кино,SD,kinoxit,100,38,https://i.imgur.com/Ge8vkQM.png,https://fs.uplink.kz/kinohit/mono.m3u8?token=onlinetv
-Kinokomedija (576p),🎬 Кино,HD,kinokazka,100,38,https://i.imgur.com/dVjtth0.png,http://stream.mcquack.net/265/index.m3u8
-Kinokomedija (576p),🎬 Кино,SD,kinokazka,100,38,https://i.imgur.com/dVjtth0.png,https://fs.uplink.kz/kinokomedia/mono.m3u8?token=onlinetv
-Kinomix (576p),🎬 Кино,SD,Kinomix.ru@SD,100,38,https://i.imgur.com/D4q2XUT.png,http://93.170.254.17/Kinomiks/index.m3u8
-Kinomix (576p),🎬 Кино,HD,Kinomix.ru@SD,100,38,https://i.imgur.com/D4q2XUT.png,http://stream.mcquack.net/133/index.m3u8
-Kinomix (576p),🎬 Кино,SD,Kinomix.ru@SD,100,38,https://i.imgur.com/D4q2XUT.png,https://fs.uplink.kz/kinomix/mono.m3u8?token=onlinetv
-Kinopremyera HD (1080p),🎬 Кино,HD,Kinopremyera.ru@HD,100,38,https://i.imgur.com/s0UYT8T.png,https://fs.uplink.kz/kinopremiera_hd/mono.m3u8?token=onlinetv
-Kinosemja (576p),🎬 Кино,HD,kinosweet,100,38,https://i.imgur.com/4BF5VeK.png,http://stream.mcquack.net/170/index.m3u8
-Kinosemja (576p),🎬 Кино,SD,kinosweet,100,38,https://i.imgur.com/4BF5VeK.png,https://fs.uplink.kz/kinosemya/mono.m3u8?token=onlinetv
-Kinoseriya (576p),🎬 Кино,SD,kinoseria,100,38,https://i.imgur.com/iao7zLZ.png,https://fs.uplink.kz/kinoseria/mono.m3u8?token=onlinetv
-Kinosvidanie (576p),🎬 Кино,HD,kinosvidanie,100,38,https://i.imgur.com/ZRaWqxj.png,http://stream.mcquack.net/171/index.m3u8
-Kinosvidanie (576p),🎬 Кино,SD,kinosvidanie,100,38,https://i.imgur.com/ZRaWqxj.png,https://fs.uplink.kz/kinosvidanie/mono.m3u8?token=onlinetv
-Kinouzhas (576p),🎬 Кино,HD,kinouzhas,100,38,https://i.imgur.com/mAcAAQF.png,http://stream.mcquack.net/278/index.m3u8
-Kinouzhas (576p),🎬 Кино,SD,kinouzhas,100,38,https://i.imgur.com/mAcAAQF.png,https://fs.uplink.kz/kinouzhas/mono.m3u8?token=onlinetv
-Komedia (576p),🎬 Кино,SD,Komedia.ru@SD,100,38,https://i.imgur.com/VRC5juh.png,http://stream.mcquack.net/68/index.m3u8
-Komedia (576p),🎬 Кино,SD,Komedia.ru@SD,100,38,https://i.imgur.com/VRC5juh.png,http://176.118.197.101/Komediya/index.m3u8
-Komediynoe HD (1080p),🎬 Кино,HD,Komediynoe.ru@HD,100,38,https://i.imgur.com/cEKe8XC.png,http://stream.mcquack.net/74/index.m3u8
-Mosfilm Gold Collection (576p),🎬 Кино,HD,MosfilmGoldCollection.ru@SD,100,38,https://i.imgur.com/95Y8jb6.png,http://stream.mcquack.net/369/index.m3u8
-Mosfilm Gold Collection (576p),🎬 Кино,SD,MosfilmGoldCollection.ru@SD,100,38,https://i.imgur.com/95Y8jb6.png,https://fs.uplink.kz/mosfilm/mono.m3u8?token=onlinetv
-Muzhskoe kino (576p),🎬 Кино,HD,muzhskoe-kino,100,38,https://i.imgur.com/8RN3tQC.png,http://stream.mcquack.net/107/index.m3u8
-Muzhskoe kino (576p),🎬 Кино,SD,muzhskoe-kino,100,38,https://i.imgur.com/8RN3tQC.png,https://fs.uplink.kz/muzhskoe_kino/mono.m3u8?token=onlinetv
-Nashe muzhskoe HD (1080p),🎬 Кино,HD,nashe-muzhskoe,100,38,https://i.imgur.com/QRWKpmb.png,http://stream.mcquack.net/362/index.m3u8
-Nashe Novoe Kino (576p),🎬 Кино,SD,nashe-novoe-kino,100,38,https://i.imgur.com/IOxIsPj.png,https://fs.uplink.kz/nashe_novoe_kino/mono.m3u8?token=onlinetv
-Nostalgia (576p),🎬 Кино,SD,Nostalgia.ru@SD,100,38,https://i.imgur.com/JU1dFfK.png,https://fs.uplink.kz/nostalgia/mono.m3u8?token=onlinetv
-Nostalgia (576p),🎬 Кино,SD,Nostalgia.ru@SD,100,38,https://i.imgur.com/JU1dFfK.png,http://176.118.197.101/Nostalgiya/index.m3u8
-Pobeda (576p),🎬 Кино,SD,pobeda,100,38,https://i.imgur.com/4KiYSln.png,https://fs.uplink.kz/pobeda/mono.m3u8?token=onlinetv
-Premialnoe HD (1080p),🎬 Кино,HD,premialnoe,100,38,https://i.imgur.com/ck4aLBP.png,http://stream.mcquack.net/421/index.m3u8
-Priklyucheniya HD (1080p),🎬 Кино,HD,prikluchenia-hd,100,38,https://i.imgur.com/qQ6pPPQ.png,http://stream.mcquack.net/198/index.m3u8
-Retro (576p),🎬 Кино,SD,retro-tv,100,38,https://i.imgur.com/p21co1w.png,http://stream.mcquack.net/191/index.m3u8
-Retro (576p),🎬 Кино,SD,retro-tv,100,38,https://i.imgur.com/p21co1w.png,http://176.118.197.101/Retro/index.m3u8
-Rodnoe Kino (576p),🎬 Кино,SD,rodnoe-kino,100,38,https://i.imgur.com/H70LxoZ.png,http://stream.mcquack.net/242/index.m3u8
-Rodnoe Kino (576p),🎬 Кино,SD,rodnoe-kino,100,38,https://i.imgur.com/H70LxoZ.png,https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
-Russkiy Detektiv (576p),🎬 Кино,SD,RusskiyDetektiv.ru@SD,100,38,https://i.imgur.com/H3qhN8S.png,http://stream.mcquack.net/204/index.m3u8
-Russkiy Illusion (576p),🎬 Кино,SD,RusskiyIllusion.ru@SD,95,38,https://i.imgur.com/RlsqFN8.png,https://fs.uplink.kz/russkiy_illusion/mono.m3u8?token=onlinetv
-Russkiy roman (576p),🎬 Кино,HD,Russkiyroman.ru@SD,100,38,https://i.imgur.com/cQN0P2B.png,http://stream.mcquack.net/266/index.m3u8
-Russkiy roman (576p),🎬 Кино,SD,Russkiyroman.ru@SD,100,38,https://i.imgur.com/cQN0P2B.png,https://vod.tuva.ru/rusroman/index.m3u8
-Saphire (1080p),🎬 Кино,HD,Saphire.ru@SD,100,38,https://i.imgur.com/NMOBvle.png,http://77.232.131.211/Sapfir/manifest.m3u8
-Shokiruyushchee HD (1080p),🎬 Кино,HD,Shokiruyushchee.ru@HD,100,38,https://i.imgur.com/UG63hZ0.png,http://stream.mcquack.net/75/index.m3u8
-Star Cinema,🎬 Кино,Unknown,star-cinema,100,38,https://i.imgur.com/5sis895.png,https://dash2.antik.sk/live/test_star_cinema_atktv/playlist.m3u8
-Star Family (1080p),🎬 Кино,HD,star-family,100,38,https://i.imgur.com/eGuGHnZ.png,https://dash2.antik.sk/live/test_star_family_atktv/playlist.m3u8
-START Air (1080p),🎬 Кино,HD,start-air,100,38,https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png,http://176.118.197.101/START_AIR/index.m3u8
-START Air (576p),🎬 Кино,SD,start-air,100,38,https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png,http://stream.mcquack.net/128/index.m3u8
-TV 21 (576p),🎬 Кино,SD,tv21plus,87,38,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRO7jWKujUVD6jbcgA0vraQnkAtls50WlO11pwnQ3FlKTGpvVcIYzyl2kQfOUDrJMMPmc&usqp=CAU,http://178.134.1.158:8081/TVXXI/index.m3u8
-TV 21 (576p),🎬 Кино,SD,tv21plus,92,38,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRO7jWKujUVD6jbcgA0vraQnkAtls50WlO11pwnQ3FlKTGpvVcIYzyl2kQfOUDrJMMPmc&usqp=CAU,https://fs.uplink.kz/tvxxi/mono.m3u8?token=onlinetv
-TV 21 International (576p),🎬 Кино,SD,TV21International.ru@SD,100,38,https://ibb.co/BH6CZx3K,http://stream.mcquack.net/152/index.m3u8
-viju TV1000 (576p),🎬 Кино,HD,tv1000,100,38,https://i.imgur.com/ZMsyjSr.png,http://stream.mcquack.net/110/index.m3u8
-viju TV1000 (576p),🎬 Кино,SD,tv1000,100,38,https://i.imgur.com/ZMsyjSr.png,https://fs.uplink.kz/viju_tv1000/mono.m3u8?token=onlinetv
-viju TV1000 action (576p),🎬 Кино,SD,tv1000-action,100,38,https://i.imgur.com/TMmyuzh.png,https://fs.uplink.kz/viju_tv1000_action/mono.m3u8?token=onlinetv
-viju TV1000 russkoe (576p),🎬 Кино,SD,tv1000-russkoe-kino,100,38,https://i.imgur.com/Meak2y4.png,https://fs.uplink.kz/viju_tv1000_russkoe/mono.m3u8?token=onlinetv
-viju+ Comedy HD (1080p),🎬 Кино,HD,vip-comedy,100,38,https://i.imgur.com/YoNOFu7.png,http://stream.mcquack.net/201/index.m3u8
-viju+ Megahit HD (1080p),🎬 Кино,HD,vip-megahit,100,38,https://i.imgur.com/oIQNddV.png,http://stream.mcquack.net/200/index.m3u8
-viju+ Premiere HD (1080p),🎬 Кино,HD,vip-premiere,100,38,https://i.imgur.com/klRvhR5.png,http://stream.mcquack.net/202/index.m3u8
-viju+ Serial HD (1080p),🎬 Кино,HD,vip-serial,100,38,https://i.imgur.com/8yXZET5.png,http://stream.mcquack.net/311/index.m3u8
-5 minut tishiny (1080p),🎭 Сериалы НТВ,HD,5minuttishiny.ru@SD,100,38,https://cdn2-static.ntv.ru/home/promo/24740/5minut_live.jpg,https://cdn-dvr.ntv.ru/5_minut_tishiny/index.m3u8
-Balabol (1080p),🎭 Сериалы НТВ,HD,Balabol.ru@SD,100,38,https://cdn2-static.ntv.ru/home/promo/24740/balabol_vse.jpg,https://cdn-dvr.ntv.ru/Balabol/index.m3u8
-Nevskiy (1080p),🎭 Сериалы НТВ,HD,Nevskiy.ru@SD,100,38,https://cdn2-static.ntv.ru/home/promo/24740/nevski_llive.jpg,https://cdn-dvr.ntv.ru/Nevskiy/index.m3u8
-NTV HD (1080p),🎭 Сериалы НТВ,HD,ntv,100,38,https://www.mongolsat.mn/assets/img/channel/38.png,https://cdn-dvr.ntv.ru/ntv0_hd/index.m3u8
-NTV Series (576p),🎭 Сериалы НТВ,SD,NTVSeries.ru@SD,100,38,https://i.imgur.com/QdVa8tl.png,http://stream.mcquack.net/301/index.m3u8
-Perviy otdel (1080p),🎭 Сериалы НТВ,HD,Perviyotdel.ru@SD,100,38,https://cdn2-static.ntv.ru/home/promo/24740/perv_otdel_llive.jpg,https://cdn-dvr.ntv.ru/Perviy_otdel/index.m3u8
-Pes (1080p),🎭 Сериалы НТВ,HD,pes-ua,100,38,https://cdn2-static.ntv.ru/home/promo/24740/pes_llive.jpg,https://cdn-dvr.ntv.ru/Pes/index.m3u8
-Shef (1080p),🎭 Сериалы НТВ,HD,Shef.ru@SD,100,38,https://cdn2-static.ntv.ru/home/promo/24740/shef_llive.jpg,https://cdn-dvr.ntv.ru/Shef/index.m3u8
-Skoraya pomoshch (1080p),🎭 Сериалы НТВ,HD,Skorayapomoshch.ru@SD,100,38,https://cdn2-static.ntv.ru/home/promo/24740/skoraya_pom_llive.jpg,https://cdn-dvr.ntv.ru/Skoraja_pomosh/index.m3u8
-1HD Music Television (1080p),🎵 Музыка,HD,1hd,100,38,https://i.imgur.com/4Ww7CsR.png,http://176.118.197.101/1HD/index.m3u8
-BRIDGE (576p),🎵 Музыка,SD,bridge-hd,100,38,https://i.imgur.com/qYObfrG.png,http://stream.mcquack.net/318/index.m3u8
-BRIDGE (576p),🎵 Музыка,SD,bridge-hd,97,38,https://i.imgur.com/qYObfrG.png,http://178.134.1.158:8081/BRIDGE/index.m3u8
-BRIDGE (576p),🎵 Музыка,SD,bridge-hd,100,38,https://i.imgur.com/qYObfrG.png,http://194.143.148.28:8080/RT_DOC/index.m3u8
-BRIDGE Classic (576p),🎵 Музыка,SD,bridge-tv-classic,100,38,https://i.imgur.com/JJTQq81.png,http://stream.mcquack.net/272/index.m3u8
-BRIDGE Classic (576p),🎵 Музыка,SD,bridge-tv-classic,100,38,https://i.imgur.com/JJTQq81.png,https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
-BRIDGE Deluxe HD (576p),🎵 Музыка,HD,bridge-hd,100,38,https://i.imgur.com/EazL8w7.png,http://stream.mcquack.net/92/index.m3u8
-BRIDGE Hits (576p),🎵 Музыка,SD,bridge-tv-dance,100,38,https://i.imgur.com/sIW9oR4.png,http://stream.mcquack.net/320/index.m3u8
-BRIDGE Hits (576p),🎵 Музыка,SD,bridge-tv-dance,84,38,https://i.imgur.com/sIW9oR4.png,http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8
-BRIDGE Rock (576p),🎵 Музыка,SD,bridge-tv-rock,97,38,https://i.imgur.com/MHuwct2.png,http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
-Classic Music (1080p),🎵 Музыка,HD,classic-music,100,38,https://i.imgur.com/TpXs1qA.png,http://stream.mcquack.net/312/index.m3u8
-DanceHits80,🎵 Музыка,Unknown,DanceHits80.ru@SD,100,38,https://i.imgur.com/uMw3kks.png,http://dancehits80.denvs.ru:8080/index.m3u8
-Europa Plus TV (576p),🎵 Музыка,SD,europa-plus-tv,100,38,https://i.imgur.com/GLc4qrc.png,https://fs.uplink.kz/europa_plus/mono.m3u8?token=onlinetv
-Europa Plus TV SD (576p),🎵 Музыка,SD,europa-plus-tv,100,38,https://i.imgur.com/GLc4qrc.png,http://stream.mcquack.net/184/index.m3u8
-Fon Music (576p),🎵 Музыка,SD,tnt-music,100,38,https://i.imgur.com/tXABQDE.png,http://stream.mcquack.net/317/index.m3u8
-Hit HD (1080p),🎵 Музыка,HD,hit-tv,100,38,https://i.imgur.com/jl3MNPe.png,http://stream.mcquack.net/363/index.m3u8
-Muz-TV (576p),🎵 Музыка,SD,muztv,100,38,https://i.imgur.com/lSBMeBU.png,http://stream.mcquack.net/86/index.m3u8
-Muz-TV (576p),🎵 Музыка,SD,muztv,100,38,https://i.imgur.com/lSBMeBU.png,https://fs.uplink.kz/muz_tv/mono.m3u8?token=onlinetv
-Muz-TV (576p),🎵 Музыка,SD,muztv,100,5,https://i.imgur.com/lSBMeBU.png,http://31.148.5.241/kanal_20/index.m3u8
-Muzyka Live (576p),🎵 Музыка,SD,la-minor,100,38,https://i.imgur.com/RH6hTWG.png,http://stream.mcquack.net/303/index.m3u8
-Muzyka Pervogo (576p),🎵 Музыка,SD,muzyka-pervogo,100,38,https://i.imgur.com/U0vKj3P.png,http://stream.mcquack.net/153/index.m3u8
-Muzyka Pervogo (576p),🎵 Музыка,SD,muzyka-pervogo,100,38,https://i.imgur.com/U0vKj3P.png,http://88.212.15.19/live/test_muzyka_pervogo/playlist.m3u8
-Nashe HD (576p),🎵 Музыка,HD,nashe-music-hd,100,38,https://i.imgur.com/KO8dhi9.png,http://stream.mcquack.net/217/index.m3u8
-RU.TV (576p),🎵 Музыка,SD,RUTV.ru@SD,100,38,,https://fs.uplink.kz/RuTV/mono.m3u8?token=onlinetv
-RU.TV SD (576p),🎵 Музыка,SD,RUTV.ru@SD,100,38,,http://stream.mcquack.net/109/index.m3u8
-Russian MusicBox (576p),🎵 Музыка,HD,russian-musicbox,100,38,https://i.imgur.com/ZkJ3Rh9.png,http://stream.mcquack.net/319/index.m3u8
-Shanson TV (576p),🎵 Музыка,SD,ShansonTV.ru@SD,100,38,https://i.imgur.com/Fk4sd8t.png,http://catchup.videoline.ru/shanson/index.m3u8
-Shanson TV (576p),🎵 Музыка,SD,ShansonTV.ru@SD,100,38,https://i.imgur.com/Fk4sd8t.png,https://fs.uplink.kz/shanson/mono.m3u8?token=onlinetv
-Zhara (576p),🎵 Музыка,HD,zhara,100,38,https://images.restream-media.net/images/d6k2670mifea4e56t850.png,http://stream.mcquack.net/386/index.m3u8
-Zhara (576p),🎵 Музыка,SD,zhara,100,38,https://images.restream-media.net/images/d6k2670mifea4e56t850.png,https://fs.uplink.kz/zhara/mono.m3u8?token=onlinetv
-Муз союз (576p),🎵 Музыка,HD,muzsoyuz,100,38,https://i.imgur.com/Puk1Bhx.png,https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz2/muzsoyuz.6fw0-58xp-acts-esy0/playlist.m3u8
-AIST TV (576p),🏙️ Региональные,HD,aist,100,38,https://i.imgur.com/bcw0s4V.png,http://194.143.148.28:8080/Aist/index.m3u8
-Channel 8 (576p),🏙️ Региональные,HD,8kanal-by,100,38,https://i.imgur.com/ADQkn9l.png,http://tshift-1.telecoma.tv/8channel/index.m3u8
-Channel 8 (576p),🏙️ Региональные,SD,8kanal-by,100,38,https://i.imgur.com/ADQkn9l.png,https://v4.proofix.ru/8tv-russia/index.m3u8
-Channel 8 International (576p) [Geo-blocked],🏙️ Региональные,SD,8kanal-eu,100,38,https://i.imgur.com/I8OU9oa.png,http://live-11cinema.cdnvideo.net/11cinemanet/11cinemanet/playlist.m3u8
-Channel 8 Krasnoyarsk HD (1080p),🏙️ Региональные,HD,Channel8Krasnoyarsk.ru@HD,100,38,https://i.imgur.com/q3JCAC3.png,https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
-Channel 8 Novosibirsk (480i),🏙️ Региональные,SD,Channel8Novosibirsk.ru@SD,100,38,https://i.imgur.com/eHGETvU.png,https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
-Enisey (576p),🏙️ Региональные,SD,Enisey.ru@SD,100,38,https://i.imgur.com/57deE7f.png,http://tshift-1.telecoma.tv/enisei/index.m3u8
-Kuban 24 (480p) [Geo-blocked],🏙️ Региональные,HD,kuban-24,100,22,https://i.imgur.com/atzrXcz.png,http://dmi3y-tv.online/hls/zabava/region/MAYK/CH_MAYKOP.m3u8
-Moy mir (720p),🏙️ Региональные,HD,Moymir.ru@SD,100,38,https://www.cableman.ru/sites/default/files/MM-TV_logo-1%5B1509%5D.png,https://moymir.ru/hls/onair.m3u8
-NST (576p),🏙️ Региональные,SD,nst,100,38,https://i.imgur.com/5dJE8Fc.jpg,http://stream.mcquack.net/207/index.m3u8
-NST (576p),🏙️ Региональные,SD,nst,100,38,https://i.imgur.com/5dJE8Fc.jpg,https://vod.tuva.ru/nst/index.m3u8
-Prodvizhenie (1080p),🏙️ Региональные,HD,prodvizhenie,100,38,https://i.imgur.com/KlsnfG9.png,https://streaming.astrakhan.ru/proastrakhanhd/index.m3u8
-Prodvizhenie (576p),🏙️ Региональные,SD,prodvizhenie,100,38,https://i.imgur.com/KlsnfG9.png,http://origin5.mediacdn.ru/live/prodvizhenie_new/index.m3u8
-Sochi Live HD (720p) [Not 24/7],🏙️ Региональные,HD,SochiLive.ru@HD,100,38,https://www.cableman.ru/sites/default/files/sochi_live.png,http://serv30.vintera.tv:8081/sochi/sochi_stream/playlist.m3u8
-TNV-Planet (576p),🏙️ Региональные,SD,TNVPlanet.ru@SD,100,38,https://i.imgur.com/ijA1zDw.png,https://fs.uplink.kz/tnv/mono.m3u8?token=onlinetv
-TNV-Tatarstan (720p),🏙️ Региональные,HD,tnv,100,38,https://i.imgur.com/58u9TQT.png,https://user91229.clients-cdnnow.ru/hls/user91229_1.m3u8
-Tooku (1080p),🏙️ Региональные,HD,tooku,100,38,https://tooku.ru/wp-content/uploads/2024/11/tooku-kanal-logo.png,http://live-saha.cdnvideo.ru/saha/tooky/playlist.m3u8
-Unknown Russia HD (1080p),🏙️ Региональные,HD,UnknownRussia.ru@HD,100,38,https://i.imgur.com/W7ste2f.png,http://185.23.80.23:8080/NeizvestnayaRossia/index.m3u8
-Yalta TV (480p) [Geo-blocked],🏙️ Региональные,SD,YaltaTV.ru@SD,100,38,https://img.cataloxy.ru/fl/97/e3/808131.gif,http://195.26.83.96:7029/play/a006
-Аист ТВ (1080p),🏙️ Региональные,HD,aist,100,38,https://i.imgur.com/bcw0s4V.png,http://live2-aisttv.cdnvideo.ru/aisttv2/aisttv.sdp/playlist.m3u8
-Арис 24 (720p) [Not 24/7],🏙️ Региональные,HD,aris24,100,38,https://i.imgur.com/CTFVEAb.png,http://serv25.vintera.tv:8081/test/aris/playlist.m3u8
-Белгород 24 (1080p),🏙️ Региональные,HD,belgorod24,97,38,https://i.imgur.com/EEirvyx.png,https://belnovosti.cdn.easyhoster.ru:8443/stream.m3u8
-Ветта 24 (Пермь) (576p) [Not 24/7],🏙️ Региональные,SD,vetta24,100,38,https://i.imgur.com/zKH1b5k.png,http://serv24.vintera.tv:8081/vetta/vetta_office/playlist.m3u8
-Волга (HD),🏙️ Региональные,HD,volga,100,38,https://i.imgur.com/xHs1pr1.png,http://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Volga/hls/1920x1080@4504/playlist.m3u8
-Губерния (Самара) (576p),🏙️ Региональные,SD,gubernia,100,38,https://i.imgur.com/1Qpg40L.png,http://live.guberniatv.cdnvideo.ru/guberniatv/guberniatv.sdp/playlist.m3u8
-Евразия (Орск) (720p),🏙️ Региональные,HD,evrasia,100,38,https://i.imgur.com/4JUHIVS.png,https://infochh.trkeurasia.ru/hlsinfoch/infochhd.m3u8
-Енисей (1080p) [Not 24/7],🏙️ Региональные,HD,enisey-region,100,38,https://i.imgur.com/57deE7f.png,https://hls-eniseytv.cdnvideo.ru/eniseytv/stream1/playlist.m3u8
-МТВ (Волгоград) (720p) [Not 24/7],🏙️ Региональные,HD,mtv-de,100,38,https://i.imgur.com/pdCAUrP.png,http://hls.volgograd1vtv.cdnvideo.ru/volgograd1vtv/volgograd1vtv.sdp/playlist.m3u8
-НВК Саха (1080p) [Not 24/7],🏙️ Региональные,HD,saxa,100,38,https://i.imgur.com/LwXNUhf.png,https://live-saha.cdnvideo.ru/saha/saha/playlist.m3u8
-Нижний Новгород 24 (720p) [Not 24/7],🏙️ Региональные,HD,nn-24,92,38,https://i.imgur.com/ZWgPVIC.png,https://live-vestinn.cdnvideo.ru/vestinn/nn24-khl/playlist.m3u8
-Ника ТВ (576p) [Not 24/7],🏙️ Региональные,HD,nika-tv,100,38,https://i.imgur.com/dccsFAu.png,https://live-nikatv.cdnvideo.ru/nikatv/nikatv.sdp/playlist.m3u8
-НТМ (Народное телевидение Мордовии) (720p) [Not 24/7],🏙️ Региональные,HD,ntm,100,38,https://i.imgur.com/AH50pGT.png,https://live-ntm13.cdnvideo.ru/ntm13/smil:ntm13.smil/playlist.m3u8
-НТС (Севастополь) (1080p) [Not 24/7],🏙️ Региональные,HD,nts-irkutsk,100,38,https://i.ibb.co/hCf7v4D/nts.jpg,https://peqk71plnjy.a.trbcdn.net/livemaster/w4kz7pki62_nts_tv/playlist.m3u8
-Прима (1080p),🏙️ Региональные,HD,prima,100,38,https://i.imgur.com/33XGMch.png,https://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Prima/hls/index.m3u8
-С1 (Сургут) (1080p) [Not 24/7],🏙️ Региональные,HD,S1.ru@SD,100,38,https://i.imgur.com/chNBF5t.png,https://sitv.ru/hls/stv.m3u8
-Самара ГИС (1080p) [Not 24/7],🏙️ Региональные,HD,samara24,100,38,https://samaragis.ru/wp-includes/images/logo.png,https://tv.samaragis.ru/new/new/tracks-v1a1/mono.m3u8
-Сочи 24 HD (720p),🏙️ Региональные,HD,sochi24,100,38,https://i.imgur.com/iwWxkl6.png,http://serv30.vintera.tv:8081/sochi/sochi24_tv/playlist.m3u8
-Телеканал 86 (Сургут) (1080p) [Not 24/7],🏙️ Региональные,HD,86-surgut,100,38,https://i.imgur.com/0dRS4Cb.png,https://sitv.ru/hls/s86.m3u8
-Телерадиокомпания 555 (Алушта) (720p),🏙️ Региональные,HD,555.ru@SD,100,38,https://i.imgur.com/Ouv51WB.png,http://trk555.tv:8888/live
-ТКР (Рязань) (1080p) [Not 24/7],🏙️ Региональные,HD,TKR.ru@SD,100,38,https://i.imgur.com/VqtPB7L.png,http://live.tkr.cdnvideo.ru/tkr/tkr.sdp/playlist.m3u8
-Толк HD (720p),🏙️ Региональные,HD,tolk,100,38,https://i.imgur.com/l7JZ79P.png,http://live-tolknews.cdnvideo.ru/tolknews/stream/playlist.m3u8
-Хузур ТВ (1080p) [Not 24/7],🏙️ Региональные,HD,xuzur-tv,100,38,https://i.imgur.com/Abg1fct.png,https://hls-mycdn08724960135.cdnvideo.ru/mycdn08724960135/stream1/playlist.m3u8
-Gorodskoy telekanal (720p),📦 Разное,HD,Gorodskoytelekanal.ru@SD,100,5,https://i.imgur.com/zMNJfoV.png,https://gtk.tv/hls/gtyar.m3u8
-Horoshee Kino (720p),📦 Разное,HD,HorosheeKino.ru@SD,100,38,https://i.imgur.com/ZbOqfy4.png,https://live-rian.cdnvideo.ru/rian/rus-radio/playlist.m3u8
-Rus (576p),📦 Разное,SD,tv-rus,100,5,https://i.imgur.com/KuL21f9.png,http://31.148.5.241/kanal_21/index.m3u8
-КИНОТВ,📦 Разное,SD,kino-tv,100,38,https://iptvx.one/picons/kino-tv.png,https://vod.tuva.ru/kinotv/index.m3u8
-360°,📰 Новости,SD,360-lv,100,38,https://i.imgur.com/VTJqdoX.png,https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/0.m3u8
-Duma TV (720p),📰 Новости,HD,dumatv,100,38,https://i.imgur.com/JvlO3PU.png,http://185.23.80.23:8080/DumaTV/index.m3u8
-Maidan (720p),📰 Новости,HD,maydan,100,38,https://i.imgur.com/C8CCjZK.png,https://live-maidantv.cdnvideo.ru/maidantv/maidantv.smil/playlist.m3u8
-Moskva 24 (576p),📰 Новости,SD,moskva-24,100,38,https://i.imgur.com/gXbUMVy.png,https://fs.uplink.kz/moskva24/mono.m3u8?token=onlinetv
-Moskva 24 (720p),📰 Новости,HD,moskva-24,100,38,https://i.imgur.com/gXbUMVy.png,https://stream.smotrim.ru/hls2/givc9/playlist_4.m3u8
-Oplot TV (1080p) [Geo-blocked],📰 Новости,HD,OplotTV.ru@Khartsyzsk,87,15,https://pic.rtbcdn.ru/user/2025-08-18/24/91/24919316f6594ce2542686d540894797.jpg,http://31.131.141.195:8000/play/a006/index.m3u8
-RBK-TV (576p),📰 Новости,HD,rbk,100,38,https://i.imgur.com/CwhmJby.png,http://176.118.197.101/RBK/index.m3u8
-RT (720p),📰 Новости,HD,rt-news,71,38,https://i.imgur.com/55SK22l.png,http://212.5.144.156:8080/rt/index.m3u8
-RTVi (576p),📰 Новости,SD,rtvi,100,38,https://i.imgur.com/1AEhXyS.png,https://shift03.isp.bg/RTVi/index.m3u8
-Svoboda,📰 Новости,Unknown,svoboda,100,38,https://web02.antik.sk/assets/img/channels/db23090472360f39401398f924a47461.svg,http://88.212.15.19/live/svoboda/index.m3u8
-T24 (576p),📰 Новости,SD,ct24-cz,87,38,https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png,http://178.134.1.158:8081/t24/index.m3u8
-T24 (576p),📰 Новости,SD,ct24-cz,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png,http://stream.mcquack.net/209/index.m3u8
-T24 (576p),📰 Новости,SD,ct24-cz,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png,https://fs.uplink.kz/tehno_24/mono.m3u8?token=onlinetv
-TV BRICS Russian (1080p),📰 Новости,HD,tv-brics,100,38,https://i.imgur.com/vLpm8tN.png,http://185.23.80.23:8080/TVBRICS/index.m3u8
-Известия (1080p),📰 Новости,HD,izvestia,100,38,https://i.imgur.com/r5HzA6J.png,http://igi-hls.cdnvideo.ru/igi/igi_tcode/playlist.m3u8
-Красная линия (288p),📰 Новости,SD,krasnaya-linia,100,38,https://i.imgur.com/TgZ8Uv1.png,http://s55766.cdn.ngenix.net/s55766-media-origin/rline_low/index.m3u8
-Красная линия (480p),📰 Новости,SD,krasnaya-linia,100,38,https://i.imgur.com/TgZ8Uv1.png,http://s55766.cdn.ngenix.net/s55766-media-origin/rline_high/index.m3u8
-ЛДПР ТВ (1080p),📰 Новости,HD,ldpr-tv,100,38,https://i.imgur.com/gCmCRfe.png,http://46.46.143.222:1935/live/mp4:ldpr.stream/playlist.m3u8
-ЛДПР ТВ (480p),📰 Новости,SD,ldpr-tv,100,38,https://i.imgur.com/gCmCRfe.png,http://46.46.143.222:1935/live/mp4:ldpr.stream_480p/playlist.m3u8
-ЛДПР ТВ (720p),📰 Новости,HD,ldpr-tv,100,38,https://i.imgur.com/gCmCRfe.png,http://46.46.143.222:1935/live/mp4:ldpr.stream_720p/playlist.m3u8
-ОСН,📰 Новости,HD,OSN.ru@SD,100,38,https://www.osnmedia.ru/wp-content/uploads/2024/11/osn-logo-header.png,http://osnmedia.servicecdn.ru/streams/17603_88089/playlist.m3u8
-РБК (560p),📰 Новости,Unknown,rbk,100,38,https://i.imgur.com/CwhmJby.png,http://92.50.128.180/utv/1358/index.m3u8
-РБК (576p),📰 Новости,HD,rbk,100,38,https://i.imgur.com/CwhmJby.png,https://uiptv.do.am/1ufc/701293058/playlist.m3u8
+2x2 (576p),🎪 Развлекательные,SD,2na2,100,39,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,http://flussonic.mkpnet.ru/tv-17540fb90079a865/video.m3u8
+2x2 (576p),🎪 Развлекательные,HD,2na2,100,39,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,http://185.23.80.23:8080/2x2/index.m3u8
+2x2 (576p),🎪 Развлекательные,SD,2na2,100,39,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,http://176.118.197.101/2x2/index.m3u8
+2x2 SD (576p),🎪 Развлекательные,SD,2na2,100,39,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,http://stream.mcquack.net/187/index.m3u8
+TeleDom,🎪 Развлекательные,Unknown,teledom,100,39,https://i.imgur.com/vceJmuk.png,https://iam-profi.ru/hls-live/livepkgr/_definst_/liveevent/td720.m3u8
+TV PRO,🎪 Развлекательные,Unknown,TVPRO.ru@SD,97,39,https://i.imgur.com/KQmB9Cc.png,http://rtmp.tvpro-online.ru/hls/ch1.m3u8
+U (576p),🎪 Развлекательные,SD,U.ru@SD,97,39,https://i.ibb.co/23ktDgvx/IMG-2461.png,http://178.134.1.158:8081/U/index.m3u8
+U (576p),🎪 Развлекательные,SD,U.ru@SD,100,39,https://i.ibb.co/23ktDgvx/IMG-2461.png,http://stream.mcquack.net/230/index.m3u8
+U (576p),🎪 Развлекательные,SD,U.ru@SD,100,39,https://i.ibb.co/23ktDgvx/IMG-2461.png,https://fs.uplink.kz/u/mono.m3u8?token=onlinetv
+Вопросы и ответы,🎪 Развлекательные,SD,voprosy-i-otvety,100,39,https://i.imgur.com/yjETxk1.png,http://stream.mcquack.net/76/index.m3u8
+Мама,🎪 Развлекательные,SD,mama,100,39,https://i.imgur.com/kmMIjjf.png,http://stream.mcquack.net/79/index.m3u8
+Мама,🎪 Развлекательные,SD,mama,100,39,https://i.imgur.com/kmMIjjf.png,http://flussonic.linkintel.ru/mama/index.m3u8
+Перец International,🎪 Развлекательные,SD,perec-int,100,39,https://i.imgur.com/Y84p1y6.png,http://stream.mcquack.net/121/index.m3u8
+Перец International,🎪 Развлекательные,Unknown,perec-int,100,39,https://i.imgur.com/Y84p1y6.png,https://fs.uplink.kz/perec/mono.m3u8?token=onlinetv
+Поехали!,🎪 Развлекательные,Unknown,poexali,100,39,https://i.imgur.com/ZNCpbII.png,https://fs.uplink.kz/poehali/mono.m3u8?token=onlinetv
+Поехали!,🎪 Развлекательные,Unknown,poexali,100,39,https://i.imgur.com/ZNCpbII.png,http://88.212.15.19/live/test_poehali/playlist.m3u8
+Пятница!,🎪 Развлекательные,HD,piatnica,100,39,https://i.imgur.com/UfmlXxe.png,http://stream.mcquack.net/181/index.m3u8
+Пятница!,🎪 Развлекательные,SD,piatnica,100,39,https://i.imgur.com/UfmlXxe.png,http://flussonic.linkintel.ru/Pyatnica/index.m3u8
+Пятница!,🎪 Развлекательные,Unknown,piatnica,100,39,https://i.imgur.com/UfmlXxe.png,https://fs.uplink.kz/bolshaya_pyatnica/mono.m3u8?token=onlinetv
+Пятница!,🎪 Развлекательные,SD,piatnica,100,6,https://i.imgur.com/UfmlXxe.png,http://31.148.5.241/kanal_16/index.m3u8
+Пятница! (576p),🎪 Развлекательные,SD,piatnica,100,39,https://i.imgur.com/UfmlXxe.png,https://vod.tuva.ru/friday/index.m3u8
+Сарафан,🎪 Развлекательные,SD,sarafan,100,39,https://i.imgur.com/u4q1rMT.png,http://stream.mcquack.net/81/index.m3u8
+Сарафан,🎪 Развлекательные,Unknown,sarafan,100,39,https://i.imgur.com/u4q1rMT.png,https://fs.uplink.kz/sarafan/mono.m3u8?token=onlinetv
+Суббота!,🎪 Развлекательные,SD,super,100,39,https://i.imgur.com/nsk8PpB.png,http://217.114.191.150/Subbota/index.m3u8
+Суббота!,🎪 Развлекательные,HD,super,100,39,https://i.imgur.com/nsk8PpB.png,http://stream.mcquack.net/269/index.m3u8
+Твое TV HD (1080p),🎪 Развлекательные,HD,tvoyo-tv-hd,100,39,https://i.imgur.com/kKAM7dP.png,http://tvoetv.space:8080/tvoetv/index.m3u8
+Твое ТВ Юмор (1080p),🎪 Развлекательные,HD,tvoetv-humor,100,39,https://smotret.tv/images/tvoe-tv-yumor.webp,http://tvoetv.space:8080/tvoetv_humor/index.m3u8
+ТНТ4,🎪 Развлекательные,SD,tnt4,100,39,https://i.imgur.com/gBokU5i.png,http://flussonic.linkintel.ru/tnt4/index.m3u8
+ТНТ4,🎪 Развлекательные,HD,tnt4,100,39,https://i.imgur.com/gBokU5i.png,http://stream.mcquack.net/106/index.m3u8
+.black (576p),🎬 Кино,HD,sony-turbo,100,39,https://i.imgur.com/Q4A6ci4.png,http://stream.mcquack.net/263/index.m3u8
+.red (576p),🎬 Кино,HD,sony-tv,100,39,https://i.imgur.com/heZeqPQ.png,http://stream.mcquack.net/69/index.m3u8
+.red HD (1080p),🎬 Кино,HD,sony-tv,90,39,https://i.imgur.com/heZeqPQ.png,http://178.134.1.158:8081/red/index.m3u8
+.sci-fi (576p),🎬 Кино,HD,scifi-pl,100,39,https://i.imgur.com/0La6W4x.png,http://stream.mcquack.net/180/index.m3u8
+Amedia Hit (1080p),🎬 Кино,HD,amedia-hit,100,39,https://i.imgur.com/a8ZBGBw.png,http://stream.mcquack.net/162/index.m3u8
+Amedia Hit (576p),🎬 Кино,HD,amedia-hit,100,39,https://i.imgur.com/a8ZBGBw.png,http://flussonic.linkintel.ru/amedia-hit/index.m3u8
+Bollywood HD (576p),🎬 Кино,HD,bollywood-hd,100,39,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzqVHuwdhVpyiSqMrUtwO1FlbSdczC-8mWTQ_M4jec6kzjeZOe,http://176.118.197.101/Bollywood_HD/index.m3u8
+Cinema (576p),🎬 Кино,SD,cinema-ru,100,39,https://i.imgur.com/B5UN7C8.png,http://flussonic.linkintel.ru/cinema/index.m3u8
+FAN (576p),🎬 Кино,HD,fanhd,100,39,https://i.imgur.com/mDeTbaF.png,http://stream.mcquack.net/420/index.m3u8
+Fox (576p),🎬 Кино,HD,fox,100,39,https://i.imgur.com/A1voBwC.png,http://stream.mcquack.net/182/index.m3u8
+Fox Life (576p),🎬 Кино,HD,foxlife,100,39,https://i.imgur.com/O2miSLA.png,http://stream.mcquack.net/129/index.m3u8
+Kino TV (576p),🎬 Кино,HD,kino-tv-pl,100,39,https://i.imgur.com/XudSdAe.png,http://flussonic.linkintel.ru/kino-tv/index.m3u8
+Kino TV HD (1080p),🎬 Кино,HD,kino-tv-pl,100,39,https://i.imgur.com/XudSdAe.png,http://176.118.197.101/KinoTvHD/playlist.m3u8
+Kino TV SD (576p),🎬 Кино,HD,kino-tv-pl,100,39,https://i.imgur.com/XudSdAe.png,http://stream.mcquack.net/221/index.m3u8
+Nostalgia (576p),🎬 Кино,SD,Nostalgia.ru@SD,100,39,https://i.imgur.com/JU1dFfK.png,https://fs.uplink.kz/nostalgia/mono.m3u8?token=onlinetv
+Nostalgia (576p),🎬 Кино,SD,Nostalgia.ru@SD,100,39,https://i.imgur.com/JU1dFfK.png,http://176.118.197.101/Nostalgiya/index.m3u8
+Star Cinema,🎬 Кино,Unknown,star-cinema,100,39,https://i.imgur.com/5sis895.png,https://dash2.antik.sk/live/test_star_cinema_atktv/playlist.m3u8
+Star Family (1080p),🎬 Кино,HD,star-family,100,39,https://i.imgur.com/eGuGHnZ.png,https://dash2.antik.sk/live/test_star_family_atktv/playlist.m3u8
+START Air (1080p),🎬 Кино,HD,start-air,100,39,https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png,http://176.118.197.101/START_AIR/index.m3u8
+START Air (576p),🎬 Кино,SD,start-air,100,39,https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png,http://stream.mcquack.net/128/index.m3u8
+TV 21 (576p),🎬 Кино,SD,tv21plus,87,39,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRO7jWKujUVD6jbcgA0vraQnkAtls50WlO11pwnQ3FlKTGpvVcIYzyl2kQfOUDrJMMPmc&usqp=CAU,http://178.134.1.158:8081/TVXXI/index.m3u8
+TV 21 (576p),🎬 Кино,SD,tv21plus,92,39,https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRO7jWKujUVD6jbcgA0vraQnkAtls50WlO11pwnQ3FlKTGpvVcIYzyl2kQfOUDrJMMPmc&usqp=CAU,https://fs.uplink.kz/tvxxi/mono.m3u8?token=onlinetv
+TV 21 International (576p),🎬 Кино,SD,TV21International.ru@SD,100,39,https://ibb.co/BH6CZx3K,http://stream.mcquack.net/152/index.m3u8
+viju TV1000 (576p),🎬 Кино,HD,tv1000,100,39,https://i.imgur.com/ZMsyjSr.png,http://stream.mcquack.net/110/index.m3u8
+viju TV1000 (576p),🎬 Кино,SD,tv1000,100,39,https://i.imgur.com/ZMsyjSr.png,https://fs.uplink.kz/viju_tv1000/mono.m3u8?token=onlinetv
+viju TV1000 action (576p),🎬 Кино,SD,tv1000-action,100,39,https://i.imgur.com/TMmyuzh.png,https://fs.uplink.kz/viju_tv1000_action/mono.m3u8?token=onlinetv
+viju TV1000 русское,🎬 Кино,Unknown,tv1000-russkoe-kino,100,39,https://i.imgur.com/Meak2y4.png,https://fs.uplink.kz/viju_tv1000_russkoe/mono.m3u8?token=onlinetv
+viju+ Comedy HD (1080p),🎬 Кино,HD,vip-comedy,100,39,https://i.imgur.com/YoNOFu7.png,http://stream.mcquack.net/201/index.m3u8
+viju+ Megahit HD (1080p),🎬 Кино,HD,vip-megahit,100,39,https://i.imgur.com/oIQNddV.png,http://stream.mcquack.net/200/index.m3u8
+viju+ Premiere HD (1080p),🎬 Кино,HD,vip-premiere,100,39,https://i.imgur.com/klRvhR5.png,http://stream.mcquack.net/202/index.m3u8
+viju+ Serial HD (1080p),🎬 Кино,HD,vip-serial,100,39,https://i.imgur.com/8yXZET5.png,http://stream.mcquack.net/311/index.m3u8
+Дом кино,🎬 Кино,Unknown,domkino,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png,https://fs.uplink.kz/dom_kino/mono.m3u8?token=onlinetv
+Дом кино Премиум,🎬 Кино,Unknown,domkino-premium,100,39,https://i.imgur.com/rJpQtvK.png,https://fs.uplink.kz/dom_kino_premium/mono.m3u8?token=onlinetv
+Дорама,🎬 Кино,HD,dorama,100,39,https://i.imgur.com/ZH5LuXU.png,http://stream.mcquack.net/412/index.m3u8
+Дорама,🎬 Кино,Unknown,dorama,100,39,https://i.imgur.com/ZH5LuXU.png,https://fs.uplink.kz/dorama/mono.m3u8?token=onlinetv
+Еврокино,🎬 Кино,Unknown,evrokino,100,39,https://i.imgur.com/8LPtPf6.png,https://fs.uplink.kz/eurokino/mono.m3u8?token=onlinetv
+Индийское кино,🎬 Кино,Unknown,indiyskoe-kino,100,39,https://i.imgur.com/LL8GyCh.png,https://fs.uplink.kz/indiyskoe_kino/mono.m3u8?token=onlinetv
+Кинокомедия,🎬 Кино,Unknown,kinokomedia,100,39,https://i.imgur.com/dVjtth0.png,https://fs.uplink.kz/kinokomedia/mono.m3u8?token=onlinetv
+Киномикс,🎬 Кино,Unknown,kinomiks,100,39,https://i.imgur.com/D4q2XUT.png,https://fs.uplink.kz/kinomix/mono.m3u8?token=onlinetv
+Кинопремьера,🎬 Кино,Unknown,kinopremiera-hd,100,39,https://i.imgur.com/s0UYT8T.png,https://fs.uplink.kz/kinopremiera_hd/mono.m3u8?token=onlinetv
+Киносвидание,🎬 Кино,Unknown,kinosvidanie,100,39,https://i.imgur.com/ZRaWqxj.png,https://fs.uplink.kz/kinosvidanie/mono.m3u8?token=onlinetv
+Киносемья,🎬 Кино,Unknown,kinosemiya,100,39,https://i.imgur.com/4BF5VeK.png,https://fs.uplink.kz/kinosemya/mono.m3u8?token=onlinetv
+Киносерия,🎬 Кино,Unknown,kinoseria,100,39,https://i.imgur.com/iao7zLZ.png,https://fs.uplink.kz/kinoseria/mono.m3u8?token=onlinetv
+Киноужас,🎬 Кино,Unknown,kinouzhas,100,39,https://i.imgur.com/mAcAAQF.png,https://fs.uplink.kz/kinouzhas/mono.m3u8?token=onlinetv
+Кинохит,🎬 Кино,Unknown,kinoxit,100,39,https://i.imgur.com/Ge8vkQM.png,https://fs.uplink.kz/kinohit/mono.m3u8?token=onlinetv
+Мосфильм Золотая коллекция,🎬 Кино,Unknown,mosfilm,100,39,https://i.imgur.com/95Y8jb6.png,https://fs.uplink.kz/mosfilm/mono.m3u8?token=onlinetv
+Мужское кино,🎬 Кино,Unknown,muzhskoe-kino,100,39,https://i.imgur.com/8RN3tQC.png,https://fs.uplink.kz/muzhskoe_kino/mono.m3u8?token=onlinetv
+Наше новое кино,🎬 Кино,Unknown,nashe-novoe-kino,100,39,https://i.imgur.com/IOxIsPj.png,https://fs.uplink.kz/nashe_novoe_kino/mono.m3u8?token=onlinetv
+Победа,🎬 Кино,Unknown,pobeda,100,39,https://i.imgur.com/4KiYSln.png,https://fs.uplink.kz/pobeda/mono.m3u8?token=onlinetv
+Ретро,🎬 Кино,SD,retro-tv,100,39,https://i.imgur.com/p21co1w.png,http://stream.mcquack.net/191/index.m3u8
+Ретро,🎬 Кино,SD,retro-tv,100,39,https://i.imgur.com/p21co1w.png,http://176.118.197.101/Retro/index.m3u8
+Родное Кино,🎬 Кино,Unknown,rodnoe-kino,100,39,https://i.imgur.com/H70LxoZ.png,https://fs.uplink.kz/rodnoe_kino/mono.m3u8?token=onlinetv
+Русский Иллюзион,🎬 Кино,Unknown,russky-illuzion,95,39,https://i.imgur.com/RlsqFN8.png,https://fs.uplink.kz/russkiy_illusion/mono.m3u8?token=onlinetv
+NTV HD (1080p),🎭 Сериалы НТВ,HD,ntv,100,39,https://www.mongolsat.mn/assets/img/channel/38.png,https://cdn-dvr.ntv.ru/ntv0_hd/index.m3u8
+Балабол,🎭 Сериалы НТВ,HD,Balabol.ru@SD,100,39,https://cdn2-static.ntv.ru/home/promo/24740/balabol_vse.jpg,https://cdn-dvr.ntv.ru/Balabol/index.m3u8
+Невский,🎭 Сериалы НТВ,HD,Nevskiy.ru@SD,100,39,https://cdn2-static.ntv.ru/home/promo/24740/nevski_llive.jpg,https://cdn-dvr.ntv.ru/Nevskiy/index.m3u8
+Первый отдел,🎭 Сериалы НТВ,HD,Perviyotdel.ru@SD,100,39,https://cdn2-static.ntv.ru/home/promo/24740/perv_otdel_llive.jpg,https://cdn-dvr.ntv.ru/Perviy_otdel/index.m3u8
+Пять минут тишины,🎭 Сериалы НТВ,HD,5minuttishiny.ru@SD,100,39,https://cdn2-static.ntv.ru/home/promo/24740/5minut_live.jpg,https://cdn-dvr.ntv.ru/5_minut_tishiny/index.m3u8
+Пёс,🎭 Сериалы НТВ,HD,pes-ua,100,39,https://cdn2-static.ntv.ru/home/promo/24740/pes_llive.jpg,https://cdn-dvr.ntv.ru/Pes/index.m3u8
+Скорая помощь,🎭 Сериалы НТВ,HD,Skorayapomoshch.ru@SD,100,39,https://cdn2-static.ntv.ru/home/promo/24740/skoraya_pom_llive.jpg,https://cdn-dvr.ntv.ru/Skoraja_pomosh/index.m3u8
+Шеф,🎭 Сериалы НТВ,HD,Shef.ru@SD,100,39,https://cdn2-static.ntv.ru/home/promo/24740/shef_llive.jpg,https://cdn-dvr.ntv.ru/Shef/index.m3u8
+BRIDGE (576p),🎵 Музыка,SD,bridge-hd,100,39,https://i.imgur.com/qYObfrG.png,http://stream.mcquack.net/318/index.m3u8
+BRIDGE (576p),🎵 Музыка,SD,bridge-hd,97,39,https://i.imgur.com/qYObfrG.png,http://178.134.1.158:8081/BRIDGE/index.m3u8
+BRIDGE (576p),🎵 Музыка,SD,bridge-hd,100,39,https://i.imgur.com/qYObfrG.png,http://194.143.148.28:8080/RT_DOC/index.m3u8
+BRIDGE Classic (576p),🎵 Музыка,SD,bridge-tv-classic,100,39,https://i.imgur.com/JJTQq81.png,http://stream.mcquack.net/272/index.m3u8
+BRIDGE Classic (576p),🎵 Музыка,SD,bridge-tv-classic,100,39,https://i.imgur.com/JJTQq81.png,https://fs.uplink.kz/bridge_classic/mono.m3u8?token=onlinetv
+BRIDGE Deluxe HD (576p),🎵 Музыка,HD,bridge-hd,100,39,https://i.imgur.com/EazL8w7.png,http://stream.mcquack.net/92/index.m3u8
+BRIDGE Hits (576p),🎵 Музыка,SD,bridge-tv-dance,100,39,https://i.imgur.com/sIW9oR4.png,http://stream.mcquack.net/320/index.m3u8
+BRIDGE Hits (576p),🎵 Музыка,SD,bridge-tv-dance,85,39,https://i.imgur.com/sIW9oR4.png,http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8
+BRIDGE Rock (576p),🎵 Музыка,SD,bridge-tv-rock,97,39,https://i.imgur.com/MHuwct2.png,http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
+Classic Music (1080p),🎵 Музыка,HD,classic-music,100,39,https://i.imgur.com/TpXs1qA.png,http://stream.mcquack.net/312/index.m3u8
+DanceHits80,🎵 Музыка,Unknown,DanceHits80.ru@SD,100,39,https://i.imgur.com/uMw3kks.png,http://dancehits80.denvs.ru:8080/index.m3u8
+Europa Plus TV (576p),🎵 Музыка,SD,europa-plus-tv,100,39,https://i.imgur.com/GLc4qrc.png,https://fs.uplink.kz/europa_plus/mono.m3u8?token=onlinetv
+Europa Plus TV SD (576p),🎵 Музыка,SD,europa-plus-tv,100,39,https://i.imgur.com/GLc4qrc.png,http://stream.mcquack.net/184/index.m3u8
+Muz-TV (576p),🎵 Музыка,SD,muztv,100,39,https://i.imgur.com/lSBMeBU.png,http://stream.mcquack.net/86/index.m3u8
+Muz-TV (576p),🎵 Музыка,SD,muztv,100,39,https://i.imgur.com/lSBMeBU.png,https://fs.uplink.kz/muz_tv/mono.m3u8?token=onlinetv
+RU.TV (576p),🎵 Музыка,SD,RUTV.ru@SD,100,39,,https://fs.uplink.kz/RuTV/mono.m3u8?token=onlinetv
+RU.TV SD (576p),🎵 Музыка,SD,RUTV.ru@SD,100,39,,http://stream.mcquack.net/109/index.m3u8
+Russian MusicBox (576p),🎵 Музыка,HD,russian-musicbox,100,39,https://i.imgur.com/ZkJ3Rh9.png,http://stream.mcquack.net/319/index.m3u8
+Жара ТВ,🎵 Музыка,HD,zhara,100,39,https://images.restream-media.net/images/d6k2670mifea4e56t850.png,http://stream.mcquack.net/386/index.m3u8
+Жара ТВ,🎵 Музыка,Unknown,zhara,100,39,https://images.restream-media.net/images/d6k2670mifea4e56t850.png,https://fs.uplink.kz/zhara/mono.m3u8?token=onlinetv
+Муз союз (576p),🎵 Музыка,HD,muzsoyuz,100,39,https://i.imgur.com/Puk1Bhx.png,https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz2/muzsoyuz.6fw0-58xp-acts-esy0/playlist.m3u8
+ТНТ Music,🎵 Музыка,SD,tnt-music,100,39,https://i.imgur.com/tXABQDE.png,http://stream.mcquack.net/317/index.m3u8
+Шансон ТВ,🎵 Музыка,SD,shanson-tv,100,39,https://i.imgur.com/Fk4sd8t.png,http://catchup.videoline.ru/shanson/index.m3u8
+Шансон ТВ,🎵 Музыка,Unknown,shanson-tv,100,39,https://i.imgur.com/Fk4sd8t.png,https://fs.uplink.kz/shanson/mono.m3u8?token=onlinetv
+8 канал Красноярск,🏙️ Региональные,Unknown,Channel8Krasnoyarsk.ru@HD,100,39,https://i.imgur.com/q3JCAC3.png,https://tshift-1.telecoma.tv/8channel/tracks-v1a1/mono.ts.m3u8
+8 канал Новосибирск,🏙️ Региональные,SD,Channel8Novosibirsk.ru@SD,100,39,https://i.imgur.com/eHGETvU.png,https://live-8knsk.cdnvideo.ru/8knsk/stream1/playlist.m3u8
+Channel 8 (576p),🏙️ Региональные,HD,8kanal-by,100,39,https://i.imgur.com/ADQkn9l.png,http://tshift-1.telecoma.tv/8channel/index.m3u8
+Channel 8 (576p),🏙️ Региональные,SD,8kanal-by,100,39,https://i.imgur.com/ADQkn9l.png,https://v4.proofix.ru/8tv-russia/index.m3u8
+NST (576p),🏙️ Региональные,SD,nst,100,39,https://i.imgur.com/5dJE8Fc.jpg,http://stream.mcquack.net/207/index.m3u8
+NST (576p),🏙️ Региональные,SD,nst,100,39,https://i.imgur.com/5dJE8Fc.jpg,https://vod.tuva.ru/nst/index.m3u8
+Sochi Live HD (720p) [Not 24/7],🏙️ Региональные,HD,SochiLive.ru@HD,100,39,https://www.cableman.ru/sites/default/files/sochi_live.png,http://serv30.vintera.tv:8081/sochi/sochi_stream/playlist.m3u8
+Yalta TV (480p) [Geo-blocked],🏙️ Региональные,SD,YaltaTV.ru@SD,100,39,https://img.cataloxy.ru/fl/97/e3/808131.gif,http://195.26.83.96:7029/play/a006
+АИСТ ТВ,🏙️ Региональные,HD,aist,100,39,https://i.imgur.com/bcw0s4V.png,http://194.143.148.28:8080/Aist/index.m3u8
+Аист ТВ (1080p),🏙️ Региональные,HD,aist,100,39,https://i.imgur.com/bcw0s4V.png,http://live2-aisttv.cdnvideo.ru/aisttv2/aisttv.sdp/playlist.m3u8
+Арис 24 (720p) [Not 24/7],🏙️ Региональные,HD,aris24,100,39,https://i.imgur.com/CTFVEAb.png,http://serv25.vintera.tv:8081/test/aris/playlist.m3u8
+Белгород 24 (1080p),🏙️ Региональные,HD,belgorod24,97,39,https://i.imgur.com/EEirvyx.png,https://belnovosti.cdn.easyhoster.ru:8443/stream.m3u8
+Ветта 24 (Пермь) (576p) [Not 24/7],🏙️ Региональные,SD,vetta24,100,39,https://i.imgur.com/zKH1b5k.png,http://serv24.vintera.tv:8081/vetta/vetta_office/playlist.m3u8
+Волга (HD),🏙️ Региональные,HD,volga,100,39,https://i.imgur.com/xHs1pr1.png,http://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Volga/hls/1920x1080@4504/playlist.m3u8
+Губерния (Самара) (576p),🏙️ Региональные,SD,gubernia,100,39,https://i.imgur.com/1Qpg40L.png,http://live.guberniatv.cdnvideo.ru/guberniatv/guberniatv.sdp/playlist.m3u8
+Евразия (Орск) (720p),🏙️ Региональные,HD,evrasia,100,39,https://i.imgur.com/4JUHIVS.png,https://infochh.trkeurasia.ru/hlsinfoch/infochhd.m3u8
+Енисей,🏙️ Региональные,SD,enisey-region,100,39,https://i.imgur.com/57deE7f.png,http://tshift-1.telecoma.tv/enisei/index.m3u8
+Енисей (1080p) [Not 24/7],🏙️ Региональные,HD,enisey-region,100,39,https://i.imgur.com/57deE7f.png,https://hls-eniseytv.cdnvideo.ru/eniseytv/stream1/playlist.m3u8
+Кубань 24,🏙️ Региональные,HD,kuban-24,100,23,https://i.imgur.com/atzrXcz.png,http://dmi3y-tv.online/hls/zabava/region/MAYK/CH_MAYKOP.m3u8
+Мой мир,🏙️ Региональные,Unknown,Moymir.ru@SD,100,39,https://www.cableman.ru/sites/default/files/MM-TV_logo-1%5B1509%5D.png,https://moymir.ru/hls/onair.m3u8
+МТВ (Волгоград) (720p) [Not 24/7],🏙️ Региональные,HD,mtv-de,100,39,https://i.imgur.com/pdCAUrP.png,http://hls.volgograd1vtv.cdnvideo.ru/volgograd1vtv/volgograd1vtv.sdp/playlist.m3u8
+НВК Саха (1080p) [Not 24/7],🏙️ Региональные,HD,saxa,100,39,https://i.imgur.com/LwXNUhf.png,https://live-saha.cdnvideo.ru/saha/saha/playlist.m3u8
+Нижний Новгород 24 (720p) [Not 24/7],🏙️ Региональные,HD,nn-24,92,39,https://i.imgur.com/ZWgPVIC.png,https://live-vestinn.cdnvideo.ru/vestinn/nn24-khl/playlist.m3u8
+Ника ТВ (576p) [Not 24/7],🏙️ Региональные,HD,nika-tv,100,39,https://i.imgur.com/dccsFAu.png,https://live-nikatv.cdnvideo.ru/nikatv/nikatv.sdp/playlist.m3u8
+НТМ (Народное телевидение Мордовии) (720p) [Not 24/7],🏙️ Региональные,HD,ntm,100,39,https://i.imgur.com/AH50pGT.png,https://live-ntm13.cdnvideo.ru/ntm13/smil:ntm13.smil/playlist.m3u8
+НТС (Севастополь) (1080p) [Not 24/7],🏙️ Региональные,HD,nts-irkutsk,100,39,https://i.ibb.co/hCf7v4D/nts.jpg,https://peqk71plnjy.a.trbcdn.net/livemaster/w4kz7pki62_nts_tv/playlist.m3u8
+Первый канал Евразия,🏙️ Региональные,Unknown,pervy-kanal-eurasia-kz,100,39,https://i.imgur.com/vm5sJHP.png,https://streaming.thestream.cyou/live/210-req_offset_28000000-req_window_0-1k_v5.m3u8
+Прима (1080p),🏙️ Региональные,HD,prima,100,39,https://i.imgur.com/33XGMch.png,https://tele2dvrnat01-02.cdnvideo.ru/stream/NAT_Prima/hls/index.m3u8
+Продвижение,🏙️ Региональные,HD,prodvizhenie,100,39,https://i.imgur.com/KlsnfG9.png,https://streaming.astrakhan.ru/proastrakhanhd/index.m3u8
+Продвижение,🏙️ Региональные,SD,prodvizhenie,100,39,https://i.imgur.com/KlsnfG9.png,http://origin5.mediacdn.ru/live/prodvizhenie_new/index.m3u8
+С1 (Сургут) (1080p) [Not 24/7],🏙️ Региональные,HD,S1.ru@SD,100,39,https://i.imgur.com/chNBF5t.png,https://sitv.ru/hls/stv.m3u8
+Самара ГИС (1080p) [Not 24/7],🏙️ Региональные,HD,samara24,100,39,https://samaragis.ru/wp-includes/images/logo.png,https://tv.samaragis.ru/new/new/tracks-v1a1/mono.m3u8
+Сочи 24 HD (720p),🏙️ Региональные,HD,sochi24,100,39,https://i.imgur.com/iwWxkl6.png,http://serv30.vintera.tv:8081/sochi/sochi24_tv/playlist.m3u8
+Телеканал 86 (Сургут) (1080p) [Not 24/7],🏙️ Региональные,HD,86-surgut,100,39,https://i.imgur.com/0dRS4Cb.png,https://sitv.ru/hls/s86.m3u8
+Телерадиокомпания 555 (Алушта) (720p),🏙️ Региональные,HD,555.ru@SD,100,39,https://i.imgur.com/Ouv51WB.png,http://trk555.tv:8888/live
+ТКР (Рязань) (1080p) [Not 24/7],🏙️ Региональные,HD,TKR.ru@SD,100,39,https://i.imgur.com/VqtPB7L.png,http://live.tkr.cdnvideo.ru/tkr/tkr.sdp/playlist.m3u8
+ТНВ-Планета,🏙️ Региональные,Unknown,tnv-planeta,100,39,https://i.imgur.com/ijA1zDw.png,https://fs.uplink.kz/tnv/mono.m3u8?token=onlinetv
+ТНВ-Татарстан,🏙️ Региональные,HD,tnv,100,39,https://i.imgur.com/58u9TQT.png,https://user91229.clients-cdnnow.ru/hls/user91229_1.m3u8
+Толк HD (720p),🏙️ Региональные,HD,tolk,100,39,https://i.imgur.com/l7JZ79P.png,http://live-tolknews.cdnvideo.ru/tolknews/stream/playlist.m3u8
+Тонус,🏙️ Региональные,SD,tonus-tv,100,39,https://i.imgur.com/pGm8QCj.png,http://194.143.148.28:8080/Mir24/index.m3u8
+Хузур ТВ (1080p) [Not 24/7],🏙️ Региональные,HD,xuzur-tv,100,39,https://i.imgur.com/Abg1fct.png,https://hls-mycdn08724960135.cdnvideo.ru/mycdn08724960135/stream1/playlist.m3u8
+8 канал International,📦 Разное,SD,8kanal-eu,100,39,https://i.imgur.com/I8OU9oa.png,http://live-11cinema.cdnvideo.net/11cinemanet/11cinemanet/playlist.m3u8
+Dомашний,📦 Разное,HD,domashny,100,39,https://i.imgur.com/WaLwOyt.jpeg,http://stream.mcquack.net/227/index.m3u8
+Dомашний,📦 Разное,SD,domashny,100,6,https://i.imgur.com/WaLwOyt.jpeg,http://31.148.5.241/kanal_14/index.m3u8
+Okko Прайм Спорт,📦 Разное,HD,okko-sport-2,100,39,https://i.imgur.com/kQq5DMU.png,http://stream.mcquack.net/493/index.m3u8
+Okko Спорт,📦 Разное,HD,okko-sport,100,39,https://i.imgur.com/SYOaOQc.png,http://stream.mcquack.net/492/index.m3u8
+Okko Футбол,📦 Разное,HD,okko-football,100,39,https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png,http://stream.mcquack.net/491/index.m3u8
+Okko Футбол,📦 Разное,SD,okko-football,97,39,https://xml-epgservice.cdnvideo.ru/EPGService/hs/xmldata/852f4b92-cae5-463e-aad6-cd8844c5a49/logo/8986.png,http://178.124.179.122:8080/Setanta1/index.m3u8
+Zooпарк,📦 Разное,Unknown,zoopark,100,39,https://i.imgur.com/IO5jegK.png,https://fs.uplink.kz/zoopark/mono.m3u8?token=onlinetv
+Авто24,📦 Разное,HD,avto24,100,39,https://i.imgur.com/GXSXmN2.png,http://stream.mcquack.net/78/index.m3u8
+Авто24,📦 Разное,Unknown,avto24,100,39,https://i.imgur.com/GXSXmN2.png,https://fs.uplink.kz/avto24/mono.m3u8?token=onlinetv
+Бокс ТВ,📦 Разное,SD,box-tv,100,39,https://i.imgur.com/R1UjyfX.png,http://stream.mcquack.net/154/index.m3u8
+В мире животных,📦 Разное,HD,v-mire-zhivotnyx-hd,100,39,https://i.imgur.com/6uotdVQ.png,http://stream.mcquack.net/241/index.m3u8
+Городской телеканал,📦 Разное,Unknown,gorodskoy-yaroslavl,100,6,https://i.imgur.com/zMNJfoV.png,https://gtk.tv/hls/gtyar.m3u8
+Дикая охота,📦 Разное,HD,dikaya-oxota-hd,100,39,https://i.imgur.com/EOue13e.png,http://stream.mcquack.net/274/index.m3u8
+Дикая рыбалка,📦 Разное,HD,dikaya-rybalka-hd,100,39,https://i.imgur.com/e3BFVgt.png,http://stream.mcquack.net/275/index.m3u8
+Доктор,📦 Разное,SD,doktor,97,39,https://i.imgur.com/VNirxxn.png,http://178.134.1.158:8081/doktor/index.m3u8
+Доктор,📦 Разное,HD,doktor,100,39,https://i.imgur.com/VNirxxn.png,http://stream.mcquack.net/80/index.m3u8
+Дом кино,📦 Разное,SD,domkino,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png,http://stream.mcquack.net/236/index.m3u8
+Дом кино,📦 Разное,Unknown,domkino,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%D0%94%D0%BE%D0%BC_%D0%9A%D0%B8%D0%BD%D0%BE.png,http://88.212.15.19/live/test_dom_kino/playlist.m3u8
+Дом кино Премиум,📦 Разное,HD,domkino-premium,100,39,https://i.imgur.com/rJpQtvK.png,http://stream.mcquack.net/108/index.m3u8
+Дом кино Премиум,📦 Разное,Unknown,domkino-premium,100,39,https://i.imgur.com/rJpQtvK.png,http://88.212.15.19/live/test_dom_kino_premium/playlist.m3u8
+Домашние животные,📦 Разное,Unknown,domashnie-zhivotnye,100,39,https://tv-stream.ru/uploads/D_Zh_ad21d48199.svg,https://fs.uplink.kz/domashnie_zhivotnie/mono.m3u8?token=onlinetv
+Душевное,📦 Разное,HD,dushevnoe,100,39,https://i.imgur.com/vTRHAvD.png,http://stream.mcquack.net/213/index.m3u8
+Еврокино,📦 Разное,HD,evrokino,100,39,https://i.imgur.com/8LPtPf6.png,http://stream.mcquack.net/385/index.m3u8
+Еврокино,📦 Разное,SD,evrokino,100,39,https://i.imgur.com/8LPtPf6.png,http://176.118.197.101/Evrokino/index.m3u8
+Еда Премиум,📦 Разное,HD,eda-hd,100,39,https://i.imgur.com/gxCYAwH.png,http://stream.mcquack.net/216/index.m3u8
+Живая природа,📦 Разное,SD,zhivaya-priroda,100,39,https://i.imgur.com/9lHQPdN.png,http://stream.mcquack.net/83/index.m3u8
+Живая природа,📦 Разное,HD,zhivaya-priroda,100,39,https://i.imgur.com/9lHQPdN.png,http://stream.mcquack.net/225/index.m3u8
+Иллюзион+,📦 Разное,SD,illuzion-plus,100,39,https://i.imgur.com/9GvuHQ5.png,http://176.118.197.101/Illuzion+/index.m3u8
+Индийское кино,📦 Разное,SD,indiyskoe-kino,100,39,https://i.imgur.com/LL8GyCh.png,http://188.113.190.12/329/index.m3u8
+Индийское кино,📦 Разное,SD,indiyskoe-kino,100,39,https://i.imgur.com/LL8GyCh.png,http://stream.mcquack.net/104/index.m3u8
+Индия,📦 Разное,Unknown,zee-tv,100,39,https://i.imgur.com/xDVcDOc.png,https://fs.uplink.kz/india/mono.m3u8?token=onlinetv
+Инсайт ТВ,📦 Разное,4K,InsaytTV.ru@4K,100,39,https://i.imgur.com/slLuRel.png,http://stream.mcquack.net/361/index.m3u8
+Истоки,📦 Разное,SD,rentv-istoki,100,39,https://istoki.tv/local/templates/istoki_new/img/logo.png,https://istoki.tv/live/stream1/playlist.m3u8
+История,📦 Разное,Unknown,istoria,100,39,https://i.imgur.com/eEjPail.png,https://fs.uplink.kz/istoriya/mono.m3u8?token=onlinetv
+Капитан Фантастика,📦 Разное,HD,ginger-hd,100,39,https://i.imgur.com/K3PSHiT.png,http://stream.mcquack.net/144/index.m3u8
+КВН ТВ,📦 Разное,SD,kvn-tv,97,39,https://i.imgur.com/Vw3LFLX.png,http://178.124.179.122:8080/KVN-TV/index.m3u8
+КВН ТВ,📦 Разное,Unknown,kvn-tv,100,39,https://i.imgur.com/Vw3LFLX.png,https://fs.uplink.kz/kvn_tv/mono.m3u8?token=onlinetv
+Кинокомедия,📦 Разное,HD,kinokomedia,100,39,https://i.imgur.com/dVjtth0.png,http://stream.mcquack.net/265/index.m3u8
+Киномикс,📦 Разное,SD,kinomiks,100,39,https://i.imgur.com/D4q2XUT.png,http://93.170.254.17/Kinomiks/index.m3u8
+Киномикс,📦 Разное,HD,kinomiks,100,39,https://i.imgur.com/D4q2XUT.png,http://stream.mcquack.net/133/index.m3u8
+Киносвидание,📦 Разное,HD,kinosvidanie,100,39,https://i.imgur.com/ZRaWqxj.png,http://stream.mcquack.net/171/index.m3u8
+Киносемья,📦 Разное,HD,kinosemiya,100,39,https://i.imgur.com/4BF5VeK.png,http://stream.mcquack.net/170/index.m3u8
+КИНОТВ,📦 Разное,SD,kino-tv,100,39,https://iptvx.one/picons/kino-tv.png,https://vod.tuva.ru/kinotv/index.m3u8
+Киноужас,📦 Разное,HD,kinouzhas,100,39,https://i.imgur.com/mAcAAQF.png,http://stream.mcquack.net/278/index.m3u8
+Кинохит,📦 Разное,HD,kinoxit,100,39,https://i.imgur.com/Ge8vkQM.png,http://stream.mcquack.net/126/index.m3u8
+Комедийное,📦 Разное,HD,komedijnoe,100,39,https://i.imgur.com/cEKe8XC.png,http://stream.mcquack.net/74/index.m3u8
+Комедия,📦 Разное,SD,russkaya-komedia,100,39,https://i.imgur.com/VRC5juh.png,http://stream.mcquack.net/68/index.m3u8
+Комедия,📦 Разное,SD,russkaya-komedia,100,39,https://i.imgur.com/VRC5juh.png,http://176.118.197.101/Komediya/index.m3u8
+Кулинар HD,📦 Разное,HD,KulinarTV.ru@SD,100,39,https://smotret.tv/images/kulinar-tv.webp,https://api.alpaca.t62a.com/hls/9110/stream0.m3u8
+Кухня,📦 Разное,SD,kuxnia-tv,100,39,https://i.imgur.com/7jxZnuS.png,http://stream.mcquack.net/179/index.m3u8
+КХЛ,📦 Разное,SD,kxl,100,39,https://i.imgur.com/RgdHdOV.png,http://stream.mcquack.net/166/index.m3u8
+КХЛ,📦 Разное,Unknown,kxl,100,39,https://i.imgur.com/RgdHdOV.png,https://fs.uplink.kz/telekanal_khl/mono.m3u8?token=onlinetv
+КХЛ,📦 Разное,SD,kxl,100,39,https://i.imgur.com/RgdHdOV.png,http://176.118.197.101/KHL/index.m3u8
+Лапки Live,📦 Разное,Unknown,lapki-live,100,39,https://lapki.live/lapki_og.png,https://fs.uplink.kz/lapki_live/mono.m3u8?token=onlinetv
+Матч! Арена,📦 Разное,HD,match-arena,100,39,https://i.imgur.com/udTzwzu.png,http://stream.mcquack.net/163/index.m3u8
+Матч! Боец,📦 Разное,HD,match-boets,100,39,https://i.imgur.com/DogOkA4.png,http://stream.mcquack.net/112/index.m3u8
+Матч! Игра,📦 Разное,HD,match-igra,100,39,https://i.imgur.com/5XWpF19.png,http://stream.mcquack.net/188/index.m3u8
+Матч! Планета,📦 Разное,Unknown,match-planeta,100,39,https://i.imgur.com/vhyMb9D.png,https://fs.uplink.kz/match_planeta/mono.m3u8?token=onlinetv
+Матч! Страна,📦 Разное,HD,match-nash-sport,100,39,https://i.imgur.com/X02s2UE.png,http://stream.mcquack.net/143/index.m3u8
+Матч! Ультра,📦 Разное,HD,MatchUltra.ru@4K,100,39,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://stream.mcquack.net/169/index.m3u8
+Матч! Ультра,📦 Разное,SD,MatchUltra.ru@4K,100,39,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://flussonic.linkintel.ru/match/index.m3u8
+Матч! Ультра,📦 Разное,Unknown,MatchUltra.ru@4K,100,39,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,https://fs.uplink.kz/match/mono.m3u8?token=onlinetv
+Матч! Ультра,📦 Разное,SD,MatchUltra.ru@4K,100,39,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://45.132.87.69:8080/match/index.m3u8
+Матч! Ультра,📦 Разное,SD,MatchUltra.ru@4K,100,39,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://tv.tuva.ru/machtv/index.m3u8
+Матч! Ультра,📦 Разное,HD,MatchUltra.ru@4K,67,6,https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg,http://31.148.5.241/kanal_3/index.m3u8
+Москва 24,📦 Разное,Unknown,moskva-24,100,39,https://i.imgur.com/gXbUMVy.png,https://stream.smotrim.ru/hls2/givc9/playlist_4.m3u8
+Москва 24,📦 Разное,Unknown,moskva-24,100,39,https://i.imgur.com/gXbUMVy.png,https://fs.uplink.kz/moskva24/mono.m3u8?token=onlinetv
+Мосфильм Золотая коллекция,📦 Разное,HD,mosfilm,100,39,https://i.imgur.com/95Y8jb6.png,http://stream.mcquack.net/369/index.m3u8
+Моя Планета,📦 Разное,Unknown,moya-planeta,100,39,https://i.imgur.com/uIiAdBv.png,http://91.226.120.120/chid210/tracks-v1a1/mono.m3u8
+Моя Планета,📦 Разное,HD,moya-planeta,100,39,https://i.imgur.com/uIiAdBv.png,http://stream.mcquack.net/124/index.m3u8
+Моя Планета,📦 Разное,Unknown,moya-planeta,100,39,https://i.imgur.com/uIiAdBv.png,https://fs.uplink.kz/moya_planeta/mono.m3u8?token=onlinetv
+Моя стихия,📦 Разное,HD,morskoy,100,39,https://i.imgur.com/Sl8c9eB.png,http://stream.mcquack.net/141/index.m3u8
+Мужское кино,📦 Разное,HD,muzhskoe-kino,100,39,https://i.imgur.com/8RN3tQC.png,http://stream.mcquack.net/107/index.m3u8
+Музыка Live,📦 Разное,SD,la-minor,100,39,https://i.imgur.com/RH6hTWG.png,http://stream.mcquack.net/303/index.m3u8
+Музыка Первого,📦 Разное,SD,muzyka-pervogo,100,39,https://i.imgur.com/U0vKj3P.png,http://stream.mcquack.net/153/index.m3u8
+Музыка Первого,📦 Разное,Unknown,muzyka-pervogo,100,39,https://i.imgur.com/U0vKj3P.png,http://88.212.15.19/live/test_muzyka_pervogo/playlist.m3u8
+Музыка Первого,📦 Разное,HD,muzyka-pervogo,100,39,https://i.imgur.com/4Ww7CsR.png,http://176.118.197.101/1HD/index.m3u8
+Наше,📦 Разное,HD,nashe-music-hd,100,39,https://i.imgur.com/KO8dhi9.png,http://stream.mcquack.net/217/index.m3u8
+Наше мужское,📦 Разное,HD,nashe-muzhskoe,100,39,https://i.imgur.com/QRWKpmb.png,http://stream.mcquack.net/362/index.m3u8
+Неизвестная Россия,📦 Разное,HD,neizvestnaya-rosia,100,39,https://i.imgur.com/W7ste2f.png,http://185.23.80.23:8080/NeizvestnayaRossia/index.m3u8
+НТВ Мир,📦 Разное,SD,ntv-mir,100,39,https://i.imgur.com/pUcV46F.png,http://5.188.159.128:8070/ntvmir_TV/index.m3u8
+НТВ Сериал,📦 Разное,SD,ntv-serial,100,39,https://i.imgur.com/QdVa8tl.png,http://stream.mcquack.net/301/index.m3u8
+НТВ-Хит,📦 Разное,SD,ntv-xit,87,39,https://i.imgur.com/FfKBvz5.png,http://178.134.1.158:8081/ntvhit/index.m3u8
+Общественное Телевидение России,📦 Разное,HD,OTR.ru@SD,100,39,https://upload.wikimedia.org/wikipedia/commons/9/9c/OTR_2025_logo.svg,http://flussonic.linkintel.ru/otr/index.m3u8
+Оружие,📦 Разное,Unknown,oruzhie,95,39,https://i.imgur.com/lfJQJqa.png,https://fs.uplink.kz/oruzhie/mono.m3u8?token=onlinetv
+Охота и рыбалка,📦 Разное,SD,oxota-i-rybalka,100,39,https://i.imgur.com/nZwBaeW.png,http://stream.mcquack.net/155/index.m3u8
+Охотник и рыболов,📦 Разное,HD,oxotnik-i-rybolov,100,39,https://i.imgur.com/Bj1jI7F.png,http://stream.mcquack.net/194/index.m3u8
+Премиальное,📦 Разное,HD,premialnoe,100,39,https://i.imgur.com/ck4aLBP.png,http://stream.mcquack.net/421/index.m3u8
+Приключения,📦 Разное,HD,prikluchenia-hd,100,39,https://i.imgur.com/qQ6pPPQ.png,http://stream.mcquack.net/198/index.m3u8
+Про Бизнес,📦 Разное,SD,pro-business,97,39,https://i.imgur.com/1u8KvTD.png,https://tv-streaming.bsh.ru:21938/probusiness/probusiness.stream/playlist.m3u8
+Просвещение,📦 Разное,SD,prosveschenie,100,39,https://i.imgur.com/uppFhhq.png,http://cdn-01.bonus-tv.ru/prosveschenie_edge/index.m3u8
+Пятый International,📦 Разное,SD,piaty-int,97,39,https://i.imgur.com/8VKc2Ya.png,http://178.134.1.158:8081/5channel/index.m3u8
+Радость Моя,📦 Разное,Unknown,radost-moya,100,39,https://i.imgur.com/B5FA62o.png,https://radm.mediacdn.ru/cdn/radost/playlist_sdhigh.m3u8
+Родное Кино,📦 Разное,SD,rodnoe-kino,100,39,https://i.imgur.com/H70LxoZ.png,http://stream.mcquack.net/242/index.m3u8
+Русский детектив,📦 Разное,SD,russky-detektiv,100,39,https://i.imgur.com/H3qhN8S.png,http://stream.mcquack.net/204/index.m3u8
+Русский роман,📦 Разное,HD,russky-roman,100,39,https://i.imgur.com/cQN0P2B.png,http://stream.mcquack.net/266/index.m3u8
+Русский роман,📦 Разное,SD,russky-roman,100,39,https://i.imgur.com/cQN0P2B.png,https://vod.tuva.ru/rusroman/index.m3u8
+Русь,📦 Разное,SD,tv-rus,100,6,https://i.imgur.com/KuL21f9.png,http://31.148.5.241/kanal_21/index.m3u8
+Рыбалка и охота,📦 Разное,Unknown,rybalka-i-oxota,100,39,https://www.cableman.ru/sites/default/files/rybalka_i_ohota_int.png,https://fs.uplink.kz/ohota_i_ribalka/mono.m3u8?token=onlinetv
+Рыболов,📦 Разное,HD,oxotnik-i-rybolov,100,39,https://i.imgur.com/wJMTcFS.png,http://stream.mcquack.net/264/index.m3u8
+Сапфир,📦 Разное,HD,sapfir,100,39,https://i.imgur.com/NMOBvle.png,http://77.232.131.211/Sapfir/manifest.m3u8
+СТС,📦 Разное,SD,sts,100,39,https://i.imgur.com/ilUzAeb.png,http://tshift-1.telecoma.tv/sts/index.m3u8
+СТС,📦 Разное,HD,sts,100,39,https://i.imgur.com/ilUzAeb.png,http://stream.mcquack.net/138/index.m3u8
+СТС,📦 Разное,SD,sts,100,39,https://i.imgur.com/ilUzAeb.png,http://flussonic.linkintel.ru/sts/index.m3u8
+СТС,📦 Разное,SD,sts,100,39,https://i.imgur.com/ilUzAeb.png,http://176.118.197.101/CTC/index.m3u8
+СТС,📦 Разное,SD,sts,100,6,https://i.imgur.com/ilUzAeb.png,http://31.148.5.241/kanal_13/index.m3u8
+СТС Love,📦 Разное,SD,sts-love,100,39,https://upload.wikimedia.org/wikipedia/ru/thumb/3/35/%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg/1920px-%D0%A1%D0%A2%D0%A1_Love_%282023%29.svg.png,http://stream.mcquack.net/183/index.m3u8
+ТНТ,📦 Разное,HD,tnt,100,39,https://i.imgur.com/T4A6rEI.png,http://stream.mcquack.net/135/index.m3u8
+ТНТ,📦 Разное,SD,tnt,100,39,https://i.imgur.com/T4A6rEI.png,http://flussonic.linkintel.ru/tnt/index.m3u8
+ТНТ,📦 Разное,SD,tnt,100,39,https://i.imgur.com/T4A6rEI.png,http://176.118.197.101/THT/index.m3u8
+ТНТ,📦 Разное,SD,tnt,100,6,https://i.imgur.com/T4A6rEI.png,http://31.148.5.241/kanal_19/index.m3u8
+ТНТ International,📦 Разное,Unknown,tnt-int-by,100,39,https://i.imgur.com/l0RGbRI.png,http://05cea6e8.ucomist.net/iptv/VK7YCHHWNDD8XC/15230/index.m3u8
+Тооку,📦 Разное,HD,tooku,100,39,https://tooku.ru/wp-content/uploads/2024/11/tooku-kanal-logo.png,http://live-saha.cdnvideo.ru/saha/tooky/playlist.m3u8
+Точка РФ,📦 Разное,HD,hd-life,100,39,https://i.imgur.com/tKgmhxh.png,http://stream.mcquack.net/161/index.m3u8
+Усадьба,📦 Разное,SD,usadba,100,39,https://i.imgur.com/mf13haG.png,http://stream.mcquack.net/211/index.m3u8
+Хит,📦 Разное,HD,khit,100,39,https://i.imgur.com/jl3MNPe.png,http://stream.mcquack.net/363/index.m3u8
+Хорошее кино,📦 Разное,HD,HorosheeKino.ru@SD,100,39,https://i.imgur.com/ZbOqfy4.png,https://live-rian.cdnvideo.ru/rian/rus-radio/playlist.m3u8
+ЦЕНТР,📦 Разное,SD,tvcentr,100,39,https://i.imgur.com/5fxFaup.png,http://flussonic.linkintel.ru/tvc/index.m3u8
+ЦЕНТР,📦 Разное,SD,tvcentr,100,6,https://i.imgur.com/5fxFaup.png,http://31.148.5.241/kanal_10/index.m3u8
+Че!,📦 Разное,SD,che,100,39,https://i.imgur.com/ZOcDGpB.png,http://flussonic.linkintel.ru/che/index.m3u8
+Че!,📦 Разное,SD,che,100,39,https://i.imgur.com/ZOcDGpB.png,http://176.118.197.101/Che/index.m3u8
+Шокирующее,📦 Разное,HD,shokiruyushchee,100,39,https://i.imgur.com/UG63hZ0.png,http://stream.mcquack.net/75/index.m3u8
+360°,📰 Новости,SD,360-lv,100,39,https://i.imgur.com/VTJqdoX.png,https://edge-tv-ll.facecast.io/evacoder_hls_hi/UBZfFgtKB1JwTwoDERNQVGGs/0.m3u8
+RT (720p),📰 Новости,HD,rt-news,72,39,https://i.imgur.com/55SK22l.png,http://212.5.144.156:8080/rt/index.m3u8
+RTVi (576p),📰 Новости,SD,rtvi,100,39,https://i.imgur.com/1AEhXyS.png,https://shift03.isp.bg/RTVi/index.m3u8
+Svoboda,📰 Новости,Unknown,svoboda,100,39,https://web02.antik.sk/assets/img/channels/db23090472360f39401398f924a47461.svg,http://88.212.15.19/live/svoboda/index.m3u8
+T24 (576p),📰 Новости,SD,ct24-cz,87,39,https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png,http://178.134.1.158:8081/t24/index.m3u8
+T24 (576p),📰 Новости,SD,ct24-cz,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png,http://stream.mcquack.net/209/index.m3u8
+T24 (576p),📰 Новости,SD,ct24-cz,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/%C4%8CT24_logo.png/960px-%C4%8CT24_logo.png,https://fs.uplink.kz/tehno_24/mono.m3u8?token=onlinetv
+TV BRICS Russian (1080p),📰 Новости,HD,tv-brics,100,39,https://i.imgur.com/vLpm8tN.png,http://185.23.80.23:8080/TVBRICS/index.m3u8
+Дума ТВ,📰 Новости,HD,dumatv,100,39,https://i.imgur.com/JvlO3PU.png,http://185.23.80.23:8080/DumaTV/index.m3u8
+Известия (1080p),📰 Новости,HD,izvestia,100,39,https://i.imgur.com/r5HzA6J.png,http://igi-hls.cdnvideo.ru/igi/igi_tcode/playlist.m3u8
+Красная линия (288p),📰 Новости,SD,krasnaya-linia,100,39,https://i.imgur.com/TgZ8Uv1.png,http://s55766.cdn.ngenix.net/s55766-media-origin/rline_low/index.m3u8
+Красная линия (480p),📰 Новости,SD,krasnaya-linia,100,39,https://i.imgur.com/TgZ8Uv1.png,http://s55766.cdn.ngenix.net/s55766-media-origin/rline_high/index.m3u8
+ЛДПР ТВ (1080p),📰 Новости,HD,ldpr-tv,100,39,https://i.imgur.com/gCmCRfe.png,http://46.46.143.222:1935/live/mp4:ldpr.stream/playlist.m3u8
+ЛДПР ТВ (480p),📰 Новости,SD,ldpr-tv,100,39,https://i.imgur.com/gCmCRfe.png,http://46.46.143.222:1935/live/mp4:ldpr.stream_480p/playlist.m3u8
+ЛДПР ТВ (720p),📰 Новости,HD,ldpr-tv,100,39,https://i.imgur.com/gCmCRfe.png,http://46.46.143.222:1935/live/mp4:ldpr.stream_720p/playlist.m3u8
+Майдан,📰 Новости,HD,maydan,100,39,https://i.imgur.com/C8CCjZK.png,https://live-maidantv.cdnvideo.ru/maidantv/maidantv.smil/playlist.m3u8
+ОСН,📰 Новости,HD,OSN.ru@SD,100,39,https://www.osnmedia.ru/wp-content/uploads/2024/11/osn-logo-header.png,http://osnmedia.servicecdn.ru/streams/17603_88089/playlist.m3u8
+РБК (560p),📰 Новости,Unknown,rbk,100,39,https://i.imgur.com/CwhmJby.png,http://92.50.128.180/utv/1358/index.m3u8
+РБК (576p),📰 Новости,HD,rbk,100,39,https://i.imgur.com/CwhmJby.png,https://uiptv.do.am/1ufc/701293058/playlist.m3u8
+РБК-ТВ,📰 Новости,HD,rbk,100,39,https://i.imgur.com/CwhmJby.png,http://176.118.197.101/RBK/index.m3u8
 2x2 (576i),📹 Rutube,HD,2na2,100,12,https://www.tvpolsat.info/wp-content/uploads/2023/03/2x2-logo.png,https://bl.rutube.ru/livestream/392b4686b770bae2da6bf5ac4574add5/index.m3u8?e=2068731801&s=tenr-yHXUv1wibfka78s2A&scheme=https
 AMAZON PRIME VIDEO MEN'S CLUB | Лучшие боевики в прямом эфире,📹 Rutube,Unknown,AMAZON PRIME VIDEO MEN'S CLUB | Лучшие боевики в прямом эфире,,0,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/%D0%BC%D0%B5%D0%BD%D1%81%20%D0%BA%D0%BB%D1%83%D0%B1.png,https://bl.rutube.ru/livestream/99f8f1d827641b766de62fe9023642fa/index.m3u8?s=wofVvRtRtKTkuLZmm79F0Q&e=2090672118&scheme=https
 Apple TV Action Time,📹 Rutube,Unknown,Apple TV Action Time,,0,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/image_search_1790677554996.jpg,https://bl.rutube.ru/livestream/74bb437ef478a52f42198c50d4241dc7/index.m3u8?s=Kpc-gMpOVuNhrkr9GllkTw&e=2090671957&scheme=https
@@ -519,8 +551,6 @@ Marvel Live,📹 Rutube,Unknown,Marvel Live,,0,https://raw.githubusercontent.com
 National Geographic RU,📹 Rutube,HD,national-geographic,100,2,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/nationgeografic.jpg,https://bl.rutube.ru/livestream/2619fc295c16585ef018041d88f14db0/index.m3u8?s=oKHai8bZHsJDY-Gt6vRkeA&e=2090412162&scheme=https
 NTV HD (1080p),📹 Rutube,HD,ntv,100,12,https://www.mongolsat.mn/assets/img/channel/38.png,https://bl.rutube.ru/livestream/c37cd74192c6bc3d6cd6077c0c4fd686/index.m3u8?e=2077050299&s=HSWg81JrQ3OqmwuWkEIDAQ&scheme=https
 RU.TV (1080p),📹 Rutube,HD,RUTV.ru@SD,100,12,,https://bl.rutube.ru/livestream/b1eb8e90d7e636677b3eb73b4fcbb717/index.m3u8?e=2069285076&s=d-E-bxKy2v3EEJ94RQX9CA&scheme=https
-Subbota! (1080p),📹 Rutube,HD,super,100,12,https://i.imgur.com/nsk8PpB.png,https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?e=2066519758&s=dmUf6BUQzDBTwtQOseAfog&scheme=https
-Tsargrad TV (1080p) [Geo-blocked],📹 Rutube,HD,TsargradTV.ru@SD,100,12,https://i.imgur.com/34RINpb.png,https://bl.rutube.ru/livestream/91815da4edb167b5bd617bae490e57da/index.m3u8?e=2070278263&s=is_mLq_kjPYLsOJ4qj85tw&scheme=https
 U (720p),📹 Rutube,HD,U.ru@SD,100,12,https://i.ibb.co/23ktDgvx/IMG-2461.png,https://bl.rutube.ru/livestream/5c9327074e25ca86f3111d4085cbbb65/index.m3u8?e=2066519758&s=9cPc1rCGu6M932eqrifRhQ&scheme=https
 Айди Иксра,📹 Rutube,HD,,100,2,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/id_ixtra.jpeg,https://bl.rutube.ru/livestream/a91d58870b9a0d23b2309d020ac4b354/index.m3u8?s=SWt-lFqXrgPTHcgEKeY9Sw&e=2090412421&scheme=https
 анимал планет,📹 Rutube,HD,animal-planet-eu,100,2,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/animal_planet.png,https://bl.rutube.ru/livestream/4004c8f6817b9ae1bd0d418905ae2b02/index.m3u8?s=lTFEM-ng6U9uCMBA0ySKSA&e=2090412305&scheme=https
@@ -546,82 +576,51 @@ U (720p),📹 Rutube,HD,U.ru@SD,100,12,https://i.ibb.co/23ktDgvx/IMG-2461.png,ht
 Россия 1,📹 Rutube,Unknown,rossia1,,0,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F1.png,https://bl.rutube.ru/livestream/2742a3c42be661ea732705f80adb7bdd/index.m3u8?s=GdZ4X-BVddBhGRy7mL1Glw&e=2090671104&scheme=https
 Россия 24,📹 Rutube,HD,24news-ua,100,2,https://i.imgur.com/tTCuczU.png,https://bl.rutube.ru/livestream/ad6ba2e9e587406b29978b861b7b7dd1/index.m3u8?s=2xI0szFZPbr-yIu5m8Ee2Q&e=2090410051&scheme=https
 Соловьёв Live,📹 Rutube,Unknown,solovjinypomiot,,0,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/%D1%81%D0%BE%D0%BB%D0%BE%D0%B2%D1%8C%D1%91%D0%B2.jpg,https://bl.rutube.ru/livestream/c9b87c0b00cfff9b37f95b9c8e4eed42/index.m3u8?s=9dIuggP4Sdvk_maB6yHb2g&e=2090670831&scheme=https
+Суббота!,📹 Rutube,HD,super,100,12,https://i.imgur.com/nsk8PpB.png,https://bl.rutube.ru/livestream/310744c10a5809da38aa445c952976da/index.m3u8?e=2066519758&s=dmUf6BUQzDBTwtQOseAfog&scheme=https
 Твой кинотеатр live,📹 Rutube,Unknown,Твой кинотеатр live,,0,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/%D1%82%D0%B2%D1%80%D0%B9%20%D0%BA%D0%B8%D0%BD%D0%BE%D1%82%D0%B5%D0%B0%D1%82%D1%80.png,https://bl.rutube.ru/livestream/e08e513c4e33f52fce3a975b5cb6932c/index.m3u8?s=pRR9dlo9UEC706SQr-HJSA&e=2090671573&scheme=https
 Тлс,📹 Rutube,HD,,100,2,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/tlchd.png,https://bl.rutube.ru/livestream/7c3d1a4cc0b4dff1176aa2dbb0b90000/index.m3u8?s=PEMYhKL8n2SQrGBSPIxxqA&e=2090412016&scheme=https
 Тнт,📹 Rutube,HD,tnt,100,2,https://i.imgur.com/T4A6rEI.png,https://bl.rutube.ru/livestream/546602986e6a424d74d594876ddb3f04/index.m3u8?s=2wFiZzRdBsgLEi-A59erSg&e=2090410357&scheme=https
 Тнт 4,📹 Rutube,HD,tnt4,100,2,https://iptvx.one/picons/tnt4.png,https://bl.rutube.ru/livestream/c801a7087e29a097192d74c270fbc6c1/index.m3u8?s=MchU3jytJK5_XoSzeP_PJA&e=2090410583&scheme=https
 Турецкое Кино и сериалы,📹 Rutube,HD,,100,2,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/turk.jpeg,https://bl.rutube.ru/livestream/2814e12b4ef6c528967736441c2e2803/index.m3u8?s=g94bBK7hUENU83K4Autfuw&e=2090412964&scheme=https
 Уайлд,📹 Rutube,HD,,100,2,https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/geowild.jpg,https://bl.rutube.ru/livestream/c11af26c0ab831ce6c37a4888056479b/index.m3u8?s=JWJzne3-IPKrqZ_CyE2rZQ&e=2090412236&scheme=https
-Radio 1 (720p) [Geo-blocked],📻 Радио,HD,radio-1,100,38,https://i.ibb.co/pwCs0YY/512px-VRT-Radio-1-logo-svg.png,https://stream.radio1.ru/memfs/49dee7fe-77ba-4e6b-8cdc-fa840535b242.m3u8
-Radio Rossii (720p),📻 Радио,HD,radio-rossii,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Radio_Rossii_logo.svg/1920px-Radio_Rossii_logo.svg.png,https://stream.smotrim.ru/hls2/radio_rus/playlist_4.m3u8
-Радио Шансон (720p) [Not 24/7],📻 Радио,HD,radio-shanson,100,38,https://i.imgur.com/lbqM3K2.png,http://chanson-video.hostingradio.ru:8080/hls/chansonabr/live.m3u8
-Страна FM (720p) [Not 24/7],📻 Радио,HD,radio-strana-fm-tv,100,38,https://i.imgur.com/WsPlKJJ.png,http://live.stranafm.cdnvideo.ru/stranafm/stranafm_hd.sdp/playlist.m3u8
-365 days TV (576p),🧠 Познавательные,SD,365daysTV.ru@SD,100,38,https://i.imgur.com/NfnAiTR.png,http://stream.mcquack.net/70/index.m3u8
-365 days TV (576p),🧠 Познавательные,SD,365daysTV.ru@SD,100,38,https://i.imgur.com/NfnAiTR.png,https://fs.uplink.kz/365_dney/mono.m3u8?token=onlinetv
-ART (576p),🧠 Познавательные,SD,art-tv,100,38,https://i.imgur.com/mNeLu04.png,http://89.104.114.24:8080/art/index.m3u8
-ART (576p),🧠 Познавательные,SD,art-tv,100,38,https://i.imgur.com/mNeLu04.png,http://185.23.80.23:8080/ART/index.m3u8
-Avto24 (576p),🧠 Познавательные,HD,avto24,100,38,https://i.imgur.com/GXSXmN2.png,http://stream.mcquack.net/78/index.m3u8
-Avto24 (576p),🧠 Познавательные,SD,avto24,100,38,https://i.imgur.com/GXSXmN2.png,https://fs.uplink.kz/avto24/mono.m3u8?token=onlinetv
-Big Planet (576p),🧠 Познавательные,SD,big-planet,100,38,https://i.imgur.com/wyuqWTR.png,https://fs.uplink.kz/big_planet/mono.m3u8?token=onlinetv
-Bober (576p),🧠 Познавательные,SD,bobior,100,38,https://i.imgur.com/clWWhB8.png,https://fs.uplink.kz/bober/mono.m3u8?token=onlinetv
-Bober (576p),🧠 Познавательные,SD,bobior,100,38,https://i.imgur.com/clWWhB8.png,http://88.212.15.19/live/test_bober/playlist.m3u8
-Dikaya okhota HD (1080p),🧠 Познавательные,HD,Dikayaokhota.ru@HD,100,38,https://i.imgur.com/EOue13e.png,http://stream.mcquack.net/274/index.m3u8
-Dikaya rybalka HD (1080p),🧠 Познавательные,HD,dikaya-rybalka-hd,100,38,https://i.imgur.com/e3BFVgt.png,http://stream.mcquack.net/275/index.m3u8
-Doctor (576p),🧠 Познавательные,SD,Doctor.ru@SD,97,38,https://i.imgur.com/VNirxxn.png,http://178.134.1.158:8081/doktor/index.m3u8
-Doctor (576p),🧠 Познавательные,HD,Doctor.ru@SD,100,38,https://i.imgur.com/VNirxxn.png,http://stream.mcquack.net/80/index.m3u8
-Domashnie Zhivotnye (576p),🧠 Познавательные,SD,domashnie-zhivotnye,100,38,https://tv-stream.ru/uploads/D_Zh_ad21d48199.svg,https://fs.uplink.kz/domashnie_zhivotnie/mono.m3u8?token=onlinetv
-Dushevnoe HD (1080p),🧠 Познавательные,HD,dushevnoe,100,38,https://i.imgur.com/vTRHAvD.png,http://stream.mcquack.net/213/index.m3u8
-FoodTime (1080p),🧠 Познавательные,HD,eda-hd,100,38,https://i.imgur.com/gxCYAwH.png,http://stream.mcquack.net/216/index.m3u8
-Insayt TV (1080p),🧠 Познавательные,4K,InsaytTV.ru@4K,100,38,https://i.imgur.com/slLuRel.png,http://stream.mcquack.net/361/index.m3u8
-Istoki (1080p),🧠 Познавательные,SD,rentv-istoki,100,38,https://istoki.tv/local/templates/istoki_new/img/logo.png,https://istoki.tv/live/stream1/playlist.m3u8
-Istoriya (576p),🧠 Познавательные,SD,istoria,100,38,https://i.imgur.com/eEjPail.png,https://fs.uplink.kz/istoriya/mono.m3u8?token=onlinetv
-Kuhnya (576p),🧠 Познавательные,SD,kuxnia-tv,100,38,https://i.imgur.com/7jxZnuS.png,http://stream.mcquack.net/179/index.m3u8
-Kulinar TV (576p),🧠 Познавательные,SD,KulinarTV.ru@SD,100,38,https://smotret.tv/images/kulinar-tv.webp,https://api.alpaca.t62a.com/hls/9110/stream0.m3u8
-Lapki Live (576p),🧠 Познавательные,SD,lapki-live,100,38,https://lapki.live/lapki_og.png,https://fs.uplink.kz/lapki_live/mono.m3u8?token=onlinetv
-Law TV (1080p),🧠 Познавательные,HD,LawTV.ru@SD,89,38,https://i.imgur.com/QcO5Gxl.png,http://stream.mcquack.net/406/index.m3u8
-Moya Planeta (1080p),🧠 Познавательные,HD,moya-planeta,100,38,https://i.imgur.com/uIiAdBv.png,http://91.226.120.120/chid210/tracks-v1a1/mono.m3u8
-Moya Planeta (576p),🧠 Познавательные,HD,moya-planeta,100,38,https://i.imgur.com/uIiAdBv.png,http://stream.mcquack.net/124/index.m3u8
-Moya Planeta (576p),🧠 Познавательные,SD,moya-planeta,100,38,https://i.imgur.com/uIiAdBv.png,https://fs.uplink.kz/moya_planeta/mono.m3u8?token=onlinetv
-Moya stikhiya HD (1080p),🧠 Познавательные,HD,Moyastikhiya.ru@HD,100,38,https://i.imgur.com/Sl8c9eB.png,http://stream.mcquack.net/141/index.m3u8
-Nano (576p),🧠 Познавательные,HD,nano-hd,100,38,https://i.imgur.com/dYj3XDa.png,http://stream.mcquack.net/419/index.m3u8
-Nano HD (1080p),🧠 Познавательные,HD,nano-hd,100,38,https://i.imgur.com/dYj3XDa.png,http://185.23.80.23:8080/NANO_HD/index.m3u8
-National Geographic (576p),🧠 Познавательные,HD,national-geographic,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png,http://stream.mcquack.net/116/index.m3u8
-National Geographic (576p),🧠 Познавательные,SD,national-geographic,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png,https://fs.uplink.kz/nat_geo/mono.m3u8?token=onlinetv
-National Geographic Wild (576p),🧠 Познавательные,SD,nat-geo-wild-pl,100,38,https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/National_Geographic_Wild_logo.svg/960px-National_Geographic_Wild_logo.svg.png,https://fs.uplink.kz/nat_geo_wild/mono.m3u8?token=onlinetv
-Nauka (576p),🧠 Познавательные,HD,nauka,100,38,https://i.imgur.com/ZZxzueO.png,http://stream.mcquack.net/125/index.m3u8
-Ohotnik i rybolov HD (1080p),🧠 Познавательные,HD,oxotnik-i-rybolov,100,38,https://i.imgur.com/Bj1jI7F.png,http://stream.mcquack.net/194/index.m3u8
-Okhota i rybalka (576p),🧠 Познавательные,SD,Okhotairybalka.ru@SD,100,38,https://i.imgur.com/nZwBaeW.png,http://stream.mcquack.net/155/index.m3u8
-Oruzhie (576p),🧠 Познавательные,SD,oruzhie,95,38,https://i.imgur.com/lfJQJqa.png,https://fs.uplink.kz/oruzhie/mono.m3u8?token=onlinetv
-Pro Business (720p),🧠 Познавательные,SD,pro-business,97,38,https://i.imgur.com/1u8KvTD.png,https://tv-streaming.bsh.ru:21938/probusiness/probusiness.stream/playlist.m3u8
-Prosveshchenie (576p),🧠 Познавательные,SD,Prosveshchenie.ru@SD,100,38,https://i.imgur.com/uppFhhq.png,http://cdn-01.bonus-tv.ru/prosveschenie_edge/index.m3u8
-RTG TV HD (1080p),🧠 Познавательные,HD,rtg-hd,100,38,https://i.imgur.com/k9M2MOT.png,http://stream.mcquack.net/164/index.m3u8
-Rybalka i okhota (576p),🧠 Познавательные,SD,Rybalkaiokhota.ru@SD,100,38,https://www.cableman.ru/sites/default/files/rybalka_i_ohota_int.png,https://fs.uplink.kz/ohota_i_ribalka/mono.m3u8?token=onlinetv
-Rybolov (576p),🧠 Познавательные,HD,oxotnik-i-rybolov,100,38,https://i.imgur.com/wJMTcFS.png,http://stream.mcquack.net/264/index.m3u8
-Soyuzny (480p),🧠 Познавательные,SD,Soyuzny.ru@SD,97,38,https://www.mtis.by/upload/medialibrary/717/v07nk6rmf6m1mno8ujhbkcg8nstkfjgv/Slide%2016_9%20-%2050.png,http://178.124.179.122:8080/TRO/index.m3u8
-Telecafe (576p),🧠 Познавательные,SD,Telecafe.ru@SD,100,38,https://i.imgur.com/28XmS1J.png,http://stream.mcquack.net/314/index.m3u8
-Telecafe (576p),🧠 Познавательные,SD,Telecafe.ru@SD,100,38,https://i.imgur.com/28XmS1J.png,https://fs.uplink.kz/telecafe/mono.m3u8?token=onlinetv
-Telecafe (576p),🧠 Познавательные,SD,Telecafe.ru@SD,100,38,https://i.imgur.com/28XmS1J.png,http://88.212.15.19/live/test_telecafe_tv/playlist.m3u8
-Tochka otryva (576p),🧠 Познавательные,SD,tochka-otryva,95,38,https://i.imgur.com/TZiBQDK.png,https://fs.uplink.kz/tochka_otriva/mono.m3u8?token=onlinetv
-Tochka RF (1080p),🧠 Познавательные,HD,hd-life,100,38,https://i.imgur.com/tKgmhxh.png,http://stream.mcquack.net/161/index.m3u8
-Tonus (576p),🧠 Познавательные,SD,tonus-tv,100,38,https://i.imgur.com/pGm8QCj.png,http://194.143.148.28:8080/Mir24/index.m3u8
-Travel+Adventure HD (1080p),🧠 Познавательные,HD,travel-adventure,100,38,https://i.imgur.com/AlpdXC4.png,http://stream.mcquack.net/206/index.m3u8
-Travel+Adventure HD (1080p),🧠 Познавательные,HD,travel-adventure,100,38,https://i.imgur.com/AlpdXC4.png,http://77.232.131.211/TravelAdventureHD/index.m3u8
-Usadba (576p),🧠 Познавательные,SD,usadba,100,38,https://i.imgur.com/mf13haG.png,http://stream.mcquack.net/211/index.m3u8
-V mire zhivotnykh (1080p),🧠 Познавательные,HD,Vmirezhivotnykh.ru@SD,100,38,https://i.imgur.com/6uotdVQ.png,http://stream.mcquack.net/241/index.m3u8
-viju Explore (576p),🧠 Познавательные,HD,viasat-explore,100,38,https://i.imgur.com/EGIpLPu.png,http://stream.mcquack.net/239/index.m3u8
-viju Explore (576p),🧠 Познавательные,SD,viasat-explore,100,38,https://i.imgur.com/EGIpLPu.png,https://fs.uplink.kz/viju_explore/mono.m3u8?token=onlinetv
-viju History (576p),🧠 Познавательные,SD,viasat-history,97,38,https://i.imgur.com/FqWkeXb.png,http://178.124.179.122:8080/HistoryHD/index.m3u8
-viju History (576p),🧠 Познавательные,HD,viasat-history,100,38,https://i.imgur.com/FqWkeXb.png,http://stream.mcquack.net/101/index.m3u8
-viju History (576p),🧠 Познавательные,SD,viasat-history,100,38,https://i.imgur.com/FqWkeXb.png,https://fs.uplink.kz/viju_history/mono.m3u8?token=onlinetv
-viju Nature (576p),🧠 Познавательные,SD,viasat-nature,100,38,https://i.imgur.com/8BPZ18l.png,https://fs.uplink.kz/viju_nature/mono.m3u8?token=onlinetv
-viju+ Planet HD (1080p),🧠 Познавательные,HD,viasat-nature-history-hd,100,38,https://i.imgur.com/9Weqdsk.png,http://stream.mcquack.net/240/index.m3u8
-Zhivaya priroda (1080p),🧠 Познавательные,SD,zhivaya-priroda,100,38,https://i.imgur.com/9lHQPdN.png,http://stream.mcquack.net/83/index.m3u8
-Zhivaya priroda HD (1080p),🧠 Познавательные,HD,zhivaya-priroda,100,38,https://i.imgur.com/9lHQPdN.png,http://stream.mcquack.net/225/index.m3u8
-Zoopark (576p),🧠 Познавательные,SD,zoopark,100,38,https://i.imgur.com/IO5jegK.png,https://fs.uplink.kz/zoopark/mono.m3u8?token=onlinetv
-Большая Азия (720p),🧠 Познавательные,HD,bolshaya-azia,100,38,https://i.imgur.com/vruuPKF.png,http://live-bigasia.cdnvideo.ru/bigasia/bigasia.smil/playlist.m3u8
-Надежда (720p),🧠 Познавательные,HD,nadezhda,100,38,https://i.imgur.com/ah6VnFJ.png,https://live-tvhope.cdnvideo.ru/tvhope-pull/tvhope_1/playlist.m3u8
-Надежда (720p),🧠 Познавательные,HD,nadezhda,100,38,https://i.imgur.com/ah6VnFJ.png,https://tvhope.cdnvideo.ru/tvhope-pull/tvhope_1/playlist.m3u8
-Нано ТВ HD (576p),🧠 Познавательные,SD,nano-tv,100,38,https://i.imgur.com/dYj3XDa.png,http://s1.tv-nano.com/Nano_rec/index.m3u8
-Наука,🧠 Познавательные,SD,nauka,100,38,https://i.imgur.com/ZZxzueO.png,https://vod.tuva.ru/nauka2/index.m3u8
-Открытый мир. Здоровье (576p),🧠 Познавательные,SD,otkryty-mir,100,38,https://i.imgur.com/7orZOJA.png,https://v4.proofix.ru/0mir/index.m3u8
-Союз (576p),🧠 Познавательные,HD,soyuz,100,38,https://i.imgur.com/w3OewHc.png,https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz/soyuz/playlist.m3u8
+Царьград ТВ,📹 Rutube,HD,TsargradTV.ru@SD,100,12,https://i.imgur.com/34RINpb.png,https://bl.rutube.ru/livestream/91815da4edb167b5bd617bae490e57da/index.m3u8?e=2070278263&s=is_mLq_kjPYLsOJ4qj85tw&scheme=https
+Radio 1 (720p) [Geo-blocked],📻 Радио,HD,radio-1,100,39,https://i.ibb.co/pwCs0YY/512px-VRT-Radio-1-logo-svg.png,https://stream.radio1.ru/memfs/49dee7fe-77ba-4e6b-8cdc-fa840535b242.m3u8
+Радио России,📻 Радио,Unknown,radio-rossii,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Radio_Rossii_logo.svg/1920px-Radio_Rossii_logo.svg.png,https://stream.smotrim.ru/hls2/radio_rus/playlist_4.m3u8
+Радио Шансон (720p) [Not 24/7],📻 Радио,HD,radio-shanson,100,39,https://i.imgur.com/lbqM3K2.png,http://chanson-video.hostingradio.ru:8080/hls/chansonabr/live.m3u8
+Страна FM (720p) [Not 24/7],📻 Радио,HD,radio-strana-fm-tv,100,39,https://i.imgur.com/WsPlKJJ.png,http://live.stranafm.cdnvideo.ru/stranafm/stranafm_hd.sdp/playlist.m3u8
+365 дней ТВ,🧠 Познавательные,SD,365-dnej,100,39,https://i.imgur.com/NfnAiTR.png,http://stream.mcquack.net/70/index.m3u8
+365 дней ТВ,🧠 Познавательные,Unknown,365-dnej,100,39,https://i.imgur.com/NfnAiTR.png,https://fs.uplink.kz/365_dney/mono.m3u8?token=onlinetv
+ART (576p),🧠 Познавательные,SD,art-tv,100,39,https://i.imgur.com/mNeLu04.png,http://89.104.114.24:8080/art/index.m3u8
+ART (576p),🧠 Познавательные,SD,art-tv,100,39,https://i.imgur.com/mNeLu04.png,http://185.23.80.23:8080/ART/index.m3u8
+Big Planet (576p),🧠 Познавательные,SD,big-planet,100,39,https://i.imgur.com/wyuqWTR.png,https://fs.uplink.kz/big_planet/mono.m3u8?token=onlinetv
+Law TV (1080p),🧠 Познавательные,HD,LawTV.ru@SD,90,39,https://i.imgur.com/QcO5Gxl.png,http://stream.mcquack.net/406/index.m3u8
+National Geographic (576p),🧠 Познавательные,HD,national-geographic,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png,http://stream.mcquack.net/116/index.m3u8
+National Geographic (576p),🧠 Познавательные,SD,national-geographic,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png,https://fs.uplink.kz/nat_geo/mono.m3u8?token=onlinetv
+National Geographic Wild (576p),🧠 Познавательные,SD,nat-geo-wild-pl,100,39,https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/National_Geographic_Wild_logo.svg/960px-National_Geographic_Wild_logo.svg.png,https://fs.uplink.kz/nat_geo_wild/mono.m3u8?token=onlinetv
+RTG TV HD (1080p),🧠 Познавательные,HD,rtg-hd,100,39,https://i.imgur.com/k9M2MOT.png,http://stream.mcquack.net/164/index.m3u8
+Telecafe (576p),🧠 Познавательные,SD,Telecafe.ru@SD,100,39,https://i.imgur.com/28XmS1J.png,http://stream.mcquack.net/314/index.m3u8
+Telecafe (576p),🧠 Познавательные,SD,Telecafe.ru@SD,100,39,https://i.imgur.com/28XmS1J.png,https://fs.uplink.kz/telecafe/mono.m3u8?token=onlinetv
+Telecafe (576p),🧠 Познавательные,SD,Telecafe.ru@SD,100,39,https://i.imgur.com/28XmS1J.png,http://88.212.15.19/live/test_telecafe_tv/playlist.m3u8
+Travel+Adventure HD (1080p),🧠 Познавательные,HD,travel-adventure,100,39,https://i.imgur.com/AlpdXC4.png,http://stream.mcquack.net/206/index.m3u8
+Travel+Adventure HD (1080p),🧠 Познавательные,HD,travel-adventure,100,39,https://i.imgur.com/AlpdXC4.png,http://77.232.131.211/TravelAdventureHD/index.m3u8
+viju Explore (576p),🧠 Познавательные,HD,viasat-explore,100,39,https://i.imgur.com/EGIpLPu.png,http://stream.mcquack.net/239/index.m3u8
+viju Explore (576p),🧠 Познавательные,SD,viasat-explore,100,39,https://i.imgur.com/EGIpLPu.png,https://fs.uplink.kz/viju_explore/mono.m3u8?token=onlinetv
+viju History (576p),🧠 Познавательные,SD,viasat-history,97,39,https://i.imgur.com/FqWkeXb.png,http://178.124.179.122:8080/HistoryHD/index.m3u8
+viju History (576p),🧠 Познавательные,HD,viasat-history,100,39,https://i.imgur.com/FqWkeXb.png,http://stream.mcquack.net/101/index.m3u8
+viju History (576p),🧠 Познавательные,SD,viasat-history,100,39,https://i.imgur.com/FqWkeXb.png,https://fs.uplink.kz/viju_history/mono.m3u8?token=onlinetv
+viju Nature (576p),🧠 Познавательные,SD,viasat-nature,100,39,https://i.imgur.com/8BPZ18l.png,https://fs.uplink.kz/viju_nature/mono.m3u8?token=onlinetv
+viju+ Planet HD (1080p),🧠 Познавательные,HD,viasat-nature-history-hd,100,39,https://i.imgur.com/9Weqdsk.png,http://stream.mcquack.net/240/index.m3u8
+Бобёр,🧠 Познавательные,Unknown,bobior,100,39,https://i.imgur.com/clWWhB8.png,https://fs.uplink.kz/bober/mono.m3u8?token=onlinetv
+Бобёр,🧠 Познавательные,Unknown,bobior,100,39,https://i.imgur.com/clWWhB8.png,http://88.212.15.19/live/test_bober/playlist.m3u8
+Большая Азия (720p),🧠 Познавательные,HD,bolshaya-azia,100,39,https://i.imgur.com/vruuPKF.png,http://live-bigasia.cdnvideo.ru/bigasia/bigasia.smil/playlist.m3u8
+Надежда (720p),🧠 Познавательные,HD,nadezhda,100,39,https://i.imgur.com/ah6VnFJ.png,https://live-tvhope.cdnvideo.ru/tvhope-pull/tvhope_1/playlist.m3u8
+Надежда (720p),🧠 Познавательные,HD,nadezhda,100,39,https://i.imgur.com/ah6VnFJ.png,https://tvhope.cdnvideo.ru/tvhope-pull/tvhope_1/playlist.m3u8
+Нано,🧠 Познавательные,HD,nano-tv,100,39,https://i.imgur.com/dYj3XDa.png,http://stream.mcquack.net/419/index.m3u8
+Нано,🧠 Познавательные,HD,nano-tv,100,39,https://i.imgur.com/dYj3XDa.png,http://185.23.80.23:8080/NANO_HD/index.m3u8
+Нано ТВ HD (576p),🧠 Познавательные,SD,nano-tv,100,39,https://i.imgur.com/dYj3XDa.png,http://s1.tv-nano.com/Nano_rec/index.m3u8
+Наука,🧠 Познавательные,HD,nauka,100,39,https://i.imgur.com/ZZxzueO.png,http://stream.mcquack.net/125/index.m3u8
+Наука,🧠 Познавательные,SD,nauka,100,39,https://i.imgur.com/ZZxzueO.png,https://vod.tuva.ru/nauka2/index.m3u8
+Открытый мир. Здоровье (576p),🧠 Познавательные,SD,otkryty-mir,100,39,https://i.imgur.com/7orZOJA.png,https://v4.proofix.ru/0mir/index.m3u8
+Союз (576p),🧠 Познавательные,HD,soyuz,100,39,https://i.imgur.com/w3OewHc.png,https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz/soyuz/playlist.m3u8
+Союзный,🧠 Познавательные,SD,tro,97,39,https://www.mtis.by/upload/medialibrary/717/v07nk6rmf6m1mno8ujhbkcg8nstkfjgv/Slide%2016_9%20-%2050.png,http://178.124.179.122:8080/TRO/index.m3u8
+Точка отрыва,🧠 Познавательные,Unknown,tochka-otryva,95,39,https://i.imgur.com/TZiBQDK.png,https://fs.uplink.kz/tochka_otriva/mono.m3u8?token=onlinetv
