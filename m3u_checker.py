@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-M3U Checker v27 + RU-NAME-v2 + TVG-OVERRIDE — ffprobe + whitelist + soft-uptime + UA-per-URL.
+M3U Checker v27 + RU-NAME-v2 + TVG-OVERRIDE + NAME-OVERRIDE
+    — ffprobe + whitelist + soft-uptime + UA-per-URL.
 
 Что нового относительно v27+RU-NAME-v2:
   • [TVG-OVERRIDE] Принудительная подмена tvg-id для каналов, у которых источник
     подсунул чужой ID (Россия-24 и 5 канал подхватывали украинский/армянский EPG).
+  • [NAME-OVERRIDE] Точечное переименование каналов (например «КИНОТВ» → «Кино ТВ»).
 
 Остальное из v27+RU-NAME-v2:
   • [RU-NAME-END] Имена каналов заменяются на русские из alt_names iptv-org
@@ -79,6 +81,12 @@ UA_ICONS = {'wink': '📺', 'vlc': '🎬', 'tivimate': '📱', 'smarttv': '📡'
 TVG_ID_OVERRIDES = {
     '24news-ua': 'rossia-24',
     '5-am':      '5kanal-ru',
+}
+
+# [NAME-OVERRIDE] Точечные переименования. Работает только при ТОЧНОМ
+# совпадении всего имени канала — безопасно, другие имена не заденет.
+NAME_OVERRIDES = {
+    'КИНОТВ': 'Кино ТВ',
 }
 
 
@@ -1458,6 +1466,11 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
         if ru_name and not _has_cyrillic(name):
             extinf = set_name_in_extinf(extinf, ru_name)
 
+    # [NAME-OVERRIDE] точечные переименования поверх RU-NAME
+    _nm = get_name(extinf)
+    if _nm in NAME_OVERRIDES:
+        extinf = set_name_in_extinf(extinf, NAME_OVERRIDES[_nm])
+
     if is_wl:
         WHITELIST_STATS['kept'] += 1
     return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src, final_quality
@@ -1523,7 +1536,7 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
             epg_id = resolve_epg_id(extinf)
 
-            # [TVG-OVERRIDE] Принудительная подмена, если источник дал чужой tvg-id
+            # [TVG-OVERRIDE]
             _ovr = TVG_ID_OVERRIDES.get(original_tvg_id) or TVG_ID_OVERRIDES.get(epg_id)
             if _ovr:
                 epg_id = _ovr
@@ -1540,6 +1553,10 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
                 ru_name = IPTV_IDS.get('ru_name_by_id', {}).get(iptv_org_id)
                 if ru_name and not _has_cyrillic(name):
                     extinf = set_name_in_extinf(extinf, ru_name)
+            # [NAME-OVERRIDE]
+            _nm = get_name(extinf)
+            if _nm in NAME_OVERRIDES:
+                extinf = set_name_in_extinf(extinf, NAME_OVERRIDES[_nm])
             out.append((i, extinf, url))
         ordered = group_channels(out)
         gs = {}
