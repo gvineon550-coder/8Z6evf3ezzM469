@@ -49,8 +49,6 @@ http://178.134.1.158:8081/5channel/index.m3u8
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36
 https://cdn4.skygo.mn/live/disk1/Channel_5/HLSv3-FTA/Channel_5.m3u8
 #EXTINF:-1 tvg-id="Channel8.ru@SD",Channel 8 (576p)
-http://45.11.139.43:8555/8kanal/index.m3u8
-#EXTINF:-1 tvg-id="Channel8.ru@SD",Channel 8 (576p)
 http://tshift-1.telecoma.tv/8channel/index.m3u8
 #EXTINF:-1 tvg-id="Channel8.ru@SD",Channel 8 (576p)
 http://v4.proofix.ru/okino-tv/index.m3u8
@@ -150,8 +148,6 @@ http://stream.mcquack.net/265/index.m3u8
 http://93.170.254.17/Kinomiks/index.m3u8
 #EXTINF:-1 tvg-id="Kinomix.ru@SD",Kinomix (576p)
 http://stream.mcquack.net/133/index.m3u8
-#EXTINF:-1 tvg-id="Kinopokaz.ru@SD",Kinopokaz (576p)
-http://stream.mcquack.net/64/index.m3u8
 #EXTINF:-1 tvg-id="Kinopremyera.ru@SD",Kinopremyera (1080p)
 http://5.188.159.128:8070/KINOPREMIERA/index.m3u8
 #EXTINF:-1 tvg-id="Kinosemja.ru@SD",Kinosemja (576p)
@@ -323,18 +319,6 @@ http://stream.mcquack.net/242/index.m3u8
 https://live.chechensoft.ru/vainahtv/ngrp:vaynahtv_all/playlist.m3u8
 #EXTINF:-1 tvg-id="RT.ru@SD",RT (720p)
 http://212.5.144.156:8080/rt/index.m3u8
-#EXTINF:-1 tvg-id="RTBalkan.ru@SD",RT Balkan (1080p)
-https://rt-srb.rttv.com/dvr/rtbalkan/playlist.m3u8
-#EXTINF:-1 tvg-id="RTBalkan.ru@SD",RT Balkan (1080p)
-https://rt-srb.rttv.com/live/rtbalkan/playlist.m3u8
-#EXTINF:-1 tvg-id="RTenEspanol.ru@SD",RT en Espanol (1080p)
-http://15.204.246.24:8080/RTHD/index.m3u8
-#EXTINF:-1 tvg-id="RTenEspanol.ru@SD",RT en Espanol (720p)
-https://live-evg10.tv360.bitel.com.pe/bitel/rt/playlist.m3u8
-#EXTINF:-1 tvg-id="RTenEspanol.ru@SD",RT en Espanol (576p)
-https://streaming.thestream.cyou/live/46.m3u8
-#EXTINF:-1 tvg-id="RTenEspanol.ru@SD",RT en Espanol (576p)
-https://streamtv.onliv3.online:1936/exito-tv/exito-tv/playlist.m3u8
 #EXTINF:-1 tvg-id="RT.ru@HD",RT HD (1080p)
 http://31.148.48.15/RT_HD/index.m3u8
 #EXTINF:-1 tvg-id="RTGint.ru@SD",RTG int.
@@ -527,8 +511,6 @@ https://streaming.thestream.cyou/live/7006.m3u8
 http://stream.mcquack.net/76/index.m3u8
 #EXTINF:-1 tvg-id="Vremya.ru@SD",Vremya (576p)
 http://stream.mcquack.net/237/index.m3u8
-#EXTINF:-1 tvg-id="ZagorodnayaZhizn.ru@SD",Zagorodnaya Zhizn (576p)
-http://185.57.68.33/40/index.m3u8
 #EXTINF:-1 tvg-id="Zhara.ru@SD",Zhara (576p)
 http://stream.mcquack.net/386/index.m3u8
 #EXTINF:-1 tvg-id="Zhivayapriroda.ru@SD",Zhivaya priroda (1080p)
@@ -607,10 +589,6 @@ http://stream.tvbelgorod.ru:8080/mirbelogorya/index.m3u8
 http://hls.volgograd1vtv.cdnvideo.ru/volgograd1vtv/volgograd1vtv.sdp/playlist.m3u8
 #EXTINF:-1 tvg-id="MuzSoyuz.ru@SD",Муз союз (576p)
 https://hls-tvsoyuz.cdnvideo.ru/tvsoyuz2/muzsoyuz.6fw0-58xp-acts-esy0/playlist.m3u8
-#EXTINF:-1 tvg-id="Multimania.ru@SD",Мультимания (576p)
-https://sirius.greenhosting.ru/MultimaniaRu/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="Multimania.ru@SD",Мультимания ТВ (576p)
-http://sirius.greenhosting.ru/MultimaniaRu/video.m3u8
 #EXTINF:-1 tvg-id="HopeChannelRussia.ru@SD",Надежда (720p)
 https://live-tvhope.cdnvideo.ru/tvhope-pull/tvhope_1/playlist.m3u8
 #EXTINF:-1 tvg-id="HopeChannelRussia.ru@SD",Надежда (720p)
@@ -1285,8 +1263,6 @@ http://str2.iptvhd.ru:8080/kinoujas_tv/index.m3u8
 http://str2.iptvhd.ru:8080/Kino_premium_HD/index.m3u8
 #EXTINF:-1 tvg-id="Kinopremyera.ru@HD",Kinopremyera HD (1080p)
 http://str2.iptvhd.ru:8080/HD_Kino/index.m3u8
-#EXTINF:-1 tvg-id="Kinopokaz.ru@SD",Kinopokaz (576p)
-http://str2.iptvhd.ru:8080/Kinopokaz/index.m3u8
 #EXTINF:-1 tvg-id="FXLife.ru@SD",FX Life (576p)
 http://str2.iptvhd.ru:8080/Fox_Life_HD/index.m3u8
 #EXTINF:-1 tvg-id="vijuTV1000russkoe.ru@SD",viju TV1000 russkoe (576p)
@@ -1403,8 +1379,6 @@ http://91.228.35.249:8001/1:0:1:6a7:3138:13e:820000:0:0:0:
 http://31.131.141.195:8000/play/a006/index.m3u8
 #EXTINF:-1 tvg-id="Oplot2.ru@SD",Oplot 2 (720p) [Geo-blocked]
 http://iptv.mega.net.ru:8888/Oplot_2/index.m3u8
-#EXTINF:-1 tvg-id="RTenEspanol.ru@SD",RT en Espanol (1080p)
-http://168.196.127.137:6001/play/a0a9/index.m3u8
 #EXTINF:-1 tvg-id="ChannelOne.ru@SD",Channel One (576p)
 http://31.148.5.241/kanal_1/index.m3u8
 #EXTINF:-1 tvg-id="Russia1.ru@SD",Russia-1 (576p)
