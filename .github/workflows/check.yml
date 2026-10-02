@@ -2,7 +2,7 @@ name: Check IPTV playlists
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 0 */3 * *'   # каждые 3 дня в 03:00 МСК
   workflow_dispatch:
 
 permissions:
@@ -71,7 +71,7 @@ jobs:
             --ffprobe-workers 4 \
             --ffprobe-timeout 8 \
             --ffprobe-cache-days 3 \
-            --cache-ttl 86400 \
+            --cache-ttl 0 \
             --tg-send-merged
 
       - name: Count requests
