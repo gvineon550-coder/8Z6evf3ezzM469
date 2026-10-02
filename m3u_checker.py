@@ -1,25 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-M3U Checker v27 — ffprobe + whitelist + soft-uptime + UA-per-URL + возвращён logos.json.
+M3U Checker v27 + RU-NAME — ffprobe + whitelist + soft-uptime + UA-per-URL.
 
-Что нового относительно v25:
-  • clean_extinf сохраняет ВСЕ атрибуты EXTINF (tvg-name, catchup, ...)
-  • save_uptime: URL не удаляется сразу, а помечается missing; удаление
-    только после UPTIME_MISSING_MAX пропусков подряд (обратная совместимость
-    со старым форматом uptime.json сохранена)
-  • в итоговый плейлист пишется тот User-Agent, через который поток
-    реально открылся (а не всегда wink)
-  • get_quality_for_url смотрит и в свежий кэш текущего запуска
-  • каналы iptv-org с closed=true не резолвятся в ID
-  • координаты/город погоды вынесены в аргументы
-  • [v27] SQLite: индекс по ts + vacuum() в конце запуска
-  • [v27] SQLite хранит UA для URL, из кэша отдаётся тот же UA
-  • [v27] fetch_weather: URL-encode имени города
-  • [v27] пустые URL не попадают в all_urls (и не создают мусор в uptime)
-  • [v27] ffprobe_check принимает UA, использует сработавший (кроме 'cached')
-  • [v27] _download_json без кастомного UA (CDN отдаёт охотнее)
-  • [v27-fix] логично: логотипы берём из logos.json (в channels.json их нет)
+Что нового относительно v27:
+  • [RU-NAME] Имена каналов заменяются на русские из alt_names iptv-org.
+    Например: Kinouzhas → Киноужас. Помогает с логотипами и EPG.
+
+Остальное из v27:
+  • clean_extinf сохраняет ВСЕ атрибуты EXTINF
+  • save_uptime: soft-uptime, удаление через 30 пропусков
+  • UA-per-URL: в плейлист пишется сработавший UA
+  • SQLite: индекс по ts + vacuum()
+  • SQLite хранит UA для URL
+  • fetch_weather: URL-encode имени города
+  • ffprobe_check принимает UA
+  • _download_json без кастомного UA
+  • Логотипы из logos.json
 """
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -139,7 +136,6 @@ IPTV_ORG_URLS_CHANNELS = [
     'https://raw.githubusercontent.com/iptv-org/api/master/channels.json',
 ]
 IPTV_ORG_CHANNELS_CACHE = '_cache_sources/iptv_org_channels.json'
-# [v27-fix] логотипы берём из отдельного файла (в channels.json их нет)
 IPTV_ORG_URLS_LOGOS = [
     'https://cdn.jsdelivr.net/gh/iptv-org/api@gh-pages/logos.json',
     'https://cdn.jsdelivr.net/gh/iptv-org/api@master/logos.json',
@@ -197,7 +193,9 @@ CFG = None
 CATEGORIES = {}
 FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}}
-IPTV_IDS = {'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}, 'closed': set()}
+# [RU-NAME] добавлено поле ru_name_by_id
+IPTV_IDS = {'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}, 'closed': set(),
+            'ru_name_by_id': {}}
 EPG_MAP = {'by_name': {}, 'by_translit': {}, 'by_prefix': {}, 'icons': {}}
 LOGO_STATS = {'from_src': 0, 'from_id': 0, 'from_name': 0,
               'from_translit': 0, 'from_epg_icon': 0, 'from_prefix': 0,
@@ -227,7 +225,7 @@ WEATHER_HTML = '🌡️ <span class="hide-mobile">—</span>'
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# ЛОГИРОВАНИЕ И БАЗОВЫЕ УТИЛИТЫ
+# ЛОГИРОВАНИЕ
 # ═══════════════════════════════════════════════════════════════════════
 def setup_logging(path, quiet):
     log.setLevel(logging.DEBUG)
@@ -540,7 +538,6 @@ def save_ffprobe_cache(path, current_urls):
 # FFPROBE
 # ═══════════════════════════════════════════════════════════════════════
 def ffprobe_check(url, ua=None):
-    """Принимает UA. Значение 'cached' не должно сюда попадать — вызывающий фильтрует."""
     if not HAS_FFPROBE:
         FFPROBE_STATS['skipped'] += 1
         return None, None
@@ -628,11 +625,6 @@ def is_migayushchiy(url):
 # SQLITE КЭШ HTTP
 # ═══════════════════════════════════════════════════════════════════════
 class UrlCache:
-    """
-    Хранит UA вместе с записью. get() возвращает (ok, ua) или None.
-    Есть индекс по ts и метод vacuum().
-    """
-
     def __init__(self, path, ttl):
         self.ttl = ttl
         self.lock = threading.Lock()
@@ -654,7 +646,6 @@ class UrlCache:
         self.conn.commit()
 
     def get(self, url, kind):
-        """Возвращает (ok, ua) или None."""
         if not self.enabled:
             return None
         with self.lock:
@@ -678,7 +669,6 @@ class UrlCache:
             self.conn.commit()
 
     def vacuum(self):
-        """Чистит старые записи и уплотняет БД."""
         if not self.enabled:
             return
         with self.lock:
@@ -724,7 +714,6 @@ def load_sources_config(path):
 # IPTV-ORG
 # ═══════════════════════════════════════════════════════════════════════
 def _download_json(urls, cache_path):
-    """Без кастомного UA — CDN отдаёт охотнее."""
     os.makedirs(os.path.dirname(cache_path) or '.', exist_ok=True)
     fresh = False
     if os.path.isfile(cache_path):
@@ -762,8 +751,11 @@ def _add_to_prefix_map(prefix_map, prefix, value):
     prefix_map.setdefault(prefix, []).append(value)
 
 
+def _has_cyrillic(s):
+    return bool(re.search(r'[а-яА-ЯёЁ]', s or ''))
+
+
 def load_iptv_org():
-    """channels.json + logos.json (в channels.json логотипов нет)."""
     global IPTV_LOGOS, IPTV_IDS
     if CFG.no_iptv_logos:
         emit("База iptv-org: отключено")
@@ -778,6 +770,7 @@ def load_iptv_org():
 
     id_to_names = {}
     closed_ids = set()
+    ru_name_by_id = {}    # [RU-NAME] id → русское имя
     for ch in channels:
         if not isinstance(ch, dict):
             continue
@@ -798,7 +791,12 @@ def load_iptv_org():
             names.append(an)
         id_to_names[cid] = names
 
-    # Выбираем лучший логотип (по ширине) для каждого id
+        # [RU-NAME] ищем русское имя в alt_names
+        for name in names:
+            if _has_cyrillic(name):
+                ru_name_by_id[cid] = name.strip()
+                break
+
     by_id_raw = {}
     for logo in logos:
         if not isinstance(logo, dict):
@@ -848,9 +846,11 @@ def load_iptv_org():
     IPTV_IDS['by_name_translit'] = by_name_id_translit
     IPTV_IDS['by_prefix'] = by_prefix_id
     IPTV_IDS['closed'] = closed_ids
+    IPTV_IDS['ru_name_by_id'] = ru_name_by_id    # [RU-NAME]
 
     emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени")
     emit(f"  iptv-org id: {len(by_name_id)} по имени (закрытых: {len(closed_ids)})")
+    emit(f"  Русских имён найдено: {len(ru_name_by_id)}")    # [RU-NAME]
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -997,7 +997,6 @@ _ATTR_RE = re.compile(r'([a-zA-Z][\w-]*)="([^"]*)"')
 
 
 def clean_extinf(line):
-    """Сохраняет dur, name и все key="value" атрибуты в исходном порядке."""
     dm = re.match(r'#EXTINF:\s*(-?\d+)', line)
     dur = dm.group(1) if dm else '-1'
     nm = get_name(line)
@@ -1041,6 +1040,14 @@ def set_tvg_id_in_extinf(extinf, tvg_id):
 
 def remove_tvg_id_from_extinf(extinf):
     return re.sub(r'\s?tvg-id="[^"]*"', '', extinf, count=1)
+
+
+def set_name_in_extinf(extinf, new_name):
+    """[RU-NAME] Заменяет имя канала в EXTINF."""
+    if not new_name:
+        return extinf
+    head, _ = split_extinf(extinf)
+    return head + ',' + new_name
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -1216,7 +1223,6 @@ def _check_stream(url):
 
 
 def check_stream(url, cache):
-    """Возвращает (ok, ua_name_or_'cached', elapsed, reason, quality)."""
     cached = cache.get(url, 'stream')
     if cached is not None:
         ok, ua = cached
@@ -1395,7 +1401,6 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
                 if len(REJECTED) < REJECTED_LIMIT:
                     REJECTED.append((name, group, url, f'unstable:{pct}%'))
             return index, 'unstable', None, None, f"uptime {pct}%", None, None, None, None, None
-        # передаём сработавший UA в ffprobe; 'cached' — не UA, подменяем
         if CFG.ffprobe:
             ff_ua = ua if ua and ua != 'cached' else DEFAULT_UA
             ff_ok, ff_info = ffprobe_check(url, ua=ff_ua)
@@ -1417,6 +1422,14 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     extinf = clean_extinf(extinf)
     original_tvg_id = get_tvg_id(extinf)
     iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
+
+    # [RU-NAME] если нашли русское имя в iptv-org базе — заменяем
+    # только если текущее имя содержит латиницу и НЕ содержит кириллицу
+    if iptv_org_id:
+        ru_name = IPTV_IDS.get('ru_name_by_id', {}).get(iptv_org_id)
+        if ru_name and not _has_cyrillic(name):
+            extinf = set_name_in_extinf(extinf, ru_name)
+
     epg_id = resolve_epg_id(extinf)
     logo, logo_src = resolve_logo(extinf, url, txt_logos, cache,
                                    iptv_org_id, epg_id)
@@ -1491,6 +1504,11 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             extinf = clean_extinf(extinf)
             original_tvg_id = get_tvg_id(extinf)
             iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
+            # [RU-NAME]
+            if iptv_org_id:
+                ru_name = IPTV_IDS.get('ru_name_by_id', {}).get(iptv_org_id)
+                if ru_name and not _has_cyrillic(name):
+                    extinf = set_name_in_extinf(extinf, ru_name)
             epg_id = resolve_epg_id(extinf)
             logo, _ = resolve_logo(extinf, url, txt_logos, cache, iptv_org_id, epg_id)
             extinf = set_logo_in_extinf(extinf, logo)
@@ -2976,7 +2994,7 @@ def tg_file(token, chat, path, caption=''):
 def tg_report(stats, total, ok, filt, unstable, merged, dur, index_url,
               source_results, is_weekly, logo_stats, epg_count, quality_stats,
               ffprobe_stats):
-    lines = ["<b>M3U Check v27</b>"]
+    lines = ["<b>M3U Check v27+RU</b>"]
     if is_weekly:
         lines.append("🗓 <i>Еженедельный отчёт</i>")
     lines.extend([
