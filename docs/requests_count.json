@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-02T17:44:06",
+  "date": "2026-10-02T18:10:15",
   "method": "counter v5 — прогон 1 раз в 3 дня, 4 UA на мёртвых",
   "accuracy": "±3%",
   "schedule": {
@@ -14,18 +14,18 @@
       "runs": 3,
       "ok": 627,
       "dead": 271,
-      "unstable": 4,
+      "unstable": 3,
       "filtered": 0
     },
     "ffprobe_updated_72h": 478,
     "rejected_reasons": {
-      "dead": 274,
+      "dead": 270,
       "dead_detail:ffprobe": 41,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 161,
-      "dead_detail:http_404": 14,
-      "dead_detail:timeout": 57,
-      "unstable": 4
+      "dead_detail:http_404": 13,
+      "dead_detail:timeout": 54,
+      "unstable": 2
     }
   },
   "estimated_requests": {
@@ -35,8 +35,8 @@
       "live_requests": 689,
       "dead_requests": 1084,
       "breakdown": {
-        "timeout": 57,
-        "http_code": 176,
+        "timeout": 54,
+        "http_code": 175,
         "ffprobe_fail": 41,
         "empty_html_small_unknown": 0,
         "ua_count": 4
