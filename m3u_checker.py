@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-M3U Checker v27 + RU-NAME-v2 — ffprobe + whitelist + soft-uptime + UA-per-URL.
+M3U Checker v27 + RU-NAME-v2 + TVG-OVERRIDE — ffprobe + whitelist + soft-uptime + UA-per-URL.
 
-Что нового относительно v27:
+Что нового относительно v27+RU-NAME-v2:
+  • [TVG-OVERRIDE] Принудительная подмена tvg-id для каналов, у которых источник
+    подсунул чужой ID (Россия-24 и 5 канал подхватывали украинский/армянский EPG).
+
+Остальное из v27+RU-NAME-v2:
   • [RU-NAME-END] Имена каналов заменяются на русские из alt_names iptv-org
     в САМОМ КОНЦЕ обработки — после categorize и detect_quality.
-    Это сохраняет правильные группы и качество.
-
-Остальное из v27:
   • clean_extinf сохраняет ВСЕ атрибуты EXTINF
   • save_uptime: soft-uptime, удаление через 30 пропусков
   • UA-per-URL: в плейлист пишется сработавший UA
@@ -71,6 +72,14 @@ USER_AGENTS = [
 DEFAULT_UA = USER_AGENTS[0][1]
 UA_MAP = {name: ua for name, ua in USER_AGENTS}
 UA_ICONS = {'wink': '📺', 'vlc': '🎬', 'tivimate': '📱', 'smarttv': '📡', 'cached': '⚡'}
+
+# [TVG-OVERRIDE] Принудительная подмена tvg-id, когда источник подсунул чужой ID.
+#   '24news-ua' — украинский 24 Канал (совпал по имени с Россия-24)
+#   '5-am'      — армянский Пятый (совпал по имени с российским 5 каналом)
+TVG_ID_OVERRIDES = {
+    '24news-ua': 'rossia-24',
+    '5-am':      '5kanal-ru',
+}
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -1422,6 +1431,12 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     original_tvg_id = get_tvg_id(extinf)
     iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
     epg_id = resolve_epg_id(extinf)
+
+    # [TVG-OVERRIDE] Принудительная подмена, если источник дал чужой tvg-id
+    _ovr = TVG_ID_OVERRIDES.get(original_tvg_id) or TVG_ID_OVERRIDES.get(epg_id)
+    if _ovr:
+        epg_id = _ovr
+
     logo, logo_src = resolve_logo(extinf, url, txt_logos, cache,
                                    iptv_org_id, epg_id)
     extinf = set_logo_in_extinf(extinf, logo)
@@ -1507,6 +1522,12 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             original_tvg_id = get_tvg_id(extinf)
             iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
             epg_id = resolve_epg_id(extinf)
+
+            # [TVG-OVERRIDE] Принудительная подмена, если источник дал чужой tvg-id
+            _ovr = TVG_ID_OVERRIDES.get(original_tvg_id) or TVG_ID_OVERRIDES.get(epg_id)
+            if _ovr:
+                epg_id = _ovr
+
             logo, _ = resolve_logo(extinf, url, txt_logos, cache, iptv_org_id, epg_id)
             extinf = set_logo_in_extinf(extinf, logo)
             if epg_id:
