@@ -2,7 +2,7 @@ name: M3U Cleaner
 
 on:
   schedule:
-    - cron: '0 23,5,11,17 * * *'   # 02:00, 08:00, 14:00, 20:00 МСК — за час до checker
+    - cron: '0 23 */3 * *'   # каждые 3 дня в 02:00 МСК
   workflow_dispatch:
 
 permissions:
