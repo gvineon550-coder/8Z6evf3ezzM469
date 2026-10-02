@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-counter.py v4 — оценка HTTP-запросов checker'а за СУТКИ.
+counter.py v5 — оценка HTTP-запросов checker'а.
+
 Читает docs/*.json + rejected.csv.
 Учитывает:
-  - check.yml запускается 4 раза в сутки (cron 0 */6 * * *)
+  - check.yml запускается 1 раз в 3 дня (cron 0 0 */3 * *)
   - мёртвые каналы проверяются по 4 User-Agent (wink, vlc, tivimate, smarttv)
   - живые каналы обычно срабатывают на первом UA
 Whitelist НЕ учитывается (к whitelist-каналам запросов не идёт).
+
+Что нового в v5:
+  • CHECK_RUNS_PER_DAY = 1/3 (было 4) — под новое расписание
+  • Считаем «за прогон», «за сутки», «за месяц» — три метрики
+  • ffprobe-окно = 72 часа (было 24), потому что прогон раз в 3 дня
 """
 import json
 import csv
@@ -18,8 +24,11 @@ from collections import Counter
 
 DOCS = Path('docs')
 
-# Сколько раз в сутки запускается check.yml (cron: 0 */6 * * *)
-CHECK_RUNS_PER_DAY = 4
+# Расписание: 1 прогон в 3 дня
+DAYS_BETWEEN_RUNS = 3
+RUNS_PER_3DAYS = 1
+# Для совместимости (дробное значение прогонов в сутки)
+CHECK_RUNS_PER_DAY = RUNS_PER_3DAYS / DAYS_BETWEEN_RUNS   # = 0.333...
 
 # Сколько User-Agent пробуется на мёртвых каналах
 UA_COUNT = 4
@@ -48,7 +57,7 @@ def count_m3u_stats():
     return total
 
 
-def count_ffprobe_recent(hours=24):
+def count_ffprobe_recent(hours=72):
     """Сколько записей ffprobe обновлено за N часов (по ts)."""
     ff = load_json('ffprobe.json')
     if not ff:
@@ -138,11 +147,11 @@ def estimate_http_requests(ok, dead, reasons):
 
 
 def main():
-    print("📊 Анализирую checker (за СУТКИ)...")
+    print("📊 Анализирую checker (прогон 1 раз в 3 дня)...")
 
     history = load_json('history.json', [])
     total_m3u = count_m3u_stats()
-    ffprobe_24h = count_ffprobe_recent(24)
+    ffprobe_72h = count_ffprobe_recent(72)   # окно 3 дня
     reasons = parse_rejected()
 
     avg = avg_recent_runs(history, n=3)
@@ -153,22 +162,39 @@ def main():
     filtered = avg.get('filtered', 0)
 
     http = estimate_http_requests(ok, dead, reasons)
-    http_per_day = http['total'] * CHECK_RUNS_PER_DAY
 
-    ffprobe_requests = ffprobe_24h * 2
+    # ─── Пересчёты под новое расписание ───
+    http_per_run    = http['total']                        # за 1 прогон
+    http_per_3days  = http_per_run * RUNS_PER_3DAYS        # за 3 дня = 1 прогон
+    http_per_day    = http_per_3days / DAYS_BETWEEN_RUNS   # среднее в сутки
+    http_per_month  = http_per_3days * (30 / DAYS_BETWEEN_RUNS)   # за 30 дней
+
+    ffprobe_per_3days = ffprobe_72h * 2                    # 2 запроса на запись
+    ffprobe_per_run   = ffprobe_per_3days                  # т.к. 1 прогон в 3 дня
+    ffprobe_per_day   = ffprobe_per_3days / DAYS_BETWEEN_RUNS
+    ffprobe_per_month = ffprobe_per_3days * (30 / DAYS_BETWEEN_RUNS)
+
     logo_requests = 0
-    cleaner = 8
-    dashboard = 480
+    cleaner_per_day = 8 / DAYS_BETWEEN_RUNS        # cleaner тоже раз в 3 дня
+    dashboard = 480                                # дашборд в другом репо — не трогаем
     misc = 5
 
-    total = (http_per_day + ffprobe_requests +
-             logo_requests + cleaner + dashboard + misc)
+    total_per_day = (http_per_day + ffprobe_per_day +
+                     logo_requests + cleaner_per_day + dashboard + misc)
+    total_per_month = (http_per_month + ffprobe_per_month +
+                       logo_requests +
+                       cleaner_per_day * 30 + dashboard * 30 + misc * 30)
 
     result = {
         'date': datetime.datetime.now().isoformat(timespec='seconds'),
-        'method': f'counter v4 — оценка за СУТКИ (check × {CHECK_RUNS_PER_DAY}/день, {UA_COUNT} UA на мёртвых)',
+        'method': (f'counter v5 — прогон 1 раз в {DAYS_BETWEEN_RUNS} дня, '
+                   f'{UA_COUNT} UA на мёртвых'),
         'accuracy': '±3%',
-        'check_runs_per_day': CHECK_RUNS_PER_DAY,
+        'schedule': {
+            'days_between_runs': DAYS_BETWEEN_RUNS,
+            'runs_per_3days': RUNS_PER_3DAYS,
+            'runs_per_day': round(CHECK_RUNS_PER_DAY, 4),
+        },
         'ua_per_dead_channel': UA_COUNT,
 
         'real_data': {
@@ -178,30 +204,40 @@ def main():
                 'ok': ok, 'dead': dead,
                 'unstable': unstable, 'filtered': filtered,
             },
-            'ffprobe_updated_24h': ffprobe_24h,
+            'ffprobe_updated_72h': ffprobe_72h,
             'rejected_reasons': dict(reasons),
         },
 
         'estimated_requests': {
             'http_checker_per_run': http,
+            'http_checker_per_3days': {
+                'total': http_per_3days,
+                'note': f'{http_per_run} × {RUNS_PER_3DAYS} прогон',
+            },
             'http_checker_per_day': {
-                'runs': CHECK_RUNS_PER_DAY,
-                'total': http_per_day,
-                'note': f'{http["total"]} × {CHECK_RUNS_PER_DAY} запуска/сутки',
+                'total': round(http_per_day, 1),
+                'note': f'{http_per_3days} ÷ {DAYS_BETWEEN_RUNS}',
+            },
+            'http_checker_per_month': {
+                'total': round(http_per_month, 0),
+                'note': f'{http_per_3days} × {30 // DAYS_BETWEEN_RUNS}',
             },
             'ffprobe': {
-                'entries_24h': ffprobe_24h,
-                'requests': ffprobe_requests,
-                'note': '2 запроса на ffprobe-запуск',
+                'entries_72h': ffprobe_72h,
+                'requests_per_run': ffprobe_per_run,
+                'requests_per_day': round(ffprobe_per_day, 1),
+                'requests_per_month': round(ffprobe_per_month, 0),
+                'note': '2 запроса на ffprobe-запись',
             },
             'logo_head': {
                 'requests': logo_requests,
                 'note': 'логотипы НЕ проверяются (нет --check-all-logos)',
             },
-            'cleaner': cleaner,
-            'dashboard_other_repo': dashboard,
-            'misc': misc,
-            'TOTAL_per_day': total,
+            'cleaner_per_day': round(cleaner_per_day, 2),
+            'dashboard_other_repo_per_day': dashboard,
+            'misc_per_day': misc,
+            'TOTAL_per_day': round(total_per_day, 1),
+            'TOTAL_per_month': round(total_per_month, 0),
         },
     }
 
@@ -212,29 +248,35 @@ def main():
     )
 
     print("")
-    print("=" * 60)
+    print("=" * 64)
     print("📦 РЕАЛЬНЫЕ ДАННЫЕ")
-    print("=" * 60)
+    print("=" * 64)
     print(f"  URL в all_cleaned.m3u:    {total_m3u}")
-    print(f"  ffprobe обновлён за 24ч:  {ffprobe_24h}")
+    print(f"  ffprobe обновлён за 72ч:  {ffprobe_72h}")
     print(f"  Последние {avg.get('runs', 0)} прогона (среднее):")
     print(f"    OK={ok}, dead={dead}, unstable={unstable}, filter={filtered}")
     print("")
-    print("=" * 60)
-    print(f"📊 HTTP-ЗАПРОСОВ (check × {CHECK_RUNS_PER_DAY}, {UA_COUNT} UA на мёртвых)")
-    print("=" * 60)
-    print(f"  HTTP за ОДИН запуск:      {http['total']:>6}")
-    print(f"    из них живым:           {http['live_requests']:>6}")
-    print(f"    из них мёртвым (×{UA_COUNT}):    {http['dead_requests']:>6}")
-    print(f"  HTTP за СУТКИ (×{CHECK_RUNS_PER_DAY}):       {http_per_day:>6}")
-    print(f"  ffprobe:                  {ffprobe_requests:>6}")
-    print(f"  Логотипы (HEAD):          {logo_requests:>6}  (не проверяются)")
-    print(f"  Cleaner:                  {cleaner:>6}")
-    print(f"  Дашборд (др. репо):       {dashboard:>6}")
-    print(f"  Прочее:                   {misc:>6}")
-    print(f"  ──────────────────────────────")
-    print(f"  ВСЕГО за СУТКИ:           {total:>6}")
-    print("=" * 60)
+    print("=" * 64)
+    print(f"📊 HTTP-ЗАПРОСОВ (прогон раз в {DAYS_BETWEEN_RUNS} дня, {UA_COUNT} UA на мёртвых)")
+    print("=" * 64)
+    print(f"  HTTP за ОДИН запуск:        {http_per_run:>8}")
+    print(f"    из них живым:             {http['live_requests']:>8}")
+    print(f"    из них мёртвым (×{UA_COUNT}):      {http['dead_requests']:>8}")
+    print(f"  HTTP за 3 дня:              {http_per_3days:>8}")
+    print(f"  HTTP за СУТКИ (÷{DAYS_BETWEEN_RUNS}):         {http_per_day:>8.0f}")
+    print(f"  HTTP за МЕСЯЦ:              {http_per_month:>8.0f}")
+    print("")
+    print(f"  ffprobe за прогон:          {ffprobe_per_run:>8}")
+    print(f"  ffprobe за СУТКИ:           {ffprobe_per_day:>8.0f}")
+    print(f"  ffprobe за МЕСЯЦ:           {ffprobe_per_month:>8.0f}")
+    print("")
+    print(f"  Cleaner за СУТКИ:           {cleaner_per_day:>8.1f}")
+    print(f"  Дашборд (др. репо) /сутки:  {dashboard:>8}")
+    print(f"  Прочее /сутки:              {misc:>8}")
+    print(f"  ──────────────────────────────────")
+    print(f"  ВСЕГО за СУТКИ:             {total_per_day:>8.0f}")
+    print(f"  ВСЕГО за МЕСЯЦ:             {total_per_month:>8.0f}")
+    print("=" * 64)
     print(f"📄 {DOCS / 'requests_count.json'}")
     return 0
 
