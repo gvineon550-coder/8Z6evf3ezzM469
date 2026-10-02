@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-M3U Checker v27 + RU-NAME — ffprobe + whitelist + soft-uptime + UA-per-URL.
+M3U Checker v27 + RU-NAME-v2 — ffprobe + whitelist + soft-uptime + UA-per-URL.
 
 Что нового относительно v27:
-  • [RU-NAME] Имена каналов заменяются на русские из alt_names iptv-org.
-    Например: Kinouzhas → Киноужас. Помогает с логотипами и EPG.
+  • [RU-NAME-END] Имена каналов заменяются на русские из alt_names iptv-org
+    в САМОМ КОНЦЕ обработки — после categorize и detect_quality.
+    Это сохраняет правильные группы и качество.
 
 Остальное из v27:
   • clean_extinf сохраняет ВСЕ атрибуты EXTINF
@@ -193,7 +194,6 @@ CFG = None
 CATEGORIES = {}
 FILTERS = {}
 IPTV_LOGOS = {'by_id': {}, 'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}}
-# [RU-NAME] добавлено поле ru_name_by_id
 IPTV_IDS = {'by_name': {}, 'by_name_translit': {}, 'by_prefix': {}, 'closed': set(),
             'ru_name_by_id': {}}
 EPG_MAP = {'by_name': {}, 'by_translit': {}, 'by_prefix': {}, 'icons': {}}
@@ -770,7 +770,7 @@ def load_iptv_org():
 
     id_to_names = {}
     closed_ids = set()
-    ru_name_by_id = {}    # [RU-NAME] id → русское имя
+    ru_name_by_id = {}
     for ch in channels:
         if not isinstance(ch, dict):
             continue
@@ -791,7 +791,6 @@ def load_iptv_org():
             names.append(an)
         id_to_names[cid] = names
 
-        # [RU-NAME] ищем русское имя в alt_names
         for name in names:
             if _has_cyrillic(name):
                 ru_name_by_id[cid] = name.strip()
@@ -846,11 +845,11 @@ def load_iptv_org():
     IPTV_IDS['by_name_translit'] = by_name_id_translit
     IPTV_IDS['by_prefix'] = by_prefix_id
     IPTV_IDS['closed'] = closed_ids
-    IPTV_IDS['ru_name_by_id'] = ru_name_by_id    # [RU-NAME]
+    IPTV_IDS['ru_name_by_id'] = ru_name_by_id
 
     emit(f"  Логотипов: {len(by_id)} по id, {len(by_name_logo)} по имени")
     emit(f"  iptv-org id: {len(by_name_id)} по имени (закрытых: {len(closed_ids)})")
-    emit(f"  Русских имён найдено: {len(ru_name_by_id)}")    # [RU-NAME]
+    emit(f"  Русских имён найдено: {len(ru_name_by_id)}")
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -1043,7 +1042,7 @@ def remove_tvg_id_from_extinf(extinf):
 
 
 def set_name_in_extinf(extinf, new_name):
-    """[RU-NAME] Заменяет имя канала в EXTINF."""
+    """Заменяет имя канала в EXTINF (после последней запятой вне кавычек)."""
     if not new_name:
         return extinf
     head, _ = split_extinf(extinf)
@@ -1422,14 +1421,6 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
     extinf = clean_extinf(extinf)
     original_tvg_id = get_tvg_id(extinf)
     iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
-
-    # [RU-NAME] если нашли русское имя в iptv-org базе — заменяем
-    # только если текущее имя содержит латиницу и НЕ содержит кириллицу
-    if iptv_org_id:
-        ru_name = IPTV_IDS.get('ru_name_by_id', {}).get(iptv_org_id)
-        if ru_name and not _has_cyrillic(name):
-            extinf = set_name_in_extinf(extinf, ru_name)
-
     epg_id = resolve_epg_id(extinf)
     logo, logo_src = resolve_logo(extinf, url, txt_logos, cache,
                                    iptv_org_id, epg_id)
@@ -1438,9 +1429,20 @@ def process_channel(index, extinf, url, txt_logos, cache, source_name):
         extinf = set_tvg_id_in_extinf(extinf, epg_id)
     elif not original_tvg_id:
         extinf = remove_tvg_id_from_extinf(extinf)
+
+    # Категоризация ПО ОРИГИНАЛЬНОМУ ИМЕНИ (латиница)
     new_group = categorize(extinf, url, source_name)
     extinf = set_group_in_extinf(extinf, add_emoji(new_group))
+
+    # Качество ПО ОРИГИНАЛЬНОМУ ИМЕНИ
     final_quality = hls_quality or detect_quality_by_name(name)
+
+    # [RU-NAME-END] заменяем имя В САМОМ КОНЦЕ
+    if iptv_org_id:
+        ru_name = IPTV_IDS.get('ru_name_by_id', {}).get(iptv_org_id)
+        if ru_name and not _has_cyrillic(name):
+            extinf = set_name_in_extinf(extinf, ru_name)
+
     if is_wl:
         WHITELIST_STATS['kept'] += 1
     return index, 'ok', extinf, url, None, ua, new_group, elapsed, logo_src, final_quality
@@ -1504,11 +1506,6 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             extinf = clean_extinf(extinf)
             original_tvg_id = get_tvg_id(extinf)
             iptv_org_id = resolve_iptv_org_id(extinf, original_tvg_id)
-            # [RU-NAME]
-            if iptv_org_id:
-                ru_name = IPTV_IDS.get('ru_name_by_id', {}).get(iptv_org_id)
-                if ru_name and not _has_cyrillic(name):
-                    extinf = set_name_in_extinf(extinf, ru_name)
             epg_id = resolve_epg_id(extinf)
             logo, _ = resolve_logo(extinf, url, txt_logos, cache, iptv_org_id, epg_id)
             extinf = set_logo_in_extinf(extinf, logo)
@@ -1517,6 +1514,11 @@ def process_playlist(filename, label, txt_logos, cache, check=True):
             elif not original_tvg_id:
                 extinf = remove_tvg_id_from_extinf(extinf)
             extinf = set_group_in_extinf(extinf, add_emoji(categorize(extinf, url, label)))
+            # [RU-NAME-END]
+            if iptv_org_id:
+                ru_name = IPTV_IDS.get('ru_name_by_id', {}).get(iptv_org_id)
+                if ru_name and not _has_cyrillic(name):
+                    extinf = set_name_in_extinf(extinf, ru_name)
             out.append((i, extinf, url))
         ordered = group_channels(out)
         gs = {}
@@ -3065,7 +3067,6 @@ def main():
     global CFG, CATEGORIES, FILTERS, UPTIME_NEW, REJECTED, QUALITY_MAP_NEW
     global FFPROBE_MAP_NEW, FFPROBE_SEM, WEATHER_HTML, URL_UA_MAP
 
-    # ─── 1. Аргументы и логи ───
     CFG = parse_args()
     CFG.verify_ssl = not CFG.no_ssl_verify
     if CFG.no_ssl_verify:
@@ -3085,12 +3086,10 @@ def main():
             emit("ffprobe: НЕ НАЙДЕН")
             CFG.ffprobe = False
 
-    # ─── 2. Погода ───
     emit("Загружаю погоду...")
     WEATHER_HTML = fetch_weather()
     emit(f"  → {WEATHER_HTML}")
 
-    # ─── 3. Конфиги ───
     CATEGORIES = load_json(CFG.categories)
     FILTERS = load_json(CFG.filters)
     FILTERS['_name_block'] = compile_patterns(FILTERS.get('name_blocklist', []))
@@ -3103,7 +3102,6 @@ def main():
     if WHITELIST_URLS or WHITELIST_NAMES:
         emit(f"⭐ Whitelist: url={len(WHITELIST_URLS)} name={len(WHITELIST_NAMES)}")
 
-    # ─── 4. Кэши ───
     uptime_path = os.path.join(CFG.docs_dir, 'uptime.json')
     load_uptime(uptime_path)
     if UPTIME:
@@ -3119,13 +3117,11 @@ def main():
     if FFPROBE_MAP:
         emit(f"ffprobe: {len(FFPROBE_MAP)} URL")
 
-    # ─── 5. База iptv-org + EPG ───
     emit("Загружаю базу iptv-org...")
     load_iptv_org()
     emit("Загружаю EPG iptvx.one...")
     download_epg_map()
 
-    # ─── 6. Источники ───
     cfg = load_sources_config(CFG.sources)
     url_sources = cfg.get('url_sources', [])
     local_sources = cfg.get('local_sources', [])
@@ -3165,7 +3161,6 @@ def main():
     stats_list, merged_all, seen, pl = [], [], set(), 0
     all_current_urls = []
 
-    # ─── 7. Обработка ───
     try:
         for path, label, check in all_sources:
             st = process_playlist(path, label, txt_logos, cache, check=check)
