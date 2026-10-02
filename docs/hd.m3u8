@@ -26,9 +26,6 @@ http://stream.mcquack.net/279/index.m3u8
 #EXTINF:-1 group-title="⚽ Спорт" tvg-id="viasat-sport" tvg-logo="https://i.imgur.com/fXESG0l.png",viju+ Sport (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/333/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://45.153.24.78/1TV/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="Domashniy.ru@SD" tvg-logo="https://i.imgur.com/WaLwOyt.jpeg",Dомашний
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/227/index.m3u8
@@ -44,16 +41,16 @@ https://stream.smotrim.ru/hls2/russia_hd/playlist_6.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia1" tvg-logo="https://i.imgur.com/6BVWk8z.png",Russia-1 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia-24" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://dmi3y-tv.online/hls/smotrim/T2/CH_RUSSIA24_INT.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 (720p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia-24" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/russia24nl_smotrim/playlist_5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia-24" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://77.232.131.211/Rossiya24/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 HD (1080p)
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia-24" tvg-logo="https://i.imgur.com/tTCuczU.png",Russia-24 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.smotrim.ru/vgtrk/0/russia24-hd/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="kultura" tvg-logo="https://i.imgur.com/6PqxuhF.png",Russia-K HD (1080p)
@@ -83,6 +80,9 @@ http://stream.mcquack.net/143/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg",Матч! Ультра
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/169/index.m3u8
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg",Матч! Ультра
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://31.148.5.241/kanal_3/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://i.imgur.com/AqWaJT8.png",Мир
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mirtv_2500/playlist.m3u8
@@ -409,6 +409,9 @@ http://stream.mcquack.net/106/index.m3u8
 http://stream.mcquack.net/263/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="sony-tv" tvg-logo="https://i.imgur.com/heZeqPQ.png",.red (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://5.188.159.128:8070/RED/index.m3u8
+#EXTINF:-1 group-title="🎬 Кино" tvg-id="sony-tv" tvg-logo="https://i.imgur.com/heZeqPQ.png",.red (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/69/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="sony-tv" tvg-logo="https://i.imgur.com/heZeqPQ.png",.red HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
@@ -470,9 +473,6 @@ http://stream.mcquack.net/108/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="dorama" tvg-logo="https://i.imgur.com/ZH5LuXU.png",Дорама
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/412/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="dushevnoe" tvg-logo="https://i.imgur.com/vTRHAvD.png",Душевное
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/213/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="evrokino" tvg-logo="https://i.imgur.com/8LPtPf6.png",Еврокино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/385/index.m3u8
@@ -506,9 +506,6 @@ http://stream.mcquack.net/369/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="muzhskoe-kino" tvg-logo="https://i.imgur.com/8RN3tQC.png",Мужское кино
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/107/index.m3u8
-#EXTINF:-1 group-title="🎬 Кино" tvg-id="nashe-muzhskoe" tvg-logo="https://i.imgur.com/QRWKpmb.png",Наше мужское
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://stream.mcquack.net/362/index.m3u8
 #EXTINF:-1 group-title="🎬 Кино" tvg-id="premialnoe" tvg-logo="https://i.imgur.com/ck4aLBP.png",Премиальное
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/421/index.m3u8
@@ -659,9 +656,6 @@ http://live-saha.cdnvideo.ru/saha/tooky/playlist.m3u8
 #EXTINF:-1 group-title="🏙️ Региональные" tvg-id="xuzur-tv" tvg-logo="https://i.imgur.com/Abg1fct.png",Хузур ТВ (1080p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://hls-mycdn08724960135.cdnvideo.ru/mycdn08724960135/stream1/playlist.m3u8
-#EXTINF:-1 group-title="📦 Разное" tvg-id="HorosheeKino.ru@SD" tvg-logo="https://i.imgur.com/ZbOqfy4.png",Хорошее кино
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://live-rian.cdnvideo.ru/rian/rus-radio/playlist.m3u8
 #EXTINF:-1 group-title="📰 Новости" tvg-id="rt-news" tvg-logo="https://i.imgur.com/55SK22l.png",RT (720p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://212.5.144.156:8080/rt/index.m3u8
@@ -743,7 +737,7 @@ https://bl.rutube.ru/livestream/eddcc86d1dee0b5def546ea388eb38ea/index.m3u8?s=yB
 #EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/gvineon550-coder/bl_logos/main/rick_morti.jpg" group-title="📹 Rutube",Рик и Морти
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/478a825bfd784e1e9de08ceceb3d2121/index.m3u8?s=3tB6xTDGpRaXGITEPckG_g&e=2090412772&scheme=https
-#EXTINF:-1 tvg-id="24news-ua" tvg-logo="https://i.imgur.com/tTCuczU.png" group-title="📹 Rutube",Россия 24
+#EXTINF:-1 tvg-id="rossia-24" tvg-logo="https://i.imgur.com/tTCuczU.png" group-title="📹 Rutube",Россия 24
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://bl.rutube.ru/livestream/ad6ba2e9e587406b29978b861b7b7dd1/index.m3u8?s=2xI0szFZPbr-yIu5m8Ee2Q&e=2090410051&scheme=https
 #EXTINF:-1 group-title="📹 Rutube" tvg-id="super" tvg-logo="https://i.imgur.com/nsk8PpB.png",Суббота!
@@ -776,6 +770,9 @@ http://chanson-video.hostingradio.ru:8080/hls/chansonabr/live.m3u8
 #EXTINF:-1 group-title="📻 Радио" tvg-id="radio-strana-fm-tv" tvg-logo="https://i.imgur.com/WsPlKJJ.png",Страна FM (720p) [Not 24/7]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://live.stranafm.cdnvideo.ru/stranafm/stranafm_hd.sdp/playlist.m3u8
+#EXTINF:-1 group-title="📻 Радио" tvg-id="HorosheeKino.ru@SD" tvg-logo="https://i.imgur.com/ZbOqfy4.png",Хорошее кино
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+https://live-rian.cdnvideo.ru/rian/rus-radio/playlist.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="LawTV.ru@SD" tvg-logo="https://i.imgur.com/QcO5Gxl.png",Law TV (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/406/index.m3u8
@@ -818,6 +815,9 @@ http://stream.mcquack.net/275/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="Doctor.ru@SD" tvg-logo="https://i.imgur.com/VNirxxn.png",Доктор
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/80/index.m3u8
+#EXTINF:-1 group-title="🧠 Познавательные" tvg-id="dushevnoe" tvg-logo="https://i.imgur.com/vTRHAvD.png",Душевное
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.mcquack.net/213/index.m3u8
 #EXTINF:-1 group-title="🧠 Познавательные" tvg-id="eda-hd" tvg-logo="https://i.imgur.com/gxCYAwH.png",Еда Премиум
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/216/index.m3u8

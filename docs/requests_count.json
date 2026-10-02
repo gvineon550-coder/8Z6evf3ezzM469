@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-02T18:10:15",
+  "date": "2026-10-02T21:30:30",
   "method": "counter v5 — прогон 1 раз в 3 дня, 4 UA на мёртвых",
   "accuracy": "±3%",
   "schedule": {
@@ -12,48 +12,50 @@
     "total_in_all_cleaned": 902,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 627,
-      "dead": 271,
+      "ok": 628,
+      "dead": 270,
       "unstable": 3,
       "filtered": 0
     },
     "ffprobe_updated_72h": 478,
     "rejected_reasons": {
-      "dead": 270,
+      "dead": 267,
       "dead_detail:ffprobe": 41,
       "dead_detail:http_206": 1,
       "dead_detail:http_403": 161,
       "dead_detail:http_404": 13,
-      "dead_detail:timeout": 54,
-      "unstable": 2
+      "dead_detail:http_503": 1,
+      "dead_detail:timeout": 50,
+      "unstable": 4,
+      "url_blocklist": 1
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 627,
-      "dead_channels": 271,
-      "live_requests": 689,
-      "dead_requests": 1084,
+      "live_channels": 628,
+      "dead_channels": 270,
+      "live_requests": 690,
+      "dead_requests": 1080,
       "breakdown": {
-        "timeout": 54,
-        "http_code": 175,
+        "timeout": 50,
+        "http_code": 176,
         "ffprobe_fail": 41,
         "empty_html_small_unknown": 0,
         "ua_count": 4
       },
-      "total": 1773
+      "total": 1770
     },
     "http_checker_per_3days": {
-      "total": 1773,
-      "note": "1773 × 1 прогон"
+      "total": 1770,
+      "note": "1770 × 1 прогон"
     },
     "http_checker_per_day": {
-      "total": 591.0,
-      "note": "1773 ÷ 3"
+      "total": 590.0,
+      "note": "1770 ÷ 3"
     },
     "http_checker_per_month": {
-      "total": 17730.0,
-      "note": "1773 × 10"
+      "total": 17700.0,
+      "note": "1770 × 10"
     },
     "ffprobe": {
       "entries_72h": 478,
@@ -69,7 +71,7 @@
     "cleaner_per_day": 2.67,
     "dashboard_other_repo_per_day": 480,
     "misc_per_day": 5,
-    "TOTAL_per_day": 1397.3,
-    "TOTAL_per_month": 41920.0
+    "TOTAL_per_day": 1396.3,
+    "TOTAL_per_month": 41890.0
   }
 }
