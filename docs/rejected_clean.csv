@@ -52,6 +52,7 @@ iptv_org_ru,Muz-TV (576p),http://hls127.freeott.top:8080/MUZ_TV/video.m3u8,block
 iptv_org_ru,Muz-TV,https://stream8.cinerama.uz/1200/tracks-v1a1/mono.m3u8,blocked_url
 iptv_org_ru,Muzyka Pervogo,https://stream8.cinerama.uz/1201/tracks-v1a1/mono.m3u8,blocked_url
 iptv_org_ru,Nashe Lubimoe Kino (576p),http://hls127.freeott.top:8080/Lubimoe_Kino/video.m3u8,blocked_url
+iptv_org_ru,Nashe muzhskoe HD (1080p),http://stream.mcquack.net/362/index.m3u8,blocked_url
 iptv_org_ru,Nashe Novoe Kino (1080p),http://hls127.freeott.top:8080/Nashe_Novoe_Kino_HD/video.m3u8,blocked_url
 iptv_org_ru,Nashe Novoe Kino,https://stream8.cinerama.uz/1051/tracks-v1a1/mono.m3u8,blocked_url
 iptv_org_ru,National Geographic Wild (1080p),http://hls127.freeott.top:8080/Nat_Geo_Wild_SD/video.m3u8,blocked_url
@@ -119,9 +120,6 @@ iptv_org_ru,Zagorodnaya Zhizn,https://stream8.cinerama.uz/1044/tracks-v1a1/mono.
 iptv_org_ru,Zhara (576p),http://hls127.freeott.top:8080/Zhara/video.m3u8,blocked_url
 iptv_org_ru,Zoopark (576i),https://stream8.cinerama.uz/1417/tracks-v1a1/mono.m3u8,blocked_url
 iptv_org_ru,Zvezda,https://stream8.cinerama.uz/1050/tracks-v1a1/mono.m3u8,blocked_url
-iptv_org_ru,Мультимания (576p),https://sirius.greenhosting.ru/MultimaniaRu/tracks-v1a1/mono.m3u8,banned_name
-iptv_org_ru,Мультимания ТВ (576p),http://sirius.greenhosting.ru/MultimaniaRu/video.m3u8,banned_name
-iptv_org_ru,Ювелирочка ТВ (576p),https://live-uvelirochka.cdnvideo.ru/uvelirochka/uvelirochka_720p3/playlist.m3u8,banned_name
 iptv_org_ru,STS kids HD (1080p),http://45.145.32.13:20440/ctc_kids_hd/index.m3u8?token=test,banned_name
 iptv_org_ru,Baby Time (576p),http://178.134.1.158:8081/babytime/index.m3u8,banned_name
 iptv_org_ru,Mult (576p),http://flussonic.linkintel.ru/Mult/index.m3u8,banned_name
