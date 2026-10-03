@@ -1,4 +1,10 @@
 #EXTM3U url-tvg="http://iptvx.one/epg/epg_lite.xml.gz; https://iptvx.one/EPG_NOARCH"
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="5kanal-ru" tvg-logo="https://i.imgur.com/SyXVJdM.png",5 канал
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://31.148.5.241/kanal_5/index.m3u8
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://45.153.24.78/1TV/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="one-il" tvg-logo="https://i.imgur.com/2xglh33.png",Channel One (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.217.49.7/1/index.m3u8
@@ -44,6 +50,9 @@ https://stream.smotrim.ru/hls2/russia_hd/playlist_6.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia1" tvg-logo="https://i.imgur.com/6BVWk8z.png",Russia-1 HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia1" tvg-logo="https://i.imgur.com/6BVWk8z.png",Russia-1 HD (1080p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://176.118.197.101/RossiyaHD/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="rossia1" tvg-logo="https://i.imgur.com/6BVWk8z.png",Russia-1 SD (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://109.207.243.18/2/index.m3u8
@@ -74,15 +83,12 @@ http://stream.mcquack.net/229/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="kultura" tvg-logo="https://i.imgur.com/6PqxuhF.png",Russia-K (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/rossia_k/mono.m3u8?token=onlinetv
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="kultura" tvg-logo="https://i.imgur.com/6PqxuhF.png",Russia-K (576p)
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://31.148.5.241/kanal_6/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="kultura" tvg-logo="https://i.imgur.com/6PqxuhF.png",Russia-K HD (1080p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://stream.smotrim.ru/hls2/russia_k/playlist_5.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="start-air" tvg-logo="https://images.iptv.rt.ru/images/d60qp8omife4gis72tk0.png",START Air (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://fs.uplink.kz/start_air/mono.m3u8?token=onlinetv
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="start-world" tvg-logo="https://images.iptv.rt.ru/images/d6iist8mifeailfopupg.png",START World (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://fs.uplink.kz/start_world/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="sts-int" tvg-logo="https://i.imgur.com/mwiC0RG.png",STS International (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/CTC/index.m3u8
@@ -126,7 +132,7 @@ http://flussonic.linkintel.ru/zvezda/index.m3u8
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/zvezda/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="zvezda" tvg-logo="https://i.imgur.com/4PAcpfM.png",Звезда
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (SMART-TV; Linux; Tizen 6.0) AppleWebKit/537.36
 http://31.148.5.241/kanal_17/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match-arena" tvg-logo="https://i.imgur.com/udTzwzu.png",Матч! Арена
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
@@ -158,15 +164,9 @@ http://45.132.87.69:8080/match/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg",Матч! Ультра
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://tv.tuva.ru/machtv/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="match4-hu" tvg-logo="https://www.kartina.tv/media/news/images/News/SEO/kanal-match-ultra.jpg",Матч! Ультра
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://31.148.5.241/kanal_3/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://i.imgur.com/AqWaJT8.png",Мир
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://45.153.24.78/MIR/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://i.imgur.com/AqWaJT8.png",Мир
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-https://tvcdn01.oktv.kz/tv/mir/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir" tvg-logo="https://i.imgur.com/AqWaJT8.png",Мир
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mirtv_2500/playlist.m3u8
@@ -185,6 +185,9 @@ http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mir24_2500/playlist.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir-belogoria" tvg-logo="https://mirbelogorya.ru/images/logo/Logo_Mir_Belogorya_purple_gradient.png",Мир Белагорья (720p) [Geo-blocked]
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://mirbelogorya.ru:8080/mirbelogorya/index.m3u8
+#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir-belogoria" tvg-logo="https://mirbelogorya.ru/images/logo/Logo_Mir_Belogorya_purple_gradient.png",Мир Белогорья (720p) [Geo-blocked]
+#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
+http://stream.tvbelgorod.ru:8080/mirbelogorya/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="mir-seriala" tvg-logo="https://i.imgur.com/uzj7wVp.png",Мир Сериала
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://176.118.197.101/MirSeriala/index.m3u8
@@ -302,9 +305,6 @@ http://176.118.197.101/THT/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt" tvg-logo="https://i.imgur.com/T4A6rEI.png",ТНТ
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://31.148.5.241/kanal_19/index.m3u8
-#EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="TNTInternational.ru@Belarus" tvg-logo="https://i.imgur.com/l0RGbRI.png",ТНТ International
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://05cea6e8.ucomist.net/iptv/VK7YCHHWNDD8XC/15230/index.m3u8
 #EXTINF:-1 group-title="🇷🇺 Основные" tvg-id="tnt4-international" tvg-logo="https://i.imgur.com/gBokU5i.png",ТНТ4 International
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/tnt4/mono.m3u8?token=onlinetv

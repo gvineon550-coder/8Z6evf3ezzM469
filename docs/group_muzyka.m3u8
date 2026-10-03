@@ -23,9 +23,6 @@ http://stream.mcquack.net/92/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-dance" tvg-logo="https://i.imgur.com/sIW9oR4.png",BRIDGE Hits (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://stream.mcquack.net/320/index.m3u8
-#EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-dance" tvg-logo="https://i.imgur.com/sIW9oR4.png",BRIDGE Hits (576p)
-#EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
-http://5.188.159.128:8070/Bridge_TV_Hits/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="bridge-tv-rock" tvg-logo="https://i.imgur.com/MHuwct2.png",BRIDGE Rock (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 http://178.134.1.158:8081/BRIDGEROCK/index.m3u8
@@ -48,7 +45,7 @@ http://stream.mcquack.net/86/index.m3u8
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
 https://fs.uplink.kz/muz_tv/mono.m3u8?token=onlinetv
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="muztv" tvg-logo="https://i.imgur.com/lSBMeBU.png",Muz-TV (576p)
-#EXTVLCOPT:http-user-agent=TiviMate/4.7.0 (Linux;Android 11) ExoPlayerLib/2.18.1
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (SMART-TV; Linux; Tizen 6.0) AppleWebKit/537.36
 http://31.148.5.241/kanal_20/index.m3u8
 #EXTINF:-1 group-title="🎵 Музыка" tvg-id="RUTV.ru@SD",RU.TV (576p)
 #EXTVLCOPT:http-user-agent=WINK/RT_(Android_TV/11)_WinkPlayer_AppleWebKit/537.36
