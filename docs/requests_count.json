@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-03T16:07:04",
+  "date": "2026-10-04T03:04:42",
   "method": "counter v5 — прогон 1 раз в 3 дня, 4 UA на мёртвых",
   "accuracy": "±3%",
   "schedule": {
@@ -12,55 +12,55 @@
     "total_in_all_cleaned": 904,
     "avg_last_3_runs": {
       "runs": 3,
-      "ok": 629,
-      "dead": 270,
-      "unstable": 2,
+      "ok": 628,
+      "dead": 271,
+      "unstable": 3,
       "filtered": 0
     },
-    "ffprobe_updated_72h": 468,
+    "ffprobe_updated_72h": 470,
     "rejected_reasons": {
       "dead": 274,
-      "dead_detail:ffprobe": 40,
+      "dead_detail:ffprobe": 41,
       "dead_detail:http_206": 1,
-      "dead_detail:http_403": 162,
+      "dead_detail:http_403": 161,
       "dead_detail:http_404": 13,
-      "dead_detail:http_503": 1,
-      "dead_detail:timeout": 57,
-      "unstable": 2
+      "dead_detail:http_503": 3,
+      "dead_detail:timeout": 55,
+      "unstable": 3
     }
   },
   "estimated_requests": {
     "http_checker_per_run": {
-      "live_channels": 629,
-      "dead_channels": 270,
-      "live_requests": 691,
-      "dead_requests": 1080,
+      "live_channels": 628,
+      "dead_channels": 271,
+      "live_requests": 690,
+      "dead_requests": 1084,
       "breakdown": {
-        "timeout": 57,
-        "http_code": 177,
-        "ffprobe_fail": 40,
+        "timeout": 55,
+        "http_code": 178,
+        "ffprobe_fail": 41,
         "empty_html_small_unknown": 0,
         "ua_count": 4
       },
-      "total": 1771
+      "total": 1774
     },
     "http_checker_per_3days": {
-      "total": 1771,
-      "note": "1771 × 1 прогон"
+      "total": 1774,
+      "note": "1774 × 1 прогон"
     },
     "http_checker_per_day": {
-      "total": 590.3,
-      "note": "1771 ÷ 3"
+      "total": 591.3,
+      "note": "1774 ÷ 3"
     },
     "http_checker_per_month": {
-      "total": 17710.0,
-      "note": "1771 × 10"
+      "total": 17740.0,
+      "note": "1774 × 10"
     },
     "ffprobe": {
-      "entries_72h": 468,
-      "requests_per_run": 936,
-      "requests_per_day": 312.0,
-      "requests_per_month": 9360.0,
+      "entries_72h": 470,
+      "requests_per_run": 940,
+      "requests_per_day": 313.3,
+      "requests_per_month": 9400.0,
       "note": "2 запроса на ffprobe-запись"
     },
     "logo_head": {
@@ -70,7 +70,7 @@
     "cleaner_per_day": 2.67,
     "dashboard_other_repo_per_day": 480,
     "misc_per_day": 5,
-    "TOTAL_per_day": 1390.0,
-    "TOTAL_per_month": 41700.0
+    "TOTAL_per_day": 1392.3,
+    "TOTAL_per_month": 41770.0
   }
 }
