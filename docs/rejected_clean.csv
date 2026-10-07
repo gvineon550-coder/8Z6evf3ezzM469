@@ -172,3 +172,4 @@ iptv_org_ru,Carousel (576p),http://88.212.15.19/live/test_karusel/playlist.m3u8,
 iptv_org_ru,6 TV Gorlovka (720p) [Geo-blocked],http://91.214.48.158:4022/udp/224.2.2.4:10000,multicast
 iptv_org_ru,RT en Espanol (1080p),http://168.196.127.137:6001/play/a0a9/index.m3u8,banned_name
 iptv_org_ru,Carousel (576p),http://31.148.5.241/kanal_8/index.m3u8,banned_name
+iptv_org_ru,Nash Kinopokaz HD (576p),http://46.53.200.153:7777/play/SRT_Nash_kinopokaz/index.m3u8,banned_name

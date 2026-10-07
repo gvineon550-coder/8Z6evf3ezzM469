@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-04T23:02:14+00:00",
+  "generated_at_utc": "2026-10-07T23:02:46+00:00",
   "total_sources_ok": 2,
   "duration_sec": 0.2,
   "strip_trackers": true,
@@ -10,9 +10,9 @@
     {
       "name": "iptv_org_ru",
       "type": "url",
-      "raw": 880,
-      "kept": 707,
-      "rejected": 173,
+      "raw": 902,
+      "kept": 728,
+      "rejected": 174,
       "whitelisted": 7
     },
     {
@@ -25,12 +25,12 @@
     }
   ],
   "totals": {
-    "raw": 1077,
-    "kept": 904,
-    "rejected": 173
+    "raw": 1099,
+    "kept": 925,
+    "rejected": 174
   },
   "reasons": {
-    "banned_name": 62,
+    "banned_name": 63,
     "blocked_url": 110,
     "multicast": 1
   }
